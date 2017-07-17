@@ -1,0 +1,26 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user_flight
+    - node.type.user_flight
+id: node.user_flight.field_user_flight
+field_name: field_user_flight
+entity_type: node
+bundle: user_flight
+label: 'Départ associé'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      user_flight: user_flight
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

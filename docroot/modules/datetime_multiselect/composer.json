@@ -1,0 +1,9 @@
+{
+	"name": "drupal/datetime_multiselect",
+	"description": "Select multiple dates from calendar.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+
+	}
+}

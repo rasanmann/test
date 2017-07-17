@@ -1,0 +1,6 @@
+langcode: fr
+status: true
+dependencies: {  }
+id: vip_drawer_card
+label: 'VIP Drawer Card'
+behavior_plugins: {  }

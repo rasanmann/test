@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a menu block.
+ */
+#}
+{% set heading_id = attributes.id ~ '-menu'|clean_id %}
+{% set heading_id = attributes.id ~ '-menu'|clean_id %}
+<nav role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes.addClass('block-main-menu').removeClass('clearfix')|without('role', 'aria-labelledby') }}>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</nav>

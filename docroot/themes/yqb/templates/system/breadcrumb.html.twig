@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ *
+ * @ingroup templates
+ */
+#}
+<div class="breadcrumb-wrapper">
+    {% if breadcrumb %}
+      <ol class="breadcrumb">
+        {% for item in breadcrumb %}
+          <li {{ item.attributes }}>
+            {% if item.url %}
+              <a href="{{ item.url }}">{{ item.text }}</a>
+            {% else %}
+              {{ item.text }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+    <ul class="nav nav-tabs" role="group">
+      <li>
+        <a href="{{ url('view.arrivals.today') }}">
+          <span class="icon icon-plane-arrival" data-grunticon-embed></span> {{ "Arrivées"|t }}
+        </a>
+      </li>
+      <li>
+        <a href="{{ url('view.departures.today') }}">
+          <span class="icon icon-plane-departure" data-grunticon-embed></span> {{ "Départs"|t }}
+        </a>
+      </li>
+    </ul>
+</div>

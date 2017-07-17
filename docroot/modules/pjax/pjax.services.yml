@@ -1,0 +1,6 @@
+services:
+  response_filter.active_link:
+    class: Drupal\pjax\EventSubscriber\PjaxActiveLinkResponseFilter
+    arguments: ['@current_user', '@path.current', '@path.matcher', '@language_manager']
+    tags:
+      - { name: event_subscriber }

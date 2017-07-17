@@ -1,0 +1,9 @@
+{
+	"name": "drupal/yqb_wait_times",
+	"description": "Displays current wait times in airport.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+
+	}
+}

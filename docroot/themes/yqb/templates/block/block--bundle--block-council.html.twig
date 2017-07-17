@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-leadership">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+
+
+        <div class="leader-infos">
+            <h2 class="title-default">{{ content.field_name[0]['#context']['value'] }}
+                {% if content.field_committee_number[0] %}
+                    <sup>{{ content.field_committee_number }}</sup>
+                {% endif %}
+            </h2>
+
+            {% if content.field_role[0] %}<h3>{{ content.field_role }}</h3>{% endif %}
+        </div>
+
+
+        {{ content.field_picture }}
+
+        <a href="#" class="trigger-toggle">
+            <span class="icon icon-add" data-grunticon-embed></span>
+        </a>
+
+        <div class="content-toggle is-collapsed" aria-hidden="true">
+            <div class="wrapper-ul">
+                {{ content.field_infos }}
+            </div>
+            <div>
+                {{ content.body }}
+            </div>
+
+            <a href="#" class="trigger-toggle">
+                <span class="icon icon-add icon-add-close" data-grunticon-embed></span>
+            </a>
+        </div>
+    {% endblock %}
+</div>

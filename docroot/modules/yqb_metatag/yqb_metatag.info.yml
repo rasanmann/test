@@ -1,0 +1,9 @@
+name: Metatag
+description: Various metatags.
+package: YQB
+
+type: module
+core: 8.x
+
+dependencies:
+  - metatag

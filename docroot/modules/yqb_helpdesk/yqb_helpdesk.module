@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_helpdesk.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_helpdesk_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_helpdesk module.
+    case 'help.page.yqb_helpdesk':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Helpdesk') . '</p>';
+      return $output;
+
+    default:
+  }
+  
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ * @param $existing
+ * @param $type
+ * @param $theme
+ * @param $path
+ * @return array
+ */
+function yqb_helpdesk_theme($existing, $type, $theme, $path) {
+  return array(
+    'helpdesk-dashboard' => array(
+      'variables' => array(
+          'userData' => NULL,
+          'form' => NULL,
+      ),
+    ),
+  );
+}

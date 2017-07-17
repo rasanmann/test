@@ -1,0 +1,42 @@
+// Bootstrap variables
+@import "variables-bootstrap";
+@import "variables";
+@import "../bootstrap/scss/mixins";
+
+// Help ers
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "helpers/animations";
+
+
+
+// Bootstrap modules overrides
+@import "categories/modules/alert";
+@import "categories/modules/autocomplete";
+@import "categories/modules/breadcrumbs";
+@import "categories/modules/button";
+@import "categories/modules/collapsibles";
+@import "categories/modules/drawer";
+@import "categories/modules/dropdowns";
+@import "categories/modules/fields";
+@import "categories/modules/forms";
+@import "categories/modules/lists";
+@import "categories/modules/maps";
+@import "categories/modules/modals";
+@import "categories/modules/navs";
+@import "categories/modules/navbar";
+@import "categories/modules/panels";
+@import "categories/modules/sliders";
+@import "categories/modules/tables";
+@import "categories/modules/tiles";
+@import "categories/modules/titles";
+@import "categories/modules/toolbar";
+@import "categories/modules/triggers";
+@import "categories/modules/touchevents";
+@import "categories/modules/type";
+@import "categories/modules/responsive-embed";
+@import "categories/modules/utilities";
+@import "categories/modules/vertical-tabs";
+
+// Custom modules
+@import "categories/modules/icons";

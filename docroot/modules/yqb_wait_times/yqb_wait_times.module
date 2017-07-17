@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_wait_times.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\data_exchange_layer\Connector\DataExchangeLayerConnector;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_wait_times_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_wait_times module.
+    case 'help.page.yqb_wait_times':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Wait Times') . '</p>';
+      return $output;
+
+    default:
+  }
+  
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_wait_times_theme() {
+  $theme = [
+    'wait-times-home-block' => [
+      'variables' => ['time' => NULL],
+    ],
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * We implement hook_cron() to do "background" processing. It gets called every
+ * time the Drupal cron runs. We then decide what has to happen in response.
+ */
+function yqb_wait_times_cron() {
+  // We access our configuration.
+  $cron_config = \Drupal::configFactory()->getEditable('yqb_wait_times.cron');
+
+  // Default to an two minutes interval.
+  $interval = $cron_config->get('interval');
+  $interval = !empty($interval) ? $interval : 2 * 60;
+
+  // We usually don't want to act every time cron runs (which could be every
+  // minute) so keep a time for the next run in a variable.
+  $next_execution = $cron_config->get('next_execution');
+  $next_execution = !empty($next_execution) ? $next_execution : 0;
+
+  if (REQUEST_TIME >= $next_execution) {
+    $layer = new DataExchangeLayerConnector();
+
+    $waitTime = $layer->getWaitTime();
+
+    if ($waitTime) {
+      $wait_config = \Drupal::configFactory()->getEditable('yqb_wait_times.wait');
+
+      $wait_config->set('expectedWaitTime',     $waitTime->expectedWaitTime)->save();
+      $wait_config->set('averageArrivalRate',   $waitTime->averageArrivalRate)->save();
+      $wait_config->set('averageServiceRate',   $waitTime->averageServiceRate)->save();
+      $wait_config->set('numberOfPeopleInLine', $waitTime->numberOfPeopleInLine)->save();
+      $wait_config->set('queueUtilization',     $waitTime->queueUtilization)->save();
+
+      $cron_config->set('last_updated', time())->save();
+
+      $message = sprintf('Successfully completed wait times synchronization.');
+    } else {
+      $message = sprintf('Wait times synchronization failed with error.');
+    }
+
+    \Drupal::logger('yqb_wait_times')->notice($message);
+
+    // For Drush
+    echo $message . PHP_EOL;
+
+    if (\Drupal::state()->get('yqb_wait_times_show_status_message')) {
+      drupal_set_message(t('yqb_wait_times executed at %time', ['%time' => date_iso8601(REQUEST_TIME)]));
+      \Drupal::state()->set('yqb_wait_times_show_status_message', FALSE);
+    }
+
+    $cron_config->set('next_execution', REQUEST_TIME + $interval)->save();
+  }
+}

@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single views grouping.
+ *
+ * Available variables:
+ * - view: The view object.
+ * - grouping: The grouping instruction.
+ * - grouping_level: A number indicating the hierarchical level of the grouping.
+ * - title: The group heading.
+ * - content: The content to be grouped.
+ * - rows: The rows returned from the view.
+ *
+ * @see template_preprocess_views_view_grouping()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set region_alias = title|striptags|clean_id %}
+
+<div id="region-{{ region_alias }}" class="panel panel-default panel-region">
+    {% if title %}
+        <div class="panel-heading" role="tab" id="heading-{{ region_alias }}">
+            <div class="panel-title panel-title-region">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#map-accordion" href="#collapse-{{ region_alias }}" aria-expanded="false" aria-controls="collapse-{{ region_alias }}">
+                    <div class="panel-title-content">
+                        <div class="panel-img"></div>
+                        <h2>{{ title }}</h2>
+                    </div>
+                    <span class="icon icon-down-arrow-2" data-grunticon-embed></span>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+
+    <div id="collapse-{{ region_alias }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{ region_alias }}">
+        <div class="panel-body">
+            <div class="panel-group" id="{{ region_alias }}-accordion" role="tablist" aria-multiselectable="true">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+</div>

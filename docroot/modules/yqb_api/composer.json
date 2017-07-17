@@ -1,0 +1,11 @@
+{
+	"name": "drupal/yqb_api",
+	"description": "REST API for YQB website.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+		"facebook/graph-sdk": "5.3.*",
+		"paragraph1/php-fcm": "*",
+		"duccio/apns-php": "^2.0.0"
+	}
+}

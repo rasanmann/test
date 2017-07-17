@@ -1,0 +1,123 @@
+global-styling:
+  css:
+    theme:
+      css/bootstrap.css: {}
+      css/libraries.css: {}
+      js/libraries/photoswipe/photoswipe.css: {}
+      js/libraries/photoswipe/default-skin/default-skin.css: {}
+      css/base.css: {}
+      css/grid.css: {}
+      css/style.css: {}
+      css/views.css: {}
+      css/ie9.css: { browsers: { IE: 'lte IE 9', '!IE': false }, minified: true }
+
+# Global app js
+global-js:
+  js:
+    js/app.js: {}
+  dependencies:
+    - yqb/modernizr
+    - core/classList
+    - core/jquery
+    - core/drupal.autocomplete
+    - core/drupal.states
+    - yamlform/yamlform.form
+    - yqb/bootstrap
+    - yqb/helpers
+    - yqb/libraries
+    - yqb/controllers
+    - yqb/modules
+    - yqb/router
+    
+    
+## WEBVIEW CSS
+    
+webview:
+  css:
+    theme:
+      css/webview.css: {}
+      
+## HELPDESK CSS
+    
+helpdesk:
+  css:
+    theme:
+      css/helpdesk.css: {}
+    
+    
+##  INDIVIDUAL LIBRARIES
+
+modernizr:
+  header: true
+  js:
+    js/libraries/modernizr/modernizr-custom.js: {}
+
+bootstrap: 
+  remote: https://cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.min.js
+  version: 3.3.5
+  license:
+    name: MIT
+    url: https://github.com/twbs/bootstrap/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+   'https://cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.min.js': { type: external }
+
+helpers:
+  js:
+    js/helpers/string.js: {}
+    js/helpers/validation.js: {}
+    js/helpers/window.js: {}
+
+libraries:
+  js:
+    js/libraries/placeholder-shim/jquery.html5-placeholder-shim.js: { browsers: { IE: 'lte IE 9', '!IE': false }, minified: true }
+    js/libraries/handlebars/handlebars-v4.0.5.js: {}
+    js/libraries/i18n/i18n.js: {}
+    js/libraries/fastclick/fastclick.js: {}
+    js/libraries/moment/moment-en-fr.js: {}
+    js/libraries/bootstrap-switch/bootstrap-switch.js: {}
+    js/libraries/swiper/swiper.js: {}
+    js/libraries/pinchzoomer/hammer.min.js: {}
+    js/libraries/pinchzoomer/jquery.mousewheel.min.js: {}
+    js/libraries/pinchzoomer/TweenMax.min.js: {}
+    js/libraries/pinchzoomer/jquery.pinchzoomer.min.js: {}
+    js/libraries/photoswipe/photoswipe.js: {}
+    js/libraries/photoswipe/photoswipe-ui-default.min.js: {}
+    js/libraries/datetimepicker/jquery.datetimepicker.full.custom.js: {}
+    js/libraries/perfectScrollbar/perfect-scrollbar.jquery.js: {}
+    js/libraries/nprogress/nprogress.js: {}
+    js/libraries/pjax/jquery.pjax.js: {}
+    js/libraries/unveil/jquery.unveil.js: {}
+
+modules:
+  js:
+    js/modules/swiper-slider.js: {}
+
+controllers:
+  js:
+    js/controllers/home.js: {}
+    js/controllers/publications.js: {}
+    js/controllers/payments.js: {}
+    js/controllers/schedule.js: {}
+    js/controllers/destinations.js: {}
+    js/controllers/about.js: {}
+    js/controllers/pages.js: {}
+
+router:
+  js:
+    js/router.js: {}
+
+#bootstrap-scripts:
+#  js:
+#    bootstrap/js/affix.js: {}
+#    bootstrap/js/alert.js: {}
+#    bootstrap/js/button.js: {}
+#    bootstrap/js/carousel.js: {}
+#    bootstrap/js/collapse.js: {}
+#    bootstrap/js/dropdown.js: {}
+#    bootstrap/js/modal.js: {}
+#    bootstrap/js/tooltip.js: {}
+#    bootstrap/js/popover.js: {}
+#    bootstrap/js/scrollspy.js: {}
+#    bootstrap/js/tab.js: {}
+#    bootstrap/js/transition.js: {}

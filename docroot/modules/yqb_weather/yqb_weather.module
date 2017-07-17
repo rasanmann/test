@@ -1,0 +1,207 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_weather.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_weather_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_weather module.
+    case 'help.page.yqb_weather':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Weather') . '</p>';
+      return $output;
+
+    default:
+  }
+  
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_weather_theme() {
+  $theme = [
+    'weather-menu-block' => [
+      'variables' => [
+        'sky' => NULL,
+        'forecast' => NULL,
+        'temperature' => NULL,
+      ],
+    ]
+  ];
+
+  return $theme;
+}
+
+
+/**
+ * Implements hook_cron().
+ *
+ * We implement hook_cron() to do "background" processing. It gets called every
+ * time the Drupal cron runs. We then decide what has to happen in response.
+ */
+function yqb_weather_cron() {
+  // We access our configuration.
+  $cron_config = \Drupal::configFactory()->getEditable('yqb_weather.cron');
+  // Default to a two minutes interval.
+  $interval = $cron_config->get('interval');
+  $interval = !empty($interval) ? $interval : 2 * 60;
+
+  // We usually don't want to act every time cron runs (which could be every
+  // minute) so keep a time for the next run in a variable.
+  $next_execution = $cron_config->get('next_execution');
+  $next_execution = !empty($next_execution) ? $next_execution : 0;
+  if (REQUEST_TIME >= $next_execution) {
+    // Fetch new data and store in config
+    $xml = simplexml_load_file('http://dd.weather.gc.ca/citypage_weather/xml/QC/s0000620_f.xml');
+
+    if ($xml) {
+      $weather_config = \Drupal::configFactory()->getEditable('yqb_weather.weather');
+        /*
+          0 =>  Ensoleillé,Conditions du jour seulement
+          1 =>  Généralement ensoleillé,Conditions du jour seulement
+          2 =>  Partiellement nuageux,Conditions du jour seulement
+          3 =>  Généralement nuageux,Conditions du jour seulement
+          6 =>  Faible averse de pluie,Conditions du jour seulement
+          7 =>  Faible averse de pluie et de neige,Conditions du jour seulement
+          8 =>  Faible averse de neige,Conditions du jour seulement
+          10 => Nuageux,Conditions du jour et de la nuit
+          11 => Précipitations,Conditions du jour et de la nuit
+          11 => Grains,Conditions du jour et de la nuit
+          11 => Précipitations faibles,Conditions du jour et de la nuit
+          11 => Précipitations fortes,Conditions du jour et de la nuit
+          12 => Averse de pluie,Conditions du jour et de la nuit
+          12 => Pluie et bruine faibles,Conditions du jour et de la nuit
+          12 => Pluie faible,Conditions du jour et de la nuit
+          12 => Pluie,Conditions du jour et de la nuit
+          13 => Pluie et bruine,Conditions du jour et de la nuit
+          13 => Averse de pluie,Conditions du jour et de la nuit
+          13 => Pluie et bruine fortes,Conditions du jour et de la nuit
+          13 => Forte averse de pluie,Conditions du jour et de la nuit
+          13 => Pluie forte,Conditions du jour et de la nuit
+          13 => Pluie,Conditions du jour et de la nuit
+          14 => Faible bruine verglaçante,Conditions du jour et de la nuit
+          14 => Faible pluie verglaçante,Conditions du jour et de la nuit
+          14 => Forte bruine verglaçante,Conditions du jour et de la nuit
+          14 => Forte pluie verglaçante,Conditions du jour et de la nuit
+          14 => Bruine verglaçante,Conditions du jour et de la nuit
+          14 => Pluie verglaçante,Conditions du jour et de la nuit
+          15 => Averse de pluie et de neige,Conditions du jour et de la nuit
+          15 => Pluie et neige,Conditions du jour et de la nuit
+          15 => Pluie et neige faibles,Conditions du jour et de la nuit
+          15 => Forte averse de pluie et de neige,Conditions du jour et de la nuit
+          15 => Pluie et neige fortes,Conditions du jour et de la nuit
+          16 => Neige faible,Conditions du jour et de la nuit
+          16 => Neige,Conditions du jour et de la nuit
+          17 => Averse de neige,Conditions du jour et de la nuit
+          17 => Forte averse de neige,Conditions du jour et de la nuit
+          17 => Neige,Conditions du jour et de la nuit
+          18 => Forte averse de neige,Conditions du jour et de la nuit
+          18 => Neige forte,Conditions du jour et de la nuit
+          19 => Orage avec pluie,Conditions du jour et de la nuit
+          19 => Orage avec forte pluie,Conditions du jour et de la nuit
+          19 => Orage avec faible pluie,Conditions du jour et de la nuit
+          19 => Orage avec pluie,Conditions du jour seulement
+          19 => Orage,Conditions du jour seulement
+          19 => Orage fort avec pluie,Conditions du jour seulement
+          19 => Orage fort,Conditions du jour seulement
+          23 => Brume sèche,Conditions du jour et de la nuit
+          24 => Brouillard,Conditions du jour et de la nuit
+          24 => Brouillard glacé,Conditions du jour et de la nuit
+          24 => Bancs de brouillard,Conditions du jour et de la nuit
+          24 => Mince couche de brouillard,Conditions du jour et de la nuit
+          24 => Brume,Conditions du jour et de la nuit
+          25 => Poudrerie basse,Conditions du jour et de la nuit
+          26 => Cristaux de glace,Conditions du jour et de la nuit
+          27 => Neige roulée,Conditions du jour et de la nuit
+          27 => Grésil,Conditions du jour et de la nuit
+          27 => Grêle,Conditions du jour et de la nuit
+          28 => Neige en grains,Conditions du jour et de la nuit
+          28 => Bruine faible,Conditions du jour et de la nuit
+          28 => Bruine forte,Conditions du jour et de la nuit
+          28 => Bruine,Conditions du jour et de la nuit
+          30 => Dégagé,Conditions de la nuit seulement
+          31 => Généralement dégagé,Conditions de la nuit seulement
+          32 => Partiellement nuageux,Conditions de la nuit seulement
+          33 => Généralement nuageux,Conditions de la nuit seulement
+          36 => Faible averse de pluie,Conditions de la nuit seulement
+          37 => Faible averse de pluie et de neige,Conditions de la nuit seulement
+          38 => Faible averse de neige,Conditions de la nuit seulement
+          39 => Orage avec pluie,Conditions de la nuit seulement
+          39 => Orage,Conditions de la nuit seulement
+          39 => Orage fort avec pluie,Conditions de la nuit seulement
+          39 => Orage fort,Conditions de la nuit seulement
+          40 => Poudrerie élevée,Conditions du jour et de la nuit
+          41 => Nuage en entonnoir,Conditions du jour et de la nuit
+          42 => Tornade,Conditions du jour et de la nuit
+          43 => Windy,Conditions du jour et de la nuit
+          44 => Fumée,Conditions du jour et de la nuit
+          45 => Tourbillons de poussière,Conditions du jour et de la nuit
+          45 => Tempête de poussière,Conditions du jour et de la nuit
+          45 => Cendres volcaniques,Conditions du jour et de la nuit
+          45 => Chasse-poussière élevée,Conditions du jour et de la nuit
+          45 => Tempête de sable,Conditions du jour et de la nuit
+          45 => Chasse-poussière basse,Conditions du jour et de la nuit
+          46 => Orage avec grêle,Conditions du jour et de la nuit
+          46 => Orage fort avec grêle,Conditions du jour et de la nuit
+          47 => Orage avec chasse-poussière élevée,Conditions du jour et de la nuit
+          47 => Orage avec tempête de poussière,Conditions du jour et de la nuit
+          48 => Trombe marine,Conditions du jour et de la nuit
+        */
+
+      $forecast = (string)$xml->currentConditions->condition;
+      switch(true) {
+        case preg_match('/ensoleillé|sunny|dégagé|clear/i', $forecast):
+          $sky = 'sunny';
+          break;
+        case preg_match('/nuageux|alternance/i', $forecast):
+          $sky = 'cloudy';
+          break;
+        case preg_match('/grêle|grésil|neige|snow/i', $forecast):
+          $sky = 'snowy';
+          break;
+        case preg_match('/bruine|pluie|averses|showers|orage/i', $forecast):
+          $sky = 'rainy';
+          break;
+        default:
+          $sky = 'cloudy';
+          break;
+      }
+
+      $weather_config->set('sky', $sky)->save();
+
+      $weather_config->set('forecast', $forecast)->save();
+
+      $weather_config->set('temperature', (string)$xml->currentConditions->temperature)->save();
+
+      $cron_config->set('last_updated', time())->save();
+
+      $message = sprintf('Successfully completed weather synchronization.');
+
+    } else {
+      $message = sprintf('Weather synchronization failed with error.');
+    }
+
+    \Drupal::logger('yqb_weather')->notice($message);
+
+    // For Drush
+    echo $message . PHP_EOL;
+
+    if (\Drupal::state()->get('yqb_weather_show_status_message')) {
+      drupal_set_message(t('yqb_weather executed at %time', ['%time' => date_iso8601(REQUEST_TIME)]));
+      \Drupal::state()->set('yqb_weather_show_status_message', FALSE);
+    }
+
+    // Prepare next execution
+    $cron_config->set('next_execution', REQUEST_TIME + $interval)->save();
+  }
+}

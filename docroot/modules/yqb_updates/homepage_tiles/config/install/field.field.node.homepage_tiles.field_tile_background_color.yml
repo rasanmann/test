@@ -1,0 +1,20 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tile_background_color
+    - node.type.homepage_tiles
+  module:
+    - options
+id: node.homepage_tiles.field_tile_background_color
+field_name: field_tile_background_color
+entity_type: node
+bundle: homepage_tiles
+label: 'Couleur de fond'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,7 @@
+langcode: und
+status: true
+dependencies: {  }
+id: homepage-tiles-global
+label: 'Tuiles d''accueil'
+description: ''
+locked: false

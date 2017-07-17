@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-slider-gallery">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        <h1>{{ content.field_title_slider }}</h1>
+
+        <div class="slider-gallery-wrapper">
+            <div class="swiper-container slider-gallery-top">
+                <div class="swiper-wrapper">
+                    {% for original in content.field_image_slide_originals %}
+                        <div class="swiper-slide" style="background-image:url({{ original }});">
+                            <span><em>{{ content.field_credits[loop.index0] }}</em></span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="swiper-container slider-gallery-thumbs">
+                <div class="swiper-wrapper">
+                    {% for thumbnail in content.field_image_slide_thumbnails %}
+                        <div class="swiper-slide{{ (loop.first) ? ' is-selected' : '' }}" style="background-image:url({{ thumbnail }});"></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</div>

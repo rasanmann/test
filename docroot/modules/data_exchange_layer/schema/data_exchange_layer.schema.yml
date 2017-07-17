@@ -1,0 +1,19 @@
+data_exchange_layer.settings:
+  type: mapping
+  label: 'Data Exchange Layer settings'
+  mapping:
+    data_exchange_layer:
+      type: mapping
+      mapping:
+        auth_url:
+          type: text
+          label: 'Auth URL:'
+        api_url:
+          type: text
+          label: 'API URL:'
+        email:
+          type: text
+          label: 'E-mail:'
+        api_key:
+          type: text
+          label: 'API key:'

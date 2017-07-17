@@ -1,0 +1,207 @@
+yqb_parking_booker.fr.index:
+  path: '/planifier-son-vol/reserver-un-stationnement/recherche'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingSearchForm'
+    _title: 'Résultats'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.results:
+  path: '/planifier-son-vol/reserver-un-stationnement/resultats'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingResultsForm'
+    _title: 'Résultats'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.extras:
+  path: '/planifier-son-vol/reserver-un-stationnement/extras'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingExtrasForm'
+    _title: 'Extras'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.payment:
+  path: '/planifier-son-vol/reserver-un-stationnement/paiement'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingPaymentForm'
+    _title: 'Paiement'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.review:
+  path: '/planifier-son-vol/reserver-un-stationnement/revision'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingReviewForm'
+    _title: "Révision"
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.confirmation:
+  path: '/planifier-son-vol/reserver-un-stationnement/confirmation'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingConfirmationForm'
+    _title: 'Confirmation'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.index:
+  path: '/plan-a-flight/parking-reservation/search'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingSearchForm'
+    _title: 'Payment'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.results:
+  path: '/plan-a-flight/parking-reservation/results'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingResultsForm'
+    _title: 'Payment'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.extras:
+  path: '/plan-a-flight/parking-reservation/extras'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingExtrasForm'
+    _title: 'Extras'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.payment:
+  path: '/plan-a-flight/parking-reservation/payment'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingPaymentForm'
+    _title: 'Payment'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.review:
+  path: '/plan-a-flight/parking-reservation/review'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingReviewForm'
+    _title: 'Review'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.confirmation:
+  path: '/plan-a-flight/parking-reservation/confirmation'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingConfirmationForm'
+    _title: 'Confirmation'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.modify.index:
+  path: '/planifier-son-vol/modifier-un-stationnement'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingReferenceSearchForm'
+    _title: 'Modifier une réservation de stationnement'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.modify.index:
+  path: '/plan-a-flight/parking-modification'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingReferenceSearchForm'
+    _title: 'Modify a parking booking'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.modify.results:
+  path: '/planifier-son-vol/modifier-un-stationnement/resultats'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingReferenceResultsForm'
+    _title: 'Information de la commande'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.modify.results:
+  path: '/plan-a-flight/parking-modification/results'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingReferenceResultsForm'
+    _title: 'Order information'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.modify.cancel:
+  path: '/planifier-son-vol/modifier-un-stationnement/resultats/annulation'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingCancelForm'
+    _title: 'Annulation de la réservation de stationnement'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.modify.cancel:
+  path: '/plan-a-flight/parking-modification/results/cancellation'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingCancelForm'
+    _title: 'Parking booking cancellation'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.modify.details:
+  path: '/planifier-son-vol/modifier-un-stationnement/resultats/informations'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingModifyDetailsForm'
+    _title: 'Modifier mes informations'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.modify.details:
+  path: '/plan-a-flight/parking-modification/results/details'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingModifyDetailsForm'
+    _title: 'Modify Details'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.modify.booking:
+  path: '/planifier-son-vol/modifier-un-stationnement/resultats/reservation'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingModifyBookingForm'
+    _title: 'Modifier ma réservation'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.modify.booking:
+  path: '/plan-a-flight/parking-modification/results/booking'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingModifyBookingForm'
+    _title: 'Modify Booking'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.modify.cancel_confirmation:
+  path: '/planifier-son-vol/modifier-un-stationnement/confirmation-annulation'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingCancelConfirmationForm'
+    _title: 'Réservation annulée'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.modify.cancel_confirmation:
+  path: '/plan-a-flight/parking-modification/cancellation-confirmation'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingCancelConfirmationForm'
+    _title: 'Booking Cancelled'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.fr.modify.view:
+  path: '/planifier-son-vol/modifier-un-stationnement/visionnement'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingViewForm'
+    _title: 'Confirmation'
+  requirements:
+    _permission: 'access content'
+
+yqb_parking_booker.en.modify.view:
+  path: '/plan-a-flight/parking-modification/view'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Modify\ParkingViewForm'
+    _title: 'Confirmation'
+  requirements:
+    _permission: 'access content'

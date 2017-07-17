@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-useful-link">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        <span>{{ content.field_title_useful }}</span>
+
+        <a href="{{ content.field_link_url[0]['#context']['value'] }}" target="_blank">
+            {{ content.field_link_text }}
+        </a>
+    {% endblock %}
+</div>

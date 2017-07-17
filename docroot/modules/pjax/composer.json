@@ -1,0 +1,9 @@
+{
+	"name": "drupal/pjax",
+	"description": "Adds pjax (pjax = pushState + ajax) functionalities.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+
+	}
+}

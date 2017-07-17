@@ -1,0 +1,4 @@
+calendar:
+  version: 1.x
+  js:
+    datetime_multiselect.js: {}

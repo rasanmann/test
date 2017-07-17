@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Article override
+ */
+#}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    'view-new',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {% if not page %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div class="article-wrapper">
+    <div class="view-row">
+      <div class="views-field views-field-created">
+      <span class="field-content">
+        <span>{{ node.getCreatedTime()|date("d") }}</span>
+        {{ node.getCreatedTime()|date("F")|compact_month }}
+      </span>
+      </div>
+      <div{{ content_attributes.addClass('views-field views-field-body') }}>
+        <div class="field-content">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_bills.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+function yqb_metatag_page_attachments(array &$attachments) {
+  // iOS Smart Banner meta tag
+  $attachments['#attached']['html_head'][] = [[
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'apple-itunes-app',
+      'content' => 'app-id=1174515886',
+    ],
+  ], 'apple-itunes-app'];
+}

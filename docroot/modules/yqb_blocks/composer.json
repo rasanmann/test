@@ -1,0 +1,9 @@
+{
+	"name": "drupal/yqb_blocks",
+	"description": "Various blocks.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+
+	}
+}

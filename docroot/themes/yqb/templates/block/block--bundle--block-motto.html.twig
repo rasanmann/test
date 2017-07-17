@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ */
+#}
+
+<div{{ attributes }} class="tile tile-motto-wrapper">
+    <div class="tile-motto-inner">
+        {% if label %}
+            {{ label }}
+        {% endif %}
+
+        {% block content %}
+            {% if content.field_title_section[0] %}
+                <div class="tile-label">{{ content.field_title_section }}</div>
+            {% endif %}
+
+            {% if content.field_title_main[0] %}
+                <div class="text-motto">{{ content.field_title_main }}</div>
+            {% endif %}
+        {% endblock %}
+    </div>
+
+    <div class="pulse"></div>
+</div>

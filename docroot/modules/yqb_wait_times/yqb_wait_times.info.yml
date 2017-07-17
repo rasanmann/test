@@ -1,0 +1,9 @@
+name: Wait Times
+description: Displays current wait times in airport.
+package: YQB
+
+type: module
+core: 8.x
+
+dependencies:
+  - data_exchange_layer

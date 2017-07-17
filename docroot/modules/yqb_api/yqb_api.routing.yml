@@ -1,0 +1,7 @@
+yqb_api.admin_display:
+  path: '/admin/config/services/yqb_api'
+  defaults:
+    _form: 'Drupal\yqb_api\Form\ApiSettingsForm'
+    _title: 'API settings'
+  requirements:
+    _permission: 'administer site configuration'

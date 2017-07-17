@@ -1,0 +1,107 @@
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+.breadcrumb-wrapper {
+  background: rgba($white, 0.95);
+  border-top: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+  position: relative;
+  width: 100%;
+
+  @include responsive(950px) {
+    border-top: 0;
+  }
+
+  @include responsive(900px) {
+    display: none;
+  }
+
+  .nav-tabs {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 0;
+    background-color:#FFF;
+
+    li {
+      border-left: 1px solid $gray-light;
+
+      a {
+        @include font-size(14);
+        padding: 0 36px;
+        line-height: 80px;
+        background-color: transparent;
+
+        @include responsive($screen-md) {
+          @include font-size(12);
+        }
+
+        .icon {
+          margin-right: 16px;
+          margin-left: -16px;
+          width: 24px;
+          &.icon-plane-departure {
+            width: 27px;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.breadcrumb {
+  padding: $breadcrumb-padding-vertical $content-padding-base;
+  margin-bottom: 0;
+  border-radius: 0;
+  height: 80px;
+  display: table;
+
+  @include responsive(1300px) {
+    padding-left:$content-padding-large;
+    padding-right:$content-padding-large;
+  }
+
+  @include responsive(950px) {
+    padding: 2px $content-padding-small;
+  }
+
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  > li {
+    @include font-size(14);
+    display: table-cell;
+    vertical-align: middle;
+    white-space:nowrap;
+
+    @include responsive($screen-md) {
+      @include font-size(12);
+    }
+
+    + li:before {
+      $nbsp: "\00a0";
+      content: ""; 
+      padding: 0;
+      background-image: url("../svg/right-arrow-blue.svg");
+      height: 15px;
+      width: 8px;
+      margin: 0 12px 1px 14px;
+      background-size: cover;
+      display: inline-block;
+      color: $breadcrumb-color;
+      vertical-align: middle;
+    }
+  }
+
+  > .active {
+    color: $breadcrumb-active-color;
+  }
+}
+
+

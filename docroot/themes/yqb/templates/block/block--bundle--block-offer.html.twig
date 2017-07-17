@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-offer">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        <div class="block-offer-content">
+            <h3>{{ content.field_summary }}</h3>
+
+            {{ content.field_offers }}
+        </div>
+    {% endblock %}
+</div>

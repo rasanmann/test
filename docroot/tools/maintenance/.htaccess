@@ -1,0 +1,6 @@
+# MAINTENANCE-PAGE REDIRECT
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} !/maintenance.html$ [NC]
+    RewriteRule .* /maintenance.html [R=302,L]
+</IfModule>

@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set counter = 0 %}
+
+{% if title %}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="tile tile-airline-title embed-responsive embed-responsive-1by1 vertical-align">
+            <div class="vertical-align-content">
+                <h2 class="title-content">{{ title }}</h2>
+            </div>
+
+        </div>
+    </div>
+{% endif %}
+{% for key, row in rows %}
+    {%
+    set row_classes = [
+    default_row_class ? 'col-lg-3 col-md-4 col-sm-6',
+    ]
+    %}
+
+    {% set counter = counter + 1 %}
+    <div{{ row.attributes.addClass(row_classes) }}>
+        <div class="tile embed-responsive embed-responsive-1by1">
+            <div class="tile-content">
+                {{ row.content }}
+            </div>
+        </div>
+    </div>
+
+    {% if loop.last %}
+        {% if (key + 1) < view.storage.executable.total_rows and (loop.index == 2 or loop.index == 6 or loop.index == 10 or loop.index == 14) %}
+            <div class="col-lg-3 col-md-4 col-sm-6 tile-col-extra tile-col-extra-break">
+                <div class="tile embed-responsive embed-responsive-1by1 ">
+
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+

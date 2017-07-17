@@ -1,0 +1,16 @@
+name: Parking Booker
+description: Multi-step form for booking parking spots.
+package: YQB
+
+type: module
+core: 8.x
+
+dependencies:
+  - moneris
+  - advam
+#
+#hidden: true
+#
+# Note: do not add the 'version'  property yourself!
+# It will be added automatically by the packager on drupal.org.
+#version: 1.0

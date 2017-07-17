@@ -1,0 +1,55 @@
+yqb_reminders.admin_display:
+  path: '/admin/config/yqb/reminders'
+  defaults:
+    _form: 'Drupal\yqb_reminders\Form\RemindersAdminForm'
+    _title: 'Reminders settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+yqb_reminders.fr.form:
+  path: '/vols-et-destinations/alerte-sms/form'
+  defaults:
+    _form: '\Drupal\yqb_reminders\Form\RemindersForm'
+    _title: 'Formulaire'
+  requirements:
+    _permission: 'access content'
+
+yqb_reminders.en.form:
+  path: '/flights-and-destinations/text-reminders/form'
+  defaults:
+    _form: '\Drupal\yqb_reminders\Form\RemindersForm'
+    _title: 'Form'
+  requirements:
+    _permission: 'access content'
+
+yqb_reminders.fr.confirmation:
+  path: '/vols-et-destinations/alerte-sms/confirmation'
+  defaults:
+    _form: '\Drupal\yqb_reminders\Form\RemindersConfirmation'
+    _title: 'Confirmation'
+  requirements:
+    _permission: 'access content'
+
+yqb_reminders.en.confirmation:
+  path: '/flights-and-destinations/text-reminders/confirmation'
+  defaults:
+    _form: '\Drupal\yqb_reminders\Form\RemindersConfirmation'
+    _title: 'Confirmation'
+  requirements:
+    _permission: 'access content'
+
+yqb_reminders.hook:
+  path: '/webhooks/reminders'
+  defaults:
+    _controller: '\Drupal\yqb_reminders\Controller\RemindersWebhookController::index'
+    _title: 'Webhooks'
+  requirements:
+    _permission: 'access content'
+
+yqb_reminders.hook.response:
+  path: '/webhooks/reminders/response'
+  defaults:
+    _controller: '\Drupal\yqb_reminders\Controller\RemindersWebhookController::response'
+    _title: 'Webhooks'
+  requirements:
+    _permission: 'access content'

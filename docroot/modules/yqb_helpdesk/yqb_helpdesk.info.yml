@@ -1,0 +1,10 @@
+name: Helpdesk
+description: Helpdesk for call center.
+package: YQB
+
+type: module
+core: 8.x
+configure: yqb_api.admin_display
+
+dependencies:
+  - twilio

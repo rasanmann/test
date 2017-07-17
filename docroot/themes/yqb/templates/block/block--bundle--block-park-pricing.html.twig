@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-park-pricing">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        <div class="block-park-pricing-content">
+            {{ content }}
+        </div>
+    {% endblock %}
+</div>

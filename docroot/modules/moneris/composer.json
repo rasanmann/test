@@ -1,0 +1,9 @@
+{
+	"name": "drupal/moneris",
+	"description": "Adds payment processing options.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+		"ironkeith/moneris-eselectplus-api": "dev-hosted-tokenization"
+	}
+}

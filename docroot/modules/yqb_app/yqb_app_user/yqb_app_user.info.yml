@@ -1,0 +1,17 @@
+name: User
+description: 'Provide User related configuration.'
+type: module
+core: 8.x
+dependencies:
+  - content_translation
+  - field
+  - file
+  - image
+  - language
+  - node
+  - rest
+  - serialization
+  - telephone
+  - user
+  - yqb_api
+package: yqb_app

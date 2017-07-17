@@ -1,0 +1,13 @@
+name: API
+description: REST API for YQB website.
+package: YQB
+
+type: module
+core: 8.x
+configure: yqb_api.admin_display
+
+dependencies:
+  - rest
+  - restui
+  - serialization
+  - email_registration

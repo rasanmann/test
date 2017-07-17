@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains moneris.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function moneris_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the moneris module.
+    case 'help.page.moneris':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Moneris') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function moneris_theme() {
+  $theme = [];
+
+  return $theme;
+}

@@ -1,0 +1,15 @@
+yqb_flight_planner.fr.index:
+  path: '/unused/reserver-un-vol'
+  defaults:
+    _form: '\Drupal\yqb_flight_planner\Form\FlightPlannerForm'
+    _title: 'Réserver un vol en ligne'
+  requirements:
+    _permission: 'access content'
+
+yqb_flight_planner.en.index:
+  path: '/unsued/book-online'
+  defaults:
+    _form: '\Drupal\yqb_flight_planner\Form\FlightPlannerForm'
+    _title: 'Book online'
+  requirements:
+    _permission: 'access content'

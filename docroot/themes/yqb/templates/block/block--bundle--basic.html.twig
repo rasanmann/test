@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-basic">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        {% if content.field_title_basic[0] %}
+            <h2>{{ content.field_title_basic }}</h2>
+        {% endif %}
+
+        <div class="block-basic-content">
+            <div>
+                {{ content.body }}
+            </div>
+        </div>
+    {% endblock %}
+</div>

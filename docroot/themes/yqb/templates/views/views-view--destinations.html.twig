@@ -1,0 +1,233 @@
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ * @ingroup templates
+ */
+#}
+
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+<h1 class="js-quickedit-page-title title-page">
+        <span><span property="schema:name">{{ "Destinations accessibles par vol direct"|t }}</span></span>
+</h1>
+
+<div class="alert alert-info alert-dismissible status-message map-status-message" role="alert">
+  <span class="alert-pulse"></span>
+
+  <a href="#" role="button" class="close" data-dismiss="alert" aria-label="{{ 'Fermer'|t }}"><span aria-hidden="true">{{ 'Fermer'|t }}</span></a>
+
+  <p>
+    {{ "Pour rechercher un itinéraire vers une destination qui n'est pas desservie par des vols directs, rendez-vous sur <a href='https://www.google.ca/flights/#search;f=YQB' target='_blank'>Google Flights</a>."|t }}
+  </p>
+
+  <a class="btn btn-primary" href="https://www.google.ca/flights/#search;f=YQB" target="_blank">{{ "Rechercher"|t }}</a>
+</div>
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if title %}
+    {{ title }}
+  {% endif %}
+  {{ title_suffix }}
+  {% if header %}
+    <div class="view-header">
+      {{ header }}
+    </div>
+  {% endif %}
+  {% if exposed %}
+    <div class="view-filters form-group">
+      {{ exposed }}
+    </div>
+  {% endif %}
+  {% if attachment_before %}
+    <div class="attachment attachment-before">
+      {{ attachment_before }}
+    </div>
+  {% endif %}
+
+  {% if rows %}
+    <div id="map-tiles" class="map-tiles hidden-xs">
+      <div class="map-tiles-main">
+        <div data-region-id="57475" data-color="#d8f2fe" data-overlay="#aadff9" class="map-tile map-tile-america">
+          <div class="map-tile-container"></div>
+          <div class="map-tile-header"></div>
+          <a href="#57475" class="map-tile-overlay">
+            <div class="map-tile-overlay-title"></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="map-tiles-secondary">
+        <div data-region-id="57476" data-color="#d8f2fe" data-overlay="#b8eae4" class="map-tile map-tile-europe">
+          <div class="map-tile-container"></div>
+          <div class="map-tile-header"></div>
+          <a href="#57476" class="map-tile-overlay">
+            <div class="map-tile-overlay-title"></div>
+          </a>
+        </div>
+
+        <div data-region-id="57473" data-color="#d8f2fe" data-overlay="#f4d096" class="map-tile map-tile-south">
+          <div class="map-tile-container"></div>
+          <div class="map-tile-header"></div>
+          <a href="#57473" class="map-tile-overlay">
+            <div class="map-tile-overlay-title"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-group hidden" id="map-accordion" role="tablist" aria-multiselectable="true">
+      {{ rows }}
+    </div>
+
+    <nav class="map-view-selector hidden-xs" >
+      <ul>
+        <li>
+          <a href="#map" class="trigger-map trigger-map-view map is-active">
+            <span>{{ 'Carte'|t }}</span><span class="icon icon-map-view" data-grunticon-embed></span>
+          </a>
+        </li>
+        <li>
+          <a href="#list" class="trigger-map trigger-map-list list">
+            <span>{{ 'Liste'|t }}</span><span class="icon icon-map-list" data-grunticon-embed></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="map-legend hidden-xs">
+      <ul>
+        <li>{{ 'Vol annuel'|t }}</li>
+        <li>{{ 'Vol saisonnier'|t }}</li>
+      </ul>
+    </div>
+
+    <aside class="drawer drawer-action"></aside>
+
+    {% verbatim %}
+      <script id="drawer-template" type="text/x-handlebars-template">
+        <div class="drawer-content">
+          <div class="drawer-header" style="{{#if image}}background-image:url({{ image }});{{/if}}">
+            <a href="#" class="drawer-close"><span class="icon icon-close" data-grunticon-embed=""></span></a>
+
+            <div class="drawer-header-description">
+              <h2 class="drawer-header-title">{{ city }}<span>{{ iata }}</span></h2>
+            </div>
+          </div>
+
+          <div class="drawer-body">
+            <div class="drawer-top">
+              <div class="drawer-left">
+                  {{ body }}
+
+                  <h3>{{ I18n "Réserver maintenant"}}</h3>
+
+                  <p>{{ frequency }}</p>
+                  
+                  <span>{{ I18n "Vol direct disponible à cette date" }}</span>
+              </div>
+
+              <div class="drawer-right">
+                <input type="text" name="" class="drawer-datepicker" data-toggle="datepicker-planner-map">
+                <p>
+                    {{ I18n "Cette destination est accessible à l’année via correspondance, cliquez ci-dessous pour connaître les itinéraires possibles et les dates de départ" }}<br>
+                    <a href="https://www.google.ca/flights/#search;f=YQB;t={{ iata }};d=[[departure]];tt=o" target="_blank" class="google-flights-link">
+                    {{ I18n "Recherchez un vol sur Google Flight" }}
+                    </a>
+                 </p>
+              </div>
+            </div>
+          </div>
+         </div>
+      </script>
+    {% endverbatim %}
+
+    {% verbatim %}
+      <script id="drawer-airlines-template" type="text/x-handlebars-template">
+
+        <div class="drawer-bottom">
+          <a href="#" class="drawer-bottom-close">{{ I18n "Retour au calendrier" }}</a>
+
+          <h4 class="date-select" data-pattern="{{ I18n 'Vols directs du %s' }}"></h4>
+
+          <span>{{ I18n "Liaison assurée par" }}</span>
+
+          <div class="airlines">
+            {{#each airlines}}
+              <div class="airline">
+                <div class="airline-img">
+                  <img src="{{ this.airlineLogo }}" alt="{{ this.airlineName }}">
+                </div>
+                <a href="{{ this.airlineLink }}" target="_blank" class="btn btn-default btn-xs">{{ I18n "Voir les détails sur le site du transporteur" }}</a>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </script>
+    {% endverbatim %}
+
+    {% verbatim %}
+      <script id="panel-airlines-template" type="text/x-handlebars-template">
+        <div class="panel-content-right-wrapper">
+          <a href="#" class="drawer-bottom-close">{{ I18n "Retour au calendrier" }}</a>
+
+          <h4 class="date-select"></h4>
+
+          <div class="panel-content-right">
+            <div class="airlines">
+                <span class="airline-schedule">{{ I18n "Liaison assurée par" }}</span>
+
+                {{#each airlines}}
+                  <div class="airline">
+                      <div class="airline-img">
+                        <img src="{{this.airlineLogo}}" alt="{{this.airlineName}}">
+                      </div>
+                      <a href="{{this.airlineLink}}" target="_blank" class="btn btn-default btn-xs">{{ I18n "Voir les détails sur le site du transporteur" }}</a>
+                  </div>
+                {{/each}}
+            </div>
+          </div>
+        </div>
+      </script>
+    {% endverbatim %}
+
+  {% elseif empty %}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+
+  {% if attachment_after %}
+    <div class="attachment attachment-after">
+      {{ attachment_after }}
+    </div>
+  {% endif %}
+
+  {% if more %}
+    {{ more }}
+  {% endif %}
+
+  {% if footer %}
+    <div class="view-footer">
+      {{ footer }}
+    </div>
+  {% endif %}
+
+  {% if feed_icons %}
+    <div class="feed-icons">
+      {{ feed_icons }}
+    </div>
+  {% endif %}
+</div>

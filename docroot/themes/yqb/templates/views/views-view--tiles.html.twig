@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Base view for airlines page.
+ */
+#}
+{%
+set classes = [
+(exposed) ? 'row' : null,
+'view',
+'view-tiles',
+'view-' ~ id|clean_class,
+'view-id-' ~ id,
+'view-display-id-' ~ display_id,
+dom_id ? 'js-view-dom-id-' ~ dom_id,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {% if title %}
+        {{ title }}
+    {% endif %}
+    {{ title_suffix }}
+
+    {% if rows %}
+
+        {% set counter = 0 %}
+
+        {% for key, row in rows %}
+
+            {# Category separator #}
+            {% set counter = counter + 1 %}
+
+            {# Actual rows #}
+            {% set counter = counter + row['#rows']|length %}
+
+            {% if not loop.last and (row['#rows']|length == 2 or row['#rows']|length == 6 or row['#rows']|length == 10 or row['#rows']|length == 14) %}
+                {% set counter = counter + 1 %}
+            {% endif %}
+
+
+        {% endfor %}
+
+        {#{{ dump(counter) }}#}
+
+        <div class="view-content {% if exposed %}col-sm-9{% endif %}">
+            {{ rows }}
+            {% set col4 = 0 %}
+            {% set col3 = 0 %}
+            {% set col2 = 0 %}
+
+            {% if not counter % 4  == 0 %}
+                {% set col4 = 4 - (counter % 4) %}
+            {% endif %}
+            {% if not counter % 3  == 0 %}
+                {% set col3 = 3 - (counter % 3) %}
+            {% endif %}
+            {% if not counter % 2  == 0 %}
+                {% set col2 = 2 - (counter % 2)  %}
+            {% endif %}
+            {% set cellsNeeded = max([col4, col3, col2])  %}
+            {% if cellsNeeded > 0 %}
+                {% for i in 1..cellsNeeded %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 tile-col-extra {% if col4 > 0 %}tile-col-extra-lg {% set col4 = col4 - 1 %}{% endif %}{% if col3 > 0 %}tile-col-extra-md {% set col3 = col3 - 1 %}{% endif %}{% if col2 > 0 %}tile-col-extra-sm {% set col2 = col2 - 1 %}{% endif %}">
+                        <div class="tile embed-responsive embed-responsive-1by1"></div>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+            {#<div class="col-md-3 col-sm-4 col-xs-6 tile-col-extra tile-col-extra-extra-sm ">#}
+            {#<div class="tile embed-responsive embed-responsive-1by1"></div>#}
+            {#</div>#}
+        </div>
+    {% elseif empty %}
+        <div class="view-empty">
+            {{ empty }}
+        </div>
+    {% endif %}
+</div>

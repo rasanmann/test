@@ -1,0 +1,5 @@
+services:
+  yqb_routing.route_subscriber:
+    class: Drupal\yqb_routing\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

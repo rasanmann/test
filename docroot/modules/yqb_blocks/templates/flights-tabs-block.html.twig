@@ -1,0 +1,76 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading hidden-lg hidden-md hidden-sm" role="tab" id="panel-flights">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-schedules" aria-expanded="true" aria-controls="collapse-schedules">
+                    <span class="icon icon-plane-departure" data-grunticon-embed></span> {{ 'Prochains départs/arrivées'|t }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapse-schedules" class="panel-collapse collapse" role="tabpanel" aria-labelledby="panel-flights">
+            <div class="panel-body">
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#arrivals" aria-controls="profile" role="tab" data-toggle="tab">
+                                <span class="icon icon-plane-arrival" data-grunticon-embed></span> {{ '<span>Prochaines </span>arrivées'|t }}
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a href="#departures" aria-controls="home" role="tab" data-toggle="tab">
+                                <span class="icon icon-plane-departure" data-grunticon-embed></span> {{ '<span>Prochains </span>départs'|t }}
+                            </a>
+                        </li>
+
+                        <li class="pull-right hidden-xs hidden-sm" role="presentation">
+                            <a href="{{ url('page_manager.page_view_parking_booking') }}">
+                                <span class="icon icon-car-parking" data-grunticon-embed></span> {{ 'Réserver un stationnement'|t }}
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="arrivals">
+
+                            {{ arrivals }}
+
+                            <div class="c-align">
+                                <a href="{{ path('view.arrivals.today') }}" class="btn-more-flight">{{ "Voir toutes les arrivées"|t }}
+                                    <span class="icon icon-right-arrow icon-padded-left" data-grunticon-embed></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="departures">
+
+                            {{ departures }}
+
+                            <div class="c-align">
+                                <a href="{{ path('view.departures.today') }}" class="btn-more-flight">{{ "Voir tous les départs"|t }}
+                                    <span class="icon icon-right-arrow icon-padded-right" data-grunticon-embed></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading hidden-lg hidden-md hidden-sm" role="tab" id="panel-parking">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="icon icon-car-parking" data-grunticon-embed></span> {{ 'Réserver un stationnement'|t }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse hidden-lg hidden-md hidden-sm" role="tabpanel" aria-labelledby="panel-parking">
+            <div class="panel-body">
+                {{ parking }}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+moneris.admin_display:
+  path: '/admin/config/commerce/moneris'
+  defaults:
+    _form: 'Drupal\moneris\Form\MonerisForm'
+    _title: 'Moneris settings'
+  requirements:
+    _permission: 'administer site configuration'

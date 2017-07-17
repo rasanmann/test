@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-list">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        <div class="block-list-content">
+            {{ content }}
+        </div>
+    {% endblock %}
+</div>

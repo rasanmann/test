@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_parking_booker.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_parking_booker_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_parking_booker module.
+    case 'help.page.yqb_parking_booker':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Parking Booker') . '</p>';
+      return $output;
+
+    default:
+  }
+  
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_parking_booker_theme() {
+  $theme = [
+    'parking-booker-breadcrumb-block' => [
+      'variables' => [
+
+      ],
+    ],
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_cron().
+ * TODO : delete parking reservation older than x
+ */
+/*
+function yqb_parking_booker_cron() {
+
+}
+*/

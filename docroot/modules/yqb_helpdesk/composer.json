@@ -1,0 +1,6 @@
+{
+	"name": "drupal/yqb_helpdesk",
+	"description": "Helpdesk for call center.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+"
+}

@@ -1,0 +1,5 @@
+services:
+  yqb_blocks.twig_extension:
+    class: Drupal\yqb_blocks\TwigExtension\DateExtension
+    tags:
+      - { name: twig.extension }

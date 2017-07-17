@@ -1,0 +1,7 @@
+data_exchange_layer.admin_display:
+  path: '/admin/config/commerce/data_exchange_layer'
+  defaults:
+    _form: 'Drupal\data_exchange_layer\Form\DataExchangeLayerForm'
+    _title: 'DataExchangeLayer settings'
+  requirements:
+    _permission: 'administer site configuration'

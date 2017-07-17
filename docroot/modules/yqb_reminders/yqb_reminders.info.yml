@@ -1,0 +1,10 @@
+name: Reminders
+description: Set text reminders for flight updates.
+package: YQB
+
+type: module
+core: 8.x
+configure: yqb_reminders.admin_display
+
+dependencies:
+  - twilio

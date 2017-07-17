@@ -1,0 +1,25 @@
+{
+  "name": "yqb",
+  "title": "YQB",
+  "description": "Aéroport Jean Lesage de Québec",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git:///fjorddev.com/home/cossette/git/yqb.git"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-uglify": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-drush": "0.0.7",
+    "grunt-exec": "^0.4.6",
+    "grunt-grunticon": "^2.0.0",
+    "grunt-newer": "*",
+    "load-grunt-tasks": "^3.4.0"
+  }
+}

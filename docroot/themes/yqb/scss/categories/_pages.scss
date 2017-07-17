@@ -1,0 +1,1511 @@
+body.maintenance-page {
+	text-align:center;
+	padding:35px;
+
+	header, main {
+		width:100%;
+		max-width:400px;
+		margin:0 auto;
+	}
+
+	header {
+		margin-bottom:35px;
+	}
+
+	header a img  {
+		width:100%;
+		height:auto;
+	}
+
+	header h1 {
+		display:none;
+	}
+}
+
+body.path-frontpage {
+	#layout-content .heading {
+		display: none;
+	}
+	.region-bottom-actions {
+		.block-parking-booker {
+			@include responsive($screen-sm) {
+				display: none;
+				&.block-parking-booker + section {
+					width: 100% !important;
+				}
+			}
+		}
+	}
+	#block-flightstabsblock {
+		.panel-body {
+			.block-parking-booker {
+				.title-content {
+					padding: 0 15px;
+				}
+			}
+		}
+	}
+}
+
+#vols-et-destinations-destinations-desservies .content-have-sidebar {
+	overflow: hidden;
+}
+
+body.path-visiter-quebec #layout-content {
+	.heading {
+		position: absolute;
+		z-index: 2;
+
+		.breadcrumb-wrapper {
+			background: rgba(0, 0, 0, 0.15);
+			border: none;
+
+			.nav-tabs {
+				background: transparent;
+				> li {
+					border-left: 1px solid rgba($black, 0.1);
+
+					> a {
+						color: $white;
+
+						&:hover {
+							border: none;
+							color: $link-color;
+							background-color: transparent;
+
+							.icon {
+								path {
+									fill: $link-color;
+								}
+							}
+						}
+
+						.icon {
+							path {
+								fill: $white;
+							}
+						}
+					}
+				}
+			}
+
+			.breadcrumb {
+				background: none;
+
+				> li {
+					a {
+						color: $white;
+					}
+
+					&:before {
+						background-image: url("../svg/right-arrow.svg");
+					}
+
+					&.active {
+						color: $white;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+.path-planifier-son-vol,
+.path-plan-a-flight{
+	.text-right{
+		@include responsive($screen-xs){
+			text-align: center;
+		}
+	}
+	/*
+	.btn-default{
+		margin-top: 20px;
+	}
+	*/
+}
+#planifier-son-vol-reserver-un-stationnement-extras,
+#plan-a-flight-parking-reservation-extras{
+	.text-right{
+		padding: 0 20px;
+	} 
+}
+#planifier-son-vol-reserver-un-stationnement-resultats,
+#plan-a-flight-parking-reservation-results{
+	.btn-default{
+		margin-top: 0;
+	}
+}
+
+.path-planifier-son-vol,
+.path-plan-a-flight {
+	.content-wrapper .sidebar-content + section {
+		box-shadow: none;
+		&:before{
+			content: normal;
+		}
+	}
+}
+
+.parking-booker-form {
+	&.parking-booker-form-responsive {
+		.is-mobile{
+			display: none;
+			@include responsive($screen-sm){
+				display: block;
+			}
+		}
+		.is-desktop{
+			@include responsive($screen-sm){
+				display: none;
+			}
+		}
+	}
+
+
+	> .form-wrapper {
+		margin-bottom: 0;
+	}
+	
+	.table-results,
+	.parking-result {
+		ul {
+			margin-bottom: 0;
+			padding-left: 15px;
+		}
+		th, td, div {
+			text-align: left;
+			@include font-size(14);
+			@include responsive(1200px) {
+				@include font-size(12);
+			}
+		}
+		.btn-default {
+			@include responsive(1200px) {
+				@include button-size(0, 25px, $btn-font-size-small, $btn-line-height-small, $btn-border-radius-small);
+			}
+		}
+
+
+		.parking-proxiparq {
+			.parking-name {
+				background-color: $proxiparq;
+				border-bottom: 1px solid $proxiparq;
+			}
+			&.parking-available{
+				background-color: $proxiparq;
+			}
+			.icon-walking {
+				path {
+					fill: $proxiparq;
+				}
+			}
+		}
+		.parking-cellparq {
+			.parking-name {
+				background-color: $cellparq;
+				border-bottom: 1px solid $cellparq;
+			}
+			&.parking-available{
+				background-color: $cellparq;
+			}
+			.icon-walking {
+				path {
+					fill: $cellparq;
+				}
+			}
+		}
+		.parking-inparq {
+			.parking-name {
+				background-color: $inparq;
+				border-bottom: 1px solid $inparq;
+			}
+			&.parking-available{
+				background-color: $inparq;
+			}
+			.icon-walking {
+				path {
+					fill: $inparq;
+				}
+			}
+		}
+		&.table-results-extra{
+			margin-bottom: 20px;
+			.wrap-row{
+				display: table;
+				height: 170px;
+				width: 100%;
+				margin-bottom: 0;
+				@include responsive($screen-xs){
+					display: block;
+					height: auto;
+				}
+				> div {
+					padding: 15px;
+					display: table-cell;
+					width: 30%;
+					vertical-align: middle;
+					min-width: 0 !important;
+					@include responsive(500px){
+						width: 100% !important;
+						display: block;
+						height: auto !important;
+					}
+					&.parking-name{
+						width: 16%;
+						background-position: center;
+						@include responsive(850px){
+							display: none;
+						}
+					}
+					&.parking-dropdown{
+						@include responsive($screen-xs){
+							width: 100%;
+							display: block;
+							@include clearfix();
+							height: auto;
+						}
+					}
+					&.parking-info{
+						width: 32%;
+					}
+					&.parking-localisation{
+						width: 22%;
+					}
+					.col-sm-6{
+						@include responsiveMin($screen-xs){
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+		}
+		// Cells
+		&.table-results,
+		> tbody {
+			> tr, > .wrap-row {
+				> div,
+				> th,
+				> td {
+					height: 120px;
+					border-top: 0;
+					border-bottom: 1px solid $gray-light;
+					&.parking-name {
+						text-align: center;
+						background-color: $brand-primary;
+						padding: 15px;
+						min-width: 170px;
+						.icon {
+							@include responsive(1200px) {
+								height: 55px;
+							}
+						}
+					}
+					&.parking-info {
+						min-width: 250px;
+						@include responsive(870px) {
+							min-width: 195px;
+						}
+						.parking-walking-time{
+							display: none;
+							margin-top: 10px;
+							span {
+								display: inline-block;
+								vertical-align: middle;
+								margin-right: 5px;
+							}
+							.text {
+								@include font-size(12);
+								line-height: 14px;
+								color: $gray;
+							}
+							.icon-walking{
+								width: 19px;
+								height: 30px;
+							}
+							@include responsive($screen-md) {
+								display: block;
+							}
+						}
+					}
+					&.parking-walking-time {
+						min-width: 160px;
+						@include responsive($screen-md) {
+							display: none;
+						}
+						span {
+							display: inline-block;
+							vertical-align: middle;
+							margin-right: 10px;
+						}
+						.text {
+							@include font-size(16);
+							line-height: 20px;
+							color: $gray;
+						}
+
+					}
+
+					
+					&.parking-localisation {
+						min-width: 235px;
+						@include responsive(870px) {
+							min-width: 190px;
+						}
+						a {
+							text-decoration: underline;
+							display: block;
+							margin: 10px 0;
+							position: relative;
+							padding: 5px 0 5px 38px;
+							color: $black;
+							.icon {
+								margin-right: 10px;
+								position: absolute;
+								left: 0;
+								top: 50%;
+								margin-top: -14px;
+							}
+							&:hover {
+								text-decoration: none;
+							}
+						}
+					}
+					&.parking-price-button {
+						.price-wrapper{
+							
+							display: inline-block;
+							vertical-align: middle;
+							margin-bottom: 0;
+							
+						}
+						.text {
+							@include font-size(24);
+							color: $brand-primary;
+							font-weight: $bold;
+							display: inline-block;
+							vertical-align: middle;
+
+							&.text-stroke {
+								text-decoration:line-through;
+								opacity: 0.7;
+								line-height: 19px;
+								@include font-size(18);
+	
+								@include responsive(1200px) {
+									@include font-size(16);
+									line-height: 17px;
+								}
+							}
+
+							@include responsive(1200px){
+								@include font-size(21);
+							}
+						}
+						.form-group {
+							display: inline-block;
+							vertical-align: middle;
+							margin-left: 18px;
+							text-align: right;
+						}
+						padding: 15px 40px;
+						text-align: right;
+						@include responsive(1200px) {
+							padding: 15px;
+						}
+					}
+				}
+
+			}
+		}
+	}
+	.parking-result {
+		.form-group{
+			margin-bottom: 0;
+		}
+		> .parking-available {
+			color: $white;
+			padding: 20px;
+			@include clearfix();
+			a{
+				color: $screen-sm;
+			}
+			.parking-elements-wrapper{
+				@include clearfix();
+				max-width: 625px;
+				margin: 0 auto;
+				text-align: center;
+				@include responsive(655px){
+					max-width: 250px;
+				}
+			}
+			.parking-element  {
+				height: auto;
+				border-top: 0;
+				margin-bottom: 20px;
+				@include font-size(14);
+				padding: 0 25px 0 0;
+				float: none;
+				display: inline-block;
+				text-align: left;
+				vertical-align: top;
+				&.parking-name {
+					text-align: center;
+					padding: 15px;
+					min-width: 0;
+					float: none;
+					width: 100%;
+					.icon {
+						@include responsive(1200px) {
+							height: 55px;
+						}
+					}
+				}
+				&.parking-info {
+					min-width: 0;
+					
+					@include responsive(655px){
+						width: 100%;
+						padding: 30px 0;
+						border-bottom: 1px solid $white;
+						margin-bottom: 0;
+					}
+				}
+				&.parking-walking-time {
+				
+					
+					@include responsive(655px){
+						width: 100%;
+						padding: 30px 0;
+						border-bottom: 1px solid $white;
+						margin-bottom: 0;
+					}
+					span {
+						display: inline-block;
+						vertical-align: middle;
+						margin-right: 10px;
+						
+					}
+					.text {
+						@include font-size(16);
+						line-height: 20px;
+						color: $white;
+					}
+					.icon-walking {
+						path {
+							fill: $white;
+						}
+					}
+
+				}
+
+				&.parking-localisation {
+					min-width: 0;
+					
+					@include responsive(655px){
+						width: 100%;
+						padding: 30px 0 20px;
+						border-bottom: 1px solid $white;
+						margin-bottom: 0;
+					}
+					a {
+						text-decoration: underline;
+						display: block;
+						max-width: 210px;
+						margin-bottom: 10px;
+						position: relative;
+						padding: 5px 0 5px 38px;
+						color: $white;
+						.icon {
+							margin-right: 10px;
+							position: absolute;
+							left: 0;
+							top: 50%;
+							margin-top: -14px;
+							path{
+								fill:$white;
+							}
+						}
+						&:hover {
+							text-decoration: none;
+						}
+					}
+				}
+				&.parking-price-button {
+					
+					float: none;
+					width: 100%;
+					text-align: center;
+					margin-top: 20px;
+					.price-wrapper{
+						text-align: right;
+					}
+					.text {
+						@include font-size(22);
+						color: $white;
+						font-weight: $bold;
+						display: inline-block;
+						vertical-align: middle;
+						@include responsive(1200px){
+							@include font-size(20);
+						}
+						&.text-stroke {
+							text-decoration:line-through;
+							opacity: 0.7;
+							line-height: 17px;
+							@include font-size(17);
+
+							@include responsive(1200px) {
+								@include font-size(15);
+								line-height: 16px;
+							}
+						}
+					}
+					.form-group {
+						display: inline-block;
+						vertical-align: middle;
+						margin-left: 0;
+						.form-group{
+							margin-left: 18px;
+							
+							&:first-child{margin-left:0;}
+						}
+					}
+					padding: 15px 40px;
+					@include responsive(1200px) {
+						padding: 15px;
+					}
+					.btn-default{
+						@include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+					}
+				}
+			}
+		}
+	}
+	.parking-content {
+		max-width: 1225px;
+		margin: 75px auto 100px;
+		@include responsive($screen-sm){
+			margin-top: 45px;
+			.row-inner{
+				h2{
+					margin-bottom: 0;
+				}
+			}
+		}
+		.title-content {
+			font-weight: $regular;
+		}
+		.switch-wrapper {
+			padding-left: 70px;
+			position: relative;
+			margin-bottom: 20px;
+
+			.form-item-terms,
+			.form-item-receive-communication {
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+				label{padding:0;}
+			}
+		}
+		.btn-lg {
+			margin-top: 20px;
+		}
+	}
+	
+	.parking-confirmation-content{
+		border:1px solid $gray-light;
+		border-radius:10px;
+		max-width: 480px;
+		margin: 75px auto 100px;
+		padding:40px 20px;
+		text-align:center;
+		
+		@include responsive($screen-sm){
+			border:0;
+			margin: 20px auto 0;
+		}
+		
+		.parking-name{
+			margin:0 0 50px;
+		}
+		
+		svg path{
+			fill:$black;
+		}
+		
+		.parking-schedule{
+			border-left:1px solid $gray-light;
+			line-height: 1;
+			padding:0 30px;
+			@include font-size(18);
+			
+			@include responsive($screen-xs){
+				padding:0 10px;
+			}
+			
+			&:first-child{
+				border-left:0;	
+			}
+			
+			span{
+				color:$gray;
+				display:block;
+				margin:0 0 20px;
+				@include font-size(14);
+			}
+		}
+		
+		.qr-holder{
+			margin-bottom:40px;
+		}
+	}
+	
+	&.step-confirmation {
+		.parking-booker-status {
+			height: 140px;
+		}
+	}
+}
+
+.parking-accepted-card {
+	margin: 70px 0 0;
+	padding: 0 40px;
+	width: 100%;
+	text-align: center;
+
+	span {
+
+		@include font-size(12);
+		color: $gray;
+		font-weight: $bold;
+		display: block;
+		margin: 0 auto 15px;
+	}
+
+	ul {
+		padding: 0;
+	}
+
+	li {
+		vertical-align: middle;
+		display: inline-block;
+		margin: 0 7px;
+	}
+}
+
+.parking-booker-breadcrumb {
+	background-color: #e5eeff;
+	@include font-size(16);
+	color: #a1a3a6;
+	border-top: 1px solid $gray-light;
+	margin: 0 !important;
+
+	> * {
+		margin-bottom: 0;
+		position: relative;
+		text-align: center;
+		height: 60px;
+		line-height: 60px;
+		@include responsive(1150px) {
+			@include font-size(14);
+		}
+		@include responsive($screen-sm) {
+			display: none;
+		}
+		@include responsive($screen-xs) {
+			padding-left: 55px !important;
+		}
+		.step-mobile {
+			display: none;
+			font-weight: $bold;
+			@include responsive($screen-sm) {
+				display: inline-block;
+			}
+		}
+		span {
+			display: inline-block;
+			vertical-align: middle;
+			@include responsive(1150px, $screen-sm) {
+				max-width: 125px;
+				line-height: 17px;
+			}
+
+		}
+		&:nth-child(1) {
+			z-index: 4;
+		}
+		&:nth-child(2) {
+			z-index: 3;
+		}
+		&:nth-child(3) {
+			z-index: 2;
+		}
+		&:nth-child(4) {
+			z-index: 1;
+		}
+		&:last-child {
+			overflow: hidden;
+		}
+		&.is-done {
+			background-color: $white;
+		}
+
+		&.is-active {
+			background-color: $brand-primary;
+			color: $white;
+			@include responsive($screen-sm) {
+				display: block;
+			}
+
+			@include responsiveMin($screen-sm) {
+				&:before, &:after {
+
+					content: '';
+					display: block;
+					position: absolute;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 30px 0 30px 20px;
+				}
+				&:after {
+					border-color: transparent transparent transparent $brand-primary;
+					right: 0;
+					top: 0;
+					margin-right: -20px;
+				}
+				&:before {
+					border-color: transparent transparent transparent $white;
+					left: 0;
+					top: 0;
+
+				}
+			}
+		}
+	}
+
+}
+
+.parking-booker-title, .parking-booker-status{
+	position:relative;
+	
+	.btn-back {
+		width: 72px;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		text-align: center;
+		
+		@include responsive(1090px) {
+			width: 54px;
+		}
+		
+		.icon-left-arrow {
+			width: 13px;
+			height: 23px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+			@include responsive(1090px) {
+				width: 9px;
+				height: 21px;
+			}
+			path {
+				fill: $gray;
+			}
+		}
+	}
+}
+
+.parking-booker-title{
+	border-bottom: 1px solid $gray-light;
+	padding-left:72px;
+	
+	@include responsive($screen-sm){
+		padding-left:54px;
+	}
+	
+	&.no-back-btn{
+		padding-left:0;
+		.btn-back{display:none}
+		h1{border-left:0;}
+	}
+	
+	h1{
+		border-left: 1px solid $gray-light;
+		border-bottom:0;
+	}
+}
+
+.parking-booker-status {
+	margin: 0 !important;
+	border-top: 1px solid $gray-light;
+	border-bottom: 1px solid $gray-light;
+	position: relative;
+	height: 100px;
+	padding-left:72px;
+		
+	@include responsive(1090px) {
+		padding-left: 54px;
+	}
+
+	@include responsive($screen-sm){
+		height: auto;
+	}
+	
+	.parking-booker-status-wrapper {
+		margin-bottom: 0;
+		height: 100%;
+		@include responsive($screen-sm){
+			height: 100px;
+		}
+		
+		&.col-xs-12{
+			@include responsive($screen-xs){
+				border-top: 1px solid $gray-light;
+				&.parking-choice{
+					border-top:0;
+				}
+			}
+		}
+		
+		&.parking-booker-status-reference{
+			border-bottom: 1px solid $gray-light;
+			border-top:0;
+		}
+	}
+
+	[class*="col"] {
+		border-left: 1px solid $gray-light;
+		&:first-child{
+			border-left:0;
+		}
+	}
+
+	.parking-status-info {
+		padding: 0 10px 0 30px;
+		font-weight: $regular;
+		@include font-size(24);
+		color: $black;
+		max-width: 300px;
+		position: absolute;
+		top: 50%;
+		line-height: 24px;
+		@include translate(0, -50%);
+		@include responsive(1090px) {
+			padding-left: 15px;
+		}
+		@include responsive(930px) {
+			@include font-size(20);
+			line-height: 20px;
+		}
+		span {
+			display: block;
+			@include font-size(12);
+			color: $gray;
+			font-weight: $bold;
+			line-height: 15px;
+			margin-bottom: 5px;
+			@include responsive(930px) {
+				@include font-size(12);
+			}
+		}
+	}
+
+	.parking-choice {
+		height: 100%;
+		@include responsive($screen-sm){
+			height: 100px;
+		}
+		&.parking-choice-proxiparq {
+			background-color: $proxiparq;
+		}
+		&.parking-choice-cellparq {
+			background-color: $cellparq;
+		}
+		&.parking-choice-inparq {
+			background-color: $inparq;
+		}
+		.parking-choice-name {
+
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 160px;
+			@include responsive(930px){
+				right: 135px;
+			}
+			.parking-status-info {
+				left: 50%;
+				@include translate(-50%, -50%);
+				padding: 0;
+				.icon{
+					height: 55px;
+					@include responsive(850px){
+						height: 40px;
+					}
+				}
+			}
+		}
+		.parking-choice-price {
+			color: $white;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			width: 160px;
+			background-color: rgba(0, 0, 0, 0.10);
+			padding: 0 15px;
+			@include responsive(930px){
+				width: 135px;
+			}
+			.parking-status-info {
+				color: $white;
+				left: 50%;
+				@include translate(-50%, -50%);
+				padding: 0;
+
+				span {
+					color: $white;
+				}
+
+				.form-group {
+					margin:0;
+				}
+			}
+		}
+	}
+}
+
+#parking-booker-modify-details-form{
+	.form-actions{
+		@include responsive(600px) {
+			margin:20px 0 0 0;
+		}
+	}
+}
+
+.parking-modify-actions{
+	margin:40px 0 0;
+}
+
+#search-node {
+	.region-content {
+		.search-page-form {
+			max-width: 870px;
+			margin-bottom: 35px;
+			.form-group {
+				margin-bottom: 12px;
+			}
+			.form-control {
+				border: 2px solid #a1a3a6;
+			}
+			button {
+				.icon {
+					margin-top: -3px;
+				}
+				&:hover {
+					background-color: #222226;
+					border-color: #222226;
+				}
+			}
+			a {
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		ol {
+			max-width: 870px;
+			list-style: none;
+			padding: 0;
+			li {
+				padding-bottom: 10px;
+				border-bottom: 1px solid $gray-light;
+				margin-bottom: 30px;
+			}
+		}
+		h3 {
+			a:hover {
+				text-decoration: underline;
+			}
+		}
+		.pager-nav {
+			text-align: left;
+		}
+	}
+}
+
+#parking-booker-modify-booking-form,
+#plan-a-flight-parking-reservation,
+#planifier-son-vol-reserver-un-stationnement {
+	.block-parking-booker {
+		.form-block-container {
+			&.is-desktop{
+
+				> .form-group {
+					@include responsiveMin(675px){
+
+						&.col-normal  {
+							width: 28%;
+							@include responsive(550px) {
+								width: 50%;
+							}
+						}
+						&.col-full {
+							width: 44%;
+						}
+					}
+				}
+			}
+			&.is-mobile{
+
+				> .form-group {
+
+					&.col-normal  {
+						width: 25% !important;
+						@include responsive(500px) {
+							width: 50% !important;
+						}
+					}
+
+				}
+			}
+		}
+	}
+}
+
+#parking-booker-modify-booking-form,
+#flights-and-destinations-text-reminders,
+#vols-et-destinations-alerte-sms,
+#plan-a-flight-parking-reservation,
+#planifier-son-vol-reserver-un-stationnement {
+	.block-parking-booker,
+	.block-reminders {
+		.title-content {
+			max-width: 100%;
+			@include font-size(18);
+			margin-bottom: 45px;
+			@include responsive($screen-xs) {
+				text-align: left;
+				line-height: 22px;
+			}
+		}
+	}
+}
+
+
+#services-aeroportuaires-plan-de-la-C3-A9rogare,
+#airport-services-terminal-map {
+	.field--name-body {
+		ol {
+			@include clearfix();
+			padding: 0;
+
+			li {
+				padding-left: 45px;
+				list-style: none;
+				position: relative;
+				counter-increment: step-counter;
+				margin-bottom: 20px;
+				width: 50%;
+				padding-right: 20px;
+				float: left;
+				&:before {
+					content: counter(step-counter);
+					color: $white;
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					display: block;
+					position: absolute;
+					top: -4px;
+					left: 0;
+					text-align: center;
+					background-color: $brand-primary;
+					font-weight: $bold;
+					border-radius: 50%;
+					@include font-size(18);
+				}
+			}
+		}
+		ol + p {
+			span {
+				@include font-size(12);
+			}
+		}
+	}
+}
+
+#a-propos-entreprise-histoire,
+#about-company-history {
+	.title-page {
+		margin-bottom: 0;
+	}
+	.img-mobile {
+		display: none;
+		width: 100%;
+		@include responsive($screen-xs) {
+			display: block;
+		}
+	}
+	.section {
+		color: $black;
+		padding: 95px 65px;
+		position: relative;
+
+		@include responsive(1300px) {
+			padding: 55px 25px;
+		}
+
+		@include responsive($screen-xs) {
+			padding: $content-padding-small;
+
+			p {
+				margin: 0 0 $content-padding-small 0;
+				@include font-size($font-size-base);
+			}
+		}
+		.title-default {
+			font-weight: $bold;
+			margin: 0 0 $content-padding-base 0;
+			@include font-size(24);
+
+			@include responsive(1300px) {
+				margin: 0 0 $content-padding-small 0;
+				@include font-size(21);
+				line-height: 26px;
+			}
+		}
+		p {
+			line-height: 1.43;
+			margin: 0 0 50px 0;
+			@include font-size(21);
+
+		}
+		@include responsive(1300px) {
+			p {
+				margin: 0 0 35px 0;
+				@include font-size(16);
+			}
+		}
+		@include responsive(1300px) {
+			p {
+				margin: 0 0 20px 0;
+			}
+		}
+		.img-wrapper {
+			width: 100%;
+			img {
+				width: 100%;
+			}
+		}
+		.legend {
+			position: absolute;
+			@include font-size(12);
+			display: block;
+			z-index: 3;
+			&.legend-bottom-left {
+				bottom: 25px;
+				left: 30px;
+
+				@include responsive(1300px) {
+					left: 20px;
+					bottom: 17px;
+				}
+			}
+			&.legend-block {
+				position: static;
+				margin-top: 12px;
+			}
+		}
+		&.section-bg {
+			background-size: auto 100%;
+			background-repeat: no-repeat;
+			background-position: left center;
+			@include responsive($screen-xs) {
+				background: none !important;
+				background-color: $black !important;
+			}
+			@include responsiveMin($screen-xs) {
+
+				&:before {
+					content: '';
+					position: absolute;
+					display: block;
+					top: 0;
+					bottom: 0;
+					right: 0;
+					left: 21%;
+					z-index: 2;
+					@include gradient-horizontal(rgba($black, 0), $black, 0%, 38%);
+
+				}
+			}
+			.section-content {
+				position: relative;
+				z-index: 3;
+			}
+			@include responsiveMin($screen-xs) {
+				padding-left: 42%;
+			}
+		}
+		&.section-black {
+			color: $white;
+			background-color: $black;
+			@include responsive($screen-xs) {
+				padding-bottom: 50px;
+			}
+		}
+		&.section-green {
+			color: $white;
+			background-color: #99b0ae;
+			padding: 60px 65px;
+
+			@include responsive(1300px) {
+				padding: 30px 25px 60px;
+			}
+
+			.section-content {
+				padding-top: 40px;
+				padding-bottom: 40px;
+
+				@include responsive(1300px) {
+					padding-top: 20px;
+					padding-bottom: 20px;
+				}
+
+			}
+		}
+		&.section-bottom {
+
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+			background-position: top center;
+			padding: 40% 125px 95px;
+			@include responsive(1300px) {
+				padding: 40% 55px 50px;
+			}
+
+			@include responsive($screen-xs) {
+				padding: $content-padding-small;
+			}
+			.section-content {
+				background-color: $white;
+				padding: 95px 125px;
+				@include responsive(1300px) {
+					padding: 55px 50px;
+				}
+
+				@include responsive($screen-xs) {
+					padding: $content-padding-small;
+				}
+			}
+		}
+		&.section-img-right {
+
+		}
+		@include responsiveMin($screen-xs) {
+
+			&.no-padding-left {
+				padding-left: 0;
+			}
+			&.no-padding-right {
+				padding-right: 0;
+				.img-wrapper {
+					padding-left: 50px;
+					@include responsive(1300px) {
+						padding-left: 30px;
+					}
+					.legend {
+						padding-right: 20px;
+					}
+				}
+			}
+			.section-content {
+				padding: 0 60px;
+				@include responsive(1300px) {
+					padding: 0 25px 40px;
+				}
+			}
+		}
+		&.section-img-left {
+
+		}
+	}
+}
+
+body#planifier-son-vol-reserver-un-stationnement,
+body#plan-a-flight-parking-reservation {
+	.xdsoft_datetimepicker {
+		@include box-shadow(0px 12px 38px 0px rgba(0, 0, 0, 0.47));
+	}
+}
+
+@include responsive(420px) {
+	#block-views-block-news-block-1 {
+		.more-link .btn {
+			line-height: 40px;
+			padding: 0 15px;
+			@include font-size(14);
+		}
+	}
+}
+
+.view-page-airlines{
+	.main-content{
+		border-bottom: 0;
+	}
+	
+}
+.view-page-arrivals,
+.view-page-departures {
+	.content-wrapper .sidebar-content + section {
+		padding-bottom:0;
+	}
+
+	.main-content {
+		background-color:$table-bg;
+		
+		.view-footer{
+			background:$white;
+			color:$black;
+			padding:15px 35px;
+			
+			p{
+				line-height: 1;
+				margin:0 0 10px;
+			}
+		}
+	}
+
+	.bootstrap-switch {
+	  &.bootstrap-switch-off{
+	    background-color: $brand-primary;
+	    .bootstrap-switch-label{
+	      opacity: 1;
+	    }
+	  }
+	}
+	@include responsive(900px) {
+		.content-wrapper .sidebar-content,
+		.content-wrapper .main-content {
+			display:block;
+			height:auto;
+			width:100%;
+		}
+		.sidebar-content {
+			.form-group-sidebar {
+				display:none;
+			}
+
+			.switch {
+				border-bottom:none;
+				float:left;
+				padding:25px 10px;
+				width:225px;
+
+				& + .switch {
+					border-left:1px solid $gray-light;
+				}
+			}
+
+			.block-last-update {
+				padding:25px 20px 25px 0;
+				position:absolute;
+				right:0;
+				top:0;
+			}
+		}
+	}
+
+	@include responsive($screen-xs) {
+		.sidebar-content {
+			.switch {
+				border-bottom:1px solid $gray-light;
+				float:none;
+				padding:25px;
+				width:100%;
+
+				& + .switch {
+					border-left:none
+				}
+			}
+
+			.block-last-update {
+				padding:25px;
+				position:relative;
+				text-align:center;
+			}
+		}
+	}
+}
+
+#services-aeroportuaires-vestiaires-consigne-et-service-demballage,
+#airport-services-coat-check-storage-and-secure-wrap-baggage-services{
+	@include responsive($screen-tablet){
+	
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr { 
+			display: block; 
+		}
+		
+		table{
+			margin:0 0 20px;
+		}
+		
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr { 
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+		
+		td { 
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee; 
+			height:auto;
+			min-height:48px;
+			position: relative;
+			padding-left: 50%; 
+			text-align:center;
+			
+			strong{font-weight:normal}
+		}
+		
+		td:before { 
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 0;
+			width: 45%; 
+			padding:15px;
+			text-align:center;
+			white-space: nowrap;
+			font-weight:bold;
+		}
+		
+		
+		td:before { content: attr(data-label); }
+		tr:nth-child(1){
+			td{
+				text-align:center;
+				padding-left:0;
+				
+				strong{font-weight:bold;}
+			}
+			
+			td:before{display:none;}
+		}
+		tr:nth-child(2){display:none;}
+	}
+}

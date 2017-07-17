@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-simple-title">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        <div class="block-simple-title-content">
+            <h2>{{ content }}</h2>
+        </div>
+    {% endblock %}
+</div>

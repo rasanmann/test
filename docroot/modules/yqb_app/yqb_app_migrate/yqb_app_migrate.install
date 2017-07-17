@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the token module.
+ */
+
+/**
+ * hook_uninstall.
+ */
+function yqb_app_migrate_uninstall() {
+  db_query("DELETE FROM {config} WHERE name LIKE 'migrate_plus.migration.zones%'");
+  db_query("DELETE FROM {config} WHERE name LIKE 'migrate_plus.migration.beacons%'");
+  db_query("DELETE FROM {config} WHERE name LIKE 'migrate_plus.migration.pages_mobiles%'");
+  db_query("DELETE FROM {config} WHERE name LIKE 'migrate_plus.migration.tips%'");
+  db_query("DELETE FROM {config} WHERE name LIKE 'migrate_plus.migration.questions%'");
+
+  drupal_flush_all_caches();
+}

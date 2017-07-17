@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Template for a 3 row panel layout.
+ */
+#}
+
+<div class="panels-threerow">
+    {% if content['top.main'] %}
+        <div class="top-main">
+            {{ content['top.main'] }}
+        </div>
+    {% endif %}
+
+    {% if content['top.secondary.main'] %}
+        <div class="top-secondary-main">
+            {{ content['top.secondary.main'] }}
+        </div>
+    {% endif %}
+
+    <div class="row-table blocks-top-secondary">
+        {% if content['top.secondary.left'] %}
+            <div class="col-table is-half is-v-middle">
+                {{ content['top.secondary.left'] }}
+            </div>
+        {% endif %}
+
+        {% if content['top.secondary.right'] %}
+            <div class="col-table is-half h-full">
+                {{ content['top.secondary.right'] }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row-table blocks-mission">
+        {% if content['middle.left'] %}
+            <div class="col-table is-third is-v-middle">
+                <div class="tile tile-blockquote">
+                    {{ content['middle.left'] }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if content['middle.center'] %}
+            <div class="col-table is-third is-v-middle">
+                {{ content['middle.center'] }}
+            </div>
+        {% endif %}
+
+        {% if content['middle.right'] %}
+            <div class="col-table is-third is-v-middle">
+                {{ content['middle.right'] }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row block-bottom">
+        {% if content['bottom.left'] %}
+            <div class="col-sm-4">
+                {{ content['bottom.left'] }}
+            </div>
+        {% endif %}
+
+        {% if content['bottom.right'] %}
+            <div class="col-sm-8">
+                {{ content['bottom.right'] }}
+            </div>
+        {% endif %}
+    </div>
+</div>

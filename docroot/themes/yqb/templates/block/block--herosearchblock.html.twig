@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Home page hero search block
+ */
+#}
+<section{{ attributes.addClass('block', 'clearfix') }} >
+    <div class="video-wrapper">
+        <video loop autoplay muted poster="/{{ base_path ~ directory }}/videos/intro-wide.jpg?v8">
+            <source src="/{{ base_path ~ directory }}/videos/intro.mp4?v8" type="video/mp4">
+            <source src="/{{ base_path ~ directory }}/videos/intro.webm?v8" type="video/webm">
+            <source src="/{{ base_path ~ directory }}/videos/intro.ogv?v8" type="video/ogv">
+        </video>
+    </div>
+
+    <div class="align-content">
+        {{ title_prefix }}
+        {% if label %}
+            <h2{{ title_attributes.addClass('block-title', 'text-center', 'title-main') }}>{{ label|replace({ '®':'<sup>®</sup>' })|raw }}</h2>
+        {% endif %}
+        {{ title_suffix }}
+
+        {% block content %}
+            {{ content }}
+        {% endblock %}
+    </div>
+</section>
+

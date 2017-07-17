@@ -1,0 +1,21 @@
+// Bootstrap variables
+@import "variables-bootstrap";
+@import "variables";
+@import "../bootstrap/scss/mixins";
+
+@import "helpers/mixins";
+
+// Libraries
+@import "libraries/bootstrap-switch";
+@import "libraries/nprogress";
+.nprogress-custom-parent {
+  overflow:visible;
+}
+
+
+
+@import "libraries/perfect-scrollbar";
+@import "libraries/jquery.datetimepicker";
+@import "libraries/bootstrap-switch";
+@import "libraries/swiper"; 
+@import "libraries/pinchzoomer"; 

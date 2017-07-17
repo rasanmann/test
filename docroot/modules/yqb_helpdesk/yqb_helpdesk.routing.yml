@@ -1,0 +1,57 @@
+yqb_helpdesk.admin_display:
+  path: '/admin/config/services/yqb_helpdesk'
+  defaults:
+    _form: 'Drupal\yqb_helpdesk\Form\HelpdeskSettingsForm'
+    _title: 'Helpdesk settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+yqb_helpdesk.helpdesk:
+  path: '/helpdesk/{user}'
+  defaults:
+    _form: '\Drupal\yqb_helpdesk\Form\HelpdeskForm'
+    _title: 'Helpdesk dashboard'
+    user: '0'
+  requirements:
+    _permission: 'access user profiles'
+    user: ^[a-zA-Z0-9_]+
+    
+yqb_helpdesk.call:
+  path: '/webhooks/call'
+  defaults:
+    _controller: '\Drupal\yqb_helpdesk\Controller\SpeakWebhookController::call'
+    _title: 'Webhooks'
+  requirements:
+    _permission: 'access content'
+    
+yqb_helpdesk.enqueue:
+  path: '/webhooks/enqueue'
+  defaults:
+    _controller: '\Drupal\yqb_helpdesk\Controller\SpeakWebhookController::enqueue'
+    _title: 'Webhooks'
+  requirements:
+    _permission: 'access content'
+    
+yqb_helpdesk.connect:
+  path: '/webhooks/connect'
+  defaults:
+    _controller: '\Drupal\yqb_helpdesk\Controller\SpeakWebhookController::connect'
+    _title: 'Webhooks'
+  requirements:
+    _permission: 'access content'
+    
+yqb_helpdesk.callback:
+  path: '/webhooks/callback'
+  defaults:
+    _controller: '\Drupal\yqb_helpdesk\Controller\SpeakWebhookController::callback'
+    _title: 'Webhooks'
+  requirements:
+    _permission: 'access content'
+    
+yqb_helpdesk.gather:
+  path: '/webhooks/gather'
+  defaults:
+    _controller: '\Drupal\yqb_helpdesk\Controller\SpeakWebhookController::gather'
+    _title: 'Webhooks'
+  requirements:
+    _permission: 'access content'

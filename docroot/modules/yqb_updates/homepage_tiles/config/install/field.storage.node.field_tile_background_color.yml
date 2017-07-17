@@ -1,0 +1,35 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_tile_background_color
+field_name: field_tile_background_color
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: tile-blue
+      label: 'Bleu royal'
+    -
+      value: tile-light-blue
+      label: 'Bleu pâle'
+    -
+      value: tile-purple
+      label: Mauve
+    -
+      value: tile-black
+      label: Noir
+    -
+      value: tile-teal
+      label: Turquoise
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_major
+    - node.type.beacon
+id: node.beacon.field_major
+field_name: field_major
+entity_type: node
+bundle: beacon
+label: Major
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

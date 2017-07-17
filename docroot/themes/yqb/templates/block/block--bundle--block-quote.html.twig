@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+#}
+
+<div{{ attributes }}>
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        <blockquote>
+            {{ content.body }}
+
+            <footer>&mdash;<cite>{{ content.field_author }}</cite></footer>
+        </blockquote>
+    {% endblock %}
+</div>

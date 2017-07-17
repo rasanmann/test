@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_routing.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_routing_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_reminders module.
+    case 'help.page.yqb_routing':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Routing') . '</p>';
+      return $output;
+
+    default:
+  }
+  
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_routing_theme() {
+  $theme = [];
+
+  return $theme;
+}

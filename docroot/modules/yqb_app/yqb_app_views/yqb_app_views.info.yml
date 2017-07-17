@@ -1,0 +1,7 @@
+name: 'Views resource config'
+description: 'Setup views for YQB APP'
+type: module
+core: 8.x
+dependencies:
+  - views
+package: yqb_app

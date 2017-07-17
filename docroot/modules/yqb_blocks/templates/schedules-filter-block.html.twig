@@ -1,0 +1,84 @@
+<div class="row switch">
+    <div class="col-xs-4 text-right">
+        <a href="{{ url('view.arrivals.' ~ current_day) }}" class="switch-off {{ (current_view == 'arrivals') ? 'selected' }}">
+            {{ "Arrivées"|t }}
+        </a>
+    </div>
+    <div class="col-xs-4 text-center">
+        <input type="checkbox" name="type" data-toggle="switch" data-on-text="&nbsp;" data-off-text="&nbsp;" {{ (current_view == 'departures') ? 'checked' }}>
+    </div>
+    <div class="col-xs-4 text-left">
+        <a href="{{ url('view.departures.' ~ current_day) }}" class="switch-on {{ (current_view == 'departures') ? 'selected' }}">
+            {{ "Départs"|t }}
+        </a>
+    </div>
+</div>
+
+<div class="row switch">
+    <div class="col-xs-4 text-right">
+        <a href="{{ url('view.' ~ current_view ~ '.today') }}" class="switch-off {{ (current_day == 'today') ? 'selected' }}">
+            {{ "Aujourd'hui"|t }}
+        </a>
+    </div>
+    <div class="col-xs-4 text-center">
+        <input type="checkbox" name="day" data-toggle="switch" data-on-text="&nbsp;" data-off-text="&nbsp;" {{ (current_day == 'tomorrow') ? 'checked' }}>
+    </div>
+    <div class="col-xs-4 text-left">
+        <a href="{{ url('view.' ~ current_view ~ '.tomorrow') }}" class="switch-on {{ (current_day == 'tomorrow') ? 'selected' }}">
+            {{ "Demain"|t }}
+        </a>
+    </div>
+</div>
+
+
+<div class="form-inverse form-group form-group-lg form-group-sidebar">
+    <label for="airline">{{ "Compagnie aérienne"|t }}</label>
+
+    <input
+            type="search"
+            data-key="airlines"
+            data-autocomplete="{{ airlines|join(',') }}"
+            autocomplete="off"
+            class="form-control"
+            id="airline"
+            name="airline"
+            placeholder="{{ "Toutes les cies"|t }}"
+    />
+</div>
+
+{% if (current_view == 'departures') %}
+    <div class="form-inverse form-group form-group-lg form-group-sidebar">
+        <label>{{ "Destination"|t }}</label>
+
+        <input
+                type="search"
+                data-key="airports"
+                data-autocomplete="{{ airports|join(',') }}"
+                autocomplete="off"
+                class="form-control"
+                id="destination"
+                name="destination"
+                placeholder="{{ "Partout"|t }}"
+        />
+    </div>
+{% else %}
+    <div class="form-inverse form-group form-group-lg form-group-sidebar">
+        <label>{{ "Provenance"|t }}</label>
+
+        <input
+                type="search"
+                data-key="airports"
+                data-autocomplete="{{ airports|join(',') }}"
+                autocomplete="off"
+                class="form-control"
+                id="origin"
+                name="origin"
+                placeholder="{{ "Partout"|t }}"
+        />
+    </div>
+{% endif %}
+
+<div class="block-last-update">
+    <span>{{ "Dernière mise à jour :"|t }}</span>
+    <span>{{ last_updated }}</span>
+</div>

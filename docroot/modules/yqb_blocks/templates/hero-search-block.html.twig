@@ -1,0 +1,31 @@
+<div class="hidden">
+    {{ form }}
+</div>
+
+<form data-drupal-form-fields="edit-submit,edit-keys" class="search-block-form" data-drupal-selector="search-block-form" action="{{ url('search.view_node_search') }}" method="get"  accept-charset="UTF-8">
+    <div class="form-item js-form-item form-type-search js-form-type-search form-item-keys js-form-item-keys form-no-label form-group">
+        <label for="edit-keys" class="control-label sr-only">{{ "Chercher un vol, un service..."|t }}</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button data-drupal-selector="edit-submit" class="button js-form-submit form-submit btn-default btn-lg btn icon-only" type="submit" value="Search" name="search">
+                    <span class="sr-only">{{ "Rechercher"|t }}</span>
+                    <span class="icon icon-search" aria-hidden="true" data-grunticon-embed></span>
+                </button>
+            </span>
+
+            <input
+                autofocus
+                autocomplete="off"
+                data-drupal-selector="edit-keys"
+                class="form-autocomplete form-search form-control ui-autocomplete-input input-lg"
+                data-key="search_block"
+                placeholder="{{ "Rechercher..."|t }}"
+                 name="keys" value="" size="15" maxlength="128" title="" type="search"
+            >
+        </div>
+    </div>
+</form>
+
+<div class="hidden-md hidden-lg">
+    {{ weather }}
+</div>

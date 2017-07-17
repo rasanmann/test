@@ -1,0 +1,22 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_app
+    - node.type.question
+id: node.question.field_is_app
+field_name: field_is_app
+entity_type: node
+bundle: question
+label: 'Is app'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Visible dans l''application'
+  off_label: 'Non visible dans l''application'
+field_type: boolean

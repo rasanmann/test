@@ -1,0 +1,20 @@
+services:
+  http_middleware.format_setter:
+    class: Drupal\yqb_api\StackMiddleware\FormatSetter
+    tags:
+      - { name: http_middleware, priority: 201, responder: true }
+  # can be removed once https://www.drupal.org/node/2419825 is fixed.
+  serializer.normalizer.yqb_api.json:
+    class: Drupal\yqb_api\Normalizer\JsonDenormalizer
+    tags:
+      - { name: normalizer }
+  access_check.header.csrf:
+    class: Drupal\yqb_api\Access\CsrfRequestHeaderAccessCheck
+    arguments: ['@session_configuration', '@csrf_token']
+    tags:
+      - { name: access_check }
+  access_check.rest.csrf:
+    class: Drupal\yqb_api\Access\CsrfRequestHeaderAccessCheck
+    arguments: ['@session_configuration', '@csrf_token']
+    tags:
+      - { name: access_check }

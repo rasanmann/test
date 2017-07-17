@@ -1,0 +1,1500 @@
+/*-------------------------------------------------------------------
+	Media queries
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Utilities
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Browser prefixes
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Transform
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Transition
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Animation
+-------------------------------------------------------------------*/
+/*
+    Example usage: 
+    @include animation(changecolour, 5s, 10s)
+ */
+/*-------------------------------------------------------------------
+	Grid
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	SVG Icons generation
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Utilities
+-------------------------------------------------------------------*/
+/* 
+* @include triangle within a pseudo element and add positioning properties (ie. top, left)
+* $direction: up, down, left, right
+*/
+/*-------------------------------------------------------------------
+	Style mixins
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Functions
+-------------------------------------------------------------------*/
+/*
+	Acts like a php var_dump but with a SASS list or variable
+*/
+/*
+	Calculate the resize ratio of the svg sprite based on the icon provided
+	The icon needs at least 4 params (x, y, width, height)
+	(optional) w or h based ratio
+*/
+/*
+	Slice a SASS list like php array_slice
+*/
+@-webkit-keyframes crossfade {
+  0% {
+    opacity: 0;
+    z-index: 100;
+    background-color: red; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    background-color: transparent; } }
+@-moz-keyframes crossfade {
+  0% {
+    opacity: 0;
+    z-index: 100;
+    background-color: red; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    background-color: transparent; } }
+@keyframes crossfade {
+  0% {
+    opacity: 0;
+    z-index: 100;
+    background-color: red; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    background-color: transparent; } }
+@-webkit-keyframes crossfade-2 {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-2 {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-2 {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes crossfade-3 {
+  0% {
+    opacity: 0; }
+  6.66667% {
+    opacity: 1; }
+  33.33333% {
+    opacity: 1; }
+  40% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-3 {
+  0% {
+    opacity: 0; }
+  6.66667% {
+    opacity: 1; }
+  33.33333% {
+    opacity: 1; }
+  40% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-3 {
+  0% {
+    opacity: 0; }
+  6.66667% {
+    opacity: 1; }
+  33.33333% {
+    opacity: 1; }
+  40% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes crossfade-4 {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-4 {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-4 {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes crossfade-5 {
+  0% {
+    opacity: 0; }
+  4% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  24% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-5 {
+  0% {
+    opacity: 0; }
+  4% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  24% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-5 {
+  0% {
+    opacity: 0; }
+  4% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  24% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes crossfade-6 {
+  0% {
+    opacity: 0; }
+  3.33333% {
+    opacity: 1; }
+  16.66667% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-6 {
+  0% {
+    opacity: 0; }
+  3.33333% {
+    opacity: 1; }
+  16.66667% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-6 {
+  0% {
+    opacity: 0; }
+  3.33333% {
+    opacity: 1; }
+  16.66667% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes crossfade-7 {
+  0% {
+    opacity: 0; }
+  2.85714% {
+    opacity: 1; }
+  14.28571% {
+    opacity: 1; }
+  17.14286% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-7 {
+  0% {
+    opacity: 0; }
+  2.85714% {
+    opacity: 1; }
+  14.28571% {
+    opacity: 1; }
+  17.14286% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-7 {
+  0% {
+    opacity: 0; }
+  2.85714% {
+    opacity: 1; }
+  14.28571% {
+    opacity: 1; }
+  17.14286% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes crossfade-8 {
+  0% {
+    opacity: 0; }
+  2.5% {
+    opacity: 1; }
+  12.5% {
+    opacity: 1; }
+  15% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-8 {
+  0% {
+    opacity: 0; }
+  2.5% {
+    opacity: 1; }
+  12.5% {
+    opacity: 1; }
+  15% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-8 {
+  0% {
+    opacity: 0; }
+  2.5% {
+    opacity: 1; }
+  12.5% {
+    opacity: 1; }
+  15% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes crossfade-9 {
+  0% {
+    opacity: 0; }
+  2.22222% {
+    opacity: 1; }
+  11.11111% {
+    opacity: 1; }
+  13.33333% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-9 {
+  0% {
+    opacity: 0; }
+  2.22222% {
+    opacity: 1; }
+  11.11111% {
+    opacity: 1; }
+  13.33333% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-9 {
+  0% {
+    opacity: 0; }
+  2.22222% {
+    opacity: 1; }
+  11.11111% {
+    opacity: 1; }
+  13.33333% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes crossfade-10 {
+  0% {
+    opacity: 0; }
+  2% {
+    opacity: 1; }
+  10% {
+    opacity: 1; }
+  12% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-10 {
+  0% {
+    opacity: 0; }
+  2% {
+    opacity: 1; }
+  10% {
+    opacity: 1; }
+  12% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@keyframes crossfade-10 {
+  0% {
+    opacity: 0; }
+  2% {
+    opacity: 1; }
+  10% {
+    opacity: 1; }
+  12% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-webkit-keyframes scale-in {
+  0% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@-moz-keyframes scale-in {
+  0% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@keyframes scale-in {
+  0% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@-webkit-keyframes scale-out {
+  0% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0); } }
+@-moz-keyframes scale-out {
+  0% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0); } }
+@keyframes scale-out {
+  0% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0); } }
+@-webkit-keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
+    /* IE9 */
+    transform: translate(0, -100%);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0);
+    /* IE9 */
+    transform: translate(0, 0);
+    zoom: 1; } }
+@-moz-keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
+    /* IE9 */
+    transform: translate(0, -100%);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0);
+    /* IE9 */
+    transform: translate(0, 0);
+    zoom: 1; } }
+@keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
+    /* IE9 */
+    transform: translate(0, -100%);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0);
+    /* IE9 */
+    transform: translate(0, 0);
+    zoom: 1; } }
+@-webkit-keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
+    /* IE9 */
+    transform: translate(-40px, 0);
+    zoom: 1; }
+  33.3% {
+    -webkit-transform: translate(20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
+    /* IE9 */
+    transform: translate(20px, 0);
+    zoom: 1; }
+  49.95% {
+    -webkit-transform: translate(-20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
+    /* IE9 */
+    transform: translate(-20px, 0);
+    zoom: 1; }
+  66.6% {
+    -webkit-transform: translate(10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
+    /* IE9 */
+    transform: translate(10px, 0);
+    zoom: 1; }
+  83.25% {
+    -webkit-transform: translate(-10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
+    /* IE9 */
+    transform: translate(-10px, 0);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0px);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
+    /* IE9 */
+    transform: translate(0, 0px);
+    zoom: 1; } }
+@-moz-keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
+    /* IE9 */
+    transform: translate(-40px, 0);
+    zoom: 1; }
+  33.3% {
+    -webkit-transform: translate(20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
+    /* IE9 */
+    transform: translate(20px, 0);
+    zoom: 1; }
+  49.95% {
+    -webkit-transform: translate(-20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
+    /* IE9 */
+    transform: translate(-20px, 0);
+    zoom: 1; }
+  66.6% {
+    -webkit-transform: translate(10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
+    /* IE9 */
+    transform: translate(10px, 0);
+    zoom: 1; }
+  83.25% {
+    -webkit-transform: translate(-10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
+    /* IE9 */
+    transform: translate(-10px, 0);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0px);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
+    /* IE9 */
+    transform: translate(0, 0px);
+    zoom: 1; } }
+@keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
+    /* IE9 */
+    transform: translate(-40px, 0);
+    zoom: 1; }
+  33.3% {
+    -webkit-transform: translate(20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
+    /* IE9 */
+    transform: translate(20px, 0);
+    zoom: 1; }
+  49.95% {
+    -webkit-transform: translate(-20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
+    /* IE9 */
+    transform: translate(-20px, 0);
+    zoom: 1; }
+  66.6% {
+    -webkit-transform: translate(10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
+    /* IE9 */
+    transform: translate(10px, 0);
+    zoom: 1; }
+  83.25% {
+    -webkit-transform: translate(-10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
+    /* IE9 */
+    transform: translate(-10px, 0);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0px);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
+    /* IE9 */
+    transform: translate(0, 0px);
+    zoom: 1; } }
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@-moz-keyframes pulse {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@keyframes pulse {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@-webkit-keyframes pulse-visit-quebec {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
+    /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
+    /* Opera 10.5 */
+    transform: scale(1) translate(-50%, -50%); } }
+@-moz-keyframes pulse-visit-quebec {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
+    /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
+    /* Opera 10.5 */
+    transform: scale(1) translate(-50%, -50%); } }
+@keyframes pulse-visit-quebec {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
+    /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
+    /* Opera 10.5 */
+    transform: scale(1) translate(-50%, -50%); } }
+/*******************************************************
+*   GENERAL STYLING
+*******************************************************/
+#layout-header, #layout-footer, .heading, .sidebar-content, nav.tabs, .region-bottom-actions, .region-bottom, #panels-ipe-tray, .title-page, .region-footer-overlay {
+  display: none !important; }
+
+html {
+  height: 100%; }
+
+body {
+  padding-bottom: 0;
+  @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+  font-size: 16px !important;
+  font-family: -apple-system, "Roboto", Helvetica, Arial, sans-serif !important; }
+  body h1, body h2, body h3, body h4, body h5, body h6 {
+    font-family: -apple-system, "Roboto", Helvetica, Arial, sans-serif !important; }
+
+#layout-content .page-wrapper .content-wrapper .main-content {
+  border: 0;
+  padding-bottom: 0; }
+#layout-content .page-wrapper {
+  margin: 0; }
+
+/*******************************************************
+*   RESERVER UN STATIONNEMENT
+*******************************************************/
+#planifier-son-vol-reserver-un-stationnement,
+#plan-a-flight-parking-reservation {
+  background-image: url("../img/bg-block-parking.jpg");
+  background-size: cover; }
+  #planifier-son-vol-reserver-un-stationnement .block-simple-title-content,
+  #plan-a-flight-parking-reservation .block-simple-title-content {
+    display: none; }
+  #planifier-son-vol-reserver-un-stationnement .block-parking-booker, #planifier-son-vol-reserver-un-stationnement #layout-main,
+  #plan-a-flight-parking-reservation .block-parking-booker,
+  #plan-a-flight-parking-reservation #layout-main {
+    background: none; }
+  #planifier-son-vol-reserver-un-stationnement .panels-one-three-one .row, #planifier-son-vol-reserver-un-stationnement .panels-one-three-one .bottom,
+  #plan-a-flight-parking-reservation .panels-one-three-one .row,
+  #plan-a-flight-parking-reservation .panels-one-three-one .bottom {
+    display: none; }
+  #planifier-son-vol-reserver-un-stationnement .block-parking-booker,
+  #plan-a-flight-parking-reservation .block-parking-booker {
+    padding: 30px; }
+  #planifier-son-vol-reserver-un-stationnement .block-reminders .form-block-container > .form-group.col-full, #planifier-son-vol-reserver-un-stationnement .block-parking-booker .form-block-container > .form-group.col-full,
+  #plan-a-flight-parking-reservation .block-reminders .form-block-container > .form-group.col-full,
+  #plan-a-flight-parking-reservation .block-parking-booker .form-block-container > .form-group.col-full {
+    padding-right: 139px; }
+
+.mobile-zoom {
+  width: 100% !important; }
+
+/*******************************************************
+*   MODIFIER UN STATIONNEMENT
+*******************************************************/
+#planifier-son-vol-modifier-un-stationnement .region-content,
+#plan-a-flight-parking-modification .region-content {
+  padding: 30px 10px; }
+
+/*******************************************************
+*   ALERTE SMS
+*******************************************************/
+#vols-et-destinations-alerte-sms,
+#flights-and-destinations-text-reminders {
+  background-image: url("../img/bg-block-reminder.jpg");
+  background-size: cover; }
+  #vols-et-destinations-alerte-sms .block-reminders, #vols-et-destinations-alerte-sms #layout-main,
+  #flights-and-destinations-text-reminders .block-reminders,
+  #flights-and-destinations-text-reminders #layout-main {
+    background: none; }
+  #vols-et-destinations-alerte-sms .block-reminders,
+  #flights-and-destinations-text-reminders .block-reminders {
+    padding: 30px; }
+  #vols-et-destinations-alerte-sms .block-reminders .form-block-container > .form-group.col-normal.col-flight-type, #vols-et-destinations-alerte-sms .block-parking-booker .form-block-container > .form-group.col-normal.col-flight-type,
+  #flights-and-destinations-text-reminders .block-reminders .form-block-container > .form-group.col-normal.col-flight-type,
+  #flights-and-destinations-text-reminders .block-parking-booker .form-block-container > .form-group.col-normal.col-flight-type {
+    padding-right: 132px; }
+  #vols-et-destinations-alerte-sms .row.second,
+  #flights-and-destinations-text-reminders .row.second {
+    display: none; }
+  #vols-et-destinations-alerte-sms #reminders-form-select .form-group,
+  #flights-and-destinations-text-reminders #reminders-form-select .form-group {
+    float: none; }
+  #vols-et-destinations-alerte-sms #reminders-form-select .form-group .form-item,
+  #flights-and-destinations-text-reminders #reminders-form-select .form-group .form-item {
+    padding: 0; }
+  #vols-et-destinations-alerte-sms #reminders-form-select #edit-col-submit,
+  #flights-and-destinations-text-reminders #reminders-form-select #edit-col-submit {
+    margin-top: 35px; }
+  #vols-et-destinations-alerte-sms .block-bordered, #vols-et-destinations-alerte-sms .block-electric-car,
+  #flights-and-destinations-text-reminders .block-bordered,
+  #flights-and-destinations-text-reminders .block-electric-car {
+    display: none; }
+
+/*******************************************************
+*   PAGES
+*******************************************************/
+/*placer l'anglais*/
+#app-mobile-service-demballage-de-valises tr td:last-child,
+#app-mobile-secure-wrap-baggage-protection tr td:last-child {
+  text-align: right !important; }
+
+#app-mobile-aide-et-support .region-content,
+#app-mobile-aide-et-support-en .region-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  #app-mobile-aide-et-support .region-content #block-views-block-questions-block-1,
+  #app-mobile-aide-et-support-en .region-content #block-views-block-questions-block-1 {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -moz-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+    -moz-box-flex: 1;
+    -moz-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%; }
+  #app-mobile-aide-et-support .region-content article,
+  #app-mobile-aide-et-support-en .region-content article {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -moz-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+    -moz-box-flex: 1;
+    -moz-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%; }
+
+.field--name-body > h2 {
+  margin-top: 0px; }
+
+.view-tiles a {
+  display: inline-block;
+  line-height: 40px;
+  text-decoration: none !important;
+  font-size: 16px !important;
+  color: #0eadff !important;
+  margin-right: 20px; }
+
+[class*="app-mobile"] .zoomHolderWrapper {
+  margin: 0; }
+[class*="app-mobile"] .zoomHolderWrapperInner {
+  margin: 0 -30px; }
+[class*="app-mobile"] .zoomHolder {
+  width: 100%;
+  height: calc(100vh - 60px); }
+[class*="app-mobile"] .main-content p a {
+  text-decoration: none !important;
+  color: #0eadff; }
+  [class*="app-mobile"] .main-content p a.btn {
+    color: white; }
+[class*="app-mobile"] .wrapperInner {
+  margin: -30px -30px 25px; }
+[class*="app-mobile"] .region-content {
+  padding: 30px !important; }
+  [class*="app-mobile"] .region-content .page-mobile .nav-tabs {
+    max-width: 100%;
+    padding-left: 0;
+    margin: 0; }
+    [class*="app-mobile"] .region-content .page-mobile .nav-tabs li {
+      margin-bottom: 0; }
+[class*="app-mobile"] .app-show-more {
+  background-color: white;
+  padding: 10px 50px 40px !important;
+  margin: 0; }
+  [class*="app-mobile"] .app-show-more ul li {
+    font-size: 13px !important; }
+  [class*="app-mobile"] .app-show-more p {
+    font-size: 14px !important; }
+  [class*="app-mobile"] .app-show-more > a {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 0px 0 20px; }
+  [class*="app-mobile"] .app-show-more .collapse {
+    padding-bottom: 30px; }
+[class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .swiper-container:last-child {
+  margin-bottom: 0; }
+[class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .region-content {
+  padding-bottom: 0 !important; }
+[class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group {
+  margin: 0 -30px; }
+  [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group.look-like-panel {
+    max-width: initial;
+    padding: 0 !important; }
+    [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group.look-like-panel li {
+      list-style: none !important; }
+    [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group.look-like-panel .panel-title a:before, [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group.look-like-panel .panel-title .look-like-panel-a:before {
+      background-image: url(../svg/extern-link-app-mobile.svg);
+      height: 19px;
+      width: 18px;
+      margin-top: -9px;
+      right: 30px;
+      -webkit-transform: rotate(0deg);
+      /* Saf3.1+, Chrome */
+      -moz-transform: rotate(0deg);
+      /* FF3.5+ */
+      -ms-transform: rotate(0deg);
+      /* IE9 */
+      transform: rotate(0deg);
+      -webkit-transform-origin: 50% 50%;
+      -moz-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      /* IE6-IE9
+      	Can't implement rotate for IE, no COS functions available in SASS
+      	Example : 7.5deg
+      	filter: progid:DXImageTransform.Microsoft.Matrix(
+      	M11=0.9914448613738104, M12=-0.13052619222005157,M21=0.13052619222005157, M22=0.9914448613738104, sizingMethod='auto expand');
+      */
+      zoom: 1; }
+  [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title {
+    display: table;
+    width: 100%;
+    min-height: 72px; }
+    [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title span {
+      text-align: right;
+      font-size: 18px !important;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      right: 75px;
+      -webkit-transform: translate(0, -50%);
+      /* Saf3.1+, Chrome */
+      -moz-transform: translate(0, -50%);
+      /* FF3.5+ */
+      -ms-transform: translate(0, -50%);
+      /* IE9 */
+      transform: translate(0, -50%);
+      zoom: 1; }
+    [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title a, [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title .look-like-panel-a {
+      color: #0a0a0b;
+      background-color: white;
+      border-bottom: 0;
+      border-top: 1px solid #e5e5e5;
+      padding: 0 30px;
+      display: table-cell;
+      vertical-align: middle;
+      position: relative; }
+      [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title a:before, [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title .look-like-panel-a:before {
+        background-image: url(../svg/arrow-app-mobile.svg);
+        height: 12px;
+        width: 19px;
+        margin-top: -5px;
+        right: 30px; }
+    [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title .look-like-panel-a span {
+      right: 30px; }
+[class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .swiper-container:last-child {
+  margin-bottom: 0; }
+[class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .region-content {
+  padding-bottom: 0 !important; }
+[class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .panel-group .panel-title a {
+  border-bottom: 0;
+  border-top: 0;
+  line-height: 19px;
+  position: relative;
+  border-top: 1px solid #eee !important;
+  color: #0a0a0b !important;
+  font-weight: bold;
+  background-color: #f7f7f7 !important;
+  border-top: 0;
+  min-height: 0;
+  height: auto !important;
+  font-size: 14px !important;
+  padding: 10px 10px 10px 30px !important;
+  text-align: left !important; }
+  [class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .panel-group .panel-title a:before {
+    background-image: url(../svg/arrow-app-mobile.svg);
+    height: 12px;
+    width: 19px;
+    margin-top: -5px;
+    right: 30px; }
+[class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .panel-group .panel-body table {
+  border-bottom: 0 !important; }
+[class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .panel-group .panel-body td {
+  position: static; }
+[class*="app-mobile"][id*="app-mobile-plan-de-la-C3-A9rogare-carte"] .region-content {
+  padding: 0 !important; }
+  [class*="app-mobile"][id*="app-mobile-plan-de-la-C3-A9rogare-carte"] .region-content .nav-tabs li {
+    max-width: 200px;
+    text-align: center;
+    width: 50%; }
+[class*="app-mobile"][id*="app-mobile-plan-de-la-C3-A9rogare-carte"] .fullscreenToggle {
+  display: none; }
+[class*="app-mobile"][id*="se-pr-C3-A9parer--C3-A0-linspection"] .region-content {
+  padding: 0 30px !important; }
+[class*="app-mobile"][id*="se-pr-C3-A9parer--C3-A0-linspection"] .table-wrapper {
+  margin-top: 0;
+  box-shadow: none; }
+  [class*="app-mobile"][id*="se-pr-C3-A9parer--C3-A0-linspection"] .table-wrapper td {
+    padding: 10px 15px 10px 30px !important; }
+    [class*="app-mobile"][id*="se-pr-C3-A9parer--C3-A0-linspection"] .table-wrapper td:last-child {
+      text-align: left !important;
+      padding: 10px 30px 10px 15px !important; }
+  [class*="app-mobile"][id*="se-pr-C3-A9parer--C3-A0-linspection"] .table-wrapper td:first-child {
+    text-align: center !important; }
+[class*="app-mobile"] .wrapper-map {
+  margin: -30px -30px 25px; }
+[class*="app-mobile"] #map {
+  width: 100%;
+  height: 250px; }
+[class*="app-mobile"] a.btn {
+  text-decoration: none; }
+[class*="app-mobile"] blockquote {
+  color: white;
+  background-color: #0054ff;
+  padding: 15px 40px 15px 77px;
+  margin: -30px -30px 30px;
+  position: relative;
+  font-size: 16px !important;
+  line-height: 24px;
+  min-height: 90px;
+  display: table;
+  border-left: 0;
+  width: calc(100% + 60px); }
+  [class*="app-mobile"] blockquote p {
+    display: table-cell;
+    vertical-align: middle; }
+  [class*="app-mobile"] blockquote:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 36px;
+    top: 50%;
+    left: 30px;
+    background-image: url("../svg/marker-app.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transform: translate(0, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -50%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -50%);
+    /* IE9 */
+    transform: translate(0, -50%);
+    zoom: 1; }
+[class*="app-mobile"] blockquote + .table-wrapper {
+  margin-top: -15px; }
+[class*="app-mobile"] h2 {
+  text-align: center;
+  font-size: 22px;
+  font-size: 2.2rem;
+  line-height: 25px;
+  margin: 35px 0 25px; }
+[class*="app-mobile"] h3 {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: bold; }
+[class*="app-mobile"] .swiper-container, [class*="app-mobile"] .fixe-list {
+  margin: 0 -30px 25px;
+  opacity: 0;
+  padding: 20px 20px 20px 20px;
+  background-color: #e5e5e5; }
+  [class*="app-mobile"] .swiper-container.fixe-list, [class*="app-mobile"] .fixe-list.fixe-list {
+    opacity: 1; }
+    [class*="app-mobile"] .swiper-container.fixe-list ul li, [class*="app-mobile"] .fixe-list.fixe-list ul li {
+      opacity: 1; }
+  [class*="app-mobile"] .swiper-container > p, [class*="app-mobile"] .fixe-list > p {
+    margin-top: 20px;
+    font-size: 12px !important;
+    color: #908f8f; }
+  [class*="app-mobile"] .swiper-container.swiper-location li, [class*="app-mobile"] .fixe-list.swiper-location li {
+    min-height: 170px; }
+  [class*="app-mobile"] .swiper-container.is-init, [class*="app-mobile"] .fixe-list.is-init {
+    opacity: 1; }
+  [class*="app-mobile"] .swiper-container ul, [class*="app-mobile"] .fixe-list ul {
+    padding-left: 0;
+    margin-bottom: 0; }
+    [class*="app-mobile"] .swiper-container ul li, [class*="app-mobile"] .fixe-list ul li {
+      list-style: none;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      display: block;
+      text-align: center;
+      opacity: 0.5;
+      min-height: 125px;
+      height: 100%;
+      position: relative;
+      padding: 35px 15px 20px !important; }
+      [class*="app-mobile"] .swiper-container ul li:before, [class*="app-mobile"] .swiper-container ul li:after, [class*="app-mobile"] .fixe-list ul li:before, [class*="app-mobile"] .fixe-list ul li:after {
+        content: normal; }
+      [class*="app-mobile"] .swiper-container ul li.swiper-slide-active, [class*="app-mobile"] .fixe-list ul li.swiper-slide-active {
+        opacity: 1; }
+      [class*="app-mobile"] .swiper-container ul li h4, [class*="app-mobile"] .fixe-list ul li h4 {
+        font-size: 18px !important;
+        font-weight: bold;
+        margin-bottom: 0px; }
+  [class*="app-mobile"] .swiper-container a, [class*="app-mobile"] .fixe-list a {
+    display: inline-block;
+    margin: 0 10px;
+    line-height: 30px;
+    font-size: 18px !important;
+    padding-top: 6px;
+    color: #0eadff; }
+[class*="app-mobile"] ul li {
+  font-size: 14px !important;
+  list-style: disc !important;
+  padding-left: 0 !important; }
+  [class*="app-mobile"] ul li:before, [class*="app-mobile"] ul li:after {
+    content: normal !important; }
+  [class*="app-mobile"] ul li a {
+    color: #0eadff; }
+[class*="app-mobile"] .table-wrapper {
+  margin: 25px -30px 20px;
+  margin-bottom: 30px; }
+[class*="app-mobile"] .header-table {
+  text-align: center;
+  padding: 15px 25px;
+  font-weight: bold;
+  color: #0a0a0b !important;
+  background-color: white !important;
+  text-align: center !important;
+  font-size: 18px !important;
+  text-transform: none; }
+  [class*="app-mobile"] .header-table img {
+    max-height: 55px; }
+[class*="app-mobile"] table {
+  width: 100% !important;
+  margin: 0 !important;
+  max-width: auto;
+  border-bottom: 1px solid #eee !important;
+  /* Hide table headers (but not display: none;, for accessibility) */ }
+  [class*="app-mobile"] table thead tr th {
+    font-weight: bold;
+    color: #0a0a0b !important;
+    background-color: white !important;
+    text-align: center !important;
+    font-size: 18px !important;
+    text-transform: none;
+    height: auto !important;
+    min-height: 0;
+    padding: 10px 25px;
+    line-height: 24px; }
+    [class*="app-mobile"] table thead tr th span {
+      display: block;
+      font-size: 14px !important; }
+  [class*="app-mobile"] table tbody tr th {
+    color: #0a0a0b !important;
+    font-weight: bold;
+    background-color: #f7f7f7 !important;
+    text-align: right !important;
+    padding: 10px 10px !important;
+    min-height: 0;
+    border-top: 1px solid #eee !important;
+    height: auto !important;
+    font-size: 14px !important; }
+    [class*="app-mobile"] table tbody tr th:last-child {
+      padding: 10px 30px 10px 10px !important; }
+    [class*="app-mobile"] table tbody tr th:first-child {
+      padding: 10px 10px 10px 30px !important;
+      text-align: left !important; }
+  [class*="app-mobile"] table td {
+    color: #333333 !important;
+    padding: 10px 10px !important;
+    /* Behave  like a "row" */
+    background-color: white;
+    border: none;
+    border-top: 1px solid #eee !important;
+    height: auto !important;
+    min-height: 0;
+    font-size: 14px !important;
+    position: relative;
+    text-align: right !important; }
+    [class*="app-mobile"] table td:first-child {
+      text-align: left !important; }
+    [class*="app-mobile"] table td:first-child {
+      padding: 10px 10px 10px 30px !important; }
+    [class*="app-mobile"] table td:last-child {
+      padding: 10px 30px 10px 10px !important; }
+    [class*="app-mobile"] table td strong {
+      font-weight: normal; }
+[class*="app-mobile"][class*="salon-vip"] tr td:first-child {
+  min-width: 140px; }
+[class*="app-mobile"][class*="salon-vip"] tr td:last-child {
+  min-width: 300px; }
+[class*="app-mobile"][class*="salon-vip"] tr td:nth-child(2) {
+  min-width: 300px; }
+[class*="app-mobile"][class*="salon-vip"] tr td:nth-child(5) {
+  min-width: 150px; }
+[class*="app-mobile"] .parking-inparq,
+[class*="app-mobile"] .parking-proxiparq,
+[class*="app-mobile"] .parking-cellparq {
+  padding: 30px 20px;
+  color: white;
+  margin: 0 -30px;
+  margin-bottom: 30px; }
+  [class*="app-mobile"] .parking-inparq span,
+  [class*="app-mobile"] .parking-proxiparq span,
+  [class*="app-mobile"] .parking-cellparq span {
+    margin: 0 auto 20px;
+    display: block; }
+[class*="app-mobile"] .parking-inparq {
+  background-color: #8dc63f;
+  margin-bottom: 0; }
+[class*="app-mobile"] .parking-cellparq {
+  background-color: #004b91;
+  margin-top: -30px; }
+[class*="app-mobile"] .parking-proxiparq {
+  background-color: #139747; }
+[class*="app-mobile"][id*="app-mobile-bagages-perdus"] .view-tiles {
+  margin: 0 -30px !important; }
+[class*="app-mobile"][id*="app-mobile-bagages-perdus"] .field--name-body {
+  max-width: 100% !important; }
+[class*="app-mobile"][id*="app-mobile-aide-et-support"] {
+  min-height: 100%;
+  background-color: #1f1f1f;
+  color: white !important; }
+  [class*="app-mobile"][id*="app-mobile-aide-et-support"] .field--name-body {
+    max-width: 100% !important; }
+  [class*="app-mobile"][id*="app-mobile-aide-et-support"] .region-content {
+    background-color: #1f1f1f;
+    padding: 0 !important; }
+    [class*="app-mobile"][id*="app-mobile-aide-et-support"] .region-content h2 {
+      font-size: 32px !important;
+      text-align: center; }
+  [class*="app-mobile"][id*="app-mobile-aide-et-support"] .btn-pulse {
+    margin: 18px auto;
+    display: none; }
+  [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 {
+    border-top: 1px solid #0f0f0f; }
+    [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .block-title {
+      margin: 17px 0 17px; }
+    [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel {
+      font-size: 16px !important;
+      background-color: #2a2a2a !important;
+      color: white !important;
+      border-bottom: 1px solid #0f0f0f;
+      font-weight: normal !important; }
+      [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-title-content {
+        padding: 10px 85px 10px 30px; }
+      [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-title h2 {
+        font-size: 16px !important;
+        font-weight: normal !important;
+        text-align: left; }
+      [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-collapse {
+        color: #cccccc !important;
+        border-bottom: 0;
+        box-shadow: none; }
+        [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-collapse .views-field-body {
+          padding: 10px 30px 18px 30px; }
+          [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-collapse .views-field-body a {
+            color: #cccccc; }
+    [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-title a {
+      font-size: 16px !important;
+      background-color: #2a2a2a !important;
+      color: white !important;
+      height: auto; }
+      [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-title a .icon {
+        right: 30px;
+        width: 19px;
+        height: 12px; }
+        [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-title a .icon path {
+          fill: #0eadff; }
+[class*="app-mobile"] .btn-pulse {
+  height: 140px;
+  width: 140px;
+  display: block;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold; }
+  [class*="app-mobile"] .btn-pulse > span {
+    width: 100%;
+    color: white;
+    position: absolute;
+    display: inline-block;
+    font-size: 24px;
+    text-align: center;
+    top: 50%;
+    z-index: 10;
+    left: 0;
+    line-height: 22px;
+    -webkit-transform: translate(0, -49%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -49%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -49%);
+    /* IE9 */
+    transform: translate(0, -49%);
+    zoom: 1; }
+    [class*="app-mobile"] .btn-pulse > span span {
+      display: block;
+      font-size: 17px; }
+  [class*="app-mobile"] .btn-pulse:before {
+    position: absolute;
+    z-index: 1;
+    content: '';
+    display: block;
+    border-radius: 50%;
+    background-color: rgba(0, 85, 255, 0.2);
+    width: 100%;
+    height: 100%; }
+  [class*="app-mobile"] .btn-pulse:after {
+    z-index: 2;
+    position: absolute;
+    content: '';
+    display: block;
+    border-radius: 50%;
+    background-color: #0055ff;
+    width: 112px;
+    height: 112px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: translate(-50%, -50%);
+    /* IE9 */
+    transform: translate(-50%, -50%);
+    zoom: 1; }
+[class*="app-mobile"] .btn-act-like {
+  display: block;
+  line-height: 40px; }
+
+.loading-extern-link {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: white;
+  z-index: 20; }
+  .loading-extern-link:before {
+    content: '';
+    position: absolute;
+    display: block;
+    background-image: url("../img/pages/app-mobile/ajax-loader.gif");
+    width: 34px;
+    height: 34px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: translate(-50%, -50%);
+    /* IE9 */
+    transform: translate(-50%, -50%);
+    zoom: 1; }
+
+/*# sourceMappingURL=webview.css.map */

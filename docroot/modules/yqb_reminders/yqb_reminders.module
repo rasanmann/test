@@ -1,0 +1,197 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_reminders.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+use Drupal\yqb_reminders\general\Reminders;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_reminders_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_reminders module.
+    case 'help.page.yqb_reminders':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Reminders') . '</p>';
+      return $output;
+
+    default:
+  }
+  
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_reminders_theme() {
+  $theme = [];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * We implement hook_cron() to do "background" processing. It gets called every
+ * time the Drupal cron runs. We then decide what has to happen in response.
+ */
+function yqb_reminders_cron() {
+  // We access our configuration.
+  $cron_config = \Drupal::configFactory()->getEditable('yqb_reminders.cron');
+
+  // Default to an hourly interval.
+  $interval = $cron_config->get('interval');
+  $interval = !empty($interval) ? $interval : 60;
+
+  // We usually don't want to act every time cron runs (which could be every
+  // minute) so keep a time for the next run in a variable.
+  $next_execution = $cron_config->get('next_execution');
+  $next_execution = !empty($next_execution) ? $next_execution : 0;
+
+  if (REQUEST_TIME >= $next_execution) {
+    /**
+     * Delete all completed old reminders
+     */ 
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'reminder')
+      ->condition('field_completed', true, '=')
+      ->condition('changed', strtotime('-30 minutes'), '<=');
+    
+    $result = $query->execute();
+    
+    $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+    $nodes = $node_storage->loadMultiple($result);
+    $count = sizeof($nodes);
+    
+    if(!empty($nodes)) {
+      $node_storage->delete($nodes);
+    }
+
+    
+    /**
+     * Mark as archived all user_flights that are in the past
+     */ 
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'user_flight')
+      ->condition('field_archived', false);
+    
+    $result = $query->execute();
+    
+    $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+    $nodes = $node_storage->loadMultiple($result);
+    $userFlightCount = 0;
+    
+    if(!empty($nodes)) {
+      foreach($nodes as $flight){
+        $flightdate = strtotime($flight->field_flight_date->value.' '.$flight->field_flight_time->value.':00');
+        
+        // Archive flights with completed dates that is 2 hours in the past or flight date that is 2 hours in the past but webhook wasnt received
+        if((!empty($flight->field_completed_time->value) && time() >= strtotime('+2 hours', $flight->field_completed_time->value)) || (time() >= strtotime('+2 hours', $flightdate))){
+          $node = Node::load($flight->id());
+          $node->set('field_archived', true);
+          $node->save();
+          $userFlightCount++;
+        }
+      }
+    }
+    
+    $message = sprintf('Deleted %d completed reminders and archived %d user_flights', $count, $userFlightCount);
+    \Drupal::logger('yqb_reminders')->notice($message);
+    echo $message . PHP_EOL;
+
+    /**
+     * Notify users that don't have a parking and their flight is coming soon
+     */
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'user_flight')
+      ->condition('field_state', 'travel')
+      ->condition('field_notified_parking', true, '<>')
+      ->condition('field_flight_date', date('Y-m-d', strtotime('-5 days')), '>=')
+      ->condition('field_flight_date', date('Y-m-d'), '<=')
+      ->condition('field_archived', false);
+    
+    $results = $query->execute(); 
+    
+    $msgSent = 0;
+    if(!empty($results)) {
+      $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+      $nodes = $node_storage->loadMultiple($results);
+      
+      $notified = [];
+      foreach ($nodes as $userFlight) {
+        $user  = $userFlight->field_user->first()->get('entity')->getTarget()->getValue();
+        
+        // Cannot be notified twice on same cron
+        if(in_array($user->id(), $notified)) continue;
+        
+        // Find user's parking that intersects the flight
+        $query = \Drupal::entityQuery('node')
+           ->condition('type', 'parking_booking')
+           ->condition('field_arrival', $userFlight->field_flight_date->value, '<=')
+           ->condition('field_departure', $userFlight->field_flight_date->value, '>=')
+           ->condition('field_user', $user->id())
+        ;
+        
+        $results = $query->execute();
+         
+        if(empty($results)) {
+          // Add user to notified array, cannot be notified twice at the same time
+          $notified[] = $user->id();
+          
+          // Prepare message
+          if($userFlight->field_flight_type->value == 'departure'){
+            $destinationNode = $userFlight->field_destination_airport->first()->get('entity')->getTarget()->getValue();
+            $city = $destinationNode->field_city->value;
+            
+            $msg = \Drupal::translation()->translate("Réservez un stationnement pour simplifier votre passage à l’aéroport lors de votre voyage à @city le @date.",
+              ['@city' => $city, '@date' => $userFlight->field_flight_date->value],
+              ['langcode' => $user->field_language->value]
+            );
+          }else{
+            $originNode = $userFlight->field_origin_airport->first()->get('entity')->getTarget()->getValue();
+            $city = $originNode->field_city->value;
+            
+            $msg = \Drupal::translation()->translate("Réservez un stationnement pour simplifier votre passage à l’aéroport lors de votre retour de @city le @date.",
+              ['@city' => $city, '@date' => $userFlight->field_flight_date->value],
+              ['langcode' => $user->field_language->value]
+            );
+          }
+          
+          // Update node
+          $node = Node::load($userFlight->id());
+          $node->set('field_notified_parking', true);
+          $node->save();
+          
+          $msgSent++;
+          
+          $data = [
+            'redirection' => 'parking',
+            'state' => $userFlight->field_state->value
+          ];
+          
+          // Send push notification
+          $Reminders = new Reminders();
+          $Reminders->sendPushNotifications($user, $msg, $data);
+        }
+      }
+    }
+    
+    $message = sprintf('Sent %d planification SMS', $msgSent);
+    \Drupal::logger('yqb_reminders')->notice($message);
+    echo $message . PHP_EOL;
+    
+    if (\Drupal::state()->get('yqb_reminders_show_status_message')) {
+      drupal_set_message(t('yqb_reminders executed at %time', ['%time' => date_iso8601(REQUEST_TIME)]));
+      \Drupal::state()->set('yqb_reminders_show_status_message', FALSE);
+    }
+
+    $cron_config->set('next_execution', REQUEST_TIME + $interval)->save();
+  }
+}

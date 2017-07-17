@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a branding block.
+ */
+#}
+{% block content %}
+    <ul class="menu nav navbar-nav">
+        <li>
+            <span data-title="{{ forecast }}">
+                {{ "Québec, QC"|t }}
+
+                {% if sky == "sunny" %}
+                    <span class="icon icon-sunny" data-grunticon-embed></span>
+                {% elseif sky == "clear" %}
+                    <span class="icon icon-clear" data-grunticon-embed></span>
+                {% elseif sky == "alternate" %}
+                    <span class="icon icon-day-cloud" data-grunticon-embed></span>
+                {% elseif sky == "alternate-night" %}
+                    <span class="icon icon-night-cloud" data-grunticon-embed></span>
+                {% elseif sky == "rainy" %}
+                    <span class="icon icon-rain" data-grunticon-embed></span>
+                {% elseif sky == "snowy" %}
+                    <span class="icon icon-snow" data-grunticon-embed></span>
+                {% elseif sky == "cloudy" %}
+                    <span class="icon icon-cloud" data-grunticon-embed></span>
+                {% else %}
+                    <span class="icon icon-cloud" data-grunticon-embed></span>
+                {% endif %}
+
+                {{ temperature }}&deg;C
+            </span>
+        </li>
+    </ul>
+{% endblock %}

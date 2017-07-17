@@ -1,0 +1,55 @@
+yqb_bills.admin_display:
+  path: '/admin/config/commerce/yqb_bills'
+  defaults:
+    _form: 'Drupal\yqb_bills\Form\BillsSettingsForm'
+    _title: 'Bills settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+yqb_bills.fr_index:
+  path: '/services-aeroportuaires/paiement-de-facture'
+  defaults:
+    _controller: '\Drupal\yqb_bills\Controller\BillsFormController::index'
+    _title: 'Paiement de facture'
+  requirements:
+    _permission: 'access content'
+
+yqb_bills.fr.review:
+  path: '/services-aeroportuaires/paiement-de-facture/revision'
+  defaults:
+    _form: '\Drupal\yqb_bills\Form\BillsReviewForm'
+    _title: 'Révision'
+  requirements:
+    _permission: 'access content'
+
+yqb_bills.fr.confirmation:
+  path: '/services-aeroportuaires/paiement-de-facture/confirmation'
+  defaults:
+    _form: '\Drupal\yqb_bills\Form\BillsConfirmationForm'
+    _title: 'Confirmation'
+  requirements:
+    _permission: 'access content'
+
+yqb_bills.en.index:
+  path: '/airport-services/pay-bills'
+  defaults:
+    _controller: '\Drupal\yqb_bills\Controller\BillsFormController::index'
+    _title: 'Pay bills'
+  requirements:
+    _permission: 'access content'
+
+yqb_bills.en_review:
+  path: '/airport-services/pay-bills/review'
+  defaults:
+    _form: '\Drupal\yqb_bills\Form\BillsReviewForm'
+    _title: 'Review'
+  requirements:
+    _permission: 'access content'
+
+yqb_bills.en.confirmation:
+  path: '/airport-services/pay-bills/confirmation'
+  defaults:
+    _form: '\Drupal\yqb_bills\Form\BillsConfirmationForm'
+    _title: 'Confirmation'
+  requirements:
+    _permission: 'access content'

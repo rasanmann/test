@@ -1,0 +1,15 @@
+name: Migrate YQB
+type: module
+description: Content migration from various sources.
+core: 8.x
+package: YQB
+version: '0.2'
+dependencies:
+  - data_exchange_layer
+  - migrate_source_csv
+  - migrate_plus
+  - migrate_tools
+config_devel:
+ install:
+   - migrate_plus.migration.arrivals
+   - migrate_plus.migration.departures

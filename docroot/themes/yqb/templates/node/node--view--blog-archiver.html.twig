@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Article override
+ */
+#}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    'article-wrapper'
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+    <div class="views-row">
+      <div class="views-field views-field-title">
+        <span class="field-content">
+            {{ label }}
+        </span>
+      </div>
+      
+      <div class="views-field views-field-created">
+      <span class="field-content">
+        <span>{{ node.getCreatedTime()|date("d") }}</span>
+        {{ node.getCreatedTime()|date("F")|compact_month }}
+      </span>
+      </div>
+      <div{{ content_attributes.addClass('views-field views-field-body') }}>
+        <div class="field-content">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+</div>

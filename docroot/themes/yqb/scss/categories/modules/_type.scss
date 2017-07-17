@@ -1,0 +1,118 @@
+//
+// Typography
+// --------------------------------------------------
+
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font-family-base;
+  font-weight: $regular;
+  line-height: $headings-line-height;
+  color: $headings-color;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: $headings-small-color;
+  }
+}
+
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: ($line-height-computed / 2);
+  margin-bottom: ($line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 65%;
+  }
+}
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+
+}
+
+h1, .h1 { font-size: $font-size-h1; }
+h2, .h2 { font-size: $font-size-h2; }
+h3, .h3 { font-size: $font-size-h3; }
+h4, .h4 { font-size: $font-size-h4; }
+h5, .h5 { font-size: $font-size-h5; }
+h6, .h6 { font-size: $font-size-h6; }
+
+
+h1 {
+  margin: 0;
+  @include font-size(36);
+  line-height: 40px;
+  margin-bottom: 35px;
+  @include responsive(1300px) {
+    @include font-size(30);
+    line-height: 34px;
+  }
+  @include responsive($screen-sm) {
+    @include font-size(28);
+    line-height: 32px;
+  }
+}
+
+h2 {
+  margin: 0;
+  font-weight: $bold;
+  @include font-size(27);
+  line-height: 32px;
+  margin-bottom: 20px;
+  @include responsive(1300px) {
+    @include font-size(24);
+    line-height: 30px;
+  }
+  @include responsive($screen-sm) {
+    @include font-size(21);
+    line-height: 26px;
+  }
+  
+  
+}
+
+h3 {
+
+  margin: 0;
+  @include font-size(23);
+  font-weight: $regular;
+  margin-bottom: 20px;
+  @include responsive(1300px) {
+    @include font-size(20);
+  }
+  @include responsive($screen-sm) {
+    @include font-size(18);
+  }
+}
+
+p {
+  margin: 0 0 20px;
+}
+
+
+.page-header {
+  padding: 39px 40px;
+  margin: 0 -40px;
+  border-bottom: 1px solid $gray-light;
+  margin-bottom: 0;
+  @include title-content();
+  font-weight: $regular;
+  @include responsive(1300px){
+    padding:33px 40px;
+  }
+  @include responsive(950px){
+    margin: 0 -20px;
+    padding:25px 20px;
+  }
+}

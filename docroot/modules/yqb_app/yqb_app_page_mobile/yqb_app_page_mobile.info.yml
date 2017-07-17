@@ -1,0 +1,16 @@
+name: 'Page mobile'
+description: 'Provides Page mobile type and related configuration. Pages de l''application'
+type: module
+core: 8.x
+dependencies:
+  - content_translation
+  - field
+  - image
+  - language
+  - menu_ui
+  - node
+  - path
+  - pathauto
+  - text
+  - user
+package: yqb_app

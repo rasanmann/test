@@ -1,0 +1,15 @@
+yqb_wait_times.fr.index:
+  path: '/planifier-son-vol/inspection'
+  defaults:
+    _controller: '\Drupal\yqb_wait_times\Controller\WaitTimesController::index'
+    _title: "Temps d'attente"
+  requirements:
+    _permission: 'access content'
+
+yqb_wait_times.en.index:
+  path: '/plan-your-flight/inspection'
+  defaults:
+    _controller: '\Drupal\yqb_wait_times\Controller\WaitTimesController::index'
+    _title: "Wait Times"
+  requirements:
+    _permission: 'access content'

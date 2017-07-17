@@ -1,0 +1,149 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_migrate.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\migrate\Plugin\Migration;
+use Drupal\migrate_tools\MigrateExecutable;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\MigrateMessage;
+use Drupal\Component\Utility\Unicode;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_migrate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_migrate module.
+    case 'help.page.yqb_migrate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Migrate') . '</p>';
+      return $output;
+
+    default:
+  }
+
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_migrate_theme() {
+  $theme = [];
+
+  return $theme;
+}
+
+
+/**
+ * Implements hook_cron().
+ *
+ * We implement hook_cron() to do "background" processing. It gets called every
+ * time the Drupal cron runs. We then decide what has to happen in response.
+ */
+function yqb_migrate_cron() {
+  // For Drush
+  echo "Starting migrations" . PHP_EOL;
+
+  // We access our configuration.
+  $cron_config = \Drupal::configFactory()->getEditable('yqb_migrate.cron');
+  // Default to a two minutes interval.
+  $interval = $cron_config->get('interval');
+  $interval = !empty($interval) ? $interval : 2 * 60;
+
+  // We usually don't want to act every time cron runs (which could be every
+  // minute) so keep a time for the next run in a variable.
+  $next_execution = $cron_config->get('next_execution');
+  $next_execution = !empty($next_execution) ? $next_execution : 0;
+  if (REQUEST_TIME >= $next_execution) {
+    // Migrations we want to run during cron
+    $migrations = [];
+
+    $migration_ids = [
+      'arrivals',
+      'departures',
+    ];
+
+    $manager = \Drupal::service('plugin.manager.config_entity_migration');
+    $plugins = $manager->createInstances([]);
+
+    foreach ($plugins as $id => $migration) {
+      if (in_array(Unicode::strtolower($id), $migration_ids)) {
+        $migrations[] = $migration;
+      }
+    }
+    
+    // PROBLEM WITH MIGRATIONS, RE ENABLE THEM
+    if(empty($migrations)){
+      Drupal::logger('yqb_migrate')->emergency("Migrations were not found.");
+      try{
+        $php = '/usr/bin/php';
+        $drush = '/home/cossette/.composer/vendor/bin/drush.php';
+        exec("{$php} {$drush} pm-enable config_devel -y && {$php} {$drush} cdi yqb_migrate && {$php} {$drush} pm-uninstall config_devel -y", $output, $return);
+        Drupal::logger('yqb_migrate')->notice("Migrations exec response : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
+      }catch(Exception $exception){
+        Drupal::logger('yqb_migrate')->error("Could not restart migrations");
+      }
+      
+      return;
+    }
+
+    foreach ($migrations as $migration_id => $migration) {
+      // Update and create
+      $migration->getIdMap()->prepareUpdate();
+
+      // For Drush
+      echo sprintf('Starting "%s".', $migration->id()) . PHP_EOL;
+
+      $log = new MigrateMessage();
+
+      $executable = new MigrateExecutable($migration, $log);
+
+      $result = $executable->import();
+
+      $message = "";
+
+      if ($result === MigrationInterface::RESULT_COMPLETED) {
+        $message = sprintf('Successfully completed "%s" migration.', $migration->id());
+      } else {
+        $message = sprintf('"%s" migration failed with error %d.', $migration->id(), $result);
+      }
+
+      $cron_config->set('last_updated', time())->save();
+
+      // For logs
+      \Drupal::logger('yqb_migrate')->notice($message);
+
+      // For Drush
+      echo $message . PHP_EOL;
+      
+      // Sleep between migrate to avoid busy migrations
+      sleep(10);
+    }
+
+    // Prepare next execution
+    $cron_config->set('next_execution', REQUEST_TIME + $interval)->save();
+  }
+
+  // Delete older nodes
+  foreach(['departure', 'arrival'] as $type) {
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', $type)
+      ->condition('status', 1)
+      ->condition('created', strtotime('-2 days'), '<')
+    ;
+
+    $nids = $query->execute();
+
+    if (count($nids)) {
+      $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+      $entities = $storage_handler->loadMultiple($nids);
+      $storage_handler->delete($entities);
+    }
+  }
+}

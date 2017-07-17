@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ */
+#}
+<section{{ attributes.addClass('block', 'block-reminders', 'clearfix') }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h3 {{ title_attributes.addClass('block-title', 'title-content') }}>{{ label }}</h3>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</section>
+

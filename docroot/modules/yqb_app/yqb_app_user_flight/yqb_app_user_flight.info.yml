@@ -1,0 +1,18 @@
+name: 'Vol associé'
+description: 'Provides Vol associé content type and related configuration. Vols associés à des utilisateurs '
+type: module
+core: 8.x
+dependencies:
+  - content_translation
+  - datetime
+  - field
+  - language
+  - menu_ui
+  - node
+  - options
+  - path
+  - rest
+  - serialization
+  - user
+  - yqb_api
+package: yqb_app

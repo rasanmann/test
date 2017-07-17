@@ -1,0 +1,28 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_origin_airport
+    - node.type.airport
+    - node.type.user_flight
+id: node.user_flight.field_origin_airport
+field_name: field_origin_airport
+entity_type: node
+bundle: user_flight
+label: Origine
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      airport: airport
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

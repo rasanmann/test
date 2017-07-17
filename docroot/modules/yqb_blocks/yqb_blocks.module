@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_bills.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_blocks_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_blocks module.
+    case 'help.page.yqb_blocks':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Blocks') . '</p>';
+      return $output;
+
+    default:
+  }
+
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_blocks_theme() {
+  $theme = [
+    'hero-search-block' => [
+      'variables' => [
+        'form' => NULL,
+        'weather' => NULL,
+      ],
+    ],
+    'flights-tabs-block' => [
+      'variables' => [
+        'arrivals' => NULL,
+        'departures' => NULL,
+        'parking' => NULL,
+      ],
+    ],
+    'region-title-block' => [
+      'variables' => [
+
+      ],
+    ],
+    'homepage-tiles-block' => [
+      'variables' => [
+				'tiles' => NULL
+      ],
+    ],
+    'schedules-filter-block' => [
+      'variables' => [
+        'current_view' => NULL,
+        'current_day' => NULL,
+        'last_updated' => NULL,
+        'airlines' => NULL,
+        'airports' => NULL,
+      ],
+    ],
+  ];
+
+  return $theme;
+}
+
+function yqb_blocks_language_switch_links_alter(array &$links, $type, $path) {
+  $currentLanguage = \Drupal::service('language_manager')->getCurrentLanguage()->getId();
+
+  foreach($links as $key => $link) {
+    if ($currentLanguage === $link['language']->getId()) {
+      // Delete current language link
+      unset($links[$key]);
+    } else {
+      // Set link text to language ID (example : English = EN)
+      $links[$key]['title'] = strtoupper($link['language']->getId());
+
+      // Set target to _top to force full page refresh
+      $links[$key]['attributes']['target'] = '_top';
+    }
+  }
+}
+
+/*Declare token*/
+function yqb_blocks_token_info() {
+  $info['tokens']['site']['url-abs'] = array(
+      'name' => t('Absolute URL'),
+      'description' => t('Url of the site, no language prefix garanted'),
+  );
+  return $info;
+}
+
+/*Token replacement*/
+function yqb_blocks_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+  global $base_root;
+
+  if ($type == 'site') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'url-abs':
+          $replacements[$original] = $base_root;
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}

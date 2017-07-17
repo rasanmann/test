@@ -1,0 +1,7 @@
+twilio.admin_display:
+  path: '/admin/config/communication/twilio'
+  defaults:
+    _form: 'Drupal\twilio\Form\TwilioForm'
+    _title: 'Twilio settings'
+  requirements:
+    _permission: 'administer site configuration'

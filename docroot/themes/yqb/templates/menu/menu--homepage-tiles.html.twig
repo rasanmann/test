@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *
+ * @ingroup templates
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    <div{{ attributes.addClass('row', 'tiles') }}>
+    {% set columns = 0 %}
+
+    {% for item in items %}
+      {% set description = item.original_link.getDescription() %}
+      {% set columns = columns + ((description) ? 6 : 3) %}
+
+      <div class="{{ description ? 'col-md-6' : 'col-md-3  col-xs-6' }}">
+        <a class="tile tile-home text-center vertical-align embed-responsive {{ description ? 'embed-responsive-2by1' : 'embed-responsive-1by1' }} {{ description ? item.url.getOption('attributes').class|join(' ') }}" href="{{ item.url }}" {{ (item.url.getOption('attributes').target|length > 0) ? "target=" ~ item.url.getOption('attributes').target : '' }}>
+          <div class="vertical-align-content">
+
+            <span class="icon {{ item.url.getOption('attributes').class|join(' ') }}"></span>
+
+            <h2 class="title-default">{{ item.title }}</h2>
+
+            {% if description %}
+              {% if attribute(item.url.getOption('attributes'), 'data-cta') %}
+                <span class="btn btn-primary btn-inverse btn-sm">{{ attribute(item.url.getOption('attributes'), 'data-cta') }}</span>
+              {% endif %}
+
+              <span class="tile-description">{{ description }}</span>
+            {% endif %}
+          </div>
+
+          {% if attribute(item.url.getOption('attributes'), 'data-background-tile') %}
+            <img data-src="{{ attribute(item.url.getOption('attributes'), 'data-background-tile') }}" alt="{{ item.title }}">
+          {% endif %}
+
+          <span class="top-bottom-hover"></span>
+        </a>
+      </div>
+
+      {% if columns >= 12 and loop.index < loop.length %}
+        </div>
+        <div{{ attributes.addClass('row') }}>
+        {% set columns = 0 %}
+      {% endif %}
+
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}

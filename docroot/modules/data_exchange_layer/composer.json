@@ -1,0 +1,9 @@
+{
+	"name": "drupal/data_exchange_layer",
+	"description": "Connects to YQB's data exchange layer.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+
+	}
+}

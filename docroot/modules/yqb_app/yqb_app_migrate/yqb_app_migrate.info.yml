@@ -1,0 +1,14 @@
+name: 'Migrate YQB APP data'
+description: 'Setup data for YQB APP'
+type: module
+core: 8.x
+dependencies:
+  - yqb_migrate
+package: yqb_app
+config_devel:
+ install:
+   - migrate_plus.migration.zones
+   - migrate_plus.migration.beacons
+   - migrate_plus.migration.pages_mobiles
+   - migrate_plus.migration.tips
+   - migrate_plus.migration.questions

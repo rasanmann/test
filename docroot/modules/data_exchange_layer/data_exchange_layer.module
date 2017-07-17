@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains data_exchange_layer.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function data_exchange_layer_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the data_exchange_layer module.
+    case 'help.page.data_exchange_layer':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('DataExchangeLayer') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function data_exchange_layer_theme() {
+  $theme = [];
+
+  return $theme;
+}

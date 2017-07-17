@@ -1,0 +1,9 @@
+{
+	"name": "drupal/yqb_reminders",
+	"description": "Set text reminders for flight updates.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+		"twilio/sdk": "4.*"
+	}
+}

@@ -1,0 +1,41 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.vip_drawer_section.field_text
+    - field.field.paragraph.vip_drawer_section.field_title
+    - field.field.paragraph.vip_drawer_section.field_vip_drawer_cards
+    - paragraphs.paragraphs_type.vip_drawer_section
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.vip_drawer_section.default
+targetEntityType: paragraph
+bundle: vip_drawer_section
+mode: default
+content:
+  field_text:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_vip_drawer_cards:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

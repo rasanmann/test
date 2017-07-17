@@ -1,0 +1,10 @@
+yql_bills.settings:
+  type: mapping
+  label: 'Bills settings'
+  mapping:
+    yql_bills:
+      type: mapping
+      mapping:
+        recipients:
+          type: text
+          label: 'Recipients:'

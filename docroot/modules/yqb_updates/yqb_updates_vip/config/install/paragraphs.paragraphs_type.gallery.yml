@@ -1,0 +1,6 @@
+langcode: fr
+status: true
+dependencies: {  }
+id: gallery
+label: Gallery
+behavior_plugins: {  }

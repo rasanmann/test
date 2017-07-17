@@ -1,0 +1,22 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_state
+    - node.type.user_flight
+  module:
+    - options
+id: node.user_flight.field_state
+field_name: field_state
+entity_type: node
+bundle: user_flight
+label: state
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: travel
+default_value_callback: ''
+settings: {  }
+field_type: list_string

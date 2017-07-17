@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_flight_planner.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_flight_planner_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_flight_planner module.
+    case 'help.page.yqb_flight_planner':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Flight Planner') . '</p>';
+      return $output;
+
+    default:
+  }
+  
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_flight_planner_theme() {
+  $theme = [];
+
+  return $theme;
+}

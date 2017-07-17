@@ -1,0 +1,6 @@
+name: Routing
+description: Set routing for YQB site
+package: YQB
+
+type: module
+core: 8.x

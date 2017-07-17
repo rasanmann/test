@@ -1,0 +1,20 @@
+name: Pay Bills
+description: Bill pay service.
+package: YQB
+
+type: module
+core: 8.x
+configure: yqb_bills.admin_display
+
+dependencies:
+  - moneris
+#  - link
+#  - views
+#
+#configure: hello_world.settings
+#
+#hidden: true
+#
+# Note: do not add the 'version'  property yourself!
+# It will be added automatically by the packager on drupal.org.
+#version: 1.0

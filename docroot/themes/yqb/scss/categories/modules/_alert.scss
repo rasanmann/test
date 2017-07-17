@@ -1,0 +1,70 @@
+/**
+ * Alert styling.
+ */
+
+.alert {
+  border-radius:0;
+  padding: 28px 40px;
+}
+
+.alert.status-message {
+  margin:0;
+  position: relative;
+  padding: 29px 128px 29px 40px;
+  overflow: hidden;
+  border:0;
+  z-index: 20;
+  @include responsive(1300px) {
+    margin:0;
+  }
+
+  @include responsive(950px) {
+    margin:0;
+  }
+  a{
+    &:hover{
+      color:$white;
+      text-decoration: none;
+    }
+  }
+  .alert-pulse{
+
+    position: absolute !important;
+    left: 0;
+    top: 50%;
+    @include translate(-50%, -50%);
+    @include pulse(27, 40, $white);
+  }
+  
+}
+
+.alert-dismissable .close, .alert-dismissible .close{
+  color:$white;
+  right: 40px;
+  @include font-size(12);
+  font-weight: $bold;
+  @include opacity(1);
+  top:34px;
+  text-decoration: underline;
+  text-shadow: none;
+  position: absolute;
+  &:hover{
+    text-decoration: none;
+  }
+}
+// Treat all links inside alert as .alert-link
+.alert a {
+  font-weight: $alert-link-font-weight;
+}
+.alert-success a {
+  color: darken($alert-success-text, 10%);
+}
+.alert-info a {
+  color: darken($alert-info-text, 10%);
+}
+.alert-warning a {
+  color: darken($alert-warning-text, 10%);
+}
+.alert-danger a {
+  color: darken($alert-danger-text, 10%);
+}

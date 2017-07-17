@@ -1,0 +1,7 @@
+advam.admin_display:
+  path: '/admin/config/commerce/advam'
+  defaults:
+    _form: 'Drupal\advam\Form\AdvamForm'
+    _title: 'Advam settings'
+  requirements:
+    _permission: 'administer site configuration'

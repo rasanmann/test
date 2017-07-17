@@ -1,0 +1,17 @@
+name: Question
+description: 'Provides Question content type and related configuration. '
+type: module
+core: 8.x
+dependencies:
+  - block
+  - content_translation
+  - field
+  - language
+  - menu_ui
+  - node
+  - path
+  - system
+  - text
+  - user
+  - views
+package: yqb_app

@@ -1,0 +1,14 @@
+.toolbar-fixed {
+  // Targets only header when user is logged in
+  &.toolbar-horizontal {
+    .modal-dialog {
+      top: 79px;
+    }
+  }
+
+  &.toolbar-vertical {
+    .modal-dialog {
+      top: 39px;
+    }
+  }
+}

@@ -1,0 +1,111 @@
+// Bootstrap variables
+@import "variables-bootstrap";
+@import "variables";
+@import "../bootstrap/scss/mixins";
+
+// Helpers
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "helpers/animations";
+
+/*********************************************************
+* LAYOUT
+*********************************************************/
+#layout-header {
+  .dropdown-menu {
+    li.dropdown{
+      &.open{
+        > .dropdown-menu-2{
+          display: block;
+        }
+      }
+    }
+    
+    &.dropdown-menu-2 {
+      display: none;
+    }
+  }
+}
+
+/*********************************************************
+* MODULES
+*********************************************************/
+
+/**
+* HEADER PRIMARY NAV
+**/
+.block-main-menu {
+  > ul{
+    display: block;
+    float:right;
+    padding-right: 25px;
+    
+    > li {
+      float:left;
+      margin-left: 20px;
+    }
+  }
+}
+.pulse, .pulse-2, .alert-pulse{
+  
+  &:before {
+        transform: scale(1) !important;
+ 	}
+}
+
+/**
+* HOMEPAGE VIDEO
+**/
+#block-herosearchblock {
+  background: url(../videos/intro-wide.jpg) no-repeat center center / cover;
+
+  video {
+    display: none;
+  }
+}
+
+.region-sub-footer{
+  .navbar-nav{
+    li{
+      float:none;
+      display: inline-block;
+    }
+  }
+}
+
+#nav-footer-primary{
+  .navbar-nav{
+    li{
+      float:none;
+      display: inline-block;
+    }
+  }
+}
+.view-page-destinations .view-destinations{
+  overflow: hidden;
+}
+#map-accordion {
+  display: block !important;
+}
+.map-legend, 
+.map-view-selector, 
+.map-extra, 
+.map-destinations {
+  display: none !important;
+}
+
+
+
+
+.select-wrapper{
+  background: $white;
+  overflow: hidden;
+
+  select{
+    width: 100% !important;
+   
+  }
+  .form-control {
+    padding-right: 5px !important;
+  }
+}

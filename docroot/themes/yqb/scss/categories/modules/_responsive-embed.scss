@@ -1,0 +1,28 @@
+// Embeds responsive
+.embed-responsive {
+	display:block;
+	position:relative;
+	width:100%;
+
+	&:after {
+		content:'';
+		display:block;
+	}
+
+	.embed-responsive-content {
+		display:block;
+		overflow:hidden;
+		position:absolute;
+		top:0; right:0; bottom:0; left:0;
+	}
+}
+
+// Modifier class for 1:1 aspect ratio
+.embed-responsive-1by1 {
+    padding-bottom:100%;
+}
+
+// Modifier class for 2:1 aspect ratio
+.embed-responsive-2by1 {
+    padding-bottom:50%;
+}

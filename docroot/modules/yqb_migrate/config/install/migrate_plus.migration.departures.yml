@@ -1,0 +1,88 @@
+# The source data is in CSV files, so we use the 'csv' source plugin.
+id: departures
+label: Departures file migration
+migration_dependencies: {}
+migration_tags:
+  - CSV
+source:
+  plugin: csv
+  # Full path to the file. Points to sites/default/files
+  path: public://csv/departures.csv
+  # The number of rows at the beginning which are not data.
+  header_row_count: 1
+  # These are the field names from the source file representing the key
+  # uniquely identifying each game - they will be stored in the migration
+  # map table as columns sourceid1, sourceid2, and sourceid3.
+  keys:
+    - id
+  # Here we identify the columns of interest in the source file. Each numeric
+  # key is the 0-based index of the column. For each column, the key below
+  # (e.g., "start_date") is the field name assigned to the data on import, to
+  # be used in field mappings below. The value is a user-friendly string for
+  # display by the migration UI.
+  column_names:
+    # So, here we're saying that the first field (index 0) on each line will
+    # be stored in the start_date field in the Row object during migration, and
+    # that name can be used to map the value below. "Date of game" will appear
+    # in the UI to describe this field.
+    0:
+      id: Identifier
+    1:
+      airline_iata: Airline IATA
+    2:
+      airline_icao: Airline ICAO
+    3:
+      airline_name: Airline
+    4:
+      flight_number: Flight number
+    5:
+      gate: Gate
+    6:
+      is_internal: Is internal
+    7:
+      code_shares: Code shares
+    8:
+      airport_iata: Destination  IATA
+    9:
+      airport_icao: Destination ICAO
+    10:
+      airport_city: Destination City
+    11:
+      airport_airport: Destination Airport
+    12:
+      departure_status: Destination Status
+    13:
+      stops: Stops
+    14:
+      etd: ETD
+    15:
+      std: STD
+    16:
+      atd: ATD
+destination:
+  # Here we're saying that each row of data (line from the CSV file) will be
+  # used to create a node entity.
+  plugin: entity:node
+process:
+  # The content (node) type we are creating is 'departure'.
+  type:
+    plugin: default_value
+    default_value: departure
+  # Most fields can be mapped directly - we just specify the destination (D8)
+  # field and the corresponding field name from above, and the values will be
+  # copied in.
+  title: title
+  field_airline: airline_nid
+  field_destination_airport: airport_nid
+  field_status: departure_status
+  field_flight_number: flight_number
+  field_unique_id: id
+  field_gate: gate
+  field_stops: stops
+  field_etd: etd
+  field_std: std
+  field_atd: atd
+# Required to cleanup CMI.
+dependencies:
+  module:
+    - yqb_migrate

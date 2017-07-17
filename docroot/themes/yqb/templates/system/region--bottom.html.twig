@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ */
+#}
+{%
+  set classes = [
+    'region',
+    'region-' ~ region|clean_class,
+    theme.settings.fluid_container ? 'container-fluid' : 'container'
+  ]
+%}
+{% if content %}
+  <div{{ attributes.addClass(classes) }}>
+    {{ content }}
+  </div>
+{% endif %}

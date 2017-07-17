@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Default theme implementation for page titles.
+ */
+#}
+
+{% if title %}
+    <h1{{ title_attributes.addClass('title-page') }}>
+        <span>
+            {{ title }}
+        </span>
+    </h1>
+{% endif %}

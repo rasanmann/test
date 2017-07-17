@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ */
+#}
+
+<div{{ attributes }} class="block-icon-only">
+    {% if label %}
+        {{ label }}
+    {% endif %}
+
+    {% block content %}
+        <span class="icon icon-{{ content.field_icon_only[0]['#markup'] }}" data-grunticon-embed></span>
+    {% endblock %}
+</div>

@@ -1,0 +1,49 @@
+{% set classes = [
+'helpdesk-dashboard',
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+  {% if userData %}
+    <article>
+      {% if userData.user.field_uuid.value == '' %}
+        <h1>{{ "Anonymous user profile"|t }}</h1>
+      {% else %}
+        <h1>{{ "%s %s's profile"|t|format(userData.user.field_first_name.value, userData.user.field_last_name.value) }}</h1>
+      {% endif %}
+
+      <div>
+        <div class="user-profile">
+          <h2>{{ "Personal information"|t }}</h2>
+  
+          <ul>
+            <li><strong>{{ "Unique identifier"|t }} : </strong> {{ userData.user.id }}</li>
+            <li><strong>{{ "Email"|t }} : </strong> {{ userData.user.mail.value }}</li>
+            <li><strong>{{ "User type"|t }} : </strong> {{ userData.user.type }}</li>
+            <li><strong>{{ "Push notifications"|t }} : </strong> {{ userData.user.notification }}</li>
+            <li><strong>{{ "Caller identifier"|t }} : </strong> {{ userData.user.field_caller_id.value }}</li>
+            <li><strong>{{ "Language"|t }} : </strong> {{ userData.user.field_language.value }}</li>
+          </ul>
+        </div>
+  
+        <div class="flights-holder">
+          <h2>{{ "Saved flights"|t }}</h2>
+          
+          {% if userData.flights %}
+            {% for flight in userData.flights %}
+  
+              <div class="flight-data">
+                <strong>{{ "Flight"|t }} #{{ flight.field_flight_number.value }}</strong><br>
+                {{ flight.origin }} > {{ flight.destination }}<br>
+                {{ flight.airline }}<br>
+                {{ flight.field_flight_date.value }} {{ flight.field_flight_time.value }}
+              </div>
+  
+            {% endfor %}
+          {% else %}
+            <p>{{ "No active flights"|t }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+  {% endif %}
+</div>

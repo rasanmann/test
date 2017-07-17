@@ -1,0 +1,253 @@
+.drawer {
+  position:absolute;
+  top:0;
+  width:480px;
+  left:auto;
+  right:0;
+  bottom:0;
+  z-index: 40;
+  background-color: $white;
+  
+  @include responsive(960px){
+    display: none;
+  }
+  
+  @include translate(100%,0);
+  @include transition_transform(opacity, 0.3);
+  &.drawer-action{
+    &.subcontent-open{
+      background-color: $brand-soft;
+      
+      .drawer-bottom{
+        @include translate(0,0);
+      }
+    }
+  }
+}
+
+.drawer-header {
+  background-image:url(../img/maps/default-destination.jpg);
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+  padding:20px;
+  color:$white;
+  min-height:215px;
+  position:relative;
+}
+
+.drawer-header-description {
+  position:absolute;
+  padding:20px;
+  left:0;
+  bottom:0;
+  text-shadow: 0px 0px 10px #000;
+}
+
+.drawer-header-title{
+  @include font-size(14);
+  font-weight: $regular;
+  margin-bottom: 0;
+ 	@include responsive($screen-md){
+ 		@include font-size(12);
+ 	}
+  span{
+    margin-top: 6px;
+    @include font-size(48);
+    font-weight: $bold;
+    display: block;
+    line-height: 36px;
+    @include responsive(1300px){
+   		@include font-size(42);
+   		
+   	}
+   	@include responsive($screen-md){
+   		@include font-size(36);
+   	}
+   	@include responsive($screen-sm){
+   		@include font-size(32);
+   	}
+  }
+}
+
+.drawer-body {
+  position: relative;
+  background-color: $white;
+  overflow: hidden;
+  .drawer-top{
+    padding:13px 15px 25px 165px;
+    position: relative;
+    min-height: 680px;
+  }
+  
+  .drawer-left{
+    padding-top: 40px;
+    padding-left: 35px;
+    width: 165px;
+    
+    position: absolute;
+    left:0;
+    top:0;
+    h3{
+      @include font-size(18);
+      font-weight:$bold;
+      color: $brand-primary;
+      margin-bottom: 20px;
+      line-height: 20px;
+      margin-top: 0;
+    }
+    p{
+      @include font-size(12);
+      line-height: 14px;
+    }
+    span{
+      @include font-size(11);
+      line-height: 12px;
+      padding-left: 30px;
+      position: relative;
+      display: block;
+      margin-top: 15px;
+      &:before{
+        content:'';
+        width: 20px;
+        height: 20px;
+        display: block;
+        border:2px solid $brand-primary;
+        border-radius: 3px;
+        position: absolute;
+        top:1px;
+        left:0;
+      }
+    }
+  }
+
+  .drawer-right {
+    opacity:0;
+    @include transition((opacity));
+
+    &.drawer-right-generated {
+      opacity:1;
+    }
+
+    .xdsoft_datetimepicker .xdsoft_datepicker {
+      padding-bottom: 8px;
+    }
+
+    p {
+      @include font-size(12);
+      line-height: 16px;
+      text-align: center;
+      max-width: 217px;
+      margin: 0 auto;
+    }
+  }
+
+  .drawer-bottom {
+    background-color: $brand-soft;
+    text-align: center;
+    padding: 50px 35px 40px;
+    position: absolute;
+    top:0;
+    overflow: hidden;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    @include translate(0,100%);
+    @include transition_transform(opacity, 0.3);
+
+    span{
+      @include font-size(14);
+      color:$gray;
+      font-weight: bold;
+      display: block;
+      margin:0 auto 30px;
+    }
+    .airlines{
+      height: 480px;
+      position: relative;
+    }
+
+    .airline {
+      margin-bottom: 20px;
+      text-align: center;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .btn-default {
+        display: inline-block;
+        margin: 0 8px;
+      }
+      .airline-img {
+        display: inline-block;
+        margin: 8px;
+        min-width: 200px;
+        text-align: center;
+        
+        img {
+          width: auto;
+          max-width: 200px;
+          max-height: 50px;
+        }
+      }
+    }
+    .drawer-bottom-close{
+      position: absolute;
+      top:0;
+      width: 100%;
+      left: 0;
+      background-color: $white;
+      height: 50px;
+      line-height: 50px;
+      @include font-size(14);
+      color:$gray;
+      font-weight: bold;
+      display: block;
+      text-align: center;
+    }
+    
+  }
+  h4.date-select{
+    font-weight: $bold;
+    @include font-size(22);
+    line-height: 68px;
+    margin: 0 -35px 22px;
+    background-color: rgba($brand-primary, 0.1);
+  }
+}
+
+.drawer-datepicker {
+  margin:0 auto;
+}
+
+.drawer-close {
+  position:absolute;
+  left:20px;
+  top:20px;
+  color:$white;
+  background-color: $white;
+  border:0;
+  border-radius:50%;
+  width:30px;
+  height:30px;
+  @include transition(all);
+  &:hover{
+    background-color: $brand-primary;
+    .icon{
+      path{
+        fill:$white;
+      }
+    }
+  }
+  .icon {
+    position:absolute;
+    top:50%;
+    left:50%;
+    @include translate(-50%, -50%);
+    width: 13px;
+    height: 13px;
+    path{
+      fill:$brand-primary;
+    }
+  }
+  
+}

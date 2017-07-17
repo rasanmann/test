@@ -1,0 +1,41 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vip_drawer_cards
+    - paragraphs.paragraphs_type.vip_drawer_card
+    - paragraphs.paragraphs_type.vip_drawer_section
+  module:
+    - entity_reference_revisions
+id: paragraph.vip_drawer_section.field_vip_drawer_cards
+field_name: field_vip_drawer_cards
+entity_type: paragraph
+bundle: vip_drawer_section
+label: Cartes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      vip_drawer_card: vip_drawer_card
+    target_bundles_drag_drop:
+      vip_drawer_section:
+        weight: 6
+        enabled: false
+      content:
+        weight: 7
+        enabled: false
+      gallery:
+        weight: 8
+        enabled: false
+      gallery_image:
+        weight: 9
+        enabled: false
+      vip_drawer_card:
+        enabled: true
+        weight: 10
+field_type: entity_reference_revisions

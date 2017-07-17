@@ -1,0 +1,9 @@
+{% if time > 0 %}
+    {% trans %}
+        Environ {{ time }} minute d’attente au point de contrôle
+    {% plural time %}
+        Environ {{ time }} minutes d’attente au point de contrôle
+    {% endtrans %}
+{% else %}
+    {{ "Moins de 5 minutes d’attente au point de contrôle"|t  }}
+{% endif %}

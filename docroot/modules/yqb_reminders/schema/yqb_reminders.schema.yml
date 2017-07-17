@@ -1,0 +1,10 @@
+yqb_reminders.settings:
+  type: mapping
+  label: 'Reminders settings'
+  mapping:
+    yqb_reminders:
+      type: mapping
+      mapping:
+        blocked_flights:
+          type: text
+          label: 'Blocked flights:'

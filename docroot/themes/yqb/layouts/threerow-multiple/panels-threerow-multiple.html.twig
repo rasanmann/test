@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Template for a 3 row panel layout.
+ */
+#}
+<div class="panels-threerow-multiple">
+
+    {% if content['first.above'] %}
+        {{ content['first.above'] }}
+    {% endif %}
+
+    <div class="row-table blocks-intro">
+        {% if content['first.below.left'] %}
+            <div class="col-table">
+                {{ content['first.below.left'] }}
+            </div>
+        {% endif %}
+
+        {% if content['first.below.right'] %}
+            <div class="col-table h-full">
+                {{ content['first.below.right'] }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row-table blocks-second">
+        {% if content['second.left'] %}
+            <div class="col-table is-half h-full">
+                {{ content['second.left'] }}
+            </div>
+        {% endif %}
+
+        {% if content['second.right'] %}
+            <div class="col-table is-half">
+                {{ content['second.right'] }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row-table blocks-third">
+        {% if content['third.left'] %}
+            <div class="col-table is-half">
+                {{ content['third.left'] }}
+            </div>
+        {% endif %}
+
+        {% if content['third.right'] %}
+            <div class="col-table is-half h-full">
+                {{ content['third.right'] }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row blocks-fourth">
+        {% if content['fourth.left'] %}
+            <div class="col-lg-4 col-sm-6">
+                {{ content['fourth.left'] }}
+            </div>
+        {% endif %}
+
+        {% if content['fourth.center'] %}
+            <div class="col-lg-4 col-sm-6">
+                {{ content['fourth.center'] }}
+            </div>
+        {% endif %}
+
+        {% if content['fourth.right'] %}
+            <div class="col-lg-4 col-sm-12">
+                {{ content['fourth.right'] }}
+            </div>
+        {% endif %}
+    </div>
+
+</div>

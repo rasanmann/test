@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_bills.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_bills_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_bills module.
+    case 'help.page.yqb_bills':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('YQB Bills') . '</p>';
+      return $output;
+
+    default:
+  }
+
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_bills_theme() {
+  $theme = [];
+
+  return $theme;
+}
+
+function yqb_bills_mail($key, &$message, $params) {
+  $options = [
+      'langcode' => $message['langcode'],
+  ];
+
+  switch ($key) {
+    case 'pay_bill':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('Paiement de facture: @reference', ['@reference' => $params['reference']], $options);
+      $message['body'][] = \Drupal\Core\Render\Markup::create($params['body']);
+      break;
+  }
+}

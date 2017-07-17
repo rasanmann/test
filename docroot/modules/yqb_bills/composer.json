@@ -1,0 +1,9 @@
+{
+	"name": "drupal/yqb_bills",
+	"description": "Bill pay service.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+
+	}
+}

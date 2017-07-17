@@ -1,0 +1,222 @@
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+.nav-tabs {
+	border-bottom-width:2px;
+
+	> li {
+		margin-bottom: 0;
+		// Actual tabs (as links)
+		> a {
+			outline: none;
+			margin-right: 0;
+			line-height: 60px;
+			border: none;
+			border-radius: 0;
+			padding: 0 40px;
+			@include font-size(16);
+			background-color: $white;
+			color: $brand-primary;
+			@include transition(all, 0.15);
+			@include responsive($screen-md) {
+				@include font-size(14);
+			}
+			@include responsive($screen-sm) {
+				@include font-size(15);
+				padding: 0 25px;
+			}
+			.icon {
+				margin-right: 20px;
+				margin-left: -20px;
+				@include responsive($screen-md) {
+					margin-right: 10px;
+					margin-left: -10px;
+					@include scale(0.83);
+				}
+			}
+			&:hover {
+				border-color: transparent;
+				background-color: $gray-lighter;
+			}
+		}
+
+		// Active state, and its :hover to override normal :hover
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+				border: 0;
+				.icon {
+					path {
+						fill: $nav-tabs-active-link-hover-color;
+					}
+				}
+			}
+		}
+	}
+
+	&.nav-tabs-inverted {
+		> li {
+			border-left:1px solid rgba($black, 0.1);
+
+			> a {
+				color:$white;
+
+				&:hover {
+					border:none;
+					color:$link-color;
+
+					.icon {
+						path {
+							fill:$link-color;
+						}
+					}
+				}
+
+				.icon {
+					path {
+						fill:$white;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Pills
+// -------------------------
+.nav-pills {
+	> li {
+		// Links rendered as pills
+		> a {
+			color: $grey;
+			background-color: transparent;
+
+			&:hover {
+				@include transition(all, 0.15);
+				background-color: transparent;
+				color: $brand-primary;
+			}
+		}
+	}
+}
+
+// Side bar nav
+// -------------------------
+.region-sidebar-first .nav {
+	.is-active {
+		background-color: $brand-primary;
+		color: $white;
+		border-color: transparent !important;
+
+		&:hover, &:focus {
+			background-color: lighten($brand-primary, 10%);
+		}
+	}
+	li {
+		float: none;
+		a {
+			@include transition(all);
+			&:hover, &:focus {
+				background-color: #e5eeff;
+			}
+			&:focus {
+				background-color: transparent;
+			}
+
+			.inline-target{
+				display: inline-block;
+			}
+			.extern-link{
+				display: inline-block;
+				vertical-align: top;
+				margin-top: -8px;
+				.icon-extern-link{
+					width: 15px;
+					height: 15px;
+					path{
+						fill: $brand-primary;
+					}
+				}
+			}
+		}
+	}
+	> li {
+		a {
+			border-bottom: 1px solid $gray-light;
+			padding: 19px 40px;
+			@include responsive($screen-md){
+				padding: 15px 20px;
+			}
+		}
+		
+		a[target=_blank] { 
+			padding-right: 22px;
+			@include responsive($screen-md){
+				padding-right: 17px;
+			}
+		}
+	}
+	// Sub nav
+	.nav {
+		@include font-size(16);
+
+		@include responsive($screen-md) {
+			@include font-size(15);
+		}
+	}
+
+	.sub-menu {
+		> a {
+			position: relative;
+			&:before {
+				content: "";
+				position: absolute;
+				background-image: url("../svg/down-arrow-2.svg");
+				height: 8px;
+				width: 15px;
+				background-size: cover;
+				display: block;
+				top: 50%;
+				right: 20px;
+				margin-top: -3px;
+			}
+
+		}
+		.nav {
+			display: none;
+			@include font-size(14);
+			
+			@include responsive($screen-md){
+				@include font-size(12);
+			}
+			> li {
+				a {
+					border-bottom: 1px solid #cedeff;
+					padding: 10px 47px;
+					@include responsive($screen-md){
+						padding: 9px 27px;
+					}
+					&:hover {
+						background-color: $brand-primary;
+						color: $white;
+					}
+				}
+			}
+		}
+
+		&.sub-menu-active {
+			a {
+				border-bottom: 1px solid #cedeff;
+				&:before {
+					@include rotate(180, 50%, 50%);
+				}
+			}
+			background-color: #e5eeff;
+		}
+		&.sub-menu-start-active .nav {
+			display: block;
+		}
+	}
+}

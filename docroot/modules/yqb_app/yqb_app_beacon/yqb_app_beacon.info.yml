@@ -1,0 +1,13 @@
+name: Beacon
+description: 'Provides Beacon content type and related configuration. Balises situées dans l''aéroport aux différentes étapes du processus.'
+type: module
+core: 8.x
+dependencies:
+  - content_translation
+  - field
+  - language
+  - menu_ui
+  - node
+  - path
+  - user
+package: yqb_app

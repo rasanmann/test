@@ -1,0 +1,118 @@
+one-three-one:
+  label: One Three One
+  category: Rows: 3
+  path: layouts/one-three-one
+  icon: one-three-one.png
+  css: one-three-one.css
+  template: panels-one-three-one
+  regions:
+    top.full:
+      label: First row, full width
+    top.one.two.top:
+      label: Second row, top content full width
+    top.one.two.left:
+      label: Second row, bottom content to left
+    top.one.two.right:
+      label: Second row, bottom content to right
+    middle.mixed.left:
+      label: Middle row (mixed width), content to left
+    middle.mixed.center:
+      label: Middle row (mixed width), content to center
+    middle.mixed.right:
+      label: Middle row (mixed width), content to right
+    middle.equal.left:
+      label: Middle row (equal width), content to left
+    middle.equal.center:
+      label: Middle row (equal width), content to center
+    middle.equal.right:
+      label: Middle row (equal width), content to right
+    middle.bottom.left:
+      label: Middle row (last content), content to left
+    middle.bottom.center:
+      label: Middle row (last content), content to center
+    middle.bottom.right:
+      label: Middle row (last content), content to right
+    bottom.full:
+      label: Bottom row, full width
+threerow:
+  label: Three row
+  category: Rows: 3
+  path: layouts/threerow
+  icon: threerow.png
+  css: threerow.css
+  template: panels-threerow
+  regions:
+    top.main:
+      label: First row, main content on top
+    top.secondary.main:
+      label: First row, under top main
+    top.secondary.left:
+      label: First row, secondary content to left
+    top.secondary.right:
+      label: First row, secondary content to right
+    middle.left:
+      label: Middle row, content to left
+    middle.center:
+      label: Middle row, content to center
+    middle.right:
+      label: Middle row, content to right
+    bottom.left:
+      label: Last row, content to left
+    bottom.right:
+      label: Last row, content to right
+fourrow:
+  label: Four row
+  category: Rows: 4
+  path: layouts/fourrow
+  icon: fourrow.png
+  css: fourrow.css
+  template: panels-fourrow
+  regions:
+    first:
+      label: First row
+    second:
+      label: Second row
+    third.left:
+      label: Third row, content in left column
+    third.right:
+      label: Third row, content in right column
+    fourth:
+      label: Fourth row
+threerow-multiple:
+  label: Three row multiple
+  category: Rows: 3
+  path: layouts/threerow-multiple
+  icon: threerow-multiple.png
+  css: threerow-multiple.css
+  template: panels-threerow-multiple
+  regions:
+    first.above:
+      label: First row, content above
+    first.below.left:
+      label: First row, content below to left
+    first.below.right:
+      label: First row, content below to right
+    second.left:
+      label: Second row, content to left
+    second.right:
+      label: Second row, content to right
+    third.left:
+      label: Third row, content to left
+    third.right:
+      label: Third row, content to right
+    fourth.left:
+      label: Fourth row, content to left
+    fourth.center:
+      label: Fourth row, content to center
+    fourth.right:
+      label: Fourth row, content to right
+history:
+  label: History
+  category: Rows: 2
+  path: layouts/history
+  icon: history.png
+  css: history.css
+  template: panels-history
+  regions:
+    top.main:
+      label: First row, main content on top

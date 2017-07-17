@@ -1,0 +1,9 @@
+name: Blocks
+description: Various blocks.
+package: YQB
+
+type: module
+core: 8.x
+
+dependencies:
+  - token

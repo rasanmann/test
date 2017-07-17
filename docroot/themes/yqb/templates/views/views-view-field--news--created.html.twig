@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a single field in a view.
+ *
+ * @see template_preprocess_views_view_field()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set segments = output|split(' ') %}
+
+<span>{{ segments[0] }}</span>
+
+{{ segments[1]|compact_month }}

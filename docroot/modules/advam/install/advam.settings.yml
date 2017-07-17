@@ -1,0 +1,5 @@
+advam:
+  api_url: 'http://XXXXXX.preprod.inventiveit.net/v2/'
+  api_key: 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX'
+  airport_code: 'ABC'
+  use_legacy: false

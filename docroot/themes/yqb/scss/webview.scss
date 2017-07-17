@@ -1,0 +1,866 @@
+// Bootstrap variables
+@import "variables-bootstrap";
+@import "variables";
+@import "../bootstrap/scss/mixins";
+
+// Helpers
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "helpers/animations";
+
+/*******************************************************
+*   GENERAL STYLING
+*******************************************************/
+#layout-header, #layout-footer, .heading, .sidebar-content, nav.tabs, .region-bottom-actions, .region-bottom, #panels-ipe-tray, .title-page, .region-footer-overlay{
+	display:none !important;
+}
+
+html{height:100%;}
+
+$colorApp: #0eadff;
+
+body{
+	
+	padding-bottom:0;
+	
+	@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+	$font-system:-apple-system, "Roboto", Helvetica, Arial, sans-serif;
+	font-size:16px !important;
+	font-family:$font-system !important;
+	h1, h2, h3, h4, h5, h6 {
+		font-family:$font-system !important;
+	}
+}
+
+#layout-content {
+	.page-wrapper .content-wrapper .main-content {
+		border:0;
+		padding-bottom:0;
+	}
+	
+	.page-wrapper{
+		margin:0;
+	}
+}
+
+
+/*******************************************************
+*   RESERVER UN STATIONNEMENT
+*******************************************************/
+#planifier-son-vol-reserver-un-stationnement,
+#plan-a-flight-parking-reservation{
+	background-image: url("../img/bg-block-parking.jpg");
+	background-size:cover;
+	
+	.block-simple-title-content{
+		display:none;
+	}
+	
+	.block-parking-booker, #layout-main{
+		background:none;
+	}
+	
+	.panels-one-three-one .row, .panels-one-three-one .bottom{
+		display:none;
+	}
+	.block-parking-booker{
+		padding:30px;
+	}
+	.block-reminders .form-block-container > .form-group.col-full, .block-parking-booker .form-block-container > .form-group.col-full{
+		padding-right:139px;
+	}
+}
+
+.mobile-zoom{
+	width:100% !important;
+}
+
+
+/*******************************************************
+*   MODIFIER UN STATIONNEMENT
+*******************************************************/
+#planifier-son-vol-modifier-un-stationnement,
+#plan-a-flight-parking-modification{
+	.region-content{
+		padding:30px 10px;
+	}
+}
+
+
+/*******************************************************
+*   ALERTE SMS
+*******************************************************/
+#vols-et-destinations-alerte-sms,
+#flights-and-destinations-text-reminders{
+	background-image: url("../img/bg-block-reminder.jpg");
+	background-size:cover;
+	
+	.block-reminders, #layout-main{
+		background:none;
+	}
+	
+	.block-reminders{
+		padding:30px;
+	}
+	.block-reminders .form-block-container > .form-group.col-normal.col-flight-type, .block-parking-booker .form-block-container > .form-group.col-normal.col-flight-type{
+		padding-right:132px;
+	}
+	
+	.row.second{
+		display:none;
+	}
+	
+	#reminders-form-select{
+		.form-group{
+			float:none;
+		}
+		
+		.form-group .form-item{
+			padding:0;
+		}
+		
+		#edit-col-submit{
+			margin-top:35px;
+		}
+	}
+	
+	.block-bordered, .block-electric-car{
+		display:none;
+	}
+}
+
+
+
+
+/*******************************************************
+*   PAGES
+*******************************************************/
+/*placer l'anglais*/
+
+#app-mobile-service-demballage-de-valises,
+#app-mobile-secure-wrap-baggage-protection {
+
+	tr {
+		td {
+			&:last-child {
+				text-align:right !important;
+			}
+		}
+	}
+}
+
+
+
+#app-mobile-aide-et-support,
+#app-mobile-aide-et-support-en{
+	
+	.region-content{ 
+		@include flexbox();
+		@include flex-wrap(wrap);
+		
+		#block-views-block-questions-block-1{
+			@include order(2);
+			@include flex(1, 1, 100%)
+		}
+		
+		article{
+			@include order(1);
+			@include flex(1, 1, 100%)
+		}
+	}
+}
+
+
+.field--name-body{
+	> h2{
+		margin-top:0px;
+	}
+}
+.view-tiles{
+	a{
+		display: inline-block;
+		line-height:40px;
+		text-decoration:none !important;
+		font-size:16px !important;
+		color:#0eadff !important;
+		margin-right:20px;
+		
+	}
+}
+
+
+[class*="app-mobile"] {
+	.zoomHolderWrapper{
+		margin:0;
+	}
+	.zoomHolderWrapperInner{
+		margin:0 -30px;
+	}
+	.zoomHolder {
+		width:100%;
+		height: calc(100vh - 60px);
+	}
+	.main-content p a{
+		text-decoration:none !important;
+		color: $colorApp;
+		&.btn{
+			color:$white;
+		}
+	}
+	
+	.wrapperInner{
+		
+		margin:-30px -30px 25px;
+	}
+	.region-content {
+		padding:30px !important;
+		.page-mobile{
+			
+			.nav-tabs{
+				max-width:100%;
+				padding-left: 0;
+				margin: 0;
+		
+				li{
+					margin-bottom:0;
+				}
+			}
+		
+		}
+	}
+	
+	
+	.app-show-more{
+		background-color:$white;
+		padding:10px 50px  40px!important;
+		margin:0;
+		ul{
+			li{
+				font-size:13px !important;
+			}
+		}
+		p{
+			
+			font-size:14px !important;
+		}
+		> a{
+			text-align:center;
+			text-decoration:none;
+			display:block;
+			padding:0px 0 20px;
+			
+		}
+		.collapse{
+			padding-bottom:30px;
+		}
+	}
+	
+	&[id*="app-mobile-transport-a-C3-A9roport"] {
+		.swiper-container:last-child{
+			margin-bottom:0;
+		}
+		.region-content{
+			padding-bottom:0 !important;
+		}
+		.panel-group{
+			margin:0 -30px;
+			&.look-like-panel{
+					max-width:initial;
+					padding:0 !important;
+				
+					li{
+						list-style:none !important;
+					}
+				
+				.panel-title {
+					a, .look-like-panel-a {
+						&:before {
+							background-image:url(../svg/extern-link-app-mobile.svg);
+							height:19px;
+							width:18px;
+							margin-top:-9px;
+							right:30px;
+							@include rotate(0, 50%, 50%);
+						}
+
+					}
+				}
+				
+			}
+			.panel-title{
+				display:table;
+				width:100%;
+				min-height:72px;
+				span{
+					text-align:right;
+					font-size:18px !important;
+					font-weight:bold;
+					position: absolute;
+					top: 50%;
+					right: 75px;
+					@include translate(0, -50%);
+				}
+				a, .look-like-panel-a{
+					color:$black;
+					background-color:$white;
+					border-bottom:0;
+					border-top: 1px solid $gray-light;
+					padding:0 30px;
+					display:table-cell;
+					vertical-align:middle;
+					position: relative;
+					&:before {
+						background-image:url(../svg/arrow-app-mobile.svg);
+						height:12px;
+						width:19px;
+						margin-top:-5px;
+						right:30px;
+					}
+				}
+				.look-like-panel-a{
+					span{
+						right:30px;
+					}
+				}
+			}
+		}
+	}
+	
+	&[id*="app-mobile-vestiaire-et-consigne"] {
+		.swiper-container:last-child{
+			margin-bottom:0;
+		}
+		.region-content{
+			padding-bottom:0 !important;
+		}
+		.panel-group{
+			.panel-title{
+				
+				a{
+					border-bottom:0;
+					border-top: 0;
+					line-height:19px;
+					position: relative;
+					border-top:1px solid #eee !important;
+					color:$black !important;
+					font-weight:bold;
+					background-color:#f7f7f7 !important;
+					border-top:0;
+					min-height:0;
+					height:auto !important;
+					font-size: 14px !important;
+					padding:10px 10px 10px 30px !important;
+					text-align:left !important;
+					&:before {
+						background-image:url(../svg/arrow-app-mobile.svg);
+						height:12px;
+						width:19px;
+						margin-top:-5px;
+						right:30px;
+					}
+					
+					
+				}
+			}
+			.panel-body{
+				table{
+					border-bottom:0 !important;
+				}
+				td{
+					position:static;
+				}
+			}
+		}
+	}
+	&[id*="app-mobile-plan-de-la-C3-A9rogare-carte"] {
+		
+		.region-content {
+			padding:0 !important;
+			.nav-tabs{
+				li{
+					max-width:200px;
+					text-align:center;
+					width:50%;
+				}
+			}
+		}
+		.fullscreenToggle{
+			display:none
+		}
+		
+		
+	}
+	&[id*="se-pr-C3-A9parer--C3-A0-linspection"] {
+		.region-content{
+			padding:0 30px !important;
+		}
+		.table-wrapper{
+			margin-top:0;
+			box-shadow:none;
+			td{
+				padding:10px 15px 10px 30px !important;
+				&:last-child{
+					text-align:left !important;
+					padding:10px 30px 10px 15px !important;
+				}
+			}
+			td:first-child{
+				text-align:center !important;
+			}
+		}
+	}
+	.wrapper-map{
+		
+		margin:-30px -30px 25px;
+	}
+	#map{
+		width:100%;
+		height:250px;
+	}
+	a.btn{
+		text-decoration:none;
+	}
+	blockquote{
+		color:$white;
+		background-color: $brand-primary;
+		padding:15px 40px 15px 77px;
+		margin:-30px -30px 30px;
+		position:relative;
+		font-size:16px!important;
+		line-height:24px;
+		min-height:90px;
+		display:table;
+		border-left:0;
+		width:calc(100% + 60px);
+		p{
+			display:table-cell;
+			vertical-align:middle;
+		}
+		&:before{
+			content:'';
+			display:block;
+			position:absolute;
+			width:24px;
+			height:36px;
+			top:50%;
+			left:30px;
+			background-image:url("../svg/marker-app.svg");
+			background-size:cover;
+			background-repeat:no-repeat;
+			background-position:center;
+			@include translate(0, -50%);
+			
+		}
+	}
+	blockquote + .table-wrapper{
+		margin-top:-15px;
+	}
+	h2 {
+		text-align:center;
+		@include font-size(22);
+		line-height:25px;
+		margin:35px 0 25px;
+	}
+	h3 {
+		@include font-size(18);
+		font-weight:bold;
+	}
+	.swiper-container, .fixe-list {
+		
+		margin:0 -30px 25px;
+		opacity:0;
+		padding:20px 20px 20px 20px;
+		background-color:$gray-light;
+		&.fixe-list{
+			opacity:1;
+			ul{
+				li{
+					opacity:1;
+				}
+			}
+		}
+		> p{
+			margin-top:20px;
+			font-size:12px !important;	
+			color:#908f8f;
+		}
+		&.swiper-location{
+			li{
+				min-height:170px;
+			}
+		}
+		&.is-init{
+			opacity:1;
+		}
+		ul {
+			padding-left:0;
+			margin-bottom:0;
+			li {
+				list-style:none;
+				background-color:#f9f9f9;
+				border-radius:10px;
+				display:block;
+				text-align:center;
+				opacity:0.5;
+				min-height:125px;
+				height:100%;
+				position:relative;
+				padding:35px 15px 20px !important;
+				&:before,
+				&:after {
+					content:normal;
+				}
+				&.swiper-slide-active {
+					opacity:1;
+				}
+				h4{
+					font-size:18px !important;
+					font-weight:bold;
+					margin-bottom:0px;
+				}
+			}
+		}
+		a{
+			
+			display: inline-block;
+			margin:0 10px;
+			line-height:30px;
+			font-size:18px !important;
+			padding-top:6px;
+			color:$colorApp;
+		}
+	}
+
+	ul {
+		li {
+			font-size:14px !important;
+			list-style:disc !important;
+			padding-left:0 !important;
+			&:before,
+			&:after {
+				content:normal !important;
+			}
+			a{
+				color: $colorApp;
+			}
+		}
+	}
+	.table-wrapper {
+
+		margin:25px -30px 20px;
+		//@include box-shadow(0px -2px 5px 0px rgba(0, 0, 0, 0.20));
+		margin-bottom:30px;
+	}
+	.header-table {
+
+		text-align:center;
+
+		padding:15px 25px;
+
+		font-weight:bold;
+		color:$black !important;
+		background-color:$white !important;
+		text-align:center !important;
+		font-size:18px !important;
+		text-transform:none;
+		
+		img {
+			max-height:55px;
+		}
+	}
+	
+	table {
+		width:100% !important;
+		margin:0 !important;
+		max-width:auto;
+
+		border-bottom:1px solid #eee !important;
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr th {
+			font-weight:bold;
+			color:$black !important;
+			background-color:$white !important;
+			text-align:center !important;
+			font-size:18px !important;
+			text-transform:none;
+			height:auto !important;
+			min-height:0;
+			padding:10px 25px;
+			line-height:24px;
+			span{
+				display:block;
+				font-size:14px !important;
+			}
+			
+		}
+
+		tbody tr th {
+			color:$black !important;
+			font-weight:bold;
+			background-color:#f7f7f7 !important;
+			text-align:right !important;
+			padding:10px 10px !important;
+			min-height:0;
+			border-top:1px solid #eee !important;
+			height:auto !important;
+			font-size: 14px !important;
+			&:last-child{
+				padding:10px 30px 10px 10px !important;
+			}
+			&:first-child{
+				padding:10px 10px 10px 30px !important;
+				text-align:left !important;
+			}
+		}
+
+		td {
+			color:$gray-dark !important;
+			padding:10px 10px !important;
+			/* Behave  like a "row" */
+			background-color:$white;
+			border:none;
+			border-top:1px solid #eee !important;
+			height:auto !important;
+			min-height:0;
+			font-size: 14px !important;
+			
+			position:relative;
+			text-align:right !important;
+			&:first-child{
+				text-align:left !important;
+			}
+			//	width:50%;
+			&:first-child{
+				padding:10px 10px 10px 30px !important;
+			}
+			&:last-child{
+				padding:10px 30px 10px 10px !important;
+			}
+			strong {
+				font-weight:normal
+			}
+		}
+	}
+	&[class*="salon-vip"] {
+
+		tr {
+			td:first-child {
+				min-width:140px;
+			}
+			td:last-child {
+				min-width:300px;
+			}
+			td:nth-child(2) {
+				min-width:300px;
+			}
+			td:nth-child(5) {
+				min-width:150px;
+			}
+		}
+	}
+	&[class*="app-mobile-vestiaire-et-consigne"] {
+		tbody{
+			
+			tr {
+				td,th{
+				//	text-align:center !important;
+				}
+				td:first-child, th:first-child {
+				//	text-align:left !important;
+				}
+			}
+		}
+	}
+	.parking-inparq,
+	.parking-proxiparq,
+	.parking-cellparq{
+		padding:30px 20px;
+		color:$white;
+		margin:0 -30px;
+		margin-bottom:30px;
+		span{
+			margin:0 auto 20px;
+			display:block;
+		}
+	}
+	.parking-inparq{
+		background-color:$inparq;
+		margin-bottom:0;
+	}
+	.parking-cellparq{
+		background-color:$cellparq;
+		margin-top:-30px;
+		
+	}
+	.parking-proxiparq{
+		background-color:$proxiparq;
+	}
+
+
+	&[id*="app-mobile-bagages-perdus"] {
+		.view-tiles{
+			margin:0 -30px !important;
+		}
+		.field--name-body{
+			max-width:100% !important;
+		}
+	}
+
+	&[id*="app-mobile-aide-et-support"] {
+		min-height: 100%;
+		background-color: #1f1f1f;
+		color:$white !important;
+		.field--name-body{
+			max-width:100% !important;
+		}
+		.region-content{
+			background-color:#1f1f1f;
+			padding:0 !important;
+			h2{
+				font-size:32px !important;
+				text-align:center;
+			}
+		}
+		.btn-pulse{
+			margin:18px auto;
+			display: none;
+		}
+		#block-views-block-questions-block-1{
+			border-top:1px solid #0f0f0f;
+			.block-title{
+				margin:17px 0 17px;
+			}
+			.panel-group{
+				.panel{
+					font-size:16px !important;
+					background-color:#2a2a2a !important;
+					color:$white !important;
+					border-bottom:1px solid #0f0f0f;
+					font-weight: normal !important;
+					.panel-title-content{
+						padding:10px 85px 10px 30px;
+					}
+					.panel-title{
+						h2{
+							
+							font-size:16px !important;
+							font-weight: normal !important;
+							text-align:left;
+						}
+					}
+					
+					.panel-collapse{
+						color:#cccccc !important;
+						border-bottom:0;
+						box-shadow:none;
+						.views-field-body{
+							padding:10px 30px 18px 30px;
+							a{
+								color:#cccccc;
+							}
+						}
+					}
+					.panel-title h2{
+						
+					}
+				}
+				.panel .panel-title a{
+					
+					font-size:16px !important;
+					background-color:#2a2a2a !important;
+					color:$white !important;
+					height:auto;
+					.icon{
+						right:30px;
+						width:19px;
+						height:12px;
+						path{
+							fill:#0eadff;
+						}
+					}
+				}
+			}
+		}
+		
+	}
+	.btn-pulse{
+		
+		height: 140px;
+		width: 140px;
+		display: block;
+		position: relative;
+		text-decoration:none;
+		text-align:center;
+		font-weight:bold;
+		
+		> span{
+			width:100%;
+			color:$white;
+			position:absolute;
+			display:inline-block;
+			font-size:24px;
+			text-align:center;
+			top: 50%;
+			z-index:10;
+			left:0;
+			line-height:22px;
+			@include translate(0, -49%);
+			span{
+				display:block;
+				font-size:17px;
+			}
+			
+		}
+		&:before {
+			position: absolute;
+			z-index: 1;
+			content: '';
+			display: block;
+			border-radius: 50%;
+			background-color: rgba(#0055ff, 0.2);
+			width: 100%;
+			height: 100%;
+		}
+		&:after {
+			z-index: 2;
+			position: absolute;
+			content: '';
+			display: block;
+			border-radius: 50%;
+			background-color: #0055ff;
+			width: 112px;
+			height: 112px;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+		}
+	}
+	.btn-act-like{
+		display:block;
+		line-height:40px;
+	}
+}
+
+.loading-extern-link{
+	position:fixed;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	background-color:$white;
+	z-index:20;
+	&:before{
+		content:'';
+		position:absolute;
+		display:block;
+		background-image: url("../img/pages/app-mobile/ajax-loader.gif");
+		width:34px;
+		height:34px;
+		background-size:cover;
+		background-position:center;
+		background-repeat:no-repeat;
+		top: 50%;
+		left: 50%;
+		@include translate(-50%, -50%);
+	}
+}

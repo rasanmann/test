@@ -1,0 +1,9 @@
+{
+	"name": "drupal/yqb_flight_planner",
+	"description": "Flight planning form displaying Wego results.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+
+	}
+}

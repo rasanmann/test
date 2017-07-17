@@ -1,0 +1,9 @@
+name: 'Rest resource config'
+description: 'Setup rest resources for YQB APP'
+type: module
+core: 8.x
+dependencies:
+  - rest
+  - serialization
+  - yqb_api
+package: yqb_app

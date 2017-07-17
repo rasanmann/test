@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single page.
+ */
+#}
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+
+{{ attach_library('yqb/helpdesk') }}
+
+{# Main #}
+{% block main %}
+  <div role="main" class="main-container {{ container }} js-quickedit-main-content" id="layout-content">
+
+    <div class="page-wrapper">
+      <div class="content-wrapper content-no-sidebar">
+        <section{{ content_attributes.addClass(content_classes) }}>
+          {# Action Links #}
+          {% if action_links %}
+            {% block action_links %}
+              <ul class="action-links">{{ action_links }}</ul>
+            {% endblock %}
+          {% endif %}
+  
+          {# Content #}
+          {% block content %}
+            <a id="main-content"></a>
+            {{ page.content }}
+          {% endblock %}
+        </section>
+      </div>
+    </div>
+  </div>
+{% endblock %}

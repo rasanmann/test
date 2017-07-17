@@ -1,0 +1,10 @@
+yqb_api.settings:
+  type: mapping
+  label: 'YQB API settings'
+  mapping:
+    yqb_api:
+      type: mapping
+      mapping:
+        keys:
+          type: text
+          label: 'Keys:'

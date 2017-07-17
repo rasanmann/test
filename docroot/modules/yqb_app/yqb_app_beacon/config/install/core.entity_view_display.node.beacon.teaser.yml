@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.beacon
+  module:
+    - user
+id: node.beacon.teaser
+targetEntityType: node
+bundle: beacon
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  langcode: true

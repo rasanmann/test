@@ -1,0 +1,35 @@
+core: 8.x
+type: theme
+base theme: bootstrap
+
+name: 'YQB'
+description: 'Bootstrap sub-theme for YQB.'
+package: 'Bootstrap'
+
+regions:
+  sub_navigation: 'Sub Navigation'
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  top: 'Top'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  bottom: 'Bottom'
+  bottom_actions: 'Bottom Actions'
+  footer: 'Footer'
+  sub_footer: 'Sub Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  footer_overlay: 'Footer overlay'
+
+libraries:
+  - 'yqb/global-styling'
+  - 'yqb/bootstrap-scripts'
+  - 'yqb/global-js'
+
+libraries-override:
+  # Remove an entire library.
+  core/modernizr: false

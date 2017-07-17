@@ -1,0 +1,9 @@
+{
+	"name": "drupal/yqb_weather",
+	"description": "Displays current weather at airport.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+
+	}
+}

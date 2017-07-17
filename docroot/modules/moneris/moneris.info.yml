@@ -1,0 +1,19 @@
+name: Moneris
+description: Adds payment processing options.
+package: Commerce
+
+type: module
+core: 8.x
+configure: moneris.admin_display
+#dependencies:
+#  - datetime
+#  - link
+#  - views
+#
+#configure: hello_world.settings
+#
+#hidden: true
+#
+# Note: do not add the 'version'  property yourself!
+# It will be added automatically by the packager on drupal.org.
+#version: 1.0

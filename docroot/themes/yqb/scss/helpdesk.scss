@@ -1,0 +1,64 @@
+// Bootstrap variables
+@import "variables-bootstrap";
+@import "variables";
+@import "../bootstrap/scss/mixins";
+
+// Helpers
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "helpers/animations";
+
+.yqb-helpdesk-helpdesk-form {
+	margin:0 0 60px;
+
+	input.form-autocomplete {
+		border:1px solid $gray-light;
+		border-radius:0 4px 4px 0 !important;
+	}
+
+	article{
+		h1{
+			font-weight:700;
+			margin:0 0 20px;
+			@include font-size(36);
+		}
+		
+		> div{
+			border:1px solid $gray-light;
+			border-radius:4px;
+			padding:40px;
+			@include flexbox();
+			@include flex-wrap(wrap);
+		}
+		
+		.user-profile, .flights-holder{
+			padding:0 20px;
+			@include flex(1 1 50%);
+			
+			@include responsive($screen-sm){
+				margin:0 0 40px;
+				@include flex-basis(100%);
+			}
+		}
+		
+		.user-profile{
+			ul{
+				padding-left:15px;
+				
+				li{
+					margin:0 0 5px;
+				}
+			}
+		}
+		
+		.flights-holder{
+			.flight-data{
+				background:$royal-blue;
+				border-radius:4px;
+				color:$white;
+				margin:0 0 20px;
+				padding:20px;
+			}
+		}
+	}
+}

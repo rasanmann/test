@@ -1,0 +1,92 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set destination_alias = title|striptags|clean_id %}
+
+<div id="destination-{{ destination_alias }}" class="panel panel-default panel-destination">
+  {% if title %}
+    <div id="destination-heading-{{ destination_alias }}" class="panel-heading" role="tab">
+      <div class="panel-title">
+        <a class="collapsed accordion-destination" role="button" data-toggle="collapse" href="#destination-collapse-{{ destination_alias }}" aria-expanded="false" aria-controls="destination-collapse-{{ destination_alias }}">
+          <div class="panel-title-content">
+            {% for row in rows_header_image %}
+              {% if loop.first %}
+                {{ row.content }}
+              {% endif %}
+            {% endfor %}
+
+            <h3>
+              {{ title }}&nbsp;
+
+              <span>
+                {% for row in rows_iata %}
+                  {% if loop.first %}
+                      {{ row.content }}
+                  {% endif %}
+                {% endfor %}
+              </span>
+            </h3>
+
+
+            <div class="airlines-mini">
+              <ul>
+                {% for row in rows_square_images %}
+                  <li class="airline-mini">
+                    {{ row.content }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <span class="panel-title-action">
+              <span class="title-action-text">{{ "Voir les disponibilités"|t }}</span>
+              <span class="icon icon-down-arrow-2" data-grunticon-embed></span>
+          </span>
+        </a>
+      </div>
+    </div>
+  {% endif %}
+
+  <div id="destination-collapse-{{ destination_alias }}" class="panel-collapse collapse panel-destination-content drawer-action" role="tabpanel" aria-labelledby="destination-heading-{{ destination_alias }}">
+    <div class="shadow"></div>
+
+    <div class="panel-body">
+      {% for row in rows_simple %}
+        {% if loop.first %}
+          {{ row.content }}
+        {% endif %}
+      {% endfor %}
+
+      <div class="panel-raw-data hidden">
+        {% for row in rows %}
+          {%
+          set row_classes = [
+          default_row_class ? 'views-row',
+          ]
+          %}
+          <div{{ row.attributes.addClass(row_classes) }}>
+            {{ row.content }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

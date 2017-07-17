@@ -1,0 +1,18 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_flight_type
+    - node.type.user_flight
+id: node.user_flight.field_flight_type
+field_name: field_flight_type
+entity_type: node
+bundle: user_flight
+label: 'Type de vol'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ */
+#}
+
+{% if label_hidden %}
+    {% if multiple %}
+        <ul>
+            {% for item in items %}
+                <li>{{ item.content }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {% for item in items %}
+            {{ item.content }}
+        {% endfor %}
+    {% endif %}
+{% else %}
+    {{ label }}
+    {% if multiple %}
+        <ul>
+    {% endif %}
+    {% for item in items %}
+        <li>{{ item.content }}</li>
+    {% endfor %}
+    {% if multiple %}
+        </ul>
+    {% endif %}
+{% endif %}

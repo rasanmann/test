@@ -1,0 +1,5 @@
+data_exchange_layer:
+  auth_url: 'https://auth-dot-airport-del-staging.appspot.com'
+  api_url: 'https://api-dot-airport-del-staging.appspot.com'
+  email: 'dev@cossette.com'
+  api_key: '2329cd53c9154c8f8cc7c178fb2632fc'

@@ -1,0 +1,16 @@
+twilio.settings:
+  type: mapping
+  label: 'Twilio settings'
+  mapping:
+    twilio:
+      type: mapping
+      mapping:
+        sid:
+          type: text
+          label: 'SID:'
+        token:
+          type: text
+          label: 'Token:'
+        number:
+          type: text
+          label: 'Number:'

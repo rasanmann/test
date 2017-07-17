@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ */
+#}
+
+<ul class="menu nav navbar-nav navbar-right">
+  <li class="expanded dropdown">
+    {% if (not logged_in) %}
+      <a href="{{ url('user.page') }}">
+        <span class="icon icon-user" data-grunticon-embed></span> {{ "Mon compte"|t }}
+      </a>
+
+      <!--
+      <a class="dropdown-toggle" href="#">
+        <span class="icon icon-right-arrow"></span> <span class="icon icon-user"></span>{{ "Mon compte"|t }}
+      </a>
+
+      <ul class="menu dropdown-menu dropdown-menu-1">
+        <li class="dropdown-menu-header">
+          <a href="#" class="dropdown-back">
+            <span class="icon icon-left-arrow"></span>
+          </a>
+          <a href="#" class="dropdown-close">
+            <span class="icon icon-close"></span>
+          </a>
+          <span>{{ "Mon compte"|t }}</span>
+        </li>
+      </ul>
+      -->
+    {% else %}
+      <a href="{{ url('user.page') }}">
+        <span class="icon icon-user" data-grunticon-embed></span> {{ "Mon compte"|t }}
+      </a>
+    {% endif %}
+  </li>
+</ul>

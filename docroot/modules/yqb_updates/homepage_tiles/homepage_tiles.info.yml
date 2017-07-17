@@ -1,0 +1,18 @@
+name: 'Homepage Tiles'
+description: 'Contains configuration for Homepage tiles content type'
+package: YQB_Updates
+type: module
+core: 8.x
+dependencies:
+  - content_translation
+  - field
+  - file
+  - image
+  - language
+  - link
+  - menu_ui
+  - node
+  - options
+  - system
+  - user
+version: 8.x-1.0

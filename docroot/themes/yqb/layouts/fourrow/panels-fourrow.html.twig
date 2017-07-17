@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Template for a 4 row panel layout.
+ */
+#}
+<div class="panels-fourrow">
+
+    {% if content.first %}
+        {{ content.first }}
+    {% endif %}
+
+    {% if content.second %}
+        {{ content.second }}
+    {% endif %}
+
+    <div class="row blocks-councils is-relative">
+        {% if content['third.left'] %}
+            <div class="is-static">
+                {{ content['third.left'] }}
+            </div>
+        {% endif %}
+
+        {% if content['third.right'] %}
+            <div class="is-static">
+                {{ content['third.right'] }}
+            </div>
+        {% endif %}
+    </div>
+
+    {% if content.fourth %}
+        {{ content.fourth }}
+    {% endif %}
+
+</div>
