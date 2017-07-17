@@ -1,6 +1,6 @@
 one-three-one:
   label: One Three One
-  category: Rows: 3
+  category: "Rows: 3"
   path: layouts/one-three-one
   icon: one-three-one.png
   css: one-three-one.css
@@ -36,7 +36,7 @@ one-three-one:
       label: Bottom row, full width
 threerow:
   label: Three row
-  category: Rows: 3
+  category: "Rows: 3"
   path: layouts/threerow
   icon: threerow.png
   css: threerow.css
@@ -62,7 +62,7 @@ threerow:
       label: Last row, content to right
 fourrow:
   label: Four row
-  category: Rows: 4
+  category: "Rows: 4"
   path: layouts/fourrow
   icon: fourrow.png
   css: fourrow.css
@@ -80,7 +80,7 @@ fourrow:
       label: Fourth row
 threerow-multiple:
   label: Three row multiple
-  category: Rows: 3
+  category: "Rows: 3"
   path: layouts/threerow-multiple
   icon: threerow-multiple.png
   css: threerow-multiple.css
@@ -108,7 +108,7 @@ threerow-multiple:
       label: Fourth row, content to right
 history:
   label: History
-  category: Rows: 2
+  category: "Rows: 2"
   path: layouts/history
   icon: history.png
   css: history.css
