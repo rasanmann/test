@@ -31,9 +31,9 @@ $settings['file_chmod_file'] = 0664;
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 $databases['default']['default'] = array (
-  'database' => 'yqb_test',
+	'database' => 'yqb_development',
   'username' => 'root',
-  'password' => 'root',
+  'password' => '',
   'prefix' => '',
   'host' => '127.0.0.1',
   'port' => '3306',

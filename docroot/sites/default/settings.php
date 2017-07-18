@@ -46,6 +46,10 @@ $settings['install_profile'] = 'standard';
 $config_directories['sync'] = 'sites/yqb.dev/files/config_GNGIARzWYNBvbL7xFdV9ayMF77WX2ao8XRxZkOrzF01UsrPjjNtnQARaWTcX3mJ9TxXSB5raEQ/sync';
 
 
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+   include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod). To use this
 // settings.php for development on your local workstation, set $db_url
