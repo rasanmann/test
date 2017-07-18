@@ -405,7 +405,11 @@ var Destinations = (function ($, Drupal, Bootstrap) {
         });
 
         // Fit defined bounds
-        map.fitBounds(bounds);
+        try {
+            map.fitBounds(bounds);
+        }catch(err){
+            
+        }
     };
 
     /**
