@@ -634,8 +634,8 @@ var Destinations = (function ($, Drupal, Bootstrap) {
         var $parent =  $this.parents('.drawer-action');
             $parent.addClass('subcontent-open');
         
-        console.log(date);
-        console.log(dateFormatted);
+        // console.log(date);
+        // console.log(dateFormatted);
 
         var $container = $this.closest('.drawer-body, .panel-body');
 

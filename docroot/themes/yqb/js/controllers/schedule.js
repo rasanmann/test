@@ -126,7 +126,7 @@ var Schedule = (function ($, Drupal, Bootstrap) {
 
                     if ($cell.length) {
                         var value = removeAccents($cell.text().trim() || (($cell.find('*:first').length) ? $cell.find('*:first').attr('alt').trim() : ''));
-                        console.log(filterSearch[prop].regexp);
+                        // console.log(filterSearch[prop].regexp);
                         if (!value || value.match(filterSearch[prop].regexp) && passedAllFilters !== false) {
                             passedAllFilters = true;
                         } else {
