@@ -131,7 +131,7 @@ class Reminders{
       $push = new ApnsPHP_Push(
         $config->get('yqb_api.ios_environment'),
         './tools/development/' . $config->get('yqb_api.ios_certificate'),
-        ApnsPHP_Abstract::PROTOCOL_HTTP
+        ApnsPHP_Abstract::PROTOCOL_BINARY
       );
       
       $push->setRootCertificationAuthority('./tools/development/entrust_root_certification_authority.pem');
