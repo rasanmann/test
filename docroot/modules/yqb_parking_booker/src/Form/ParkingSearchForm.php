@@ -269,6 +269,11 @@ class ParkingSearchForm extends ParkingFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+	  if ($this->currentUser && $this->currentUser->isAnonymous() && !isset($_SESSION['multistep_form_holds_session'])) {
+        $_SESSION['multistep_form_holds_session'] = TRUE;
+        $this->sessionManager->start();
+    }
+	          
     // Start over
     $this->deleteStore(($form_state->get('current_booking')) ? ['current_booking', 'user_id', 'webview'] : null);
 

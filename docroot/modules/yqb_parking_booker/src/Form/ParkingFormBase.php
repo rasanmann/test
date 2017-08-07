@@ -30,17 +30,17 @@ class ParkingFormBase extends FormBase {
     /**
      * @var \Drupal\Core\Session\SessionManagerInterface
      */
-    private $sessionManager;
+	protected $sessionManager;
 
     /**
      * @var \Drupal\Core\Session\AccountInterface
      */
-    private $currentUser;
+	protected $currentUser;
 
     /**
      * @var \Drupal\user\PrivateTempStore
      */
-    protected $store;
+	protected $store;
 
     /**
      * @var \Drupal\advam\Connector\AdvamConnector
@@ -84,10 +84,10 @@ class ParkingFormBase extends FormBase {
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
 // Start a manual session for anonymous users.
-        if ($this->currentUser && $this->currentUser->isAnonymous() && !isset($_SESSION['multistep_form_holds_session'])) {
-            $_SESSION['multistep_form_holds_session'] = TRUE;
-            $this->sessionManager->start();
-        }
+//        if ($this->currentUser && $this->currentUser->isAnonymous() && !isset($_SESSION['multistep_form_holds_session'])) {
+//            $_SESSION['multistep_form_holds_session'] = TRUE;
+//            $this->sessionManager->start();
+//        }
 
         $form = [];
 
