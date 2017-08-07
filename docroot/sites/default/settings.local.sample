@@ -1,0 +1,29 @@
+<?php
+$databases['default']['default'] = array (
+  'database' => 'yqb_test',
+  'username' => 'root',
+  'password' => 'root',
+  'prefix' => '',
+  'host' => '127.0.0.1',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+
+$config['system.site']['name'] = 'yqb - DEVELOPMENT';
+$config['system.performance']['cache']['page']['max_age'] = 0;  // Time in seconds, 0 = no caching
+$config['system.performance']['css']['preprocess'] = FALSE;
+$config['system.performance']['js']['preprocess'] = FALSE;
+$config['system.performance']['css']['gzip'] = FALSE;
+$config['system.performance']['js']['gzip'] = FALSE;
+$config['system.performance']['response']['gzip'] = FALSE;
+$config['system.cron']['threshold']['autorun'] = 0;
+$config['system.file']['path']['temporary'] = '/tmp';
+$config['system.file']['temporary_maximum_age'] = 21600;
+$config['system.logging']['error_level'] = 'verbose';
+
+$settings['cache']['bins']['render'] = 'cache.backend.null';
+$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+
+$config['dblog.settings']['row_limit'] = 1000;
+$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';

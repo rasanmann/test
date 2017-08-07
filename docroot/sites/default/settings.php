@@ -5,22 +5,6 @@ assert_options(ASSERT_ACTIVE, TRUE);
 
 $config_directories = array();
 
-$config['system.site']['name'] = 'yqb - DEVELOPMENT';
-$config['system.logging']['error_level'] = 'verbose';
-$config['system.performance']['cache']['page']['max_age'] = 0;  // Time in seconds, 0 = no caching
-$config['dblog.settings']['row_limit'] = 1000;
-$config['system.performance']['css']['preprocess'] = FALSE;
-$config['system.performance']['js']['preprocess'] = FALSE;
-$config['system.performance']['css']['gzip'] = FALSE;
-$config['system.performance']['js']['gzip'] = FALSE;
-$config['system.performance']['response']['gzip'] = FALSE;
-$config['system.cron']['threshold']['autorun'] = 0;
-$config['system.file']['path']['temporary'] = '/tmp';
-$config['system.file']['temporary_maximum_age'] = 21600;
-
-$settings['cache']['bins']['render'] = 'cache.backend.null';
-$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
-
 $settings['extension_discovery_scan_tests'] = TRUE;
 $settings['file_public_path'] = 'sites/default/files';
 $settings['file_private_path'] = 'sites/default/files/private';
