@@ -50,7 +50,7 @@
 
   # Force www in a Generic Way
   RewriteCond %{HTTP_HOST} aeroportdequebec\.com$
-  RewriteCond %{HTTP_HOST} !^(www|template|staging)\. [NC]
+  RewriteCond %{HTTP_HOST} !^(www|template|staging|load-test)\. [NC]
   RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
   # Force HTTPS
