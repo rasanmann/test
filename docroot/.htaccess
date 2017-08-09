@@ -22,14 +22,14 @@
   RewriteRule ^ https://www.aeroportdequebec.com%{REQUEST_URI} [R=301,L]
 
   # Force www in a Generic Way
-  RewriteCond %{HTTP_HOST} aeroportdequebec\.com$
-  RewriteCond %{HTTP_HOST} !^(www|template|staging|load-test|test)\. [NC]
-  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-  # Force HTTPS
-  RewriteCond %{HTTP_HOST} www\.aeroportdequebec\.com$
-  RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#  RewriteCond %{HTTP_HOST} aeroportdequebec\.com$
+#  RewriteCond %{HTTP_HOST} !^(www|template|staging|load-test|test)\. [NC]
+#  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#
+#  # Force HTTPS
+#  RewriteCond %{HTTP_HOST} www\.aeroportdequebec\.com$
+#  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # Note: It’s also recommended to enable HTTP Strict Transport Security (HSTS)
