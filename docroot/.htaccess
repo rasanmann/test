@@ -2,33 +2,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
-  # Old redirects
-  RewriteRule concours-photo-instagram	/fr/pages/règlement-du-concours-lancement-du-compte-instagram-quebecyqb [R=301,L]
-  RewriteRule vols/horaire-des-vols-du-jour-arrivees	/fr/vols-et-destinations/horaire-des-vols/arrivees [R=301,L]
-  RewriteRule vols/horaire-des-vols-du-jour	/fr/vols-et-destinations/horaire-des-vols/arrivees [R=301,L]
-  RewriteRule carrieres_yqb	/fr/a-propos/carrieres [R=301,L]
-  RewriteRule en/flights/current-flight-schedules	/en/flights-and-destinations/flight-schedules/arrivals [R=301,L]
-  RewriteRule en/flights/current-flight-schedules-arrivals	/en/flights-and-destinations/flight-schedules/arrivals [R=301,L]
-  RewriteRule en/to-and-from-the-airport/public-transport	/en/airport-access/taxis-and-public-transportation [R=301,L]
-  RewriteRule en/to-and-from-the-airport/taxis	/en/airport-access/taxis-and-public-transportation [R=301,L]
-  RewriteRule vols/destinations-desservies	/fr/vols-et-destinations/destinations-desservies [R=301,L]
-  RewriteRule contactez-nous	/fr/nous-joindre [R=301,L]
-  RewriteRule vers-et-de-laeroport/location-de-vehicules	/fr/acces-a-l-aeroport/location-de-voiture-et-service-de-limousine [R=301,L]
-  RewriteRule vers-et-de-laeroport/service-de-taxi	/fr/acces-a-l-aeroport/taxis-navettes-et-transport-en-commun [R=301,L]
-  RewriteRule vers-et-de-laeroport/pour-se-rendre	/fr/acces-a-l-aeroport/itinéraire-vers-laéroport [R=301,L]
-  RewriteRule a-laeroport/carte-du-terminal	/fr/services-aeroportuaires/plan-de-laérogare [R=301,L]
-  RewriteRule en/to-and-from-the-airport/road-map	/en/airport-access/directions-to-the-airport [R=301,L]
-  RewriteRule vers-et-de-laeroport/service-de-transport-en-commun	/fr/acces-a-l-aeroport/taxis-navettes-et-transport-en-commun [R=301,L]
-  RewriteRule vols/destinations-desservies/mexique-et-caraibes	/fr/vols-et-destinations/destinations-desservies [R=301,L]
-  RewriteRule vols/destinations-desservies/etats-unis	/fr/vols-et-destinations/destinations-desservies [R=301,L]
-  RewriteRule le-blogue	/fr/questions-et-commentaires/faq [R=301,L]
-  RewriteRule en/general-information/frequently-asked-questions	/en/questions-and-comments/faq [R=301,L]
-  RewriteRule en/at-the-airport/terminal-map	/en/airport-services/terminal-map [R=301,L]
-  RewriteRule vols/transporteur-aeriens	/fr/vols-et-destinations/transporteurs [R=301,L]
-  RewriteRule vols/bornes-libre-service-et-enregistrement-en-ligne	/fr/planifier-son-vol/enregistrement-de-vol [R=301,L]
-  RewriteRule information-general/foire-aux-questions	/fr/questions-et-commentaires/faq [R=301,L]
-  RewriteRule vols/destinations-desservies/europe	/fr/vols-et-destinations/destinations-desservies [R=301,L]
-
   # Redirect flights to schedules
   # TODO : find a way to do this in Drupal
   RewriteCond %{REQUEST_URI} (fr|en)\/(vols-et-destinations|flights-and-destination)\/arrivees
