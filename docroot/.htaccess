@@ -20,10 +20,6 @@
   RewriteCond %{HTTP_HOST} mobile\.aeroportdequebec\.com$
   RewriteRule ^ https://www.aeroportdequebec.com%{REQUEST_URI} [R=301,L]
   
-  RewriteCond %{HTTP_HOST} www\.aeroportdequebec\.com$
-  RewriteCond %{REQUEST_URI} ^(.*?)(/{2,})(.*)?$
-  RewriteRule . %1/%3 [R=307,L]
-  
   RewriteCond %{REQUEST_URI} ^//v1/(.*)$
   RewriteRule . /v1/%1 [R=307,L]
 
