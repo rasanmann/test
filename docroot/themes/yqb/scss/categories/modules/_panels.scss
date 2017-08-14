@@ -286,12 +286,16 @@
 				content: "";
 				margin-right: 0;
 				@include rotate(180, 50%, 50%);
-				position: absolute;
-				right: 40px;
-				top: 50%;
 				height: 14px;
 				width: 25px;
 				margin-top: -7px;
+				
+				@at-root .panel-vip &{
+					position: absolute;
+					right: 40px;
+					top: 50%;
+				}
+				
 				@include responsive(1300px) {
 					right: 40px;
 				}
@@ -362,7 +366,6 @@
 	.panel-collapse {
 		border-bottom: 1px solid $gray-lighter;
 		padding: 0;
-		@include box-shadow(inset 0 3px 4px -1px rgba(0, 0, 0, 0.15));
 	}
 }
 
@@ -406,6 +409,7 @@
 	.panel-collapse{
 		border-left:1px solid $gray-light;
 		border-right:1px solid $gray-light;
+		@include box-shadow(inset 0 3px 4px -1px rgba(0, 0, 0, 0.15));
 		
 		.field--name-field-image{display: block}
 		
