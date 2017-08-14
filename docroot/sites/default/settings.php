@@ -41,6 +41,25 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/yqb/yqb-settings.inc');
   
+  $lowCache = [
+  		'/', 
+		  '/fr', 
+		  '/en', 
+		  '/fr/vols-et-destinations/horaire-des-vols/arrivees', 
+		  '/fr/vols-et-destinations/horaire-des-vols/departs', 
+		  '/fr/vols-et-destinations/horaire-des-vols/arrivees-demain', 
+		  '/fr/vols-et-destinations/horaire-des-vols/departs-demain', 
+		  '/en/flights-and-destinations/flight-schedules/departures', 
+		  '/en/flights-and-destinations/flight-schedules/departures-tomorrow', 
+		  '/en/flights-and-destinations/flight-schedules/arrivals', 
+		  '/en/flights-and-destinations/flight-schedules/arrivals-tomorrow', 
+  ];
+  
+	if (in_array($_SERVER['SCRIPT_URL'], $lowCache)) {  
+//		 Set this page to only be cached externally for 30 seconds.  
+		$GLOBALS['conf']['page_cache_maximum_age'] = 300;
+	}
+  
 	// Memcache settings.
   $settings['cache']['default'] = 'cache.backend.memcache';
   $settings['memcache']['stampede_protection'] = TRUE;

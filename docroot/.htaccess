@@ -1,4 +1,3 @@
-# Various rewrite rules.
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
@@ -20,16 +19,19 @@
   # Redirect mobile site to regular responsive site
   RewriteCond %{HTTP_HOST} mobile\.aeroportdequebec\.com$
   RewriteRule ^ https://www.aeroportdequebec.com%{REQUEST_URI} [R=301,L]
+  
+  RewriteCond %{REQUEST_URI} ^//v1/(.*)$
+  RewriteRule . /v1/%1 [R=307,L]
 
   # Force www in a Generic Way
-#  RewriteCond %{HTTP_HOST} aeroportdequebec\.com$
-#  RewriteCond %{HTTP_HOST} !^(www|template|staging|load-test|test)\. [NC]
-#  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-#
-#  # Force HTTPS
-#  RewriteCond %{HTTP_HOST} www\.aeroportdequebec\.com$
-#  RewriteCond %{HTTP:X-Forwarded-Proto} !https
-#  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  RewriteCond %{HTTP_HOST} aeroportdequebec\.com$
+  RewriteCond %{HTTP_HOST} !^(www|template|staging|load-test|test)\. [NC]
+  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # Force HTTPS
+  RewriteCond %{HTTP_HOST} www\.aeroportdequebec\.com$
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # Note: It’s also recommended to enable HTTP Strict Transport Security (HSTS)
