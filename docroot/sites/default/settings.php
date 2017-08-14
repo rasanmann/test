@@ -42,6 +42,6 @@ if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/yqb/yqb-settings.inc');
   
 	// Memcache settings.
-  $settings['cache']['default'] = 'cache.backend.memcache';
-  $settings['memcache']['stampede_protection'] = TRUE;
+//  $settings['cache']['default'] = 'cache.backend.memcache';
+//  $settings['memcache']['stampede_protection'] = TRUE;
 }
