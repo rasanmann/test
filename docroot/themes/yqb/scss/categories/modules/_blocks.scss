@@ -245,6 +245,42 @@
 	.table {
 		margin-bottom:0;
 	}
+	
+	.panel{
+		&:first-child{
+			border-bottom:1px solid $gray-light;
+		}
+		
+		&:last-child a{
+			@include box-shadow(inset 0 -3px 4px -1px rgba(0, 0, 0, 0.15));
+		}
+	}
+	
+	.panel-title{
+		display: table;
+		width:100%;
+		
+		a{
+			background:$white;
+			color: $brand-primary;
+			display: table-cell;
+			font-family:$font-family-sans-serif;
+			padding:0 20px;
+			vertical-align: middle;
+			@include font-size(18);
+			
+			&:after{
+				background:url(/themes/yqb/svg/down-arrow-2.svg) center center / contain no-repeat;
+				content:"";
+				position: absolute;
+				height:18px;
+				right:20px;
+				top:50%;
+				width:24px;
+				@include translate(0, -50%);
+			}
+		} 
+	}
 
 	@include responsive($screen-sm){
 		margin:0 -20px 0;

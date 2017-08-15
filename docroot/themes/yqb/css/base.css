@@ -3658,6 +3658,40 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     border-bottom: 0; }
   #block-flightstabsblock .table {
     margin-bottom: 0; }
+  #block-flightstabsblock .panel:first-child {
+    border-bottom: 1px solid #e5e5e5; }
+  #block-flightstabsblock .panel:last-child a {
+    -webkit-box-shadow: inset 0 -3px 4px -1px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 -3px 4px -1px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -3px 4px -1px rgba(0, 0, 0, 0.15); }
+  #block-flightstabsblock .panel-title {
+    display: table;
+    width: 100%; }
+    #block-flightstabsblock .panel-title a {
+      background: white;
+      color: #0054ff;
+      display: table-cell;
+      font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+      padding: 0 20px;
+      vertical-align: middle;
+      font-size: 18px;
+      font-size: 1.8rem; }
+      #block-flightstabsblock .panel-title a:after {
+        background: url(/themes/yqb/svg/down-arrow-2.svg) center center/contain no-repeat;
+        content: "";
+        position: absolute;
+        height: 18px;
+        right: 20px;
+        top: 50%;
+        width: 24px;
+        -webkit-transform: translate(0, -50%);
+        /* Saf3.1+, Chrome */
+        -moz-transform: translate(0, -50%);
+        /* FF3.5+ */
+        -ms-transform: translate(0, -50%);
+        /* IE9 */
+        transform: translate(0, -50%);
+        zoom: 1; }
   @media only screen and (max-width: 768px) {
     #block-flightstabsblock {
       margin: 0 -20px 0;
