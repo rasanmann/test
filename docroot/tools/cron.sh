@@ -3,7 +3,15 @@
 # crontab -e
 # cd /var/www/aeroportdequebec.com && bash tools/cron.sh > /dev/null 2>&1
 
-if [ $(drush sget system.cron_lock) ]
+#drush sset system.cron_lock $(date +"%s")
+#if [[ $(drush sget system.cron_lock) && $(drush scr tools/crondiff.php) == "ok" ]]
+#then
+#   echo "not running"
+#else
+#   echo "doing it"
+#fi
+
+if [[ $(drush sget system.cron_lock) && $(drush scr tools/crondiff.php) == "ok" ]]
 then
     echo "$(date +%Y-%m-%d\ %H:%M:%S) Cron is already running"
 
@@ -16,7 +24,7 @@ else
     drush scr tools/log.php --channel='cron' --message='Locking cron.'
 
     # Create lock on database
-    drush sset system.cron_lock locked
+    drush sset system.cron_lock $(date +"%s")
 
     drush scr tools/log.php --channel='cron' --message='Cron is locked.'
 

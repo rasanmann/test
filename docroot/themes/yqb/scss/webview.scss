@@ -723,7 +723,10 @@ body{
 		}
 		.btn-pulse{
 			margin:18px auto;
-			display: none;
+			
+			@include responsiveMin($screen-xs){
+				display: none;
+			}
 		}
 		#block-views-block-questions-block-1{
 			border-top:1px solid #0f0f0f;

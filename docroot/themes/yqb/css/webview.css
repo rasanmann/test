@@ -1369,8 +1369,10 @@ body {
       font-size: 32px !important;
       text-align: center; }
   [class*="app-mobile"][id*="app-mobile-aide-et-support"] .btn-pulse {
-    margin: 18px auto;
-    display: none; }
+    margin: 18px auto; }
+    @media only screen and (min-width: 601px) {
+      [class*="app-mobile"][id*="app-mobile-aide-et-support"] .btn-pulse {
+        display: none; } }
   [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 {
     border-top: 1px solid #0f0f0f; }
     [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .block-title {
