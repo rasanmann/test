@@ -1,0 +1,99 @@
+diff --git a/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php b/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php
+index 91077e7ad3..0984ffcb1f 100644
+--- a/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php
++++ b/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\Core\Lock;
+ 
++use Drupal\Component\Utility\Crypt;
+ use Drupal\Core\Database\Connection;
+ use Drupal\Core\Database\IntegrityConstraintViolationException;
+ use Drupal\Core\Database\SchemaObjectExistsException;
+@@ -42,6 +43,8 @@ public function __construct(Connection $database) {
+    * {@inheritdoc}
+    */
+   public function acquire($name, $timeout = 30.0) {
++    $name = $this->normalizeName($name);
++
+     // Insure that the timeout is at least 1 ms.
+     $timeout = max($timeout, 0.001);
+     $expire = microtime(TRUE) + $timeout;
+@@ -106,6 +109,8 @@ public function acquire($name, $timeout = 30.0) {
+    * {@inheritdoc}
+    */
+   public function lockMayBeAvailable($name) {
++    $name = $this->normalizeName($name);
++
+     try {
+       $lock = $this->database->query('SELECT expire, value FROM {semaphore} WHERE name = :name', [':name' => $name])->fetchAssoc();
+     }
+@@ -136,6 +141,8 @@ public function lockMayBeAvailable($name) {
+    * {@inheritdoc}
+    */
+   public function release($name) {
++    $name = $this->normalizeName($name);
++
+     unset($this->locks[$name]);
+     try {
+       $this->database->delete('semaphore')
+@@ -204,6 +211,33 @@ protected function catchException(\Exception $e) {
+   }
+ 
+   /**
++   * Normalizes a lock name in order to comply with database limitations.
++   *
++   * @param string $name
++   *   The passed in lock name.
++   *
++   * @return string
++   *   An ASCII-encoded lock name that is at most 255 characters long.
++   */
++  protected function normalizeName($name) {
++    // Nothing to do if the name is a US ASCII string of 255 characters or less.
++    $name_is_ascii = mb_check_encoding($name, 'ASCII');
++
++    if (strlen($name) <= 255 && $name_is_ascii) {
++      return $name;
++    }
++    // Return a string that uses as much as possible of the original name with
++    // the hash appended.
++    $hash = Crypt::hashBase64($name);
++
++    if (!$name_is_ascii) {
++      return $hash;
++    }
++
++    return substr($name, 0, 255 - strlen($hash)) . $hash;
++  }
++
++  /**
+    * Defines the schema for the semaphore table.
+    */
+   public function schemaDefinition() {
+diff --git a/core/tests/Drupal/KernelTests/Core/Lock/LockTest.php b/core/tests/Drupal/KernelTests/Core/Lock/LockTest.php
+index 0bd761fed2..8e1a50d5d0 100644
+--- a/core/tests/Drupal/KernelTests/Core/Lock/LockTest.php
++++ b/core/tests/Drupal/KernelTests/Core/Lock/LockTest.php
+@@ -47,6 +47,21 @@ public function testBackendLockRelease() {
+     $this->assertTrue($success, 'Could acquire second lock a second time within the same request.');
+ 
+     $this->lock->release('lock_b');
++
++    // Test acquiring an releasing a lock with a long key (over 255 chars).
++    $long_key = 'long_key:BZoMiSf9IIPULsJ98po18TxJ6T4usd3MZrLE0d3qMgG6iAgDlOi1G3oMap7zI5df84l7LtJBg4bOj6XvpO6vDRmP5h5QbA0Bj9rVFiPIPAIQZ9qFvJqTALiK1OR3GpOkWQ4vgEA4LkY0UfznrWBeuK7IWZfv1um6DLosnVXd1z1cJjvbEUqYGJj92rwHfhYihLm8IO9t3P2gAvEkH5Mhc8GBoiTsIDnP01Te1kxGFHO3RuvJIxPnHmZtSdBggmuVN7x9';
++
++    $success = $this->lock->acquire($long_key);
++    $this->assertTrue($success, 'Could acquire long key lock.');
++
++    // This function is not part of the backend, but the default database
++    // backend implement it, we can here use it safely.
++    $is_free = $this->lock->lockMayBeAvailable($long_key);
++    $this->assertFalse($is_free, 'Long key lock is unavailable.');
++
++    $this->lock->release($long_key);
++    $is_free = $this->lock->lockMayBeAvailable($long_key);
++    $this->assertTrue($is_free, 'Long key lock has been released.');
+   }
+ 
+   /**
