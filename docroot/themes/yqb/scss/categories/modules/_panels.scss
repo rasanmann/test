@@ -400,8 +400,14 @@
 			background-color: $brand-primary !important;
 			height:100px;
 
-			.icon-down-arrow-2 path{
-				fill: $white !important;
+			.icon-down-arrow-2{
+				position: absolute;
+				right:40px;
+				top:50%;
+				
+				path{
+					fill: $white !important;
+				}
 			}
 		}
 	}

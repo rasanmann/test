@@ -75,7 +75,7 @@ class AddToAnySettingsForm extends ConfigFormBase {
       '#type'          => 'textarea',
       '#title'         => t('Service Buttons HTML code'),
       '#default_value' => $addtoany_settings->get('additional_html'),
-      '#description'   => t('You can add HTML code to display customized <a href="https://www.addtoany.com/buttons/customize/standalone_services" target="_blank">standalone service buttons</a> next to each universal share button. For example: <br /> <code>&lt;a class=&quot;a2a_button_facebook&quot;&gt;&lt;/a&gt;<br />&lt;a class=&quot;a2a_button_twitter&quot;&gt;&lt;/a&gt;<br />&lt;a class=&quot;a2a_button_pinterest&quot;&gt;&lt;/a&gt;</code>
+      '#description'   => t('You can add HTML code to display customized <a href="https://www.addtoany.com/buttons/customize/drupal/standalone_services" target="_blank">standalone service buttons</a> next to each universal share button. For example: <br /> <code>&lt;a class=&quot;a2a_button_facebook&quot;&gt;&lt;/a&gt;<br />&lt;a class=&quot;a2a_button_twitter&quot;&gt;&lt;/a&gt;<br />&lt;a class=&quot;a2a_button_pinterest&quot;&gt;&lt;/a&gt;</code>
       '),
       '#attributes' => $attributes_for_code,
     );

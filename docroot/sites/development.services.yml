@@ -5,6 +5,12 @@
 services:
   cache.backend.null:
     class: Drupal\Core\Cache\NullBackendFactory
+  lock:
+    class: Drupal\Core\Lock\DatabaseLockBackend
+    arguments: ['@database']
+  lock.persistent:
+    class: Drupal\Core\Lock\DatabaseLockBackend
+    arguments: ['@database']
 parameters:
   http.response.debug_cacheability_headers: true
   twig.config:

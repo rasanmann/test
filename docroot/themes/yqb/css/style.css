@@ -6661,8 +6661,12 @@ nav#block-useraccountmenu a {
   .panel-vip .panel-title a {
     background-color: #0054ff !important;
     height: 100px; }
-    .panel-vip .panel-title a .icon-down-arrow-2 path {
-      fill: white !important; }
+    .panel-vip .panel-title a .icon-down-arrow-2 {
+      position: absolute;
+      right: 40px;
+      top: 50%; }
+      .panel-vip .panel-title a .icon-down-arrow-2 path {
+        fill: white !important; }
   .panel-vip .panel-collapse {
     border-left: 1px solid #e5e5e5;
     border-right: 1px solid #e5e5e5;
