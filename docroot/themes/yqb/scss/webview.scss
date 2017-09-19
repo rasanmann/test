@@ -906,7 +906,7 @@ body{
 		}
 
 		.table td, .table th {
-			@include font-size(18);
+			@include font-size(24);
 			
 			@include responsive(1024px){
 				@include font-size(14);
