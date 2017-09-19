@@ -426,6 +426,7 @@
 			> .field--name-field-title{
 				font-weight:bold;
 				margin:0 0 20px;
+				@include font-size(20);
 			}
 			
 			.field--name-field-vip-drawer-cards{

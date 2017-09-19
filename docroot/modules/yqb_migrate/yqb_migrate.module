@@ -84,8 +84,17 @@ function yqb_migrate_cron() {
       try{
         $php = '/usr/local/php7.0/bin/php';
         $drush = '/usr/local/drush8/drush';
-        exec("{$php} {$drush} pm-enable config_devel -y && {$php} {$drush} cc drush  && {$php} {$drush} cdi yqb_migrate && {$php} {$drush} pm-uninstall config_devel -y", $output, $return);
-        Drupal::logger('yqb_migrate')->notice("Migrations exec response : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
+        exec("{$php} {$drush} pm-enable config_devel -y", $output, $return);
+        Drupal::logger('yqb_migrate')->notice("Enabling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
+        
+        exec("{$php} {$drush} cc drush", $output, $return);
+        Drupal::logger('yqb_migrate')->notice("Clearing Drush Cache : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
+        
+        exec("{$php} {$drush} cdi yqb_migrate", $output, $return);
+        Drupal::logger('yqb_migrate')->notice("Config Devel Import Migrate");
+        
+        exec("{$php} {$drush} pm-uninstall config_devel -y", $output, $return);
+        Drupal::logger('yqb_migrate')->notice("Uninstalling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
       }catch(Exception $exception){
         Drupal::logger('yqb_migrate')->error("Could not restart migrations");
       }

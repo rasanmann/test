@@ -147,11 +147,12 @@
 		> .swiper-slide-legend {
 			bottom:80px;
 			padding:20px;
-			@include font-size(14);
+			@include font-size(16);
 			
 			@include responsive($screen-tablet){
 				position: static;
 				width:100%;
+				@include font-size(14);
 			}
 			
 			p {

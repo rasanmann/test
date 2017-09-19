@@ -844,6 +844,81 @@ body{
 	}
 }
 
+#vols-et-destinations-horaire-des-vols-arrivees,
+#vols-et-destinations-horaire-des-vols-departs,
+#flights-and-destinations-flight-schedules-departures,
+#flights-and-destinations-flight-schedules-arrivals{
+	&.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update{top:81px;}
+	&.toolbar-tray-open.toolbar-fixed.toolbar-horizontal  .sidebar-content .block-last-update{top:120px;}
+	
+	#layout-main{
+		max-width:none;
+	}
+	
+	#layout-header {
+		display: block !important;
+
+		.navbar-header {
+			width: 100%;
+			padding:0 34px;
+		}
+
+		.menu, .navbar-collapse, .search-block-form {
+			display: none !important;
+		}
+	}
+	
+	.sidebar-content{
+		display: block !important;
+		
+		@include responsive(1024px){
+			display: table-cell !important;
+		}
+		
+		@include responsive(900px){
+			display: block !important;
+		}
+		
+		.block-last-update {
+			position: fixed;
+			top:41px;
+			right:0;
+			
+			@include responsive(1024px){
+				position: static;
+				float:right;
+			}
+			
+			@include responsive($screen-xs){
+				float:none;
+			}
+		}
+	}
+	
+	.view-id-arrivals,
+	.view-id-departures {
+		// Hide logo in mobile mode
+		#view-field-white-logo-table-column,
+		#view-field-white-logo-table-column--2,
+		.views-field-field-white-logo,
+		.views-field-field-white-logo--2 {
+			display: none;
+		}
+
+		.table td, .table th {
+			@include font-size(18);
+			
+			@include responsive(1024px){
+				@include font-size(14);
+			}
+
+			.visible-xs-inline {
+				display: inline !important;
+			}
+		}
+	}
+}
+
 .loading-extern-link{
 	position:fixed;
 	top:0;
