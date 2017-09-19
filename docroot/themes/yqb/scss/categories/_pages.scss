@@ -45,6 +45,36 @@ body.path-frontpage {
 			}
 		}
 	}
+	
+	#block-homepagetilesblock{
+		.icon-blog, .icon-facebook, .icon-twitter, .icon-youtube, .icon-instagram, .icon-linkedin, .icon-watch{
+			height:63px;
+			width:63px;
+			
+			path{fill:$white;}
+		}
+		
+		.icon-car-parking{
+			height:46px;
+			width:63px;
+			
+			path{fill:$white;}
+		}
+		
+		.icon-plane-departure{
+			height:54px;
+			width:73px;
+			
+			path{fill:$white;}
+		}
+		
+		.icon-plane-arrival{
+			height:49px;
+			width:66px;
+			
+			path{fill:$white;}
+		}
+	}
 }
 
 #vols-et-destinations-destinations-desservies .content-have-sidebar {

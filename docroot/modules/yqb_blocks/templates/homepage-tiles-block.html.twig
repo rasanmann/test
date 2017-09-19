@@ -1,12 +1,12 @@
 <div{{ attributes.addClass('row', 'tiles') }}>
 	{% for tile in tiles %}
 		<div class="{{ tile.description ? 'col-md-6' : 'col-md-3  col-xs-6' }}">
-			<a class="tile tile-home text-center vertical-align embed-responsive {{ tile.description ? 'embed-responsive-2by1' : 'embed-responsive-1by1' }} {% if tile.background_color %}{{ tile.background_color }}{% endif %}" href="{{ tile.url }}" {{ (tile.target) ? "target=" ~ tile.target : '' }}>
+			<a class="tile tile-home text-center vertical-align embed-responsive {{ tile.description ? 'embed-responsive-2by1' : 'embed-responsive-1by1' }} {% if tile.background_color %}{{ tile.background_color }}{% endif %} {% if tile.trigger_nav %}trigger-nav{% endif %}" href="{{ tile.url }}" {{ (tile.target) ? "target=" ~ tile.target : '' }}>
 				<div class="vertical-align-content {% if tile.hide_content %} content-hidden{% endif %}">
 					{% if tile.icon %}
 						<img src="{{ tile.icon }}" class="tile-icon" alt="" aria-hidden="true" />
 					{% elseif tile.icon_class %}
-						<span class="icon {{ tile.icon_class }}" aria-hidden="true"></span>
+						<span class="icon {{ tile.icon_class }}" aria-hidden="true" data-grunticon-embed></span>
 					{% endif %}
 
 					<h2 class="title-default">{{ tile.title }}</h2>

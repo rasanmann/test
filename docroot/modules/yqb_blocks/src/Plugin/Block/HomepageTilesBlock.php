@@ -57,6 +57,7 @@ class HomepageTilesBlock extends BlockBase {
 							'hide_content' => (bool)$node->field_tile_hide_content->value,
 							'icon_class' => $node->field_tile_icon_list->value,
 							'background_color' => $node->field_tile_background_color->value,
+							'trigger_nav' => $node->field_trigger_nav->value,
 					];
 
 					if (isset($node->field_tile_link->first()->uri)) {
@@ -81,7 +82,7 @@ class HomepageTilesBlock extends BlockBase {
 				}
 			}
 		}
-
+		
 		return [
 				'#theme' => 'homepage-tiles-block',
 				'#tiles' => $tiles

@@ -1525,6 +1525,26 @@ body.path-frontpage #layout-content .heading {
       width: 100% !important; } }
 body.path-frontpage #block-flightstabsblock .panel-body .block-parking-booker .title-content {
   padding: 0 15px; }
+body.path-frontpage #block-homepagetilesblock .icon-blog, body.path-frontpage #block-homepagetilesblock .icon-facebook, body.path-frontpage #block-homepagetilesblock .icon-twitter, body.path-frontpage #block-homepagetilesblock .icon-youtube, body.path-frontpage #block-homepagetilesblock .icon-instagram, body.path-frontpage #block-homepagetilesblock .icon-linkedin, body.path-frontpage #block-homepagetilesblock .icon-watch {
+  height: 63px;
+  width: 63px; }
+  body.path-frontpage #block-homepagetilesblock .icon-blog path, body.path-frontpage #block-homepagetilesblock .icon-facebook path, body.path-frontpage #block-homepagetilesblock .icon-twitter path, body.path-frontpage #block-homepagetilesblock .icon-youtube path, body.path-frontpage #block-homepagetilesblock .icon-instagram path, body.path-frontpage #block-homepagetilesblock .icon-linkedin path, body.path-frontpage #block-homepagetilesblock .icon-watch path {
+    fill: white; }
+body.path-frontpage #block-homepagetilesblock .icon-car-parking {
+  height: 46px;
+  width: 63px; }
+  body.path-frontpage #block-homepagetilesblock .icon-car-parking path {
+    fill: white; }
+body.path-frontpage #block-homepagetilesblock .icon-plane-departure {
+  height: 54px;
+  width: 73px; }
+  body.path-frontpage #block-homepagetilesblock .icon-plane-departure path {
+    fill: white; }
+body.path-frontpage #block-homepagetilesblock .icon-plane-arrival {
+  height: 49px;
+  width: 66px; }
+  body.path-frontpage #block-homepagetilesblock .icon-plane-arrival path {
+    fill: white; }
 
 #vols-et-destinations-destinations-desservies .content-have-sidebar {
   overflow: hidden; }
