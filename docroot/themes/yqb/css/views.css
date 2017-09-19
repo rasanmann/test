@@ -857,6 +857,9 @@
   		}
   	}
   	*/ }
+  .view-id-arrivals .view-header,
+  .view-id-departures .view-header {
+    display: none; }
   .view-id-arrivals #view-field-flight-number-table-column,
   .view-id-arrivals #view-field-flight-number-table-column--2,
   .view-id-departures #view-field-flight-number-table-column,

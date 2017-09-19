@@ -897,6 +897,10 @@ body{
 	
 	.view-id-arrivals,
 	.view-id-departures {
+		@include responsiveMin(1024px) {
+			overflow: visible;
+		}
+		
 		// Hide logo in mobile mode
 		#view-field-white-logo-table-column,
 		#view-field-white-logo-table-column--2,
@@ -904,9 +908,33 @@ body{
 		.views-field-field-white-logo--2 {
 			display: none;
 		}
+		
+		@include responsiveMin(1024px) {
+			.view-header {
+				display: block;
+				font-weight: $bold;
+				left: 50%;
+				position: absolute;
+				top: -62px;
+				@include font-size(36);
+				@include translate(-50%, 0);
+			}
+		}
 
-		.table td, .table th {
+		.table td{
 			@include font-size(24);
+			
+			@include responsive(1024px){
+				@include font-size(14);
+			}
+
+			.visible-xs-inline {
+				display: inline !important;
+			}
+		}
+
+		.table th {
+			@include font-size(18);
 			
 			@include responsive(1024px){
 				@include font-size(14);
