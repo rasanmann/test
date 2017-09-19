@@ -844,6 +844,57 @@ body{
 	}
 }
 
+#vols-et-destinations-horaire-des-vols-arrivees {
+	#layout-main{
+		max-width:none;
+	}
+	
+	#layout-header {
+		display: block !important;
+
+		.navbar-header {
+			width: 100%;
+			padding:0 34px;
+		}
+
+		.menu, .navbar-collapse {
+			display: none !important;
+		}
+	}
+	
+	.sidebar-content{
+		display: block !important;
+		
+		.block-last-update {
+			position: fixed;
+			top:41px;
+			right:0;
+			
+			body.toolbar-fixed.toolbar-horizontal &{top:81px;}
+			body.toolbar-tray-open.toolbar-fixed.toolbar-horizontal &{top:120px;}
+		}
+	}
+	
+	.view-id-arrivals,
+	.view-id-departures {
+		// Hide logo in mobile mode
+		#view-field-white-logo-table-column,
+		#view-field-white-logo-table-column--2,
+		.views-field-field-white-logo,
+		.views-field-field-white-logo--2 {
+			display: none;
+		}
+
+		.table td, .table th {
+			@include font-size(18);
+
+			.visible-xs-inline {
+				display: inline !important;
+			}
+		}
+	}
+}
+
 .loading-extern-link{
 	position:fixed;
 	top:0;

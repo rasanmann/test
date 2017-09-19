@@ -36,6 +36,8 @@ webview:
   css:
     theme:
       css/webview.css: {}
+  js:
+      js/modules/page-reloader.js: {}
       
 ## HELPDESK CSS
     
