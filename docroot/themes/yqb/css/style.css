@@ -4510,6 +4510,8 @@ ul[data-sa-theme="minimal"] {
 @media only screen and (max-width: 600px) {
   .form-group.with-margin {
     margin-bottom: 20px; } }
+.form-group .description {
+  margin-top: 5px; }
 
 input::-webkit-calendar-picker-indicator {
   display: none; }
@@ -4519,8 +4521,8 @@ input[type="date"]::-webkit-input-placeholder {
 
 label {
   margin-bottom: 5px !important;
-  font-size: 12px;
-  font-size: 1.2rem;
+  font-size: 14px;
+  font-size: 1.4rem;
   padding-left: 3px;
   line-height: 15px;
   color: #0a0a0b;
@@ -4541,6 +4543,10 @@ label {
   -moz-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
   -webkit-backface-visibility: hidden; }
+  @media only screen and (max-width: 600px) {
+    label {
+      font-size: 12px;
+      font-size: 1.2rem; } }
   label.control-label-focus {
     color: #0a0a0b; }
 
@@ -4577,6 +4583,22 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   line-height: normal; }
+
+.form-type-checkbox {
+  margin-top: 25px;
+  margin-bottom: 15px; }
+  .form-type-checkbox label {
+    font-weight: bold;
+    padding-left: 30px;
+    font-size: 14px;
+    font-size: 1.4rem; }
+    @media only screen and (max-width: 600px) {
+      .form-type-checkbox label {
+        font-size: 12px;
+        font-size: 1.2rem; } }
+    .form-type-checkbox label input[type="checkbox"] {
+      margin-left: -30px;
+      margin-top: 0; }
 
 input[type="file"] {
   display: block; }
