@@ -73,7 +73,7 @@ function yqb_migrate_cron() {
     $plugins = $manager->createInstances([]);
     
     foreach ($plugins as $id => $migration) {
-    	var_dump($id);
+	    echo sprintf('Found "%s".', $id) . PHP_EOL;
       if (in_array(Unicode::strtolower($id), $migration_ids)) {
         $migrations[] = $migration;
       }
