@@ -6702,7 +6702,9 @@ nav#block-useraccountmenu a {
       padding: 20px; }
       .panel-vip .panel-collapse .paragraph--type--vip-drawer-section > .field--name-field-title {
         font-weight: bold;
-        margin: 0 0 20px; }
+        margin: 0 0 20px;
+        font-size: 20px;
+        font-size: 2rem; }
       @media only screen and (max-width: 600px) {
         .panel-vip .panel-collapse .paragraph--type--vip-drawer-section .field--name-field-vip-drawer-cards {
           column-count: 2; } }
@@ -6893,12 +6895,14 @@ nav#block-useraccountmenu a {
     .slider-gallery-wrapper .swiper-slide > .swiper-slide-legend {
       bottom: 80px;
       padding: 20px;
-      font-size: 14px;
-      font-size: 1.4rem; }
+      font-size: 16px;
+      font-size: 1.6rem; }
       @media only screen and (max-width: 769px) {
         .slider-gallery-wrapper .swiper-slide > .swiper-slide-legend {
           position: static;
-          width: 100%; } }
+          width: 100%;
+          font-size: 14px;
+          font-size: 1.4rem; } }
       .slider-gallery-wrapper .swiper-slide > .swiper-slide-legend p {
         margin: 0; }
       .slider-gallery-wrapper .swiper-slide > .swiper-slide-legend ul {
