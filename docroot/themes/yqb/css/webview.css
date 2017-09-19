@@ -1592,8 +1592,8 @@ body {
 #flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .table th,
 #flights-and-destinations-flight-schedules-arrivals .view-id-departures .table td,
 #flights-and-destinations-flight-schedules-arrivals .view-id-departures .table th {
-  font-size: 18px;
-  font-size: 1.8rem; }
+  font-size: 24px;
+  font-size: 2.4rem; }
   @media only screen and (max-width: 1024px) {
     #vols-et-destinations-horaire-des-vols-arrivees .view-id-arrivals .table td, #vols-et-destinations-horaire-des-vols-arrivees .view-id-arrivals .table th,
     #vols-et-destinations-horaire-des-vols-arrivees .view-id-departures .table td,
