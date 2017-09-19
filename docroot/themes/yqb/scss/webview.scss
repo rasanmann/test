@@ -845,7 +845,9 @@ body{
 }
 
 #vols-et-destinations-horaire-des-vols-arrivees,
-#vols-et-destinations-horaire-des-vols-departs{
+#vols-et-destinations-horaire-des-vols-departs,
+#flights-and-destinations-flight-schedules-departures,
+#flights-and-destinations-flight-schedules-arrivals{
 	&.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update{top:81px;}
 	&.toolbar-tray-open.toolbar-fixed.toolbar-horizontal  .sidebar-content .block-last-update{top:120px;}
 	

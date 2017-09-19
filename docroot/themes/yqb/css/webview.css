@@ -1471,50 +1471,78 @@ body {
   line-height: 40px; }
 
 #vols-et-destinations-horaire-des-vols-arrivees.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
-#vols-et-destinations-horaire-des-vols-departs.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update {
+#vols-et-destinations-horaire-des-vols-departs.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
+#flights-and-destinations-flight-schedules-departures.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
+#flights-and-destinations-flight-schedules-arrivals.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update {
   top: 81px; }
 #vols-et-destinations-horaire-des-vols-arrivees.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
-#vols-et-destinations-horaire-des-vols-departs.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update {
+#vols-et-destinations-horaire-des-vols-departs.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
+#flights-and-destinations-flight-schedules-departures.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
+#flights-and-destinations-flight-schedules-arrivals.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update {
   top: 120px; }
 #vols-et-destinations-horaire-des-vols-arrivees #layout-main,
-#vols-et-destinations-horaire-des-vols-departs #layout-main {
+#vols-et-destinations-horaire-des-vols-departs #layout-main,
+#flights-and-destinations-flight-schedules-departures #layout-main,
+#flights-and-destinations-flight-schedules-arrivals #layout-main {
   max-width: none; }
 #vols-et-destinations-horaire-des-vols-arrivees #layout-header,
-#vols-et-destinations-horaire-des-vols-departs #layout-header {
+#vols-et-destinations-horaire-des-vols-departs #layout-header,
+#flights-and-destinations-flight-schedules-departures #layout-header,
+#flights-and-destinations-flight-schedules-arrivals #layout-header {
   display: block !important; }
   #vols-et-destinations-horaire-des-vols-arrivees #layout-header .navbar-header,
-  #vols-et-destinations-horaire-des-vols-departs #layout-header .navbar-header {
+  #vols-et-destinations-horaire-des-vols-departs #layout-header .navbar-header,
+  #flights-and-destinations-flight-schedules-departures #layout-header .navbar-header,
+  #flights-and-destinations-flight-schedules-arrivals #layout-header .navbar-header {
     width: 100%;
     padding: 0 34px; }
   #vols-et-destinations-horaire-des-vols-arrivees #layout-header .menu, #vols-et-destinations-horaire-des-vols-arrivees #layout-header .navbar-collapse, #vols-et-destinations-horaire-des-vols-arrivees #layout-header .search-block-form,
   #vols-et-destinations-horaire-des-vols-departs #layout-header .menu,
   #vols-et-destinations-horaire-des-vols-departs #layout-header .navbar-collapse,
-  #vols-et-destinations-horaire-des-vols-departs #layout-header .search-block-form {
+  #vols-et-destinations-horaire-des-vols-departs #layout-header .search-block-form,
+  #flights-and-destinations-flight-schedules-departures #layout-header .menu,
+  #flights-and-destinations-flight-schedules-departures #layout-header .navbar-collapse,
+  #flights-and-destinations-flight-schedules-departures #layout-header .search-block-form,
+  #flights-and-destinations-flight-schedules-arrivals #layout-header .menu,
+  #flights-and-destinations-flight-schedules-arrivals #layout-header .navbar-collapse,
+  #flights-and-destinations-flight-schedules-arrivals #layout-header .search-block-form {
     display: none !important; }
 #vols-et-destinations-horaire-des-vols-arrivees .sidebar-content,
-#vols-et-destinations-horaire-des-vols-departs .sidebar-content {
+#vols-et-destinations-horaire-des-vols-departs .sidebar-content,
+#flights-and-destinations-flight-schedules-departures .sidebar-content,
+#flights-and-destinations-flight-schedules-arrivals .sidebar-content {
   display: block !important; }
   @media only screen and (max-width: 1024px) {
     #vols-et-destinations-horaire-des-vols-arrivees .sidebar-content,
-    #vols-et-destinations-horaire-des-vols-departs .sidebar-content {
+    #vols-et-destinations-horaire-des-vols-departs .sidebar-content,
+    #flights-and-destinations-flight-schedules-departures .sidebar-content,
+    #flights-and-destinations-flight-schedules-arrivals .sidebar-content {
       display: table-cell !important; } }
   @media only screen and (max-width: 900px) {
     #vols-et-destinations-horaire-des-vols-arrivees .sidebar-content,
-    #vols-et-destinations-horaire-des-vols-departs .sidebar-content {
+    #vols-et-destinations-horaire-des-vols-departs .sidebar-content,
+    #flights-and-destinations-flight-schedules-departures .sidebar-content,
+    #flights-and-destinations-flight-schedules-arrivals .sidebar-content {
       display: block !important; } }
   #vols-et-destinations-horaire-des-vols-arrivees .sidebar-content .block-last-update,
-  #vols-et-destinations-horaire-des-vols-departs .sidebar-content .block-last-update {
+  #vols-et-destinations-horaire-des-vols-departs .sidebar-content .block-last-update,
+  #flights-and-destinations-flight-schedules-departures .sidebar-content .block-last-update,
+  #flights-and-destinations-flight-schedules-arrivals .sidebar-content .block-last-update {
     position: fixed;
     top: 41px;
     right: 0; }
     @media only screen and (max-width: 1024px) {
       #vols-et-destinations-horaire-des-vols-arrivees .sidebar-content .block-last-update,
-      #vols-et-destinations-horaire-des-vols-departs .sidebar-content .block-last-update {
+      #vols-et-destinations-horaire-des-vols-departs .sidebar-content .block-last-update,
+      #flights-and-destinations-flight-schedules-departures .sidebar-content .block-last-update,
+      #flights-and-destinations-flight-schedules-arrivals .sidebar-content .block-last-update {
         position: static;
         float: right; } }
     @media only screen and (max-width: 600px) {
       #vols-et-destinations-horaire-des-vols-arrivees .sidebar-content .block-last-update,
-      #vols-et-destinations-horaire-des-vols-departs .sidebar-content .block-last-update {
+      #vols-et-destinations-horaire-des-vols-departs .sidebar-content .block-last-update,
+      #flights-and-destinations-flight-schedules-departures .sidebar-content .block-last-update,
+      #flights-and-destinations-flight-schedules-arrivals .sidebar-content .block-last-update {
         float: none; } }
 #vols-et-destinations-horaire-des-vols-arrivees .view-id-arrivals #view-field-white-logo-table-column,
 #vols-et-destinations-horaire-des-vols-arrivees .view-id-arrivals #view-field-white-logo-table-column--2,
@@ -1531,7 +1559,23 @@ body {
 #vols-et-destinations-horaire-des-vols-departs .view-id-departures #view-field-white-logo-table-column,
 #vols-et-destinations-horaire-des-vols-departs .view-id-departures #view-field-white-logo-table-column--2,
 #vols-et-destinations-horaire-des-vols-departs .view-id-departures .views-field-field-white-logo,
-#vols-et-destinations-horaire-des-vols-departs .view-id-departures .views-field-field-white-logo--2 {
+#vols-et-destinations-horaire-des-vols-departs .view-id-departures .views-field-field-white-logo--2,
+#flights-and-destinations-flight-schedules-departures .view-id-arrivals #view-field-white-logo-table-column,
+#flights-and-destinations-flight-schedules-departures .view-id-arrivals #view-field-white-logo-table-column--2,
+#flights-and-destinations-flight-schedules-departures .view-id-arrivals .views-field-field-white-logo,
+#flights-and-destinations-flight-schedules-departures .view-id-arrivals .views-field-field-white-logo--2,
+#flights-and-destinations-flight-schedules-departures .view-id-departures #view-field-white-logo-table-column,
+#flights-and-destinations-flight-schedules-departures .view-id-departures #view-field-white-logo-table-column--2,
+#flights-and-destinations-flight-schedules-departures .view-id-departures .views-field-field-white-logo,
+#flights-and-destinations-flight-schedules-departures .view-id-departures .views-field-field-white-logo--2,
+#flights-and-destinations-flight-schedules-arrivals .view-id-arrivals #view-field-white-logo-table-column,
+#flights-and-destinations-flight-schedules-arrivals .view-id-arrivals #view-field-white-logo-table-column--2,
+#flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .views-field-field-white-logo,
+#flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .views-field-field-white-logo--2,
+#flights-and-destinations-flight-schedules-arrivals .view-id-departures #view-field-white-logo-table-column,
+#flights-and-destinations-flight-schedules-arrivals .view-id-departures #view-field-white-logo-table-column--2,
+#flights-and-destinations-flight-schedules-arrivals .view-id-departures .views-field-field-white-logo,
+#flights-and-destinations-flight-schedules-arrivals .view-id-departures .views-field-field-white-logo--2 {
   display: none; }
 #vols-et-destinations-horaire-des-vols-arrivees .view-id-arrivals .table td, #vols-et-destinations-horaire-des-vols-arrivees .view-id-arrivals .table th,
 #vols-et-destinations-horaire-des-vols-arrivees .view-id-departures .table td,
@@ -1539,7 +1583,15 @@ body {
 #vols-et-destinations-horaire-des-vols-departs .view-id-arrivals .table td,
 #vols-et-destinations-horaire-des-vols-departs .view-id-arrivals .table th,
 #vols-et-destinations-horaire-des-vols-departs .view-id-departures .table td,
-#vols-et-destinations-horaire-des-vols-departs .view-id-departures .table th {
+#vols-et-destinations-horaire-des-vols-departs .view-id-departures .table th,
+#flights-and-destinations-flight-schedules-departures .view-id-arrivals .table td,
+#flights-and-destinations-flight-schedules-departures .view-id-arrivals .table th,
+#flights-and-destinations-flight-schedules-departures .view-id-departures .table td,
+#flights-and-destinations-flight-schedules-departures .view-id-departures .table th,
+#flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .table td,
+#flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .table th,
+#flights-and-destinations-flight-schedules-arrivals .view-id-departures .table td,
+#flights-and-destinations-flight-schedules-arrivals .view-id-departures .table th {
   font-size: 18px;
   font-size: 1.8rem; }
   @media only screen and (max-width: 1024px) {
@@ -1549,7 +1601,15 @@ body {
     #vols-et-destinations-horaire-des-vols-departs .view-id-arrivals .table td,
     #vols-et-destinations-horaire-des-vols-departs .view-id-arrivals .table th,
     #vols-et-destinations-horaire-des-vols-departs .view-id-departures .table td,
-    #vols-et-destinations-horaire-des-vols-departs .view-id-departures .table th {
+    #vols-et-destinations-horaire-des-vols-departs .view-id-departures .table th,
+    #flights-and-destinations-flight-schedules-departures .view-id-arrivals .table td,
+    #flights-and-destinations-flight-schedules-departures .view-id-arrivals .table th,
+    #flights-and-destinations-flight-schedules-departures .view-id-departures .table td,
+    #flights-and-destinations-flight-schedules-departures .view-id-departures .table th,
+    #flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .table td,
+    #flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .table th,
+    #flights-and-destinations-flight-schedules-arrivals .view-id-departures .table td,
+    #flights-and-destinations-flight-schedules-arrivals .view-id-departures .table th {
       font-size: 14px;
       font-size: 1.4rem; } }
   #vols-et-destinations-horaire-des-vols-arrivees .view-id-arrivals .table td .visible-xs-inline, #vols-et-destinations-horaire-des-vols-arrivees .view-id-arrivals .table th .visible-xs-inline,
@@ -1558,7 +1618,15 @@ body {
   #vols-et-destinations-horaire-des-vols-departs .view-id-arrivals .table td .visible-xs-inline,
   #vols-et-destinations-horaire-des-vols-departs .view-id-arrivals .table th .visible-xs-inline,
   #vols-et-destinations-horaire-des-vols-departs .view-id-departures .table td .visible-xs-inline,
-  #vols-et-destinations-horaire-des-vols-departs .view-id-departures .table th .visible-xs-inline {
+  #vols-et-destinations-horaire-des-vols-departs .view-id-departures .table th .visible-xs-inline,
+  #flights-and-destinations-flight-schedules-departures .view-id-arrivals .table td .visible-xs-inline,
+  #flights-and-destinations-flight-schedules-departures .view-id-arrivals .table th .visible-xs-inline,
+  #flights-and-destinations-flight-schedules-departures .view-id-departures .table td .visible-xs-inline,
+  #flights-and-destinations-flight-schedules-departures .view-id-departures .table th .visible-xs-inline,
+  #flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .table td .visible-xs-inline,
+  #flights-and-destinations-flight-schedules-arrivals .view-id-arrivals .table th .visible-xs-inline,
+  #flights-and-destinations-flight-schedules-arrivals .view-id-departures .table td .visible-xs-inline,
+  #flights-and-destinations-flight-schedules-arrivals .view-id-departures .table th .visible-xs-inline {
     display: inline !important; }
 
 .loading-extern-link {

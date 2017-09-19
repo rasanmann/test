@@ -13,7 +13,7 @@ var PageReloader = (function ($, Drupal, Bootstrap) {
 
         // Initialize things
         
-        if($('#vols-et-destinations-horaire-des-vols-arrivees').length){
+        if($('.view-departures').length || $('.view-arrivals').length){
             self.initPageReloader();
         }
 
