@@ -88,8 +88,8 @@ function yqb_migrate_cron() {
         exec("{$php} {$drush} pm-enable config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Enabling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
         
-        exec("{$php} {$drush} cc drush", $output, $return);
-        Drupal::logger('yqb_migrate')->notice("Clearing Drush Cache : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
+        exec("{$php} {$drush} cr", $output, $return);
+        Drupal::logger('yqb_migrate')->notice("Clearing Cache : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
         
         exec("{$php} {$drush} cdi yqb_migrate", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Config Devel Import Migrate");
