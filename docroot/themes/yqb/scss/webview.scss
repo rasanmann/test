@@ -844,10 +844,10 @@ body{
 	}
 }
 
-#vols-et-destinations-horaire-des-vols-arrivees,
-#vols-et-destinations-horaire-des-vols-departs,
-#flights-and-destinations-flight-schedules-departures,
-#flights-and-destinations-flight-schedules-arrivals{
+#vols-et-destinations-horaire-des-vols-arrivees-fids,
+#vols-et-destinations-horaire-des-vols-departs-fids,
+#flights-and-destinations-flight-schedules-departures-fids,
+#flights-and-destinations-flight-schedules-arrivals-fids{
 	&.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update{top:81px;}
 	&.toolbar-tray-open.toolbar-fixed.toolbar-horizontal  .sidebar-content .block-last-update{top:120px;}
 	
