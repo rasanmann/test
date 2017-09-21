@@ -227,9 +227,19 @@
 		}
 		&.embed-responsive-2by1 {
 			&:hover {
-				img {
+				img.background-image {
 					@include transition(all, 3, ease-out);
 					@include scale(1.10);
+				}
+				
+				.icon {
+					margin-bottom: 20px;
+					@include responsive(1300px) {
+						margin-bottom: 12px;
+					}
+					@include responsive($screen-xs) {
+						margin-bottom: 2px;
+					}
 				}
 
 				.title-default {
@@ -243,6 +253,11 @@
 		}
 		&.embed-responsive-1by1 {
 			&:hover {
+				img.background-image {
+					@include transition(all, 3, ease-out);
+					@include scale(1.10);
+				}
+				
 				.icon {
 					margin-bottom: 20px;
 					@include responsive(1300px) {

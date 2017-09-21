@@ -208,18 +208,8 @@ a.tile{
 		}
 		
 	}
-
-	&.embed-responsive-2by1{
-		@include responsive($screen-sm){
-			display: none;
-		}
-		.icon{
-			display:none;
-		}
-	}
-	&.embed-responsive-1by1{
-		background-color: $brand-primary;
-		
+	
+	&.embed-responsive-1by1, &.embed-responsive-2by1{
 		.icon{
 			margin: 0 auto 40px;
 			display: block;
@@ -256,6 +246,13 @@ a.tile{
 			}
 		}
 	}
+
+	&.embed-responsive-2by1{
+		@include responsive($screen-sm){
+			display: none;
+		}
+	}
+	
 	.btn{
 		position: absolute;
 		top: 50%; 
