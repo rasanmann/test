@@ -848,8 +848,8 @@ body{
 #vols-et-destinations-horaire-des-vols-departs-fids,
 #flights-and-destinations-flight-schedules-departures-fids,
 #flights-and-destinations-flight-schedules-arrivals-fids{
-	&.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update{top:81px;}
-	&.toolbar-tray-open.toolbar-fixed.toolbar-horizontal  .sidebar-content .block-last-update{top:120px;}
+	&.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update{top:79px;}
+	&.toolbar-tray-open.toolbar-fixed.toolbar-horizontal  .sidebar-content .block-last-update{top:118px;}
 	
 	#layout-main{
 		max-width:none;
@@ -881,7 +881,7 @@ body{
 		
 		.block-last-update {
 			position: fixed;
-			top:41px;
+			top:39px;
 			right:0;
 			
 			@include responsive(1024px){
@@ -915,7 +915,7 @@ body{
 				font-weight: $bold;
 				left: 50%;
 				position: absolute;
-				top: -62px;
+				top: -64px;
 				@include font-size(36);
 				@include translate(-50%, 0);
 			}

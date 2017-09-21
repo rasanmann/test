@@ -1474,12 +1474,12 @@ body {
 #vols-et-destinations-horaire-des-vols-departs-fids.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #flights-and-destinations-flight-schedules-departures-fids.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #flights-and-destinations-flight-schedules-arrivals-fids.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update {
-  top: 81px; }
+  top: 79px; }
 #vols-et-destinations-horaire-des-vols-arrivees-fids.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #vols-et-destinations-horaire-des-vols-departs-fids.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #flights-and-destinations-flight-schedules-departures-fids.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #flights-and-destinations-flight-schedules-arrivals-fids.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update {
-  top: 120px; }
+  top: 118px; }
 #vols-et-destinations-horaire-des-vols-arrivees-fids #layout-main,
 #vols-et-destinations-horaire-des-vols-departs-fids #layout-main,
 #flights-and-destinations-flight-schedules-departures-fids #layout-main,
@@ -1529,7 +1529,7 @@ body {
   #flights-and-destinations-flight-schedules-departures-fids .sidebar-content .block-last-update,
   #flights-and-destinations-flight-schedules-arrivals-fids .sidebar-content .block-last-update {
     position: fixed;
-    top: 41px;
+    top: 39px;
     right: 0; }
     @media only screen and (max-width: 1024px) {
       #vols-et-destinations-horaire-des-vols-arrivees-fids .sidebar-content .block-last-update,
@@ -1600,7 +1600,7 @@ body {
     font-weight: 700;
     left: 50%;
     position: absolute;
-    top: -62px;
+    top: -64px;
     font-size: 36px;
     font-size: 3.6rem;
     -webkit-transform: translate(-50%, 0);
