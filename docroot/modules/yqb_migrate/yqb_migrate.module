@@ -69,7 +69,7 @@ function yqb_migrate_cron() {
       'departures',
     ];
 
-    $manager = \Drupal::service('plugin.manager.migration');
+    $manager = \Drupal::service('plugin.manager.config_entity_migration');
     $plugins = $manager->createInstances([]);
     
     foreach ($plugins as $id => $migration) {
