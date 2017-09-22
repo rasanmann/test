@@ -39,8 +39,8 @@ view_mode ? view_mode|clean_class,
 
   {{ content.body[0] }}
 
-  <a href="{{ path('entity.yamlform.canonical', {yamlform : 'job_application', offer:node.getTitle()}) }}" class="btn btn-default btn-inverse">
-    {{ 'Soumettre ma candidature'|t }}
+  <a href="{{ path('entity.webform.canonical', {webform : 'job_application', offer:node.getTitle()}) }}" class="btn btn-default btn-inverse">
+    {{ 'Soumettre ma candidature'|t }} 
   </a>
 
 </article>
