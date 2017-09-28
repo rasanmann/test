@@ -73,7 +73,7 @@ function yqb_migrate_cron() {
     $plugins = $manager->createInstances([]);
     
     foreach ($plugins as $id => $migration) {
-	    echo sprintf('Found "%s".', $id) . PHP_EOL;
+      Drupal::logger('yqb_migrate')->notice( sprintf('Found "%s".', $id));
       if (in_array(Unicode::strtolower($id), $migration_ids)) {
         $migrations[] = $migration;
       }
@@ -83,18 +83,18 @@ function yqb_migrate_cron() {
     if(empty($migrations)){
       Drupal::logger('yqb_migrate')->emergency("Migrations were not found.");
       try{
-        $php = '/usr/local/php7.0/bin/php';
+        $php = '/usr/local/php7.1/bin/php';
         $drush = '/usr/local/drush8/drush';
-        exec("{$php} {$drush} pm-enable config_devel -y", $output, $return);
+        exec("{$drush} pm-enable config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Enabling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
         
-        exec("{$php} {$drush} cr", $output, $return);
+        exec("{$drush} cr", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Clearing Cache : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
         
-        exec("{$php} {$drush} cdi yqb_migrate", $output, $return);
+        exec("{$drush} cdi yqb_migrate", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Config Devel Import Migrate");
         
-        exec("{$php} {$drush} pm-uninstall config_devel -y", $output, $return);
+        exec("{$drush} pm-uninstall config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Uninstalling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
       }catch(Exception $exception){
         Drupal::logger('yqb_migrate')->error("Could not restart migrations");
@@ -108,7 +108,7 @@ function yqb_migrate_cron() {
       $migration->getIdMap()->prepareUpdate();
 
       // For Drush
-      echo sprintf('Starting "%s".', $migration->id()) . PHP_EOL;
+      Drupal::logger('yqb_migrate')->notice(sprintf('Starting "%s".', $migration->id()));
 
       $log = new MigrateMessage();
 
