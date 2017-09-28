@@ -1151,7 +1151,8 @@ body {
   margin: -30px -30px 25px; }
 [class*="app-mobile"] #map {
   width: 100%;
-  height: 250px; }
+  min-height: 250px;
+  height: calc(100vh - 300px); }
 [class*="app-mobile"] a.btn {
   text-decoration: none; }
 [class*="app-mobile"] blockquote {
@@ -1234,8 +1235,10 @@ body {
       padding: 35px 15px 20px !important; }
       [class*="app-mobile"] .swiper-container ul li:before, [class*="app-mobile"] .swiper-container ul li:after, [class*="app-mobile"] .fixe-list ul li:before, [class*="app-mobile"] .fixe-list ul li:after {
         content: normal; }
-      [class*="app-mobile"] .swiper-container ul li.swiper-slide-active, [class*="app-mobile"] .fixe-list ul li.swiper-slide-active {
+      [class*="app-mobile"] .swiper-container ul li.swiper-slide-active, [class*="app-mobile"] .swiper-container ul li.is-virtual-active, [class*="app-mobile"] .fixe-list ul li.swiper-slide-active, [class*="app-mobile"] .fixe-list ul li.is-virtual-active {
         opacity: 1; }
+        [class*="app-mobile"] .swiper-container ul li.swiper-slide-active.is-virtual-inactive, [class*="app-mobile"] .swiper-container ul li.is-virtual-active.is-virtual-inactive, [class*="app-mobile"] .fixe-list ul li.swiper-slide-active.is-virtual-inactive, [class*="app-mobile"] .fixe-list ul li.is-virtual-active.is-virtual-inactive {
+          opacity: 0.5; }
       [class*="app-mobile"] .swiper-container ul li h4, [class*="app-mobile"] .fixe-list ul li h4 {
         font-size: 18px !important;
         font-weight: bold;

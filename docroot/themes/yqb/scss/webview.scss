@@ -415,7 +415,8 @@ body{
 	}
 	#map{
 		width:100%;
-		height:250px;
+		min-height:250px;
+		height:calc(100vh - 300px);
 	}
 	a.btn{
 		text-decoration:none;
@@ -510,8 +511,12 @@ body{
 				&:after {
 					content:normal;
 				}
-				&.swiper-slide-active {
+				&.swiper-slide-active, &.is-virtual-active {
 					opacity:1;
+					
+					&.is-virtual-inactive{
+						opacity:0.5
+					}
 				}
 				h4{
 					font-size:18px !important;

@@ -132,10 +132,24 @@ var Pages = (function ($, Drupal, Bootstrap) {
 			var swiper = new Swiper($swiper, {
 				centeredSlides: false,
 				spaceBetween: 20,
-				slidesPerView: 1.2,
+				slidesPerView: "auto",
+				watchSlidesProgress: true,
+				watchSlidesVisibility: true,
 				loop: false,
 				onInit: function (swiper, event) {
 					$swiper.addClass('is-init');
+				},
+				onTransitionEnd: function(swiper){
+					var $lastSlide = $(swiper.container).find('li.swiper-slide:last-child');
+					if(swiper.virtualSize + swiper.translate === swiper.width){
+						$lastSlide.addClass('is-virtual-active');
+						$lastSlide.prev().addClass('is-virtual-inactive');
+					}else{
+						if($lastSlide.hasClass('is-virtual-active')){
+							$lastSlide.removeClass('is-virtual-active');
+							$lastSlide.prev().removeClass('is-virtual-inactive');
+						}
+					}
 				}
 			});
 		});
