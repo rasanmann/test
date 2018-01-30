@@ -60,6 +60,11 @@ var Publications = (function ($, Drupal, Bootstrap) {
                     $more.find('.more-link a').on('click', onMoreClick);
             }
         });
+        
+        // Bind click event
+        $('#downloadModal').on('shown.bs.modal', function (e) {
+          console.log(e.relatedTarget)
+        })
     };
 
     /** -----------------------------

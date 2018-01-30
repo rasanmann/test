@@ -105,3 +105,19 @@
     </div>
   {% endif %}
 </div>
+
+<!-- Modal -->
+<aside class="modal modal-default fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">{{ 'Téléchargement'|t }}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      {{ download_form }}
+    </div>
+  </div>
+</aside>

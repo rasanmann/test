@@ -421,6 +421,8 @@ function yqb_preprocess_views_view_unformatted(&$variables) {
 function yqb_preprocess_views_view(array &$variables) {
   if (\Drupal::service('path.matcher')->isFrontPage()) {
     $variables['title'] = null;
+  }elseif($variables['view_array']['#view_id'] == 'publications'){
+    $variables['download_form'] = \Drupal::formBuilder()->getForm('Drupal\yqb_forms\Form\DownloadPublicationsForm');
   }
 }
 

@@ -1,0 +1,6 @@
+name: 'Forms'
+description: 'General Custom Forms'
+type: module
+core: 8.x
+package: YQB
+hidden: false
