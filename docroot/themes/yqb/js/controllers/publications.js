@@ -63,7 +63,12 @@ var Publications = (function ($, Drupal, Bootstrap) {
         
         // Bind click event
         $('#downloadModal').on('shown.bs.modal', function (e) {
-          console.log(e.relatedTarget)
+            var $this = $(e.currentTarget),
+                $clicked = $(e.relatedTarget),
+                file = $clicked.data('target-id');
+            
+            
+            $this.find('input[name=target_id]').val(file);
         })
     };
 

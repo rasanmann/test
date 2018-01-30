@@ -8,6 +8,8 @@ namespace Drupal\yqb_forms\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\file\Entity\File;
 use Drupal\user\Entity\User;
 
 /**
@@ -68,6 +70,10 @@ class DownloadPublicationsForm extends FormBase {
         '#required' => TRUE,
     ];
 
+    $form['body']['target_id'] = [
+        '#type' => 'hidden'
+    ];
+
     $form['footer']['submit'] = [
         '#type' => 'submit',
         '#attributes' => ['class' => ['btn-primary']],
@@ -81,7 +87,10 @@ class DownloadPublicationsForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-
+    if(empty($form_state->getValue('target_id'))){
+      $form_state->setError($form, t('Une erreur est survenue durant la soumission du formulaire.'));
+    }
+        
     parent::validateForm($form, $form_state);
   }
 
@@ -90,31 +99,23 @@ class DownloadPublicationsForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
-
-    // Send email
-    //    $type = $form_state->getValue('type');
-    //    $globalConfig = \Drupal::config('yukon_settings.email_settings')->get('global');
-    //    
-    //    if(isset($globalConfig[$langcode]['contact_us'][$type])){
-    //      $to = $globalConfig[$langcode]['contact_us'][$type];
-    //      
-    //      $message = sprintf("<p>From: %s (%s)</p>", $form_state->getValue('name'), $form_state->getValue('email'));
-    //      
-    //      $params = [
-    //        'subject' => sprintf("Contact Us - %s", $this->inquiryTypes[$type]),
-    //        'message' => $message . nl2br($form_state->getValue('comment')),
-    //        'from' => sprintf("%s <%s>", $form_state->getValue('name'), $form_state->getValue('email'))
-    //      ];
-    //      
-    //      $mailManager = \Drupal::service('plugin.manager.mail');
-    //      $mailManager->mail( 'yukon_settings', 'contact-us', $to, $langcode, $params, NULL, true);
-    //      
-    //      drupal_set_message(t('contact-us-success'));
-    //    }else{
-    //      \Drupal::logger('contact-us')->error("Error sending email to " . $type);
-    //      $form_state->setError($form, t('contact-us-error'));
-    //    }
-    //    
-    //    $form_state->setRedirect('entity.node.canonical', ['node' => 70]);
+    
+    // Save user
+//    $form_state->getValue('first_name');
+//    $form_state->getValue('last_name');
+//    $form_state->getValue('email');
+//    $form_state->getValue('company');
+    
+    // Prepare file
+    $file = File::load($form_state->getValue('target_id'));
+    $path = \Drupal::service('file_system')->realpath($file->getFileUri());
+    
+    header('Content-Type: application/octet-stream');
+    header('Content-Length: ' . $file->getSize());
+    header("Content-Transfer-Encoding: Binary"); 
+    header("Content-disposition: attachment; filename=\"" . $file->getFilename() . "\"");
+    readfile($path);
+    
+    die();
   }
 }
