@@ -98,13 +98,34 @@ class DownloadPublicationsForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
-    
     // Save user
-//    $form_state->getValue('first_name');
-//    $form_state->getValue('last_name');
-//    $form_state->getValue('email');
-//    $form_state->getValue('company');
+    $connection = \Drupal::database();
+    $connection->query("
+        INSERT INTO yqb_download_queries 
+        ( 
+          file_id, 
+          first_name, 
+          last_name, 
+          email, 
+          company, 
+          date
+        )
+        VALUES (
+          :file_id, 
+          :first_name, 
+          :last_name, 
+          :email, 
+          :company, 
+          :date
+        )
+    ", [
+        ':file_id' => $form_state->getValue('target_id'),
+        ':first_name' => $form_state->getValue('first_name'),
+        ':last_name' => $form_state->getValue('last_name'),
+        ':email' => $form_state->getValue('email'),
+        ':company' => $form_state->getValue('company'),
+        ':date' => date('Y-m-d H:i:s'),
+    ]);
     
     // Prepare file
     $file = File::load($form_state->getValue('target_id'));
