@@ -1,0 +1,7 @@
+yqb_forms.publications_download:
+  path: '/publications/requetes'
+  defaults:
+    _controller: '\Drupal\yqb_forms\Controller\DownloadPublicationsController::index'
+    _title: 'Requêtes de téléchargements de publications'
+  requirements:
+    _permission: 'administer site configuration'

@@ -60,6 +60,26 @@ var Publications = (function ($, Drupal, Bootstrap) {
                     $more.find('.more-link a').on('click', onMoreClick);
             }
         });
+        
+        // Bind click event
+        var $modal = $('#downloadModal');
+        $modal.on('shown.bs.modal', function (e) {
+            var $this = $(e.currentTarget),
+                $clicked = $(e.relatedTarget),
+                file = $clicked.data('target-id');
+            
+            
+            $this.find('input[name=target_id]').val(file);
+        });
+        
+        $modal.on('submit', 'form', function(){
+            var $this = $(this);
+            
+            setTimeout(function(){
+                $this.find('button[type=submit]').removeClass('is-loading is-clicked');
+                $modal.modal('hide');
+            }, 1000);
+        });
     };
 
     /** -----------------------------
