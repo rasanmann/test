@@ -21,7 +21,7 @@ else add_filter('arras_postheader', 'arras_postmeta');
             
             <FORM name="monerisForm" onsubmit="return validateForm()" METHOD="POST" ACTION="https://www3.moneris.com/HPPDP/index.php">
                 <INPUT TYPE="HIDDEN" NAME="ps_store_id" VALUE="HEJGN34601">
-                <INPUT TYPE="HIDDEN" NAME="hpp_key" VALUE="hpGNT7XXC84H">
+                <INPUT TYPE="HIDDEN" NAME="hpp_key" VALUE="hpOUJB91ZLFF">
                 <INPUT TYPE="HIDDEN" NAME="lang" VALUE="fr-ca">
             
                 <!--MORE OPTIONAL VARIABLES CAN BE DEFINED HERE -->
