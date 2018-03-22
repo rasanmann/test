@@ -35,7 +35,7 @@ class BillsFormController extends ControllerBase
         $hppKey = [
             '#type' => 'hidden',
             '#name' => 'hpp_key',
-            '#value' => 'hpGNT7XXC84H'
+            '#value' => 'hpOUJB91ZLFF'
         ];
 
         $lang = [
