@@ -14,6 +14,7 @@ RUN apt-get update \
         nano \
         vim \
         libfontconfig \
+        gnupg \
         libmemcached-dev
 
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
