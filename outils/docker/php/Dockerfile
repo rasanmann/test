@@ -11,6 +11,8 @@ RUN apt-get update \
   		git \
         mysql-client \
         memcached \
+        nano \
+        vim \
         libmemcached-dev
 
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
