@@ -190,6 +190,16 @@ interface PassInterface extends ArrayableInterface
     /**
      * {@inheritdoc}
      */
+    public function setGroupingIdentifier($groupingIdentifier);
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getGroupingIdentifier();
+
+    /**
+     * {@inheritdoc}
+     */
     public function setLabelColor($labelColor);
 
     /**
@@ -288,5 +298,15 @@ interface PassInterface extends ArrayableInterface
      * {@inheritdoc}
      */
     public function getAppLaunchURL();
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setUserInfo($userInfo);
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getUserInfo();
 
 }

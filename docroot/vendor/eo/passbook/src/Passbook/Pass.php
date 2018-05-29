@@ -155,6 +155,15 @@ class Pass implements PassInterface
     protected $foregroundColor;
 
     /**
+     * Identifier used to group related passes. 
+     * If a grouping identifier is specified, passes with the same style, pass type identifier, 
+     * and grouping identifier are displayed as a group. Otherwise, passes are grouped automatically.
+     *
+     * @var string
+     */
+    protected $groupingIdentifier;
+
+    /**
      * Color of the label text, specified as a CSS-style RGB triple.
      *
      * @var string rgb(255, 255, 255)
@@ -237,6 +246,13 @@ class Pass implements PassInterface
      */
     protected $appLaunchURL;
 
+	/**
+	 * Pass userInfo
+	 *
+	 * @var mixed
+	 */
+	protected $userInfo;
+
     public function __construct($serialNumber, $description)
     {
         // Required
@@ -265,6 +281,7 @@ class Pass implements PassInterface
             'barcodes',
             'backgroundColor',
             'foregroundColor',
+            'groupingIdentifier',
             'labelColor',
             'logoText',
             'suppressStripShine',
@@ -277,6 +294,7 @@ class Pass implements PassInterface
             'voided',
             'appLaunchURL',
             'associatedStoreIdentifiers',
+	        'userInfo'
         );
         foreach ($properties as $property) {
             $method = 'is' . ucfirst($property);
@@ -296,12 +314,12 @@ class Pass implements PassInterface
                 $array[$property] = $val;
             } elseif (is_array($val)) {
                 // Array
-                foreach ($val as $v) {
+                foreach ($val as $k => $v) {
                     if (is_object($v)) {
                         /* @var ArrayableInterface $v */
-                        $array[$property][] = $v->toArray();
+                        $array[$property][$k] = $v->toArray();
                     } else {
-                        $array[$property][] = $v;
+                        $array[$property][$k] = $v;
                     }
                 }
             }
@@ -609,6 +627,24 @@ class Pass implements PassInterface
     /**
      * {@inheritdoc}
      */
+    public function setGroupingIdentifier($groupingIdentifier)
+    {
+        $this->groupingIdentifier = $groupingIdentifier;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getGroupingIdentifier()
+    {
+        return $this->groupingIdentifier;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setLabelColor($labelColor)
     {
         $this->labelColor = $labelColor;
@@ -803,4 +839,21 @@ class Pass implements PassInterface
     {
         return $this->appLaunchURL;
     }
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setUserInfo($userInfo) {
+		$this->userInfo = $userInfo;
+
+		return $this;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getUserInfo() {
+		return $this->userInfo;
+	}
+
 }
