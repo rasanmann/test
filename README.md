@@ -50,6 +50,10 @@ npm install
 todo - voir comment la compilation du sass fonctionne. On dirait qu'il n'y a rien pour ceci dans le grunt actuel.
 todo - voir aussi les autres commandes grunt et leurs utilisations
 
+## Fichier de config
+Faire une copie du fichier "/docroot/sites/default/settings.local.sample" et le nommer "settings.local.php" (dans le même dossier)
+
+
 ## Créer un compte admin avec drush
 Remplacer username, email et mot de passe et exécuter ces commandes drush dans le container php:
 ```
