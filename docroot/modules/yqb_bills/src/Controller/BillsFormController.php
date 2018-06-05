@@ -26,11 +26,11 @@ class BillsFormController extends ControllerBase
 //            '#value' => $this->t("Aéroport de Québec inc. (AQi), gestionnaire de l'aéroport international Jean-Lesage de Québec, met à votre disposition un service gratuit de paiement en ligne qui vous permet d'acquitter vos factures en tout temps et en toute sécurité (maximum de 5000$) par Visa, MasterCard ou American Express. Pour utiliser le service, il vous suffit de compléter les champs suivants&nbsp;:"),
 //        ];
 
-        $information = [
-            '#type' => 'html_tag',
-            '#tag' => 'p',
-            '#value' => $this->t("Nous éprouvons actuellement des difficultés techniques avec le paiement de facture sur notre site <a href='/'>aeroportdequebec.com</a>. Nous travaillons à rétablir le service le plus rapidement possible. Il est possible d’effectuer des paiements en contactant par téléphone les Comptes recevables de l’Aéroport international Jean-Lesage de Québec au 1 418 640-2700 poste 2763. Merci de votre compréhension."),
-        ];
+//        $information = [
+//            '#type' => 'html_tag',
+//            '#tag' => 'p',
+//            '#value' => $this->t("Nous éprouvons actuellement des difficultés techniques avec le paiement de facture sur notre site <a href='/'>aeroportdequebec.com</a>. Nous travaillons à rétablir le service le plus rapidement possible. Il est possible d’effectuer des paiements en contactant par téléphone les Comptes recevables de l’Aéroport international Jean-Lesage de Québec au 1 418 640-2700 poste 2763. Merci de votre compréhension."),
+//        ];
 
         $psStoreId = [
             '#type' => 'hidden',
@@ -74,27 +74,27 @@ class BillsFormController extends ControllerBase
             'lang' => $lang,
         ];
 
-//        foreach ($fields as $name => $label) {
-//            $form[$name] = [
-//                '#type' => 'textfield',
-//                '#title' => $label,
-//                '#name' => $name,
-//                '#required' => true,
-//            ];
-//        }
-//
-//        $form['note'] = [
-//          '#type' => 'checkbox',
-//          '#name' => 'note',
-//          '#title' => $this->t('Je désire recevoir factures et états de compte par courriel.'),
-//          '#default_value' => $this->t("Factures et états de compte par courriel."),
-//          '#return_value' => $this->t("Factures et états de compte par courriel."),
-//        ];
+        foreach ($fields as $name => $label) {
+            $form[$name] = [
+                '#type' => 'textfield',
+                '#title' => $label,
+                '#name' => $name,
+                '#required' => true,
+            ];
+        }
 
-//        $form['actions'] = [
-//            '#type' => 'button',
-//            '#value' => $this->t("Soumettre"),
-//        ];
+        $form['note'] = [
+          '#type' => 'checkbox',
+          '#name' => 'note',
+          '#title' => $this->t('Je désire recevoir factures et états de compte par courriel.'),
+          '#default_value' => $this->t("Factures et états de compte par courriel."),
+          '#return_value' => $this->t("Factures et états de compte par courriel."),
+        ];
+
+        $form['actions'] = [
+            '#type' => 'button',
+            '#value' => $this->t("Soumettre"),
+        ];
 
         return [
             '#type' => 'container',
