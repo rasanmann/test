@@ -43,6 +43,7 @@ class PassValidator implements PassValidatorInterface
     const ASSOCIATED_STORE_IDENTIFIER_INVALID = 'associatedStoreIdentifiers is invalid; must be an integer';
     const ASSOCIATED_STORE_IDENTIFIER_REQUIRED = 'appLaunchURL is required when associatedStoreIdentifiers is present';
     const IMAGE_TYPE_INVALID = 'image files must be PNG format';
+    const GROUPING_IDENTITY_INVALID = 'the grouping identity may only be used on boarding pass and event ticket types';
 
     /**
      * {@inheritdoc}
@@ -59,6 +60,7 @@ class PassValidator implements PassValidatorInterface
         $this->validateIcon($pass);
         $this->validateImageType($pass);
         $this->validateAssociatedStoreIdentifiers($pass);
+        $this->validateGroupingIdentity($pass);
 
         return count($this->errors) === 0;
     }
@@ -210,13 +212,12 @@ class PassValidator implements PassValidatorInterface
     private function validateImageType(PassInterface $pass)
     {
         foreach ($pass->getImages() as $image) {
-            $ext = pathinfo($image->getFilename(), PATHINFO_EXTENSION);
-            if (strcasecmp('png', $ext)) {
+            if ('png' !== strtolower($image->getExtension())) {
                 $this->addError(self::IMAGE_TYPE_INVALID);
             }
         }
     }
-    
+
     private function validateAssociatedStoreIdentifiers(PassInterface $pass)
     {
         //appLaunchURL
@@ -234,6 +235,15 @@ class PassValidator implements PassValidatorInterface
 
                 return;
             }
+        }
+    }
+
+    private function validateGroupingIdentity(PassInterface $pass)
+    {
+        if (null !== $pass->getGroupingIdentifier() && !in_array($pass->getType(), ['boardingPass', 'eventTicket'])) {
+            $this->addError(self::GROUPING_IDENTITY_INVALID);
+
+            return;
         }
     }
 

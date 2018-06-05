@@ -1,10 +1,10 @@
 <?php
 $databases['default']['default'] = array (
-  'database' => 'yqb_test',
-  'username' => 'root',
-  'password' => 'root',
+  'database' => 'drupal',
+  'username' => 'drupal',
+  'password' => 'drupal',
   'prefix' => '',
-  'host' => '127.0.0.1',
+  'host' => 'database',
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
@@ -27,3 +27,4 @@ $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
 
 $config['dblog.settings']['row_limit'] = 1000;
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+$config_directories['sync'] = 'sites/default/files/config/sync';
