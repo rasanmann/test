@@ -35,15 +35,15 @@ class BillsFormController extends ControllerBase
         $psStoreId = [
             '#type' => 'hidden',
             '#name' => 'ps_store_id',
-            '#value' => 'FF8HPtore2'
-           // '#value' => 'HEJGN34601'
+            '#value' => 'XXRSM88072'
+
         ];
 
         $hppKey = [
             '#type' => 'hidden',
             '#name' => 'hpp_key',
-            '#value' => 'hpGLZTCTHZAP'
-          //  '#value' => 'hpOUJB91ZLFF'
+            '#value' => 'hpTLMDZ7GD6Z'
+
         ];
 
         $lang = [
@@ -66,8 +66,7 @@ class BillsFormController extends ControllerBase
             '#type' => 'form',
             '#attributes' => [
                 'class' => ['col-sm-6'],
-                //'action' => 'https://www3.moneris.com/HPPDP/index.php',
-                'action' => 'https://esqa.moneris.com/HPPDP/index.php',
+                'action' => 'https://www3.moneris.com/HPPDP/index.php',
                 'method' => 'post',
                 'target' => 'results',
             ],
