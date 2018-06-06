@@ -23,12 +23,11 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
 RUN useradd -m docker  && usermod -u 1000 docker  && groupmod -g 1000 docker \
     && echo 'export PATH="/site/docroot/vendor/bin:$PATH"' >> /home/docker/.bashrc
 
-
-#RUN curl -sOL https://deb.nodesource.com/setup_8.x \
-#    && chmod +x setup_8.x \
-#    && ./setup_8.x \
-#    && apt-get install -y nodejs \
-#    && npm install grunt-cli -g
+RUN curl -sOL https://deb.nodesource.com/setup_8.x \
+    && chmod +x setup_8.x \
+    && ./setup_8.x \
+    && apt-get install -y nodejs \
+    && npm install grunt-cli -g
 
 RUN docker-php-ext-configure gd
 RUN docker-php-ext-install gd opcache zip
