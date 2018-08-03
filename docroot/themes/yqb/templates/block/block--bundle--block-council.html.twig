@@ -6,12 +6,8 @@
 #}
 
 <div{{ attributes }} class="block-leadership">
-    {% if label %}
-        {{ label }}
-    {% endif %}
 
     {% block content %}
-
 
         <div class="leader-infos">
             <h2 class="title-default">{{ content.field_name[0]['#context']['value'] }}
@@ -22,7 +18,6 @@
 
             {% if content.field_role[0] %}<h3>{{ content.field_role }}</h3>{% endif %}
         </div>
-
 
         {{ content.field_picture }}
 
