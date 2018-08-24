@@ -25,18 +25,18 @@ mysql -u drupal -pdrupal drupal < /bd/20180522-dev.sql
 \* todo - ajouter commande drush pour syncroniser bd avec prod/dev/stage
 
 ## Ajouter sa clé ssh dans acquia
-Pour ce point, pour l'instant, je peux fournir ma clé ssh créé pour acquia. Venir me (Gary) voir et je vais vous la fournir.
-todo - voir à avoir une bonne précédure pour les clé ssh d'acquia
+
+<https://cloud.acquia.com/app/profile/ssh-keys>
 
 ## Copier les fichiers (sites/default/files)
 
-Se connecter au container php et ensuite rsync:
+À partir du dossier `docker/`, faire la commande suivante pour copier les fichiers du dev vers la vm.
 
 ```bash
 rsync -avz -e "ssh -p 22" yqb.dev@staging-25038.prod.hosting.acquia.com:/var/www/html/yqbdev/docroot/sites/default/files/ ../../docroot/sites/default/files
 ```
 
-Changer "yqb.`dev`@staging-25038.prod.hosting.acquia.com" pour avoir les fichiers d'un autre environnement
+Écrire "yqb.`{dev|stage|prod}`@staging-25038.prod.hosting.acquia.com" pour avoir les fichiers de l'environnement correspondant
 
 ## Composer install
 
