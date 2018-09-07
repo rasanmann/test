@@ -74,6 +74,15 @@ drush user-create [USERNAME] --mail="[EMAIL]" --password="[PASSWORD]"
 drush user-add-role "administrator" [USERNAME]
 ```
 
+## Vider la cache
+
+Toujours dans le conteneur, vides la cache drupal avec cette commande
+
+```bash
+drush cr
+```
+
+
 ## Accéder au site
 
 - http://localhost:8989/fr
