@@ -61,7 +61,13 @@ class ParkingFormBase extends FormBase {
 		$this->sessionManager = $session_manager;
 		$this->currentUser = $current_user;
 
-		$this->store = $this->tempStoreFactory->get('multistep_data');
+    $this->store = $this->tempStoreFactory->get('multistep_data');
+
+    //Start session if is user Anonymous
+    if (!isset($_SESSION['session_started']) && $this->currentUser->isAnonymous() ) {
+      $_SESSION['session_started'] = true;
+      $this->sessionManager->start();
+    }
 	}
 
 	/**
@@ -696,7 +702,7 @@ class ParkingFormBase extends FormBase {
 			$product = [];
 		}
 
-		// Build dates 
+		// Build dates
 		$schedule = [
 				'#type' => 'container',
 				'#attributes' => ['class' => ['row-inner', 'row-cols-gutter']],
