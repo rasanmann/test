@@ -1,0 +1,24 @@
+{
+    "name": "ironkeith/moneris-eselectplus-api",
+    "description": "A much less awful way to access the Moneris eSELECTplus API.",
+    "keywords": ["moneris", "eSELECTplus"],
+    "homepage": "https://github.com/ironkeith/moneris-eselectplus-api",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.2.4"
+    },
+    "autoload": {
+        "psr-0": {
+            "Moneris": "lib/"
+        }
+    },
+    "include-path": [
+        "lib/"
+    ],
+    "authors": [
+        {
+            "name": "Keith Silgard",
+            "email": "ksilgard@gmail.com"
+        }
+    ]
+}
