@@ -23,13 +23,10 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
 
   /**
    * @covers ::onKernelRequestCheckRedirect
+   * @dataProvider getRedirectData
    */
-  public function testRedirectLogicWithQueryRetaining() {
+  public function testRedirectLogicWithQueryRetaining($request_uri, $request_query, $redirect_uri, $redirect_query) {
 
-    // The request query.
-    $request_query = array('key' => 'val');
-    // The query defined by the redirect entity.
-    $redirect_query = array('dummy' => 'value');
     // The expected final query. This query must contain values defined
     // by the redirect entity and values from the accessed url.
     $final_query = $redirect_query + $request_query;
@@ -54,10 +51,10 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
 
     $url->expects($this->once())
       ->method('toString')
-      ->willReturn('/test-path');
+      ->willReturn($redirect_uri);
 
     $redirect = $this->getRedirectStub($url);
-    $event = $this->callOnKernelRequestCheckRedirect($redirect, $request_query, TRUE);
+    $event = $this->callOnKernelRequestCheckRedirect($redirect, $request_uri, $request_query, TRUE);
 
     $this->assertTrue($event->getResponse() instanceof RedirectResponse);
     $response = $event->getResponse();
@@ -68,11 +65,9 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
 
   /**
    * @covers ::onKernelRequestCheckRedirect
+   * @dataProvider getRedirectData
    */
-  public function testRedirectLogicWithoutQueryRetaining() {
-
-    // The request query.
-    $request_query = array('key' => 'val');
+  public function testRedirectLogicWithoutQueryRetaining($request_uri, $request_query, $redirect_uri) {
 
     $url = $this->getMockBuilder('Drupal\Core\Url')
       ->disableOriginalConstructor()
@@ -91,16 +86,27 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
 
     $url->expects($this->once())
       ->method('toString')
-      ->willReturn('/test-path');
+      ->willReturn($redirect_uri);
 
     $redirect = $this->getRedirectStub($url);
-    $event = $this->callOnKernelRequestCheckRedirect($redirect, $request_query, FALSE);
+    $event = $this->callOnKernelRequestCheckRedirect($redirect, $request_uri, $request_query, FALSE);
 
     $this->assertTrue($event->getResponse() instanceof RedirectResponse);
     $response = $event->getResponse();
-    $this->assertEquals('/test-path', $response->getTargetUrl());
+    $this->assertEquals($redirect_uri, $response->getTargetUrl());
     $this->assertEquals(301, $response->getStatusCode());
     $this->assertEquals(1, $response->headers->get('X-Redirect-ID'));
+  }
+
+  /**
+   * Data provider for both tests.
+   */
+  public function getRedirectData() {
+    return [
+      ['non-existing', ['key' => 'val'], '/test-path', ['dummy' => 'value']],
+      ['non-existing/', ['key' => 'val'], '/test-path', ['dummy' => 'value']],
+      ['system/files/file.txt', [], '/test-path', []],
+    ];
   }
 
   /**
@@ -108,6 +114,8 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
    *
    * @param $redirect
    *   The redirect entity.
+   * @param $request_uri
+   *   The URI of the request.
    * @param array $request_query
    *   The query that is supposed to come via request.
    * @param bool $retain_query
@@ -116,9 +124,9 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
    * @return \Symfony\Component\HttpKernel\Event\GetResponseEvent
    *   THe response event.
    */
-  protected function callOnKernelRequestCheckRedirect($redirect, $request_query, $retain_query) {
+  protected function callOnKernelRequestCheckRedirect($redirect, $request_uri, $request_query, $retain_query) {
 
-    $event = $this->getGetResponseEventStub('non-existing', http_build_query($request_query));
+    $event = $this->getGetResponseEventStub($request_uri, http_build_query($request_query));
     $request = $event->getRequest();
 
     $checker = $this->getMockBuilder('Drupal\redirect\RedirectChecker')
@@ -127,9 +135,6 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
     $checker->expects($this->any())
       ->method('canRedirect')
       ->will($this->returnValue(TRUE));
-    $checker->expects($this->any())
-      ->method('isLoop')
-      ->will($this->returnValue(FALSE));
 
     $context = $this->getMock('Symfony\Component\Routing\RequestContext');
 
@@ -139,7 +144,17 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
     $inbound_path_processor->expects($this->any())
       ->method('processInbound')
       ->with($request->getPathInfo(), $request)
-      ->will($this->returnValue($request->getPathInfo()));
+      ->willReturnCallback(function ($path, Request $request) {
+        if (strpos($path, '/system/files/') === 0 && !$request->query->has('file')) {
+          // Private files paths are split by the inbound path processor and the
+          // relative file path is moved to the 'file' query string parameter.
+          // This is because the route system does not allow an arbitrary amount
+          // of parameters.
+          // @see \Drupal\system\PathProcessor\PathProcessorFiles::processInbound()
+          $path = '/system/files';
+        }
+        return $path;
+      });
 
     $alias_manager = $this->getMockBuilder('Drupal\Core\Path\AliasManager')
       ->disableOriginalConstructor()
@@ -182,9 +197,20 @@ class RedirectRequestSubscriberTest extends UnitTestCase {
       ->disableOriginalConstructor()
       ->getMock();
 
-    $repository->expects($this->any())
-      ->method($method)
-      ->will($this->returnValue($redirect));
+    if ($method === 'findMatchingRedirect') {
+      $repository->expects($this->any())
+        ->method($method)
+        ->willReturnCallback(function ($source_path) use ($redirect) {
+          // No redirect with source path 'system/files' exists. The stored
+          // redirect has 'system/files/file.txt' as source path.
+          return $source_path === 'system/files' ? NULL : $redirect;
+        });
+    }
+    else {
+      $repository->expects($this->any())
+        ->method($method)
+        ->will($this->returnValue($redirect));
+    }
 
     return $repository;
   }

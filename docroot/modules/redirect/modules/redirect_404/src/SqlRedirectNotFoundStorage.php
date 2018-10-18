@@ -51,7 +51,7 @@ class SqlRedirectNotFoundStorage implements RedirectNotFoundStorageInterface {
    * {@inheritdoc}
    */
   public function logRequest($path, $langcode) {
-    if (Unicode::strlen($path) > static::MAX_PATH_LENGTH) {
+    if (mb_strlen($path) > static::MAX_PATH_LENGTH) {
       // Don't attempt to log paths that would result in an exception. There is
       // no point in logging truncated paths, as they cannot be used to build a
       // new redirect.
@@ -91,6 +91,11 @@ class SqlRedirectNotFoundStorage implements RedirectNotFoundStorageInterface {
    */
   public function purgeOldRequests() {
     $row_limit = $this->configFactory->get('redirect_404.settings')->get('row_limit');
+
+    // In admin form 0 used as value for 'All' label.
+    if ($row_limit == 0) {
+      return;
+    }
 
     $query = $this->database->select('redirect_404', 'r404');
     $query->fields('r404', ['timestamp']);

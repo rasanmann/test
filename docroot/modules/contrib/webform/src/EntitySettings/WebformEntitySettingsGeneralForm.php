@@ -2,6 +2,7 @@
 
 namespace Drupal\webform\EntitySettings;
 
+use Drupal\Component\Serialization\Json;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
@@ -96,21 +97,28 @@ class WebformEntitySettingsGeneralForm extends WebformEntitySettingsBaseForm {
       '#type' => 'webform_select_other',
       '#title' => $this->t('Category'),
       '#options' => $webform_storage->getCategories(),
-      '#empty_option' => '<' . $this->t('None') . '>',
+      '#empty_option' => $this->t('- None -'),
       '#default_value' => $webform->get('category'),
     ];
     $form['general_settings']['template'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Allow this webform to be used as a template.'),
+      '#title' => $this->t('Allow this webform to be used as a template'),
       '#description' => $this->t('If checked, this webform will be available as a template to all users who can create new webforms.'),
       '#return_value' => TRUE,
       '#access' => $this->moduleHandler->moduleExists('webform_templates'),
       '#default_value' => $webform->isTemplate(),
     ];
+    $form['general_settings']['archive'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Archived this webform'),
+      '#description' => $this->t('If checked, this webform will be closed and unavailable to webform blocks and fields.'),
+      '#return_value' => TRUE,
+      '#default_value' => $webform->isArchived(),
+    ];
     $form['general_settings']['results_disabled'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Disable saving of submissions.'),
-      '#description' => $this->t('If saving of submissions is disabled, submission settings, submission limits, purging and the saving of drafts will be disabled. Submissions must be sent via an email or handled using a custom <a href=":href">webform handler</a>.', [':href' => Url::fromRoute('entity.webform.handlers', ['webform' => $webform->id()])->toString()]),
+      '#title' => $this->t('Disable saving of submissions'),
+      '#description' => $this->t('If saving of submissions is disabled, submission settings, submission limits, purging and the saving of drafts will be disabled. Submissions must be sent via an email or processed using a custom <a href=":href">webform handler</a>.', [':href' => Url::fromRoute('entity.webform.handlers', ['webform' => $webform->id()])->toString()]),
       '#return_value' => TRUE,
       '#default_value' => $settings['results_disabled'],
     ];
@@ -164,25 +172,56 @@ class WebformEntitySettingsGeneralForm extends WebformEntitySettingsBaseForm {
       '#title' => $this->t('URL path settings'),
       '#open' => TRUE,
     ];
-    $default_page_submit_path = trim($default_settings['default_page_base_path'], '/') . '/' . str_replace('_', '-', $webform->id());
+    $default_page_base_path = trim($default_settings['default_page_base_path'], '/');
+    if ($default_page_base_path) {
+      $default_page_submit_path = trim($default_settings['default_page_base_path'], '/') . '/' . str_replace('_', '-', $webform->id());
+      $default_settings['default_page_submit_path'] = $default_page_submit_path;
+      $default_settings['default_page_confirm_path'] = $default_page_submit_path . '/confirmation';
+      $form_state->set('default_settings', $default_settings);
+    }
+
     $t_args = [
       ':node_href' => ($this->moduleHandler->moduleExists('node')) ? Url::fromRoute('node.add', ['node_type' => 'webform'])->toString() : '',
       ':block_href' => ($this->moduleHandler->moduleExists('block')) ? Url::fromRoute('block.admin_display')->toString() : '',
+      ':view_href' => $webform->toUrl()->toString(),
+      ':test_href' => $webform->toUrl('test-form')->toString(),
     ];
-    $default_settings['default_page_submit_path'] = $default_page_submit_path;
-    $default_settings['default_page_confirm_path'] = $default_page_submit_path . '/confirmation';
     $form['page_settings']['page'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Allow users to post submission from a dedicated URL.'),
+      '#title' => $this->t('Allow users to post submissions from a dedicated URL'),
       '#description' => $this->t('If unchecked, this webform must be attached to a <a href=":node_href">node</a> or a <a href=":block_href">block</a> to receive submissions.', $t_args),
       '#return_value' => TRUE,
       '#default_value' => $settings['page'],
     ];
+    if ($this->moduleHandler->moduleExists('path') && $settings['page']) {
+      $t_args[':path_alias'] = Url::fromRoute('path.admin_overview')->toString();
+      $form['page_settings']['page_message_warning'] = [
+        '#type' => 'webform_message',
+        '#message_type' => 'warning',
+        '#message_message' => $this->t('Unchecking this box will delete ALL aliases you may have created for this form via the <a href=":path_alias">path</a> module.', $t_args),
+        '#states' => [
+          'visible' => [
+            ':input[name="page"]' => ['checked' => FALSE],
+          ],
+        ],
+      ];
+    }
+    $form['page_settings']['page_message'] = [
+      '#type' => 'webform_message',
+      '#message_type' => 'warning',
+      '#message_message' => $this->t('Any user who can update this webform will still be able to <a href=":view_href">view</a> and <a href=":test_href">test</a> this webform with the administrative theme.', $t_args),
+      '#states' => [
+        'visible' => [
+          ':input[name="page"]' => ['checked' => FALSE],
+        ],
+      ],
+    ];
     if ($this->moduleHandler->moduleExists('path')) {
+      $t_args[':path_alias'] = Url::fromRoute('path.admin_overview')->toString();
       $form['page_settings']['page_submit_path'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Webform URL alias'),
-        '#description' => $this->t('Optionally specify an alternative URL by which the webform submit page can be accessed.', $t_args),
+        '#description' => $this->t('Optionally specify an alternative URL by which the webform submit page can be accessed. Any value entered here will overwrite ALL aliases you may have created for this form via the <a href=":path_alias">path</a> module.', $t_args),
         '#default_value' => $settings['page_submit_path'],
         '#states' => [
           'visible' => [
@@ -224,25 +263,131 @@ class WebformEntitySettingsGeneralForm extends WebformEntitySettingsBaseForm {
       '#return_value' => TRUE,
       '#default_value' => $settings['ajax'],
     ];
-
-    // Author information.
-    $form['author_information'] = [
-      '#type' => 'details',
-      '#title' => $this->t('Author information'),
-      '#access' => $this->currentUser()->hasPermission('administer webform'),
+    $form['ajax_settings']['ajax_scroll_top'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('On Ajax load, scroll to the top of the…'),
+      '#description' => $this->t("Select where the page should be scrolled to when paging, saving of drafts, previews, submissions, and confirmations. Select 'None' to disable scrolling."),
+      '#options' => [
+        '' => $this->t('None'),
+        'form' => $this->t('Form'),
+        'page' => $this->t('Page'),
+      ],
+      '#states' => [
+        'visible' => [
+          ':input[name="ajax"]' => ['checked' => TRUE],
+        ],
+      ],
+      '#default_value' => $settings['ajax_scroll_top'],
     ];
-    $form['author_information']['uid'] = [
-      '#type' => 'entity_autocomplete',
-      '#title' => $this->t('Authored by'),
-      '#description' => $this->t("The username of the webform author/owner."),
-      '#target_type' => 'user',
-      '#settings' => [
-        'match_operator' => 'CONTAINS',
-      ],
-      '#selection_settings' => [
-        'include_anonymous' => TRUE,
-      ],
-      '#default_value' => $webform->getOwner(),
+
+    // Dialog settings.
+    if ($default_settings['dialog']) {
+      $rows = [];
+      // Preset examples.
+      foreach ($default_settings['dialog_options'] as $dialog_name => $dialog_options) {
+        $dialog_options += [
+          'width' => $this->t('auto'),
+          'height' => $this->t('auto'),
+        ];
+        $dialog_link = [
+          '#type' => 'link',
+          '#url' => $webform->toUrl(),
+          '#title' => $this->t('Test @title', ['@title' => $dialog_options['title']]),
+          '#attributes' => [
+            'class' => ['webform-dialog', 'webform-dialog-' . $dialog_name, 'button'],
+          ],
+        ];
+        $row = [];
+        $row['title'] = $dialog_options['title'];
+        $row['dimensions'] = $dialog_options['width'] . ' x ' . $dialog_options['height'];
+        $row['link'] = ['data' => $dialog_link, 'nowrap' => 'nowrap'];
+        $row['source'] = $this->buildDialogSource($dialog_link);
+        $rows[$dialog_name] = $row;
+      }
+
+      // Custom example.
+      $dialog_link = [
+        '#type' => 'link',
+        '#title' => $this->t('Test Custom'),
+        '#url' => $webform->toUrl(),
+        '#attributes' => [
+          'class' => ['webform-dialog', 'button'],
+          'data-dialog-options' => Json::encode([
+            'width' => 400,
+            'height' => 400,
+          ]),
+        ],
+      ];
+      $row = [];
+      $row['title'] = $this->t('Custom');
+      $row['dimensions'] = '400 x 400';
+      $row['link'] = ['data' => $dialog_link];
+      $row['source'] = $this->buildDialogSource($dialog_link);
+      $rows['custom'] = $row;
+
+      $form['dialog_settings'] = [
+        '#type' => 'details',
+        '#title' => $this->t('Dialog settings'),
+        '#description' => $this->t('Below are links and code snippets that can be inserted into your website to open this form in a modal dialog.'),
+        '#open' => TRUE,
+        'table' => [
+          '#type' => 'table',
+          '#header' => [
+            ['data' => $this->t('Title'), 'width' => '10%', 'class' => [RESPONSIVE_PRIORITY_LOW]],
+            ['data' => $this->t('Dimensions'), 'width' => '10%', 'class' => [RESPONSIVE_PRIORITY_LOW]],
+            ['data' => $this->t('Example'), 'width' => '10%', 'class' => [RESPONSIVE_PRIORITY_LOW]],
+            ['data' => $this->t('Source'), 'width' => '70%'],
+          ],
+          '#rows' => $rows,
+        ],
+      ];
+
+      $form['dialog_settings']['form_prepopulate_source_entity'] = [
+        '#type' => 'checkbox',
+        '#title' => $this->t('Allow (dialog) source entity to be populated using query string parameters'),
+        '#description' => $this->t("If checked, source entity can be populated using query string parameters.") .
+          '<br/><br/>' . $this->t("For example, appending <code>?source_entity_type=node&source_entity_id=1</code> to a webform's URL would set a submission's 'Submitted to' value to 'node:1'.") .
+          '<br/><br/>' . $this->t("You can also append <code>?source_entity_type=ENTITY_TYPE&amp;source_entity_id=ENTITY_ID</code> and the <code>ENTITY_TYPE</code> and <code>ENTITY_ID</code> parameters will automatically be replaced based on the current page's source entity."),
+        '#return_value' => TRUE,
+        '#default_value' => $settings['form_prepopulate_source_entity'],
+      ];
+
+    }
+
+    if ($this->currentUser()->hasPermission('administer webform')) {
+      // Author information.
+      $form['author_information'] = [
+        '#type' => 'details',
+        '#title' => $this->t('Author information'),
+      ];
+      $form['author_information']['uid'] = [
+        '#type' => 'entity_autocomplete',
+        '#title' => $this->t('Authored by'),
+        '#description' => $this->t("The username of the webform author/owner."),
+        '#target_type' => 'user',
+        '#settings' => [
+          'match_operator' => 'CONTAINS',
+        ],
+        '#selection_settings' => [
+          'include_anonymous' => TRUE,
+        ],
+        '#default_value' => $webform->getOwner(),
+      ];
+    }
+
+    // Advanced settings.
+    $form['advanced_settings'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Advanced settings'),
+      '#open' => TRUE,
+      '#access' => $this->moduleHandler->moduleExists('webform_node'),
+    ];
+    $form['advanced_settings']['weight'] = [
+      '#type' => 'weight',
+      '#title' => $this->t('Weight'),
+      '#description' => $this->t('Weight is used when multiple webforms are associated to the same webform node.'),
+      '#default_value' => $webform->get('weight'),
+      '#access' => $this->moduleHandler->moduleExists('webform_node'),
     ];
 
     // Third party settings.
@@ -259,6 +404,8 @@ class WebformEntitySettingsGeneralForm extends WebformEntitySettingsBaseForm {
     else {
       ksort($form['third_party_settings']);
     }
+
+    $form['#attached']['library'][] = 'webform/webform.admin.settings';
 
     return parent::form($form, $form_state);
   }
@@ -290,6 +437,7 @@ class WebformEntitySettingsGeneralForm extends WebformEntitySettingsBaseForm {
       $values['title'],
       $values['description'],
       $values['category'],
+      $values['weight'],
       $values['template'],
       $values['uid']
     );
@@ -298,6 +446,48 @@ class WebformEntitySettingsGeneralForm extends WebformEntitySettingsBaseForm {
     $webform->setSettings($values);
 
     parent::save($form, $form_state);
+  }
+
+  /**
+   * Build dialog source.
+   *
+   * @param array $link
+   *   Webform link.
+   *
+   * @return array
+   *   A renderable array containing dialog source
+   */
+  protected function buildDialogSource(array $link) {
+    $source_entity_link = $link;
+    $source_entity_link['#url'] = clone $source_entity_link['#url'];
+    $source_entity_link['#url']->setOption('query', ['source_entity_type' => 'ENTITY_TYPE', 'source_entity_id' => 'ENTITY_ID']);
+
+    return [
+      'data' => [
+        'webform' => [
+          '#theme' => 'webform_codemirror',
+          '#type' => 'html',
+          '#code' => (string) \Drupal::service('renderer')->renderPlain($link),
+          '#suffix' => '<br/>',
+        ],
+        'source_entity' => [
+          'container' => [
+            '#type' => 'container',
+            '#attributes' => ['class' => ['js-form-item']],
+            '#states' => [
+              'visible' => [
+                ':input[name="form_prepopulate_source_entity"]' => ['checked' => TRUE],
+              ],
+            ],
+            'link' => [
+              '#theme' => 'webform_codemirror',
+              '#type' => 'html',
+              '#code' => (string) \Drupal::service('renderer')->renderPlain($source_entity_link),
+            ],
+          ],
+        ],
+      ],
+    ];
   }
 
 }

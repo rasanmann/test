@@ -63,6 +63,7 @@ class RedirectRepository {
    * @throws \Drupal\redirect\Exception\RedirectLoopException
    */
   public function findMatchingRedirect($source_path, array $query = [], $language = Language::LANGCODE_NOT_SPECIFIED) {
+    $source_path = ltrim($source_path, '/');
     $hashes = [Redirect::generateHash($source_path, $query, $language)];
     if ($language != Language::LANGCODE_NOT_SPECIFIED) {
       $hashes[] = Redirect::generateHash($source_path, $query, Language::LANGCODE_NOT_SPECIFIED);
@@ -111,10 +112,12 @@ class RedirectRepository {
    */
   protected function findByRedirect(Redirect $redirect, $language) {
     $uri = $redirect->getRedirectUrl();
-    $baseUrl = \Drupal::request()->getBaseUrl();
-    $path = ltrim(substr($uri->toString(), strlen($baseUrl)), '/');
+    $base_url = \Drupal::request()->getBaseUrl();
+    $generated_url = $uri->toString(TRUE);
+    $path = ltrim(substr($generated_url->getGeneratedUrl(), strlen($base_url)), '/');
     $query = $uri->getOption('query') ?: [];
-    return $this->findMatchingRedirect($path, $query, $language);
+    $return_value = $this->findMatchingRedirect($path, $query, $language);
+    return $return_value ? $return_value->addCacheableDependency($generated_url) : $return_value;
   }
 
   /**
@@ -131,6 +134,23 @@ class RedirectRepository {
       ->condition('redirect_source.path', $source_path, 'LIKE')
       ->execute();
     return $this->manager->getStorage('redirect')->loadMultiple($ids);
+  }
+
+  /**
+   * Finds redirects based on the destination URI.
+   *
+   * @param string[] $destination_uri
+   *   List of destination URIs, for example ['internal:/node/123'].
+   *
+   * @return \Drupal\redirect\Entity\Redirect[]
+   *   Array of redirect entities.
+   */
+  public function findByDestinationUri(array $destination_uri) {
+    $storage = $this->manager->getStorage('redirect');
+    $ids = $storage->getQuery()
+      ->condition('redirect_redirect.uri', $destination_uri, 'IN')
+      ->execute();
+    return $storage->loadMultiple($ids);
   }
 
   /**

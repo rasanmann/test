@@ -21,17 +21,6 @@ class WebformScheduledEmailTest extends WebformNodeTestBase {
   public static $modules = ['webform', 'webform_scheduled_email', 'webform_scheduled_email_test', 'webform_node'];
 
   /**
-   * {@inheritdoc}
-   */
-  public function setUp() {
-    parent::setUp();
-
-    // Add view own submission to anonymous so the submissions can be be
-    // converted to authenticated.
-    $this->addViewWebformSubmissionOwnPermissionToAnonymous();
-  }
-
-  /**
    * Tests webform schedule email handler.
    */
   public function testWebformScheduledEmail() {
@@ -104,6 +93,7 @@ class WebformScheduledEmailTest extends WebformNodeTestBase {
     $this->assertText("Test: Handler: Test scheduled email: Submission #$sid: Email not scheduled for Broken handler because [broken] is not a valid date/token.");
     $this->assertEqual($scheduled_manager->total($webform_schedule), 0);
 
+    /**************************************************************************/
     // Check deleting handler removes scheduled emails.
     // @todo Figure out why the below exception is occurring during tests only.
     // "Drupal\Component\Plugin\Exception\PluginNotFoundException: Plugin ID 'tomorrow' was not found. "
@@ -111,6 +101,7 @@ class WebformScheduledEmailTest extends WebformNodeTestBase {
     // $webform->deleteWebformHandler($handler);
     // $total = \Drupal::database()->select('webform_scheduled_email')->countQuery()->execute()->fetchField();
     // $this->assertEqual($total, 3);
+    /**************************************************************************/
 
     /**************************************************************************/
     // Webform scheduling.
@@ -162,6 +153,18 @@ class WebformScheduledEmailTest extends WebformNodeTestBase {
     $this->assertEqual($scheduled_manager->total($webform_schedule), 6);
     $this->assertEqual($scheduled_manager->waiting($webform_schedule), 6);
     $this->assertEqual($scheduled_manager->ready($webform_schedule), 0);
+
+    /**************************************************************************/
+    // Ignore past scheduling.
+    /**************************************************************************/
+
+    // Purge all submissions.
+    $this->purgeSubmissions();
+
+    // Check last year email can't be scheduled.
+    $sid = $this->postSubmission($webform_schedule, ['send' => 'last_year']);
+    $this->assertEqual($scheduled_manager->total($webform_schedule), 0);
+    $this->assertRaw('<em class="placeholder">Test: Handler: Test scheduled email: Submission #' . $sid . '</em>: Email <b>ignored</b> by <em class="placeholder">Last year</em> handler to be sent on <em class="placeholder">2016-01-01</em>.');
 
     /**************************************************************************/
     // Source entity scheduling.

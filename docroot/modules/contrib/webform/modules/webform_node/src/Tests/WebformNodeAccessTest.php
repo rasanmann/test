@@ -29,7 +29,7 @@ class WebformNodeAccessTest extends WebformNodeTestBase {
   }
 
   /**
-   * Tests webform node access perimissions.
+   * Tests webform node access permissions.
    *
    * @see \Drupal\webform\Tests\WebformSubmissionAccessTest::testWebformSubmissionAccessPermissions
    */
@@ -37,6 +37,7 @@ class WebformNodeAccessTest extends WebformNodeTestBase {
     global $base_path;
 
     // Create webform node that references the contact webform.
+    $webform = Webform::load('contact');
     $node = $this->createWebformNode('contact');
     $nid = $node->id();
 
@@ -79,6 +80,18 @@ class WebformNodeAccessTest extends WebformNodeTestBase {
     $this->assertLinkByHref("{$base_path}node/{$nid}/webform/submissions/{$sid_1}");
     $this->assertLinkByHref("{$base_path}node/{$nid}/webform/submissions/{$sid_2}");
 
+    // Check submission user duplicate returns access denied.
+    $this->drupalGet("node/{$nid}/webform/submissions/{$sid_2}/duplicate");
+    $this->assertResponse(403);
+
+    // Enable submission user duplicate.
+    $webform->setSetting('submission_user_duplicate', TRUE);
+    $webform->save();
+
+    // Check submission user duplicate returns access allows.
+    $this->drupalGet("node/{$nid}/webform/submissions/{$sid_2}/duplicate");
+    $this->assertResponse(200);
+
     // Check webform results access denied.
     $this->drupalGet("node/{$nid}/webform/results/submissions");
     $this->assertResponse(403);
@@ -104,9 +117,13 @@ class WebformNodeAccessTest extends WebformNodeTestBase {
   /**
    * Tests webform node access rules.
    *
-   * @see \Drupal\webform\Tests\WebformEntityAccessTest::testAccessRules
+   * @see \Drupal\webform\Tests\WebformEntityAccessControlsTest::testAccessRules
    */
   public function testAccessRules() {
+    /** @var \Drupal\webform\WebformAccessRulesManagerInterface $access_rules_manager */
+    $access_rules_manager = \Drupal::service('webform.access_rules_manager');
+    $default_access_rules = $access_rules_manager->getDefaultAccessRules();
+
     $webform = Webform::load('contact');
     $node = $this->createWebformNode('contact');
     $nid = $node->id();
@@ -127,7 +144,7 @@ class WebformNodeAccessTest extends WebformNodeTestBase {
     $sid = $this->postNodeSubmission($node, $edit);
 
     // Check create authenticated/anonymous access.
-    $webform->setAccessRules(Webform::getDefaultAccessRules())->save();
+    $webform->setAccessRules($default_access_rules)->save();
     $this->drupalGet('node/' . $node->id());
     $this->assertFieldByName('name', $this->normalUser->getAccountName());
     $this->assertFieldByName('email', $this->normalUser->getEmail());
@@ -137,7 +154,7 @@ class WebformNodeAccessTest extends WebformNodeTestBase {
         'roles' => [],
         'users' => [],
       ],
-    ] + Webform::getDefaultAccessRules();
+    ] + $default_access_rules;
     $webform->setAccessRules($access_rules)->save();
 
     // Check no access.
@@ -176,7 +193,7 @@ class WebformNodeAccessTest extends WebformNodeTestBase {
           'roles' => [$rid],
           'users' => [],
         ],
-      ] + Webform::getDefaultAccessRules();
+      ] + $default_access_rules;
       $webform->setAccessRules($access_rules)->save();
       $this->drupalGet($path);
       $this->assertResponse(200, 'Webform allows access via role access rules');
@@ -187,7 +204,7 @@ class WebformNodeAccessTest extends WebformNodeTestBase {
           'roles' => [],
           'users' => [$uid],
         ],
-      ] + Webform::getDefaultAccessRules();
+      ] + $default_access_rules;
       $webform->setAccessRules($access_rules)->save();
       $this->drupalGet($path);
       $this->assertResponse(200, 'Webform allows access via user access rules');

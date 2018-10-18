@@ -2,9 +2,9 @@
 
 namespace Drupal\Tests\webform\Kernel\Entity;
 
-use Drupal\Core\Serialization\Yaml;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\webform\Entity\Webform;
+use Drupal\webform\Utility\WebformYaml;
 use Drupal\webform\WebformException;
 use Drupal\webform\WebformInterface;
 
@@ -193,7 +193,7 @@ class WebformEntityTest extends KernelTestBase {
     $webform->setElements($elements);
 
     // Check that elements are serialized to YAML.
-    $this->assertTrue($webform->getElementsRaw(), Yaml::encode($elements));
+    $this->assertTrue($webform->getElementsRaw(), WebformYaml::encode($elements));
 
     // Check elements decoded and flattened.
     $flattened_elements = [
@@ -212,7 +212,7 @@ class WebformEntityTest extends KernelTestBase {
     ];
     $this->assertEquals($webform->getElementsDecodedAndFlattened(), $flattened_elements);
 
-    // Check elements initialized  and flattened.
+    // Check elements initialized and flattened.
     $elements_initialized_and_flattened = [
       'root' => [
         '#type' => 'textfield',
@@ -236,7 +236,7 @@ class WebformEntityTest extends KernelTestBase {
         '#webform_parent_key' => '',
         '#webform_parent_flexbox' => FALSE,
         '#webform_depth' => 0,
-        '#webform_children' => [],
+        '#webform_children' => ['child' => 'child'],
         '#webform_multiple' => FALSE,
         '#webform_composite' => FALSE,
         '#webform_parents' => ['container'],
@@ -288,7 +288,7 @@ class WebformEntityTest extends KernelTestBase {
       'page_1' => ['#title' => 'Page 1', '#access' => TRUE],
       'page_2' => ['#title' => 'Page 2', '#access' => TRUE],
       'page_3' => ['#title' => 'Page 3', '#access' => TRUE],
-      'webform_complete' => ['#title' => 'Complete', '#access' => TRUE],
+      'webform_confirmation' => ['#title' => 'Complete', '#access' => TRUE],
     ];
     $this->assertEquals($webform->getPages(), $wizard_pages);
 
@@ -299,7 +299,7 @@ class WebformEntityTest extends KernelTestBase {
       'page_2' => ['#title' => 'Page 2', '#access' => TRUE],
       'page_3' => ['#title' => 'Page 3', '#access' => TRUE],
       'webform_preview' => ['#title' => 'Preview', '#access' => TRUE],
-      'webform_complete' => ['#title' => 'Complete', '#access' => TRUE],
+      'webform_confirmation' => ['#title' => 'Complete', '#access' => TRUE],
     ];
     $this->assertEquals($webform->getPages(), $wizard_pages);
 
@@ -308,7 +308,7 @@ class WebformEntityTest extends KernelTestBase {
     $wizard_pages = [
       'webform_start' => ['#title' => 'Start', '#access' => TRUE],
       'webform_preview' => ['#title' => 'Preview', '#access' => TRUE],
-      'webform_complete' => ['#title' => 'Complete', '#access' => TRUE],
+      'webform_confirmation' => ['#title' => 'Complete', '#access' => TRUE],
     ];
     $this->assertEquals($webform->getPages(TRUE), $wizard_pages);
 
@@ -353,7 +353,7 @@ class WebformEntityTest extends KernelTestBase {
       ],
     ];
     $webform->setElementProperties('root', $elements['root']);
-    $this->assertEquals($webform->getElementsRaw(), Yaml::encode($elements));
+    $this->assertEquals($webform->getElementsRaw(), WebformYaml::encode($elements));
 
     // Check add new container to root.
     $elements['root']['container'] = [
@@ -361,7 +361,7 @@ class WebformEntityTest extends KernelTestBase {
       '#title' => 'container',
     ];
     $webform->setElementProperties('container', $elements['root']['container'], 'root');
-    $this->assertEquals($webform->getElementsRaw(), Yaml::encode($elements));
+    $this->assertEquals($webform->getElementsRaw(), WebformYaml::encode($elements));
 
     // Check add new element to container.
     $elements['root']['container']['element'] = [
@@ -369,7 +369,7 @@ class WebformEntityTest extends KernelTestBase {
       '#title' => 'element',
     ];
     $webform->setElementProperties('element', $elements['root']['container']['element'], 'container');
-    $this->assertEquals($webform->getElementsRaw(), Yaml::encode($elements));
+    $this->assertEquals($webform->getElementsRaw(), WebformYaml::encode($elements));
 
     // Check delete container with al recursively delete all children.
     $elements = [
@@ -379,7 +379,7 @@ class WebformEntityTest extends KernelTestBase {
       ],
     ];
     $webform->deleteElement('container');
-    $this->assertEquals($webform->getElementsRaw(), Yaml::encode($elements));
+    $this->assertEquals($webform->getElementsRaw(), WebformYaml::encode($elements));
   }
 
 }

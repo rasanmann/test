@@ -22,6 +22,21 @@ class WebformLink extends WebformCompositeBase {
   /**
    * {@inheritdoc}
    */
+  public function getDefaultProperties() {
+    $properties = parent::getDefaultProperties();
+
+    // Link does not have select menus.
+    unset(
+      $properties['select2'],
+      $properties['chosed']
+    );
+
+    return $properties;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   protected function formatHtmlItemValue(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
 
@@ -39,7 +54,6 @@ class WebformLink extends WebformCompositeBase {
    */
   protected function formatTextItemValue(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
-
     return [
       'link' => new FormattableMarkup('@title (@url)', ['@title' => $value['title'], '@url' => $value['url']]),
     ];

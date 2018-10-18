@@ -4,11 +4,11 @@ description: Provides views integration for metatags.
 # core: 8.x
 package: SEO
 dependencies:
-  - metatag
-  - views
+  - metatag:metatag
+  - drupal:views
 
-# Information added by Drupal.org packaging script on 2017-09-25
-version: '8.x-1.2+22-dev'
+# Information added by Drupal.org packaging script on 2018-08-31
+version: '8.x-1.7'
 core: '8.x'
 project: 'metatag'
-datestamp: 1506375848
+datestamp: 1535726412

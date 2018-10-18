@@ -4,10 +4,10 @@ description: 'Support module for webform that provides element plugin tests.'
 package: Testing
 # core: 8.x
 dependencies:
-  - 'drupal:webform'
+  - 'webform:webform'
 
-# Information added by Drupal.org packaging script on 2017-09-12
-version: '8.x-5.0-beta18'
+# Information added by Drupal.org packaging script on 2018-10-02
+version: '8.x-5.0-rc22'
 core: '8.x'
 project: 'webform'
-datestamp: 1505244429
+datestamp: 1538482694

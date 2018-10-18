@@ -125,6 +125,19 @@ class RedirectAPITest extends KernelTestBase {
       $this->fail('Failed to find a redirect by source path with query string.');
     }
 
+    // Add a redirect to an external URL.
+    $external_redirect = $this->controller->create();
+    $external_redirect->setSource('google');
+    $external_redirect->setRedirect('https://google.com');
+    $external_redirect->save();
+    $found = $repository->findMatchingRedirect('google');
+    if (!empty($found)) {
+      $this->assertEqual($found->getRedirectUrl()->toString(), 'https://google.com');
+    }
+    else {
+      $this->fail('Failed to find a redirect for google.');
+    }
+
     // Hashes should be case-insensitive since the source paths are.
     /** @var \Drupal\redirect\Entity\Redirect $redirect */
     $redirect = $this->controller->create();
@@ -146,6 +159,23 @@ class RedirectAPITest extends KernelTestBase {
     else {
       $this->fail('findMatchingRedirect is case sensitive.');
     }
+  }
+
+  /**
+   * Test slash is removed from source path in findMatchingRedirect.
+   */
+  public function testDuplicateRedirectEntry() {
+    $redirect = $this->controller->create();
+    $redirect->setSource('/foo/foo', []);
+    $redirect->setRedirect('foo');
+    $redirect->save();
+
+    $redirect_repository = \Drupal::service('redirect.repository');
+    $matched_redirect = $redirect_repository->findMatchingRedirect('/foo/foo', [], 'en-AU');
+    $this->assertNotNull($matched_redirect);
+
+    $null_redirect = $redirect_repository->findMatchingRedirect('/foo/foo-bar', [], 'en-AU');
+    $this->assertNull($null_redirect);
   }
 
   /**
