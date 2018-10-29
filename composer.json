@@ -12,6 +12,15 @@
     },
     "replace": {
         "drupal/core": "~8.3",
+        "drupal/addtoany": "1.8",
+        "drupal/": "",
+        "drupal/": "",
+        "drupal/": "",
+        "drupal/": "",
+        "drupal/": "",
+        "drupal/": "",
+        "drupal/": "",
+        "drupal/": "",
         "drupal/migrate_source_csv": "8.*",
         "drupal/moneris": "8.*",
         "drupal/page_manager": "8.*",
@@ -77,7 +86,7 @@
         ],
         "post-package-install": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
         "post-package-update": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
-        "drupal-rebuild": "Drupal\\composer_manager\\Composer\\Command::rebuild", 
+        "drupal-rebuild": "Drupal\\composer_manager\\Composer\\Command::rebuild",
         "drupal-update": "Drupal\\composer_manager\\Composer\\Command::update"
     },
     "repositories": [
