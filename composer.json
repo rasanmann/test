@@ -79,8 +79,8 @@
     },
     "enable-patching": true,
     "patches": {
-      "drupal/[module_name]": {
-        "Note regarding the nature of the patch being applied": "https://www.drupal.org/files/issues/[patch_name].patch"
+      "drupal/bootstrap_layouts": {
+        "Fix bootstrap_layouts issue with panels 4": "patches/bootstrap_layouts.patch"
       }
     },
     "merge-plugin": {
