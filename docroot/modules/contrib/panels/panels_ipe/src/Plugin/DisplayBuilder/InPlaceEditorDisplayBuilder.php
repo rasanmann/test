@@ -1,11 +1,14 @@
 <?php
 
+/**
+ * @file
+ */
+
 namespace Drupal\panels_ipe\Plugin\DisplayBuilder;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Layout\LayoutInterface;
-use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\Context\ContextHandlerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\panels\Plugin\DisplayBuilder\StandardDisplayBuilder;
@@ -53,8 +56,8 @@ class InPlaceEditorDisplayBuilder extends StandardDisplayBuilder {
    * @param \Drupal\panels\Storage\PanelsStorageManagerInterface
    *   The Panels storage manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ContextHandlerInterface $context_handler, AccountInterface $account, ModuleHandlerInterface $module_handler, SharedTempStoreFactory $temp_store_factory, PanelsStorageManagerInterface $panels_storage) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $context_handler, $account, $module_handler);
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ContextHandlerInterface $context_handler, AccountInterface $account, SharedTempStoreFactory $temp_store_factory, PanelsStorageManagerInterface $panels_storage) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $context_handler, $account);
     $this->tempStore = $temp_store_factory->get('panels_ipe');
     $this->panelsStorage = $panels_storage;
   }
@@ -69,7 +72,6 @@ class InPlaceEditorDisplayBuilder extends StandardDisplayBuilder {
       $plugin_definition,
       $container->get('context.handler'),
       $container->get('current_user'),
-      $container->get('module_handler'),
       $container->get('user.shared_tempstore'),
       $container->get('panels.storage_manager')
     );
@@ -91,7 +93,7 @@ class InPlaceEditorDisplayBuilder extends StandardDisplayBuilder {
    *   An associative array representing the contents of drupalSettings, or
    *   FALSE if there was an error.
    */
-  protected function getDrupalSettings(array $regions, LayoutInterface $layout, PanelsDisplayVariant $panels_display, $unsaved, $locked) {
+  protected function getDrupalSettings(array $regions, LayoutInterface $layout, PanelsDisplayVariant $panels_display, $unsaved) {
     $settings = [
       'regions' => [],
     ];
@@ -149,7 +151,6 @@ class InPlaceEditorDisplayBuilder extends StandardDisplayBuilder {
 
     // Inform the App of our saved state.
     $settings['unsaved'] = $unsaved;
-    $settings['locked'] = $locked;
 
     return $settings;
   }
@@ -168,23 +169,15 @@ class InPlaceEditorDisplayBuilder extends StandardDisplayBuilder {
     if ($has_permission) {
       // This flag tracks whether or not there are unsaved changes.
       $unsaved = FALSE;
-      $locked = FALSE;
 
       // If a temporary configuration for this variant exists, use it.
-      $temp_store_key = $panels_display->getTempStoreId();
-      $lock_info = $this->tempStore->getMetadata($temp_store_key);
-      if ($lock_info) {
-        if ($lock_info->owner === $this->account->id()) {
-          $variant_config = $this->tempStore->get($temp_store_key);
-          unset($variant_config['id']);
-          $panels_display->setConfiguration($variant_config);
+      $temp_store_key = $panels_display->id();
+      if ($variant_config = $this->tempStore->get($temp_store_key)) {
+        unset($variant_config['id']);
+        $panels_display->setConfiguration($variant_config);
 
-          // Indicate that the user is viewing un-saved changes.
-          $unsaved = TRUE;
-        }
-        else {
-          $locked = TRUE;
-        }
+        // Indicate that the user is viewing un-saved changes.
+        $unsaved = TRUE;
       }
 
       $build = parent::build($panels_display);
@@ -207,7 +200,7 @@ class InPlaceEditorDisplayBuilder extends StandardDisplayBuilder {
 
       // Attach the required settings and IPE.
       $build['#attached']['library'][] = 'panels_ipe/panels_ipe';
-      $build['#attached']['drupalSettings']['panels_ipe'] = $this->getDrupalSettings($regions, $layout, $panels_display, $unsaved, $locked);
+      $build['#attached']['drupalSettings']['panels_ipe'] = $this->getDrupalSettings($regions, $layout, $panels_display, $unsaved);
 
       // Add our custom elements to the build.
       $build['#prefix'] = '<div id="panels-ipe-content">';

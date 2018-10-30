@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\panels_ipe\Plugin\IPEAccessManager.
+ */
+
 namespace Drupal\panels_ipe\Plugin;
 
 use Drupal\Core\Plugin\DefaultPluginManager;

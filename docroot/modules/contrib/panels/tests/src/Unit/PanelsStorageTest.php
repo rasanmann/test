@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\panels\Unit\PanelsStorageTest.
+ */
+
 namespace Drupal\Tests\panels\Unit;
 
 use Drupal\Core\Access\AccessResult;

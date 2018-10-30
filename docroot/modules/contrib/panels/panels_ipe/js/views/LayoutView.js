@@ -158,9 +158,7 @@
       }, this);
 
       // Attach any Drupal behaviors.
-      setTimeout(function () {
-        Drupal.attachBehaviors(this.el);
-      }.bind(this), 1);
+      Drupal.attachBehaviors(this.el);
 
       return this;
     },

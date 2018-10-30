@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ */
+
 namespace Drupal\panels_ipe\Form;
 
 use Drupal\Core\Form\FormBase;
@@ -202,7 +206,7 @@ class PanelsIPELayoutForm extends FormBase {
     $this->panelsDisplay->setLayout($this->layout, $layout_config);
 
     // Update tempstore.
-    $this->tempStore->set($panels_display->getTempStoreId(), $panels_display->getConfiguration());
+    $this->tempStore->set($panels_display->id(), $panels_display->getConfiguration());
 
     $region_data = [];
     $region_content = [];

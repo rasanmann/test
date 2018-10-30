@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ */
+
 namespace Drupal\panels\Storage;
 
 use Drupal\Core\Cache\CacheBackendInterface;
@@ -8,10 +12,7 @@ use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\panels\Annotation\PanelsStorage;
-use Drupal\panels\PanelsEvents;
-use Drupal\panels\PanelsVariantEvent;
 use Drupal\panels\Plugin\DisplayVariant\PanelsDisplayVariant;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Panels storage manager service.
@@ -26,13 +27,6 @@ class PanelsStorageManager extends DefaultPluginManager implements PanelsStorage
   protected $currentUser;
 
   /**
-   * The event dispatcher.
-   *
-   * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
-   */
-  protected $eventDispatcher;
-
-  /**
    * Constructs a PanelsStorageManager.
    *
    * @param \Traversable $namespaces
@@ -44,14 +38,11 @@ class PanelsStorageManager extends DefaultPluginManager implements PanelsStorage
    *   The module handler to invoke the alter hook with.
    * @param \Drupal\Core\Session\AccountProxyInterface $current_user
    *   The current user service.
-   * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
-   *   The event dispatcher.
    */
-  public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler, AccountProxyInterface $current_user, EventDispatcherInterface $event_dispatcher) {
+  public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler, AccountProxyInterface $current_user) {
     parent::__construct('Plugin/PanelsStorage', $namespaces, $module_handler, PanelsStorageInterface::class, PanelsStorage::class);
 
     $this->currentUser = $current_user;
-    $this->eventDispatcher = $event_dispatcher;
 
     $this->alterInfo('panels_storage_info');
     $this->setCacheBackend($cache_backend, 'panels_storage');
@@ -95,13 +86,8 @@ class PanelsStorageManager extends DefaultPluginManager implements PanelsStorage
    * {@inheritdoc}
    */
   public function save(PanelsDisplayVariant $panels_display) {
-    // Allow event subscribers to react to the variant being saved.
-    $event = new PanelsVariantEvent($panels_display);
-
-    $this->eventDispatcher->dispatch(PanelsEvents::VARIANT_PRE_SAVE, $event);
     $storage = $this->getStorage($panels_display->getStorageType());
     $storage->save($panels_display);
-    $this->eventDispatcher->dispatch(PanelsEvents::VARIANT_POST_SAVE, $event);
   }
 
   /**

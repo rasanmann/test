@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\panels_ipe\Plugin\IPEAccessInterface.php.
+ */
+
 namespace Drupal\panels_ipe\Plugin;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;
