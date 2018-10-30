@@ -4,6 +4,7 @@ namespace Drupal\yqb_api;
 
 use Drupal\Core\Render\RenderContext;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\rest\RestResourceConfigInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,17 +19,9 @@ use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 class RequestHandler extends \Drupal\rest\RequestHandler {
 
   /**
-   * Handles a web API request.
-   *
-   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
-   *   The route match.
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   The HTTP request object.
-   *
-   * @return \Symfony\Component\HttpFoundation\Response
-   *   The response object.
+   * {@inheritdoc}
    */
-  public function handle(RouteMatchInterface $route_match, Request $request) {
+  public function handle(RouteMatchInterface $route_match, Request $request, RestResourceConfigInterface $_rest_resource_config) {
     // Key checks
     $key = \Drupal::request()->headers->get('X-Key');
 
@@ -36,7 +29,7 @@ class RequestHandler extends \Drupal\rest\RequestHandler {
       throw new HttpException(403, 'Invalid API key');
     }
 
-    return parent::handle($route_match, $request);
+    return parent::handle($route_match, $request, $_rest_resource_config);
   }
 
     protected function validApiKey($key) {
