@@ -3843,22 +3843,22 @@
     },
     {
         "name": "drupal/panels",
-        "version": "4.0.0-alpha1",
-        "version_normalized": "4.0.0.0-alpha1",
+        "version": "4.3.0",
+        "version_normalized": "4.3.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/panels",
-            "reference": "8.x-4.0-alpha1"
+            "reference": "8.x-4.3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/panels-8.x-4.0-alpha1.zip",
-            "reference": "8.x-4.0-alpha1",
-            "shasum": "5a96a08e592acebfbabb3fa0b790aca1f2108be5"
+            "url": "https://ftp.drupal.org/files/projects/panels-8.x-4.3.zip",
+            "reference": "8.x-4.3",
+            "shasum": "81f71d8679a7179be2981d7c485a181a85f4e32b"
         },
         "require": {
             "drupal/core": "^8.3",
-            "drupal/ctools": ">=3.0.0-beta1"
+            "drupal/ctools": ">=3.0.0"
         },
         "require-dev": {
             "drupal/page_manager": "*"
@@ -3869,11 +3869,11 @@
                 "dev-4.x": "4.x-dev"
             },
             "drupal": {
-                "version": "8.x-4.0-alpha1",
-                "datestamp": "1492545842",
+                "version": "8.x-4.3",
+                "datestamp": "1523670784",
                 "security-coverage": {
-                    "status": "not-covered",
-                    "message": "Alpha releases are not covered by Drupal security advisories."
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
                 }
             }
         },

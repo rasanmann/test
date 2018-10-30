@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @file
- */
-
 namespace Drupal\Tests\panels_ipe\FunctionalJavascript;
 
 use Symfony\Component\CssSelector\CssSelectorConverter;
@@ -60,6 +56,18 @@ trait PanelsIPETestTrait {
       $this->clickAndWait($selector);
     }
     $this->assertSession()->elementNotExists('css', '[data-tab-id="edit"].active');
+  }
+
+  /**
+   * Breaks the lock of an IPE session.
+   */
+  protected function breakLock() {
+    // Click the "Locked" tab.
+    $selector = '[data-tab-id="locked"]:not(.active)';
+    $inactive_tab = $this->getSession()->getPage()->find('css', $selector);
+    if ($inactive_tab) {
+      $this->click($selector);
+    }
   }
 
   /**
