@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "793181a0c000e6c5d5851c90309bdb76",
+    "content-hash": "a9667b907fc26796feb3b540a893604a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1860,9 +1860,6 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
-                },
-                "patches_applied": {
-                    "Fix bootstrap_layouts issue with panels 4": "patches/bootstrap_layouts.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",

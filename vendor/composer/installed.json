@@ -1914,9 +1914,6 @@
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
                 }
-            },
-            "patches_applied": {
-                "Fix bootstrap_layouts issue with panels 4": "patches/bootstrap_layouts.patch"
             }
         },
         "installation-source": "dist",
