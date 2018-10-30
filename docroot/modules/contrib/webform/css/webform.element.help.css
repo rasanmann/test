@@ -5,19 +5,20 @@
 
 .webform-element-help {
   display: inline-block;
-  box-sizing: content-box;
   border: 2px solid #bbb;
   background: #bbb;
-  line-height: 14px;
-  height: 14px;
-  width: 14px;
-  font-size: 12px;
-  color: #fff;
+  line-height: 1em;
+  width: 1em;
   border-radius: 50%;
   font-weight: bold;
   text-align: center;
-  vertical-align: baseline;
   margin: 0 .3em;
+}
+
+.webform-element-help:link,
+.webform-element-help:visited {
+  color: #fff;
+  text-decoration: none;
 }
 
 .webform-element-help:focus,
@@ -26,15 +27,9 @@
   border: 2px solid #0074bd;
   background: #0074bd;
   color: #fff;
-  cursor: help;
+  text-decoration: none;
 }
 
-.ui-tooltip.webform-element-help--tooltip {
+.ui-tooltip.webform-element-help--tooltip  {
   max-width: 400px;
-}
-
-.webform-element-help--title {
-  font-weight: bold;
-  font-size: 1.1em;
-  margin: 0 0 .2em 0;
 }

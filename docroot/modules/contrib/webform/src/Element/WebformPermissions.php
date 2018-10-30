@@ -4,7 +4,6 @@ namespace Drupal\webform\Element;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\Select;
-use Drupal\webform\Utility\WebformElementHelper;
 
 /**
  * Provides a webform roles (select) element.
@@ -43,14 +42,18 @@ class WebformPermissions extends Select {
       $options[$display_name][$perm] = strip_tags($perm_item['title']);
     }
     $element['#options'] = $options;
-    $element['#select2'] = TRUE;
+
+    // Select2 support.
+    if (!empty($element['#select2'])) {
+      $element['#attributes']['class'][] = 'js-webform-select2';
+      $element['#attributes']['class'][] = 'webform-select2';
+      $element['#attached']['library'][] = 'webform/webform.element.select2';
+    }
 
     // Must convert this element['#type'] to a 'select' to prevent
     // "Illegal choice %choice in %name element" validation error.
     // @see \Drupal\Core\Form\FormValidator::performRequiredValidation
     $element['#type'] = 'select';
-
-    WebformElementHelper::process($element);
 
     return parent::processSelect($element, $form_state, $complete_form);
   }
@@ -60,9 +63,8 @@ class WebformPermissions extends Select {
    */
   public static function validateWebformPermissions(&$element, FormStateInterface $form_state, &$complete_form) {
     if (!empty($element['#multiple'])) {
-      $value = array_values($form_state->getValue($element['#parents'], []));
-      $element['#value'] = $value;
-      $form_state->setValueForElement($element, $value);
+      $value = $form_state->getValue($element['#parents'], []);
+      $form_state->setValueForElement($element, array_values($value));
     }
   }
 

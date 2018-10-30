@@ -30,9 +30,6 @@ class MetatagCustomRouteTest extends WebTestBase {
     'entity_test',
   ];
 
-  /**
-   * Run tests on the custom route.
-   */
   public function testCustomRoute() {
     $entity_test = EntityTest::create([
       'name' => 'test name',

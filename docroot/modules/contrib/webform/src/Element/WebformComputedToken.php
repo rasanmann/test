@@ -2,6 +2,9 @@
 
 namespace Drupal\webform\Element;
 
+use Drupal\Component\Utility\Html;
+
+
 use Drupal\webform\WebformSubmissionInterface;
 
 /**
@@ -21,7 +24,12 @@ class WebformComputedToken extends WebformComputedBase {
     $token_manager = \Drupal::service('webform.token_manager');
 
     // Replace tokens in value.
-    return $token_manager->replace($element['#value'], $webform_submission, [], ['html' => ($mode == static::MODE_HTML)]);
+    $value = $token_manager->replace($element['#value'], $webform_submission, [], ['html' => ($mode == static::MODE_HTML)]);
+
+    // Must decode HTML entities so that they are not double escaped.
+    $value = Html::decodeEntities($value);
+
+    return $value;
   }
 
 }

@@ -2,16 +2,12 @@
 
 namespace Drupal\paragraphs\Tests\Experimental;
 
-use Drupal\Tests\paragraphs\FunctionalJavascript\ParagraphsTestBaseTrait;
-
 /**
  * Tests the configuration of paragraphs in relation to ief.
  *
  * @group paragraphs
  */
 class ParagraphsExperimentalInlineEntityFormTest extends ParagraphsExperimentalTestBase {
-
-  use ParagraphsTestBaseTrait;
 
   /**
    * Modules to enable.
@@ -27,7 +23,7 @@ class ParagraphsExperimentalInlineEntityFormTest extends ParagraphsExperimentalT
    */
   public function testParagraphsIEFPreview() {
     // Create article content type with a paragraphs field.
-    $this->addParagraphedContentType('article');
+    $this->addParagraphedContentType('article', 'field_paragraphs');
     $this->loginAsAdmin(['create article content', 'edit any article content']);
 
     // Create the paragraphs type simple.
@@ -51,13 +47,8 @@ class ParagraphsExperimentalInlineEntityFormTest extends ParagraphsExperimentalT
     ];
     $this->drupalPostForm(NULL, $edit, t('Save'));
 
-    // Set the paragraphs widget edit mode to "Closed" and the closed mode to
-    // "Preview".
-    $settings = [
-      'edit_mode' => 'closed',
-      'closed_mode' => 'preview',
-    ];
-    $this->setParagraphsWidgetSettings('article', 'field_paragraphs', $settings);
+    // Set the paragraphs widget mode to preview.
+    $this->setParagraphsWidgetMode('article', 'field_paragraphs', 'preview');
 
     // Create node with one paragraph.
     $this->drupalGet('node/add/article');
@@ -68,7 +59,7 @@ class ParagraphsExperimentalInlineEntityFormTest extends ParagraphsExperimentalT
       'title[0][value]' => 'Dummy1',
       'field_paragraphs[0][subform][field_article][0][inline_entity_form][title][0][value]' => 'Dummy2',
     ];
-    $this->drupalPostForm(NULL, $edit, t('Save'));
+    $this->drupalPostForm(NULL, $edit, t('Save and publish'));
 
     // Go back into edit page.
     $node = $this->getNodeByTitle('Dummy1');
@@ -83,7 +74,7 @@ class ParagraphsExperimentalInlineEntityFormTest extends ParagraphsExperimentalT
    */
   public function testParagraphsIEFChangeOrder() {
     // Create article content type with a paragraphs field.
-    $this->addParagraphedContentType('article');
+    $this->addParagraphedContentType('article', 'field_paragraphs');
     $this->loginAsAdmin(['create article content', 'edit any article content']);
 
     // Create the paragraphs type simple.
@@ -116,8 +107,8 @@ class ParagraphsExperimentalInlineEntityFormTest extends ParagraphsExperimentalT
     ];
     $this->drupalPostForm(NULL, $edit, t('Save'));
 
-    // Set the paragraphs widget closed mode to preview.
-    $this->setParagraphsWidgetSettings('article', 'field_paragraphs', ['closed_mode' => 'preview']);
+    // Set the paragraphs widget mode to preview.
+    $this->setParagraphsWidgetMode('article', 'field_paragraphs', 'preview');
 
     // Create node with one paragraph.
     $this->drupalGet('node/add/article');
@@ -129,7 +120,7 @@ class ParagraphsExperimentalInlineEntityFormTest extends ParagraphsExperimentalT
       'field_paragraphs[0][subform][field_article][0][inline_entity_form][title][0][value]' => 'Basic page 1',
     ];
 
-    $this->drupalPostForm(NULL, $edit, t('Save'));
+    $this->drupalPostForm(NULL, $edit, t('Save and publish'));
 
     // Go back into edit page.
     $node = $this->getNodeByTitle('Article 1');
@@ -138,11 +129,13 @@ class ParagraphsExperimentalInlineEntityFormTest extends ParagraphsExperimentalT
     // Create second paragraph.
     $this->drupalPostAjaxForm(NULL, [], 'field_paragraphs_simple_add_more');
 
-    // Set the values of second paragraph.
+    // Set the values of second paragraph and change the order.
     $edit = [
-      'field_paragraphs[1][subform][field_article][0][inline_entity_form][title][0][value]' => 'Basic 2'
+      'field_paragraphs[1][subform][field_article][0][inline_entity_form][title][0][value]' => 'Basic 2',
+      'field_paragraphs[0][_weight]' => -1,
+      'field_paragraphs[1][_weight]' => -2,
     ];
-    $this->drupalPostForm(NULL, $edit, t('Save'));
+    $this->drupalPostForm(NULL, $edit, t('Save and keep published'));
   }
 
 }

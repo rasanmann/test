@@ -34,13 +34,10 @@ class WebformMapping extends WebformElementBase {
   public function getDefaultProperties() {
     return [
       'title' => '',
-      'default_value' => [],
-      // Description/Help.
+      // General settings.
       'help' => '',
-      'help_title' => '',
       'description' => '',
-      'more' => '',
-      'more_title' => '',
+      'default_value' => [],
       // Form display.
       'title_display' => '',
       'description_display' => '',
@@ -50,8 +47,6 @@ class WebformMapping extends WebformElementBase {
       'required_error' => '',
       // Submission display.
       'format' => $this->getItemDefaultFormat(),
-      'format_html' => '',
-      'format_text' => '',
       // Mapping settings.
       'arrow' => '→',
       'source' => [],
@@ -62,7 +57,6 @@ class WebformMapping extends WebformElementBase {
       'destination__description' => '',
       // Attributes.
       'wrapper_attributes' => [],
-      'label_attributes' => [],
     ] + $this->getDefaultBaseProperties();
   }
 
@@ -101,7 +95,7 @@ class WebformMapping extends WebformElementBase {
   /**
    * {@inheritdoc}
    */
-  protected function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  public function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
 
     $element += [
@@ -174,12 +168,13 @@ class WebformMapping extends WebformElementBase {
   /**
    * {@inheritdoc}
    */
-  protected function formatTextItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
-    if ($this->hasValue($element, $webform_submission, $options)) {
+  public function formatTextItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+    $value = $this->getValue($element, $webform_submission, $options);
+
+    // Return empty value.
+    if ($value === '' || $value === NULL || (is_array($value) && empty($value))) {
       return '';
     }
-
-    $value = $this->getValue($element, $webform_submission, $options);
 
     $element += [
       '#destination' => [],

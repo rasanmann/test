@@ -2,6 +2,7 @@
 
 namespace Drupal\webform\Form;
 
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\WebformSubmissionExporterInterface;
@@ -121,7 +122,7 @@ class WebformResultsExportForm extends FormBase {
     // Save the export options to the webform's state.
     $export_options = $this->submissionExporter->getValuesFromInput($form_state->getValues());
     $this->submissionExporter->setWebformOptions($export_options);
-    $this->messenger()->addStatus($this->t('The download settings have been saved.'));
+    drupal_set_message($this->t('The download settings have been saved.'));
   }
 
   /**
@@ -134,7 +135,7 @@ class WebformResultsExportForm extends FormBase {
    */
   public function delete(array &$form, FormStateInterface $form_state) {
     $this->submissionExporter->deleteWebformOptions();
-    $this->messenger()->addStatus($this->t('The download settings have been reset.'));
+    drupal_set_message($this->t('The download settings have been reset.'));
   }
 
 }

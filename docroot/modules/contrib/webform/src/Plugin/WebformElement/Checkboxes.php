@@ -3,7 +3,6 @@
 namespace Drupal\webform\Plugin\WebformElement;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\webform\Utility\WebformOptionsHelper;
 use Drupal\webform\WebformSubmissionConditionsValidator;
 use Drupal\webform\WebformSubmissionInterface;
 
@@ -14,7 +13,7 @@ use Drupal\webform\WebformSubmissionInterface;
  *   id = "checkboxes",
  *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Checkboxes.php/class/Checkboxes",
  *   label = @Translation("Checkboxes"),
- *   description = @Translation("Provides a form element for a set of checkboxes."),
+ *   description = @Translation("Provides a form element for a set of checkboxes, with the ability to enter a custom value."),
  *   category = @Translation("Options elements"),
  * )
  */
@@ -24,15 +23,14 @@ class Checkboxes extends OptionsBase {
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    return [
+    return parent::getDefaultProperties() + [
       'multiple' => TRUE,
       'multiple_error' => '',
       // Options settings.
       'options_display' => 'one_column',
-      'options_description_display' => 'description',
       // iCheck settings.
       'icheck' => '',
-    ] + parent::getDefaultProperties();
+    ];
   }
 
   /**
@@ -62,12 +60,8 @@ class Checkboxes extends OptionsBase {
    */
   protected function getElementSelectorInputsOptions(array $element) {
     $selectors = $element['#options'];
-    foreach ($selectors as $index => $text) {
-      // Remove description from text.
-      list($text) = explode(WebformOptionsHelper::DESCRIPTION_DELIMITER, $text);
-      // Append element type to text.
+    foreach ($selectors as &$text) {
       $text .= ' [' . $this->t('Checkbox') . ']';
-      $selectors[$index] = $text;
     }
     return $selectors;
   }

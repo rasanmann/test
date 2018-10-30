@@ -2,6 +2,9 @@
 
 namespace Drupal\metatag\Tests;
 
+use Drupal\simpletest\WebTestBase;
+use Drupal\metatag\Tests\MetatagTagsTestBase;
+
 /**
  * Tests that each of the Metatag base tags work correctly.
  *
@@ -12,7 +15,7 @@ class MetatagTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  private $tags = [
+  public $tags = [
     'abstract',
     'canonical_url',
     'content_language',
@@ -21,7 +24,6 @@ class MetatagTagsTest extends MetatagTagsTestBase {
     'geo_placename',
     'geo_position',
     'geo_region',
-    'google',
     'icbm',
     'image_src',
     'keywords',
@@ -30,7 +32,6 @@ class MetatagTagsTest extends MetatagTagsTestBase {
     'referrer',
     'rights',
     'robots',
-    'set_cookie',
     'shortlink',
     'standout',
     'title',
@@ -39,7 +40,7 @@ class MetatagTagsTest extends MetatagTagsTestBase {
   /**
    * Each of these meta tags has a different tag name vs its internal name.
    */
-  private function getTestTagName($tag_name) {
+  public function getTestTagName($tag_name) {
     if ($tag_name == 'geo_placename') {
       $tag_name = 'geo.placename';
     }
@@ -55,129 +56,118 @@ class MetatagTagsTest extends MetatagTagsTestBase {
     elseif ($tag_name == 'original_source') {
       $tag_name = 'original-source';
     }
-    elseif ($tag_name == 'set_cookie') {
-      $tag_name = 'set-cookie';
-    }
-
     return $tag_name;
   }
 
   /**
-   * Implements {tag_name}TestFieldXpath() for 'abstract'.
+   * Implements {meta_tag_name}_test_field_xpath() for 'abstract'.
    */
-  private function abstractTestFieldXpath() {
+  public function abstract_test_field_xpath() {
     return "//textarea[@name='abstract']";
   }
 
   /**
-   * Implements {tag_name}TestNameAttribute() for 'author'.
+   * Implements {meta_tag_name}_test_name_attribute() for 'author'.
    */
-  private function authorTestOutputXpath() {
+  public function author_test_output_xpath() {
     return "//link[@rel='author']";
   }
 
   /**
-   * Implements {tag_name}TestValueAttribute() for 'author'.
+   * Implements {meta_tag_name}_test_value_attribute() for 'author'.
    */
-  private function authorTestValueAttribute() {
+  public function author_test_value_attribute() {
     return 'href';
   }
 
   /**
-   * Implements {tag_name}TestNameAttribute() for 'canonical_url'.
+   * Implements {meta_tag_name}_test_name_attribute() for 'canonical_url'.
    */
-  private function canonicalUrlTestOutputXpath() {
+  public function canonical_url_test_output_xpath() {
     return "//link[@rel='canonical']";
   }
 
   /**
-   * Implements {tag_name}TestValueAttribute() for 'canonical_url'.
+   * Implements {meta_tag_name}_test_value_attribute() for 'canonical_url'.
    */
-  private function canonicalUrlTestValueAttribute() {
+  public function canonical_url_test_value_attribute() {
     return 'href';
   }
 
   /**
-   * Implements {tag_name}TestNameAttribute() for 'content_language'.
+   * Implements {meta_tag_name}_test_name_attribute() for 'content_language'.
    */
-  private function contentLanguageTestNameAttribute() {
+  public function content_language_test_name_attribute() {
     return 'http-equiv';
   }
 
   /**
-   * Implements {tag_name}TestNameAttribute() for 'set_cookie'.
+   * Implements {meta_tag_name}_test_field_xpath() for 'description'.
    */
-  private function setCookieTestNameAttribute() {
-    return 'http-equiv';
-  }
-
-  /**
-   * Implements {tag_name}TestFieldXpath() for 'description'.
-   */
-  private function descriptionTestFieldXpath() {
+  public function description_test_field_xpath() {
     return "//textarea[@name='description']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'image_src'.
+   * Implements {meta_tag_name}_test_output_xpath() for 'image_src'.
    */
-  private function imageSrcTestOutputXpath() {
+  public function image_src_test_output_xpath() {
     return "//link[@rel='image_src']";
   }
 
   /**
-   * Implements {tag_name}TestValueAttribute() for 'image_src'.
+   * Implements {meta_tag_name}_test_value_attribute() for 'image_src'.
    */
-  private function imageSrcTestValueAttribute() {
+  public function image_src_test_value_attribute() {
     return 'href';
   }
 
   /**
-   * Implements {tag_name}TestFieldXpath() for 'referrer'.
+   * Implements {meta_tag_name}_test_field_xpath() for 'referrer'.
    */
-  private function referrerTestFieldXpath() {
+  public function referrer_test_field_xpath() {
     return "//select[@name='referrer']";
   }
 
   /**
-   * Implements {tag_name}TestFieldXpath() for 'robots'.
+   * Implements {meta_tag_name}_test_field_xpath() for 'robots'.
    */
-  private function robotsTestFieldXpath() {
+  public function robots_test_field_xpath() {
     return "//input[@name='robots[index]' and @type='checkbox']";
   }
 
   /**
-   * Implements {tag_name}TestValue() for 'referrer'.
+   * Implements {meta_tag_name}_test_value() for 'referrer'.
    */
-  private function referrerTestValue() {
+  public function referrer_test_value() {
     return 'origin';
   }
 
   /**
-   * Implements {tag_name}TestValue() for 'robots'.
+   * Implements {meta_tag_name}_test_value() for 'robots'.
    */
-  private function robotsTestKey() {
+  public function robots_test_key() {
     return 'robots[index]';
   }
 
   /**
-   * Implements {tag_name}TestValue() for 'robots'.
+   * Implements {meta_tag_name}_test_value() for 'robots'.
    */
-  private function robotsTestValue() {
+  public function robots_test_value() {
     return TRUE;
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'shortlink'.
+   * Implements {meta_tag_name}_test_output_xpath() for 'shortlink'.
    */
-  private function shortlinkTestOutputXpath() {
+  public function shortlink_test_output_xpath() {
     return "//link[@rel='shortlink']";
   }
 
   /**
-   * Implements {tag_name}TestValueAttribute() for 'shortlink'.
+   * Implements {meta_tag_name}_test_value_attribute() for 'shortlink'.
    */
-  private function shortlinkTestValueAttribute() {
+  public function shortlink_test_value_attribute() {
     return 'href';
   }
 

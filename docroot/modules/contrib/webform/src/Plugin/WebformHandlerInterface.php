@@ -32,7 +32,7 @@ interface WebformHandlerInterface extends PluginInspectionInterface, Configurabl
   const CARDINALITY_SINGLE = 1;
 
   /**
-   * Value indicating webform submissions are not processed (i.e. email or saved) by the handler.
+   * Value indicating webform submissions are not processed (ie email or saved) by the handler.
    */
   const RESULTS_IGNORED = 0;
 
@@ -47,7 +47,7 @@ interface WebformHandlerInterface extends PluginInspectionInterface, Configurabl
   const SUBMISSION_OPTIONAL = 0;
 
   /**
-   * Value indicating webform submissions are processed (i.e. email or saved) by the handler.
+   * Value indicating webform submissions are processed (ie email or saved) by the handler.
    */
   const RESULTS_PROCESSED = 1;
 
@@ -86,18 +86,10 @@ interface WebformHandlerInterface extends PluginInspectionInterface, Configurabl
   /**
    * Determine if webform handler supports conditions.
    *
-   * @return bool
+   * @return boolean
    *   TRUE if the webform handler supports conditions.
    */
   public function supportsConditions();
-
-  /**
-   * Determine if webform handler supports tokens.
-   *
-   * @return bool
-   *   TRUE if the webform handler supports tokens.
-   */
-  public function supportsTokens();
 
   /**
    * Returns the unique ID representing the webform handler.
@@ -190,20 +182,6 @@ interface WebformHandlerInterface extends PluginInspectionInterface, Configurabl
   public function setConditions(array $conditions);
 
   /**
-   * Enables the webform handler.
-   *
-   * @return $this
-   */
-  public function enable();
-
-  /**
-   * Disables the webform handler.
-   *
-   * @return $this
-   */
-  public function disable();
-
-  /**
    * Checks if the handler is excluded via webform.settings.
    *
    * @return bool
@@ -246,10 +224,10 @@ interface WebformHandlerInterface extends PluginInspectionInterface, Configurabl
   public function isSubmissionRequired();
 
   /**
-   * Set the webform that this is handler is attached to.
+   * Initialize webform handler.
    *
    * @param \Drupal\webform\WebformInterface $webform
-   *   A webform.
+   *   A webform object.
    *
    * @return $this
    *   This webform handler.
@@ -265,38 +243,20 @@ interface WebformHandlerInterface extends PluginInspectionInterface, Configurabl
   public function getWebform();
 
   /**
-   * Set the webform submission that this handler is handling.
-   *
-   * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
-   *   A webform submission.
-   *
-   * @return $this
-   *   This webform handler.
-   */
-  public function setWebformSubmission(WebformSubmissionInterface $webform_submission = NULL);
-
-  /**
-   * Get the webform submission that this handler is handling.
-   *
-   * @return \Drupal\webform\WebformSubmissionInterface
-   *   A webform submission.
-   */
-  public function getWebformSubmission();
-
-  /**
    * Check handler conditions against a webform submission.
    *
    * Note: Conditions are only applied to callbacks that require a
    * webform submissions.
    *
-   * Conditions are ignored by…
+   * Conditions are ignored by...
    * - \Drupal\webform\Plugin\WebformHandlerInterface::alterElements
    * - \Drupal\webform\Plugin\WebformHandlerInterface::preCreate
+   *
    *
    * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
    *   A webform submission.
    *
-   * @return bool
+   * @return boolean
    *   TRUE if handler is disable or webform submission passes conditions.
    *   FALSE if webform submission fails conditions.
    */
@@ -317,23 +277,6 @@ interface WebformHandlerInterface extends PluginInspectionInterface, Configurabl
    *   The webform.
    */
   public function alterElements(array &$elements, WebformInterface $webform);
-
-  /****************************************************************************/
-  // Webform submission methods.
-  /****************************************************************************/
-
-  /**
-   * Alter/override a webform submission webform settings.
-   *
-   * IMPORTANT: Webform settings are overridden for just the webform submission.
-   * Overridden settings are never saved to the Webform's configuration.
-   *
-   * @param array $settings
-   *   An associative array containing the webform settings.
-   * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
-   *   A webform submission.
-   */
-  public function overrideSettings(array &$settings, WebformSubmissionInterface $webform_submission);
 
   /****************************************************************************/
   // Submission form methods.
@@ -454,23 +397,6 @@ interface WebformHandlerInterface extends PluginInspectionInterface, Configurabl
    *   A webform submission.
    */
   public function postDelete(WebformSubmissionInterface $webform_submission);
-
-  /****************************************************************************/
-  // Preprocessing methods.
-  /****************************************************************************/
-
-  /**
-   * Prepares variables for webform confirmation templates.
-   *
-   * Default template: webform-confirmation.html.twig.
-   *
-   * @param array $variables
-   *   An associative array containing the following key:
-   *   - webform: A webform.
-   *   - webform_submission: A webform submission.
-   *   - source_entity: A webform submission source entity.
-   */
-  public function preprocessConfirmation(array &$variables);
 
   /****************************************************************************/
   // Handler methods.

@@ -2,6 +2,8 @@
 
 namespace Drupal\metatag_favicons\Plugin\metatag\Tag;
 
+use \Drupal\metatag_favicons\Plugin\metatag\Tag\LinkSizesBase;
+
 /**
  * The Favicons "icon_32x32" meta tag.
  *
@@ -18,12 +20,8 @@ namespace Drupal\metatag_favicons\Plugin\metatag\Tag;
  * )
  */
 class Icon32x32 extends LinkSizesBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function sizes() {
+  function sizes() {
     return '32x32';
   }
-
 }
+

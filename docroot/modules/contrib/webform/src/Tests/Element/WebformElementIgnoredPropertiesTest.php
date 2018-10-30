@@ -4,6 +4,7 @@ namespace Drupal\webform\Tests\Element;
 
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\webform\Entity\Webform;
+use Drupal\webform\Tests\WebformTestBase;
 use Drupal\webform\Utility\WebformElementHelper;
 
 /**
@@ -11,7 +12,7 @@ use Drupal\webform\Utility\WebformElementHelper;
  *
  * @group Webform
  */
-class WebformElementIgnoredPropertiesTest extends WebformElementTestBase {
+class WebformElementIgnoredPropertiesTest extends WebformTestBase {
 
   /**
    * Webforms to load.

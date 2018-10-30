@@ -9,7 +9,6 @@ use Drupal\Core\EventSubscriber\MainContentViewSubscriber;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\webform\Entity\Webform;
-use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
 
 /**
  * Implements hook_webform_submission_form_alter().
@@ -38,7 +37,7 @@ function maillog_webform_submission_form_alter(array &$form, FormStateInterface 
   $sends_email = FALSE;
   $handlers = $webform->getHandlers();
   foreach ($handlers as $handler) {
-    if ($handler instanceof EmailWebformHandler) {
+    if ($handler instanceof \Drupal\webform\Plugin\WebformHandler\EmailWebformHandler) {
       $sends_email = TRUE;
     }
   }
@@ -50,14 +49,12 @@ function maillog_webform_submission_form_alter(array &$form, FormStateInterface 
   $build = [];
 
   // Display warning that all emails will be logged to admins only.
-  // Display warning that all emails will be logged to admins only.
   if (\Drupal::currentUser()->hasPermission('administer maillog')) {
-    $t_args = [':href' => Url::fromRoute('maillog.settings')->toString()];
     if ($config->get('log')) {
-      $build[] = ['#markup' => t('The <a href=":href">Maillog</a> module is logging all emails.', $t_args)];
+      $build[] = ['#markup' => t('The <a href=":href">Maillog</a> module is logging all emails.')];
     }
     else {
-      $build[] = ['#markup' => t('The <a href=":href">Maillog</a> module is installed.', $t_args)];
+      $build[] = ['#markup' => t('The <a href=":href">Maillog</a> module is installed.', [':href' => Url::fromRoute('maillog.settings')->toString()])];
     }
   }
 
@@ -67,12 +64,9 @@ function maillog_webform_submission_form_alter(array &$form, FormStateInterface 
   }
 
   // Display warning if no emails are being sent.
-  $build[] = [
-    '#markup' => t('No emails will be sent.'),
-    '#prefix' => ' <b>', '#suffix' => '</b>',
-  ];
+  $build[] = ['#markup' => t('No emails will be sent.'), '#prefix' => ' <b>', '#suffix' => '</b>'];
 
   if ($build) {
-    \Drupal::messenger()->addWarning(\Drupal::service('renderer')->renderPlain($build));
+    drupal_set_message(\Drupal::service('renderer')->renderPlain($build), 'warning');
   }
 }

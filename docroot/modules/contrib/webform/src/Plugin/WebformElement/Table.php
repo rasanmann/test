@@ -17,7 +17,7 @@ use Drupal\webform\WebformSubmissionInterface;
  *   api = "https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Render!Element!Table.php/class/Table",
  *   label = @Translation("Table"),
  *   description = @Translation("Provides an element to render a table."),
- *   hidden = TRUE,
+ *   category = @Translation("Markup elements"),
  * )
  */
 class Table extends WebformElementBase {
@@ -102,7 +102,7 @@ class Table extends WebformElementBase {
   /**
    * {@inheritdoc}
    */
-  protected function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  public function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $rows = [];
     foreach ($element as $row_key => $row_element) {
       if (Element::property($row_key)) {
@@ -138,7 +138,7 @@ class Table extends WebformElementBase {
   /**
    * {@inheritdoc}
    */
-  protected function formatTextItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  public function formatTextItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     // Render the HTML table.
     $build = $this->formatHtml($element, $webform_submission, $options);
     $html = \Drupal::service('renderer')->renderPlain($build);

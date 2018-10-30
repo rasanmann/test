@@ -26,13 +26,6 @@ abstract class CSVUnitBase extends UnitTestCase {
   protected $sad;
 
   /**
-   * The multi line file url.
-   *
-   * @var string
-   */
-  protected $multiLine;
-
-  /**
    * {@inheritdoc}
    */
   protected function setUp() {
@@ -75,18 +68,6 @@ EOD;
 15|Jason|Mason|jmasone@example.com|Greece|225.129.68.203
 
 EOD;
-    $multiLineContent = <<<'EOD'
-id,title,description
-1,"Title 1","Description 1 Line 1
-Description 1 Line 2
-Description 1 Line 3"
-2,"Title 2","Description 2 Line 1
-Description 2 Line 2
-Description 2 Line 3"
-3,"Title 3","Description 3 Line 1
-Description 3 Line 2
-Description 3 Line 3"
-EOD;
 
     $this->happyPath = vfsStream::newFile('data.csv')
       ->at($root_dir)
@@ -96,9 +77,6 @@ EOD;
       ->at($root_dir)
       ->withContent($sad)
       ->url();
-    $this->multiLine = vfsStream::newFile('multi-line.csv')
-      ->at($root_dir)
-      ->withContent($multiLineContent)
-      ->url();
+
   }
 }

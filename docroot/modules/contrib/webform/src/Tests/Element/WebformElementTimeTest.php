@@ -2,12 +2,14 @@
 
 namespace Drupal\webform\Tests\Element;
 
+use Drupal\webform\Tests\WebformTestBase;
+
 /**
  * Tests for webform time element.
  *
  * @group Webform
  */
-class WebformElementTimeTest extends WebformElementTestBase {
+class WebformElementTimeTest extends WebformTestBase {
 
   /**
    * Webforms to load.

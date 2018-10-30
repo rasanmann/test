@@ -7,16 +7,10 @@
 
   'use strict';
 
-  Drupal.webform = Drupal.webform || {};
-  Drupal.webform.ajax = Drupal.webform.ajax || {};
-  // Allow scrollTopOffset to be custom defined or based on whether there is a
-  // floating toolbar.
-  Drupal.webform.ajax.scrollTopOffset = Drupal.webform.ajax.scrollTopOffset || ($('#toolbar-administration').length ? 140 : 10);
-
   /**
    * Provide Webform Ajax link behavior.
    *
-   * Display fullscreen progress indicator instead of throbber.
+   * Display fullscreen progress indicator instead of throber.
    * Copied from: Drupal.behaviors.AJAX
    *
    * @type {Drupal~behavior}
@@ -38,7 +32,6 @@
           element_settings.event = 'click';
         }
         element_settings.dialogType = $(this).data('dialog-type');
-        element_settings.dialogRenderer = $(this).data('dialog-renderer');
         element_settings.dialog = $(this).data('dialog-options');
         element_settings.base = $(this).attr('id');
         element_settings.element = this;
@@ -50,15 +43,8 @@
         // @see Drupal.behaviors.webformFormTabs
         var hash = $(this).data('hash');
         if (hash) {
-          $(this).on('click', function () {
+          $(this).on('click', function() {
             location.hash = $(this).data('hash');
-          });
-        }
-
-        // Close all open modal dialogs when opening off-canvas dialog.
-        if (element_settings.dialogRenderer === 'off_canvas') {
-          $(this).on('click', function () {
-            $(".ui-dialog.webform-ui-dialog:visible").find('.ui-dialog-content').dialog('close');
           });
         }
       });
@@ -77,7 +63,7 @@
     attach: function (context) {
       $('.js-webform-confirmation-back-link-ajax', context)
         .once('webform-confirmation-back-ajax')
-        .click(function (event) {
+        .click(function(event) {
           var $form = $(this).parents('form');
 
           // Trigger the Ajax call back for the hidden submit button.
@@ -108,11 +94,6 @@
   var updateKey;
 
   /**
-   * Track the add element key.
-   */
-  var addElement;
-
-  /**
    * Command to insert new content into the DOM.
    *
    * @param {Drupal.Ajax} ajax
@@ -134,44 +115,26 @@
     // Insert the HTML.
     this.insert(ajax, response, status);
 
-    // Add element.
-    if (addElement) {
-      var addSelector = (addElement === '_root_')
-        ? '#webform-ui-add-element'
-        : '[data-drupal-selector="edit-webform-ui-elements-' + addElement  + '-add"]';
-      $(addSelector).click();
-    }
-
-    // If not add element, then scroll to and highlight the updated table row.
-    if (!addElement && updateKey) {
+    // Scroll to and highlight the updated table row.
+    if (updateKey) {
       var $element = $('tr[data-webform-key="' + updateKey + '"]');
 
       // Highlight the updated element's row.
       $element.addClass('color-success');
-      setTimeout(function () {$element.removeClass('color-success')}, 3000);
-
-      // Focus first tabbable item for the updated elements and handlers.
-      $element.find(':tabbable:not(.tabledrag-handle)').eq(0).focus();
+      setTimeout(function() {$element.removeClass('color-success')}, 3000);
 
       // Scroll to elements that are not visible.
       if (!isScrolledIntoView($element)) {
-        $('html, body').animate({scrollTop: $element.offset().top - Drupal.webform.ajax.scrollTopOffset}, 500);
+        $('html, body').animate({scrollTop: $element.offset().top - 140}, 500);
       }
     }
-    else {
-      // Focus main content.
-      $('#main-content').focus();
-    }
+    updateKey = null; // Reset element update.
 
     // Display main page's status message in a floating container.
     var $wrapper = $(response.selector);
     if ($wrapper.parents('.ui-dialog').length === 0) {
       var $messages = $wrapper.find('.messages');
-      // If 'add element' don't show any messages.
-      if (addElement) {
-        $messages.remove();
-      }
-      else if ($messages.length) {
+      if ($messages.length) {
         var $floatingMessage = $('#webform-ajax-messages');
         if ($floatingMessage.length === 0) {
           $floatingMessage = $('<div id="webform-ajax-messages" class="webform-ajax-messages"></div>');
@@ -183,9 +146,6 @@
         $floatingMessage.html($messages).show().delay(3000).fadeOut(1000);
       }
     }
-
-    updateKey = null; // Reset element update.
-    addElement = null; // Reset add element.
   };
 
   /**
@@ -198,7 +158,7 @@
    * @param {string} response.selector
    *   Selector to use.
    *
-   * @see Drupal.AjaxCommands.prototype.viewScrollTop
+   * @see Drupal.AjaxCommands.prototype.webformScrollTop
    */
   Drupal.AjaxCommands.prototype.webformScrollTop = function (ajax, response) {
     // Scroll to the top of the view. This will allow users
@@ -213,28 +173,9 @@
     while ($(scrollTarget).scrollTop() === 0 && $(scrollTarget).parent()) {
       scrollTarget = $(scrollTarget).parent();
     }
-
-    if (response.target == 'page' && $(scrollTarget).length && $(scrollTarget)[0].tagName === 'HTML') {
-      // Scroll to top when scroll target is the entire page.
-      // @see https://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
-      var rect = $(scrollTarget)[0].getBoundingClientRect();
-      if (!(rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height() && rect.right <= $(window).width())) {
-        $(scrollTarget).animate({scrollTop: 0}, 500);
-      }
-    }
-    else {
-      // Only scroll upward.
-      if (offset.top - Drupal.webform.ajax.scrollTopOffset < $(scrollTarget).scrollTop()) {
-        $(scrollTarget).animate({scrollTop: (offset.top - Drupal.webform.ajax.scrollTopOffset)}, 500);
-      }
-    }
-
-    // Focus on the form wrapper content bookmark if
-    // .js-webform-autofocus is not enabled.
-    // @see \Drupal\webform\Form\WebformAjaxFormTrait::buildAjaxForm
-    var $form = $(response.selector + '-content').find('form');
-    if (!$form.hasClass('js-webform-autofocus')) {
-      $(response.selector + '-content').focus();
+    // Only scroll upward.
+    if (offset.top - 10 < $(scrollTarget).scrollTop()) {
+      $(scrollTarget).animate({scrollTop: (offset.top - 10)}, 500);
     }
   };
 
@@ -256,8 +197,7 @@
     var a = document.createElement('a');
     a.href = response.url;
     if (a.pathname == window.location.pathname && $('.webform-ajax-refresh').length) {
-      updateKey = (response.url.match(/[\?|&]update=([^&]+)($|&)/)) ? RegExp.$1 : null;
-      addElement = (response.url.match(/[\?|&]add_element=([^&]+)($|&)/)) ? RegExp.$1 : null;
+      updateKey = (response.url.match(/[\?|&]update=(.*)($|&)/)) ? RegExp.$1 : null;
       $('.webform-ajax-refresh').click();
     }
     else {
@@ -266,7 +206,7 @@
   };
 
   /**
-   * Command to close a off-canvas and modal dialog.
+   * Command to close a dialog.
    *
    * If no selector is given, it defaults to trying to close the modal.
    *
@@ -290,31 +230,12 @@
       var $mainCanvasWrapper = $('[data-off-canvas-main-canvas]');
       $mainCanvasWrapper.css('padding-' + edge, 0);
     }
-
-    // https://stackoverflow.com/questions/15763909/jquery-ui-dialog-check-if-exists-by-instance-method
-    if ($(response.selector).hasClass('ui-dialog-content')) {
-      this.closeDialog(ajax, response, status);
+    else {
+      // https://stackoverflow.com/questions/15763909/jquery-ui-dialog-check-if-exists-by-instance-method
+      if ($(response.selector).hasClass('ui-dialog-content')) {
+        this.closeDialog(ajax, response, status);
+      }
     }
-  };
-
-  /**
-   * Triggers audio UAs to read the supplied text.
-   *
-   * @param {Drupal.Ajax} [ajax]
-   *   A {@link Drupal.ajax} object.
-   * @param {object} response
-   *   Ajax response.
-   * @param {string} response.text
-   *   A string to be read by the UA.
-   * @param {string} [response.priority='polite']
-   *   A string to indicate the priority of the message. Can be either
-   *   'polite' or 'assertive'.
-   *
-   * @see Drupal.announce
-   */
-  Drupal.AjaxCommands.prototype.webformAnnounce = function (ajax, response) {
-    // Delay the announcement.
-    setTimeout(function () {Drupal.announce(response.text, response.priority);}, 200);
   };
 
   /****************************************************************************/

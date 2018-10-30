@@ -11,19 +11,28 @@ use Drupal\Core\Datetime\Entity\DateFormat;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\Markup;
 use Drupal\user\Entity\User;
+use Drupal\webform\Utility\WebformDateHelper;
 use Drupal\webform\Plugin\WebformElementManagerInterface;
 use Drupal\webform\Plugin\WebformElementEntityReferenceInterface;
-use Drupal\webform\Plugin\WebformElement\WebformComputedBase;
-use Drupal\webform\Utility\WebformDateHelper;
 use Drupal\webform\WebformSubmissionInterface;
-use Drupal\Core\Url;
 
 /**
  * Implements hook_token_info().
  */
 function webform_token_info() {
+
   $types = [];
   $tokens = [];
+
+  /****************************************************************************/
+  // Authenticated user.
+  /****************************************************************************/
+
+  $types['webform-authenticated-user'] = [
+    'name' => t('Webform authenticated user'),
+    'description' => t('Tokens related to the currently authenticated user.'),
+    'type' => 'user',
+  ];
 
   /****************************************************************************/
   // Webform submission.
@@ -76,25 +85,13 @@ function webform_token_info() {
     'name' => t('Current page'),
     'description' => t('The current (wizard) page of the webform submission.'),
   ];
-  $webform_submission['current-page:title'] = [
-    'name' => t('Current page title'),
-    'description' => t('The current (wizard) page title of the webform submission.'),
-  ];
   $webform_submission['in-draft'] = [
     'name' => t('In draft'),
     'description' => t('Is the webform submission in draft.'),
   ];
-  $webform_submission['label'] = [
-    'name' => t('Label'),
-    'description' => t('The label of the webform submission.'),
-  ];
   $webform_submission['limit:webform'] = [
     'name' => t('Total submissions limit'),
     'description' => t('The total number of submissions allowed for the webform.'),
-  ];
-  $webform_submission['interval:webform'] = [
-    'name' => t('Total submissions limit interval'),
-    'description' => t('The total submissions interval for the webform.'),
   ];
   $webform_submission['total:webform'] = [
     'name' => t('Total submissions'),
@@ -104,10 +101,6 @@ function webform_token_info() {
     'name' => t('Per user submission limit'),
     'description' => t('The total number of submissions allowed per user for the webform.'),
   ];
-  $webform_submission['interval:user'] = [
-    'name' => t('Per user submission limit interval'),
-    'description' => t('The total submissions interval per user for the webform.'),
-  ];
   $webform_submission['total:user'] = [
     'name' => t('Per user total submissions'),
     'description' => t('The current number of submissions for the user for the webform.'),
@@ -116,10 +109,6 @@ function webform_token_info() {
     'name' => t('Total submissions limit per source entity'),
     'description' => t('The total number of submissions allowed for the webform source entity.'),
   ];
-  $webform_submission['interval:webform:source_entity'] = [
-    'name' => t('Total submissions limit interval per source entity'),
-    'description' => t('The total submissions interval for the webform source entity.'),
-  ];
   $webform_submission['total:webform:source_entity'] = [
     'name' => t('Total submissions for source entity'),
     'description' => t('The current number of submissions for the webform source entity.'),
@@ -127,10 +116,6 @@ function webform_token_info() {
   $webform_submission['limit:user:source_entity'] = [
     'name' => t('Per user submission limit per source entity'),
     'description' => t('The total number of submissions allowed per user for the webform source entity.'),
-  ];
-  $webform_submission['interval:user:source_entity'] = [
-    'name' => t('Per user submission limit interval per source entity'),
-    'description' => t('The total submissions interval per user for the webform source entity.'),
   ];
   $webform_submission['total:user:source_entity'] = [
     'name' => t('Per user total submissions for source entity'),
@@ -146,7 +131,7 @@ function webform_token_info() {
   $webform_submission['values'] = [
     'name' => t('Submission values'),
     'description' => Markup::create((string) t('Webform tokens from submitted data.') .
-      t("Replace the '?' with…") . '<br />' .
+      t("Replace the '?' with...") . '<br />' .
       '<ul>' .
       '<li>element_key</li>' .
       '<li>element_key:format:items</li>' .
@@ -158,11 +143,8 @@ function webform_token_info() {
       '<li>element_key:delta:format</li>' .
       '<li>element_key:delta:format:html</li>' .
       '<li>element_key:entity:*</li>' .
-      '<li>element_key:entity:*</li>' .
       '<li>element_key:delta:entity:*</li>' .
-      '<li>element_key:delta:entity:field_name:*</li>' .
       '<li>element_key:sub_element_key:entity:*</li>' .
-      '<li>element_key:sub_element_key:entity:field_name:*</li>' .
       '<li>element_key:delta:sub_element_key:entity:*</li>' .
       '</ul>' .
       t("All items after the 'element_key' are optional.") . '<br />' .
@@ -172,7 +154,6 @@ function webform_token_info() {
       t("The 'items' can be 'comma', 'semicolon', 'and', 'ol', 'ul', or custom delimiter") . '<br />' .
       t("The 'entity:*' applies to the referenced entity") . '<br />' .
       t("Add 'html' at the end of the token to return HTML markup instead of plain text.") . '<br />' .
-      t("Add 'urlencode' at the end of the token to return a URL encoded value.") . '<br />' .
       t("For example, to display the Contact webform's 'Subject' element's value you would use the [webform_submission:values:subject] token.")
     ),
     'dynamic' => TRUE,
@@ -207,22 +188,12 @@ function webform_token_info() {
     'name' => t('Source entity'),
     'description' => t('The source entity that the webform submission was submitted from.'),
     'type' => 'entity',
-    'dynamic' => TRUE,
   ];
   $webform_submission['submitted-to'] = [
     'name' => t('Submitted to'),
     'description' => t('The source entity or webform that the webform submission was submitted from.'),
     'type' => 'entity',
-    'dynamic' => TRUE,
   ];
-
-  // Append link to token help to source-entity and submitted-to description.
-  if (\Drupal::moduleHandler()->moduleExists('token') && \Drupal::moduleHandler()->moduleExists('help')) {
-    $t_args = [':href' => Url::fromRoute('help.page', ['name' => 'token'])->toString()];
-    $token_help = t('For a list of the currently available source entity related tokens, please see <a href=":href">token help</a>.', $t_args);
-    $webform_submission['source-entity']['description'] = Markup::create($webform_submission['source-entity']['description'] . '<br/>' . $token_help);
-    $webform_submission['submitted-to']['description'] = Markup::create($webform_submission['submitted-to']['description'] . '<br/>' . $token_help);
-  }
 
   $tokens['webform_submission'] = $webform_submission;
 
@@ -270,7 +241,7 @@ function webform_token_info() {
   $webform['handler'] = [
     'name' => t('Handler response'),
     'description' => Markup::create((string) t('Webform handler response tokens.') . '<br/>' .
-      t("Replace the '?' with…") . '<br />' .
+      t("Replace the '?' with...") . '<br />' .
       '<ul>' .
       '<li>handler_id:state:key</li>' .
       '<li>handler_id:state:key1:key2</li>' .
@@ -290,7 +261,7 @@ function webform_token_info() {
   if ($roles) {
     $types['webform_role'] = [
       'name' => t('Webform roles'),
-      'description' => t("Tokens related to user roles that can receive email. <em>This token is only available to a Webform email handler's 'To', 'CC', and 'BCC' email recipients.</em>"),
+      'description' => t("Tokens related to user roles that can receive email. <em>This token is only available to a Webform email handler's 'To', 'CC', and 'BCC' email recipents.</em>"),
       'needs-data' => 'webform_role',
     ];
 
@@ -331,7 +302,20 @@ function webform_tokens($type, $tokens, array $data, array $options, BubbleableM
   }
 
   $replacements = [];
-  if ($type == 'webform_role' && !empty($data['webform_role'])) {
+  if ($type == 'webform-authenticated-user') {
+    if (\Drupal::currentUser()->isAuthenticated()) {
+      $account = User::load(\Drupal::currentUser()->id());
+      $bubbleable_metadata->addCacheableDependency($account);
+      $replacements += $token_service->generate('user', $tokens, ['user' => $account], $options, $bubbleable_metadata);
+    }
+    else {
+      // For anonymous user we are going to always return empty string.
+      foreach ($tokens as $name => $original) {
+        $replacements[$original] = '';
+      }
+    }
+  }
+  elseif ($type == 'webform_role' && !empty($data['webform_role'])) {
     $roles = $data['webform_role'];
     $any_role = in_array('authenticated', $roles) ? TRUE : FALSE;
     foreach ($tokens as $role_name => $original) {
@@ -378,7 +362,7 @@ function webform_tokens($type, $tokens, array $data, array $options, BubbleableM
     $webform = $webform_submission->getWebform();
     $bubbleable_metadata->addCacheableDependency($webform);
 
-    $source_entity = $webform_submission->getSourceEntity(TRUE);
+    $source_entity = $webform_submission->getSourceEntity();
     if ($source_entity) {
       $bubbleable_metadata->addCacheableDependency($source_entity);
     }
@@ -405,14 +389,12 @@ function webform_tokens($type, $tokens, array $data, array $options, BubbleableM
           break;
 
         case 'current-page':
-        case 'current-page:title':
           $current_page = $webform_submission->current_page->value;
-          $pages = $webform->getPages();
-          if (empty($current_page)) {
+          if (empty($current_page) && $pages = $webform->getPages()) {
             $page_keys = array_keys($pages);
             $current_page = reset($page_keys);
           }
-          $replacements[$original] = ($name === 'current-page:title' && isset($pages[$current_page])) ? $pages[$current_page]['#title'] : $current_page;
+          $replacements[$original] = $current_page;
           break;
 
         case 'language':
@@ -429,10 +411,6 @@ function webform_tokens($type, $tokens, array $data, array $options, BubbleableM
 
         case 'token':
           $replacements[$original] = $webform_submission->getToken();
-          break;
-
-        case 'label':
-          $replacements[$original] = $webform_submission->label();
           break;
 
         /* Default values for the dynamic tokens handled below. */
@@ -482,20 +460,12 @@ function webform_tokens($type, $tokens, array $data, array $options, BubbleableM
           $replacements[$original] = $webform->getSetting('limit_total') ?: t('None');
           break;
 
-        case 'interval:webform':
-          $replacements[$original] = WebformDateHelper::getIntervalText($webform->getSetting('limit_total_interval'));
-          break;
-
         case 'total:webform':
           $replacements[$original] = $submission_storage->getTotal($webform);
           break;
 
         case 'limit:user':
           $replacements[$original] = $webform->getSetting('limit_user') ?: t('None');
-          break;
-
-        case 'interval:user':
-          $replacements[$original] = WebformDateHelper::getIntervalText($webform->getSetting('limit_user_interval'));
           break;
 
         case 'total:user':
@@ -506,20 +476,12 @@ function webform_tokens($type, $tokens, array $data, array $options, BubbleableM
           $replacements[$original] = $webform->getSetting('entity_limit_total') ?: t('None');
           break;
 
-        case 'interval:webform:source_entity':
-          $replacements[$original] = WebformDateHelper::getIntervalText($webform->getSetting('entity_limit_total_interval'));
-          break;
-
         case 'total:webform:source_entity':
           $replacements[$original] = $source_entity ? $submission_storage->getTotal($webform, $source_entity) : '';
           break;
 
         case 'limit:user:source_entity':
           $replacements[$original] = $webform->getSetting('entity_limit_user') ?: t('None');
-          break;
-
-        case 'interval:user:source_entity':
-          $replacements[$original] = WebformDateHelper::getIntervalText($webform->getSetting('entity_limit_user_interval'));
           break;
 
         case 'total:user:source_entity':
@@ -564,10 +526,10 @@ function webform_tokens($type, $tokens, array $data, array $options, BubbleableM
     if (($webform_tokens = $token_service->findWithPrefix($tokens, 'webform')) && ($webform = $webform_submission->getWebform())) {
       $replacements += $token_service->generate('webform', $webform_tokens, ['webform' => $webform], $options, $bubbleable_metadata);
     }
-    if (($source_entity_tokens = $token_service->findWithPrefix($tokens, 'source-entity')) && ($source_entity = $webform_submission->getSourceEntity(TRUE))) {
+    if (($source_entity_tokens = $token_service->findWithPrefix($tokens, 'source-entity')) && ($source_entity = $webform_submission->getSourceEntity())) {
       $replacements += $token_service->generate($source_entity->getEntityTypeId(), $source_entity_tokens, [$source_entity->getEntityTypeId() => $source_entity], $options, $bubbleable_metadata);
     }
-    if (($submitted_to_tokens = $token_service->findWithPrefix($tokens, 'submitted-to')) && ($submitted_to = $webform_submission->getSourceEntity(TRUE) ?: $webform_submission->getWebform())) {
+    if (($submitted_to_tokens = $token_service->findWithPrefix($tokens, 'submitted-to')) && ($submitted_to = $webform_submission->getSourceEntity() ?: $webform_submission->getWebform())) {
       $replacements += $token_service->generate($submitted_to->getEntityTypeId(), $submitted_to_tokens, [$submitted_to->getEntityTypeId() => $submitted_to], $options, $bubbleable_metadata);
     }
 
@@ -620,8 +582,7 @@ function webform_tokens($type, $tokens, array $data, array $options, BubbleableM
         $parents = explode(':', $key);
         $key_exists = NULL;
         $value = NestedArray::getValue($webform_handler, $parents, $key_exists);
-        // A handler response is always considered safe markup.
-        $replacements[$original] = ($key_exists) ? Markup::create($value) : $original;
+        $replacements[$original] = ($key_exists) ? $value : $original;
       }
     }
 
@@ -675,8 +636,6 @@ function _webform_token_get_submission_value($value_token, array $options, Webfo
   // [values:{element_key}:{format}:{items}]
   // [values:{element_key}:{format}:html]
   // [values:{element_key}:{format}:{items}:html]
-  // [values:{element_key}:{format}:urlencode]
-  // [values:{element_key}:{format}:{items}:urlencode]
   // [values:{element_key}:{delta}:{format}]
   // [values:{element_key}:{delta}:{sub-element}]
   $keys = explode(':', $value_token);
@@ -688,26 +647,6 @@ function _webform_token_get_submission_value($value_token, array $options, Webfo
     return _webform_token_get_submission_values($options, $webform_submission);
   }
 
-  // Set default options.
-  $options += [
-    'html' => FALSE,
-    'urlencode' => FALSE,
-  ];
-
-  // Parse suffixes and set options.
-  $suffixes = [
-    // Indicates the tokens should be formatted as HTML instead of plain text.
-    'html',
-    // Indicates the tokens should be urlencoded.
-    'urlencode',
-  ];
-  foreach ($suffixes as $suffix) {
-    if ($keys && in_array($suffix, $keys)) {
-      $keys = array_diff($keys, [$suffix]);
-      $options[$suffix] = TRUE;
-    }
-  }
-
   $element = $webform_submission->getWebform()->getElement($element_key, TRUE);
 
   // Exit if form element does not exist.
@@ -715,21 +654,22 @@ function _webform_token_get_submission_value($value_token, array $options, Webfo
     return NULL;
   }
 
-  $element_plugin = $element_manager->getElementInstance($element);
-
-  // Always get value for a computed element.
-  if ($element_plugin instanceof WebformComputedBase) {
-    $token_value = $element_plugin->getValue($element, $webform_submission);
-    return _webform_token_get_submission_value_encode($token_value, $options);
-  }
+  $element_handler = $element_manager->getElementInstance($element);
 
   // Exit if no submission data and form element is not a container.
-  if (!isset($submission_data[$element_key]) && !$element_plugin->isContainer($element)) {
+  if (!isset($submission_data[$element_key]) && !$element_handler->isContainer($element)) {
     return NULL;
   }
 
+  // Look for :html which indicates the tokens should be formatted as HTML
+  // instead of plain text.
+  if ($keys && in_array('html', $keys)) {
+    $keys = array_diff($keys, ['html']);
+    $options['html'] = TRUE;
+  }
+
   // If multiple value element look for delta.
-  if ($keys && $element_plugin->hasMultipleValues($element) && is_numeric($keys[0])) {
+  if ($keys && $element_handler->hasMultipleValues($element) && is_numeric($keys[0])) {
     $delta = array_shift($keys);
     $options['delta'] = $delta;
   }
@@ -738,7 +678,7 @@ function _webform_token_get_submission_value($value_token, array $options, Webfo
   }
 
   // If composite element look for sub-element key.
-  if ($keys && $element_plugin->isComposite() && method_exists($element_plugin, 'getInitializedCompositeElement') && $element_plugin->getInitializedCompositeElement($element, $keys[0])) {
+  if ($keys && $element_handler->isComposite() && method_exists($element_handler, 'getInitializedCompositeElement') && $element_handler->getInitializedCompositeElement($element, $keys[0])) {
     $composite_key = array_shift($keys);
     $options['composite_key'] = $composite_key;
   }
@@ -746,17 +686,13 @@ function _webform_token_get_submission_value($value_token, array $options, Webfo
     $composite_key = NULL;
   }
 
-  /****************************************************************************/
-  // Get value.
-  /****************************************************************************/
-
   // Set entity reference chaining.
-  if ($keys && $keys[0] == 'entity' && $element_plugin instanceof WebformElementEntityReferenceInterface) {
+  if ($keys && $keys[0] == 'entity' && $element_handler instanceof WebformElementEntityReferenceInterface) {
     // Remove entity from keys.
     array_shift($keys);
 
     // Get entity value, type, instance, and token.
-    if ($entity = $element_plugin->getTargetEntity($element, $webform_submission, $options)) {
+    if ($entity = $element_handler->getTargetEntity($element, $webform_submission, $options)) {
       $entity_type = $entity->getEntityTypeId();
       // Map entity type id to entity token name.
       $entity_token_names = [
@@ -767,13 +703,12 @@ function _webform_token_get_submission_value($value_token, array $options, Webfo
       ];
       $entity_token_name = (isset($entity_token_names[$entity_type])) ? $entity_token_names[$entity_type] : $entity_type;
       $entity_token = implode(':', $keys);
-      $token_value = Markup::create(\Drupal::token()->replace(
+      return \Drupal::token()->replace(
         "[$entity_token_name:$entity_token]",
         [$entity_token_name => $entity],
         $options,
         $bubbleable_metadata
-      ));
-      return _webform_token_get_submission_value_encode($token_value, $options);
+      );
     }
     else {
       return '';
@@ -801,43 +736,21 @@ function _webform_token_get_submission_value($value_token, array $options, Webfo
   if (is_array($token_value)) {
     // Note, tokens can't include CSS and JS libraries since they will
     // can be included in an email.
-    $token_value = \Drupal::service('renderer')->renderPlain($token_value);
+    $markup = \Drupal::service('renderer')->renderPlain($token_value);
+    return $markup;
   }
   elseif (isset($element['#format']) && $element['#format'] === 'raw') {
-    // Make sure raw tokens are always rendered AS-IS.
-    $token_value = Markup::create((string) $token_value);
-  }
-  elseif (!($token_value instanceof MarkupInterface)) {
-    // All strings will be escaped as HtmlEscapedText.
-    // @see \Drupal\Core\Utility\Token::replace
-    // @see \Drupal\Component\Render\HtmlEscapedText
-    $token_value = (string) $token_value;
-  }
-
-  return _webform_token_get_submission_value_encode($token_value, $options);
-}
-
-/**
- * Encode token value.
- *
- * @param \Drupal\Component\Render\MarkupInterface|string $value
- *   Token value.
- * @param array $options
- *   Token options.
- *
- * @return \Drupal\Component\Render\MarkupInterface|string
- *   Encoded token value.
- */
-function _webform_token_get_submission_value_encode($value, array $options) {
-  if ($options['urlencode']) {
-    if ($value instanceof MarkupInterface) {
-      return Markup::create(urlencode((string) $value));
+    // Raw needs return Markup.
+    if ($token_value instanceof MarkupInterface) {
+      return $token_value;
     }
     else {
-      return urlencode((string) $value);
+      return Markup::create((string) $token_value);
     }
   }
-  return $value;
+  else {
+    return (string) $token_value;
+  }
 }
 
 /**
@@ -852,25 +765,12 @@ function _webform_token_get_submission_value_encode($value, array $options) {
  *   Webform submission values.
  */
 function _webform_token_get_submission_values(array $options, WebformSubmissionInterface $webform_submission) {
-  static $rendering;
-  if ($rendering) {
-    $token = (!empty($options['html'])) ? '[webform_submission:values:html]' : '[webform_submission:values]';
-    throw new \LogicException("Recursive rendering of $token detected.");
-  }
-
-  $rendering = TRUE;
-
   $submission_format = (!empty($options['html'])) ? 'html' : 'text';
   /** @var \Drupal\webform\WebformSubmissionViewBuilderInterface $view_builder */
   $view_builder = \Drupal::entityTypeManager()->getViewBuilder('webform_submission');
   $form_elements = $webform_submission->getWebform()->getElementsInitialized();
   $token_value = $view_builder->buildElements($form_elements, $webform_submission, $options, $submission_format);
-
   // Note, tokens can't include CSS and JS libraries since they can be
   // included in an email.
-  $value = \Drupal::service('renderer')->renderPlain($token_value);
-
-  $rendering = FALSE;
-
-  return $value;
+  return \Drupal::service('renderer')->renderPlain($token_value);
 }

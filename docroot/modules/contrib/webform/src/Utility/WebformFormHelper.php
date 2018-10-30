@@ -17,8 +17,6 @@ class WebformFormHelper {
    *   A form.
    * @param array $tabs
    *   An associative array contain tabs.
-   * @param string $active_tab
-   *   The active tab name.
    *
    * @return array
    *   The form with tabs.
@@ -26,12 +24,7 @@ class WebformFormHelper {
    * @see \Drupal\webform\Form\WebformHandlerFormBase::buildForm
    * @see \Drupal\webform\Plugin\WebformElementBase::buildConfigurationFormTabs
    */
-  public static function buildTabs(array $form, array $tabs, $active_tab = '') {
-    // Allow tabs to be disabled via $form['#tab'] = FALSE.
-    if (isset($form['#tabs']) && $form['#tabs'] === FALSE) {
-      return $form;
-    }
-
+  public static function buildTabs(array $form, array $tabs) {
     // Determine if the form has nested (configuration) settings.
     // Used by WebformHandlers.
     $has_settings = (isset($form['settings']) && !empty($form['settings']['#tree']));
@@ -42,7 +35,7 @@ class WebformFormHelper {
         'title' => t('General'),
         'elements' => [],
         'weight' => 0,
-      ],
+      ]
     ] + $tabs;
 
     // Sort tabs by weight.
@@ -93,18 +86,18 @@ class WebformFormHelper {
       $tab_items[] = [
         '#type' => 'link',
         '#url' => Url::fromRoute('<none>', [], ['fragment' => 'webform-tab--' . $tab_name]),
-        '#title' => $tab['title'],
+        '#title' =>  $tab['title'],
         '#attributes' => [
           'class' => ['webform-tab'],
           'data-tab-index' => $index++,
         ],
       ];
+
       $form['tab_' . $tab_name] = [
         '#type' => 'container',
         '#group' => 'tabs',
         '#attributes' => [
           'id' => 'webform-tab--' . $tab_name,
-          'class' => ['webform-tab'],
         ],
       ];
     }
@@ -116,10 +109,6 @@ class WebformFormHelper {
       '#attributes' => ['class' => ['webform-tabs']],
       '#attached' => ['library' => ['webform/webform.form.tabs']],
     ];
-    if ($active_tab) {
-      $form['tabs']['#attributes']['data-tab-active'] = 'webform-tab--' . $active_tab;
-    }
-
     $form['tabs']['items'] = [
       '#theme' => 'item_list',
       '#items' => $tab_items,
@@ -138,7 +127,7 @@ class WebformFormHelper {
    *
    * @return array
    *   The values without default keys like
-   *   'form_build_id', 'form_token', 'form_id', 'op', 'actions', etc…
+   *   'form_build_id', 'form_token', 'form_id', 'op', 'actions', etc...
    */
   public static function cleanupFormStateValues(array $values, array $keys = []) {
     // Remove default FAPI values.
@@ -164,7 +153,7 @@ class WebformFormHelper {
   }
 
   /**
-   * Traverse a render array and collect references to all elements in an associative array keyed by element key.
+   * Traverse a render array and collect references to all elements in an associative array keyed by element name.
    *
    * @param array $build
    *   An render array.
@@ -180,7 +169,7 @@ class WebformFormHelper {
   }
 
   /**
-   * Traverse a render array and collect references to all elements in an associative array keyed by element key.
+   * Traverse a render array and collect references to all elements in an associative array keyed by element name.
    *
    * @param array $build
    *   An render array.
@@ -191,7 +180,7 @@ class WebformFormHelper {
    */
   protected static function flattenElementsRecursive(array &$build, array &$elements, array &$duplicate_element_keys) {
     foreach ($build as $key => &$element) {
-      if (WebformElementHelper::isElement($element, $key)) {
+      if (Element::child($key) && is_array($element)) {
         // If there are duplicate element keys create an array of referenced
         // elements.
         if (isset($elements[$key])) {

@@ -27,7 +27,7 @@ use Drupal\migrate\Row;
  *      source: field_section
  *      process:
  *        target_id:
- *          plugin: migration
+ *          plugin: migration_lookup
  *          migration: field_collection_field_section_to_paragraph
  *          source: value
  *    temp_images:
@@ -35,14 +35,14 @@ use Drupal\migrate\Row;
  *      source: field_image
  *      process
  *        target_id:
- *          plugin: migration
+ *          plugin: migration_lookup
  *          migration: image_entities_to_paragraph
  *          source: fid
  *    paragraphs_field:
  *      plugin: merge
  *      source:
- *        - @temp_body
- *        - @temp_images
+ *        - '@temp_body'
+ *        - '@temp_images'
  *  destination:
  *    plugin: 'entity:node'
  */
@@ -53,12 +53,12 @@ class Merge extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (!is_array($value)) {
-      throw new MigrateException('Input should be an array.');
+      throw new MigrateException(sprintf('Merge process failed for destination property (%s): input is not an array.', $destination_property));
     }
     $new_value = [];
-    foreach($value as $item) {
+    foreach($value as $i => $item) {
       if (!is_array($item)) {
-        throw new MigrateException('One of the items is not an array that can be merged.');
+        throw new MigrateException(sprintf('Merge process failed for destination property (%s): index (%s) in the source value is not an array that can be merged.', $destination_property, $i));
       }
       $new_value = array_merge($new_value, $item);
     }

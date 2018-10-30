@@ -8,11 +8,11 @@ namespace Drupal\metatag\Plugin\metatag\Tag;
 abstract class LinkRelBase extends MetaNameBase {
 
   /**
-   * {@inheritdoc}
+   * Display the meta tag.
    */
   public function output() {
     $element = parent::output();
-    if (!empty($element['#attributes']['content'])) {
+    if ($element) {
       $element['#tag'] = 'link';
       $element['#attributes'] = [
         'rel' => $this->name(),

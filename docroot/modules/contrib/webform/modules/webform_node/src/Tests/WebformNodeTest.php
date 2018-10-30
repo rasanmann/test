@@ -5,6 +5,7 @@ namespace Drupal\webform_node\Tests;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
+use Drupal\webform\Plugin\Field\FieldType\WebformEntityReferenceItem;
 use Drupal\webform\WebformInterface;
 
 /**
@@ -47,11 +48,8 @@ class WebformNodeTest extends WebformNodeTestBase {
   public function testNode() {
     $node = $this->createWebformNode('contact');
 
-    /** @var \Drupal\webform\WebformEntityReferenceManagerInterface $entity_reference_manager */
-    $entity_reference_manager = \Drupal::service('webform.entity_reference_manager');
-
     // Check table names.
-    $this->assertEqual($entity_reference_manager->getTableNames(), [
+    $this->assertEqual(WebformEntityReferenceItem::getTableNames(), [
       "node__webform" => 'webform',
       "node_revision__webform" => 'webform',
     ]);
@@ -80,7 +78,7 @@ class WebformNodeTest extends WebformNodeTestBase {
     $node->save();
     $this->drupalGet('node/' . $node->id());
     $this->assertNoFieldByName('name', 'John Smith');
-    $this->assertRaw('Sorry…This form is closed to new submissions.');
+    $this->assertRaw('Sorry...This form is closed to new submissions.');
 
     /* Confirmation inline (test_confirmation_inline) */
 
@@ -125,7 +123,7 @@ class WebformNodeTest extends WebformNodeTestBase {
     $node->webform->close = date('Y-m-d\TH:i:s', strtotime('today -1 day'));
     $node->save();
     $this->drupalGet('node/' . $node->id());
-    $this->assertRaw('Sorry…This form is closed to new submissions.');
+    $this->assertRaw('Sorry...This form is closed to new submissions.');
     $this->assertNoFieldByName('name');
 
     // Check scheduled and is open because open or close data was not set.
@@ -135,7 +133,7 @@ class WebformNodeTest extends WebformNodeTestBase {
     $node->webform->close = '';
     $node->save();
     $this->drupalGet('node/' . $node->id());
-    $this->assertNoRaw('Sorry…This form is closed to new submissions.');
+    $this->assertNoRaw('Sorry...This form is closed to new submissions.');
     $this->assertFieldByName('name');
 
     // Check that changes to global message clear the cache.

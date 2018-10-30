@@ -39,11 +39,6 @@ class WebformSubmissionAccessTest extends WebformTestBase {
     $edit = ['subject' => '{subject}', 'message' => '{message}'];
     $sid_1 = $this->postSubmission($webform, $edit);
 
-    // Check 'access webform submission user' permission.
-    $uid = $this->ownWebformSubmissionUser->id();
-    $this->drupalGet("user/$uid/submissions");
-    $this->assertResponse(200);
-
     // Check view own previous submission message.
     $this->drupalGet('webform/' . $webform->id());
     $this->assertRaw('You have already submitted this webform.');
@@ -83,7 +78,7 @@ class WebformSubmissionAccessTest extends WebformTestBase {
     $this->assertResponse(403);
 
     // Check all results access denied.
-    $this->drupalGet('/admin/structure/webform/submissions/manage');
+    $this->drupalGet('/admin/structure/webform/results/manage');
     $this->assertResponse(403);
 
     /**************************************************************************/
@@ -92,16 +87,6 @@ class WebformSubmissionAccessTest extends WebformTestBase {
 
     // Login as any user.
     $this->drupalLogin($this->anyWebformSubmissionUser);
-
-    // Check 'access webform submission user' permission.
-    $uid = $this->anyWebformSubmissionUser->id();
-    $this->drupalGet("user/$uid/submissions");
-    $this->assertResponse(200);
-
-    // Check 'access webform submission user' permission denied.
-    $uid = $this->ownWebformSubmissionUser->id();
-    $this->drupalGet("user/$uid/submissions");
-    $this->assertResponse(200);
 
     // Check webform results access allowed.
     $this->drupalGet("/admin/structure/webform/manage/{$webform_id}/results/submissions");
@@ -114,7 +99,7 @@ class WebformSubmissionAccessTest extends WebformTestBase {
     $this->assertResponse(200);
 
     // Check all results access allowed.
-    $this->drupalGet('/admin/structure/webform/submissions/manage');
+    $this->drupalGet('/admin/structure/webform/results/manage');
     $this->assertResponse(200);
 
     /**************************************************************************/
@@ -156,20 +141,6 @@ class WebformSubmissionAccessTest extends WebformTestBase {
     $this->assertResponse(200);
     $this->assertLinkByHref("{$base_path}webform/{$webform_id}/submissions/{$sid_1}");
     $this->assertLinkByHref("{$base_path}webform/{$webform_id}/submissions/{$sid_2}");
-
-    /**************************************************************************/
-    // Administer webform or webform submission permission.
-    /**************************************************************************/
-
-    $this->drupalLogin($this->adminWebformUser);
-    $uid = $this->ownWebformSubmissionUser->id();
-    $this->drupalGet("user/$uid/submissions");
-    $this->assertResponse(200);
-
-    $this->drupalLogin($this->adminSubmissionUser);
-    $uid = $this->ownWebformSubmissionUser->id();
-    $this->drupalGet("user/$uid/submissions");
-    $this->assertResponse(200);
   }
 
 }

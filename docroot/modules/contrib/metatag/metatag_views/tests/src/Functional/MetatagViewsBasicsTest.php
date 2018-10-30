@@ -3,6 +3,7 @@
 namespace Drupal\Tests\metatag_views\Functional;
 
 use Drupal\Tests\BrowserTestBase;
+use Drupal\Tests\metatag\Functional\MetatagHelperTrait;
 
 /**
  * Confirm the defaults functionality works.
@@ -11,8 +12,7 @@ use Drupal\Tests\BrowserTestBase;
  */
 class MetatagViewsBasicsTest extends BrowserTestBase {
 
-  // Contains helper methods.
-  use \Drupal\Tests\metatag\Functional\MetatagHelperTrait;
+  use MetatagHelperTrait;
 
   /**
    * {@inheritdoc}
@@ -109,7 +109,7 @@ class MetatagViewsBasicsTest extends BrowserTestBase {
     $this->assertText('Configure the meta tags below.');
     $this->assertFieldByName('title');
     $this->assertFieldByName('description');
-    $this->assertFieldByName('op');
+    $this->assertFieldByName('op');//, 'Apply');
     $edit = [
       'title' => 'Metatag title',
       'description' => 'Metatag description.',
@@ -120,22 +120,20 @@ class MetatagViewsBasicsTest extends BrowserTestBase {
     $this->assertText('Overridden');
 
     // @todo Confirm there's now a "save" button.
+    // $this->assertFieldByName('op');//, 'Save');
+
     // Save the changes.
     $edit = [];
     $this->drupalPostForm(NULL, $edit, 'Save');
 
     // @todo Confirm the page saved.
+
     // Load the archives page again.
     $this->drupalGet('/archive');
     $this->assertResponse(200);
 
     // Confirm what the page title looks like now.
     $this->assertTitle('Metatag title');
-
-    // Load the Metatag admin page to confirm it still works.
-    $this->drupalGet('admin/config/search/metatag');
-    $this->assertResponse(200);
-    $this->assertText('Add default meta tags');
   }
 
 }

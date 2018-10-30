@@ -4,7 +4,6 @@ dependencies:
   config:
     - field.field.node.webform_demo_event.body
     - field.field.node.webform_demo_event.field_webform_demo_event_date
-    - field.field.node.webform_demo_event.field_webform_entity_limit_total
     - field.field.node.webform_demo_event.webform
     - node.type.webform_demo_event
   module:
@@ -33,31 +32,18 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
-  field_webform_entity_limit_total:
-    type: number_integer
-    weight: 2
-    region: content
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
   links:
-    weight: 4
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   webform:
-    weight: 3
+    weight: 2
     label: hidden
     settings:
-      label: Register
-      dialog: wide
-      attributes:
-        class:
-          - button
-        style: 'margin: 1em 0'
+      source_entity: true
     third_party_settings: {  }
-    type: webform_entity_reference_link
+    type: webform_entity_reference_entity_view
     region: content
-hidden: {  }
+hidden:
+  langcode: true

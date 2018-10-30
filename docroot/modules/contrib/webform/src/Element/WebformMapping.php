@@ -5,7 +5,6 @@ namespace Drupal\webform\Element;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\FormElement;
-use Drupal\webform\Utility\WebformElementHelper;
 
 /**
  * Provides a mapping element.
@@ -95,7 +94,7 @@ class WebformMapping extends FormElement {
         case 'select':
         case 'webform_select_other':
           $destination_element += [
-            '#empty_option' => t('- Select -'),
+            '#empty_value' => '',
             '#options' => $element['#destination'],
           ];
           break;
@@ -123,11 +122,9 @@ class WebformMapping extends FormElement {
     ];
     $element['table'] += array_intersect_key($element, array_combine($properties, $properties));
 
-    // Add validate callback.
-    $element += ['#element_validate' => []];
-    array_unshift($element['#element_validate'], [get_called_class(), 'validateWebformMapping']);
+    $element['#element_validate'] = [[get_called_class(), 'validateWebformMapping']];
 
-    if (!empty($element['#states'])) {
+    if (isset($element['#states'])) {
       webform_process_states($element, '#wrapper_attributes');
     }
 
@@ -141,14 +138,21 @@ class WebformMapping extends FormElement {
     $value = NestedArray::getValue($form_state->getValues(), $element['#parents']);
     $value = array_filter($value);
 
+    $has_access = (!isset($element['#access']) || $element['#access'] === TRUE);
     // Note: Not validating REQUIRED_ALL because each destination element is
     // already required.
-    $has_access = (!isset($element['#access']) || $element['#access'] === TRUE);
     if ($element['#required'] && $element['#required'] !== self::REQUIRED_ALL && empty($value) && $has_access) {
-      WebformElementHelper::setRequiredError($element, $form_state);
+      if (isset($element['#required_error'])) {
+        $form_state->setError($element, $element['#required_error']);
+      }
+      elseif (isset($element['#title'])) {
+        $form_state->setError($element, t('@name field is required.', ['@name' => $element['#title']]));
+      }
+      else {
+        $form_state->setError($element);
+      }
     }
 
-    $element['#value'] = $value;
     $form_state->setValueForElement($element, $value);
   }
 

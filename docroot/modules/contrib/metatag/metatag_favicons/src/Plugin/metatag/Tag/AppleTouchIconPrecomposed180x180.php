@@ -2,6 +2,8 @@
 
 namespace Drupal\metatag_favicons\Plugin\metatag\Tag;
 
+use \Drupal\metatag_favicons\Plugin\metatag\Tag\LinkSizesBase;
+
 /**
  * The Favicons "apple-touch-icon-precomposed_180x180" meta tag.
  *
@@ -18,12 +20,8 @@ namespace Drupal\metatag_favicons\Plugin\metatag\Tag;
  * )
  */
 class AppleTouchIconPrecomposed180x180 extends LinkSizesBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function sizes() {
+  function sizes() {
     return '180x180';
   }
-
 }
+

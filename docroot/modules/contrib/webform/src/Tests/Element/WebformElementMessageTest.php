@@ -2,6 +2,7 @@
 
 namespace Drupal\webform\Tests\Element;
 
+use Drupal\webform\Tests\WebformTestBase;
 use Drupal\webform\Entity\Webform;
 
 /**
@@ -9,14 +10,7 @@ use Drupal\webform\Entity\Webform;
  *
  * @group Webform
  */
-class WebformElementMessageTest extends WebformElementTestBase {
-
-  /**
-   * Modules to enable.
-   *
-   * @var array
-   */
-  public static $modules = ['webform_test_message_custom'];
+class WebformElementMessageTest extends WebformTestBase {
 
   /**
    * Webforms to load.
@@ -47,7 +41,6 @@ class WebformElementMessageTest extends WebformElementTestBase {
     $elements = [
       'message_close_storage_user' => $webform->getElementDecoded('message_close_storage_user'),
       'message_close_storage_state' => $webform->getElementDecoded('message_close_storage_state'),
-      'message_close_storage_custom' => $webform->getElementDecoded('message_close_storage_custom'),
     ];
     $webform->setElements($elements);
     $webform->save();
@@ -69,8 +62,6 @@ class WebformElementMessageTest extends WebformElementTestBase {
     $this->assertRaw('data-message-storage="user"');
     $this->assertRaw('data-drupal-selector="edit-message-close-storage-state"');
     $this->assertRaw('data-message-storage="state"');
-    $this->assertRaw('data-drupal-selector="edit-message-close-storage-custom"');
-    $this->assertRaw('data-message-storage="custom"');
 
     // Close message using 'user' storage.
     $this->drupalGet('webform/test_element_message');
@@ -82,8 +73,6 @@ class WebformElementMessageTest extends WebformElementTestBase {
     $this->assertNoRaw('data-message-storage="user"');
     $this->assertRaw('data-drupal-selector="edit-message-close-storage-state"');
     $this->assertRaw('data-message-storage="state"');
-    $this->assertRaw('data-drupal-selector="edit-message-close-storage-custom"');
-    $this->assertRaw('data-message-storage="custom"');
 
     // Close message using 'state' storage.
     $this->drupalGet('webform/test_element_message');
@@ -95,22 +84,6 @@ class WebformElementMessageTest extends WebformElementTestBase {
     $this->assertNoRaw('data-message-storage="user"');
     $this->assertNoRaw('data-drupal-selector="edit-message-close-storage-state"');
     $this->assertNoRaw('data-message-storage="state"');
-    $this->assertRaw('data-drupal-selector="edit-message-close-storage-custom"');
-    $this->assertRaw('data-message-storage="custom"');
-
-    // Close message using 'custom' storage.
-    $this->drupalGet('webform/test_element_message');
-    $this->clickLink('×', 0);
-
-    // Check that 'state' and 'user' storage message is removed.
-    $this->drupalGet('webform/test_element_message');
-    $this->assertNoRaw('data-drupal-selector="edit-message-close-storage-user"');
-    $this->assertNoRaw('data-message-storage="user"');
-    $this->assertNoRaw('data-drupal-selector="edit-message-close-storage-state"');
-    $this->assertNoRaw('data-message-storage="state"');
-    $this->assertNoRaw('data-drupal-selector="edit-message-close-storage-custom"');
-    $this->assertNoRaw('data-message-storage="custom"');
-
   }
 
 }

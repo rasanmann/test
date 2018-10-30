@@ -2,6 +2,7 @@
 
 namespace Drupal\metatag_open_graph\Tests;
 
+use Drupal\simpletest\WebTestBase;
 use Drupal\metatag\Tests\MetatagTagsTestBase;
 
 /**
@@ -14,7 +15,7 @@ class MetatagOpenGraphTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  private $tags = [
+  public $tags = [
     'article_author',
     'article_expiration_time',
     'article_modified_time',
@@ -22,17 +23,12 @@ class MetatagOpenGraphTagsTest extends MetatagTagsTestBase {
     'article_publisher',
     'article_section',
     'article_tag',
-    'book_author',
-    'book_isbn',
-    'book_releasedate',
-    'book_tag',
     'og_country_name',
     'og_description',
     'og_determiner',
     'og_email',
     'og_fax_number',
     'og_image',
-    'og_image_alt',
     'og_image_height',
     'og_image_secure_url',
     'og_image_type',
@@ -61,14 +57,14 @@ class MetatagOpenGraphTagsTest extends MetatagTagsTestBase {
   ];
 
   /**
-   * {@inheritdoc}
+   * The tag to look for when testing the output.
    */
-  private $testTag = 'meta';
+  public $test_tag = 'meta';
 
   /**
-   * {@inheritdoc}
+   * The attribute to look for to indicate which tag.
    */
-  private $testNameAttribute = 'property';
+  public $test_name_attribute = 'property';
 
   /**
    * {@inheritdoc}
@@ -81,11 +77,10 @@ class MetatagOpenGraphTagsTest extends MetatagTagsTestBase {
   /**
    * Each of these meta tags has a different tag name vs its internal name.
    */
-  private function getTestTagName($tag_name) {
+  public function getTestTagName($tag_name) {
     // Replace the first underline with a colon.
     $tag_name = str_replace('og_', 'og:', $tag_name);
     $tag_name = str_replace('article_', 'article:', $tag_name);
-    $tag_name = str_replace('book_', 'book:', $tag_name);
 
     // Some tags have an additional underline that turns into a colon.
     $tag_name = str_replace('og:image_', 'og:image:', $tag_name);

@@ -2,7 +2,7 @@
 
 namespace Drupal\metatag_open_graph\Plugin\metatag\Tag;
 
-use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
+use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
 
 /**
  * Provides a plugin for the 'og:video:secure_url' meta tag.
@@ -16,8 +16,7 @@ use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   weight = 11,
  *   type = "video",
  *   secure = TRUE,
- *   multiple = FALSE,
- *   absolute_url = TRUE
+ *   multiple = FALSE
  * )
  */
 class OgVideoSecureUrl extends MetaPropertyBase {

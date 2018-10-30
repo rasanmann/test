@@ -21,7 +21,7 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    type: paragraphs
+    type: entity_reference_paragraphs
 hidden:
   created: true
   uid: true

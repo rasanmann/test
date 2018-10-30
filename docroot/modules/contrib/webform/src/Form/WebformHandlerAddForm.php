@@ -5,7 +5,6 @@ namespace Drupal\webform\Form;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\Plugin\WebformHandlerManagerInterface;
 use Drupal\webform\WebformInterface;
-use Drupal\webform\WebformTokenManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
@@ -24,13 +23,10 @@ class WebformHandlerAddForm extends WebformHandlerFormBase {
   /**
    * Constructs a WebformHandlerAddForm.
    *
-   * @param \Drupal\webform\WebformTokenManagerInterface $token_manager
-   *   The webform token manager.
    * @param \Drupal\webform\Plugin\WebformHandlerManagerInterface $webform_handler
    *   The webform handler manager.
    */
-  public function __construct(WebformTokenManagerInterface $token_manager, WebformHandlerManagerInterface $webform_handler) {
-    parent::__construct($token_manager);
+  public function __construct(WebformHandlerManagerInterface $webform_handler) {
     $this->webformHandlerManager = $webform_handler;
   }
 
@@ -39,7 +35,6 @@ class WebformHandlerAddForm extends WebformHandlerFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('webform.token_manager'),
       $container->get('plugin.manager.webform.handler')
     );
   }

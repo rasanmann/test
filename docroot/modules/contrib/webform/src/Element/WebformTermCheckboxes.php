@@ -38,14 +38,12 @@ class WebformTermCheckboxes extends Checkboxes {
       return $element;
     }
 
-    /** @var \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository */
-    $entity_repository = \Drupal::service('entity.repository');
-
-    $tree = static::loadTree($element['#vocabulary']);
+    /** @var \Drupal\taxonomy\TermStorageInterface $taxonomy_storage */
+    $taxonomy_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+    $tree = $taxonomy_storage->loadTree($element['#vocabulary'], 0, NULL, TRUE);
 
     if (empty($element['#breadcrumb'])) {
       foreach ($tree as $item) {
-        $item = $entity_repository->getTranslationFromContext($item);
         $element[$item->id()]['#title'] = $item->label();
         $element[$item->id()]['#field_prefix'] = str_repeat($element['#tree_delimiter'], $item->depth);
       }
@@ -69,8 +67,10 @@ class WebformTermCheckboxes extends Checkboxes {
 
     /** @var \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository */
     $entity_repository = \Drupal::service('entity.repository');
+    /** @var \Drupal\taxonomy\TermStorageInterface $taxonomy_storage */
+    $taxonomy_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
 
-    $tree = static::loadTree($element['#vocabulary']);
+    $tree = $taxonomy_storage->loadTree($element['#vocabulary'], 0, NULL, TRUE);
 
     $options = [];
     foreach ($tree as $item) {

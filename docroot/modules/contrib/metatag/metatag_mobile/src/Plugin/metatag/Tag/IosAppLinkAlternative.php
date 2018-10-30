@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\metatag_mobile\Plugin\metatag\Tag\IosAppLinkAlternative.
+ */
 
 namespace Drupal\metatag_mobile\Plugin\metatag\Tag;
 

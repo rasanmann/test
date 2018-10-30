@@ -219,16 +219,11 @@ function yamlform_mail($key, &$message, $params) {
   // See: \Drupal\Core\Mail\MailManager::mail.
   if (!empty($params['from_mail'])) {
     $message['from'] = $params['from_mail'];
-    
-	  if (!empty($params['from_name'])) {
-      $message['from'] = sprintf('%s <%s>', $params['from_name'], $params['from_mail']);
-    }
-	      
-    $message['headers']['From'] = $params['from'];
+    $message['headers']['From'] = $params['from_mail'];
     $message['headers']['Reply-to'] = $params['from_mail'];
     $message['headers']['Return-Path'] = $params['from_mail'];
   }
-  
+
   if (!empty($params['cc_mail'])) {
     $message['headers']['Cc'] = $params['cc_mail'];
   }

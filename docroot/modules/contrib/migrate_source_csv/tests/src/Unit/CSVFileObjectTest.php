@@ -24,7 +24,6 @@ class CSVFileObjectTest extends CSVUnitBase {
   protected function setUp() {
     parent::setUp();
     $this->csvFileObject = new CSVFileObject($this->happyPath);
-    $this->csvFileObject->setFlags(\SplFileObject::READ_CSV | \SplFileObject::READ_AHEAD | \SplFileObject::DROP_NEW_LINE | \SplFileObject::SKIP_EMPTY);
   }
 
   /**
@@ -34,6 +33,8 @@ class CSVFileObjectTest extends CSVUnitBase {
    */
   public function testCreate() {
     $this->assertInstanceOf(CSVFileObject::class, $this->csvFileObject);
+    $flags = CSVFileObject::READ_CSV | CSVFileObject::READ_AHEAD | CSVFileObject::DROP_NEW_LINE | CSVFileObject::SKIP_EMPTY;
+    $this->assertSame($flags, $this->csvFileObject->getFlags());
   }
 
   /**

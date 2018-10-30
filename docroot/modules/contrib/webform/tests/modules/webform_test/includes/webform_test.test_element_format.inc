@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Generate test elements with formatting.
+ * Generate test elements with Flexbox wrappers.
  */
 
 use Drupal\Component\Utility\Unicode;
@@ -20,20 +20,13 @@ function webform_test_test_element_format(WebformInterface $webform, $composite 
     'language_select',
     'text_format_raw',
     'text_format_value',
-    'webform_composite',
     // @todo Fix file display
+    'managed_file',
     'webform_audio_file',
     'webform_document_file',
     'webform_image_file',
     'webform_video_file',
     'webform_signature_raw',
-  ];
-
-  // Element default properties.
-  $element_properties = [
-    'managed_file' => [
-      '#file_extensions' => 'txt',
-    ],
   ];
 
   /** @var \Drupal\webform\WebformSubmissionGenerateInterface $submission_generate */
@@ -92,17 +85,7 @@ function webform_test_test_element_format(WebformInterface $webform, $composite 
     }
 
     // Set default (test) value.
-    if (strpos($element_type, 'date') === 0) {
-      $element['#default_value'] = ($multiple) ? ['1942-06-18', '1940-07-07', '1943-02-25'] : '1942-06-18';
-    }
-    elseif ($default_value = $submission_generate->getTestValue($webform, $element_type, $element, ['random' => FALSE])) {
-      $element['#default_value'] = $default_value;
-    }
-
-    // Set default properties.
-    if (isset($element_properties[$element_type])) {
-      $element += $element_properties[$element_type];
-    }
+    $element['#default_value'] = $submission_generate->getTestValue($webform, $element_type, $element, ['random' => FALSE]);
 
     // Set element category.
     $category_name = (string) $webform_element->getPluginDefinition()['category'] ?: 'Other elements';

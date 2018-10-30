@@ -20,6 +20,7 @@ use Drupal\webform\WebformInterface;
 
 /**
  * Provides a webform schema generator.
+ *
  */
 class WebformDevelSchema implements WebformDevelSchemaInterface {
 
@@ -52,12 +53,6 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
     $this->elementManager = $element_manager;
   }
 
-  /**
-   * Get webform scheme columns.
-   *
-   * @return array
-   *   Associative array container webform scheme columns
-   */
   public function getColumns() {
     return [
       'name' => $this->t('Name'),
@@ -66,19 +61,9 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
       'maxlength' => $this->t('Maxlength'),
       'required' => $this->t('Required'),
       'multiple' => $this->t('Multiple'),
-      'options' => $this->t('Options'),
     ];
   }
 
-  /**
-   * Get a webform's scheme elements.
-   *
-   * @param \Drupal\webform\WebformInterface $webform
-   *   A webform.
-   *
-   * @return array
-   *   An associative containing a webform's scheme elements.
-   */
   public function getElements(WebformInterface $webform) {
     $records = [];
     $elements = $webform->getElementsInitializedFlattenedAndHasValue();
@@ -99,7 +84,7 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
   /**
    * Get webform element schema.
    *
-   * @param string $element_key
+   * @param $element_key
    *   The webform element key.
    * @param array $element
    *   The webform element.
@@ -201,13 +186,6 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
       $multiple = '1';
     }
     $data['multiple'] = $multiple;
-
-    if (isset($element['#options'])) {
-      $data['options'] = OptGroup::flattenOptions($element['#options']);
-    }
-    else {
-      $data['options'] = [];
-    }
 
     return $data;
   }

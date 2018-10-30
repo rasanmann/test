@@ -3,6 +3,7 @@
 namespace Drupal\webform\Controller;
 
 use Drupal\Component\Plugin\PluginManagerInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Url;
@@ -18,6 +19,13 @@ use Symfony\Component\HttpFoundation\Request;
 class WebformPluginHandlerController extends ControllerBase implements ContainerInjectionInterface {
 
   /**
+   * The config factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
    * A webform handler plugin manager.
    *
    * @var \Drupal\Component\Plugin\PluginManagerInterface
@@ -25,12 +33,15 @@ class WebformPluginHandlerController extends ControllerBase implements Container
   protected $pluginManager;
 
   /**
-   * Constructs a WebformPluginHandlerController object.
+   * Constructs a WebformPluginHanderController object.
    *
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The factory for configuration objects.
    * @param \Drupal\Component\Plugin\PluginManagerInterface $plugin_manager
    *   A webform handler plugin manager.
    */
-  public function __construct(PluginManagerInterface $plugin_manager) {
+  public function __construct(ConfigFactoryInterface $config_factory, PluginManagerInterface $plugin_manager) {
+    $this->configFactory = $config_factory;
     $this->pluginManager = $plugin_manager;
   }
 
@@ -39,6 +50,7 @@ class WebformPluginHandlerController extends ControllerBase implements Container
    */
   public static function create(ContainerInterface $container) {
     return new static(
+      $container->get('config.factory'),
       $container->get('plugin.manager.webform.handler')
     );
   }
@@ -76,11 +88,11 @@ class WebformPluginHandlerController extends ControllerBase implements Container
 
     $build = [];
 
-    // Settings.
+    // Settings
     $build['settings'] = [
       '#type' => 'link',
-      '#title' => $this->t('Edit configuration'),
-      '#url' => Url::fromRoute('webform.config.handlers'),
+      '#title' => $this->t('Edit settings'),
+      '#url' => Url::fromRoute('webform.settings.handlers'),
       '#attributes' => ['class' => ['button', 'button--small'], 'style' => 'float: right'],
     ];
 
@@ -151,28 +163,15 @@ class WebformPluginHandlerController extends ControllerBase implements Container
         continue;
       }
 
-      $is_submission_required = ($definition['submission'] === WebformHandlerInterface::SUBMISSION_REQUIRED);
-      $is_results_disabled = $webform->getSetting('results_disabled');
-
       $row = [];
 
-      if ($is_submission_required && $is_results_disabled) {
-        $row['title']['data'] = [
-          '#markup' => $definition['label'],
-          '#prefix' => '<div class="webform-form-filter-text-source">',
-          '#suffix' => '</div>',
-        ];
-      }
-      else {
-        $row['title']['data'] = [
-          '#type' => 'link',
-          '#title' => $definition['label'],
-          '#url' => Url::fromRoute('entity.webform.handler.add_form', ['webform' => $webform->id(), 'webform_handler' => $plugin_id]),
-          '#attributes' => WebformDialogHelper::getOffCanvasDialogAttributes(),
-          '#prefix' => '<div class="webform-form-filter-text-source">',
-          '#suffix' => '</div>',
-        ];
-      }
+      $row['title']['data'] = [
+        '#type' => 'inline_template',
+        '#template' => '<div class="webform-form-filter-text-source">{{ label }}</div>',
+        '#context' => [
+          'label' => $definition['label'],
+        ],
+      ];
 
       $row['description'] = [
         'data' => [
@@ -183,6 +182,8 @@ class WebformPluginHandlerController extends ControllerBase implements Container
       $row['category'] = $definition['category'];
 
       // Check submission required.
+      $is_submission_required = ($definition['submission'] === WebformHandlerInterface::SUBMISSION_REQUIRED);
+      $is_results_disabled = $webform->getSetting('results_disabled');
       if ($is_submission_required && $is_results_disabled) {
         $row['operations']['data'] = [
           '#type' => 'html_tag',
@@ -195,7 +196,7 @@ class WebformPluginHandlerController extends ControllerBase implements Container
         $links['add'] = [
           'title' => $this->t('Add handler'),
           'url' => Url::fromRoute('entity.webform.handler.add_form', ['webform' => $webform->id(), 'webform_handler' => $plugin_id]),
-          'attributes' => WebformDialogHelper::getOffCanvasDialogAttributes(),
+          'attributes' => WebformDialogHelper::getModalDialogAttributes(800),
         ];
         $row['operations']['data'] = [
           '#type' => 'operations',
@@ -219,8 +220,6 @@ class WebformPluginHandlerController extends ControllerBase implements Container
       '#attributes' => [
         'class' => ['webform-form-filter-text'],
         'data-element' => '.webform-handler-add-table',
-        'data-item-single' => $this->t('handler'),
-        'data-item-plural' => $this->t('handlers'),
         'title' => $this->t('Enter a part of the handler name to filter by.'),
         'autofocus' => 'autofocus',
       ],
@@ -230,7 +229,6 @@ class WebformPluginHandlerController extends ControllerBase implements Container
       '#type' => 'table',
       '#header' => $headers,
       '#rows' => $rows,
-      '#sticky' => TRUE,
       '#empty' => $this->t('No handler available.'),
       '#attributes' => [
         'class' => ['webform-handler-add-table'],

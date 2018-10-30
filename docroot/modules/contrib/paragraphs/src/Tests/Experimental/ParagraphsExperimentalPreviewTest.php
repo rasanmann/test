@@ -27,11 +27,8 @@ class ParagraphsExperimentalPreviewTest extends ParagraphsExperimentalTestBase {
    * Tests the revision of paragraphs.
    */
   public function testParagraphsPreview() {
-
-    \Drupal::state()->set('paragraphs_test_parent', TRUE);
-
     // Create paragraph type Headline + Block.
-    $this->addParagraphedContentType('article');
+    $this->addParagraphedContentType('article', 'field_paragraphs');
     $this->loginAsAdmin([
       'administer node display',
       'create article content',
@@ -60,17 +57,13 @@ class ParagraphsExperimentalPreviewTest extends ParagraphsExperimentalTestBase {
     // Check if the text is displayed.
     $this->assertRaw($test_text_1);
 
-    // Check that the parent is set correctly on all paragraphs.
-    $this->assertNoText('Parent: //');
-    $this->assertNoUniqueText('Parent: node//field_paragraphs');
-
     // Go back to the editing form.
     $this->clickLink('Back to content editing');
 
     $paragraph_1 = $this->xpath('//*[@id="edit-field-paragraphs-0-subform-field-text-0-value"]')[0];
     $this->assertEqual($paragraph_1['value'], $test_text_1);
 
-    $this->drupalPostForm(NULL, $edit, t('Save'));
+    $this->drupalPostForm(NULL, $edit, t('Save and publish'));
 
     $this->clickLink('Edit');
     $this->drupalPostAjaxForm(NULL, array(), 'field_paragraphs_text_add_more');
@@ -93,18 +86,13 @@ class ParagraphsExperimentalPreviewTest extends ParagraphsExperimentalTestBase {
     $this->drupalPostForm(NULL, $edit, t('Preview'));
     $this->assertRaw($test_text_1);
     $this->assertRaw($new_test_text_2);
-
-    // Check that the parent is set correctly on all paragraphs.
-    $this->assertNoText('Parent: //');
-    $this->assertNoUniqueText('Parent: node/1/field_paragraphs');
-
     // Go back to the editing form.
     $this->clickLink('Back to content editing');
     $paragraph_1 = $this->xpath('//*[@id="edit-field-paragraphs-0-subform-field-text-0-value"]')[0];
     $paragraph_2 = $this->xpath('//*[@id="edit-field-paragraphs-1-subform-field-text-0-value"]')[0];
     $this->assertEqual($paragraph_1['value'], $test_text_1);
     $this->assertEqual($paragraph_2['value'], $new_test_text_2);
-    $this->drupalPostForm(NULL, [], t('Save'));
+    $this->drupalPostForm(NULL, [], t('Save and keep published'));
 
     $this->assertRaw($test_text_1);
     $this->assertRaw($new_test_text_2);

@@ -12,21 +12,6 @@ use Drupal\webform\Tests\WebformTestBase;
 class WebformHandlerExcludedTest extends WebformTestBase {
 
   /**
-   * Modules to enable.
-   *
-   * @var array
-   */
-  public static $modules = ['block', 'webform'];
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setUp() {
-    parent::setUp();
-    $this->drupalPlaceBlock('local_actions_block');
-  }
-
-  /**
    * Test excluded handlers.
    */
   public function testExcludeHandlers() {
@@ -57,7 +42,7 @@ class WebformHandlerExcludedTest extends WebformTestBase {
     $this->assertResponse(403);
 
     // Exclude the email handler.
-    \Drupal::configFactory()->getEditable('webform.settings')->set('handler.excluded_handlers', ['action' => 'action', 'broken' => 'broken', 'debug' => 'debug', 'email' => 'email', 'remote_post' => 'remote_post', 'settings' => 'settings'])->save();
+    \Drupal::configFactory()->getEditable('webform.settings')->set('handler.excluded_handlers', ['broken' => 'broken', 'debug' => 'debug', 'email' => 'email', 'remote_post' => 'remote_post'])->save();
 
     // Check add mail and handler hidden.
     $this->drupalGet('admin/structure/webform/manage/contact/handlers');

@@ -19,30 +19,30 @@ class ParagraphsExperimentalAddModesTest extends ParagraphsExperimentalTestBase 
    */
   public function testNoDefaultValue() {
     $this->loginAsAdmin();
-    $this->addParagraphedContentType('paragraphed_test');
+    $this->addParagraphedContentType('paragraphed_test', 'paragraphs_field');
     // Edit the field.
     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields');
     $this->clickLink(t('Edit'));
 
     // Check that the current field does not allow to add default values.
-    $this->assertText('No widget available for: field_paragraphs.');
+    $this->assertText('No widget available for: paragraphs_field.');
     $this->drupalPostForm(NULL, [], t('Save settings'));
-    $this->assertText('Saved field_paragraphs configuration.');
+    $this->assertText('Saved paragraphs_field configuration.');
     $this->assertResponse(200);
   }
 
   /**
-   * Tests the field creation when no Paragraphs types are available.
+   * Tests the field creation when no paragraphs types are available.
    */
   public function testEmptyAllowedTypes() {
     $this->loginAsAdmin();
-    $this->addParagraphedContentType('paragraphed_test');
+    $this->addParagraphedContentType('paragraphed_test', 'paragraphs');
 
-    // Edit the field and save when there are no Paragraphs types available.
+    // Edit the field and save when there are no paragraphs types available.
     $this->drupalGet('admin/structure/types/manage/paragraphed_test/fields');
     $this->clickLink(t('Edit'));
     $this->drupalPostForm(NULL, [], t('Save settings'));
-    $this->assertText('Saved field_paragraphs configuration.');
+    $this->assertText('Saved paragraphs configuration.');
   }
 
   /**
@@ -50,7 +50,7 @@ class ParagraphsExperimentalAddModesTest extends ParagraphsExperimentalTestBase 
    */
   public function testDropDownMode() {
     $this->loginAsAdmin();
-    // Add two Paragraph types.
+    // Add two paragraph types.
     $this->addParagraphsType('btext');
     $this->addParagraphsType('dtext');
 
@@ -84,7 +84,7 @@ class ParagraphsExperimentalAddModesTest extends ParagraphsExperimentalTestBase 
    */
   public function testSelectMode() {
     $this->loginAsAdmin();
-    // Add two Paragraph types.
+    // Add two paragraph types.
     $this->addParagraphsType('btext');
     $this->addParagraphsType('dtext');
 
@@ -183,21 +183,14 @@ class ParagraphsExperimentalAddModesTest extends ParagraphsExperimentalTestBase 
 
     // Check if is Text + Image is added as default paragraph type.
     $this->drupalGet('node/add/paragraphed_test');
-    $elements = $this->xpath('//table[@id="paragraphs-values"]/tbody');
-    $header = $this->xpath('//table[@id="paragraphs-values"]/thead');
-    $this->assertEqual($elements, []);
-    $this->assertNotEqual($header, []);
+    $this->assertText('No Paragraph added yet.');
 
     // Check if default type is created only for new host
     $this->setDefaultParagraphType('paragraphed_test', 'paragraphs', 'paragraphs_settings_edit', 'text_image');
     $this->removeDefaultParagraphType('paragraphed_test');
-    $edit = ['title[0][value]' => 'New Host'];
-    $this->drupalPostForm(NULL, $edit, t('Save'));
+    $this->drupalPostForm(NULL, ['title[0][value]' => 'New Host'], 'Save and publish');
     $this->drupalGet('node/1/edit');
-    $elements = $this->xpath('//table[@id="paragraphs-values"]/tbody');
-    $header = $this->xpath('//table[@id="paragraphs-values"]/thead');
-    $this->assertEqual($elements, []);
-    $this->assertNotEqual($header, []);
+    $this->assertText('No Paragraph added yet.');
   }
 
   /**
@@ -221,18 +214,12 @@ class ParagraphsExperimentalAddModesTest extends ParagraphsExperimentalTestBase 
     // Check that when only one paragraph type is allowed in a content type,
     // one instance is automatically added in the 'Add content' dialogue.
     $this->drupalGet('node/add/paragraphed_test');
-    $elements = $this->xpath('//table[@id="paragraphs-values"]/tbody');
-    $header = $this->xpath('//table[@id="paragraphs-values"]/thead');
-    $this->assertNotEqual($elements, []);
-    $this->assertNotEqual($header, []);
+    $this->assertNoText('No Paragraph added yet.');
 
     // Check that no paragraph type is automatically added, if the defaut
     // setting was set to '- None -'.
     $this->setDefaultParagraphType('paragraphed_test', 'paragraphs', 'paragraphs_settings_edit', '_none');
     $this->drupalGet('node/add/paragraphed_test');
-    $elements = $this->xpath('//table[@id="paragraphs-values"]/tbody');
-    $header = $this->xpath('//table[@id="paragraphs-values"]/thead');
-    $this->assertEqual($elements, []);
-    $this->assertNotEqual($header, []);
+    $this->assertText('No Paragraph added yet.');
   }
 }

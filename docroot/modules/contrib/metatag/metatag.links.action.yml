@@ -3,3 +3,4 @@ entity.metatag_defaults.add_form:
   title: 'Add default meta tags'
   appears_on:
     - entity.metatag_defaults.collection
+

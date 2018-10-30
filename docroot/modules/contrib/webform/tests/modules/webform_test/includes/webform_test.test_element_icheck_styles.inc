@@ -117,5 +117,4 @@ function _webform_test_test_element_icheck_options() {
       }
     }
   }
-  return $icheck_options;
 }

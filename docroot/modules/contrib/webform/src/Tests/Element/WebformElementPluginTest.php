@@ -4,13 +4,14 @@ namespace Drupal\webform\Tests\Element;
 
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
+use Drupal\webform\Tests\WebformTestBase;
 
 /**
  * Tests for the webform element plugin.
  *
  * @group Webform
  */
-class WebformElementPluginTest extends WebformElementTestBase {
+class WebformElementPluginTest extends WebformTestBase {
 
   /**
    * Modules to enable.
@@ -38,7 +39,7 @@ class WebformElementPluginTest extends WebformElementTestBase {
 
     // Check that managed_file and webform_term-select are not available when
     // dependent modules are not installed.
-    $this->drupalGet('admin/reports/webform-plugins/elements');
+    $this->drupalGet('admin/structure/webform/plugins/elements');
     $this->assertNoRaw('<td><div class="webform-form-filter-text-source">managed_file</div></td>');
     $this->assertNoRaw('<td><div class="webform-form-filter-text-source">webform_term_select</div></td>');
 
@@ -47,7 +48,7 @@ class WebformElementPluginTest extends WebformElementTestBase {
 
     // Check that managed_file and webform_term-select are available when
     // dependent modules are installed.
-    $this->drupalGet('admin/reports/webform-plugins/elements');
+    $this->drupalGet('admin/structure/webform/plugins/elements');
     $this->assertRaw('<td><div class="webform-form-filter-text-source">managed_file</div></td>');
     $this->assertRaw('<td><div class="webform-form-filter-text-source">webform_term_select</div></td>');
 

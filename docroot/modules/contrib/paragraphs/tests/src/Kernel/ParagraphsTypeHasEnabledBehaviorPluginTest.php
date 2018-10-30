@@ -22,7 +22,6 @@ class ParagraphsTypeHasEnabledBehaviorPluginTest extends KernelTestBase {
     'paragraphs',
     'user',
     'paragraphs_test',
-    'file',
   ];
 
   /**

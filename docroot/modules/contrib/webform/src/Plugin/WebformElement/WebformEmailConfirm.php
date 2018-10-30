@@ -23,17 +23,17 @@ class WebformEmailConfirm extends Email {
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    $properties = parent::getDefaultProperties() + [
+    $default_properties = parent::getDefaultProperties() + [
       // Email confirm settings.
       'confirm__title' => '',
       'confirm__description' => '',
       'confirm__placeholder' => '',
     ];
     unset(
-      $properties['multiple'],
-      $properties['multiple__header_label']
+      $default_properties['multiple'],
+      $default_properties['multiple__header_label']
     );
-    return $properties;
+    return $default_properties;
   }
 
   /**
@@ -68,13 +68,6 @@ class WebformEmailConfirm extends Email {
       '#type' => 'textfield',
       '#title' => $this->t('Email confirm placeholder'),
     ];
-
-    // Remove unsupported title and description display from composite elements.
-    if ($this->isComposite()) {
-      unset($form['form']['display_container']['title_display']['#options']['inline']);
-      unset($form['form']['display_container']['description_display']['#options']['tooltip']);
-    }
-
     return $form;
   }
 

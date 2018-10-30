@@ -57,7 +57,7 @@ class WebformElementMediaFileTest extends WebformElementManagedFileTestBase {
     $this->assertRaw('<source src="' . $this->getAbsoluteUrl('/system/files/webform/test_element_media_file/_sid_/audio_file_mp3.mp3') . '" type="audio/mpeg">');
 
     // Check image file preview.
-    $this->assertRaw('<img class="webform-image-file" alt="image_file_jpg.jpg" title="image_file_jpg.jpg" src="' . $this->getAbsoluteUrl('/system/files/webform/test_element_media_file/_sid_/image_file_jpg.jpg') . '" />');
+    $this->assertRaw('<img class="webform-image-file" alt="image_file_jpg.jpg" src="' . $this->getAbsoluteUrl('/system/files/webform/test_element_media_file/_sid_/image_file_jpg.jpg') . '" />');
 
     // Check image file link to modal.
     $this->assertRaw('/system/files/webform/test_element_media_file/_sid_/image_file_jpg_modal.jpg" class="js-webform-image-file-modal webform-image-file-modal">');
@@ -99,7 +99,7 @@ class WebformElementMediaFileTest extends WebformElementManagedFileTestBase {
 
     // Check that test file was uploaded to the current submission.
     $second = ($type == 'multiple') ? [$fid] : $fid;
-    $this->assertEqual($submission->getElementData($key), $second, 'Test file was upload to the current submission');
+    $this->assertEqual($submission->getData($key), $second, 'Test file was upload to the current submission');
 
     // Check test file file usage.
     $this->assertIdentical(['webform' => ['webform_submission' => [$sid => '1']]], $this->fileUsage->listUsage($file), 'The file has 1 usage.');
@@ -150,12 +150,12 @@ class WebformElementMediaFileTest extends WebformElementManagedFileTestBase {
 
     // Check that test new file was uploaded to the current submission.
     $second = ($type == 'multiple') ? [$new_fid] : $new_fid;
-    $this->assertEqual($submission->getElementData($key), $second, 'Test new file was upload to the current submission');
+    $this->assertEqual($submission->getData($key), $second, 'Test new file was upload to the current submission');
 
     // Check that test file was deleted from the disk and database.
     $this->assert(!file_exists($file->getFileUri()), 'Test file deleted from disk');
-    $this->assertEqual(0, \Drupal::database()->query('SELECT COUNT(fid) AS total FROM {file_managed} WHERE fid = :fid', [':fid' => $fid])->fetchField(), 'Test file 0 deleted from database');
-    $this->assertEqual(0, \Drupal::database()->query('SELECT COUNT(fid) AS total FROM {file_usage} WHERE fid = :fid', [':fid' => $fid])->fetchField(), 'Test file 0 deleted from database');
+    $this->assertEqual(0, \Drupal::database()->query('SELECT COUNT(fid) AS total FROM {file_managed} WHERE fid=:fid', [':fid' => $fid])->fetchField(), 'Test file 0 deleted from database');
+    $this->assertEqual(0, \Drupal::database()->query('SELECT COUNT(fid) AS total FROM {file_usage} WHERE fid=:fid', [':fid' => $fid])->fetchField(), 'Test file 0 deleted from database');
 
     // Check test file 1 file usage.
     $this->assertIdentical(['webform' => ['webform_submission' => [$sid => '1']]], $this->fileUsage->listUsage($new_file), 'The new file has 1 usage.');
@@ -165,7 +165,7 @@ class WebformElementMediaFileTest extends WebformElementManagedFileTestBase {
 
     // Check that test file 1 was deleted from the disk and database.
     $this->assert(!file_exists($new_file->getFileUri()), 'Test new file deleted from disk');
-    $this->assertEqual(0, \Drupal::database()->query('SELECT COUNT(fid) AS total FROM {file_managed} WHERE fid = :fid', [':fid' => $new_fid])->fetchField(), 'Test new file deleted from database');
+    $this->assertEqual(0, \Drupal::database()->query('SELECT COUNT(fid) AS total FROM {file_managed} WHERE fid=:fid', [':fid' => $new_fid])->fetchField(), 'Test new file deleted from database');
   }
 
 }

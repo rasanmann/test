@@ -6,10 +6,8 @@ dependencies:
       - webform_examples
 open: null
 close: null
-weight: 0
 uid: null
 template: false
-archive: false
 id: example_style_guide
 title: 'Example: Style Guide'
 description: 'Style Guide containing examples of all elements and layouts.'
@@ -67,23 +65,6 @@ elements: |
         one: One
         two: Two
         three: Three
-    checkboxes_help:
-      '#type': checkboxes
-      '#title': 'Checkboxes with help text'
-      '#options_display': side_by_side
-      '#options_description_display': help
-      '#options':
-        one: 'One -- This is help text.'
-        two: 'Two -- This is help text.'
-        three: 'Three -- This is  help text.'
-    checkboxes_description:
-      '#type': checkboxes
-      '#title': 'Checkboxes with descriptions'
-      '#options_description_display': description
-      '#options':
-        one: 'One -- This is a description.'
-        two: 'Two -- This is a description.'
-        three: 'Three -- This is a description.'
     checkboxes_icheck:
       '#type': checkboxes
       '#title': 'Checkboxes (iCheck)'
@@ -102,7 +83,7 @@ elements: |
         two: Two
         three: Three
     radios_icheck:
-      '#type': radios
+      '#type': checkboxes
       '#title': 'Radios (iCheck)'
       '#options_display': side_by_side
       '#options':
@@ -110,6 +91,12 @@ elements: |
         two: Two
         three: Three
       '#icheck': minimal
+    password:
+      '#type': password
+      '#title': Password
+    password_confirm:
+      '#type': password_confirm
+      '#title': 'Password confirm'
   date_elements:
     '#type': details
     '#title': 'Date elements'
@@ -135,15 +122,6 @@ elements: |
     '#type': details
     '#title': 'Advanced elements'
     '#open': true
-    email:
-      '#type': email
-      '#title': Email
-    email_multiple:
-      '#type': webform_email_multiple
-      '#title': 'Email multiple'
-    email_confirm:
-      '#type': webform_email_confirm
-      '#title': Email
     tel:
       '#type': tel
       '#title': Telephone
@@ -169,9 +147,9 @@ elements: |
       '#min': 0
       '#max': 100
       '#step': 1
-      '#output': right
-      '#output__field_prefix': $
-      '#output__field_suffix': '.00'
+      '#range__output': true
+      '#range__output_prefix': $
+      '#range__output_suffix': '.00'
     color:
       '#type': color
       '#title': Color
@@ -189,6 +167,9 @@ elements: |
       '#type': managed_file
       '#title': 'File upload button'
       '#button': true
+    text_format:
+      '#type': text_format
+      '#title': 'Text format'
     tableselect:
       '#type': tableselect
       '#title': 'Table select'
@@ -247,6 +228,16 @@ elements: |
     webform_terms_of_service:
       '#type': webform_terms_of_service
       '#terms_content': 'These are the terms of service.'
+    webform_toggle:
+      '#type': webform_toggle
+      '#title': Toggle
+    webform_toggles:
+      '#type': webform_toggles
+      '#title': Toggles
+      '#options':
+        one: One
+        two: Two
+        three: Three
     webform_likert:
       '#type': webform_likert
       '#title': Likert
@@ -345,8 +336,8 @@ elements: |
       '#type': webform_address
       '#title': Address
       '#flexbox': false
-    webform_location_geocomplete:
-      '#type': webform_location_places
+    webform_location:
+      '#type': webform_location
       '#title': Location
       '#map': true
       '#geolocation': true
@@ -356,31 +347,6 @@ elements: |
       '#title': 'Link multiple'
       '#multiple': true
       '#multiple__header': true
-    webform_custom_composite:
-      '#type': webform_custom_composite
-      '#title': 'Custom composite'
-      '#element':
-        first_name:
-          '#type': textfield
-          '#title': 'First name'
-        last_name:
-          '#type': textfield
-          '#title': 'Last name'
-        gender:
-          '#type': select
-          '#options': gender
-          '#title': Gender
-        martial_status:
-          '#type': webform_select_other
-          '#options': marital_status
-          '#title': 'Martial status'
-        employment_status:
-          '#type': webform_select_other
-          '#options': employment_status
-          '#title': 'Employment status'
-        age:
-          '#type': number
-          '#title': 'Age'
   form_elements:
     '#type': details
     '#title': 'Form elements'
@@ -409,11 +375,6 @@ elements: |
       '#type': textfield
       '#title': 'Form element (Input mask: Phone)'
       '#input_mask': '(999) 999-9999'
-    form_element_input_hide:
-      '#type': textfield
-      '#title': 'Form element (Input hiding)'
-      '#input_hide': true
-      '#default_value': '{value}'
     title_display_before:
       '#type': textfield
       '#title': 'Title displayed before'
@@ -443,11 +404,6 @@ elements: |
       '#title': 'Description displayed in tooltip'
       '#description': 'This description is displayed in a tooltip. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.'
       '#description_display': tooltip
-    description_more:
-      '#type': textfield
-      '#title': 'Description with (read) more'
-      '#description': 'This is a description.'
-      '#more': 'This is more text'
   container_elements:
     '#type': details
     '#title': 'Containers elements'
@@ -459,10 +415,6 @@ elements: |
     fieldset:
       '#type': fieldset
       '#title': Fieldset
-      '#description': 'This is a description.'
-    webform_section:
-      '#type': webform_section
-      '#title': Section
       '#description': 'This is a description.'
     container_form_inline:
       '#type': container
@@ -483,38 +435,6 @@ elements: |
       '#wrapper_attributes':
         class:
           - 'container-inline clearfix'
-  divider:
-    '#type': details
-    '#title': 'Divider'
-    '#open': true
-    horizontal_rule_dotted_medium:
-      '#type': webform_horizontal_rule
-      '#attributes':
-        class:
-          - webform-horizontal-rule--dotted
-          - webform-horizontal-rule--medium
-    horizontal_rule_dashed_medium:
-      '#type': webform_horizontal_rule
-      '#attributes':
-        class:
-          - webform-horizontal-rule--dashed
-          - webform-horizontal-rule--medium
-    horizontal_rule_gradient_medium:
-      '#type': webform_horizontal_rule
-      '#attributes':
-        class:
-          - webform-horizontal-rule--gradient
-          - webform-horizontal-rule--medium
-    horizontal_rule_flaired:
-      '#type': webform_horizontal_rule
-      '#attributes':
-        class:
-          - webform-horizontal-rule--flaired
-    horizontal_rule_glyph:
-      '#type': webform_horizontal_rule
-      '#attributes':
-        class:
-          - webform-horizontal-rule--glyph
   messages:
     '#type': details
     '#title': Messages
@@ -557,20 +477,10 @@ elements: |
         '#type': textfield
         '#title': 'Element (Flex: 3)'
         '#flex': 3
-  contrib:
-    '#type': details
-    '#title': 'Contrib modules'
-    '#open': true
-    address:
-      '#type': address
-      '#title': Address
-      '#description': '@see <a href="https://www.drupal.org/project/address">https://www.drupal.org/project/address</a>'
-  
 css: ''
 javascript: ''
 settings:
   ajax: false
-  ajax_scroll_top: form
   page: true
   page_submit_path: ''
   page_confirm_path: ''
@@ -589,44 +499,19 @@ settings:
   form_reset: false
   form_disable_autocomplete: false
   form_novalidate: false
-  form_disable_inline_errors: false
-  form_required: true
   form_unsaved: false
   form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
-  form_access_denied: default
-  form_access_denied_title: ''
-  form_access_denied_message: ''
-  form_access_denied_attributes: {  }
-  form_file_limit: ''
   submission_label: ''
   submission_log: false
-  submission_views: {  }
-  submission_views_replace: {  }
   submission_user_columns: {  }
-  submission_user_duplicate: false
-  submission_access_denied: default
-  submission_access_denied_title: ''
-  submission_access_denied_message: ''
-  submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  previous_submission_message: ''
-  previous_submissions_message: ''
-  autofill: false
-  autofill_message: ''
-  autofill_excluded_elements: {  }
   wizard_progress_bar: true
   wizard_progress_pages: true
   wizard_progress_percentage: true
-  wizard_progress_link: false
   wizard_start_label: ''
-  wizard_preview_link: false
-  wizard_confirmation: true
-  wizard_confirmation_label: ''
-  wizard_track: ''
+  wizard_complete: true
+  wizard_complete_label: ''
   preview: 1
   preview_label: ''
   preview_title: ''
@@ -634,7 +519,6 @@ settings:
   preview_attributes: {  }
   preview_excluded_elements: {  }
   preview_exclude_empty: true
-  preview_exclude_empty_checkbox: false
   draft: none
   draft_multiple: false
   draft_auto_save: false
@@ -648,20 +532,14 @@ settings:
   confirmation_back: true
   confirmation_back_label: ''
   confirmation_back_attributes: {  }
-  confirmation_exclude_query: false
-  confirmation_exclude_token: false
   limit_total: null
-  limit_total_interval: null
   limit_total_message: ''
   limit_user: null
-  limit_user_interval: null
   limit_user_message: ''
-  entity_limit_total: null
-  entity_limit_total_interval: null
-  entity_limit_user: null
-  entity_limit_user_interval: null
   purge: none
   purge_days: null
+  entity_limit_total: null
+  entity_limit_user: null
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
@@ -697,14 +575,6 @@ access:
     users: {  }
     permissions: {  }
   delete_own:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  administer:
-    roles: {  }
-    users: {  }
-    permissions: {  }
-  test:
     roles: {  }
     users: {  }
     permissions: {  }

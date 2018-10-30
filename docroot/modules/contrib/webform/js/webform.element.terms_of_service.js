@@ -21,13 +21,12 @@
     attach: function (context) {
       $(context).find('.js-form-type-webform-terms-of-service').once('webform-terms-of-service').each(function () {
         var $element = $(this);
-        var $a = $element.find('label a');
-        var $details = $element.find('.webform-terms-of-service-details');
-
         var type = $element.attr('data-webform-terms-of-service-type');
 
+        var $details = $element.find('.webform-terms-of-service-details');
+
         // Initialize the modal.
-        if (type === 'modal') {
+        if (type == 'modal') {
           // Move details title to attribute.
           var $title = $element.find('.webform-terms-of-service-details--title');
           if ($title.length) {
@@ -44,38 +43,15 @@
           $details.dialog(options);
         }
 
-        // Add aria-* attributes.
-        if (type !== 'modal') {
-          $a.attr({
-            'aria-expanded': false,
-            'aria-controls': $details.attr('id')
-          });
-        }
-
-        // Set event handlers.
-        $a.click(openDetails)
-          .on('keydown', function (event) {
-            // Space or Return.
-            if (event.which === 32 || event.which === 13) {
-              openDetails(event);
-            }
-          });
-
-        function openDetails(event) {
-          if (type === 'modal') {
+        $element.find('label a').click(function (event) {
+          if (type == 'modal') {
             $details.dialog('open');
           }
           else {
-            var expanded = ($a.attr('aria-expanded') === 'true');
-
-            // Toggle `aria-expanded` attributes on link.
-            $a.attr('aria-expanded', !expanded);
-
-            // Toggle details.
-            (expanded) ? $details.slideUp() : $details.slideDown();
+            $details.slideToggle();
           }
           event.preventDefault();
-        }
+        });
       });
     }
   };

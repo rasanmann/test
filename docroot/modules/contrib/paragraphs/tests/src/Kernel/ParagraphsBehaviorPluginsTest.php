@@ -25,7 +25,6 @@ class ParagraphsBehaviorPluginsTest extends KernelTestBase {
     'field',
     'entity_reference_revisions',
     'paragraphs_test',
-    'file',
   ];
 
   /**

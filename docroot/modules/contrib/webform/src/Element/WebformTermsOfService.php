@@ -30,12 +30,23 @@ class WebformTermsOfService extends Checkbox {
    * {@inheritdoc}
    */
   public function getInfo() {
-    return [
-      '#return_value' => TRUE,
+    return parent::getInfo() + [
       '#terms_type' => static::TERMS_MODAL,
       '#terms_title' => '',
       '#terms_content' => '',
-    ] + parent::getInfo();
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function valueCallback(&$element, $input, FormStateInterface $form_state) {
+    if ($input === FALSE) {
+      return isset($element['#default_value']) ? $element['#default_value'] : FALSE;
+    }
+    else {
+      return isset($input) ? TRUE : FALSE;
+    }
   }
 
   /**
@@ -43,18 +54,16 @@ class WebformTermsOfService extends Checkbox {
    */
   public static function preRenderCheckbox($element) {
     $element = parent::preRenderCheckbox($element);
-    $id = 'webform-terms-of-service-' . implode('_', $element['#parents']);
 
     if (empty($element['#title'])) {
       $element['#title'] = (string) t('I agree to the {terms of service}.');
     }
-
-    $element['#title'] = str_replace('{', '<a role="button" href="#terms">', $element['#title']);
+    $element['#title'] = str_replace('{', '<a>', $element['#title']);
     $element['#title'] = str_replace('}', '</a>', $element['#title']);
 
     // Change description to render array.
     if (isset($element['#description'])) {
-      $element['#description'] = ['description' => (is_array($element['#description'])) ? $element['#description'] : ['#markup' => $element['#description']]];
+      $element['#description']['description'] = (is_array($element['#description'])) ? $element['#description'] : ['#markup' => $element['#description']];
     }
     else {
       $element['#description'] = [];
@@ -63,33 +72,21 @@ class WebformTermsOfService extends Checkbox {
     // Add terms to #description.
     $element['#description']['terms'] = [
       '#type' => 'container',
-      '#attributes' => [
-        'id' => $id . '--description',
-        'class' => ['webform-terms-of-service-details', 'js-hide'],
-      ],
+      '#attributes' => ['class' => ['webform-terms-of-service-details', 'js-hide']],
     ];
     if (!empty($element['#terms_title'])) {
       $element['#description']['terms']['title'] = [
-        '#type' => 'container',
         '#markup' => $element['#terms_title'],
-        '#attributes' => [
-          'class' => ['webform-terms-of-service-details--title'],
-        ],
+        '#prefix' => '<div class="webform-terms-of-service-details--title">',
+        '#suffix' => '</div>',
       ];
     }
     if (!empty($element['#terms_content'])) {
       $element['#description']['terms']['content'] = (is_array($element['#terms_content'])) ? $element['#terms_content'] : ['#markup' => $element['#terms_content']];
       $element['#description']['terms']['content'] += [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => ['webform-terms-of-service-details--content'],
-        ],
+        '#prefix' => '<div class="webform-terms-of-service-details--content">',
+        '#suffix' => '</div>',
       ];
-    }
-
-    // Add accessibility attributes to title and content.
-    if ($element['#type'] === static::TERMS_SLIDEOUT) {
-
     }
 
     // Set type to data attribute.
@@ -99,21 +96,10 @@ class WebformTermsOfService extends Checkbox {
 
     // Change #type to checkbox so that element is rendered correctly.
     $element['#type'] = 'checkbox';
-    $element['#wrapper_attributes']['class'][] = 'form-type-webform-terms-of-service';
-    $element['#wrapper_attributes']['class'][] = 'js-form-type-webform-terms-of-service';
-
-    $element['#element_validate'][] = [get_called_class(), 'validateWebformTermsOfService'];
+    $element['#wrapper_attributes']['class'] = 'form-type-webform-terms-of-service';
+    $element['#wrapper_attributes']['class'] = 'js-form-type-webform-terms-of-service';
 
     return $element;
-  }
-
-  /**
-   * Webform element validation handler for webform terms of service element.
-   */
-  public static function validateWebformTermsOfService(&$element, FormStateInterface $form_state, &$complete_form) {
-    $value = (bool) $form_state->getValue($element['#parents'], []);
-    $element['#value'] = $value;
-    $form_state->setValueForElement($element, $value);
   }
 
 }

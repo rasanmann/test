@@ -23,7 +23,7 @@ class WebformTestController extends ControllerBase implements ContainerInjection
   protected $requestHandler;
 
   /**
-   * The webform submission generation service.
+   * Webform submission generation service.
    *
    * @var \Drupal\webform\WebformSubmissionGenerateInterface
    */

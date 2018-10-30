@@ -4,6 +4,5 @@ dependencies: {  }
 id: user
 label: User
 tags:
-  canonical_url: '[user:url]'
+  title: '[user:name] | [site:name]'
   description: '[site:name]'
-  title: '[user:display-name] | [site:name]'

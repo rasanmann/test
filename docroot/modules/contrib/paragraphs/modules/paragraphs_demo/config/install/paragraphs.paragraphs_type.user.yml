@@ -3,4 +3,3 @@ status: true
 dependencies: {  }
 id: user
 label: User
-description: 'Use <em>User</em> for adding a reference to an existing user.'

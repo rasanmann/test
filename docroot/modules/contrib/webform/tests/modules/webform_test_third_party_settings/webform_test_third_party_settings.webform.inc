@@ -66,6 +66,6 @@ function webform_test_third_party_settings_webform_submission_form_alter(&$form,
 
   // If a message is set, display it.
   if ($message) {
-    \Drupal::messenger()->addStatus($message);
+    drupal_set_message($message);
   }
 }

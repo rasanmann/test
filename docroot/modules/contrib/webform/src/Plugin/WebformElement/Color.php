@@ -3,7 +3,6 @@
 namespace Drupal\webform\Plugin\WebformElement;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\webform\Element\WebformHtmlEditor;
 use Drupal\webform\Plugin\WebformElementBase;
 use Drupal\webform\WebformSubmissionInterface;
 
@@ -54,7 +53,7 @@ class Color extends WebformElementBase {
   /**
    * {@inheritdoc}
    */
-  protected function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  public function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
 
     if (empty($value)) {
@@ -64,16 +63,12 @@ class Color extends WebformElementBase {
     $format = $this->getItemFormat($element);
     switch ($format) {
       case 'swatch':
-        if (!in_array('font', WebformHtmlEditor::getAllowedTags())) {
-          return $value;
-        }
-        else {
-          return [
-            '#type' => 'inline_template',
-            '#template' => '<font color="{{ value }}">█</font> {{ value }}',
-            '#context' => ['value' => $value],
-          ];
-        }
+        return [
+          '#theme' => 'webform_element_color_value_swatch',
+          '#element' => $element,
+          '#value' => $value,
+          '#options' => $options,
+        ];
 
       default:
         return parent::formatHtmlItem($element, $webform_submission, $options);

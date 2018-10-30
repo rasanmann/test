@@ -4,7 +4,6 @@ namespace Drupal\webform\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\webform\Entity\Webform;
 use Drupal\webform\WebformInterface;
 
 /**
@@ -29,32 +28,21 @@ class WebformEntityReferenceSelectWidget extends WebformEntityReferenceAutocompl
    * {@inheritdoc}
    */
   public static function defaultSettings() {
-    return [
-      'default_data' => TRUE,
-    ];
+    return [];
   }
 
   /**
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-    $element = [];
-    $element['default_data'] = [
-      '#type' => 'checkbox',
-      '#title' => t('Enable default submission data (YAML)'),
-      '#description' => t('If checked, site builders will be able to define default submission data (YAML)'),
-      '#default_value' => $this->getSetting('default_data'),
-    ];
-    return $element;
+    return [];
   }
 
   /**
    * {@inheritdoc}
    */
   public function settingsSummary() {
-    $summary = [];
-    $summary[] = t('Default submission data: @default_data', ['@default_data' => $this->getSetting('default_data') ? $this->t('Yes') : $this->t('No')]);
-    return $summary;
+    return [];
   }
 
   /**
@@ -79,15 +67,6 @@ class WebformEntityReferenceSelectWidget extends WebformEntityReferenceAutocompl
     // Convert default_value's Webform to a simple entity_id.
     if (!empty($element['target_id']['#default_value']) && $element['target_id']['#default_value'] instanceof WebformInterface) {
       $element['target_id']['#default_value'] = $element['target_id']['#default_value']->id();
-    }
-
-    // Make sure if an archived webform is the #default_value always include
-    // it as an option.
-    if (!empty($element['target_id']['#default_value'])) {
-      $webform = ($element['target_id']['#default_value'] instanceof WebformInterface) ? $element['target_id']['#default_value'] : Webform::load($element['target_id']['#default_value']);
-      if ($webform && $webform->isArchived()) {
-        $element['target_id']['#options'][(string) t('Archived')][$webform->id()] = $webform->label();
-      }
     }
 
     // Remove properties that are not applicable.

@@ -2,7 +2,7 @@
 
 namespace Drupal\metatag_hreflang\Tests;
 
-use Drupal\language\Entity\ConfigurableLanguage;
+use Drupal\simpletest\WebTestBase;
 use Drupal\metatag\Tests\MetatagTagsTestBase;
 
 /**
@@ -15,77 +15,45 @@ class MetatagHreflangTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  private $tags = [
+  public $tags = [
     'hreflang_xdefault',
-    'hreflang_en',
-    'hreflang_es',
-    'hreflang_fr',
   ];
 
   /**
    * {@inheritdoc}
    */
-  private $testTag = 'link';
+  public $test_tag = 'link';
 
   /**
    * {@inheritdoc}
    */
-  private $testNameAttribute = 'alternate';
+  public $test_name_attribute = 'hreflang';
 
   /**
    * {@inheritdoc}
    */
-  private $testValueAttribute = 'href';
+  public $test_value_attribute = 'href';
 
   /**
    * {@inheritdoc}
    */
   protected function setUp() {
-    // Need the Language module in order for any of this to work.
-    parent::$modules[] = 'language';
-    // This module.
     parent::$modules[] = 'metatag_hreflang';
     parent::setUp();
-
-    // Enable additional languages.
-    foreach (['es', 'fr'] as $langcode) {
-      ConfigurableLanguage::createFromLangcode($langcode)->save();
-    }
   }
 
   /**
    * Each of these meta tags has a different tag name vs its internal name.
    */
-  private function getTestTagName($tag_name) {
+  public function getTestTagName($tag_name) {
     return str_replace('hreflang_', '', $tag_name);
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'hreflang_xdefault'.
+   * Implements {meta_tag_name}_test_output_xpath() for 'hreflang_xdefault'.
    */
-  private function hreflangXdefaultTestOutputXpath() {
+  public function hreflang_xdefault_test_output_xpath() {
     return "//link[@hreflang='x-default']";
-  }
-
-  /**
-   * Implements {tag_name}TestOutputXpath() for 'hreflang_en'.
-   */
-  private function hreflangEnTestOutputXpath() {
-    return "//link[@hreflang='en']";
-  }
-
-  /**
-   * Implements {tag_name}TestOutputXpath() for 'hreflang_es'.
-   */
-  private function hreflangEsTestOutputXpath() {
-    return "//link[@hreflang='es']";
-  }
-
-  /**
-   * Implements {tag_name}TestOutputXpath() for 'hreflang_fr'.
-   */
-  private function hreflangFrTestOutputXpath() {
-    return "//link[@hreflang='fr']";
   }
 
 }

@@ -3,10 +3,7 @@
 namespace Drupal\webform\Plugin\WebformElement;
 
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Datetime\Element\Datelist as DatelistElement;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\webform\WebformSubmissionConditionsValidator;
 use Drupal\webform\WebformSubmissionInterface;
 
@@ -27,7 +24,7 @@ class DateList extends DateBase {
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    return [
+    return parent::getDefaultProperties() + [
       // Date settings.
       'date_part_order' => [
         'year',
@@ -42,8 +39,9 @@ class DateList extends DateBase {
       'date_year_range' => '1900:2050',
       'date_year_range_reverse' => FALSE,
       'date_increment' => 1,
-    ] + parent::getDefaultProperties();
+    ];
   }
+
 
   /**
    * {@inheritdoc}
@@ -154,7 +152,6 @@ class DateList extends DateBase {
     ];
     $form['date']['date_text_parts'] = [
       '#type' => 'checkboxes',
-      '#options_display' => 'side_by_side',
       '#title' => $this->t('Date text parts'),
       '#description' => $this->t("Select date parts that should be presented as text fields instead of drop-down selectors."),
       '#options' => [
@@ -184,7 +181,6 @@ class DateList extends DateBase {
       '#description' => $this->t('The increment to use for minutes and seconds'),
       '#min' => 1,
       '#size' => 4,
-      '#weight' => 10,
     ];
     return $form;
   }
@@ -210,69 +206,18 @@ class DateList extends DateBase {
     parent::setConfigurationFormDefaultValue($form, $element_properties, $property_element, $property_name);
   }
 
+
   /**
-   * After build handler for Datelist element.
+   * After build hander for Date elements.
    */
-  public static function afterBuild(array $element, FormStateInterface $form_state) {
+  public static function afterBuild(array $element, \Drupal\Core\Form\FormStateInterface $form_state) {
     // Reverse years from min:max to max:min.
     // @see \Drupal\Core\Datetime\Element\DateElementBase::datetimeRangeYears
     if (!empty($element['#date_year_range_reverse']) && isset($element['year']) && isset($element['year']['#options'])) {
       $options = $element['year']['#options'];
       $element['year']['#options'] = ['' => $options['']] + array_reverse($options, TRUE);
     }
-    // Suppress inline error messages for datelist sub-elements.
-    foreach (Element::children($element) as $child_key) {
-      $element[$child_key]['#error_no_message'] = TRUE;
-    }
-
-    // Override Datelist validate callback so that we can support custom
-    // #required_error message.
-    foreach ($element['#element_validate'] as &$validate_callback) {
-      if (is_array($validate_callback) && $validate_callback[0] === 'Drupal\Core\Datetime\Element\Datelist') {
-        $validate_callback[0] = DateList::class;
-      }
-    }
     return $element;
-  }
-
-  /**
-   * Override validation callback for a datelist element and set #required_error.
-   *
-   * @param array $element
-   *   The element being processed.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The current state of the form.
-   * @param array $complete_form
-   *   The complete form structure.
-   */
-  public static function validateDatelist(&$element, FormStateInterface $form_state, &$complete_form) {
-    $has_required_error = (!empty($element['#required']) && !empty($element['#required_error']));
-    if (!$has_required_error) {
-      DatelistElement::validateDatelist($element, $form_state, $complete_form);
-      return;
-    }
-
-    // Clone the $form_state so that we can capture and
-    // set #required_error message.
-    // Note: We are not using SubformState because we are just trying clone
-    // the $form_state.
-    $temp_form_state = clone $form_state;
-
-    // Validate the date list element.
-    DatelistElement::validateDatelist($element, $temp_form_state, $complete_form);
-
-    // Copy $temp_form_state errors to $form_state error and alter
-    // override default required error message is applicable.
-    $original_errors = $form_state->getErrors();
-    $errors = $temp_form_state->getErrors();
-    foreach ($errors as $name => $message) {
-      if (empty($original_errors[$name])) {
-        if ($message instanceof TranslatableMarkup && $message->getUntranslatedString() === "The %field date is required.") {
-          $message = $element['#required_error'];
-        }
-        $form_state->setErrorByName($name, $message);
-      }
-    }
   }
 
 }

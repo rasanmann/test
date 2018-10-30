@@ -5,12 +5,11 @@ namespace Drupal\webform\Plugin\DevelGenerate;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Serialization\Yaml;
 use Drupal\devel_generate\DevelGenerateBase;
+use Drupal\webform\Plugin\Field\FieldType\WebformEntityReferenceItem;
 use Drupal\webform\Utility\WebformArrayHelper;
-use Drupal\webform\WebformEntityReferenceManagerInterface;
 use Drupal\webform\WebformSubmissionGenerateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -77,25 +76,11 @@ class WebformSubmissionDevelGenerate extends DevelGenerateBase implements Contai
   protected $webformSubmissionStorage;
 
   /**
-   * The webform submission generation service.
+   * Webform submission generation service.
    *
    * @var \Drupal\webform\WebformSubmissionGenerateInterface
    */
   protected $webformSubmissionGenerate;
-
-  /**
-   * The webform entity reference manager.
-   *
-   * @var \Drupal\webform\WebformEntityReferenceManagerInterface
-   */
-  protected $webformEntityReferenceManager;
-
-  /**
-   * The messenger.
-   *
-   * @var \Drupal\Core\Messenger\MessengerInterface
-   */
-  protected $messenger;
 
   /**
    * Constructs a WebformSubmissionDevelGenerate object.
@@ -107,27 +92,22 @@ class WebformSubmissionDevelGenerate extends DevelGenerateBase implements Contai
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
-   *   The request stack.
+   *   The request stack service.
    * @param \Drupal\Core\Database\Connection $database
    *   The database.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
-   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
-   *   The messenger.
    * @param \Drupal\webform\WebformSubmissionGenerateInterface $webform_submission_generate
    *   The webform submission generator.
-   * @param \Drupal\webform\WebformEntityReferenceManagerInterface $webform_entity_reference_manager
-   *   The webform entity reference manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, RequestStack $request_stack, Connection $database, EntityTypeManagerInterface $entity_type_manager, MessengerInterface $messenger, WebformSubmissionGenerateInterface $webform_submission_generate, WebformEntityReferenceManagerInterface $webform_entity_reference_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, RequestStack $request_stack, Connection $database, EntityTypeManagerInterface $entity_type_manager, WebformSubmissionGenerateInterface $webform_submission_generate) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->request = $request_stack->getCurrentRequest();
     $this->database = $database;
     $this->entityTypeManager = $entity_type_manager;
-    $this->messenger = $messenger;
     $this->webformSubmissionGenerate = $webform_submission_generate;
-    $this->webformEntityReferenceManager = $webform_entity_reference_manager;
+
     $this->webformStorage = $entity_type_manager->getStorage('webform');
     $this->webformSubmissionStorage = $entity_type_manager->getStorage('webform_submission');
   }
@@ -137,15 +117,11 @@ class WebformSubmissionDevelGenerate extends DevelGenerateBase implements Contai
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
+      $configuration, $plugin_id, $plugin_definition,
       $container->get('request_stack'),
       $container->get('database'),
       $container->get('entity_type.manager'),
-      $container->get('messenger'),
-      $container->get('webform_submission.generate'),
-      $container->get('webform.entity_reference_manager')
+      $container->get('webform_submission.generate')
     );
   }
 
@@ -153,7 +129,7 @@ class WebformSubmissionDevelGenerate extends DevelGenerateBase implements Contai
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-    $this->messenger->addWarning($this->t('Please note that no emails will be sent while generating webform submissions.'));
+    drupal_set_message($this->t('Please note that no emails will be sent while generating webform submissions.'), 'warning');
 
     $options = [];
     foreach ($this->webformStorage->loadMultiple() as $webform) {
@@ -211,8 +187,7 @@ class WebformSubmissionDevelGenerate extends DevelGenerateBase implements Contai
         '#type' => 'select',
         '#title' => $this->t('Entity type'),
         '#title_display' => 'Invisible',
-        '#empty_option' => $this->t('- None -'),
-        '#options' => $entity_types,
+        '#options' => ['' => ''] + $entity_types,
         '#default_value' => $this->getSetting('entity-type'),
       ];
       $form['submitted']['entity-id'] = [
@@ -294,11 +269,7 @@ class WebformSubmissionDevelGenerate extends DevelGenerateBase implements Contai
         $this->generateSubmission($values);
         if (function_exists('drush_log') && $i % drush_get_option('feedback', 1000) == 0) {
           $now = time();
-          $dt_args = [
-            '@feedback' => drush_get_option('feedback', 1000),
-            '@rate' => (drush_get_option('feedback', 1000) * 60) / ($now - $start),
-          ];
-          drush_log(dt('Completed @feedback submissions (@rate submissions/min)', $dt_args), 'ok');
+          drush_log(dt('Completed @feedback submissions (@rate submissions/min)', ['@feedback' => drush_get_option('feedback', 1000), '@rate' => (drush_get_option('feedback', 1000) * 60) / ($now - $start)]), 'ok');
           $start = $now;
         }
       }
@@ -483,8 +454,7 @@ class WebformSubmissionDevelGenerate extends DevelGenerateBase implements Contai
     }
 
     $dt_args['@title'] = $source_entity->label();
-
-    $webform_field_name = $this->webformEntityReferenceManager->getFieldName($source_entity);
+    $webform_field_name = WebformEntityReferenceItem::getEntityWebformFieldName($source_entity);
     if (!$webform_field_name) {
       return $t("'@title' (@entity_type:@entity_id) does not have a 'webform' field.", $dt_args);
     }

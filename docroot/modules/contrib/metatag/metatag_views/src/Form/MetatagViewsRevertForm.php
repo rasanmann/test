@@ -6,24 +6,25 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\views\ViewEntityInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Defines a form for reverting views metatags.
+ * Defines a confirmation form for deleting mymodule data.
  */
 class MetatagViewsRevertForm extends ConfirmFormBase {
 
   /**
    * Entity manager for views entities.
    *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   * @var EntityTypeManagerInterface
    */
   protected $viewsManager;
 
   /**
-   * The view entity to revert meta tags on.
+   * The view entity to revert metatags on.
    *
-   * @var \Drupal\views\ViewEntityInterface
+   * @var ViewEntityInterface $view
    */
   protected $view;
 
@@ -32,10 +33,10 @@ class MetatagViewsRevertForm extends ConfirmFormBase {
    *
    * @var string
    */
-  protected $displayId;
+  protected $display_id;
 
   /**
-   * {@inheritdoc}
+   * Constructor.
    */
   public function __construct(EntityTypeManagerInterface $entity_manager) {
     $this->viewsManager = $entity_manager->getStorage('view');
@@ -61,9 +62,9 @@ class MetatagViewsRevertForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getQuestion() {
-    return $this->t('Do you want to revert meta tags for @view_name : @display_name?', [
+    return $this->t('Do you want to revert metatags for @view_name : @display_name?', [
       '@view_name' => $this->view->label(),
-      '@display_name' => $this->view->getDisplay($this->displayId)['display_title'],
+      '@display_name' => $this->view->getDisplay($this->display_id)['display_title'],
     ]);
   }
 
@@ -78,9 +79,9 @@ class MetatagViewsRevertForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function getDescription() {
-    return $this->t('You are about to revert the custom meta tags for the %display_name display on the %view_name view. This action cannot be undone.', [
+    return $this->t('You are about to revert the custom metatags for the %display_name display on the %view_name view. This action cannot be undone.', [
       '%view_name' => $this->view->label(),
-      '%display_name' => $this->view->getDisplay($this->displayId)['display_title'],
+      '%display_name' => $this->view->getDisplay($this->display_id)['display_title'],
     ]);
   }
 
@@ -100,10 +101,13 @@ class MetatagViewsRevertForm extends ConfirmFormBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @param int $id
+   *   (optional) The ID of the item to be deleted.
    */
   public function buildForm(array $form, FormStateInterface $form_state, $view_id = NULL, $display_id = NUL) {
     $this->view = $this->viewsManager->load($view_id);
-    $this->displayId = $display_id;
+    $this->display_id = $display_id;
 
     return parent::buildForm($form, $form_state);
   }
@@ -112,20 +116,20 @@ class MetatagViewsRevertForm extends ConfirmFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Removed meta tags from the view.
+    // Removed metatags from the view.
     $config_name = $this->view->getConfigDependencyName();
-    $config_path = 'display.' . $this->displayId . '.display_options.display_extenders.metatag_display_extender.metatags';
+    $config_path = 'display.' . $this->display_id . '.display_options.display_extenders.metatag_display_extender.metatags';
 
-    $this->configFactory()->getEditable($config_name)
+    $configuration = $this->configFactory()->getEditable($config_name)
       ->clear($config_path)
       ->save();
 
     // Redirect back to the views list.
     $form_state->setRedirect('metatag_views.metatags.list');
 
-    drupal_set_message($this->t('Reverted meta tags for @view_name : @display_name', [
+    drupal_set_message($this->t('Reverted metatags for @view_name : @display_name', [
       '@view_name' => $this->view->label(),
-      '@display_name' => $this->view->getDisplay($this->displayId)['display_title'],
+      '@display_name' => $this->view->getDisplay($this->display_id)['display_title'],
     ]));
   }
 

@@ -2,7 +2,6 @@
 
 namespace Drupal\webform;
 
-use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Form\OptGroup;
 use Drupal\Core\Serialization\Yaml;
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -96,12 +95,12 @@ class WebformSubmissionGenerate implements WebformSubmissionGenerateInterface {
       'random' => TRUE,
     ];
 
-    /** @var \Drupal\webform\Plugin\WebformElementInterface $element_plugin */
+    /** @var \Drupal\webform\Plugin\WebformElementInterface $element_handler */
     $plugin_id = $this->elementManager->getElementPluginId($element);
-    $element_plugin = $this->elementManager->createInstance($plugin_id);
+    $element_handler = $this->elementManager->createInstance($plugin_id);
 
     // Exit if element does not have a value.
-    if (!$element_plugin->isInput($element)) {
+    if (!$element_handler->isInput($element)) {
       return NULL;
     }
 
@@ -115,43 +114,14 @@ class WebformSubmissionGenerate implements WebformSubmissionGenerateInterface {
       $values = [$values];
     }
 
-    // Apply #maxlength to values.
-    // @see \Drupal\webform\Plugin\WebformElement\TextBase
-    if (!empty($element['#maxlength'])) {
-      $maxlength = $element['#maxlength'];
-    }
-    elseif (!empty($element['#counter_type']) && !empty($element['#counter_maximum']) && $element['#counter_type'] === 'character') {
-      $maxlength = $element['#counter_maximum'];
-    }
-    else {
-      $maxlength = NULL;
-    }
-    if ($maxlength) {
-      foreach ($values as $index => $value) {
-        $values[$index] = Unicode::substr($value, 0, $maxlength);
-      }
-    }
-
     // $values = $this->tokenManager->replace($values, $webform);.
     // Elements that use multiple values require an array as the
     // default value.
-    if ($element_plugin->hasMultipleValues($element)) {
+    if ($element_handler->hasMultipleValues($element)) {
       if ($options['random']) {
         shuffle($values);
       }
-
-      $limit = 3;
-      if (isset($element['#multiple'])) {
-        // #multiple: FALSE is only applicable to webform_custom_composite element.
-        // @see \Drupal\webform\Plugin\WebformElement\WebformComposite
-        if ($element['#multiple'] === FALSE) {
-          $limit = 1;
-        }
-        elseif ($element['#multiple'] > 1 && $element['#multiple'] < 3) {
-          $limit = $element['#multiple'];
-        }
-      }
-
+      $limit = (isset($element['#multiple']) && $element['#multiple'] > 1 && $element['#multiple'] < 3) ? $element['#multiple'] : 3;
       return array_slice($values, 0, $limit);
     }
     else {
@@ -178,6 +148,11 @@ class WebformSubmissionGenerate implements WebformSubmissionGenerateInterface {
     // Get test value from the actual element.
     if (isset($element['#test'])) {
       return $element['#test'];
+    }
+
+    // Never populate hidden and value elements.
+    if (in_array($element['#type'], ['hidden', 'value'])) {
+      return NULL;
     }
 
     // Invoke WebformElement::test and get a test value.

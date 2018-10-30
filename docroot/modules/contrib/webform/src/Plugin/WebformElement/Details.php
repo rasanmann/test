@@ -21,27 +21,10 @@ class Details extends ContainerBase {
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    $properties = [
-      // Description/Help.
+    return parent::getDefaultProperties() + [
       'help' => '',
-      'help_title' => '',
-      'description' => '',
-      'more' => '',
-      'more_title' => '',
-      // Title.
-      'title_display' => '',
-      // Details.
       'open' => FALSE,
-    ] + parent::getDefaultProperties();
-
-    // Issue #2971848: [8.6.x] Details elements allow specifying attributes
-    // for the <summary> element.
-    // @todo Remove the below if/then when only 8.6.x is supported.
-    if (version_compare(\Drupal::VERSION, '8.6', '>=')) {
-      $properties['summary_attributes'] = [];
-    }
-
-    return $properties;
+    ];
   }
 
   /**

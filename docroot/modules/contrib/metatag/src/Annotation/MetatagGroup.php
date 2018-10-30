@@ -4,6 +4,7 @@ namespace Drupal\metatag\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
 
+
 /**
  * Defines a MetatagGroup annotation object.
  *

@@ -4,39 +4,36 @@ namespace Drupal\metatag_views\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Language\Language;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Url;
 use Drupal\metatag\MetatagManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/**
- * Translate Views meta tags.
- */
 class MetatagViewsTranslationController extends ControllerBase {
 
-  /**
-   * The View storage interface.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
-   */
+
+  /** @var EntityStorageInterface  */
   protected $viewStorage;
 
-  /**
-   * The Metatag manager.
-   *
-   * @var \Drupal\metatag\MetatagManagerInterface
-   */
+  /** @var MetatagManagerInterface */
   protected $metatagManager;
 
   /**
    * The language manager.
    *
-   * @var \Drupal\Core\Language\LanguageManagerInterface
+   * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
    */
   protected $languageManager;
 
+
   /**
-   * {@inheritdoc}
+   * MetatagViewsTranslationController constructor.
+   *
+   * @param EntityStorageInterface $viewStorage
+   * @param MetatagManagerInterface $metatagManager
+   * @param LanguageManagerInterface $languageManager
    */
   public function __construct(EntityStorageInterface $viewStorage, MetatagManagerInterface $metatagManager, LanguageManagerInterface $languageManager) {
     $this->viewStorage = $viewStorage;
@@ -71,6 +68,7 @@ class MetatagViewsTranslationController extends ControllerBase {
     $config_name = $view->getConfigDependencyName();
     $config_path = 'display.' . $display_id . '.display_options.display_extenders.metatag_display_extender.metatags';
 
+    $access_manager = \Drupal::service('access_manager');
     $configuration = \Drupal::service('config.factory')->get($config_name);
     $config_source = $configuration->getOriginal($config_path, FALSE);
 
@@ -128,7 +126,7 @@ class MetatagViewsTranslationController extends ControllerBase {
               'langcode' => $langcode,
             ]),
           ];
-          // @todo Operations delete.
+          // @todo: operations delete.
         }
       }
 
@@ -147,5 +145,4 @@ class MetatagViewsTranslationController extends ControllerBase {
 
     return $page;
   }
-
 }

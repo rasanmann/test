@@ -2,7 +2,7 @@
 
 namespace Drupal\metatag_open_graph\Plugin\metatag\Tag;
 
-use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
+use \Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
 
 /**
  * Provides a plugin for the 'og:image:url' meta tag.
@@ -16,8 +16,7 @@ use Drupal\metatag\Plugin\metatag\Tag\MetaPropertyBase;
  *   weight = 10,
  *   type = "image",
  *   secure = FALSE,
- *   multiple = TRUE,
- *   absolute_url = TRUE
+ *   multiple = TRUE
  * )
  */
 class OgImageUrl extends MetaPropertyBase {

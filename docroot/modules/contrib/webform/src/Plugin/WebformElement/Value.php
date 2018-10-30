@@ -2,8 +2,6 @@
 
 namespace Drupal\webform\Plugin\WebformElement;
 
-use Drupal\webform\WebformInterface;
-
 /**
  * Provides a 'value' element.
  *
@@ -40,14 +38,6 @@ class Value extends TextBase {
    */
   public function getElementSelectorOptions(array $element) {
     return [];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getTestValues(array $element, WebformInterface $webform, array $options = []) {
-    // Value elements should never get a test value.
-    return NULL;
   }
 
 }

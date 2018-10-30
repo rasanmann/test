@@ -20,8 +20,6 @@ class WebformUiOptionsForm extends WebformOptionsForm {
       '#mode' => 'yaml',
       '#title' => $this->t('Options'),
       '#title_display' => 'invisible',
-      '#description' => $this->t("Descriptions, which are only applicable to radios and checkboxes, can be delimited using ' -- '."),
-      '#description_display' => 'before',
       '#empty_options' => 10,
       '#add_more' => 10,
       '#default_value' => $this->getOptions(),
@@ -36,7 +34,7 @@ class WebformUiOptionsForm extends WebformOptionsForm {
     // Overriding after \Drupal\Core\Entity\EntityForm::afterBuild because
     // it calls ::buildEntity(), which calls ::copyFormValuesToEntity, which
     // attempts to populate the entity even though the 'options' have not been
-    // validated and set.
+    // validated and set,.
     // @see \Drupal\Core\Entity\EntityForm::afterBuild
     // @eee \Drupal\webform_ui\WebformUiOptionsForm::copyFormValuesToEntity
     // @see \Drupal\webform\Element\WebformOptions

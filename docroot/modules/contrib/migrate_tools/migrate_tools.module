@@ -6,20 +6,18 @@
  */
 
 /**
- * Implements hook_entity_type_alter().
+ * Implements hook_entity_type_build().
  */
-function migrate_tools_entity_type_alter(array &$entity_types) {
-  // Inject our UI into the general migration and migration group config entities.
+function migrate_tools_entity_type_build(array &$entity_types) {
+  // Inject our UI into the general migration and migration group config
+  // entities.
   /** @var \Drupal\Core\Config\Entity\ConfigEntityType[] $entity_types */
   $entity_types['migration']
     ->set('admin_permission', 'administer migrations')
     ->setHandlerClass('list_builder', 'Drupal\migrate_tools\Controller\MigrationListBuilder')
-//    ->setFormClass('add', 'Drupal\migrate_tools\Form\MigrationAddForm')
     ->setFormClass('edit', 'Drupal\migrate_tools\Form\MigrationEditForm')
     ->setFormClass('delete', 'Drupal\migrate_tools\Form\MigrationDeleteForm')
-//    ->setLinkTemplate('edit-form', '/admin/structure/migrate/manage/{migration_group}/migrations/{migration}')
-    ->setLinkTemplate('list-form', '/admin/structure/migrate/manage/{migration_group}/migrations')
-/*    ->setLinkTemplate('delete-form', '/admin/structure/migrate/manage/{migration_group}/migrations/{migration}/delete')*/;
+    ->setLinkTemplate('list-form', '/admin/structure/migrate/manage/{migration_group}/migrations');
 
   $entity_types['migration_group']
     ->set('admin_permission', 'administer migrations')
@@ -28,6 +26,33 @@ function migrate_tools_entity_type_alter(array &$entity_types) {
     ->setFormClass('edit', 'Drupal\migrate_tools\Form\MigrationGroupEditForm')
     ->setFormClass('delete', 'Drupal\migrate_tools\Form\MigrationGroupDeleteForm')
     ->setLinkTemplate('edit-form', '/admin/structure/migrate/manage/{migration_group}')
-/*    ->setLinkTemplate('list-form', '/admin/structure/migrate/manage/{migration_group}/migrations')*/
     ->setLinkTemplate('delete-form', '/admin/structure/migrate/manage/{migration_group}/delete');
+}
+
+/**
+ * Implements hook_migration_plugins_alter().
+ */
+function migrate_tools_migration_plugins_alter(array &$migrations) {
+  /** @var \Drupal\Core\TempStore\PrivateTempStoreFactory $store */
+  $tempStoreFactory = \Drupal::service('tempstore.private');
+  $store = $tempStoreFactory->get('migrate_tools');
+  // TODO: remove work-around after
+  // https://www.drupal.org/project/drupal/issues/2860341 is fixed.
+  if (!\Drupal::request()->hasSession()) {
+    $session = \Drupal::service('session');
+    \Drupal::request()->setSession($session);
+    $session->start();
+  }
+  // Get the list of changed migrations.
+  $migrationsChanged = $store->get('migrations_changed');
+  if (isset($store) && (is_array($migrationsChanged))) {
+    // Alter the source column names for each changed migration.
+    foreach ($migrationsChanged as $id) {
+      $data = $store->get($id);
+      if (isset($data['changed'])) {
+        $migrations[$id]['source']['column_names'] = $data['changed'];
+      }
+    }
+  }
+
 }

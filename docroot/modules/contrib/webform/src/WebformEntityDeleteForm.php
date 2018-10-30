@@ -8,7 +8,7 @@ use Drupal\Core\Url;
 use Drupal\webform\Form\WebformDialogFormTrait;
 
 /**
- * Provides a delete webform form.
+ * Provides a delete webform.
  */
 class WebformEntityDeleteForm extends EntityDeleteForm {
 

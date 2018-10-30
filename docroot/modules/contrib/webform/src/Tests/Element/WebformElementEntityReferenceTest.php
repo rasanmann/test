@@ -3,13 +3,14 @@
 namespace Drupal\webform\Tests\Element;
 
 use Drupal\webform\Entity\Webform;
+use Drupal\webform\Tests\WebformTestBase;
 
 /**
  * Tests for entity reference elements.
  *
  * @group Webform
  */
-class WebformElementEntityReferenceTest extends WebformElementTestBase {
+class WebformElementEntityReferenceTest extends WebformTestBase {
 
   /**
    * Modules to enable.

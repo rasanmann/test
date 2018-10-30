@@ -32,16 +32,6 @@ trait WebformTermReferenceTrait {
       $vocabulary_id = 'tags';
     }
 
-    // Make sure the vocabulary does not have more than 250 terms.
-    // This will prevent a fatal memory error when
-    // previewing term related elements.
-    /** @var \Drupal\taxonomy\TermStorageInterface $taxonomy_storage */
-    $taxonomy_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
-    $tree = $taxonomy_storage->loadTree($vocabulary_id);
-    if (count($tree) > 250) {
-      $vocabulary_id = NULL;
-    }
-
     return parent::preview() + [
       '#vocabulary' => $vocabulary_id,
     ];
@@ -66,7 +56,7 @@ trait WebformTermReferenceTrait {
     ];
     $form['term_reference']['breadcrumb'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Display term hierarchy using breadcrumbs'),
+      '#title' => $this->t('Display term hierarchy using breadcrumbs.'),
       '#return_value' => TRUE,
     ];
     $form['term_reference']['breadcrumb_delimiter'] = [

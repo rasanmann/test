@@ -4,7 +4,6 @@ namespace Drupal\webform\Element;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\FormElement;
-use Drupal\webform\Plugin\WebformElement\TableSelect;
 
 /**
  * Provides a base webform element for webform excluded elements and columns.
@@ -37,12 +36,8 @@ abstract class WebformExcludedBase extends FormElement {
     $options = static::getWebformExcludedOptions($element);
 
     $default_value = array_diff(array_keys($options), array_keys($element['#default_value'] ?: []));
-
     $element['#tree'] = TRUE;
-
-    // Add validate callback.
-    $element += ['#element_validate' => []];
-    array_unshift($element['#element_validate'], [get_called_class(), 'validateWebformExcluded']);
+    $element['#element_validate'] = [[get_called_class(), 'validateWebformExcluded']];
 
     $element['tableselect'] = [
       '#type' => 'tableselect',
@@ -52,8 +47,6 @@ abstract class WebformExcludedBase extends FormElement {
       '#empty' => t('No elements are available.'),
       '#default_value' => array_combine($default_value, $default_value),
     ];
-    TableSelect::setProcessTableSelectCallback($element['tableselect']);
-
     if (isset($element['#parents'])) {
       $element['tableselect']['#parents'] = array_merge($element['#parents'], ['tableselect']);
     }
@@ -83,10 +76,7 @@ abstract class WebformExcludedBase extends FormElement {
 
     // Unset tableselect and set the element's value to excluded.
     $form_state->setValueForElement($element['tableselect'], NULL);
-
-    $value = array_combine($excluded, $excluded);
-    $element['#value'] = $value;
-    $form_state->setValueForElement($element, $value);
+    $form_state->setValueForElement($element, array_combine($excluded, $excluded));
   }
 
   /**
@@ -95,9 +85,7 @@ abstract class WebformExcludedBase extends FormElement {
    * @return array
    *   An array container the header for the excluded tableselect element.
    */
-  public static function getWebformExcludedHeader() {
-    return [];
-  }
+  public static function getWebformExcludedHeader() { }
 
   /**
    * Get options for excluded tableselect element.
@@ -110,8 +98,6 @@ abstract class WebformExcludedBase extends FormElement {
    *   An array of options containing title, name, and type of items for a
    *   tableselect element.
    */
-  public static function getWebformExcludedOptions(array $element) {
-    return [];
-  }
+  public static function getWebformExcludedOptions(array $element) { }
 
 }

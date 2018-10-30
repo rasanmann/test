@@ -2,6 +2,7 @@
 
 namespace Drupal\metatag_verification\Tests;
 
+use Drupal\simpletest\WebTestBase;
 use Drupal\metatag\Tests\MetatagTagsTestBase;
 
 /**
@@ -14,7 +15,7 @@ class MetatagVerificationTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  private $tags = [
+  public $tags = [
     'baidu',
     'bing',
     'google',
@@ -34,7 +35,7 @@ class MetatagVerificationTagsTest extends MetatagTagsTestBase {
   /**
    * Each of these meta tags has a different tag name vs its internal name.
    */
-  private function getTestTagName($tag_name) {
+  public function getTestTagName($tag_name) {
     if ($tag_name == 'baidu') {
       $tag_name = 'baidu-site-verification';
     }

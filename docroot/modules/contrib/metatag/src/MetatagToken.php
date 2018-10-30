@@ -1,9 +1,7 @@
 <?php
 
 namespace Drupal\metatag;
-
 use Drupal\Core\Utility\Token;
-use Drupal\Core\Render\BubbleableMetadata;
 
 /**
  * Token handling service. Uses core token service or contributed Token.
@@ -30,30 +28,23 @@ class MetatagToken {
   /**
    * Wrapper for the Token module's string parsing.
    *
-   * @param string $string
-   *   The string to parse.
-   * @param array $data
-   *   Arguments for token->replace().
+   * @param $string
+   * @param $data
    * @param array $options
-   *   Any additional options necessary.
-   * @param \Drupal\Core\Render\BubbleableMetadata|null $bubbleable_metadata
-   *   (optional) An object to which static::generate() and the hooks and
-   *   functions that it invokes will add their required bubbleable metadata.
    *
-   * @return mixed|string
-   *   The processed string.
+   * @return mixed|string $string
    */
-  public function replace($string, array $data = [], array $options = [], BubbleableMetadata $bubbleable_metadata = NULL) {
+  public function replace($string, array $data = [], $options = []) {
     // Set default requirements for metatag unless options specify otherwise.
     $options = $options + [
-      'clear' => TRUE,
+      'clear' => TRUE
     ];
 
-    $replaced = $this->token->replace($string, $data, $options, $bubbleable_metadata);
+    $replaced = $this->token->replace($string, $data, $options);
 
     // Ensure that there are no double-slash sequences due to empty token
     // values.
-    $replaced = preg_replace('/(?<!:)(?<!)\/+\//', '/', $replaced);
+    $replaced = preg_replace('/(?<!:)\/+\//', '/', $replaced);
 
     return $replaced;
   }
@@ -77,8 +68,8 @@ class MetatagToken {
 
     // Normalize taxonomy tokens.
     if (!empty($token_types)) {
-      $token_types = array_map(function ($value) {
-        return stripos($value, 'taxonomy_') === 0 ? substr($value, strlen('taxonomy_')) : $value;
+      $token_types = array_map(function($value) {
+        return stripos($value, 'taxonomy_') === 0 ? substr($value, strlen('taoxnomy_')) : $value;
       }, (array) $token_types);
     }
 

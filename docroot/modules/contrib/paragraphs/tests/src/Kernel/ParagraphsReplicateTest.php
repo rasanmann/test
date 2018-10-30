@@ -33,7 +33,6 @@ class ParagraphsReplicateTest extends KernelTestBase {
     'system',
     'field',
     'entity_reference_revisions',
-    'file',
   ];
 
   /**

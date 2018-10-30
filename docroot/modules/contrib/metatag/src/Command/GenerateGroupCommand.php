@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Contains Drupal\metatag\Command\GenerateGroupCommand.
+ */
 
 namespace Drupal\metatag\Command;
 
@@ -30,35 +34,24 @@ class GenerateGroupCommand extends Command {
   use ConfirmationTrait;
 
   /**
-   * The metatag group generator.
-   *
-   * @var \Drupal\metatag\Generator\MetatagGroupGenerator
+   * @var MetatagGroupGenerator
    */
   protected $generator;
 
-  /**
-   * The console extension manager.
-   *
-   * @var \Drupal\Console\Extension\Manager
-   */
+  /** @var Manager  */
   protected $extensionManager;
 
   /**
-   * The console chain queue.
-   *
-   * @var \Drupal\Console\Core\Utils\ChainQueue
+   * @var ChainQueue
    */
   protected $chainQueue;
 
   /**
-   * The GenerateTagCommand constructor.
+   * GenerateTagCommand constructor.
    *
-   * @param \Drupal\metatag\Generator\MetatagGroupGenerator $generator
-   *   The generator object.
-   * @param \Drupal\Console\Extension\Manager $extensionManager
-   *   The extension manager object.
-   * @param \Drupal\Console\Core\Utils\ChainQueue $chainQueue
-   *   The chain queue object.
+   * @param MetatagTagGenerator $generator
+   * @param Manager $extensionManager
+   * @param ChainQueue $chainQueue
    */
   public function __construct(
       MetatagGroupGenerator $generator,
@@ -102,7 +95,7 @@ class GenerateGroupCommand extends Command {
   protected function execute(InputInterface $input, OutputInterface $output) {
     $io = new DrupalStyle($input, $output);
 
-    // @see Drupal\Console\Command\ConfirmationTrait::confirmGeneration
+    // @see use Drupal\Console\Command\ConfirmationTrait::confirmGeneration
     if (!$this->confirmGeneration($io)) {
       return 1;
     }
@@ -183,7 +176,8 @@ class GenerateGroupCommand extends Command {
     $input->setOption('class-name', $class_name);
 
     // --weight option.
-    // @todo Automatically get the next int value based upon the current group.
+    // @todo Automatically get the next integer value based upon the current
+    //   group.
     $weight = $input->getOption('weight');
     if (is_null($weight)) {
       $weight = $io->ask(

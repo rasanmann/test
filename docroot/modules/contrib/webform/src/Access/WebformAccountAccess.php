@@ -20,8 +20,7 @@ class WebformAccountAccess {
    *   The access result.
    */
   public static function checkAdminAccess(AccountInterface $account) {
-    $condition = $account->hasPermission('administer webform') || $account->hasPermission('administer webform submission');
-    return AccessResult::allowedIf($condition)->cachePerPermissions();
+    return AccessResult::allowedIf($account->hasPermission('administer webform') || $account->hasPermission('administer webform submission'));
   }
 
   /**
@@ -34,22 +33,7 @@ class WebformAccountAccess {
    *   The access result.
    */
   public static function checkOverviewAccess(AccountInterface $account) {
-    $condition = $account->hasPermission('administer webform') || $account->hasPermission('administer webform submission') || $account->hasPermission('access webform overview');
-    return AccessResult::allowedIf($condition)->cachePerPermissions();
-  }
-
-  /**
-   * Check whether the user has 'overview' with 'create' permission.
-   *
-   * @param \Drupal\Core\Session\AccountInterface $account
-   *   Run access checks for this account.
-   *
-   * @return \Drupal\Core\Access\AccessResultInterface
-   *   The access result.
-   */
-  public static function checkTemplatesAccess(AccountInterface $account) {
-    $condition = $account->hasPermission('access webform overview') && $account->hasPermission('create webform');
-    return AccessResult::allowedIf($condition)->cachePerPermissions();
+    return AccessResult::allowedIf($account->hasPermission('administer webform') || $account->hasPermission('administer webform submission') || $account->hasPermission('access webform overview'));
   }
 
   /**
@@ -62,23 +46,7 @@ class WebformAccountAccess {
    *   The access result.
    */
   public static function checkSubmissionAccess(AccountInterface $account) {
-    $condition = $account->hasPermission('administer webform') || $account->hasPermission('administer webform submission') || $account->hasPermission('view any webform submission');
-    return AccessResult::allowedIf($condition)->cachePerPermissions();
+    return AccessResult::allowedIf($account->hasPermission('administer webform') || $account->hasPermission('administer webform submission') || $account->hasPermission('view any webform submission'));
   }
-
-  /**
-   * Check whether the user can view own submissions.
-   *
-   * @param \Drupal\Core\Session\AccountInterface $account
-   *   Run access checks for this account.
-   *
-   * @return \Drupal\Core\Access\AccessResultInterface
-   *   The access result.
-   */
-  public static function checkUserSubmissionsAccess(AccountInterface $account) {
-    $condition = ($account->hasPermission('administer webform') || $account->hasPermission('administer webform submission') || $account->hasPermission('view any webform submission'))
-      || ($account->hasPermission('access webform submission user') && \Drupal::currentUser()->id() === $account->id());
-    return AccessResult::allowedIf($condition)->cachePerPermissions();
-  }
-
 }
+

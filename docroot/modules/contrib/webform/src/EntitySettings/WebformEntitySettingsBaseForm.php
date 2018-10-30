@@ -4,7 +4,7 @@ namespace Drupal\webform\EntitySettings;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\webform\Utility\WebformElementHelper;
+use Drupal\Core\Render\Element;
 
 /**
  * Base webform entity settings form.
@@ -15,8 +15,7 @@ abstract class WebformEntitySettingsBaseForm extends EntityForm {
    * {@inheritdoc}
    */
   public function form(array $form, FormStateInterface $form_state) {
-    $default_settings = $form_state->get('default_settings') ?: $this->config('webform.settings')->get('settings');
-
+    $default_settings = $this->config('webform.settings')->get('settings');
     $this->appendDefaultValueToElementDescriptions($form, $default_settings);
 
     return parent::form($form, $form_state);
@@ -49,7 +48,7 @@ abstract class WebformEntitySettingsBaseForm extends EntityForm {
     ];
     $this->logger('webform')->notice('Webform settings @label has been saved.', $context);
 
-    $this->messenger()->addStatus($this->t('Webform settings %label has been saved.', ['%label' => $webform->label()]));
+    drupal_set_message($this->t('Webform settings %label has been saved.', ['%label' => $webform->label()]));
   }
 
   /**
@@ -62,7 +61,8 @@ abstract class WebformEntitySettingsBaseForm extends EntityForm {
    */
   protected function appendDefaultValueToElementDescriptions(array &$form, array $default_settings) {
     foreach ($form as $key => &$element) {
-      if (!WebformElementHelper::isElement($element, $key)) {
+      // Skip if not a FAPI element.
+      if (Element::property($key) || !is_array($element)) {
         continue;
       }
 
@@ -70,12 +70,10 @@ abstract class WebformEntitySettingsBaseForm extends EntityForm {
         if (!isset($element['#description'])) {
           $element['#description'] = '';
         }
+        $element['#description'] .= ($element['#description'] ? '<br /><br />' : '');
+        // @todo: Stop quotes from being encoded. (ie "Submit" => &quot;Submit&quote;)
         $value = $default_settings["default_$key"];
-        if (!is_array($value)) {
-          $element['#description'] .= ($element['#description'] ? '<br /><br />' : '');
-          // @todo: Stop quotes from being encoded. (i.e. "Submit" => &quot;Submit&quote;)
-          $element['#description'] .= $this->t('Defaults to: %value', ['%value' => $value]);
-        }
+        $element['#description'] .= $this->t('Defaults to: %value', ['%value' => $value]);
       }
 
       $this->appendDefaultValueToElementDescriptions($element, $default_settings);
@@ -97,20 +95,6 @@ abstract class WebformEntitySettingsBaseForm extends EntityForm {
   protected function appendBehaviors(array &$element, array $behavior_elements, array $settings, array $default_settings) {
     $weight = 0;
     foreach ($behavior_elements as $behavior_key => $behavior_element) {
-      // Add group.
-      if (isset($behavior_element['group'])) {
-        $group = (string) $behavior_element['group'];
-        if (!isset($element[$group])) {
-          $element[$group] = [
-            '#markup' => $group,
-            '#prefix' => '<div><strong>',
-            '#suffix' => '</strong></div>',
-            '#weight' => $weight,
-          ];
-          $weight += 10;
-        }
-      }
-      // Add behavior checkbox.
       if (!empty($default_settings['default_' . $behavior_key])) {
         $element[$behavior_key . '_disabled'] = [
           '#type' => 'checkbox',
@@ -124,9 +108,6 @@ abstract class WebformEntitySettingsBaseForm extends EntityForm {
           '#type' => 'value',
           '#value' => $settings[$behavior_key],
         ];
-        if (isset($behavior_element['access'])) {
-          $element[$behavior_key . '_disabled']['#access'] = $behavior_element['access'];
-        }
       }
       else {
         $element[$behavior_key] = [
@@ -137,9 +118,6 @@ abstract class WebformEntitySettingsBaseForm extends EntityForm {
           '#default_value' => $settings[$behavior_key],
           '#weight' => $weight,
         ];
-        if (isset($behavior_element['access'])) {
-          $element[$behavior_key]['#access'] = $behavior_element['access'];
-        }
       }
       $weight += 10;
     }

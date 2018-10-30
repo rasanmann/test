@@ -30,11 +30,11 @@ class WebformBlockTest extends WebformTestBase {
    */
   public function testBlock() {
     // Place block.
-    $block = $this->drupalPlaceBlock('webform_block', [
-      'webform_id' => 'contact',
-    ]);
+    $block = $this->drupalPlaceBlock('webform_block');
 
     // Check contact webform.
+    $block->getPlugin()->setConfigurationValue('webform_id', 'contact');
+    $block->save();
     $this->drupalGet('<front>');
     $this->assertRaw('webform-submission-contact-add-form');
 
@@ -51,20 +51,11 @@ class WebformBlockTest extends WebformTestBase {
     $this->drupalPostForm('<front>', [], t('Submit'));
     $this->assertRaw('This is a custom inline confirmation message.');
 
-    // Check confirmation message webform displayed on front page.
+    // Check confirmation message webform.
     $block->getPlugin()->setConfigurationValue('webform_id', 'test_confirmation_message');
     $block->save();
     $this->drupalPostForm('<front>', [], t('Submit'));
     $this->assertRaw('This is a <b>custom</b> confirmation message.');
-    $this->assertUrl('/user/login');
-
-    // Check confirmation message webform display on webform URL
-    $block->getPlugin()->setConfigurationValue('redirect', TRUE);
-    $block->save();
-    $this->drupalPostForm('<front>', [], t('Submit'));
-    $this->assertRaw('This is a <b>custom</b> confirmation message.');
-    $this->assertUrl('webform/test_confirmation_message');
-
   }
 
 }

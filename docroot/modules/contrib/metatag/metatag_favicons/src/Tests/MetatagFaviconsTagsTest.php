@@ -2,6 +2,7 @@
 
 namespace Drupal\metatag_favicons\Tests;
 
+use Drupal\simpletest\WebTestBase;
 use Drupal\metatag\Tests\MetatagTagsTestBase;
 
 /**
@@ -14,9 +15,9 @@ class MetatagFaviconsTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  private $tags = [
+  public $tags = [
     'shortcut_icon',
-    // 'mask_icon'.
+    //'mask_icon',
     'icon_16x16',
     'icon_32x32',
     'icon_96x96',
@@ -42,17 +43,17 @@ class MetatagFaviconsTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  private $testTag = 'link';
+  public $test_tag = 'link';
 
   /**
    * {@inheritdoc}
    */
-  private $testNameAttribute = 'rel';
+  public $test_name_attribute = 'rel';
 
   /**
    * {@inheritdoc}
    */
-  private $testValueAttribute = 'href';
+  public $test_value_attribute = 'href';
 
   /**
    * {@inheritdoc}
@@ -63,177 +64,179 @@ class MetatagFaviconsTagsTest extends MetatagTagsTestBase {
   }
 
   /**
-   * Implements {tag_name}TestValueAttribute() for 'shortcut icon'.
+   * Implements {meta_tag_name}_test_value_attribute() for
+   * 'shortcut icon'.
    */
-  private function shortcutIconTestValueAttribute() {
+  public function shortcut_icon_test_value_attribute() {
     return 'href';
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'icon_16x16'.
+   * Implements {meta_tag_name}_test_output_xpath() for 'icon_16x16',
    */
-  private function icon16x16TestOutputXpath() {
+  public function icon_16x16_test_output_xpath() {
     return "//link[@rel='icon' and @sizes='16x16']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'icon_192x192'.
+   * Implements {meta_tag_name}_test_output_xpath() for 'icon_192x192',
    */
-  private function icon192x192TestOutputXpath() {
+  public function icon_192x192_test_output_xpath() {
     return "//link[@rel='icon' and @sizes='192x192']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'icon_32x32'.
+   * Implements {meta_tag_name}_test_output_xpath() for 'icon_32x32',
    */
-  private function icon32x32TestOutputXpath() {
+  public function icon_32x32_test_output_xpath() {
     return "//link[@rel='icon' and @sizes='32x32']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'icon_96x96'.
+   * Implements {meta_tag_name}_test_output_xpath() for 'icon_96x96',
    */
-  private function icon96x96TestOutputXpath() {
+  public function icon_96x96_test_output_xpath() {
     return "//link[@rel='icon' and @sizes='96x96']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon_precomposed'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_precomposed',
    */
-  private function appleTouchIconPrecomposedTestOutputXpath() {
+  public function apple_touch_icon_precomposed_test_output_xpath() {
     return "//link[@rel='apple-touch-icon-precomposed' and not(@sizes)]";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath().
-   *
-   * For 'apple_touch_icon_precomposed_114x114'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_precomposed_114x114',
    */
-  private function appleTouchIconPrecomposed114x114TestOutputXpath() {
+  public function apple_touch_icon_precomposed_114x114_test_output_xpath() {
     return "//link[@rel='apple-touch-icon-precomposed' and @sizes='114x114']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath().
-   *
-   * For 'apple_touch_icon_precomposed_120x120'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_precomposed_120x120',
    */
-  private function appleTouchIconPrecomposed120x120TestOutputXpath() {
+  public function apple_touch_icon_precomposed_120x120_test_output_xpath() {
     return "//link[@rel='apple-touch-icon-precomposed' and @sizes='120x120']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath().
-   *
-   * For 'apple_touch_icon_precomposed_144x144'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_precomposed_144x144',
    */
-  private function appleTouchIconPrecomposed144x144TestOutputXpath() {
+  public function apple_touch_icon_precomposed_144x144_test_output_xpath() {
     return "//link[@rel='apple-touch-icon-precomposed' and @sizes='144x144']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath().
-   *
-   * For 'apple_touch_icon_precomposed_152x152'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_precomposed_152x152',
    */
-  private function appleTouchIconPrecomposed152x152TestOutputXpath() {
+  public function apple_touch_icon_precomposed_152x152_test_output_xpath() {
     return "//link[@rel='apple-touch-icon-precomposed' and @sizes='152x152']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath().
-   *
-   * For 'apple_touch_icon_precomposed_180x180'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_precomposed_180x180',
    */
-  private function appleTouchIconPrecomposed180x180TestOutputXpath() {
+  public function apple_touch_icon_precomposed_180x180_test_output_xpath() {
     return "//link[@rel='apple-touch-icon-precomposed' and @sizes='180x180']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath().
-   *
-   * For 'apple_touch_icon_precomposed_72x72'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_precomposed_72x72',
    */
-  private function appleTouchIconPrecomposed72x72TestOutputXpath() {
+  public function apple_touch_icon_precomposed_72x72_test_output_xpath() {
     return "//link[@rel='apple-touch-icon-precomposed' and @sizes='72x72']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath().
-   *
-   * For 'apple_touch_icon_precomposed_76x76'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_precomposed_76x76',
    */
-  private function appleTouchIconPrecomposed76x76TestOutputXpath() {
+  public function apple_touch_icon_precomposed_76x76_test_output_xpath() {
     return "//link[@rel='apple-touch-icon-precomposed' and @sizes='76x76']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon'.
+   * Implements {meta_tag_name}_test_output_xpath() for 'apple_touch_icon',
    */
-  private function appleTouchIconTestOutputXpath() {
+  public function apple_touch_icon_test_output_xpath() {
     return "//link[@rel='apple-touch-icon' and not(@sizes)]";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon_114x114'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_114x114',
    */
-  private function appleTouchIcon114x114TestOutputXpath() {
+  public function apple_touch_icon_114x114_test_output_xpath() {
     return "//link[@rel='apple-touch-icon' and @sizes='114x114']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon_120x120'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_120x120',
    */
-  private function appleTouchIcon120x120TestOutputXpath() {
+  public function apple_touch_icon_120x120_test_output_xpath() {
     return "//link[@rel='apple-touch-icon' and @sizes='120x120']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon_144x144'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_144x144',
    */
-  private function appleTouchIcon144x144TestOutputXpath() {
+  public function apple_touch_icon_144x144_test_output_xpath() {
     return "//link[@rel='apple-touch-icon' and @sizes='144x144']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon_152x152'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_152x152',
    */
-  private function appleTouchIcon152x152TestOutputXpath() {
+  public function apple_touch_icon_152x152_test_output_xpath() {
     return "//link[@rel='apple-touch-icon' and @sizes='152x152']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon_180x180'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_180x180',
    */
-  private function appleTouchIcon180x180TestOutputXpath() {
+  public function apple_touch_icon_180x180_test_output_xpath() {
     return "//link[@rel='apple-touch-icon' and @sizes='180x180']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon_72x72'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_72x72',
    */
-  private function appleTouchIcon72x72TestOutputXpath() {
+  public function apple_touch_icon_72x72_test_output_xpath() {
     return "//link[@rel='apple-touch-icon' and @sizes='72x72']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath() for 'apple_touch_icon_76x76'.
+   * Implements {meta_tag_name}_test_output_xpath() for
+   * 'apple_touch_icon_76x76',
    */
-  private function appleTouchIcon76x76TestOutputXpath() {
+  public function apple_touch_icon_76x76_test_output_xpath() {
     return "//link[@rel='apple-touch-icon' and @sizes='76x76']";
   }
 
   /**
-   * Implements {tag_name}TestOutputXpath for 'mask-icon'.
+   * Implements {meta_tag_name}_test_output_xpath for 'mask-icon'.
    */
-  private function maskIconTestTagName() {
+  public function mask_icon_test_tag_name() {
     return 'mask-icon';
   }
 
   /**
-   * Implements {tag_name}TestTagName for 'shortcut icon'.
+   * Implements {meta_tag_name}_test_tag_name for 'shortcut icon'.
    */
-  private function shortcutIconTestTagName() {
+  public function shortcut_icon_test_tag_name() {
     return 'shortcut icon';
   }
 

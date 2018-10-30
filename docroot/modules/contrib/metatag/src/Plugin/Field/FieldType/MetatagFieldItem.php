@@ -50,7 +50,7 @@ class MetatagFieldItem extends FieldItemBase {
    */
   public function isEmpty() {
     $value = $this->get('value')->getValue();
-    return $value === NULL || $value === '' || $value === serialize([]);
+    return $value === NULL || $value === '';
   }
 
   /**
@@ -64,16 +64,10 @@ class MetatagFieldItem extends FieldItemBase {
 
     // Get the value about to be saved.
     $current_value = $this->value;
-    // Only unserialize if still serialized string.
-    if (is_string($current_value)) {
-      $current_tags = unserialize($current_value);
-    }
-    else {
-      $current_tags = $current_value;
-    }
+    $current_tags = unserialize($current_value);
 
     // Only include values that differ from the default.
-    // @todo When site defaults are added, account for those.
+    // @TODO: When site defaults are added, account for those.
     $tags_to_save = [];
     foreach ($current_tags as $tag_id => $tag_value) {
       if (!isset($default_tags[$tag_id]) || ($tag_value != $default_tags[$tag_id])) {

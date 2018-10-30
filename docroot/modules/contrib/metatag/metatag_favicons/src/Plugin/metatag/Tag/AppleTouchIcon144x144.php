@@ -2,6 +2,8 @@
 
 namespace Drupal\metatag_favicons\Plugin\metatag\Tag;
 
+use \Drupal\metatag_favicons\Plugin\metatag\Tag\LinkSizesBase;
+
 /**
  * The Favicons "apple-touch-icon_144x144" meta tag.
  *
@@ -18,12 +20,8 @@ namespace Drupal\metatag_favicons\Plugin\metatag\Tag;
  * )
  */
 class AppleTouchIcon144x144 extends LinkSizesBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function sizes() {
+  function sizes() {
     return '144x144';
   }
-
 }
+

@@ -17,13 +17,9 @@
  * Update progress text to show completed and active.
  */
 .webform-progress-tracker .progress-step .progress-text {
-  color: #656565;
+  color: #b6b6b6;
   padding-top: 5px;
   padding-bottom: 0;
-}
-
-.webform-progress-tracker .progress-step::after {
-  background-color: #656565;
 }
 
 .webform-progress-tracker .progress-step.is-active .progress-text {
@@ -41,9 +37,8 @@
 /**
  * Disable hover state because webform wizard progress markers are not clickable.
  */
-.webform-progress-tracker .progress-step:not(.is-active) .progress-marker,
 .webform-progress-tracker .progress-step:hover .progress-marker {
-  background-color: #656565;
+  background-color: #b6b6b6;
 }
 
 .webform-progress-tracker .progress-step.is-complete:hover .progress-marker {
@@ -70,40 +65,4 @@
   .webform-progress-tracker .progress-text {
     display: none;
   }
-}
-
-/**
- * RTL support.
- *
- * @see https://github.com/NigelOToole/progress-tracker/issues/5
- */
-
-[dir="rtl"] .progress-step:not(:last-child)::after {
-  display: none;
-}
-
-[dir="rtl"] .progress-step:not(:first-child)::after {
-  content: '';
-  display: block;
-  position: absolute;
-  z-index: -10;
-  top: 12px;
-  bottom: 12px;
-  right: -14px;
-  width: 100%;
-  height: 4px;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-}
-
-[dir="rtl"] .progress-tracker--center .progress-step::after {
-  right: -50%;
-}
-
-[dir="rtl"] .webform-progress-tracker .progress-step {
-  z-index: inherit;
-}
-
-[dir="rtl"] .progress-step:not(:first-child)::after {
-  z-index: 0;
 }

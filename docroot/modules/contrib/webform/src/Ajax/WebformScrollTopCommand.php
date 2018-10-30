@@ -19,23 +19,13 @@ class WebformScrollTopCommand implements CommandInterface {
   protected $selector;
 
   /**
-   * Scroll to target.
-   *
-   * @var string
-   */
-  protected $target;
-
-  /**
    * Constructs a \Drupal\webform\Ajax\ScrollTopCommand object.
    *
    * @param string $selector
    *   A CSS selector.
-   * @param string $target
-   *   Scroll to target which can be 'form' or 'page'. Defaults to 'form'.
    */
-  public function __construct($selector, $target = 'form') {
+  public function __construct($selector) {
     $this->selector = $selector;
-    $this->target = $target;
   }
 
   /**
@@ -45,7 +35,6 @@ class WebformScrollTopCommand implements CommandInterface {
     return [
       'command' => 'webformScrollTop',
       'selector' => $this->selector,
-      'target' => $this->target,
     ];
   }
 

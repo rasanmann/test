@@ -5,13 +5,6 @@ Extensions to base API
 ======================
 * A Migration configuration entity is provided, enabling persistance of dynamic
   migration configuration.
-* A ConfigEntityDiscovery class is implemented which enables plugin
-  configuration to be based on configuration entities. This is fully general -
-  it can be used for any configuration entity type, not just migrations.
-* A MigrationConfigEntityPluginManager class and corresponding
-  plugin.manager.config_entity_migration service is provided, to enable
-  discovery and instantiation of migration plugins based on the Migration
-  configuration entity.
 * A MigrationGroup configuration entity is provided, which enables migrations to
   be organized in groups, and to maintain shared configuration in one place.
 * A MigrateEvents::PREPARE_ROW event is provided to dispatch hook_prepare_row()
@@ -39,9 +32,6 @@ Process
   which already exist in Drupal, whether they were migrated or not.
 * The entity_generate process plugin extends entity_lookup to also create the
   desired entity when it doesn't already exist.
-* The file_copy process plugin allows you to copy a file into Drupal within a
-  process plugin (this is a core plugin in Drupal 8.2.x, and thus removed in
-  migrate_plus 8.x-3.x).
 * The file_blob process plugin supports creating file entities from blob data.
 * The merge process plugin allows the merging of multiple arrays into a single
   field.
@@ -76,7 +66,7 @@ Authentication
 --------------
 * The basic authentication plugin provides HTTP Basic authentication.
 * The digest authentication plugin provides HTTP Digest authentication.
-* The oauth2 authencitation plugin provides OAuth2 authentication over HTTP.
+* The oauth2 authentication plugin provides OAuth2 authentication over HTTP.
 
 Examples
 ========

@@ -7,7 +7,6 @@ dependencies:
 id: ethnicity
 label: Ethnicity
 category: Demographic
-likert: false
 options: |
   Caucasian: Caucasian
   'Latino/Hispanic': 'Latino/Hispanic'

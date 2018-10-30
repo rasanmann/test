@@ -16,8 +16,7 @@ use Drupal\metatag\Plugin\metatag\Tag\MetaNameBase;
  *   weight = 7,
  *   type = "image",
  *   secure = FALSE,
- *   multiple = FALSE,
- *   absolute_url = TRUE
+ *   multiple = FALSE
  * )
  */
 class TwitterCardsImage extends MetaNameBase {

@@ -2,6 +2,7 @@
 
 namespace Drupal\migrate_plus\Plugin\migrate\process;
 
+use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -51,34 +52,74 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginInterface {
 
-  /** @var \Drupal\Core\Entity\EntityManagerInterface */
+  /**
+   * The entity manager.
+   *
+   * @var \Drupal\Core\Entity\EntityManagerInterface
+   */
   protected $entityManager;
 
-  /** @var \Drupal\migrate\Plugin\MigrationInterface */
+  /**
+   * The migration.
+   *
+   * @var \Drupal\migrate\Plugin\MigrationInterface
+   */
   protected $migration;
 
-  /** @var \Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface */
+  /**
+   * The selection plugin.
+   *
+   * @var \Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface
+   */
   protected $selectionPluginManager;
 
-  /** @var string */
+  /**
+   * The destination type.
+   *
+   * @var string
+   */
   protected $destinationEntityType;
 
-  /** @var string|bool */
+  /**
+   * The destination bundle.
+   *
+   * @var string|bool
+   */
   protected $destinationBundleKey;
 
-  /** @var string */
+  /**
+   * The lookup value's key.
+   *
+   * @var string
+   */
   protected $lookupValueKey;
 
-  /** @var string */
+  /**
+   * The lookup bundle's key.
+   *
+   * @var string
+   */
   protected $lookupBundleKey;
 
-  /** @var string */
+  /**
+   * The lookup bundle.
+   *
+   * @var string
+   */
   protected $lookupBundle;
 
-  /** @var string */
+  /**
+   * The lookup entity type.
+   *
+   * @var string
+   */
   protected $lookupEntityType;
 
-  /** @var string */
+  /**
+   * The destination property or field.
+   *
+   * @var string
+   */
   protected $destinationProperty;
 
   /**
@@ -112,6 +153,11 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrateExecutable, Row $row, $destinationProperty) {
+    // If the source data is an empty array, return the same.
+    if (gettype($value) === 'array' && count($value) === 0) {
+      return [];
+    }
+
     // In case of subfields ('field_reference/target_id'), extract the field
     // name only.
     $parts = explode('/', $destinationProperty);
@@ -145,7 +191,7 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
     }
 
     if (empty($this->lookupValueKey) || empty($this->lookupBundleKey) || empty($this->lookupBundle) || empty($this->lookupEntityType)) {
-      // See if we can introspect the lookup properties from the destination field.
+      // See if we can introspect the lookup properties from destination field.
       if (!empty($this->migration->getProcess()[$this->destinationBundleKey][0]['default_value'])) {
         $destinationEntityBundle = $this->migration->getProcess()[$this->destinationBundleKey][0]['default_value'];
         $fieldConfig = $this->entityManager->getFieldDefinitions($this->destinationEntityType, $destinationEntityBundle)[$destinationProperty]->getConfig($destinationEntityBundle);
@@ -163,8 +209,8 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
               }
             }
 
-            // Make an assumption that if the selection handler can target more than
-            // one type of entity that we will use the first entity type.
+            // Make an assumption that if the selection handler can target more
+            // than one type of entity that we will use the first entity type.
             $this->lookupEntityType = $this->lookupEntityType ?: reset($this->selectionPluginManager->createInstance($fieldConfig->getSetting('handler'))->getPluginDefinition()['entity_types']);
             $this->lookupValueKey = $this->lookupValueKey ?: $this->entityManager->getDefinition($this->lookupEntityType)->getKey('label');
             $this->lookupBundleKey = $this->lookupBundleKey ?: $this->entityManager->getDefinition($this->lookupEntityType)->getKey('bundle');
@@ -178,7 +224,7 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
 
           default:
             throw new MigrateException('Destination field type ' .
-              $fieldConfig->getType(). 'is not a recognized reference type.');
+              $fieldConfig->getType() . 'is not a recognized reference type.');
         }
       }
     }
@@ -198,8 +244,8 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
   /**
    * Checks for the existence of some value.
    *
-   * @param $value
-   * The value to query.
+   * @param mixed $value
+   *   The value to query.
    *
    * @return mixed|null
    *   Entity id if the queried entity exists. Otherwise NULL.
@@ -230,7 +276,8 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
     if (!$ignoreCase) {
       // Returns the entity's identifier.
       foreach ($results as $k => $identifier) {
-        $result_value = $this->entityManager->getStorage($this->lookupEntityType)->load($identifier)->{$this->lookupValueKey}->value;
+        $entity = $this->entityManager->getStorage($this->lookupEntityType)->load($identifier);
+        $result_value = $entity instanceof ConfigEntityInterface ? $entity->get($this->lookupValueKey) : $entity->get($this->lookupValueKey)->value;
         if (($multiple && !in_array($result_value, $value, TRUE)) || (!$multiple && $result_value !== $value)) {
           unset($results[$k]);
         }

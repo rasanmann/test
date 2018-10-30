@@ -5,6 +5,6 @@
 	"license": "GPL-2.0+",
 	"require": {
 		"eo/passbook": "dev-master",
-		"endroid/qrcode": "1.5.*"
+		"endroid/qr-code": "1.5.*"
 	}
 }

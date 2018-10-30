@@ -2,6 +2,7 @@
 
 namespace Drupal\webform\Form;
 
+use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\Ajax\WebformHtmlCommand;
@@ -38,13 +39,11 @@ trait WebformEntityAjaxFormTrait {
    *
    * @param array $form
    *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The current state of the form.
    *
    * @return \Drupal\Core\Ajax\AjaxResponse
    *   An Ajax response that replaces a form.
    */
-  protected function replaceForm(array $form, FormStateInterface $form_state) {
+  protected function replaceForm(array $form) {
     // Display messages first by prefixing it the form and setting its weight
     // to -1000.
     $form = [
@@ -57,7 +56,7 @@ trait WebformEntityAjaxFormTrait {
     // Remove wrapper.
     unset($form['#prefix'], $form['#suffix']);
 
-    $response = $this->createAjaxResponse($form, $form_state);
+    $response = new AjaxResponse();
     $response->addCommand(new WebformHtmlCommand('#' . $this->getWrapperId(), $form));
     return $response;
   }
@@ -123,7 +122,7 @@ trait WebformEntityAjaxFormTrait {
     $form = $form_builder->buildForm($form_object, $form_state);
 
     // Return replace form as response.
-    return $this->replaceForm($form, $form_state);
+    return $this->replaceForm($form);
   }
 
   /**

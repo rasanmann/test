@@ -2,6 +2,7 @@
 
 namespace Drupal\metatag_google_plus\Tests;
 
+use Drupal\simpletest\WebTestBase;
 use Drupal\metatag\Tests\MetatagTagsTestBase;
 
 /**
@@ -14,7 +15,7 @@ class MetatagGooglePlusTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  private $tags = [
+  public $tags = [
     'google_plus_author',
     'google_plus_description',
     'google_plus_image',
@@ -23,9 +24,9 @@ class MetatagGooglePlusTagsTest extends MetatagTagsTestBase {
   ];
 
   /**
-   * {@inheritdoc}
+   * The attribute to look for to indicate which tag.
    */
-  private $testNameAttribute = 'itemprop';
+  public $test_name_attribute = 'itemprop';
 
   /**
    * {@inheritdoc}
@@ -38,7 +39,7 @@ class MetatagGooglePlusTagsTest extends MetatagTagsTestBase {
   /**
    * Each of these meta tags has a different tag name vs its internal name.
    */
-  private function getTestTagName($tag_name) {
+  public function getTestTagName($tag_name) {
     $tag_name = str_replace('google_plus_', 'itemprop:', $tag_name);
     if ($tag_name == 'itemprop:publisher') {
       $tag_name = 'publisher';
@@ -47,30 +48,30 @@ class MetatagGooglePlusTagsTest extends MetatagTagsTestBase {
   }
 
   /**
-   * Implements {tag_name}TestNameAttribute() for 'author'.
+   * Implements {meta_tag_name}_test_name_attribute() for 'author'.
    */
-  private function googlePlusAuthorTestOutputXpath() {
+  public function google_plus_author_test_output_xpath() {
     return "//link[@rel='author']";
   }
 
   /**
-   * Implements {tag_name}TestValueAttribute() for 'author'.
+   * Implements {meta_tag_name}_test_value_attribute() for 'author'.
    */
-  private function googlePlusAuthorTestValueAttribute() {
+  public function google_plus_author_test_value_attribute() {
     return 'href';
   }
 
   /**
-   * Implements {tag_name}TestNameAttribute() for 'publisher'.
+   * Implements {meta_tag_name}_test_name_attribute() for 'publisher'.
    */
-  private function googlePlusPublisherTestOutputXpath() {
+  public function google_plus_publisher_test_output_xpath() {
     return "//link[@rel='publisher']";
   }
 
   /**
-   * Implements {tag_name}TestValueAttribute() for 'publisher'.
+   * Implements {meta_tag_name}_test_value_attribute() for 'publisher'.
    */
-  private function googlePlusPublisherTestValueAttribute() {
+  public function google_plus_publisher_test_value_attribute() {
     return 'href';
   }
 

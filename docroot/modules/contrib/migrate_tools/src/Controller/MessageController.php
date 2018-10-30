@@ -6,7 +6,9 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Database\Connection;
 use Drupal\migrate\Plugin\MigrationInterface;
-use Drupal\migrate_plus\Plugin\MigrationConfigEntityPluginManager;
+use Drupal\migrate\Plugin\MigrationPluginManagerInterface;
+use Drupal\migrate_plus\Entity\MigrationGroupInterface;
+use Drupal\migrate_plus\Entity\MigrationInterface as MigratePlusMigrationInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -24,9 +26,9 @@ class MessageController extends ControllerBase {
   /**
    * Plugin manager for migration plugins.
    *
-   * @var \Drupal\migrate_plus\Plugin\MigrationConfigEntityPluginManager
+   * @var \Drupal\migrate\Plugin\MigrationPluginManagerInterface
    */
-  protected $migrationConfigEntityPluginManager;
+  protected $migrationPluginManager;
 
   /**
    * {@inheritdoc}
@@ -34,7 +36,7 @@ class MessageController extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('database'),
-      $container->get('plugin.manager.config_entity_migration')
+      $container->get('plugin.manager.migration')
     );
   }
 
@@ -43,12 +45,12 @@ class MessageController extends ControllerBase {
    *
    * @param \Drupal\Core\Database\Connection $database
    *   A database connection.
-   * @param \Drupal\migrate_plus\Plugin\MigrationConfigEntityPluginManager $migration_config_entity_plugin_manager
-   *   The plugin manager for config entity-based migrations.
+   * @param \Drupal\migrate\Plugin\MigrationPluginManagerInterface $migration_plugin_manager
+   *   The migration plugin manager.
    */
-  public function __construct(Connection $database, MigrationConfigEntityPluginManager $migration_config_entity_plugin_manager) {
+  public function __construct(Connection $database, MigrationPluginManagerInterface $migration_plugin_manager) {
     $this->database = $database;
-    $this->migrationConfigEntityPluginManager = $migration_config_entity_plugin_manager;
+    $this->migrationPluginManager = $migration_plugin_manager;
   }
 
   /**
@@ -71,21 +73,19 @@ class MessageController extends ControllerBase {
    *
    * Messages are truncated at 56 chars.
    *
-   * @param string $migration_group
-   *   Machine name of the migration's group.
-   *
-   * @param string $migration
-   *   Machine name of the migration.
+   * @param \Drupal\migrate_plus\Entity\MigrationGroupInterface $migration_group
+   *   The migration group.
+   * @param \Drupal\migrate_plus\Entity\MigrationInterface $migration
+   *   The $migration.
    *
    * @return array
    *   A render array as expected by drupal_render().
    */
-  public function overview($migration_group, $migration) {
+  public function overview(MigrationGroupInterface $migration_group, MigratePlusMigrationInterface $migration) {
     $rows = [];
     $classes = static::getLogLevelClassMap();
-    /** @var MigrationInterface $migration */
-    $migration = $this->migrationConfigEntityPluginManager->createInstance($migration);
-    $source_id_field_names = array_keys($migration->getSourcePlugin()->getIds());
+    $migration_plugin = $this->migrationPluginManager->createInstance($migration->id(), $migration->toArray());
+    $source_id_field_names = array_keys($migration_plugin->getSourcePlugin()->getIds());
     $column_number = 1;
     foreach ($source_id_field_names as $source_id_field_name) {
       $header[] = [
@@ -104,8 +104,8 @@ class MessageController extends ControllerBase {
       'field' => 'message',
     ];
 
-    $message_table = $migration->getIdMap()->messageTableName();
-    $map_table = $migration->getIdMap()->mapTableName();
+    $message_table = $migration_plugin->getIdMap()->messageTableName();
+    $map_table = $migration_plugin->getIdMap()->mapTableName();
     $query = $this->database->select($message_table, 'msg')
       ->extend('\Drupal\Core\Database\Query\PagerSelectExtender')
       ->extend('\Drupal\Core\Database\Query\TableSortExtender');

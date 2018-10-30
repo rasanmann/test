@@ -2,10 +2,10 @@
 
 namespace Drupal\metatag_favicons\Plugin\metatag\Tag;
 
-use Drupal\metatag\Plugin\metatag\Tag\LinkRelBase;
+use \Drupal\metatag\Plugin\metatag\Tag\LinkRelBase;
 
 /**
- * This base plugin allows "link rel" tags with a "sizes" attribute.
+ * This base plugin allows "link hreflang" tags to be further customized.
  */
 abstract class LinkSizesBase extends LinkRelBase {
 
@@ -20,20 +20,17 @@ abstract class LinkSizesBase extends LinkRelBase {
         'rel' => $this->name(),
         'sizes' => $this->sizes(),
         'href' => $element['#attributes']['href'],
-      ];
+        ];
     }
 
     return $element;
   }
 
   /**
-   * The dimensions supported by this icon.
-   *
-   * @return string
-   *   A string in the format "XxY" for a given width and height.
+   * {@inheritdoc}
    */
-  protected function sizes() {
-    return '';
-  }
+  //public function sizes() {
+  //  return parent::sizes();
+  //}
 
 }

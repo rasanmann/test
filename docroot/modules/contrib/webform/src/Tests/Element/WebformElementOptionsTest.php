@@ -2,12 +2,14 @@
 
 namespace Drupal\webform\Tests\Element;
 
+use Drupal\webform\Tests\WebformTestBase;
+
 /**
  * Tests for webform element options.
  *
  * @group Webform
  */
-class WebformElementOptionsTest extends WebformElementTestBase {
+class WebformElementOptionsTest extends WebformTestBase {
 
   /**
    * Webforms to load.
@@ -20,19 +22,11 @@ class WebformElementOptionsTest extends WebformElementTestBase {
    * Tests options element.
    */
   public function testElementOptions() {
-    // Check options maxlength.
-    $this->drupalGet('webform/test_element_options');
-    $this->assertRaw('<input class="js-webform-options-value form-text" data-drupal-selector="edit-webform-options-maxlength-options-items-0-value" type="text" id="edit-webform-options-maxlength-options-items-0-value" name="webform_options_maxlength[options][items][0][value]" value="one" size="60" maxlength="20" placeholder="Enter value…" />');
-    $this->assertRaw('<input data-drupal-selector="edit-webform-options-maxlength-options-items-0-text" type="text" id="edit-webform-options-maxlength-options-items-0-text" name="webform_options_maxlength[options][items][0][text]" value="One" size="60" maxlength="20" placeholder="Enter text…" class="form-text" />');
 
     // Check default value handling.
     $this->drupalPostForm('webform/test_element_options', [], t('Submit'));
     $this->assertRaw("webform_options: {  }
 webform_options_default_value:
-  one: One
-  two: Two
-  three: Three
-webform_options_maxlength:
   one: One
   two: Two
   three: Three

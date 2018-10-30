@@ -52,7 +52,7 @@ class WebformNodeUninstallTest extends KernelTestBase {
     $node = Node::create(['title' => $this->randomString(), 'type' => 'webform']);
     $node->save();
 
-    // Check webform node module can't be uninstalled.
+    // Check webform node module can't be ininstalled.
     $validation_reasons = \Drupal::service('module_installer')->validateUninstall(['webform_node']);
     $this->assertEqual(['To uninstall Webform node, delete all content that has the Webform content type.'], $validation_reasons['webform_node']);
 

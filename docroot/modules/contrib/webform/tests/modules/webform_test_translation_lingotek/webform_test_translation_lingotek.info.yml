@@ -7,11 +7,11 @@ dependencies:
   - 'drupal:config_translation'
   - 'drupal:language'
   - 'drupal:locale'
-  - 'lingotek:lingotek'
-  - 'webform:webform'
+  - 'drupal:lingotek'
+  - 'drupal:webform'
 
-# Information added by Drupal.org packaging script on 2018-10-02
-version: '8.x-5.0-rc22'
+# Information added by Drupal.org packaging script on 2017-09-12
+version: '8.x-5.0-beta18'
 core: '8.x'
 project: 'webform'
-datestamp: 1538482694
+datestamp: 1505244429

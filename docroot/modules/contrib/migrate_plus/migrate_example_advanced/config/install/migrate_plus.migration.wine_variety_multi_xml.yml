@@ -2,6 +2,8 @@
 id: wine_variety_multi_xml
 label: XML feed of varieties
 migration_group: wine
+migration_tags:
+  - advanced example
 source:
   # We use the XML source plugin.
   plugin: url
@@ -54,7 +56,7 @@ process:
   name: category_name
   description: category_details
   parent:
-    plugin: migration
+    plugin: migration_lookup
     migration: wine_terms
     source: category_parent
   field_variety_attributes: category_attributes

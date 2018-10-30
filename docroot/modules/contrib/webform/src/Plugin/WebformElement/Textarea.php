@@ -26,13 +26,10 @@ class Textarea extends TextBase {
   public function getDefaultProperties() {
     return [
       'title' => '',
-      'default_value' => '',
-      // Description/Help.
+      // General settings.
       'help' => '',
-      'help_title' => '',
       'description' => '',
-      'more' => '',
-      'more_title' => '',
+      'default_value' => '',
       // Form display.
       'title_display' => '',
       'description_display' => '',
@@ -40,33 +37,33 @@ class Textarea extends TextBase {
       'field_suffix' => '',
       'placeholder' => '',
       'disabled' => FALSE,
-      'readonly' => FALSE,
       'rows' => '',
       'maxlength' => '',
       // Form validation.
       'required' => FALSE,
       'required_error' => '',
       'unique' => FALSE,
-      'unique_user' => FALSE,
-      'unique_entity' => FALSE,
       'unique_error' => '',
       'counter_type' => '',
-      'counter_minimum' => '',
-      'counter_minimum_message' => '',
       'counter_maximum' => '',
-      'counter_maximum_message' => '',
+      'counter_message' => '',
       // Attributes.
       'wrapper_attributes' => [],
-      'label_attributes' => [],
       'attributes' => [],
       // Submission display.
       'format' => $this->getItemDefaultFormat(),
-      'format_html' => '',
-      'format_text' => '',
       'format_items' => $this->getItemsDefaultFormat(),
-      'format_items_html' => '',
-      'format_items_text' => '',
-    ] + parent::getDefaultProperties() + $this->getDefaultMultipleProperties();
+      // Multiple.
+      'multiple' => FALSE,
+      'multiple__header_label' => '',
+    ] + $this->getDefaultBaseProperties();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getTranslatableProperties() {
+    return array_merge(parent::getTranslatableProperties(), ['counter_message']);
   }
 
   /**
@@ -86,7 +83,7 @@ class Textarea extends TextBase {
   /**
    * {@inheritdoc}
    */
-  protected function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  public function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
 
     return [
@@ -109,8 +106,8 @@ class Textarea extends TextBase {
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
 
-    $form['default']['default_value']['#type'] = 'textarea';
-    $form['default']['default_value']['#rows'] = 3;
+    $form['element']['default_value']['#type'] = 'textarea';
+    $form['element']['default_value']['#rows'] = 3;
 
     $form['form']['placeholder']['#type'] = 'textarea';
     $form['form']['placeholder']['#rows'] = 3;
