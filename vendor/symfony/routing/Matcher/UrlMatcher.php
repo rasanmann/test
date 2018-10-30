@@ -11,14 +11,14 @@
 
 namespace Symfony\Component\Routing\Matcher;
 
+use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use Symfony\Component\Routing\RouteCollection;
 
 /**
  * UrlMatcher matches URL based on a set of routes.
@@ -75,7 +75,7 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
             return $ret;
         }
 
-        throw 0 < count($this->allow)
+        throw 0 < \count($this->allow)
             ? new MethodNotAllowedException(array_unique($this->allow))
             : new ResourceNotFoundException(sprintf('No routes found for "%s".', $pathinfo));
     }
@@ -142,7 +142,7 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
                     $method = 'GET';
                 }
 
-                if (!in_array($method, $requiredMethods)) {
+                if (!\in_array($method, $requiredMethods)) {
                     if (self::REQUIREMENT_MATCH === $status[0]) {
                         $this->allow = array_merge($this->allow, $requiredMethods);
                     }
@@ -213,7 +213,7 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
     protected function mergeDefaults($params, $defaults)
     {
         foreach ($params as $key => $value) {
-            if (!is_int($key)) {
+            if (!\is_int($key)) {
                 $defaults[$key] = $value;
             }
         }
