@@ -10,7 +10,7 @@ use Drupal\migrate_drupal\Plugin\migrate\source\d7\FieldableEntity;
  *
  * @MigrateSource(
  *   id = "d7_comment",
- *   source_provider = "comment"
+ *   source_module = "comment"
  * )
  */
 class Comment extends FieldableEntity {
@@ -38,6 +38,15 @@ class Comment extends FieldableEntity {
 
     foreach (array_keys($this->getFields('comment', $comment_type)) as $field) {
       $row->setSourceProperty($field, $this->getFieldValues('comment', $field, $cid));
+    }
+
+    // If the comment subject was replaced by a real field using the Drupal 7
+    // Title module, use the field value instead of the comment subject.
+    if ($this->moduleExists('title')) {
+      $subject_field = $row->getSourceProperty('subject_field');
+      if (isset($subject_field[0]['value'])) {
+        $row->setSourceProperty('subject', $subject_field[0]['value']);
+      }
     }
 
     return parent::prepareRow($row);

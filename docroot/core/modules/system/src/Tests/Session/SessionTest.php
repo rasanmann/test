@@ -57,7 +57,7 @@ class SessionTest extends WebTestBase {
     // session_test_user_login() which breaks a normal assertion.
     $edit = [
       'name' => $user->getUsername(),
-      'pass' => $user->pass_raw
+      'pass' => $user->pass_raw,
     ];
     $this->drupalPostForm('user/login', $edit, t('Log in'));
     $this->drupalGet('user');
@@ -282,7 +282,8 @@ class SessionTest extends WebTestBase {
   /**
    * Reset the cookie file so that it refers to the specified user.
    *
-   * @param $uid User id to set as the active session.
+   * @param $uid
+   *   User id to set as the active session.
    */
   public function sessionReset($uid = 0) {
     // Close the internal browser.

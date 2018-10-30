@@ -6,12 +6,14 @@ use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\layout_plugin\Plugin\Layout\LayoutBase;
+use Drupal\Core\Form\SubformStateInterface;
+use Drupal\Core\Plugin\PluginFormInterface;
+use Drupal\Core\Layout\LayoutDefault;
 
 /**
  * Layout class for all bootstrap layouts.
  */
-class BootstrapLayoutsBase extends LayoutBase {
+class BootstrapLayoutsBase extends LayoutDefault implements PluginFormInterface {
 
   /**
    * {@inheritdoc}
@@ -49,7 +51,7 @@ class BootstrapLayoutsBase extends LayoutBase {
       ],
       'regions' => [],
     ];
-    foreach ($this->getRegionDefinitions() as $region => $info) {
+    foreach ($this->getPluginDefinition()->getRegions() as $region => $info) {
       $region_configuration = [];
       foreach (['wrapper', 'classes', 'attributes'] as $key) {
         if (isset($info[$key])) {
@@ -64,39 +66,19 @@ class BootstrapLayoutsBase extends LayoutBase {
   /**
    * {@inheritdoc}
    */
-  public function getConfiguration() {
-    $configuration = $this->defaultConfiguration();
-
-    // Can't use parent::getConfiguration() here because array_merge() only
-    // merges the top levels. Nor can NestedArray::mergeDeep be used since it
-    // will add multiple classes (from default + config). Instead, the two
-    // top levels "layout" and "regions" must be merged using array_merge().
-    if (isset($this->configuration['layout'])) {
-      $configuration['layout'] = array_merge($configuration['layout'], $this->configuration['layout']);
-    }
-    if (isset($this->configuration['regions'])) {
-      $configuration['regions'] = array_merge($configuration['regions'], $this->configuration['regions']);
-    }
-
-    // Remove any region configuration that doesn't apply to current layout.
-    $regions = $this->getRegionNames();
-    foreach (array_keys($configuration['regions']) as $region) {
-      if (!isset($regions[$region])) {
-        unset($configuration['regions'][$region]);
-      }
-    }
-
-    return $configuration;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form = parent::buildConfigurationForm($form, $form_state);
+    // This can potentially be invoked within a subform instead of a normal
+    // form. There is an ongoing discussion around this which could result in
+    // the passed form state going back to a full form state. In order to
+    // prevent BC breaks, check which type of FormStateInterface has been
+    // passed and act accordingly.
+    // @see https://www.drupal.org/node/2868254
+    // @todo Re-evaluate once https://www.drupal.org/node/2798261 makes it in.
+    $complete_form_state = $form_state instanceof SubformStateInterface ? $form_state->getCompleteFormState() : $form_state;
+
     $configuration = $this->getConfiguration();
 
-    /** @var \Drupal\bootstrap_layouts\BootstrapLayoutsManager $bootstrap_layouts_manager */
+    /** @var \Drupal\bootstrap_layouts\BootstrapLayoutsManager $manager */
     $manager = \Drupal::getContainer()->get('plugin.manager.bootstrap_layouts');
     $classes = $manager->getClassOptions();
 
@@ -135,28 +117,28 @@ class BootstrapLayoutsBase extends LayoutBase {
       '#type' => 'select',
       '#title' => $this->t('Wrapper'),
       '#options' => $wrapper_options,
-      '#default_value' => $form_state->getValue(['layout', 'wrapper'], $configuration['layout']['wrapper']),
+      '#default_value' => $complete_form_state->getValue(['layout', 'wrapper'], $configuration['layout']['wrapper']),
     ];
 
     $form['layout']['classes'] = [
       '#type' => 'select',
       '#title' => $this->t('Classes'),
       '#options' => $classes,
-      '#default_value' => $form_state->getValue(['layout', 'classes'], $configuration['layout']['classes']) ?: [],
+      '#default_value' => $complete_form_state->getValue(['layout', 'classes'], $configuration['layout']['classes']) ?: [],
       '#multiple' => TRUE,
     ];
 
     $form['layout']['add_layout_class'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Add layout specific class: <code>@class</code>', ['@class' => Html::cleanCssIdentifier($this->getPluginId())]),
-      '#default_value' => (int) $form_state->getValue(['layout', 'add_layout_class'], $configuration['layout']['add_layout_class']),
+      '#default_value' => (int) $complete_form_state->getValue(['layout', 'add_layout_class'], $configuration['layout']['add_layout_class']),
     ];
 
     $form['layout']['attributes'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Additional attributes'),
       '#description' => 'E.g. id|custom-id,role|navigation,data-something|some value',
-      '#default_value' => $form_state->getValue(['layout', 'attributes'], $configuration['layout']['attributes']),
+      '#default_value' => $complete_form_state->getValue(['layout', 'attributes'], $configuration['layout']['attributes']),
     ];
 
     if ($tokens) {
@@ -164,11 +146,12 @@ class BootstrapLayoutsBase extends LayoutBase {
     }
 
     // Add each region's settings.
-    foreach ($this->getRegionNames() as $region => $region_label) {
+    foreach ($this->getPluginDefinition()->getRegions() as $region => $region_info) {
+      $region_label = $region_info['label'];
       $default_values = NestedArray::mergeDeep(
         $this->getRegionDefaults(),
         isset($configuration['regions'][$region]) ? $configuration['regions'][$region] : [],
-        $form_state->getValue(['regions', $region], [])
+        $complete_form_state->getValue(['regions', $region], [])
       );
 
       $form[$region] = [
@@ -218,6 +201,32 @@ class BootstrapLayoutsBase extends LayoutBase {
   /**
    * {@inheritdoc}
    */
+  public function setConfiguration(array $configuration) {
+    // Don't use NestedArray::mergeDeep here since this will merge both the
+    // default classes and the classes stored in config.
+    $default = $this->defaultConfiguration();
+
+    // Ensure top level properties exist.
+    $configuration += $default;
+
+    // Ensure specific top level sub-properties exists.
+    $configuration['layout'] += $default['layout'];
+    $configuration['regions'] += $default['regions'];
+
+    // Remove any region configuration that doesn't apply to current layout.
+    $regions = $this->getPluginDefinition()->getRegions();
+    foreach (array_keys($configuration['regions']) as $region) {
+      if (!isset($regions[$region])) {
+        unset($configuration['regions'][$region]);
+      }
+    }
+
+    $this->configuration = $configuration;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     $defaults = $this->getRegionDefaults();
     if ($layout = $form_state->getValue('layout', $defaults)) {
@@ -226,9 +235,8 @@ class BootstrapLayoutsBase extends LayoutBase {
       $this->configuration['layout'] = $layout;
     }
 
-
     $regions = [];
-    foreach (array_keys($this->getRegionNames()) as $name) {
+    foreach ($this->getPluginDefinition()->getRegionNames() as $name) {
       if ($region = $form_state->getValue($name, $defaults)) {
         // Apply Xss::filter to attributes.
         $region['attributes'] = Xss::filter($region['attributes']);
@@ -238,4 +246,9 @@ class BootstrapLayoutsBase extends LayoutBase {
     $this->configuration['regions'] = $regions;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
+  }
 }

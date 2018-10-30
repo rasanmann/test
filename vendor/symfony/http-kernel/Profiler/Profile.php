@@ -92,7 +92,7 @@ class Profile
     /**
      * Returns the parent token.
      *
-     * @return null|string The parent token
+     * @return string|null The parent token
      */
     public function getParentToken()
     {
@@ -282,6 +282,6 @@ class Profile
 
     public function __sleep()
     {
-        return array('token', 'parent', 'children', 'collectors', 'ip', 'method', 'url', 'time');
+        return array('token', 'parent', 'children', 'collectors', 'ip', 'method', 'url', 'time', 'statusCode');
     }
 }

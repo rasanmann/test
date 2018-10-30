@@ -36,11 +36,12 @@ interface InputInterface
      * Does not necessarily return the correct result for short options
      * when multiple flags are combined in the same option.
      *
-     * @param string|array $values The values to look for in the raw parameters (can be an array)
+     * @param string|array $values     The values to look for in the raw parameters (can be an array)
+     * @param bool         $onlyParams Only check real parameters, skip those following an end of options (--) signal
      *
      * @return bool true if the value is contained in the raw parameters
      */
-    public function hasParameterOption($values);
+    public function hasParameterOption($values, $onlyParams = false);
 
     /**
      * Returns the value of a raw option (not parsed).
@@ -50,12 +51,13 @@ interface InputInterface
      * Does not necessarily return the correct result for short options
      * when multiple flags are combined in the same option.
      *
-     * @param string|array $values  The value(s) to look for in the raw parameters (can be an array)
-     * @param mixed        $default The default value to return if no result is found
+     * @param string|array $values     The value(s) to look for in the raw parameters (can be an array)
+     * @param mixed        $default    The default value to return if no result is found
+     * @param bool         $onlyParams Only check real parameters, skip those following an end of options (--) signal
      *
      * @return mixed The option value
      */
-    public function getParameterOption($values, $default = false);
+    public function getParameterOption($values, $default = false, $onlyParams = false);
 
     /**
      * Binds the current Input instance with the given arguments and options.
@@ -83,7 +85,7 @@ interface InputInterface
      *
      * @param string $name The argument name
      *
-     * @return string|string[] The argument value
+     * @return string|string[]|null The argument value
      *
      * @throws InvalidArgumentException When argument given doesn't exist
      */
@@ -92,8 +94,8 @@ interface InputInterface
     /**
      * Sets an argument value by name.
      *
-     * @param string          $name  The argument name
-     * @param string|string[] $value The argument value
+     * @param string               $name  The argument name
+     * @param string|string[]|null $value The argument value
      *
      * @throws InvalidArgumentException When argument given doesn't exist
      */
@@ -120,7 +122,7 @@ interface InputInterface
      *
      * @param string $name The option name
      *
-     * @return string|string[]|bool The option value
+     * @return string|string[]|bool|null The option value
      *
      * @throws InvalidArgumentException When option given doesn't exist
      */
@@ -129,8 +131,8 @@ interface InputInterface
     /**
      * Sets an option value by name.
      *
-     * @param string               $name  The option name
-     * @param string|string[]|bool $value The option value
+     * @param string                    $name  The option name
+     * @param string|string[]|bool|null $value The option value
      *
      * @throws InvalidArgumentException When option given doesn't exist
      */

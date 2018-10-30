@@ -4,6 +4,7 @@ namespace Drupal\system\Tests\Form;
 
 use Drupal\Core\Form\FormState;
 use Drupal\simpletest\WebTestBase;
+use Drupal\Tests\system\Functional\Form\StubForm;
 
 /**
  * Tests the tableselect form element for expected behavior.
@@ -92,7 +93,7 @@ class ElementsTableSelectTest extends WebTestBase {
     // The first two body rows should each have 5 table cells: One for the
     // radio, one cell in the first column, one cell in the second column,
     // and two cells in the third column which has colspan 2.
-    for ( $i = 0; $i <= 1; $i++) {
+    for ($i = 0; $i <= 1; $i++) {
       $this->assertEqual(count($table_body[0]->tr[$i]->td), 5, format_string('There are five cells in row @row.', ['@row' => $i]));
     }
     // The third row should have 3 cells, one for the radio, one spanning the
@@ -162,7 +163,6 @@ class ElementsTableSelectTest extends WebTestBase {
     $this->assertNoFieldByXPath('//th[@class="select-all"]', NULL, 'Do not display a "Select all" checkbox when #multiple is FALSE, even when #js_select is TRUE.');
   }
 
-
   /**
    * Test the whether the option checker gives an error on invalid tableselect values for checkboxes.
    */
@@ -186,7 +186,6 @@ class ElementsTableSelectTest extends WebTestBase {
 
   }
 
-
   /**
    * Test the whether the option checker gives an error on invalid tableselect values for radios.
    */
@@ -209,7 +208,6 @@ class ElementsTableSelectTest extends WebTestBase {
     list(, , $errors) = $this->formSubmitHelper($form, ['tableselect' => 'non_existing_value']);
     $this->assertTrue(isset($errors['tableselect']), 'Option checker disallows invalid values for radio buttons.');
   }
-
 
   /**
    * Helper function for the option check test to submit a form while collecting errors.
@@ -247,7 +245,7 @@ class ElementsTableSelectTest extends WebTestBase {
     $errors = $form_state->getErrors();
 
     // Clear errors and messages.
-    drupal_get_messages();
+    \Drupal::messenger()->deleteAll();
     $form_state->clearErrors();
 
     // Return the processed form together with form_state and errors

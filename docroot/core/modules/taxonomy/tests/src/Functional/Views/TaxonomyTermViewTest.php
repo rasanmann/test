@@ -2,9 +2,9 @@
 
 namespace Drupal\Tests\taxonomy\Functional\Views;
 
-use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\language\Entity\ConfigurableLanguage;
+use Drupal\node\Entity\Node;
 use Drupal\user\Entity\Role;
 use Drupal\user\RoleInterface;
 use Drupal\views\Views;
@@ -49,7 +49,7 @@ class TaxonomyTermViewTest extends TaxonomyTestBase {
 
     // Create a vocabulary and add two term reference fields to article nodes.
 
-    $this->fieldName1 = Unicode::strtolower($this->randomMachineName());
+    $this->fieldName1 = mb_strtolower($this->randomMachineName());
 
     $handler_settings = [
       'target_bundles' => [
@@ -91,8 +91,7 @@ class TaxonomyTermViewTest extends TaxonomyTestBase {
     $this->assertText($node->label());
 
     \Drupal::service('module_installer')->install(['language', 'content_translation']);
-    $language = ConfigurableLanguage::createFromLangcode('ur');
-    $language->save();
+    ConfigurableLanguage::createFromLangcode('ur')->save();
     // Enable translation for the article content type and ensure the change is
     // picked up.
     \Drupal::service('content_translation.manager')->setEnabled('node', 'article', TRUE);
@@ -124,6 +123,12 @@ class TaxonomyTermViewTest extends TaxonomyTestBase {
     // query anymore.
     // @see \Drupal\views\Plugin\views\filter\LanguageFilter::query()
     $node->delete();
+
+    // We also have to remove the nodes created by the parent ::setUp() method
+    // if we want to be able to uninstall the Content Translation module.
+    foreach (Node::loadMultiple() as $node) {
+      $node->delete();
+    }
     \Drupal::service('module_installer')->uninstall(['content_translation', 'language']);
 
     $view = Views::getView('taxonomy_term');
