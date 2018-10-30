@@ -69,16 +69,16 @@ function yqb_migrate_cron() {
       'departures',
     ];
 
-    $manager = \Drupal::service('plugin.manager.config_entity_migration');
+    $manager = \Drupal::service('plugin.manager.migration');
     $plugins = $manager->createInstances([]);
-    
+
     foreach ($plugins as $id => $migration) {
       Drupal::logger('yqb_migrate')->notice( sprintf('Found "%s".', $id));
       if (in_array(Unicode::strtolower($id), $migration_ids)) {
         $migrations[] = $migration;
       }
     }
-    
+
     // PROBLEM WITH MIGRATIONS, RE ENABLE THEM
     if(empty($migrations)){
       Drupal::logger('yqb_migrate')->emergency("Migrations were not found.");
@@ -87,19 +87,19 @@ function yqb_migrate_cron() {
         $drush = '/usr/local/drush8/drush';
         exec("{$drush} pm-enable config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Enabling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
-        
+
         exec("{$drush} cr", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Clearing Cache : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
-        
+
         exec("{$drush} cdi yqb_migrate", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Config Devel Import Migrate");
-        
+
         exec("{$drush} pm-uninstall config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Uninstalling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
       }catch(Exception $exception){
         Drupal::logger('yqb_migrate')->error("Could not restart migrations");
       }
-      
+
       return;
     }
 
@@ -131,7 +131,7 @@ function yqb_migrate_cron() {
 
       // For Drush
       echo $message . PHP_EOL;
-      
+
       // Sleep between migrate to avoid busy migrations
       sleep(10);
     }
