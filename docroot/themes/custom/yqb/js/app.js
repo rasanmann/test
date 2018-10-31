@@ -31,7 +31,7 @@ var App = (function ($, Drupal, Bootstrap) {
          --------------------------------- */
 
         self.construct = function () {
-            $(document).bind('ready', onAppReady);
+            $(document).ready(onAppReady);
             $(window).bind('load', onAppLoaded);
 
             return self;
@@ -125,7 +125,7 @@ var App = (function ($, Drupal, Bootstrap) {
                     fragment: $content.selector,
                     xhr: pjaxXHR
                 });
-                
+
 
                 // PJAX events
                 $document.on('pjax:send', onPjaxSend);
@@ -195,7 +195,7 @@ var App = (function ($, Drupal, Bootstrap) {
                 if(typeof a2a !== 'undefined'){
                     a2a.init('feed');
                 }
-                
+
                 if (typeof ga !== 'undefined') {
                     // Inform Google Analytics of the change
                     ga('send', 'pageview', location.pathname + location.search);
@@ -512,9 +512,9 @@ var App = (function ($, Drupal, Bootstrap) {
 
             if ($submenu.length) {
                 $li.parents('.ps-container:eq(0)').animate({scrollTop: 0}, 100);
-                
+
                 $li.parents('.dropdown-menu').addClass('no-overflow');
-                
+
                 $li.addClass('open');
 
                 $document.on('click', onClickOutside);
@@ -560,7 +560,7 @@ var App = (function ($, Drupal, Bootstrap) {
             var $container = $('.dropdown.open:first');
             if (!$container.is(ev.target) && $container.has(ev.target).length === 0) {
                 $container.removeClass('open');
-                
+
                 $('.dropdown-menu').removeClass('no-overflow');
                 $document.off('click', onClickOutside);
                 $document.off('keydown', onEscPress);
@@ -572,7 +572,7 @@ var App = (function ($, Drupal, Bootstrap) {
 
             if (ev.keyCode == 27) {
                 $container.removeClass('open');
-                
+
                 $('.dropdown-menu').removeClass('no-overflow');
                 $document.off('click', onClickOutside);
                 $document.off('keydown', onEscPress);
@@ -900,7 +900,7 @@ var App = (function ($, Drupal, Bootstrap) {
                 });
             });
         };
-        
+
         var initializeGallery = function(){
             $('.field--name-field-gallery').each( function() {
                 var $gallery = $(this),
@@ -908,37 +908,37 @@ var App = (function ($, Drupal, Bootstrap) {
                     var items = [];
                     $gallery.find('a').each(function() {
                         var $href   = $(this).attr('href');
-         
+
                         var item = {
                             src : $href,
                             w   : 0,
                             h   : 0
                         };
-         
+
                         items.push(item);
                     });
                     return items;
                 };
-                
+
                 var items = getItems();
-                
+
                 var $pswp = $('.pswp')[0];
                 $gallery.on('click', '.field--item:not(.field)', function(event) {
                     event.preventDefault();
-                     
+
                     var $index = $(this).index();
                     var options = {
                         index: $index,
                         bgOpacity: 0.7,
                         showHideOpacity: true
                     };
-                     
+
                     // Initialize PhotoSwipe
                     var gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
-                    
+
                     gallery.listen('gettingData', function(index, item) {
                         if (item.w < 1 || item.h < 1) { // unknown size
-                            var img = new Image(); 
+                            var img = new Image();
                             img.onload = function() { // will get size after load
                                 item.w = this.width; // set image width
                                 item.h = this.height; // set image height
@@ -948,10 +948,10 @@ var App = (function ($, Drupal, Bootstrap) {
                             img.src = item.src; // let's download image
                         }
                     });
-                    
+
                     gallery.init();
                 });
-                
+
             });
         };
 
