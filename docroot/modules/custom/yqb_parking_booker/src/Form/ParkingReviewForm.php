@@ -30,7 +30,7 @@ class ParkingReviewForm extends ParkingFormBase {
     // Initialization wasn't stored, user probably accessed this page directly, redirect to homepage
     if (!$this->store->get('initialization')) {
       drupal_set_message($this->t("Une erreur est survenue durant la confirmation de la réservation. Veuillez rééssayer."), 'error');
-      return $this->redirect('page_manager.page_view_parking_booking');
+      return $this->redirect('page_manager.page_view_parking_booking_panels');
     }
 
     $form = parent::buildForm($form, $form_state);
@@ -39,7 +39,7 @@ class ParkingReviewForm extends ParkingFormBase {
     $form['footer'] = $this->generateFooter();
 
     $initialization = $this->store->get('initialization');
-    
+
     $titlePayment = [
       '#type' => 'html_tag',
       '#tag' => 'h2',
@@ -126,7 +126,7 @@ class ParkingReviewForm extends ParkingFormBase {
           '#attributes' => ['class' => ['col-md-6']],
 
           'title' => $titleConfirmation,
-          
+
           'termsContainer' => [
               '#type' => 'container',
               '#attributes' => ['class' => ['switch-wrapper']],
@@ -170,7 +170,7 @@ class ParkingReviewForm extends ParkingFormBase {
         'amount' => floatval($this->store->get('booking')->price)
     ];
 
-    if ($this->store->get('current_booking')) { 
+    if ($this->store->get('current_booking')) {
       // We're changing an existing booking
 
       // Store in variable for easier access
@@ -190,7 +190,7 @@ class ParkingReviewForm extends ParkingFormBase {
         $refundConfirmation =  $this->advam->confirmModificationRefund($currentBooking->guid, $cancellation->cancellationFee->totalRefundAmount);
 
         $this->store->set('refund', $cancellation->cancellationFee->totalRefundAmount);
-        
+
         // Charge new amount from card
         $purchase = $moneris->purchase($transaction);
 
@@ -272,7 +272,7 @@ class ParkingReviewForm extends ParkingFormBase {
       ];
 
       $confirmation = $this->advam->confirmBooking($confirmationData);
-      
+
 
       if ($confirmation === false) {
         // Void transaction immediately
@@ -319,7 +319,7 @@ class ParkingReviewForm extends ParkingFormBase {
             'field_advam_reference' => $confirmation->booking->reference,
             'field_moneris_reference' => $transactionRef
           ];
-          
+
           if($this->store->get('user_flight')){
             $data['field_user_flight'] = $this->store->get('user_flight');
           }

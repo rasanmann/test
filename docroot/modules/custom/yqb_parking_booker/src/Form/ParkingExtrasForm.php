@@ -24,7 +24,7 @@ class ParkingExtrasForm extends ParkingFormBase {
     // Booking weren't stored, user probably accessed this page directly, redirect to homepage
     if (!$this->store->get('booking')) {
       drupal_set_message($this->t("Une erreur est survenue durant la confirmation de la réservation. Veuillez rééssayer."), 'error');
-      return $this->redirect('page_manager.page_view_parking_booking');
+      return $this->redirect('page_manager.page_view_parking_booking_panels');
     }
 
     $form = parent::buildForm($form, $form_state);
@@ -120,7 +120,7 @@ class ParkingExtrasForm extends ParkingFormBase {
                   '#options' => range(0, $offerLine->maxQuantity)
                 ]
               ];
-              
+
               // Save it for validation
               $extrasData[$extra->id . '-' . $offerLine->id] = [
                 'extra_id' => $extra->id,
@@ -188,7 +188,7 @@ class ParkingExtrasForm extends ParkingFormBase {
     $extras = [];
     $extrasForValidation = [];
     $extrasDetails = $this->store->get('extrasData');
-    
+
     foreach ($values as $key => $value) {
       if (preg_match('/offer-quantity-(\d{1,})-(\d{1,})/', $key, $matches)) {
         $offerId = intval(array_pop($matches));
@@ -203,12 +203,12 @@ class ParkingExtrasForm extends ParkingFormBase {
           $extras[$extraId][] = [
             $offerId => $quantity
           ];
-          
+
           $extrasForValidation[] = $extraId.'-'.$offerId;
         }
       }
     }
-    
+
     // Validation for adult ticket requirement on non adult ticket
     $adultId = 0;
     foreach($extrasDetails as $k => $detail){
@@ -217,7 +217,7 @@ class ParkingExtrasForm extends ParkingFormBase {
         break;
       }
     }
-          
+
     if($adultId !== 0 && !empty($extrasForValidation) && !in_array($adultId, $extrasForValidation)){
       $form_state->setErrorByName('submit', $this->t('The passenger must be at least 18 years of age to enter without a parent or legal guardian.'));
     }else {

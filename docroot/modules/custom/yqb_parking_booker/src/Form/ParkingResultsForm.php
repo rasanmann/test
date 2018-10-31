@@ -26,7 +26,7 @@ class ParkingResultsForm extends ParkingFormBase {
         // Results weren't stored, user probably accessed this page directly, redirect to homepage
         if (!$this->store->get('arrival_date') || !$this->store->get('departure_date')) {
             drupal_set_message($this->t("Une erreur est survenue durant la confirmation de la réservation. Veuillez rééssayer."), 'error');
-            return $this->redirect('page_manager.page_view_parking_booking');
+            return $this->redirect('page_manager.page_view_parking_booking_panels');
         }
 
         $form = parent::buildForm($form, $form_state);
@@ -90,7 +90,7 @@ class ParkingResultsForm extends ParkingFormBase {
             // TODO : test with extras in booking
             if ($this->store->get('current_booking')->price === $this->store->get('booking')->price) {
                 // No need to refund anything, just do the modification
-              
+
                 // Modify existing booking
                 $modification = $this->advam->modifyBooking($this->store->get('current_booking')->guid, [
                     'productId' => $this->store->get('product_id'),
@@ -133,7 +133,7 @@ class ParkingResultsForm extends ParkingFormBase {
                     if ($confirmation) {
                       $this->store->set('confirmation', $confirmation);
                       $this->store->set('processed_amount', 0);
-                    
+
                       // Update parking_booking
                       $this->updateBookingReservation($modification);
 
@@ -147,7 +147,7 @@ class ParkingResultsForm extends ParkingFormBase {
                 }
             }
         }
-        
+
         $this->parkingRedirect($form_state, $route);
     }
 }

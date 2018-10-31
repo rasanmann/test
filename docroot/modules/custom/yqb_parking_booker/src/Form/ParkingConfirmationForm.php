@@ -27,7 +27,7 @@ class ParkingConfirmationForm extends ParkingFormBase {
     // Confirmation wasn't stored, user probably accessed this page directly, redirect to homepage
     if (!$this->store->get('confirmation')) {
       drupal_set_message($this->t("Une erreur est survenue durant la confirmation de la réservation. Veuillez rééssayer."), 'error');
-      return $this->redirect('page_manager.page_view_parking_booking');
+      return $this->redirect('page_manager.page_view_parking_booking_panels');
     }
 
     $form = parent::buildForm($form, $form_state);
@@ -55,7 +55,7 @@ class ParkingConfirmationForm extends ParkingFormBase {
     $tz = new DateTimeZone($userTimeZone);
     $confirmationDate = new DateTime($this->store->get('confirmation')->booking->bookingDate, new DateTimeZone('UTC'));
     $confirmationDate->setTimezone($tz);
-    
+
     // Message when there is a refund
     $refundMessage = ($this->store->get('refund')) ? $paymentConfirmation = [
         '#type' => 'html_tag',
@@ -77,7 +77,7 @@ class ParkingConfirmationForm extends ParkingFormBase {
     ];
 
     $modificationSummary = property_exists($this->store->get('confirmation'), 'modificationSummary') ? $this->store->get('confirmation')->modificationSummary : null;
-    
+
     $details = $this->generateBookingDetailsConfirmation($this->store->get('confirmation')->booking);
     $order = $this->generateBookingOrderConfirmation($this->store->get('confirmation')->booking, $modificationSummary);
 
@@ -127,14 +127,14 @@ class ParkingConfirmationForm extends ParkingFormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    
+
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    
+
   }
 }
 

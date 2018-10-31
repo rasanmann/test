@@ -240,7 +240,7 @@ class ParkingFormBase extends FormBase {
 		$steps = [
 				'intro' => [
 						'label' => $this->t("Faire une réservation"),
-						'link' => \Drupal\Core\Url::fromRoute('page_manager.page_view_parking_booking')->toString()
+						'link' => \Drupal\Core\Url::fromRoute('page_manager.page_view_parking_booking_panels')->toString()
 				],
 				'results|extras' => [
 						'label' => $this->t("Choix du stationnement"),
@@ -328,7 +328,7 @@ class ParkingFormBase extends FormBase {
 		$back = [
 				'#attributes' => ['class' => ['btn-back']],
 				'#type' => 'link',
-				'#url' => \Drupal\Core\Url::fromRoute('page_manager.page_view_parking_booking', $params),
+				'#url' => \Drupal\Core\Url::fromRoute('page_manager.page_view_parking_booking_panels', $params),
 				'#title' => $this->t('<span class="icon icon-left-arrow" data-grunticon-embed></span>')
 		];
 
@@ -506,7 +506,7 @@ class ParkingFormBase extends FormBase {
 		return $header;
 	}
 
-	protected function generateStatusBar($details = [], $backUrl = 'page_manager.page_view_parking_booking') {
+	protected function generateStatusBar($details = [], $backUrl = 'page_manager.page_view_parking_booking_panels') {
 		$status = [
 				'#type' => 'container',
 				'#attributes' => [
