@@ -708,17 +708,17 @@
     },
     {
         "name": "consolidation/site-alias",
-        "version": "1.1.6",
-        "version_normalized": "1.1.6.0",
+        "version": "1.1.9",
+        "version_normalized": "1.1.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/consolidation/site-alias.git",
-            "reference": "eb062894c4c0e617cd6549e0ad4d2554e81885f2"
+            "reference": "0a4c49f91e44b0b7bb288f3547875a136a7ed704"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/consolidation/site-alias/zipball/eb062894c4c0e617cd6549e0ad4d2554e81885f2",
-            "reference": "eb062894c4c0e617cd6549e0ad4d2554e81885f2",
+            "url": "https://api.github.com/repos/consolidation/site-alias/zipball/0a4c49f91e44b0b7bb288f3547875a136a7ed704",
+            "reference": "0a4c49f91e44b0b7bb288f3547875a136a7ed704",
             "shasum": ""
         },
         "require": {
@@ -735,7 +735,7 @@
             "symfony/console": "^2.8|^3|^4",
             "symfony/yaml": "~2.3|^3"
         },
-        "time": "2018-10-28T00:37:34+00:00",
+        "time": "2018-10-31T01:29:05+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -762,7 +762,7 @@
                 "email": "greg.1.anderson@greenknowe.org"
             }
         ],
-        "description": "Template project for PHP libraries."
+        "description": "Manage alias records for local and remote sites."
     },
     {
         "name": "container-interop/container-interop",
@@ -3465,18 +3465,18 @@
     },
     {
         "name": "drupal/menu_link_attributes",
-        "version": "1.0.0-beta3",
-        "version_normalized": "1.0.0.0-beta3",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/menu_link_attributes",
-            "reference": "8.x-1.0-beta3"
+            "reference": "8.x-1.0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/menu_link_attributes-8.x-1.0-beta3.zip",
-            "reference": "8.x-1.0-beta3",
-            "shasum": "60dbace4eca093fddf00c185396251b95d865fa0"
+            "url": "https://ftp.drupal.org/files/projects/menu_link_attributes-8.x-1.0.zip",
+            "reference": "8.x-1.0",
+            "shasum": "6386cc2fcd7ae0d17d2a82d690866028b132055c"
         },
         "require": {
             "drupal/core": "*"
@@ -3487,11 +3487,11 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.0-beta3",
-                "datestamp": "1507071844",
+                "version": "8.x-1.0",
+                "datestamp": "1507195827",
                 "security-coverage": {
-                    "status": "not-covered",
-                    "message": "Beta releases are not covered by Drupal security advisories."
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
                 }
             }
         },
@@ -3518,18 +3518,18 @@
     },
     {
         "name": "drupal/metatag",
-        "version": "1.2.0",
-        "version_normalized": "1.2.0.0",
+        "version": "1.7.0",
+        "version_normalized": "1.7.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/metatag",
-            "reference": "8.x-1.2"
+            "reference": "8.x-1.7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.2.zip",
-            "reference": "8.x-1.2",
-            "shasum": "f64745456579bb0ff8139a38d8d5de673868d94c"
+            "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.7.zip",
+            "reference": "8.x-1.7",
+            "shasum": "93decaefd053c524918ceae5b5ef05dd77de0857"
         },
         "require": {
             "drupal/core": "*",
@@ -3539,8 +3539,11 @@
             "drupal/devel": "^1.0",
             "drupal/metatag_dc": "*",
             "drupal/metatag_open_graph": "*",
-            "drupal/restui": "*",
-            "restui/restui": "^1.0"
+            "drupal/page_manager": "^4.0",
+            "drupal/redirect": "^1.0",
+            "drupal/restui": "^1.0",
+            "drupal/schema_metatag": "^1.0",
+            "drupal/schema_web_page": "*"
         },
         "type": "drupal-module",
         "extra": {
@@ -3548,8 +3551,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.2",
-                "datestamp": "1506714244",
+                "version": "8.x-1.7",
+                "datestamp": "1535726393",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -3575,7 +3578,7 @@
         "description": "Manage meta tags for all entities.",
         "homepage": "https://www.drupal.org/project/metatag",
         "keywords": [
-            "php",
+            "Drupal",
             "seo"
         ],
         "support": {
@@ -3649,23 +3652,24 @@
     },
     {
         "name": "drupal/migrate_source_csv",
-        "version": "2.0.0",
-        "version_normalized": "2.0.0.0",
+        "version": "2.2.0",
+        "version_normalized": "2.2.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/migrate_source_csv",
-            "reference": "8.x-2.0"
+            "reference": "8.x-2.2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/migrate_source_csv-8.x-2.0.zip",
-            "reference": "8.x-2.0",
-            "shasum": "056845ce1679a051733b12576e3204609dce293d"
+            "url": "https://ftp.drupal.org/files/projects/migrate_source_csv-8.x-2.2.zip",
+            "reference": "8.x-2.2",
+            "shasum": "c5ea6fffdfcf9d000279e0524b0a6a04ae78cce4"
         },
         "require": {
             "drupal/core": "~8.1"
         },
         "require-dev": {
+            "drupal/migrate_plus": "^4",
             "mikey179/vfsstream": "~1",
             "phpunit/phpunit": "~4"
         },
@@ -3675,8 +3679,8 @@
                 "dev-2.x": "2.x-dev"
             },
             "drupal": {
-                "version": "8.x-2.0",
-                "datestamp": "1521470284",
+                "version": "8.x-2.2",
+                "datestamp": "1527712680",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -3930,18 +3934,18 @@
     },
     {
         "name": "drupal/paragraphs",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
+        "version": "1.5.0",
+        "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/paragraphs",
-            "reference": "8.x-1.4"
+            "reference": "8.x-1.5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.4.zip",
-            "reference": "8.x-1.4",
-            "shasum": "2acda7574b057d3d8e7caf4f24a63f50047a0a5a"
+            "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.5.zip",
+            "reference": "8.x-1.5",
+            "shasum": "85ba97dd1c602d33fc5904b6e1df5973312afa94"
         },
         "require": {
             "drupal/core": "~8",
@@ -3969,8 +3973,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.4",
-                "datestamp": "1540628880",
+                "version": "8.x-1.5",
+                "datestamp": "1541009695",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -4242,18 +4246,18 @@
     },
     {
         "name": "drupal/swiftmailer",
-        "version": "1.0.0-beta1",
-        "version_normalized": "1.0.0.0-beta1",
+        "version": "1.0.0-beta2",
+        "version_normalized": "1.0.0.0-beta2",
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/swiftmailer",
-            "reference": "8.x-1.0-beta1"
+            "reference": "8.x-1.0-beta2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/swiftmailer-8.x-1.0-beta1.zip",
-            "reference": "8.x-1.0-beta1",
-            "shasum": "d49a50638a629c24d681181b82255fd50c1b2642"
+            "url": "https://ftp.drupal.org/files/projects/swiftmailer-8.x-1.0-beta2.zip",
+            "reference": "8.x-1.0-beta2",
+            "shasum": "a63a91e7816a06bf8e52ac9b5e48a892a1e6b1d4"
         },
         "require": {
             "drupal/core": "~8.0",
@@ -4267,8 +4271,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.0-beta1",
-                "datestamp": "1519655285",
+                "version": "8.x-1.0-beta2",
+                "datestamp": "1519655459",
                 "security-coverage": {
                     "status": "not-covered",
                     "message": "Beta releases are not covered by Drupal security advisories."
@@ -4302,21 +4306,21 @@
     },
     {
         "name": "drupal/token",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
+        "version": "1.5.0",
+        "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/token",
-            "reference": "8.x-1.0"
+            "reference": "8.x-1.5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/token-8.x-1.0.zip",
-            "reference": "8.x-1.0",
-            "shasum": "d24c7f1ffddbd0fc56bc92bacae1c4ff769a4442"
+            "url": "https://ftp.drupal.org/files/projects/token-8.x-1.5.zip",
+            "reference": "8.x-1.5",
+            "shasum": "6382a7e1aabbd8246f1117a26bf4916d285b401d"
         },
         "require": {
-            "drupal/core": "~8.0"
+            "drupal/core": "^8.5"
         },
         "type": "drupal-module",
         "extra": {
@@ -4324,8 +4328,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.0",
-                "datestamp": "1513810384",
+                "version": "8.x-1.5",
+                "datestamp": "1537557481",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -4399,6 +4403,9 @@
                     "status": "not-covered",
                     "message": "Beta releases are not covered by Drupal security advisories."
                 }
+            },
+            "patches_applied": {
+                "Views field view PHP warnings": "patches/views_field_view.patch"
             }
         },
         "installation-source": "dist",
@@ -7061,8 +7068,8 @@
     },
     {
         "name": "symfony/polyfill-ctype",
-        "version": "v1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "v1.10.0",
+        "version_normalized": "1.10.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -7121,17 +7128,17 @@
     },
     {
         "name": "symfony/polyfill-iconv",
-        "version": "v1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "v1.10.0",
+        "version_normalized": "1.10.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-iconv.git",
-            "reference": "bcc0cd69185b8a5d8b4a5400c489ed3333bf9bb2"
+            "reference": "97001cfc283484c9691769f51cdf25259037eba2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/bcc0cd69185b8a5d8b4a5400c489ed3333bf9bb2",
-            "reference": "bcc0cd69185b8a5d8b4a5400c489ed3333bf9bb2",
+            "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/97001cfc283484c9691769f51cdf25259037eba2",
+            "reference": "97001cfc283484c9691769f51cdf25259037eba2",
             "shasum": ""
         },
         "require": {
@@ -7140,7 +7147,7 @@
         "suggest": {
             "ext-iconv": "For best performance"
         },
-        "time": "2018-08-06T14:22:27+00:00",
+        "time": "2018-09-21T06:26:08+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -7182,17 +7189,17 @@
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "v1.10.0",
+        "version_normalized": "1.10.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
+            "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
-            "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+            "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
             "shasum": ""
         },
         "require": {
@@ -7201,7 +7208,7 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2018-08-06T14:22:27+00:00",
+        "time": "2018-09-21T13:07:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -7243,24 +7250,24 @@
     },
     {
         "name": "symfony/polyfill-php70",
-        "version": "v1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "v1.10.0",
+        "version_normalized": "1.10.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php70.git",
-            "reference": "1e24b0c4a56d55aaf368763a06c6d1c7d3194934"
+            "reference": "6b88000cdd431cd2e940caa2cb569201f3f84224"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/1e24b0c4a56d55aaf368763a06c6d1c7d3194934",
-            "reference": "1e24b0c4a56d55aaf368763a06c6d1c7d3194934",
+            "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/6b88000cdd431cd2e940caa2cb569201f3f84224",
+            "reference": "6b88000cdd431cd2e940caa2cb569201f3f84224",
             "shasum": ""
         },
         "require": {
             "paragonie/random_compat": "~1.0|~2.0|~9.99",
             "php": ">=5.3.3"
         },
-        "time": "2018-08-06T14:22:27+00:00",
+        "time": "2018-09-21T06:26:08+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -7304,23 +7311,23 @@
     },
     {
         "name": "symfony/polyfill-php72",
-        "version": "v1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "v1.10.0",
+        "version_normalized": "1.10.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-php72.git",
-            "reference": "95c50420b0baed23852452a7f0c7b527303ed5ae"
+            "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/95c50420b0baed23852452a7f0c7b527303ed5ae",
-            "reference": "95c50420b0baed23852452a7f0c7b527303ed5ae",
+            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
+            "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2018-08-06T14:22:27+00:00",
+        "time": "2018-09-21T13:07:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
