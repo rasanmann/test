@@ -189,7 +189,7 @@ var App = (function ($, Drupal, Bootstrap) {
                 }
 
                 // Grunt icon refresh
-                grunticon(["/themes/yqb/dist/output/icons.data.svg.css", "/themes/yqb/dist/output/icons.data.png.css", "/themes/yqb/dist/output/icons.fallback.css"], grunticon.svgLoadedCallback);
+                grunticon(["/themes/custom/yqb/dist/output/icons.data.svg.css", "/themes/custom/yqb/dist/output/icons.data.png.css", "/themes/custom/yqb/dist/output/icons.fallback.css"], grunticon.svgLoadedCallback);
 
                 // Reload AddToAny
                 if(typeof a2a !== 'undefined'){

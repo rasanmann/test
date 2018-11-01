@@ -209,7 +209,7 @@ var Destinations = (function ($, Drupal, Bootstrap) {
                     pulse:'Québec',
                     /*
                     icon:{
-                        url:window.location.origin + '/themes/yqb/img/maps/marker-yqb.png',
+                        url:window.location.origin + '/themes/custom/yqb/img/maps/marker-yqb.png',
                         size: new google.maps.Size(46, 46),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(11, 11),
@@ -308,10 +308,10 @@ var Destinations = (function ($, Drupal, Bootstrap) {
         }
 
         // Seasonal by default
-        var iconUrl = window.location.origin + '/themes/yqb/img/maps/marker-season-sprite.png';
+        var iconUrl = window.location.origin + '/themes/custom/yqb/img/maps/marker-season-sprite.png';
 
         if(annual === true) {
-            iconUrl = window.location.origin + '/themes/yqb/img/maps/marker-year-sprite.png';
+            iconUrl = window.location.origin + '/themes/custom/yqb/img/maps/marker-year-sprite.png';
         }
 
         // Build schedule
@@ -408,7 +408,7 @@ var Destinations = (function ($, Drupal, Bootstrap) {
         try {
             map.fitBounds(bounds);
         }catch(err){
-            
+
         }
     };
 
@@ -611,7 +611,7 @@ var Destinations = (function ($, Drupal, Bootstrap) {
         var currentMapClasses = $map.attr('class');
         var currentListClasses = $list.attr('class');
         var $mapLegend = $('.map-legend');
-        
+
         $('.trigger-map').removeClass('is-active');
 
         $this.addClass('is-active');
@@ -637,7 +637,7 @@ var Destinations = (function ($, Drupal, Bootstrap) {
         var dateFormatted =  moment(date).format('LL');
         var $parent =  $this.parents('.drawer-action');
             $parent.addClass('subcontent-open');
-        
+
         // console.log(date);
         // console.log(dateFormatted);
 
@@ -645,7 +645,7 @@ var Destinations = (function ($, Drupal, Bootstrap) {
 
         // Clean up before appending next one
         $('.drawer-bottom, .panel-content-right-wrapper').remove();
-        
+
         // Fetch destination alias from ID
         var destinationAlias = $container.closest('.panel-collapse, .drawer-content').attr('id').match(/(?:destination-collapse-|drawer-content-)(.*)/).pop();
 
@@ -669,10 +669,10 @@ var Destinations = (function ($, Drupal, Bootstrap) {
             });
 
             $container.append(html);
-            
+
             var $dateSelect = $parent.find('.date-select');
             $dateSelect.html($dateSelect.data('pattern').replace('%s', dateFormatted));
-            
+
             // drawer  scrollviews
             $('.drawer-bottom').find('.airlines').perfectScrollbar({
                 suppressScrollX: true,
@@ -680,7 +680,7 @@ var Destinations = (function ($, Drupal, Bootstrap) {
                 swipePropagation: false
             });
         }
-        
+
 		if ($(document).width() < 630) {
             var $parentDest = $parent.parents('.panel-destination');
             var pos = ($parentDest.offset().top);
@@ -783,7 +783,7 @@ var Destinations = (function ($, Drupal, Bootstrap) {
 
         setTimeout(function() {
             // Grunt icon refresh
-            grunticon(["/themes/yqb/dist/output/icons.data.svg.css", "/themes/yqb/dist/output/icons.data.png.css", "/themes/yqb/dist/output/icons.fallback.css"], grunticon.svgLoadedCallback);
+            grunticon(["/themes/custom/yqb/dist/output/icons.data.svg.css", "/themes/custom/yqb/dist/output/icons.data.png.css", "/themes/custom/yqb/dist/output/icons.fallback.css"], grunticon.svgLoadedCallback);
 
             // Initialize date picker
             initCalendar($drawer.find('[data-toggle="datepicker-planner-map"]'), buildDatesArray(data.schedule));

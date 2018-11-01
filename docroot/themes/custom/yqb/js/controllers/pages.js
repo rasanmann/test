@@ -44,22 +44,22 @@ var Pages = (function ($, Drupal, Bootstrap) {
 		console.log('Check-In page initialized');
 		// L'app avait finalement besoin de target blank
 		// if (window.location.search.indexOf('webview=1') > -1) {
-		//	
+		//
 		// 	$('.view-tiles').find('a').each(function() {
 		// 		var $this = $(this);
 		// 		$this.removeAttr('target');
-		//			
+		//
 		// 	});
 		// 	$('.view-tiles a[rel="blank"]').click(function (e) {
 		// 		$('.region-content').append('<div class="loading-extern-link"></div>')
 	     //    });
 		// }
-		
+
 	};
 
 	self.appMobile = function () {
 		console.log('appMobile page initialized');
-		
+
 		// L'app avait finalement besoin de target blank
         // $('.region-content a[rel="blank"]').click(function (e) {
 			// $('.region-content').append('<div class="loading-extern-link"></div>')
@@ -74,29 +74,29 @@ var Pages = (function ($, Drupal, Bootstrap) {
 				$this.addClass('is-init');
 			}
         });
-		
+
 		initSlideSwipe();
-		
+
 		if($('#map').length !=0){
 			App.loadGoogleMaps(initializeMap);
 		}
-		
+
 		var $btnHelp = $('#btn-call-help');
 		if($btnHelp.length && getParameterByName('caller_id') != null){
 			var callerId = getParameterByName('caller_id');
-			
+
 			$btnHelp.attr('href', $btnHelp.attr('href') + ',' + callerId);
 		}
 	};
-	
+
 	self.storage = function(){
 		console.log('Coat check / storage page initialized');
-		
+
 		// Add th to td data attribute for responsive table
 		$('article.full ').find('table').each(function() {
 			var $table = $(this),
 				$th = $table.find('tr:eq(1)');
-			
+
 			$table.find('td').each(function () {
 				var $this = $(this),
 				index = $this.index();
@@ -105,7 +105,7 @@ var Pages = (function ($, Drupal, Bootstrap) {
 			})
 		});
 	};
-	
+
 	self.vip = function(){
 		initSwiperSliderWithThumbs();
 	};
@@ -118,7 +118,7 @@ var Pages = (function ($, Drupal, Bootstrap) {
 	 * Private
 	 --------------------------------- */
 
-		
+
 	var initSlideSwipe = function () {
 		$('body').find('.swiper-container').each(function () {
 			var $swiper = $(this);
@@ -287,12 +287,12 @@ var Pages = (function ($, Drupal, Bootstrap) {
 			    }
 			]
 		};
-		
+
 		var mapElement = document.getElementById('map');
 		var map = new google.maps.Map(mapElement, mapOptions);
 		var marker = new google.maps.Marker({
 			position: adress,
-			icon: window.location.origin + '/themes/yqb/img/maps/marker-app.svg'
+			icon: window.location.origin + '/themes/custom/yqb/img/maps/marker-app.svg'
 		});
 		marker.setMap(map);
 	};

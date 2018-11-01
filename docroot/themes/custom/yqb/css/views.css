@@ -17,7 +17,7 @@
 	Animation
 -------------------------------------------------------------------*/
 /*
-    Example usage: 
+    Example usage:
     @include animation(changecolour, 5s, 10s)
  */
 /*-------------------------------------------------------------------
@@ -29,7 +29,7 @@
 /*-------------------------------------------------------------------
 	Utilities
 -------------------------------------------------------------------*/
-/* 
+/*
 * @include triangle within a pseudo element and add positioning properties (ie. top, left)
 * $direction: up, down, left, right
 */
@@ -851,7 +851,7 @@
   	.table td {
   		white-space:nowrap;
   		text-overflow:ellipsis;
-  
+
   		@include responsive($screen-sm) {
   			width:auto !important;
   		}
@@ -1391,13 +1391,13 @@
   position: relative;
   overflow-x: hidden; }
   .view-page-destinations .view-destinations #heading-canada .panel-img {
-    background-image: url("/themes/yqb/img/canada.jpg"); }
+    background-image: url("/themes/custom/yqb/img/canada.jpg"); }
   .view-page-destinations .view-destinations #heading-destinations-soleil-57473 .panel-img {
-    background-image: url("/themes/yqb/img/caraibes.jpg"); }
+    background-image: url("/themes/custom/yqb/img/caraibes.jpg"); }
   .view-page-destinations .view-destinations #heading-amrique-du-nord-57475 .panel-img {
-    background-image: url("/themes/yqb/img/united-state.jpg"); }
+    background-image: url("/themes/custom/yqb/img/united-state.jpg"); }
   .view-page-destinations .view-destinations #heading-europe-57476 .panel-img {
-    background-image: url("/themes/yqb/img/europe.jpg"); }
+    background-image: url("/themes/custom/yqb/img/europe.jpg"); }
   .view-page-destinations .view-destinations .panel {
     margin-bottom: 0;
     background-color: transparent;

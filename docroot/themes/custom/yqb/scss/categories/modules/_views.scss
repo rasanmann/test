@@ -21,7 +21,7 @@
 		}
 	}
 	*/
-	
+
 	.view-header{display: none}
 
 	// Schedules tables columns width
@@ -140,13 +140,13 @@
 			border-top: 0;
 		}
 	}
-	
+
 	.month > .article-wrapper, > .view-content > .views-row{
 		&:nth-child(odd) {
 			background-color: $gray-lighter;
 		}
 	}
-	
+
 	.article-wrapper {
 		padding: 60px 0 55px 135px;
 
@@ -156,7 +156,7 @@
 		@include responsive(950px) {
 			padding: 30px 0 30px 40px;
 		}
-		
+
 		.views-row {
 			position: relative;
 			padding-left: 97px;
@@ -219,25 +219,25 @@
 		.views-field-body {
 			@include font-size(21);
 			line-height: 30px;
-			
+
 			@include responsive($screen-md) {
 				@include font-size(18);
 				line-height: 27px;
 			}
-			
+
 			@include responsive($screen-sm) {
 				@include font-size(16);
 				line-height: 22px;
 			}
 		}
-		
+
 		.views-field-body p:last-child {
 			margin-bottom: 35px;
-			
+
 			@include responsive(1300px) {
 				margin-bottom: 30px;
 			}
-			
+
 			@include responsive($screen-md) {
 				margin-bottom: 25px;
 			}
@@ -359,19 +359,19 @@
 	overflow-x: hidden;
 
     #heading-canada .panel-img{
-		background-image: url("/themes/yqb/img/canada.jpg");
+		background-image: url("/themes/custom/yqb/img/canada.jpg");
 	}
 
     #heading-destinations-soleil-57473 .panel-img{
-		background-image: url("/themes/yqb/img/caraibes.jpg");
+		background-image: url("/themes/custom/yqb/img/caraibes.jpg");
 	}
 
     #heading-amrique-du-nord-57475 .panel-img{
-		background-image: url("/themes/yqb/img/united-state.jpg");
+		background-image: url("/themes/custom/yqb/img/united-state.jpg");
 	}
 
     #heading-europe-57476 .panel-img{
-		background-image: url("/themes/yqb/img/europe.jpg");
+		background-image: url("/themes/custom/yqb/img/europe.jpg");
 	}
 	// Base class
 	.panel {
@@ -390,12 +390,12 @@
 					&:hover{
 						background-color: $black !important;
 					}
-					
+
 					&.collapsed{
-						
+
 						color: $black;
 						background-color: $white;
-						
+
 						&:hover{
 							background-color: $white !important;
 						}
@@ -421,7 +421,7 @@
 		}
 	}
 	.panel-group .panel-group{
-		
+
 		.panel-title {
 			a {
 				overflow: hidden;
@@ -438,7 +438,7 @@
 					}
 					.panel-title-content {
 						@include translate(-215px, 0);
-				
+
 						@include responsive(1300px){
 							@include translate(-185px, 0);
 						}
@@ -472,13 +472,13 @@
 			&:nth-child(even){
 				.panel-title {
 					a {
-						
+
 						background-color: $white;
-	
+
 						&.collapsed {
 							background-color: $white;
 						}
-						
+
 						&:hover {
 							background-color: $white;
 						}
@@ -492,7 +492,7 @@
 		margin: 0;
 		padding: 0;
 		&.panel-title-region{
-			
+
 			a{
 				color: $white;
 				background-color: $black;
@@ -504,7 +504,7 @@
 						padding-left: 20px;
 						padding-right: 100px;
 					}
-					
+
 				}
 				&:hover{
 					background-color: $black !important;
@@ -512,7 +512,7 @@
 				.panel-title-content{
 					@include translate(-215px,0);
 					@include transition_transform(opacity, 0.3);
-				
+
 					@include responsive(1300px){
 						@include translate(-185px, 0);
 					}
@@ -524,17 +524,17 @@
 					}
 				}
 				&.collapsed{
-					
+
 					color: $black;
 					background-color: $gray-lighter;
-					
+
 					&:hover{
 						background-color: $gray-lighter !important;
 					}
 					.panel-title-content{
 						@include translate(0, 0);
 					}
-					
+
 					.icon-down-arrow-2{
 						path{
 							fill:$brand-primary !important;
@@ -580,7 +580,7 @@
 			padding-left: 60px;
 			max-width: 665px;
 			width: 100%;
-			
+
 			@include responsive(1300px){
 				@include font-size(24);
 				line-height: 30px;
@@ -613,7 +613,7 @@
 				display: inline-block;
 				line-height: 30px;
 				vertical-align: middle;
-				
+
 				@include responsive(1320px){
 					@include font-size(16);
 					margin-left: 20px;
@@ -695,7 +695,7 @@
 				@include scale(0.83);
 			}
 		}
-		
+
 		a {
 			color: $brand-primary;
 			font-weight: $regular;
@@ -705,22 +705,22 @@
 			position: relative;
 			display: table;
 			width: 100%;
-			
+
 			@include responsive(1300px){
 				height: 100px;
 			}
-			
+
 			@include responsive(400px){
 				height: 85px;
 			}
-			
+
 			@include transition(all);
 			.panel-title-content{
 				display: table-cell;
 				vertical-align: middle;
 				padding-left: 215px;
 				position: relative;
-				
+
 				@include responsive(1300px){
 					padding-left: 185px;
 				}
@@ -739,7 +739,7 @@
 			}
 			&:before {
 				content: normal;
-			
+
 			}
 			.panel-img{
 				background-image:url(../img/maps/default-destination.jpg);
@@ -752,7 +752,7 @@
 				bottom:0;
 				width: 215px;
 				height: 120px;
-				
+
 				@include responsive(1300px){
 					width: 185px;
 					height: 100px;
@@ -878,7 +878,7 @@
 				max-height: 100%;
 			}
 		}
-			
+
 	}
 
 	.panel-destination-content {
@@ -896,7 +896,7 @@
 		}
 		@include responsive(730px, 515px){
 			max-height: 435px;
-			
+
 		}
 		@include responsive(515px){
 			max-height: 675px;
@@ -916,7 +916,7 @@
 				@include transition(max-height);
 			}
 			.panel-table{
-				
+
 				display: table;
 				height: 100%;
 				width: 100%;
@@ -941,7 +941,7 @@
 				padding-right: 25px;
 				max-width: 500px;
 				min-height: 435px;
-				
+
 			}
 			@include responsive(515px){
 				padding-right: 0;
@@ -975,7 +975,7 @@
 				margin-bottom: 20px;
 				line-height: 20px;
 				margin-top: 0;
-				
+
 				@include responsive(830px){
 					margin-bottom: 10px;
 				}
@@ -1042,7 +1042,7 @@
 				padding-top: 50px;
 				padding-left: 35px;
 			}
-			
+
 			@include responsive(345px){
 				padding: 40px 20px;
 			}
@@ -1135,7 +1135,7 @@
 				&:last-child{
 					margin-bottom: 0;
 				}
-				
+
 				.btn-default{
 					display: inline-block;
 					vertical-align: middle;
@@ -1400,11 +1400,11 @@
 		overflow-x: auto;
 		overflow-y: visible;
 
-	
+
 		td{
 			white-space: normal !important;
 		}
-		
+
 		.more-link{
 			margin:0 0 20px;
 		}
@@ -1427,7 +1427,7 @@
 	}
 	.table td{
 		text-align: left;
-		
+
 	}
 	.views-field-field-preview-image{
 		width: 28%;

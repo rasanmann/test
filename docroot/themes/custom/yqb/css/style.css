@@ -17,7 +17,7 @@
 	Animation
 -------------------------------------------------------------------*/
 /*
-    Example usage: 
+    Example usage:
     @include animation(changecolour, 5s, 10s)
  */
 /*-------------------------------------------------------------------
@@ -29,7 +29,7 @@
 /*-------------------------------------------------------------------
 	Utilities
 -------------------------------------------------------------------*/
-/* 
+/*
 * @include triangle within a pseudo element and add positioning properties (ie. top, left)
 * $direction: up, down, left, right
 */
@@ -11252,7 +11252,7 @@ p {
   transform: rotate(45deg); }
 
 .icon-yqb-2018 {
-  background: url(/themes/yqb/img/yqb-2018.png) center center/contain no-repeat;
+  background: url(/themes/custom/yqb/img/yqb-2018.png) center center/contain no-repeat;
   height: 274px;
   width: 274px; }
 

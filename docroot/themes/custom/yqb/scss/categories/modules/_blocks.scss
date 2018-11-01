@@ -4,7 +4,7 @@
 .block-parking-booker {
 	background-color:#0055ff;
 	color:#FFFFFF;
-	
+
 	background-size: cover;
 	background-position: center;
 	padding:$content-padding-base;
@@ -42,7 +42,7 @@
 		position: relative;
 		@include clearfix();
 		margin: 0 -10px;
-		
+
 		@include responsive(950px){
 			margin: 0 -5px;
 		}
@@ -60,7 +60,7 @@
 					padding-right: 145px;
 				}
 			}
-			
+
 			&.col-normal{
 
 				width: 50%;
@@ -119,14 +119,14 @@
 				right: 0;
 				bottom:0;
 				float:none;
-				
+
 				&.is-static{
 					@include responsive($screen-sm) {
 						position:static;
 						clear:left;
 					}
 				}
-				
+
 				.btn{
 					//width: 135px;
 				}
@@ -164,7 +164,7 @@
 	}
 
 	@include responsive(950px, $screen-sm){
-		
+
 		.form-block-container {
 			&.is-desktop{
 				> .form-group {
@@ -245,21 +245,21 @@
 	.table {
 		margin-bottom:0;
 	}
-	
+
 	.panel{
 		&:first-child{
 			border-bottom:1px solid $gray-light;
 		}
-		
+
 		&:last-child a{
 			@include box-shadow(inset 0 -3px 4px -1px rgba(0, 0, 0, 0.15));
 		}
 	}
-	
+
 	.panel-title{
 		display: table;
 		width:100%;
-		
+
 		a{
 			background:$white;
 			color: $brand-primary;
@@ -268,9 +268,9 @@
 			padding:0 20px;
 			vertical-align: middle;
 			@include font-size(18);
-			
+
 			&:after{
-				background:url(/themes/yqb/svg/down-arrow-2.svg) center center / contain no-repeat;
+				background:url(/themes/custom/yqb/svg/down-arrow-2.svg) center center / contain no-repeat;
 				content:"";
 				position: absolute;
 				height:18px;
@@ -279,7 +279,7 @@
 				width:24px;
 				@include translate(0, -50%);
 			}
-		} 
+		}
 	}
 
 	@include responsive($screen-sm){
@@ -297,9 +297,9 @@
 					display: none;
 				}
 			}
-		} 
+		}
 	}
-	
+
 	#collapse-schedules {
 		margin-bottom: 30px;
 		@include responsiveMin($screen-sm){
@@ -352,15 +352,15 @@
 
 	.align-content{
 		max-width: 750px;
-		text-align:center; 
+		text-align:center;
 		@include responsiveMin($screen-sm){
 			position:absolute;
 			padding: 0 40px;
-			top:50%; 
+			top:50%;
 			width: 100%;
 			margin-top: -50px;
 			z-index: 1;
-			left:50%; 
+			left:50%;
 			@include translate(-50%,-50%);
 		}
 		@include responsive(1300px){
@@ -382,10 +382,10 @@
 			margin-bottom: 0;
 			position:absolute;
 			padding: 0 40px;
-			top:42%; 
+			top:42%;
 			width: 100%;
 			z-index: 1;
-			left:50%; 
+			left:50%;
 			@include translate(-50%,-50%);
 		}
 		@include responsive(480px){
@@ -454,7 +454,7 @@
 				fill:$black;
 			}
 		}
-		
+
 		&:hover{
 			background-color: transparent;
 			border-color: $white;
@@ -486,11 +486,11 @@
 	z-index: 401;
 	@include translate(100%,0);
 	@include transition_transform(opacity, 0.25);
-	
+
 	&.is-open{
 		@include translate(84px,0);
 		border-left:1px solid $gray-light;
-		
+
 	}
 	@include responsiveMin(950px){
 		display: none;
@@ -504,23 +504,23 @@
 	.input-group {
 		position: relative;
 		width: 100%;
-			
+
 		.input-group-btn {
 			&:first-child{
-				
+
 				width: 84px;
 				position: absolute;
 				left: 0;
 				z-index: 20;
 			}
 		}
-		
+
 		input[type='text'],
 		input[type='number'],
 		textarea {
 		  font-size: 16px;
 		}
-		
+
 	}
 	.icon-close{
 		width: 21px;
@@ -540,7 +540,7 @@
 			@include font-size(12);
 		}
 	}
-	
+
 	.btn-default {
 		border: 0;
 		position: static;
@@ -562,7 +562,7 @@
 				fill:$black;
 			}
 		}
-		
+
 		&:hover{
 			background-color: $white;
 		}
@@ -670,7 +670,7 @@
 	.title-section{
 		margin-bottom: 0;
 	}
-	
+
 }
 
 .block-alert {
@@ -706,7 +706,7 @@
 		width: 40px;
 		background-color: $brand-warning;
 		text-align: center;
-		
+
 		@include responsive($screen-sm){
 			margin:0 10px 0 0;
 			position: static;
@@ -722,7 +722,7 @@
 		vertical-align: middle;
 		line-height: 40px;
 		white-space:nowrap;
-		
+
 		@include responsive($screen-sm){
 			@include font-size(12);
 		}
@@ -770,7 +770,7 @@
 
 	// Show all rows rows
 	&.show-all tbody tr:nth-of-type(1n+6) {
-		display:table-row; 
+		display:table-row;
 	}
 }
 
@@ -778,7 +778,7 @@
 #block-views-block-departures-block-1{
 	position: relative;
 	.gradient{
-		
+
 		left: -50px;
 		right: -50px;
 		height: 45px;
@@ -810,7 +810,7 @@
 			background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.8) 56%,rgba(0,0,0,0) 70%); /* Chrome10-25,Safari5.1-6 */
 			background: radial-gradient(ellipse at center,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.8) 56%,rgba(0,0,0,0) 70%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-			
+
 		}
 	}
 }
@@ -1039,7 +1039,7 @@
 }
 
 .blocks-councils{
-	
+
 	> .block-simple-title h2 {
 		@include title-page();
 	}
@@ -1086,7 +1086,7 @@
 			text-align: center;
 			max-width: 700px;
 			margin: 0 auto 20px;
-		
+
 			li {
 				list-style: none;
 				position: relative;
@@ -1511,13 +1511,13 @@
 					width:264px;
 					@include box-shadow(0px 27px 57px 0px rgba(0, 0, 0, 0.3));
 				}
-				
+
 
 				&:after {
 					background:rgba($blue-ribbon, 0.3);
 					height:380px;
 					width:380px;
-					
+
 					@include transform-origin(0,0);
 					-webkit-transform: scale(0.6947) translate(-50%,-50%);  /* Saf3.1+, Chrome */
 					-moz-transform: scale(0.6947) translate(-50%,-50%); /* FF3.5+ */
@@ -1733,11 +1733,11 @@
 			position: relative;
 			background-size: cover;
 			background-position: center;
-			
+
 			.title-default{
 				margin-bottom: 0;
 			}
-		
+
 			&.inverted {
 				color:$black;
 			}
@@ -1929,17 +1929,17 @@
 			font-weight:$bold;
 			margin:0;
 			@include font-size(36);
-			
-			
+
+
 			@include responsive(1300px) {
 				@include font-size(30);
 			}
-		
-		
+
+
 			@include responsive($screen-sm){
 				@include font-size(28);
 			}
-			
+
 		}
 
 		p {
@@ -1957,7 +1957,7 @@
 	.row-eq-height.block-parks {
 		background:$cellparq;
 		&:before, &:after{
-			content: normal;	
+			content: normal;
 		}
 		.col-sm-4 {
 			&:nth-child(1) .block-park-pricing {
@@ -2081,11 +2081,11 @@
 					font-weight:$regular;
 					margin:0;
 					@include font-size(21);
-					
+
 					@include responsive(1300px) {
 						line-height: 22px;
 					}
-			
+
 					@include responsive(950px) {
 						line-height: 20px;
 					}
@@ -2258,7 +2258,7 @@
 	text-align:center;
 	outline:0;
 	@include font-size(21);
-	
+
 	&:hover,
 	&.is-active {
 		img {
@@ -2305,7 +2305,7 @@
 		color:$white;
 		text-decoration:none;
 	}
-	
+
 	.block-title{
 		@include font-size(20);
 	}

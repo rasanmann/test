@@ -20,14 +20,14 @@
       {# Sub Navbar #}
       {% if page.sub_navigation %}
         {% block sub_navbar %}
-          
+
           {% set sub_navbar_classes = [
           'navbar',
           'navbar-no-spacing',
           'navbar-secondary',
           theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
           ] %}
-          
+
           <div{{ navbar_attributes.removeAttribute('class').addClass(sub_navbar_classes) }} id="navbar-metas" role="banner">
             <div class="navbar-collapse">
               {{ page.sub_navigation }}
@@ -37,18 +37,18 @@
       {% endif %}
     </div>
   </div>
-  
+
   {# Navbar #}
   {% if page.navigation %}
     {% block navbar %}
-      
+
       {% set navbar_classes = [
       'navbar',
       'navbar-main',
       theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
       theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
       ] %}
-      
+
       <div{{ navbar_attributes.removeAttribute('class').addClass(navbar_classes) }} id="navbar-primary" role="banner">
         <div class="navbar-header">
           {{ page.navigation }}
@@ -60,7 +60,7 @@
             {#<span class="icon-bar"></span>#}
           {#</button>#}
         </div>
-  
+
         {# Navigation (collapsible) #}
         {% if page.navigation_collapsible %}
           <div class="navbar-collapse collapse">
@@ -109,7 +109,7 @@
       {% set content_classes = [
         'main-content'
       ] %}
-      
+
       <section{{ content_attributes.addClass(content_classes) }}>
         {# Highlighted #}
         {% if page.highlighted %}
@@ -154,7 +154,7 @@
           </aside>
         {% endblock %}
       {% endif %}
-      
+
       </div>
     </div>
   </div>
@@ -177,7 +177,7 @@
       <div class="logo-wrapper">
         <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
         	 <span class="logo">
-        		<img src="/themes/yqb/img/logo/logo-text-{{ 'fr'|t }}-white.png" alt="{{ 'Aéroport international Jean-Lesage de Québec'|t }}">
+        		<img src="/themes/custom/yqb/img/logo/logo-text-{{ 'fr'|t }}-white.png" alt="{{ 'Aéroport international Jean-Lesage de Québec'|t }}">
 			</span>
         </a>
       </div>
