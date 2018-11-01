@@ -54,14 +54,14 @@ modernizr:
     js/libraries/modernizr/modernizr-custom.js: {}
 
 bootstrap:
-  remote: https://cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.min.js
+  remote: https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js
   version: 3.3.5
   license:
     name: MIT
     url: https://github.com/twbs/bootstrap/blob/master/LICENSE
     gpl-compatible: true
   js:
-   'https://cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.min.js': { type: external }
+   'https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js': { type: external }
 
 helpers:
   js:

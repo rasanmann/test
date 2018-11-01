@@ -117,12 +117,12 @@ var App = (function ($, Drupal, Bootstrap) {
             // PJAX support
             if ($.support.pjax) {
                 // Prepare NProgress bar
-                NProgress.configure({parent: $header.selector});
+                NProgress.configure({parent: '#layout-header'});
 
                 // PJAX normal request
-                $document.pjax('a:not([target="_blank"], [target="_self"], [target="_top"], [href$="/edit"], [href$="/delete"], [href*="/admin/"])', $content.selector, {
+                $document.pjax('a:not([target="_blank"], [target="_self"], [target="_top"], [href$="/edit"], [href$="/delete"], [href*="/admin/"])', '#layout-content', {
                     timeout: 20 * 1000,
-                    fragment: $content.selector,
+                    fragment: '#layout-content',
                     xhr: pjaxXHR
                 });
 
@@ -306,7 +306,7 @@ var App = (function ($, Drupal, Bootstrap) {
          */
         var onPjaxSubmit = function (ev) {
             console.log('PJAX : submit');
-            $.pjax.submit(ev, $content.selector);
+            $.pjax.submit(ev, '#layout-content');
         };
 
         /**
@@ -352,9 +352,9 @@ var App = (function ($, Drupal, Bootstrap) {
          */
         var onPjaxPopState = function (ev) {
             console.log('PJAX : popstate');
-            $.pjax.reload($content.selector, {
+            $.pjax.reload('#layout-content', {
                 timeout: 10 * 1000,
-                fragment: $content.selector
+                fragment: '#layout-content'
             });
         };
 
