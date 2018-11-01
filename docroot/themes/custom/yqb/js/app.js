@@ -427,7 +427,7 @@ var App = (function ($, Drupal, Bootstrap) {
         var onSwitchChange = function (ev, state) {
             var selector = (state) ? '.switch-on' : '.switch-off';
 
-            $(this).closest('.switch').find(selector).trigger('click', ['#layout-content']);
+            $(this).closest('.switch').find(selector).trigger('click', {container: '#layout-content'});
         };
 
         /**
