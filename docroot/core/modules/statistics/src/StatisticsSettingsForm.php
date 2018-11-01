@@ -10,6 +10,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Configure statistics settings for this site.
+ *
+ * @internal
  */
 class StatisticsSettingsForm extends ConfigFormBase {
 
@@ -21,7 +23,7 @@ class StatisticsSettingsForm extends ConfigFormBase {
   protected $moduleHandler;
 
   /**
-   * Constructs a \Drupal\user\StatisticsSettingsForm object.
+   * Constructs a \Drupal\statistics\StatisticsSettingsForm object.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The factory for configuration objects.

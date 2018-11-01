@@ -2,7 +2,7 @@
 
 namespace Drupal\Tests\migrate_drupal\Kernel\dependencies;
 
-use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Component\Render\FormattableMarkup;
 use Drupal\migrate\MigrateExecutable;
 use Drupal\Tests\migrate_drupal\Kernel\d6\MigrateDrupal6TestBase;
 
@@ -33,17 +33,18 @@ class MigrateDependenciesTest extends MigrateDrupal6TestBase {
       'd6_node:company',
       'd6_node:employee',
       'd6_node:event',
+      'd6_node:forum',
       'd6_node:page',
+      'd6_user',
+      'd6_node_type',
+      'd6_node_settings',
+      'd6_filter_format',
       'd6_node:sponsor',
       'd6_node:story',
       'd6_node:test_event',
       'd6_node:test_page',
       'd6_node:test_planet',
       'd6_node:test_story',
-      'd6_node_type',
-      'd6_node_settings',
-      'd6_filter_format',
-      'd6_user',
       'd6_comment_type',
       'd6_comment_entity_display',
       'd6_comment_entity_form_display',
@@ -66,7 +67,7 @@ class MigrateDependenciesTest extends MigrateDrupal6TestBase {
     $executable = new MigrateExecutable($migration, $this);
     $this->startCollectingMessages();
     $executable->import();
-    $this->assertEqual($this->migrateMessages['error'], [SafeMarkup::format('Migration @id did not meet the requirements. Missing migrations d6_aggregator_feed. requirements: d6_aggregator_feed.', ['@id' => $migration->id()])]);
+    $this->assertEqual($this->migrateMessages['error'], [new FormattableMarkup('Migration @id did not meet the requirements. Missing migrations d6_aggregator_feed. requirements: d6_aggregator_feed.', ['@id' => $migration->id()])]);
     $this->collectMessages = FALSE;
   }
 

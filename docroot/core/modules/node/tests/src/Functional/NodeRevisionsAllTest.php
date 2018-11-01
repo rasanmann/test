@@ -11,10 +11,31 @@ use Drupal\node\NodeInterface;
  * @group node
  */
 class NodeRevisionsAllTest extends NodeTestBase {
-  protected $nodes;
-  protected $revisionLogs;
-  protected $profile = "standard";
 
+  /**
+   * A list of nodes created to be used as starting point of different tests.
+   *
+   * @var Drupal\node\NodeInterface[]
+   */
+  protected $nodes;
+
+  /**
+   * Revision logs of nodes created by the setup method.
+   *
+   * @var string[]
+   */
+  protected $revisionLogs;
+
+  /**
+   * An arbitrary user for revision authoring.
+   *
+   * @var \Drupal\user\UserInterface
+   */
+  protected $revisionUser;
+
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp() {
     parent::setUp();
 
@@ -25,13 +46,17 @@ class NodeRevisionsAllTest extends NodeTestBase {
         'revert page revisions',
         'delete page revisions',
         'edit any page content',
-        'delete any page content'
+        'delete any page content',
       ]
     );
     $this->drupalLogin($web_user);
 
     // Create an initial node.
     $node = $this->drupalCreateNode();
+
+    // Create a user for revision authoring.
+    // This must be different from user performing revert.
+    $this->revisionUser = $this->drupalCreateUser();
 
     $settings = get_object_vars($node);
     $settings['revision'] = 1;
@@ -72,6 +97,8 @@ class NodeRevisionsAllTest extends NodeTestBase {
       'format' => filter_default_format(),
     ];
     $node->setNewRevision();
+    // Ensure the revision author is a different user.
+    $node->setRevisionUserId($this->revisionUser->id());
     $node->save();
 
     return $node;
@@ -95,7 +122,7 @@ class NodeRevisionsAllTest extends NodeTestBase {
         'revert all revisions',
         'delete all revisions',
         'edit any page content',
-        'delete any page content'
+        'delete any page content',
       ]
     );
     $this->drupalLogin($content_admin);
@@ -120,16 +147,26 @@ class NodeRevisionsAllTest extends NodeTestBase {
       [
         '@type' => 'Basic page',
         '%title' => $nodes[1]->getTitle(),
-        '%revision-date' => format_date($nodes[1]->getRevisionCreationTime())
+        '%revision-date' => format_date($nodes[1]->getRevisionCreationTime()),
       ]),
       'Revision reverted.');
     $node_storage->resetCache([$node->id()]);
     $reverted_node = $node_storage->load($node->id());
     $this->assertTrue(($nodes[1]->body->value == $reverted_node->body->value), 'Node reverted correctly.');
 
+    // Confirm the revision author is the user performing the revert.
+    $this->assertTrue($reverted_node->getRevisionUserId() == $this->loggedInUser->id(), 'Node revision author is user performing revert.');
+    // And that its not the revision author.
+    $this->assertTrue($reverted_node->getRevisionUserId() != $this->revisionUser->id(), 'Node revision author is not original revision author.');
+
     // Confirm that this is not the current version.
     $node = node_revision_load($node->getRevisionId());
     $this->assertFalse($node->isDefaultRevision(), 'Third node revision is not the current one.');
+
+    // Confirm that the node can still be updated.
+    $this->drupalPostForm("node/" . $reverted_node->id() . "/edit", ['body[0][value]' => 'We are Drupal.'], t('Save'));
+    $this->assertText(t('Basic page @title has been updated.', ['@title' => $reverted_node->getTitle()]), 'Node was successfully saved after reverting a revision.');
+    $this->assertText('We are Drupal.', 'Node was correctly updated after reverting a revision.');
 
     // Confirm revisions delete properly.
     $this->drupalPostForm("node/" . $node->id() . "/revisions/" . $nodes[1]->getRevisionId() . "/delete", [], t('Delete'));

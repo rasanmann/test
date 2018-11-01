@@ -2,9 +2,9 @@
 
 namespace Drupal\Tests\path\Functional;
 
-use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Database\Database;
+use Drupal\Core\Url;
 
 /**
  * Add, edit, delete, and change alias and verify its consistency in the
@@ -25,7 +25,7 @@ class PathAliasTest extends PathTestBase {
     parent::setUp();
 
     // Create test user and log in.
-    $web_user = $this->drupalCreateUser(['create page content', 'edit own page content', 'administer url aliases', 'create url aliases']);
+    $web_user = $this->drupalCreateUser(['create page content', 'edit own page content', 'administer url aliases', 'create url aliases', 'access content overview']);
     $this->drupalLogin($web_user);
   }
 
@@ -84,7 +84,7 @@ class PathAliasTest extends PathTestBase {
     $this->drupalGet($edit['alias']);
     $this->assertText($node1->label(), 'Alias works lower case.');
     $this->assertResponse(200);
-    $this->drupalGet(Unicode::strtoupper($edit['alias']));
+    $this->drupalGet(mb_strtoupper($edit['alias']));
     $this->assertText($node1->label(), 'Alias works upper case.');
     $this->assertResponse(200);
 
@@ -92,7 +92,8 @@ class PathAliasTest extends PathTestBase {
     $pid = $this->getPID($edit['alias']);
 
     $previous = $edit['alias'];
-    $edit['alias'] = '/alias' . // Lower-case letters.
+    // Lower-case letters.
+    $edit['alias'] = '/alias' .
       // "Special" ASCII characters.
       "- ._~!$'\"()*@[]?&+%#,;=:" .
       // Characters that look like a percent-escaped string.
@@ -110,7 +111,7 @@ class PathAliasTest extends PathTestBase {
     $this->drupalPostForm('admin/config/search/path/edit/' . $pid, $edit, t('Save'));
 
     // Confirm that the alias works.
-    $this->drupalGet(Unicode::strtoupper($edit['alias']));
+    $this->drupalGet(mb_strtoupper($edit['alias']));
     $this->assertText($node1->label(), 'Changed alias works.');
     $this->assertResponse(200);
 
@@ -132,7 +133,7 @@ class PathAliasTest extends PathTestBase {
     $this->assertRaw(t('The alias %alias is already in use in this language.', ['%alias' => $edit['alias']]), 'Attempt to move alias was rejected.');
 
     $edit_upper = $edit;
-    $edit_upper['alias'] = Unicode::strtoupper($edit['alias']);
+    $edit_upper['alias'] = mb_strtoupper($edit['alias']);
     $this->drupalPostForm('admin/config/search/path/add', $edit_upper, t('Save'));
     $this->assertRaw(t('The alias %alias could not be added because it is already in use in this language with different capitalization: %stored_alias.', [
       '%alias' => $edit_upper['alias'],
@@ -246,7 +247,8 @@ class PathAliasTest extends PathTestBase {
 
     $previous = $edit['path[0][alias]'];
     // Change alias to one containing "exotic" characters.
-    $edit['path[0][alias]'] = '/alias' . // Lower-case letters.
+    // Lower-case letters.
+    $edit['path[0][alias]'] = '/alias' .
       // "Special" ASCII characters.
       "- ._~!$'\"()*@[]?&+%#,;=:" .
       // Characters that look like a percent-escaped string.
@@ -264,7 +266,7 @@ class PathAliasTest extends PathTestBase {
     $this->drupalPostForm('node/' . $node1->id() . '/edit', $edit, t('Save'));
 
     // Confirm that the alias works.
-    $this->drupalGet(Unicode::strtoupper($edit['path[0][alias]']));
+    $this->drupalGet(mb_strtoupper($edit['path[0][alias]']));
     $this->assertText($node1->label(), 'Changed alias works.');
     $this->assertResponse(200);
 
@@ -326,6 +328,34 @@ class PathAliasTest extends PathTestBase {
     $node5->delete();
     $path_alias = \Drupal::service('path.alias_storage')->lookupPathAlias('/node/' . $node5->id(), $node5->language()->getId());
     $this->assertFalse($path_alias, 'Alias was successfully deleted when the referenced node was deleted.');
+
+    // Create sixth test node.
+    $node6 = $this->drupalCreateNode();
+
+    // Create an invalid alias with two leading slashes and verify that the
+    // extra slash is removed when the link is generated. This ensures that URL
+    // aliases cannot be used to inject external URLs.
+    // @todo The user interface should either display an error message or
+    //   automatically trim these invalid aliases, rather than allowing them to
+    //   be silently created, at which point the functional aspects of this
+    //   test will need to be moved elsewhere and switch to using a
+    //   programmatically-created alias instead.
+    $alias = $this->randomMachineName(8);
+    $edit = ['path[0][alias]' => '//' . $alias];
+    $this->drupalPostForm($node6->toUrl('edit-form'), $edit, t('Save'));
+    $this->drupalGet(Url::fromRoute('system.admin_content'));
+    // This checks the link href before clicking it, rather than using
+    // \Drupal\Tests\BrowserTestBase::assertSession()->addressEquals() after
+    // clicking it, because the test browser does not always preserve the
+    // correct number of slashes in the URL when it visits internal links;
+    // using \Drupal\Tests\BrowserTestBase::assertSession()->addressEquals()
+    // would actually make the test pass unconditionally on the testbot (or
+    // anywhere else where Drupal is installed in a subdirectory).
+    $link_xpath = $this->xpath('//a[normalize-space(text())=:label]', [':label' => $node6->getTitle()]);
+    $link_href = $link_xpath[0]->getAttribute('href');
+    $this->assertEquals($link_href, base_path() . $alias);
+    $this->clickLink($node6->getTitle());
+    $this->assertResponse(404);
   }
 
   /**
@@ -356,6 +386,22 @@ class PathAliasTest extends PathTestBase {
     $this->drupalPostForm('node/' . $node_two->id() . '/edit', $edit, t('Save'));
     $this->assertText(t('The alias is already in use.'));
     $this->assertFieldByXPath("//input[@name='path[0][alias]' and contains(@class, 'error')]", $edit['path[0][alias]'], 'Textfield exists and has the error class.');
+
+    // Behavior here differs with the inline_form_errors module enabled.
+    // Enable the inline_form_errors module and try this again. This module
+    // improves validation with a link in the error message(s) to the fields
+    // which have invalid input.
+    $this->assertTrue($this->container->get('module_installer')->install(['inline_form_errors'], TRUE), 'Installed inline_form_errors.');
+    // Attempt to edit the second node again, as before.
+    $this->drupalPostForm('node/' . $node_two->id() . '/edit', $edit, t('Preview'));
+    // This error should still be present next to the field.
+    $this->assertSession()->pageTextContains(t('The alias is already in use.'), 'Field error found with expected text.');
+    // The validation error set for the page should include this text.
+    $this->assertSession()->pageTextContains(t('1 error has been found: URL alias'), 'Form error found with expected text.');
+    // The text 'URL alias' should be a link.
+    $this->assertSession()->linkExists('URL alias');
+    // The link should be to the ID of the URL alias field.
+    $this->assertSession()->linkByHrefExists('#edit-path-0-alias');
   }
 
 }

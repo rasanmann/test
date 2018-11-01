@@ -41,12 +41,12 @@ module.exports = function (grunt) {
 				files: [
 					{
 						expand: true,
-						cwd: './themes/yqb/svg',
+						cwd: './themes/custom/yqb/svg',
 						src: [
 							'*.svg',
 							'!**/min/*.svg' // Except those already minified,
 						],
-						dest: './themes/yqb/svg/min/'
+						dest: './themes/custom/yqb/svg/min/'
 					}
 				]
 			}
@@ -55,9 +55,9 @@ module.exports = function (grunt) {
 		    icons: {
 		        files: [{
 		            expand: true,
-		            cwd: './themes/yqb/svg/min',
+		            cwd: './themes/custom/yqb/svg/min',
 			        src: ['*.svg'],
-			        dest: './themes/yqb/dist/output'
+			        dest: './themes/custom/yqb/dist/output'
 		        }],
 		        options: {
 			        enhanceSVG: true,

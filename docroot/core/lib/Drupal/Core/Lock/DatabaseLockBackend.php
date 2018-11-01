@@ -239,6 +239,8 @@ class DatabaseLockBackend extends LockBackendAbstract {
 
   /**
    * Defines the schema for the semaphore table.
+   *
+   * @internal
    */
   public function schemaDefinition() {
     return [
@@ -249,20 +251,20 @@ class DatabaseLockBackend extends LockBackendAbstract {
           'type' => 'varchar_ascii',
           'length' => 255,
           'not null' => TRUE,
-          'default' => ''
+          'default' => '',
         ],
         'value' => [
           'description' => 'A value for the semaphore.',
           'type' => 'varchar_ascii',
           'length' => 255,
           'not null' => TRUE,
-          'default' => ''
+          'default' => '',
         ],
         'expire' => [
           'description' => 'A Unix timestamp with microseconds indicating when the semaphore should expire.',
           'type' => 'float',
           'size' => 'big',
-          'not null' => TRUE
+          'not null' => TRUE,
         ],
       ],
       'indexes' => [

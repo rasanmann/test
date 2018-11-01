@@ -42,7 +42,7 @@ class Context extends ComponentContext implements ContextInterface {
    *
    * @param \Drupal\Core\Plugin\Context\ContextDefinitionInterface $context_definition
    *   The context definition.
-   * @param mixed $context_value|null
+   * @param mixed|null $context_value
    *   The context value object.
    */
   public function __construct(ContextDefinitionInterface $context_definition, $context_value = NULL) {
@@ -122,7 +122,6 @@ class Context extends ComponentContext implements ContextInterface {
     }
     return $this->contextData;
   }
-
 
   /**
    * {@inheritdoc}

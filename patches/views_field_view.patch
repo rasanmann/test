@@ -1,0 +1,27 @@
+diff --git a/src/Plugin/views/field/View.php b/src/Plugin/views/field/View.php
+index bd650b5a..20e8a8b0 100644
+--- a/src/Plugin/views/field/View.php
++++ b/src/Plugin/views/field/View.php
+@@ -343,10 +343,18 @@ protected function getTokenArgument($token) {
+     // Trim whitespace and remove the brackets around the token.
+     preg_match('{{\s?(?<type>[a-z_]+)\.(?<id>[a-z_]+)\s?}}', $token, $match);
+
+-    return [
+-      'type' => $match['type'],
+-      'id' => $match['id'],
+-    ];
++    if ($match) {
++      return [
++        'type' => $match['type'],
++        'id' => $match['id'],
++      ];
++    }
++    else {
++      return [
++        'type' => NULL,
++        'id' => NULL,
++      ];
++    }
+   }
+
+   /**

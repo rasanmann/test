@@ -1,0 +1,10 @@
+{
+	"name": "drupal/yqb_parking_booker",
+	"description": "Multi-step form for booking parking spots.",
+	"type": "drupal-module",
+	"license": "GPL-2.0+",
+	"require": {
+		"eo/passbook": "dev-master",
+		"endroid/qr-code": "1.5.*"
+	}
+}

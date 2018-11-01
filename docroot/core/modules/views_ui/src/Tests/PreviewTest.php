@@ -105,7 +105,13 @@ class PreviewTest extends UITestBase {
     $this->assertText(t('Query execute time'));
     $this->assertText(t('View render time'));
     $this->assertRaw('<strong>Query</strong>');
-    $this->assertText("SELECT views_test_data.name AS views_test_data_name\nFROM \n{views_test_data} views_test_data\nWHERE (views_test_data.id = &#039;100&#039; )");
+    $query_string = <<<SQL
+SELECT views_test_data.name AS views_test_data_name
+FROM
+{views_test_data} views_test_data
+WHERE (views_test_data.id = '100')
+SQL;
+    $this->assertEscaped($query_string);
 
     // Test that the statistics and query are rendered above the preview.
     $this->assertTrue(strpos($this->getRawContent(), 'views-query-info') < strpos($this->getRawContent(), 'view-test-preview'), 'Statistics shown above the preview.');
@@ -114,6 +120,12 @@ class PreviewTest extends UITestBase {
     $settings->set('ui.show.sql_query.where', 'below')->save();
     $this->drupalPostForm(NULL, $edit = ['view_args' => '100'], t('Update preview'));
     $this->assertTrue(strpos($this->getRawContent(), 'view-test-preview') < strpos($this->getRawContent(), 'views-query-info'), 'Statistics shown below the preview.');
+
+    // Test that the preview title isn't double escaped.
+    $this->drupalPostForm("admin/structure/views/nojs/display/test_preview/default/title", $edit = ['title' => 'Double & escaped'], t('Apply'));
+    $this->drupalPostForm(NULL, [], t('Update preview'));
+    $elements = $this->xpath('//div[@id="views-live-preview"]/div[contains(@class, views-query-info)]//td[text()=:text]', [':text' => t('Double & escaped')]);
+    $this->assertEqual(1, count($elements));
   }
 
   /**

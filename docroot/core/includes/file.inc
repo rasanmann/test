@@ -6,7 +6,6 @@
  */
 
 use Drupal\Component\FileSystem\FileSystem as ComponentFileSystem;
-use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Component\PhpStorage\FileStorage;
 use Drupal\Component\Utility\Bytes;
@@ -20,6 +19,8 @@ use Drupal\Core\StreamWrapper\PrivateStream;
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::CHMOD_DIRECTORY.
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 const FILE_CHMOD_DIRECTORY = FileSystem::CHMOD_DIRECTORY;
 
@@ -28,6 +29,8 @@ const FILE_CHMOD_DIRECTORY = FileSystem::CHMOD_DIRECTORY;
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::CHMOD_FILE.
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 const FILE_CHMOD_FILE = FileSystem::CHMOD_FILE;
 
@@ -77,6 +80,8 @@ const FILE_STATUS_PERMANENT = 1;
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::uriScheme().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function file_uri_scheme($uri) {
   return \Drupal::service('file_system')->uriScheme($uri);
@@ -87,11 +92,12 @@ function file_uri_scheme($uri) {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::validScheme().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function file_stream_wrapper_valid_scheme($scheme) {
   return \Drupal::service('file_system')->validScheme($scheme);
 }
-
 
 /**
  * Returns the part of a URI after the schema.
@@ -194,7 +200,7 @@ function file_create_url($uri) {
     //   HTTP and to https://example.com/bar.jpg when viewing a HTTPS page)
     // Both types of relative URIs are characterized by a leading slash, hence
     // we can use a single check.
-    if (Unicode::substr($uri, 0, 1) == '/') {
+    if (mb_substr($uri, 0, 1) == '/') {
       return $uri;
     }
     else {
@@ -262,7 +268,7 @@ function file_url_transform_relative($file_url) {
     $http_host = $host . ':' . $port;
   }
 
-  return preg_replace('|^https?://' . $http_host . '|', '', $file_url);
+  return preg_replace('|^https?://' . preg_quote($http_host, '|') . '|', '', $file_url);
 }
 
 /**
@@ -386,6 +392,8 @@ function file_save_htaccess($directory, $private = TRUE, $force_overwrite = FALS
  *
  * @deprecated in Drupal 8.0.x-dev and will be removed before Drupal 9.0.0.
  *   Use \Drupal\Component\PhpStorage\FileStorage::htaccessLines().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function file_htaccess_lines($private = TRUE) {
   return FileStorage::htaccessLines($private);
@@ -452,8 +460,9 @@ function file_unmanaged_copy($source, $destination = NULL, $replace = FILE_EXIST
   }
   // Attempt to resolve the URIs. This is necessary in certain configurations
   // (see above).
-  $real_source = drupal_realpath($source) ?: $source;
-  $real_destination = drupal_realpath($destination) ?: $destination;
+  $file_system = \Drupal::service('file_system');
+  $real_source = $file_system->realpath($source) ?: $source;
+  $real_destination = $file_system->realpath($destination) ?: $destination;
   // Perform the copy operation.
   if (!@copy($real_source, $real_destination)) {
     \Drupal::logger('file')->error('The specified file %file could not be copied to %destination.', ['%file' => $source, '%destination' => $destination]);
@@ -497,12 +506,14 @@ function file_unmanaged_copy($source, $destination = NULL, $replace = FILE_EXIST
 function file_unmanaged_prepare($source, &$destination = NULL, $replace = FILE_EXISTS_RENAME) {
   $original_source = $source;
   $logger = \Drupal::logger('file');
+  $file_system = \Drupal::service('file_system');
 
   // Assert that the source file actually exists.
   if (!file_exists($source)) {
-    // @todo Replace drupal_set_message() calls with exceptions instead.
-    drupal_set_message(t('The specified file %file could not be moved/copied because no file by that name exists. Please check that you supplied the correct filename.', ['%file' => $original_source]), 'error');
-    if (($realpath = drupal_realpath($original_source)) !== FALSE) {
+    // @todo Replace \Drupal::messenger()->addError() calls with exceptions
+    // instead.
+    \Drupal::messenger()->addError(t('The specified file %file could not be moved/copied because no file by that name exists. Please check that you supplied the correct filename.', ['%file' => $original_source]));
+    if (($realpath = $file_system->realpath($original_source)) !== FALSE) {
       $logger->notice('File %file (%realpath) could not be moved/copied because it does not exist.', ['%file' => $original_source, '%realpath' => $realpath]);
     }
     else {
@@ -516,7 +527,6 @@ function file_unmanaged_prepare($source, &$destination = NULL, $replace = FILE_E
     $destination = file_build_uri(drupal_basename($source));
   }
 
-
   // Prepare the destination directory.
   if (file_prepare_directory($destination)) {
     // The destination is already a directory, so append the source basename.
@@ -528,7 +538,7 @@ function file_unmanaged_prepare($source, &$destination = NULL, $replace = FILE_E
     if (!file_prepare_directory($dirname)) {
       // The destination is not valid.
       $logger->notice('File %file could not be moved/copied because the destination directory %destination is not configured correctly.', ['%file' => $original_source, '%destination' => $dirname]);
-      drupal_set_message(t('The specified file %file could not be moved/copied because the destination directory is not properly configured. This may be caused by a problem with file or directory permissions. More information is available in the system log.', ['%file' => $original_source]), 'error');
+      \Drupal::messenger()->addError(t('The specified file %file could not be moved/copied because the destination directory is not properly configured. This may be caused by a problem with file or directory permissions. More information is available in the system log.', ['%file' => $original_source]));
       return FALSE;
     }
   }
@@ -536,16 +546,16 @@ function file_unmanaged_prepare($source, &$destination = NULL, $replace = FILE_E
   // Determine whether we can perform this operation based on overwrite rules.
   $destination = file_destination($destination, $replace);
   if ($destination === FALSE) {
-    drupal_set_message(t('The file %file could not be moved/copied because a file by that name already exists in the destination directory.', ['%file' => $original_source]), 'error');
+    \Drupal::messenger()->addError(t('The file %file could not be moved/copied because a file by that name already exists in the destination directory.', ['%file' => $original_source]));
     $logger->notice('File %file could not be moved/copied because a file by that name already exists in the destination directory (%destination)', ['%file' => $original_source, '%destination' => $destination]);
     return FALSE;
   }
 
   // Assert that the source and destination filenames are not the same.
-  $real_source = drupal_realpath($source);
-  $real_destination = drupal_realpath($destination);
+  $real_source = $file_system->realpath($source);
+  $real_destination = $file_system->realpath($destination);
   if ($source == $destination || ($real_source !== FALSE) && ($real_source == $real_destination)) {
-    drupal_set_message(t('The specified file %file was not moved/copied because it would overwrite itself.', ['%file' => $source]), 'error');
+    \Drupal::messenger()->addError(t('The specified file %file was not moved/copied because it would overwrite itself.', ['%file' => $source]));
     $logger->notice('File %file could not be moved/copied because it would overwrite itself.', ['%file' => $source]);
     return FALSE;
   }
@@ -643,8 +653,9 @@ function file_unmanaged_move($source, $destination = NULL, $replace = FILE_EXIST
   }
   // Attempt to resolve the URIs. This is necessary in certain configurations
   // (see above) and can also permit fast moves across local schemes.
-  $real_source = drupal_realpath($source) ?: $source;
-  $real_destination = drupal_realpath($destination) ?: $destination;
+  $file_system = \Drupal::service('file_system');
+  $real_source = $file_system->realpath($source) ?: $source;
+  $real_destination = $file_system->realpath($destination) ?: $destination;
   // Perform the move operation.
   if (!@rename($real_source, $real_destination)) {
     // Fall back to slow copy and unlink procedure. This is necessary for
@@ -686,8 +697,8 @@ function file_unmanaged_move($source, $destination = NULL, $replace = FILE_EXIST
  * @param $extensions
  *   A space-separated list of extensions that should not be altered.
  * @param $alerts
- *   If TRUE, drupal_set_message() will be called to display a message if the
- *   file name was changed.
+ *   If TRUE, \Drupal::messenger()->addStatus() will be called to display
+ *   a message if the file name was changed.
  *
  * @return string
  *   The potentially modified $filename.
@@ -706,8 +717,10 @@ function file_munge_filename($filename, $extensions, $alerts = TRUE) {
     // Split the filename up by periods. The first part becomes the basename
     // the last part the final extension.
     $filename_parts = explode('.', $filename);
-    $new_filename = array_shift($filename_parts); // Remove file basename.
-    $final_extension = array_pop($filename_parts); // Remove final extension.
+    // Remove file basename.
+    $new_filename = array_shift($filename_parts);
+    // Remove final extension.
+    $final_extension = array_pop($filename_parts);
 
     // Loop through the middle parts of the name and add an underscore to the
     // end of each section that could be a file extension but isn't in the list
@@ -721,7 +734,7 @@ function file_munge_filename($filename, $extensions, $alerts = TRUE) {
     $filename = $new_filename . '.' . $final_extension;
 
     if ($alerts && $original != $filename) {
-      drupal_set_message(t('For security reasons, your upload has been renamed to %filename.', ['%filename' => $filename]));
+      \Drupal::messenger()->addStatus(t('For security reasons, your upload has been renamed to %filename.', ['%filename' => $filename]));
     }
   }
 
@@ -881,7 +894,7 @@ function file_unmanaged_delete($path) {
  *
  * @param $path
  *   A string containing either an URI or a file or directory path.
- * @param $callback
+ * @param callable $callback
  *   (optional) Callback function to run on each file prior to deleting it and
  *   on each directory prior to traversing it. For example, can be used to
  *   modify permissions.
@@ -912,13 +925,13 @@ function file_unmanaged_delete_recursive($path, $callback = NULL) {
   return file_unmanaged_delete($path);
 }
 
-
-
 /**
  * Moves an uploaded file to a new location.
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::moveUploadedFile().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_move_uploaded_file($filename, $uri) {
   return \Drupal::service('file_system')->moveUploadedFile($filename, $uri);
@@ -954,7 +967,7 @@ function file_unmanaged_save_data($data, $destination = NULL, $replace = FILE_EX
   // Write the data to a temporary file.
   $temp_name = drupal_tempnam('temporary://', 'file');
   if (file_put_contents($temp_name, $data) === FALSE) {
-    drupal_set_message(t('The file could not be created.'), 'error');
+    \Drupal::messenger()->addError(t('The file could not be created.'));
     return FALSE;
   }
 
@@ -1019,7 +1032,7 @@ function file_scan_directory($dir, $mask, $options = [], $depth = 0) {
   // performance boost.
   if (!isset($options['nomask'])) {
     $ignore_directories = Settings::get('file_scan_ignore_directories', []);
-    array_walk($ignore_directories, function(&$value) {
+    array_walk($ignore_directories, function (&$value) {
       $value = preg_quote($value, '/');
     });
     $default_nomask = '/^' . implode('|', $ignore_directories) . '$/';
@@ -1103,6 +1116,8 @@ function file_upload_max_size() {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::chmod().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_chmod($uri, $mode = NULL) {
   return \Drupal::service('file_system')->chmod($uri, $mode);
@@ -1113,6 +1128,8 @@ function drupal_chmod($uri, $mode = NULL) {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::unlink().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_unlink($uri, $context = NULL) {
   return \Drupal::service('file_system')->unlink($uri, $context);
@@ -1123,6 +1140,8 @@ function drupal_unlink($uri, $context = NULL) {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::realpath().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_realpath($uri) {
   return \Drupal::service('file_system')->realpath($uri);
@@ -1133,6 +1152,8 @@ function drupal_realpath($uri) {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::dirname().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_dirname($uri) {
   return \Drupal::service('file_system')->dirname($uri);
@@ -1143,6 +1164,8 @@ function drupal_dirname($uri) {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::basename().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_basename($uri, $suffix = NULL) {
   return \Drupal::service('file_system')->basename($uri, $suffix);
@@ -1154,6 +1177,8 @@ function drupal_basename($uri, $suffix = NULL) {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::mkdir().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_mkdir($uri, $mode = NULL, $recursive = FALSE, $context = NULL) {
   return \Drupal::service('file_system')->mkdir($uri, $mode, $recursive, $context);
@@ -1164,6 +1189,8 @@ function drupal_mkdir($uri, $mode = NULL, $recursive = FALSE, $context = NULL) {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::rmdir().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_rmdir($uri, $context = NULL) {
   return \Drupal::service('file_system')->rmdir($uri, $context);
@@ -1174,6 +1201,8 @@ function drupal_rmdir($uri, $context = NULL) {
  *
  * @deprecated in Drupal 8.0.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Core\File\FileSystem::tempnam().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function drupal_tempnam($directory, $prefix) {
   return \Drupal::service('file_system')->tempnam($directory, $prefix);
@@ -1218,6 +1247,8 @@ function file_directory_temp() {
  *
  * @deprecated in Drupal 8.3.x-dev, will be removed before Drupal 9.0.0.
  *   Use \Drupal\Component\FileSystem\FileSystem::getOsTemporaryDirectory().
+ *
+ * @see https://www.drupal.org/node/2418133
  */
 function file_directory_os_temp() {
   return ComponentFileSystem::getOsTemporaryDirectory();

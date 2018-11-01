@@ -53,7 +53,6 @@ class RouterTest extends WebTestBase {
     // a page inception style.  This test verifies that is not happening.
     $this->assertNoPattern('#</body>.*</body>#s', 'There was no double-page effect from a misrendered subrequest.');
 
-
     // Confirm that route-level access check's cacheability is applied to the
     // X-Drupal-Cache-Contexts and X-Drupal-Cache-Tags headers.
     // 1. controller result: render array, globally cacheable route access.
@@ -318,6 +317,13 @@ class RouterTest extends WebTestBase {
     // It should not matter how many leading slashes are used and query strings
     // should be preserved.
     $url = $request->getUriForPath('/////////////////////////////////////////////////router_test/test1') . '?qs=test';
+    $this->drupalGet($url);
+    $this->assertEqual(1, $this->redirectCount, $url . " redirected to " . $this->url);
+    $this->assertUrl($request->getUriForPath('/router_test/test1') . '?qs=test');
+
+    // Ensure that external URLs in destination query params are not redirected
+    // to.
+    $url = $request->getUriForPath('/////////////////////////////////////////////////router_test/test1') . '?qs=test&destination=http://www.example.com%5c@drupal8alt.test';
     $this->drupalGet($url);
     $this->assertEqual(1, $this->redirectCount, $url . " redirected to " . $this->url);
     $this->assertUrl($request->getUriForPath('/router_test/test1') . '?qs=test');

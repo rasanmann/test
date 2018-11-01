@@ -7,7 +7,7 @@ use Drupal\editor\Entity\Editor;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\filter\Entity\FilterFormat;
-use Drupal\FunctionalJavascriptTests\JavascriptTestBase;
+use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 use Drupal\node\Entity\NodeType;
 
 /**
@@ -15,7 +15,7 @@ use Drupal\node\Entity\NodeType;
  *
  * @group ckeditor
  */
-class FormErrorHandlerCKEditorTest extends JavascriptTestBase {
+class FormErrorHandlerCKEditorTest extends WebDriverTestBase {
 
   /**
    * {@inheritdoc}
@@ -82,16 +82,15 @@ class FormErrorHandlerCKEditorTest extends JavascriptTestBase {
 
     $this->drupalGet('node/add/page');
 
-    $page = $this->getSession()->getPage();
-
     // Only enter a title in the node add form and leave the body field empty.
     $edit = ['edit-title-0-value' => 'Test inline form error with CKEditor'];
 
-    $this->submitForm($edit, 'Save and publish');
+    $this->submitForm($edit, 'Save');
 
+    $this->assertSession()->waitForElement('css', '#cke_edit-body-0-value');
     // Add a bottom margin to the title field to be sure the body field is not
-    // visible. PhantomJS runs with a resolution of 1024x768px.
-    $session->executeScript("document.getElementById('edit-title-0-value').style.marginBottom = '800px';");
+    // visible.
+    $session->executeScript("document.getElementById('edit-title-0-value').style.marginBottom = window.innerHeight*2 + 'px';");
 
     // Check that the CKEditor-enabled body field is currently not visible in
     // the viewport.
@@ -99,8 +98,8 @@ class FormErrorHandlerCKEditorTest extends JavascriptTestBase {
 
     // Check if we can find the error fragment link within the errors summary
     // message.
-    $errors_link = $page->find('css', '.messages--error a[href=\#edit-body-0-value]');
-    $this->assertTrue($errors_link->isVisible(), 'Error fragment link is visible.');
+    $errors_link = $this->assertSession()->waitForElementVisible('css', '.messages--error a[href="#edit-body-0-value"]');
+    $this->assertNotEmpty($errors_link, 'Error fragment link is visible.');
 
     $errors_link->click();
 

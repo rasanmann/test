@@ -154,14 +154,14 @@ function _locale_translation_prepare_project_list($data, $type) {
  *
  * @return array
  *   Array of server parameters:
- *   - "server_pattern": URI containing po file pattern.
+ *   - "pattern": URI containing po file pattern.
  */
 function locale_translation_default_translation_server() {
   $pattern = \Drupal::config('locale.settings')->get('translation.default_server_pattern');
   // An additional check is required here. During the upgrade process
   // \Drupal::config()->get() returns NULL. We use the defined value as
   // fallback.
-  $pattern  = $pattern ? $pattern : LOCALE_TRANSLATION_DEFAULT_SERVER_PATTERN;
+  $pattern = $pattern ? $pattern : LOCALE_TRANSLATION_DEFAULT_SERVER_PATTERN;
 
   return [
     'pattern' => $pattern,

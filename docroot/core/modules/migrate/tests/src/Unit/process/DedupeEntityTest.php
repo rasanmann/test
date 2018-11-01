@@ -6,11 +6,11 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\Query\QueryInterface;
 use Drupal\migrate\Plugin\migrate\process\DedupeEntity;
-use Drupal\Component\Utility\Unicode;
 
 /**
  * @coversDefaultClass \Drupal\migrate\Plugin\migrate\process\DedupeEntity
  * @group migrate
+ * @group legacy
  */
 class DedupeEntityTest extends MigrateProcessTestCase {
 
@@ -18,7 +18,6 @@ class DedupeEntityTest extends MigrateProcessTestCase {
    * The mock entity query.
    *
    * @var \Drupal\Core\Entity\Query\QueryInterface
-   * @var \Drupal\Core\Entity\Query\QueryFactory
    */
   protected $entityQuery;
 
@@ -77,7 +76,7 @@ class DedupeEntityTest extends MigrateProcessTestCase {
     $this->entityQueryExpects($count);
     $value = $this->randomMachineName(32);
     $actual = $plugin->transform($value, $this->migrateExecutable, $this->row, 'testproperty');
-    $expected = Unicode::substr($value, $start, $length);
+    $expected = mb_substr($value, $start, $length);
     $expected .= $count ? $postfix . $count : '';
     $this->assertSame($expected, $actual);
   }
@@ -165,7 +164,9 @@ class DedupeEntityTest extends MigrateProcessTestCase {
       ->will($this->returnValue($this->entityQuery));
     $this->entityQuery->expects($this->exactly($count + 1))
       ->method('execute')
-      ->will($this->returnCallback(function () use (&$count) { return $count--;}));
+      ->will($this->returnCallback(function () use (&$count) {
+        return $count--;
+      }));
   }
 
   /**
@@ -196,7 +197,7 @@ class DedupeEntityTest extends MigrateProcessTestCase {
 
     // Entity 'forums' is pre-existing, entity 'test_vocab' was migrated.
     $this->idMap
-      ->method('lookupSourceID')
+      ->method('lookupSourceId')
       ->will($this->returnValueMap([
         [['test_field' => 'forums'], FALSE],
         [['test_field' => 'test_vocab'], ['source_id' => 42]],
