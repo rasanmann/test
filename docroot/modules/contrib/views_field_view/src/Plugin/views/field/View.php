@@ -343,10 +343,18 @@ class View extends FieldPluginBase {
     // Trim whitespace and remove the brackets around the token.
     preg_match('{{\s?(?<type>[a-z_]+)\.(?<id>[a-z_]+)\s?}}', $token, $match);
 
-    return [
-      'type' => $match['type'],
-      'id' => $match['id'],
-    ];
+    if ($match) {
+      return [
+        'type' => $match['type'],
+        'id' => $match['id'],
+      ];
+    }
+    else {
+      return [
+        'type' => NULL,
+        'id' => NULL,
+      ];
+    }
   }
 
   /**
