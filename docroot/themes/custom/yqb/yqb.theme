@@ -310,7 +310,7 @@ function yqb_form_alter(&$form, &$form_state, $form_id){
         }
       } else {
         $node = \Drupal\node\Entity\Node::load($id);
-        if ($node) {
+        if ($node && $node->isPublished()) {
           $currentLanguage = \Drupal::languageManager()->getCurrentLanguage(\Drupal\Core\Language\LanguageInterface::TYPE_CONTENT)->getId();
           $taxonomyTerm = $node->get('field_department')->first()->get('entity')->getTarget()->getValue();
           $taxonomyTermTrans = \Drupal::service('entity.repository')->getTranslationFromContext($taxonomyTerm, $currentLanguage);
