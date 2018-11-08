@@ -328,7 +328,6 @@ function yqb_form_alter(&$form, &$form_state, $form_id){
       if ($redirect) {
         \Drupal::messenger()->addMessage(t('This job application is no longer available.'), \Drupal\Core\Messenger\MessengerInterface::TYPE_ERROR);
         $response = new \Symfony\Component\HttpFoundation\RedirectResponse(\Drupal\Core\Url::fromRoute('view.careers.page_1')->toString());
-        $response->headers->set('Cache-Control', 'public, max-age=0');
         $response->send();
         exit;
       }
