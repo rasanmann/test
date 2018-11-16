@@ -113,7 +113,7 @@ class MigrateEvent implements EventSubscriberInterface {
         $given = new \DateTime($newDate);
         $given->setTimezone(new \DateTimeZone("UTC"));
         $newDate = $given->format("Y-m-d\TH:i:s");
-        
+
         // Set source property
         $row->setSourceProperty($dateConversion, $newDate);
       }
@@ -186,7 +186,7 @@ class MigrateEvent implements EventSubscriberInterface {
       }
     }
   }
-  
+
   /**
    * React to the end of a new import.
    *
@@ -296,7 +296,7 @@ class MigrateEvent implements EventSubscriberInterface {
       foreach($departure->destination as $stop) {
         $stops[] = $stop->iataCode;
       }
-      
+
       $row = [
         $departure->flightUniqueId,
         $departure->airline->iataCode,
@@ -358,7 +358,7 @@ class MigrateEvent implements EventSubscriberInterface {
       foreach($arrival->origin as $stop) {
         $stops[] = $stop->iataCode;
       }
-      
+
       $row = [
         $arrival->flightUniqueId,
         $arrival->airline->iataCode,
@@ -375,7 +375,7 @@ class MigrateEvent implements EventSubscriberInterface {
         $arrival->arrivalStatus,
         $arrival->carousel->startTime,
         $arrival->carousel->endTime,
-        $arrival->carousel->name,
+        str_replace(['-A', '-B'], "", $arrival->carousel->name),
         implode(',', $stops),
         $arrival->eta,
         $arrival->sta,
@@ -387,7 +387,7 @@ class MigrateEvent implements EventSubscriberInterface {
 
     return $this->saveCSV($file, $data);
   }
-  
+
   private function cleanup($type = 'departures'){
     $destination = sprintf('public://csv/%s.csv', $type);
 
@@ -397,21 +397,21 @@ class MigrateEvent implements EventSubscriberInterface {
       $a = array_combine($data[0], $a);
     });
     array_shift($data);
-    
+
     $importedFlightIds = [];
     if(is_array($data)) {
       foreach ($data as $item) {
         $importedFlightIds[] = $item['id'];
       }
     }
-    
+
     // For Drush
     echo sprintf('New imported %s count => %d.', $type, sizeof($importedFlightIds)) . PHP_EOL;
-    
+
     if(!empty($importedFlightIds)) {
       // Query current content
       $query = \Drupal::entityQuery('node')->condition('type', rtrim($type, 's'));
-    
+
       $result = $query->execute();
 
       $node_storage = \Drupal::entityTypeManager()->getStorage('node');
