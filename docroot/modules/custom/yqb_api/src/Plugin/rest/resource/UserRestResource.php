@@ -21,7 +21,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
  *   label = @Translation("User rest resource"),
  *   serialization_class = "Drupal\yqb_api\Normalizer\JsonDenormalizer",
  *   uri_paths = {
- *     "canonical" = "/v1/users/{user}",
+ *     "canonical" = "/v1/users/{id}",
  *     "https://www.drupal.org/link-relations/create" = "/v1/users"
  *   }
  * )
@@ -84,7 +84,7 @@ class UserRestResource extends YQBResourceBase  {
   public function get($id = null) {
     if($id) {
       $user = User::load($id);
-      
+
       // Empty fields for guest user
       if((!empty($user->get('field_uuid')->get(0)->value))){
         $userData = [
@@ -114,7 +114,7 @@ class UserRestResource extends YQBResourceBase  {
           'newsletter' => (bool) $userData['newsletter'],
           'type' => $userData['type']
       ]);
-      
+
       $response->addCacheableDependency($this->currentUser);
       return $response;
     }else{
@@ -129,12 +129,12 @@ class UserRestResource extends YQBResourceBase  {
    *
    * Update a user
    */
-  public function patch($id, $data) {  
+  public function patch($id, $data) {
     if($id) {
       $user = User::load($id);
-      
+
       if(\Drupal::currentUser()->id() == $user->id()) {
-        
+
         foreach ($data as $key => $value) {
           if ($key === 'password') {
             $user->setPassword($value);
@@ -143,15 +143,15 @@ class UserRestResource extends YQBResourceBase  {
             $query = \Drupal::entityQuery('user')
               ->condition('mail', $data['email'])
               ->condition('uid', $user->id(), '!=');
-            
+
             $count = $query->count()->execute();
-            
+
             if($count){
               $response = new ResourceResponse(['error' => strip_tags($this->t('The email address %mail is already taken.', ['%mail' => $data['email']], ['langcode' => $this->language]))], 400);
               $response->addCacheableDependency($this->currentUser);
               return $response;
-            }  
-                      
+            }
+
             $user->setEmail($value);
           } else if ($key === 'first_name') {
             $user->set('field_first_name', $value);
@@ -171,17 +171,17 @@ class UserRestResource extends YQBResourceBase  {
         // Upgrade anonymous account to email account
         if (isset($data['email']) && !empty($user->field_uuid->value)) {
           module_load_include('module', 'email_registration', 'email_registration');
-          
+
           // Reset his password if new account from uuid but no password entered
           if(!isset($data['password'])) _user_mail_notify('password_reset', $user);
-          
+
           // Create his username
           $new_name = preg_replace('/@.*$/', '', $data['email']);
           $new_name = email_registration_cleanup_username($new_name);
-      
+
           // Ensure whatever name we have is unique.
           $user->setUsername(email_registration_unique_username($new_name));
-          
+
           // Remove his uuid
           $user->set('field_uuid', null);
         }
@@ -308,21 +308,21 @@ class UserRestResource extends YQBResourceBase  {
         ];
       break;
     }
-    
+
     // Add language
     $user['field_language'] = $this->language;
-    
+
     // Add push fields if they are present
     if(array_key_exists('push_ios_token', $data)) $user['field_push_ios_token'] = $data['push_ios_token'];
     if(array_key_exists('push_android_token', $data)) $user['field_push_android_token'] = $data['push_android_token'];
-    
+
     // Generate random unique caller_id
     while(true){
       $callerId = str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
-      
+
       $query = \Drupal::entityQuery('user')->condition('field_caller_id', $callerId);
       $count = $query->count()->execute();
-      
+
       if(!$count){
         $user['field_caller_id'] = $callerId;
         break;
@@ -369,7 +369,7 @@ class UserRestResource extends YQBResourceBase  {
     } else if (!$account->save()) {
       $response = new ResourceResponse(['error' => $this->t('Unknown error', [], ['langcode' => $this->language])], 400);
       return $response;
-      
+
     } else {
       // Send cookie to user
       user_login_finalize($account);
@@ -382,7 +382,7 @@ class UserRestResource extends YQBResourceBase  {
         'email' => $account->getEmail(),
         'caller_id' => $account->field_caller_id->value,
         'newsletter' => (bool) $account->get('field_newsletter')->get(0)->value,
-        'type' => (!empty($account->field_facebook_user_id->value)) ? 'facebook' : ((!empty($account->field_google_user_id->value)) ? 'google' : ((!empty($account->field_uuid->value)) ? 'uuid' : 
+        'type' => (!empty($account->field_facebook_user_id->value)) ? 'facebook' : ((!empty($account->field_google_user_id->value)) ? 'google' : ((!empty($account->field_uuid->value)) ? 'uuid' :
               'email'))
       ]);
     }
