@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "acae39e226fbaebe46452d2b9e71a8bd",
+    "content-hash": "05538d5416b7444141be04a7779dfc97",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1764,6 +1764,53 @@
             "homepage": "https://www.drupal.org/project/addtoany",
             "support": {
                 "source": "http://cgit.drupalcode.org/addtoany"
+            }
+        },
+        {
+            "name": "drupal/ape",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/ape",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ape-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "d716a6feb4702009aa4f7e12509fd131b92db2bb"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1541465584",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "steel-track",
+                    "homepage": "https://www.drupal.org/user/847488"
+                }
+            ],
+            "description": "Allows finer control of the Cache Control header.",
+            "homepage": "https://www.drupal.org/project/ape",
+            "support": {
+                "source": "http://cgit.drupalcode.org/ape"
             }
         },
         {
