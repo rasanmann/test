@@ -182,7 +182,6 @@ function yqb_preprocess_page_title(array &$variables) {
   if (\Drupal::service('path.matcher')->isFrontPage()) {
     $variables['title'] = null;
   }
-
   // Load the node entity from current route
   if ($contact_form = \Drupal::routeMatch()->getParameter('contact_form')) {
 
@@ -299,8 +298,43 @@ function yqb_form_alter(&$form, &$form_state, $form_id){
         }
       }
     break;
+
+    case 'webform_submission_job_application_add_form':
+      $offer = \Drupal::request()->query->get('offer');
+      $id = \Drupal::request()->query->get('id');
+      $redirect = false;
+
+      if (empty($id)) {
+        if (!empty($offer)) {
+          $redirect = true;
+        }
+      } else {
+        $node = \Drupal\node\Entity\Node::load($id);
+        if ($node && $node->isPublished()) {
+          $currentLanguage = \Drupal::languageManager()->getCurrentLanguage(\Drupal\Core\Language\LanguageInterface::TYPE_CONTENT)->getId();
+          $taxonomyTerm = $node->get('field_department')->first()->get('entity')->getTarget()->getValue();
+          $taxonomyTermTrans = \Drupal::service('entity.repository')->getTranslationFromContext($taxonomyTerm, $currentLanguage);
+          $translatedTerm = $taxonomyTermTrans->getName();
+          $form['elements']['offer']['#default_value'] = $node->getTitle();
+          $form['elements']['department']['#default_value'] = $translatedTerm;
+          $form['elements']['department']['#type'] = 'hidden';
+
+          $form['field_offre']['widget']['#default_value'] = 'bob';
+        } else {
+          $redirect = true;
+        }
+      }
+
+      if ($redirect) {
+        \Drupal::messenger()->addMessage(t('This job application is no longer available.'), \Drupal\Core\Messenger\MessengerInterface::TYPE_ERROR);
+        $response = new \Symfony\Component\HttpFoundation\RedirectResponse(\Drupal\Core\Url::fromRoute('view.careers.page_1')->toString());
+        $response->send();
+        exit;
+      }
+      break;
   }
 }
+
 
 function yqb_job_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
     $params = ['contact_form' => 'candidature_spontanee'];

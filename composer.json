@@ -18,6 +18,7 @@
     "drupal/console": "~1.0",
     "drupal/core": "~8.6.2",
     "drupal/ctools": "3.0",
+    "drupal/devel": "^1.2",
     "drupal/editor_advanced_link": "1.4",
     "drupal/editor_file": "1.2",
     "drupal/email_registration": "1.0-rc5",
@@ -50,7 +51,6 @@
     "wikimedia/composer-merge-plugin": "^1.0"
   },
   "require-dev": {
-    "drupal/devel": "~1.0",
     "drupal/config_devel": "1.0-rc1+8-dev",
     "drupal/kint": "~1.0"
   },
