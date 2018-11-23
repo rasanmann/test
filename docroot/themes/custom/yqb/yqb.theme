@@ -498,7 +498,7 @@ function yqb_preprocess_views_view_table(array &$variables) {
   $view = $variables['view']->storage;
 
   if ($view->getOriginalId() === 'arrivals' || $view->getOriginalId() === 'departures') {
-    foreach ($variables['rows'] as &$row) {
+    foreach ($variables['rows'] as $index => &$row) {
 
       // Check if scheduled and estimated fields have that same values
       $scheduled = NULL;
@@ -556,6 +556,30 @@ function yqb_preprocess_views_view_table(array &$variables) {
         }
       }
 
+      /** @var Drupal\yqb\Flight $flight */
+      $flight = \Drupal::service('class_resolver')->getInstanceFromDefinition(\Drupal\yqb\Flight::class);
+
+      /** @var Drupal\views\ResultRow $resultRow */
+      $resultRow = $variables['view']->result[$index];
+      $node = $resultRow->_entity;
+
+      if ($flight->delayedTomorrow($node, TRUE)) {
+        /** @var Drupal\views\ViewExecutable $viewExecutable */
+        $viewExecutable = $variables['view'];
+        $currentDisplay = $viewExecutable->getDisplay()->view->current_display;
+
+        if (!$flight->delayedTomorrow($node)) {
+          if ($currentDisplay === 'today') {
+            unset($variables['rows'][$index]);
+          }
+          elseif ($currentDisplay === 'tomorrow') {
+            if ($oldEstimated) {
+              $row['columns'][$estimated]['content'][0]['field_output']['#markup'] = $oldEstimated;
+            }
+            $row['columns'][$scheduled]['content'][0]['field_output']['#markup'] = '—';
+          }
+        }
+      }
     }
   }
   else if ($view->getOriginalId() === 'publications') {
@@ -639,57 +663,23 @@ function yqb_preprocess_views_view_field(&$variables) {
     $node = $row->_entity;
 
     if ($view->id() == 'arrivals' || $view->id() == 'departures') {
-      $scheduled = FALSE;
-      $estimated = FALSE;
+      /** @var Drupal\yqb\Flight $flight */
+      $flight = \Drupal::service('class_resolver')->getInstanceFromDefinition(\Drupal\yqb\Flight::class);
 
-      if ($node->bundle() == 'departure') {
-        /** @var Drupal\datetime\Plugin\Field\FieldType\DateTimeFieldItemList $scheduled */
-        $scheduled = $node->get('field_std')->value;
+      if ($flight->delayedTomorrow($node)) {
+        $scheduled = $flight->getScheduled($node)->date->getTimestamp();
+        $estimated = $flight->getEstimated($node)->date->getTimestamp();
 
-        /** @var Drupal\datetime\Plugin\Field\FieldType\DateTimeFieldItemList $estimated */
-        $estimated = $node->get('field_etd')->value;
-      }
-      elseif ($node->bundle() == 'arrival') {
-        /** @var Drupal\datetime\Plugin\Field\FieldType\DateTimeFieldItemList $scheduled */
-        $scheduled = $node->get('field_sta')->value;
-
-        /** @var Drupal\datetime\Plugin\Field\FieldType\DateTimeFieldItemList $estimated */
-        $estimated = $node->get('field_eta')->value;
-      }
-
-      if ($scheduled && $estimated) {
-        $scheduled = strtotime($scheduled);
-        $estimated = strtotime($estimated);
-
-        if ($estimated > $scheduled && $estimated >= strtotime('+1 day 00:00:00', $scheduled)) {
-          switch ($field->field) {
-            case 'field_std':
-            case 'field_sta':
-              $variables['output'] = [
-                [
-                  '#theme' => 'time',
-                  '#timestamp' => $scheduled,
-                  '#text' => date('H:i', $scheduled),
-                ],
-                [
-                  '#markup' => ' <span class="late-24">(' . date('Y-m-d', $scheduled) . ')</span>',
-                ],
-              ];
-              break;
-            case 'field_etd':
-            case 'field_eta':
-              $variables['output'] = [
-                [
-                  '#theme' => 'time',
-                  '#timestamp' => $estimated,
-                  '#text' => date('H:i', $estimated),
-                ],
-                [
-                  '#markup' => ' <span class="late-24">(' . date('Y-m-d', $estimated) . ')</span>',
-                ],
-              ];
-              break;
-          }
+        /** @var Drupal\taxonomy\Entity\Term $status */
+        switch ($field->field) {
+          case 'field_std':
+          case 'field_sta':
+            $variables['output'] = $flight->getDelayedOutput($scheduled);
+            break;
+          case 'field_etd':
+          case 'field_eta':
+            $variables['output'] = $flight->getDelayedOutput($estimated);
+            break;
         }
       }
     }
