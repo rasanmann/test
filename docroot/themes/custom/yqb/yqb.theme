@@ -569,7 +569,7 @@ function yqb_preprocess_views_view_table(array &$variables) {
         $currentDisplay = $viewExecutable->getDisplay()->view->current_display;
 
         if (!$flight->delayedTomorrow($node)) {
-          if ($currentDisplay === 'today') {
+          if ($currentDisplay === 'today' || $currentDisplay === 'block_1') {
             unset($variables['rows'][$index]);
           }
           elseif ($currentDisplay === 'tomorrow') {
