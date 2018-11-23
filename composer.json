@@ -41,6 +41,7 @@
     "drupal/pathauto": "~1.0",
     "drupal/redirect": "~1.0",
     "drupal/restui": "1.15",
+    "drupal/scheduler": "^1.0",
     "drupal/search_autocomplete": "1.1",
     "drupal/swiftmailer": "~1.0",
     "drupal/token": "~1.0",
