@@ -45,33 +45,33 @@ body.path-frontpage {
 			}
 		}
 	}
-	
+
 	#block-homepagetilesblock{
 		.icon-blog, .icon-facebook, .icon-twitter, .icon-youtube, .icon-instagram, .icon-linkedin, .icon-watch{
 			height:63px;
 			width:63px;
-			
+
 			path{fill:$white;}
 		}
-		
+
 		.icon-car-parking{
 			height:46px;
 			width:63px;
-			
+
 			path{fill:$white;}
 		}
-		
+
 		.icon-plane-departure{
 			height:54px;
 			width:73px;
-			
+
 			path{fill:$white;}
 		}
-		
+
 		.icon-plane-arrival{
 			height:49px;
 			width:66px;
-			
+
 			path{fill:$white;}
 		}
 	}
@@ -159,7 +159,7 @@ body.path-visiter-quebec #layout-content {
 #plan-a-flight-parking-reservation-extras{
 	.text-right{
 		padding: 0 20px;
-	} 
+	}
 }
 #planifier-son-vol-reserver-un-stationnement-resultats,
 #plan-a-flight-parking-reservation-results{
@@ -197,7 +197,7 @@ body.path-visiter-quebec #layout-content {
 	> .form-wrapper {
 		margin-bottom: 0;
 	}
-	
+
 	.table-results,
 	.parking-result {
 		ul {
@@ -377,7 +377,7 @@ body.path-visiter-quebec #layout-content {
 
 					}
 
-					
+
 					&.parking-localisation {
 						min-width: 235px;
 						@include responsive(870px) {
@@ -404,11 +404,11 @@ body.path-visiter-quebec #layout-content {
 					}
 					&.parking-price-button {
 						.price-wrapper{
-							
+
 							display: inline-block;
 							vertical-align: middle;
 							margin-bottom: 0;
-							
+
 						}
 						.text {
 							@include font-size(24);
@@ -422,7 +422,7 @@ body.path-visiter-quebec #layout-content {
 								opacity: 0.7;
 								line-height: 19px;
 								@include font-size(18);
-	
+
 								@include responsive(1200px) {
 									@include font-size(16);
 									line-height: 17px;
@@ -494,7 +494,7 @@ body.path-visiter-quebec #layout-content {
 				}
 				&.parking-info {
 					min-width: 0;
-					
+
 					@include responsive(655px){
 						width: 100%;
 						padding: 30px 0;
@@ -503,8 +503,8 @@ body.path-visiter-quebec #layout-content {
 					}
 				}
 				&.parking-walking-time {
-				
-					
+
+
 					@include responsive(655px){
 						width: 100%;
 						padding: 30px 0;
@@ -515,7 +515,7 @@ body.path-visiter-quebec #layout-content {
 						display: inline-block;
 						vertical-align: middle;
 						margin-right: 10px;
-						
+
 					}
 					.text {
 						@include font-size(16);
@@ -532,7 +532,7 @@ body.path-visiter-quebec #layout-content {
 
 				&.parking-localisation {
 					min-width: 0;
-					
+
 					@include responsive(655px){
 						width: 100%;
 						padding: 30px 0 20px;
@@ -563,7 +563,7 @@ body.path-visiter-quebec #layout-content {
 					}
 				}
 				&.parking-price-button {
-					
+
 					float: none;
 					width: 100%;
 					text-align: center;
@@ -598,7 +598,7 @@ body.path-visiter-quebec #layout-content {
 						margin-left: 0;
 						.form-group{
 							margin-left: 18px;
-							
+
 							&:first-child{margin-left:0;}
 						}
 					}
@@ -637,7 +637,7 @@ body.path-visiter-quebec #layout-content {
 				position: absolute;
 				top: 0;
 				left: 0;
-				
+
 				label{padding:0;}
 			}
 		}
@@ -645,7 +645,7 @@ body.path-visiter-quebec #layout-content {
 			margin-top: 20px;
 		}
 	}
-	
+
 	.parking-confirmation-content{
 		border:1px solid $gray-light;
 		border-radius:10px;
@@ -653,34 +653,34 @@ body.path-visiter-quebec #layout-content {
 		margin: 75px auto 100px;
 		padding:40px 20px;
 		text-align:center;
-		
+
 		@include responsive($screen-sm){
 			border:0;
 			margin: 20px auto 0;
 		}
-		
+
 		.parking-name{
 			margin:0 0 50px;
 		}
-		
+
 		svg path{
 			fill:$black;
 		}
-		
+
 		.parking-schedule{
 			border-left:1px solid $gray-light;
 			line-height: 1;
 			padding:0 30px;
 			@include font-size(18);
-			
+
 			@include responsive($screen-xs){
 				padding:0 10px;
 			}
-			
+
 			&:first-child{
-				border-left:0;	
+				border-left:0;
 			}
-			
+
 			span{
 				color:$gray;
 				display:block;
@@ -688,12 +688,12 @@ body.path-visiter-quebec #layout-content {
 				@include font-size(14);
 			}
 		}
-		
+
 		.qr-holder{
 			margin-bottom:40px;
 		}
 	}
-	
+
 	&.step-confirmation {
 		.parking-booker-status {
 			height: 140px;
@@ -822,7 +822,7 @@ body.path-visiter-quebec #layout-content {
 
 .parking-booker-title, .parking-booker-status{
 	position:relative;
-	
+
 	.btn-back {
 		width: 72px;
 		position: absolute;
@@ -830,11 +830,11 @@ body.path-visiter-quebec #layout-content {
 		bottom: 0;
 		left: 0;
 		text-align: center;
-		
+
 		@include responsive(1090px) {
 			width: 54px;
 		}
-		
+
 		.icon-left-arrow {
 			width: 13px;
 			height: 23px;
@@ -856,17 +856,17 @@ body.path-visiter-quebec #layout-content {
 .parking-booker-title{
 	border-bottom: 1px solid $gray-light;
 	padding-left:72px;
-	
+
 	@include responsive($screen-sm){
 		padding-left:54px;
 	}
-	
+
 	&.no-back-btn{
 		padding-left:0;
 		.btn-back{display:none}
 		h1{border-left:0;}
 	}
-	
+
 	h1{
 		border-left: 1px solid $gray-light;
 		border-bottom:0;
@@ -880,7 +880,7 @@ body.path-visiter-quebec #layout-content {
 	position: relative;
 	height: 100px;
 	padding-left:72px;
-		
+
 	@include responsive(1090px) {
 		padding-left: 54px;
 	}
@@ -888,14 +888,14 @@ body.path-visiter-quebec #layout-content {
 	@include responsive($screen-sm){
 		height: auto;
 	}
-	
+
 	.parking-booker-status-wrapper {
 		margin-bottom: 0;
 		height: 100%;
 		@include responsive($screen-sm){
 			height: 100px;
 		}
-		
+
 		&.col-xs-12{
 			@include responsive($screen-xs){
 				border-top: 1px solid $gray-light;
@@ -904,7 +904,7 @@ body.path-visiter-quebec #layout-content {
 				}
 			}
 		}
-		
+
 		&.parking-booker-status-reference{
 			border-bottom: 1px solid $gray-light;
 			border-top:0;
@@ -1393,7 +1393,7 @@ body#plan-a-flight-parking-reservation {
 	.main-content{
 		border-bottom: 0;
 	}
-	
+
 }
 .view-page-arrivals,
 .view-page-departures {
@@ -1403,12 +1403,12 @@ body#plan-a-flight-parking-reservation {
 
 	.main-content {
 		background-color:$table-bg;
-		
+
 		.view-footer{
 			background:$white;
 			color:$black;
 			padding:15px 35px;
-			
+
 			p{
 				line-height: 1;
 				margin:0 0 10px;
@@ -1481,61 +1481,63 @@ body#plan-a-flight-parking-reservation {
 #services-aeroportuaires-vestiaires-consigne-et-service-demballage,
 #airport-services-coat-check-storage-and-secure-wrap-baggage-services{
 	@include responsive($screen-tablet){
-	
+
 		/* Force table to not be like tables anymore */
-		table, thead, tbody, th, td, tr { 
-			display: block; 
+		table, thead, tbody, th, td, tr {
+			display: block;
 		}
-		
+
 		table{
 			margin:0 0 20px;
 		}
-		
+
 		/* Hide table headers (but not display: none;, for accessibility) */
-		thead tr { 
+		thead tr {
 			position: absolute;
 			top: -9999px;
 			left: -9999px;
 		}
-		
-		td { 
+
+		td {
 			/* Behave  like a "row" */
 			border: none;
-			border-bottom: 1px solid #eee; 
+			border-bottom: 1px solid #eee;
 			height:auto;
 			min-height:48px;
 			position: relative;
-			padding-left: 50%; 
+			padding-left: 50%;
 			text-align:center;
-			
+
 			strong{font-weight:normal}
 		}
-		
-		td:before { 
+
+		td:before {
 			/* Now like a table header */
 			position: absolute;
 			/* Top/left values mimic padding */
 			top: 0;
 			left: 0;
-			width: 45%; 
+			width: 45%;
 			padding:15px;
 			text-align:center;
 			white-space: nowrap;
 			font-weight:bold;
 		}
-		
-		
+
+
 		td:before { content: attr(data-label); }
 		tr:nth-child(1){
 			td{
 				text-align:center;
 				padding-left:0;
-				
+
 				strong{font-weight:bold;}
 			}
-			
+
 			td:before{display:none;}
 		}
 		tr:nth-child(2){display:none;}
 	}
 }
+
+
