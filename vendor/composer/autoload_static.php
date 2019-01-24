@@ -116,6 +116,8 @@ class ComposerStaticInit18234136b561a416787928cace691b33
         'M' => 
         array (
             'Masterminds\\' => 12,
+            'Mailchimp\\http\\' => 15,
+            'Mailchimp\\' => 10,
         ),
         'L' => 
         array (
@@ -378,6 +380,14 @@ class ComposerStaticInit18234136b561a416787928cace691b33
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'Mailchimp\\http\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/thinkshout/mailchimp-api-php/src/http',
+        ),
+        'Mailchimp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/thinkshout/mailchimp-api-php/src',
+        ),
         'League\\Csv\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/csv/src',
@@ -555,6 +565,10 @@ class ComposerStaticInit18234136b561a416787928cace691b33
             'Moneris' => 
             array (
                 0 => __DIR__ . '/..' . '/ironkeith/moneris-eselectplus-api/lib',
+            ),
+            'Mailchimp' => 
+            array (
+                0 => __DIR__ . '/../..' . '/docroot/modules/contrib/mailchimp/src',
             ),
         ),
         'E' => 

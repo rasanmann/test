@@ -1,0 +1,7 @@
+{
+    "name": "yqb/mailchimp",
+    "type": "drupal-module",
+    "require": {
+        "drupal/mailchimp": "^1.8"
+    }
+}

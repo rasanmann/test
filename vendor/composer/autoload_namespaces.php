@@ -10,6 +10,7 @@ return array(
     'Stack' => array($vendorDir . '/stack/builder/src'),
     'Passbook\\' => array($vendorDir . '/eo/passbook/src'),
     'Moneris' => array($vendorDir . '/ironkeith/moneris-eselectplus-api/lib'),
+    'Mailchimp' => array($baseDir . '/docroot/modules/contrib/mailchimp/src'),
     'Egulias\\' => array($vendorDir . '/egulias/email-validator/src'),
     'EasyRdf_' => array($vendorDir . '/easyrdf/easyrdf/lib'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
