@@ -1,61 +1,3 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine on
-
-  # Redirect flights to schedules
-  # TODO : find a way to do this in Drupal
-  RewriteCond %{REQUEST_URI} (fr|en)\/(vols-et-destinations|flights-and-destination)\/arrivees
-  RewriteRule (fr|en)\/(vols-et-destinations|flights-and-destinations)\/(arrivees|departs|arrivals|departures) /$1/$2/horaire-des-vols/arrivees [R=301,L]
-  RewriteCond %{REQUEST_URI} (fr|en)\/(vols-et-destinations|flights-and-destination)\/departs
-  RewriteRule (fr|en)\/(vols-et-destinations|flights-and-destinations)\/(arrivees|departs|arrivals|departures) /$1/$2/horaire-des-vols/departs [R=301,L]
-  RewriteCond %{REQUEST_URI} (fr|en)\/(vols-et-destinations|flights-and-destination)\/arrivees
-  RewriteRule (fr|en)\/(vols-et-destinations|flights-and-destinations)\/(arrivees|departs|arrivals|departures) /$1/$2/flight-schedules/arrivals [R=301,L]
-  RewriteCond %{REQUEST_URI} (fr|en)\/(vols-et-destinations|flights-and-destination)\/departs
-  RewriteRule (fr|en)\/(vols-et-destinations|flights-and-destinations)\/(arrivees|departs|arrivals|departures) /$1/$2/flight-schedules/departures [R=301,L]
-
-  # Redirect yqb.ca to aeroportdequebec.com
-  RewriteCond %{HTTP_HOST} yqb\.ca$
-  RewriteRule ^ https://www.aeroportdequebec.com%{REQUEST_URI} [R=301,L]
-
-  # Redirect mobile site to regular responsive site
-  RewriteCond %{HTTP_HOST} mobile\.aeroportdequebec\.com$
-  RewriteRule ^ https://www.aeroportdequebec.com%{REQUEST_URI} [R=301,L]
-  
-  RewriteCond %{REQUEST_URI} ^//v1/(.*)$
-  RewriteRule . /v1/%1 [R=307,L]
-
-  # Force www in a Generic Way
-  RewriteCond %{HTTP_HOST} aeroportdequebec\.com$
-  RewriteCond %{HTTP_HOST} !^(www|template|staging|load-test|test)\. [NC]
-  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-  # Force HTTPS
-  RewriteCond %{HTTP_HOST} www\.aeroportdequebec\.com$
-  RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</IfModule>
-
-# Note: It’s also recommended to enable HTTP Strict Transport Security (HSTS)
-# on your HTTPS website to help prevent man-in-the-middle attacks.
-# See https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security
-<IfModule mod_headers.c>
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-</IfModule>
-
-#---------------------------------------------------------------------------------
-#	PHP
-#---------------------------------------------------------------------------------
-
-<IfModule mod_php5.c>
-	php_value post_max_size 20M
-	php_value upload_max_filesize 20M
-	php_value memory_limit 1024M
-	php_value max_execution_time 60
-
-	php_value max_input_vars 3000
-	php_value suhosin.post.max_vars 3000
-	php_value suhosin.request.max_vars 3000
-</IfModule>
-
 #
 # Apache/PHP/Drupal settings:
 #
@@ -126,7 +68,6 @@ AddEncoding gzip svgz
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
   RewriteEngine on
-  RewriteBase /
 
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
   # if you enable "www." stripping or enforcement, in order to ensure that
@@ -152,7 +93,7 @@ AddEncoding gzip svgz
   # If you do not have mod_rewrite installed, you should remove these
   # directories from your webroot or otherwise protect them from being
   # downloaded.
-  RewriteRule "(^|/)\.(?!well-known)" - [F]
+  RewriteRule "/\.|^\.(?!well-known/)" - [F]
 
   # If your site can be accessed both with and without the 'www.' prefix, you
   # can use one of the following settings to redirect users to your preferred
@@ -201,8 +142,6 @@ AddEncoding gzip svgz
   # Note: The following URI conditions are not anchored at the start (^),
   # because Drupal may be located in a subdirectory. To further improve
   # security, you can replace '!/' with '!^/'.
-  # Allow access to development files:
-  RewriteCond %{REQUEST_URI} !/tools/development/[^/]*\.php$
   # Allow access to PHP files in /core (like authorize.php or install.php):
   RewriteCond %{REQUEST_URI} !/core/[^/]*\.php$
   # Allow access to test-specific PHP files:
@@ -247,15 +186,4 @@ AddEncoding gzip svgz
   Header always set X-Content-Type-Options nosniff
   # Disable Proxy header, since it's an attack vector.
   RequestHeader unset Proxy
-</IfModule>
-
-# ------------------------------------------------------------------------------
-# | Cache control |
-# ------------------------------------------------------------------------------
-
-<IfModule mod_headers.c>
-    <FilesMatch "\.(?i:svg|jpg|png|gif|js|css|woff)$">
-        # 60 seconds * 60 minutes * 24 hours * 7 days
-        Header set Cache-Control "max-age=604800, public, must-revalidate"
-    </FilesMatch>
 </IfModule>
