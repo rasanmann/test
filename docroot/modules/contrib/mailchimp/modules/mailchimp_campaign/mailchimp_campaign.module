@@ -25,7 +25,7 @@ function mailchimp_campaign_entity_storage_load(array $entities, $entity_type) {
   $mc_campaigns = mailchimp_campaign_get_campaigns($ids);
 
   foreach ($entities as $mc_campaign_id => $campaign) {
-      
+
     // Ensure the associated list still exists.
     if (!isset($mc_campaigns[$mc_campaign_id]) || !$mc_campaigns[$mc_campaign_id]) {
       continue;
@@ -280,7 +280,7 @@ function mailchimp_campaign_list_templates($reset = FALSE) {
         if ($chosen) {
           $all_templates[$type] = array();
 
-          $response = $mc_templates->getTemplates(array('type' => $type));
+          $response = $mc_templates->getTemplates(array('type' => $type, 'count' => 500));
 
           foreach ($response->templates as $template) {
             $all_templates[$type][$template->id] = $template;

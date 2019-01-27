@@ -1,0 +1,4 @@
+yqb_mailchimp.settings:
+  title: 'Career Alerts'
+  route_name: yqb_mailchimp.settings
+  base_route: mailchimp.admin

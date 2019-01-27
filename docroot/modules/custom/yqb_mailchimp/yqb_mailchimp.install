@@ -1,0 +1,8 @@
+<?php
+
+function yqb_mailchimp_uninstall() {
+  $field = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_alert_sent');
+  if ($field->id() && !$field->isDeletable()) {
+    $field->delete();
+  }
+}
