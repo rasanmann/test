@@ -186,6 +186,24 @@ class RemindersForm extends RemindersFormBase {
           ]
         ]
       ],
+        'col-disclaimer' => [
+            '#type' => 'container',
+            '#attributes' => ['class' => ['sms-disclaimer']],
+            'disclaimer' => [
+                '#type' => 'html_tag',
+                '#tag' => 'p',
+                'text' => [
+                    '#markup' => t(' Avertissement relatif aux informations de vols Les informations de vols diffusées 
+                    sur notre site web ou via les alertes SMS sont fournies pour votre commodité seulement et ne doivent pas 
+                    remplacer les dispositions à prendre avant de vous diriger vers l\'aéroport. Comme ces informations 
+                    proviennent de sources variées, nous ne pouvons garantir que ces renseignements sont exacts, complets et à 
+                    jour. Veuillez toujours confirmer les renseignements sur l’arrivée et le départ de votre vol auprès de votre 
+                    compagnie aérienne. Nous ne sommes pas responsables des dommages causés directement ou indirectement par 
+                    l\'utilisation de ces outils d’information. Dans le cas des alertes SMS, votre fournisseur de service 
+                    cellulaire pourrait vous facturer des frais de messagerie texte.'),
+                ]
+            ]
+        ]
     ];
 
     $this->deleteStore();
