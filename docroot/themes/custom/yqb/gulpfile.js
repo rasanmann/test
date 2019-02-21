@@ -18,7 +18,7 @@ function css() {
         cascade: false
       }))
       .on('error', sass.logError)
-      .pipe(gulp.dest('../css'))
+      .pipe(gulp.dest('css'))
   );
 }
 
