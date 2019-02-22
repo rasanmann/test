@@ -4479,9 +4479,6 @@ select[multiple].input-lg {
 #map-accordion {
   position: relative;
   z-index: 30; }
-  @media only screen and (max-width: 960px) {
-    #map-accordion {
-      display: block !important; } }
 
 .map-legend {
   background-color: white;
@@ -8445,10 +8442,6 @@ body.toolbar-fixed.toolbar-vertical.toolbar-tray-open.toolbar-fixed {
 .window-is-mobile .block-reminders .is-mobile {
   display: none !important; }
 
-.window-is-mobile .block-parking-booker .is-desktop,
-.window-is-mobile .block-reminders .is-desktop {
-  display: block !important; }
-
 .window-is-mobile.inputtypes-time .block-parking-booker .is-mobile,
 .window-is-mobile.inputtypes-time .block-reminders .is-mobile {
   display: block !important; }
@@ -8467,11 +8460,11 @@ body.toolbar-fixed.toolbar-vertical.toolbar-tray-open.toolbar-fixed {
 
 .window-is-not-mobile .block-parking-booker .is-mobile,
 .window-is-not-mobile .block-reminders .is-mobile {
-  display: none !important; }
+  display: none; }
 
 .window-is-not-mobile .block-parking-booker .is-desktop,
 .window-is-not-mobile .block-reminders .is-desktop {
-  display: block !important; }
+  display: block; }
 
 .touchevents .table-striped > tbody > tr:nth-of-type(odd):hover {
   background-color: #0a0a0b; }

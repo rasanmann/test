@@ -22,11 +22,11 @@ class ParkingSearchForm extends ParkingFormBase {
     $desktop = [
       // Row
       '#type' => 'container',
-      '#attributes' => ['class' => ['form-block-container', 'is-desktop']],
+      '#attributes' => ['class' => ['form-block-container', 'is-desktop', 'parking-container']],
 
       'col-1' => [
         '#type' => 'container',
-        '#attributes' => ['class' => ['col-normal','col-full-responsive']],
+        '#attributes' => ['class' => ['col-normal','col-full-responsive', 'parking-container-item-container']],
         'arrival_date' => [
           '#type' => 'textfield',
           '#title' => $this->t("Date d'entrée"),
@@ -44,7 +44,7 @@ class ParkingSearchForm extends ParkingFormBase {
 
       'col-2' => [
         '#type' => 'container',
-        '#attributes' => ['class' => ['col-normal']],
+        '#attributes' => ['class' => ['col-normal', 'parking-container-item-container']],
         'departure_date' => [
           '#type' => 'textfield',
           '#title' => $this->t("Date de sortie"),
@@ -62,7 +62,7 @@ class ParkingSearchForm extends ParkingFormBase {
 
       'col-3' => [
         '#type' => 'container',
-        '#attributes' => ['class' => ['btn-space']],
+        '#attributes' => ['class' => ['btn-space', 'parking-container-item-container', 'parking-container-item-container-button']],
         'actions' => [
           '#type' => 'actions',
           'submit' => [
@@ -79,7 +79,7 @@ class ParkingSearchForm extends ParkingFormBase {
     if ($showCouponInput) {
       $desktop['col-2-1'] = [
           '#type' => 'container',
-          '#attributes' => ['class' => ['col-full', 'col-promo']],
+          '#attributes' => ['class' => ['col-full', 'col-promo', 'parking-container-item-container']],
           'promo_code' => [
               '#type' => 'textfield',
               '#title' => $this->t("Code promotionnel"),
@@ -89,7 +89,7 @@ class ParkingSearchForm extends ParkingFormBase {
       $desktop['col-3']['#attributes']['class'][] = 'is-static';
     }
 
-    ksort($desktop);
+    //ksort($desktop);
 
     return $desktop;
   }

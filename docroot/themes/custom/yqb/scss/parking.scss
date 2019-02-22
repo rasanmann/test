@@ -1,0 +1,29 @@
+.form-block-container {
+  display:flex;
+  flex-direction: row;
+}
+
+.parking-container{
+  display:flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center;
+}
+
+.parking-container-item-container{
+  display:block !important;
+  width:25% !important;
+  margin:0 !important;
+  padding:0 !important;
+  align-items: center !important;
+  justify-content: center;
+
+}
+
+.parking-container-item-container-button{
+  display:flex !important;
+  align-items: center !important;
+  justify-content: center;
+  padding-top:25px !important;
+}

@@ -981,12 +981,6 @@ body {
     #flights-and-destinations-flight-schedules-departures-fids .sidebar-content,
     #flights-and-destinations-flight-schedules-arrivals-fids .sidebar-content {
       display: table-cell !important; } }
-  @media only screen and (max-width: 900px) {
-    #vols-et-destinations-horaire-des-vols-arrivees-fids .sidebar-content,
-    #vols-et-destinations-horaire-des-vols-departs-fids .sidebar-content,
-    #flights-and-destinations-flight-schedules-departures-fids .sidebar-content,
-    #flights-and-destinations-flight-schedules-arrivals-fids .sidebar-content {
-      display: block !important; } }
   #vols-et-destinations-horaire-des-vols-arrivees-fids .sidebar-content .block-last-update,
   #vols-et-destinations-horaire-des-vols-departs-fids .sidebar-content .block-last-update,
   #flights-and-destinations-flight-schedules-departures-fids .sidebar-content .block-last-update,

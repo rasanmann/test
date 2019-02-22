@@ -5,7 +5,7 @@
 			display: none !important;
 		}
 		.is-desktop{
-			display: block !important;
+			//display: block !important;
 		}
 	}
 
@@ -40,10 +40,10 @@
 	.block-parking-booker,
 	.block-reminders{
 		.is-mobile{
-			display: none !important;
+			display: none;
 		}
 		.is-desktop{
-			display: block !important;
+			display: block;
 		}
 	}
 }

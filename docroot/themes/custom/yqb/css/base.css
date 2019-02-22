@@ -1022,7 +1022,8 @@ body.path-visiter-quebec #layout-content .heading {
     display: none; } }
 
 .parking-booker-form > .form-wrapper {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  display: flex; }
 
 .parking-booker-form .table-results ul,
 .parking-booker-form .parking-result ul {
@@ -2994,7 +2995,7 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
               width: 50%; } }
       .block-reminders .form-block-container > .form-group.btn-space,
       .block-parking-booker .form-block-container > .form-group.btn-space {
-        position: absolute;
+        position: relative;
         right: 0;
         bottom: 0;
         float: none; }
@@ -5028,3 +5029,28 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
 
 .sms-disclaimer {
   padding-left: 10px; }
+
+.form-block-container {
+  display: flex;
+  flex-direction: row; }
+
+.parking-container {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center; }
+
+.parking-container-item-container {
+  display: block !important;
+  width: 25% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center; }
+
+.parking-container-item-container-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center;
+  padding-top: 25px !important; }
