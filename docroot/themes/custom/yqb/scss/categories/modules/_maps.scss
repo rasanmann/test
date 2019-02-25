@@ -234,7 +234,7 @@
 	z-index:30;
 	
 	@include responsive(960px){
-		//display: block !important;
+		display: block !important;
 	}
 }
 .map-legend {

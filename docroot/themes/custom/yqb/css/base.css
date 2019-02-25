@@ -5030,27 +5030,19 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
 .sms-disclaimer {
   padding-left: 10px; }
 
-.form-block-container {
-  display: flex;
-  flex-direction: row; }
-
 .parking-container {
   display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  justify-content: center; }
+  width: 100% !important;
+  align-items: flex-end !important;
+  justify-content: space-between; }
 
 .parking-container-item-container {
-  display: block !important;
-  width: 25% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important; }
+
+.parking-container-item-container-button {
   margin: 0 !important;
   padding: 0 !important;
   align-items: center !important;
-  justify-content: center; }
-
-.parking-container-item-container-button {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center;
-  padding-top: 25px !important; }
+  position: static !important; }

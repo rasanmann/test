@@ -4479,6 +4479,9 @@ select[multiple].input-lg {
 #map-accordion {
   position: relative;
   z-index: 30; }
+  @media only screen and (max-width: 960px) {
+    #map-accordion {
+      display: block !important; } }
 
 .map-legend {
   background-color: white;
@@ -8441,6 +8444,10 @@ body.toolbar-fixed.toolbar-vertical.toolbar-tray-open.toolbar-fixed {
 .window-is-mobile .block-parking-booker .is-mobile,
 .window-is-mobile .block-reminders .is-mobile {
   display: none !important; }
+
+.window-is-mobile .block-parking-booker .is-desktop,
+.window-is-mobile .block-reminders .is-desktop {
+  display: block !important; }
 
 .window-is-mobile.inputtypes-time .block-parking-booker .is-mobile,
 .window-is-mobile.inputtypes-time .block-reminders .is-mobile {
