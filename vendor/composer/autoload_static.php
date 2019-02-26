@@ -13,6 +13,7 @@ class ComposerStaticInit18234136b561a416787928cace691b33
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
@@ -67,6 +68,7 @@ class ComposerStaticInit18234136b561a416787928cace691b33
         'T' => 
         array (
             'Twig\\' => 5,
+            'TYPO3\\PharStreamWrapper\\' => 24,
         ),
         'S' => 
         array (
@@ -231,6 +233,10 @@ class ComposerStaticInit18234136b561a416787928cace691b33
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'TYPO3\\PharStreamWrapper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/typo3/phar-stream-wrapper/src',
         ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
