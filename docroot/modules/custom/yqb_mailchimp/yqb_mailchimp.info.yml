@@ -6,3 +6,6 @@ type: module
 dependencies:
   - drupal:system (>= 8.6)
   - mailchimp:mailchimp
+  - mailchimp_signup:mailchimp_signup
+  - mailchimp_campaign:mailchimp_campaign
+  - mailchimp_lists:mailchimp_lists

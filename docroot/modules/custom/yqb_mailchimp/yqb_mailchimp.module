@@ -13,7 +13,7 @@ function yqb_mailchimp_cron() {
   $nextExecution = Drupal::state()->get('yqb_mailchimp.next_execution');
   $nextExecution = !empty($nextExecution) ? $nextExecution : 0;
 
-  if (\Drupal::time()->getRequestTime() >= $nextExecution) {
+  if (true){//\Drupal::time()->getRequestTime() >= $nextExecution) {
     /** @var \Drupal\yqb_mailchimp\Career $career */
     $career = Drupal::classResolver(\Drupal\yqb_mailchimp\Career::class);
     $nodes = $career->findAvailableCareerAlerts();
@@ -42,8 +42,7 @@ function yqb_mailchimp_theme($existing, $type, $theme, $path) {
         'type' => '',
         'department' => '',
         'location' => '',
-        'company' => '',
-        'url' => '',
+        'summary' => ''
       ],
     ],
   ];
