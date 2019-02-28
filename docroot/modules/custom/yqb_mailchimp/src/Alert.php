@@ -43,9 +43,10 @@ class Alert {
           $this->node->save();
         }
       } catch (\Exception $e) {
-        var_dump(get_class($e));
-        var_dump($e->getMessage());
-        var_dump($e->getCode());
+        \Drupal::logger('mailchimp_campaign')
+               ->error('An error occurred while sending to this campaign: {message}', [
+                 'message' => $e->getMessage(),
+               ]);
       }
     }
   }
