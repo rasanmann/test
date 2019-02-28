@@ -1,0 +1,19 @@
+yqb_mailchimp.settings:
+  type: config_object
+  label: 'YQB Mailchimp Settings'
+  mapping:
+    list_id:
+      type: string
+      label: 'List ID to send alerts'
+    template_id:
+      type: string
+      label: 'Template to use for the alerts'
+    from_name:
+      type: string
+      label: 'the From: name for your campaign message (not an email address)'
+    from_email:
+      type: string
+      label: 'the From: email address for your campaign message.'
+    interval:
+      type: integer
+      label: 'Cron interval'

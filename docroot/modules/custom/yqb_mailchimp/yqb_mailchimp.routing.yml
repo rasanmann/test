@@ -1,0 +1,7 @@
+yqb_mailchimp.settings:
+  path: '/admin/config/services/mailchimp/career'
+  defaults:
+    _form: 'Drupal\yqb_mailchimp\Form\AdminSettingsForm'
+    _title: 'Career Alerts'
+  requirements:
+    _permission: 'administer mailchimp'

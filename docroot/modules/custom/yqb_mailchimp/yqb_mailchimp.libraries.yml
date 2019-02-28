@@ -1,0 +1,4 @@
+yqb_mailchimp:
+  css:
+    theme:
+      css/signup.css: {}

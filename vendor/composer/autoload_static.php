@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit18234136b561a416787928cace691b33
+class ComposerStaticInit51e2e5a811abc2aa3c5d45dc976538cc
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -116,6 +116,8 @@ class ComposerStaticInit18234136b561a416787928cace691b33
         'M' => 
         array (
             'Masterminds\\' => 12,
+            'Mailchimp\\http\\' => 15,
+            'Mailchimp\\' => 10,
         ),
         'L' => 
         array (
@@ -378,6 +380,14 @@ class ComposerStaticInit18234136b561a416787928cace691b33
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'Mailchimp\\http\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/thinkshout/mailchimp-api-php/src/http',
+        ),
+        'Mailchimp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/thinkshout/mailchimp-api-php/src',
+        ),
         'League\\Csv\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/csv/src',
@@ -556,6 +566,10 @@ class ComposerStaticInit18234136b561a416787928cace691b33
             array (
                 0 => __DIR__ . '/..' . '/ironkeith/moneris-eselectplus-api/lib',
             ),
+            'Mailchimp' => 
+            array (
+                0 => __DIR__ . '/../..' . '/docroot/modules/contrib/mailchimp/src',
+            ),
         ),
         'E' => 
         array (
@@ -614,10 +628,10 @@ class ComposerStaticInit18234136b561a416787928cace691b33
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit18234136b561a416787928cace691b33::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit18234136b561a416787928cace691b33::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit18234136b561a416787928cace691b33::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit18234136b561a416787928cace691b33::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit51e2e5a811abc2aa3c5d45dc976538cc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit51e2e5a811abc2aa3c5d45dc976538cc::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit51e2e5a811abc2aa3c5d45dc976538cc::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit51e2e5a811abc2aa3c5d45dc976538cc::$classMap;
 
         }, null, ClassLoader::class);
     }

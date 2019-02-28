@@ -1,0 +1,13 @@
+<?php
+
+function yqb_mailchimp_uninstall() {
+  $field_alert_sent = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_alert_sent');
+  if ($field_alert_sent->id() && !$field_alert_sent->isDeletable()) {
+    $field_alert_sent->delete();
+  }
+
+  $field_job_summary = \Drupal\field\Entity\FieldStorageConfig::loadByName('node', 'field_job_summary');
+  if ($field_job_summary->id() && !$field_job_summary->isDeletable()) {
+    $field_job_summary->delete();
+  }
+}
