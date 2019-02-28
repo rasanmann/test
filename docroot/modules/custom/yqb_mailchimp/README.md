@@ -6,3 +6,4 @@
 4. S'assurer de choisir la liste des alertes emplois et le gabarit qui va être utilisé.
 5. Configurer l'affichage du nouveau champ field_job_summary pour le mettre au-dessus du champ body.
 6. Ajouter un nouvel emploi (les campagnes vont se créer automatiquement).
+7. Ajouter dans la page https://www.aeroportdequebec.com/fr/a-propos/carrieres un lien vers le formulaire pour s'abonner aux alertes.
