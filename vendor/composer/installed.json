@@ -2808,6 +2808,9 @@
                 "recurse": false,
                 "replace": false,
                 "merge-extra": false
+            },
+            "patches_applied": {
+                "Multiple usages of FieldPluginBase::getEntity do not check for NULL, leading to WSOD": "https://www.drupal.org/files/issues/2019-01-30/drupal-Multiple-usages-of-FieldPluginBase-getEntity-3007424-7.patch"
             }
         },
         "installation-source": "dist",
