@@ -76,6 +76,12 @@ class Flight implements ContainerInjectionInterface {
   }
 
   public function getDelayedOutput($timestamp) {
+    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $format = 'Y-m-d';
+    if($language == 'fr') {
+      $format = 'd-m-Y';
+    }
+
     return [
       [
         '#theme' => 'time',
@@ -83,7 +89,7 @@ class Flight implements ContainerInjectionInterface {
         '#text' => $this->dateFormatter->format($timestamp, 'custom', 'H:i'),
       ],
       [
-        '#markup' => ' <span class="late-24">(' . date('Y-m-d', $timestamp) . ')</span>',
+        '#markup' => ' <span class="late-24">(' . date($format, $timestamp) . ')</span>',
       ],
     ];
   }

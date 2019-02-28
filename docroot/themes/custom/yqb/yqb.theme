@@ -672,10 +672,6 @@ function yqb_preprocess_views_view_field(&$variables) {
 
         /** @var Drupal\taxonomy\Entity\Term $status */
         switch ($field->field) {
-          case 'field_std':
-          case 'field_sta':
-            $variables['output'] = $flight->getDelayedOutput($scheduled);
-            break;
           case 'field_etd':
           case 'field_eta':
             $variables['output'] = $flight->getDelayedOutput($estimated);
