@@ -6,13 +6,13 @@ yqb_bills.admin_display:
   requirements:
     _permission: 'administer site configuration'
 
-yqb_bills.fr_index:
-  path: '/services-aeroportuaires/paiement-de-facture'
-  defaults:
-    _controller: '\Drupal\yqb_bills\Controller\BillsFormController::index'
-    _title: 'Paiement de facture'
-  requirements:
-    _permission: 'access content'
+#yqb_bills.fr_index:
+#  path: '/services-aeroportuaires/paiement-de-facture'
+#  defaults:
+#    _controller: '\Drupal\yqb_bills\Controller\BillsFormController::index'
+#    _title: 'Paiement de facture'
+#  requirements:
+#    _permission: 'access content'
 
 yqb_bills.fr.review:
   path: '/services-aeroportuaires/paiement-de-facture/revision'
@@ -30,13 +30,13 @@ yqb_bills.fr.confirmation:
   requirements:
     _permission: 'access content'
 
-yqb_bills.en.index:
-  path: '/airport-services/pay-bills'
-  defaults:
-    _controller: '\Drupal\yqb_bills\Controller\BillsFormController::index'
-    _title: 'Pay bills'
-  requirements:
-    _permission: 'access content'
+#yqb_bills.en.index:
+#  path: '/airport-services/pay-bills'
+#  defaults:
+#    _controller: '\Drupal\yqb_bills\Controller\BillsFormController::index'
+#    _title: 'Pay bills'
+#  requirements:
+#    _permission: 'access content'
 
 yqb_bills.en_review:
   path: '/airport-services/pay-bills/review'

@@ -8,3 +8,6 @@ yql_bills.settings:
         recipients:
           type: text
           label: 'Recipients:'
+        form_is_enabled:
+          type: checkbox
+          label: 'Cacher le formulaire'

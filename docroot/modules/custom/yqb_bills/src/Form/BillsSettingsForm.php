@@ -27,6 +27,7 @@ class BillsSettingsForm extends ConfigFormBase {
     // Default settings
     $config = $this->config('yqb_bills.settings');
 
+
     // Page title field
     $form['recipients'] = [
       '#type' => 'textfield',
@@ -34,6 +35,21 @@ class BillsSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('yqb_bills.recipients'),
       '#description' => $this->t('Emails separated by commas.'),
     ];
+
+    $form['title'] = [
+            '#type' => 'html_tag',
+            '#tag' => 'label',
+            '#value' => $this->t('Formulaire de paiment de facture:'),
+    ];
+
+    $form['form_is_enabled'] = [
+            '#type' => 'checkbox',
+            '#title' => $this->t('Cocher pour afficher le formulaire'),
+            '#default_value' => $config->get('yqb_bills.form_is_enabled'),
+            '#return_value' => 1
+    ];
+
+
 
     return $form;
   }
@@ -52,6 +68,7 @@ class BillsSettingsForm extends ConfigFormBase {
     $config = $this->config('yqb_bills.settings');
 
     $config->set('yqb_bills.recipients', $form_state->getValue('recipients'));
+    $config->set('yqb_bills.form_is_enabled', $form_state->getValue('form_is_enabled'));
 
     $config->save();
 

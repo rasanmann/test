@@ -20,13 +20,11 @@ class BillsPaymentForm extends BillsFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+
+
     $form = parent::buildForm($form, $form_state);
 
-    $information = [
-      '#type' => 'html_tag',
-      '#tag' => 'p',
-      '#value' => $this->t("Aéroport de Québec inc. (AQi), gestionnaire de l'aéroport international Jean-Lesage de Québec, met à votre disposition un service gratuit de paiement en ligne qui vous permet d'acquitter vos factures en tout temps et en toute sécurité (maximum de 5000$) par Visa, MasterCard ou American Express. Pour utiliser le service, il vous suffit de compléter les champs suivants&nbsp;:"),
-    ];
+
 
     $lastName = [
       '#type' => 'textfield',
@@ -68,7 +66,6 @@ class BillsPaymentForm extends BillsFormBase {
     ];
 
     $fields = [
-      'information' => $information,
       'first_name' => $firstName,
       'last_name' => $lastName,
       'company_name' => $companyName,
