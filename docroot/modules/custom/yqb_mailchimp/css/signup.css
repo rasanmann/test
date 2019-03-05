@@ -1,3 +1,7 @@
 .mailchimp-signup-subscribe-form .form-submit {
   margin-top: 20px;
 }
+
+.mailchimp-signup-subscribe-form .mailchimp-newsletter-mergefields {
+  margin-top: 20px;
+}
