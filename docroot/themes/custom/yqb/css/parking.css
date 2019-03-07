@@ -14,3 +14,6 @@
   padding: 0 !important;
   align-items: center !important;
   position: static !important; }
+
+.button-full-width {
+  width: 100% !important; }

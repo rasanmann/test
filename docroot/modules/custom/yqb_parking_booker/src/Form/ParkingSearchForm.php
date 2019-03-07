@@ -177,7 +177,7 @@ class ParkingSearchForm extends ParkingFormBase {
           'submit' => [
             '#type' => 'submit',
               '#value' => $this->t($config->get('yqb_parking_booker.submit_button')),
-            '#attributes' => ['class' => ['btn-default']],
+            '#attributes' => ['class' => ['btn-default', 'button-full-width']],
             '#button_type' => 'default',
             '#weight' => 10,
           ]
@@ -188,7 +188,7 @@ class ParkingSearchForm extends ParkingFormBase {
     if ($showCouponInput) {
       $mobile['col-4-1'] = [
           '#type' => 'container',
-          '#attributes' => ['class' => ['col-full', 'col-promo']],
+          '#attributes' => ['class' => ['col-promo']],
           'promo_code' => [
               '#type' => 'textfield',
               '#title' => $this->t("Code promotionnel"),
