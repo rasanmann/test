@@ -176,7 +176,7 @@ class ParkingSearchForm extends ParkingFormBase {
           '#type' => 'actions',
           'submit' => [
             '#type' => 'submit',
-              '#value' => $this->t($config->get('yqb_parking_booker.submit_button')),
+              '#value' => $config->get('yqb_parking_booker.submit_button'),
             '#attributes' => ['class' => ['btn-default', 'button-full-width']],
             '#button_type' => 'default',
             '#weight' => 10,
