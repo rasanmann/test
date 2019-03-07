@@ -411,7 +411,7 @@ class ParkingFormBase extends FormBase {
 							],
 					],
 			];
-		}
+		} //end code prome
 
 
 		if ($this->store->get('booking')) {
@@ -497,8 +497,8 @@ class ParkingFormBase extends FormBase {
 		$status[] = $back;
 		$status[] = $arrivalDate;
 		$status[] = $departureDate;
-		$status[] = $promoCode;
 		$status[] = $price;
+        $status[] = $promoCode;
 		// $status[] = $help;
 
 		$header['status'] = $status;
