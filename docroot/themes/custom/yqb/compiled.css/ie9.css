@@ -1,0 +1,352 @@
+/*-------------------------------------------------------------------
+	Media queries
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Utilities
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Browser prefixes
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Transform
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Transition
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Animation
+-------------------------------------------------------------------*/
+/*
+    Example usage: 
+    @include animation(changecolour, 5s, 10s)
+ */
+/*-------------------------------------------------------------------
+	Grid
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	SVG Icons generation
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Utilities
+-------------------------------------------------------------------*/
+/* 
+* @include triangle within a pseudo element and add positioning properties (ie. top, left)
+* $direction: up, down, left, right
+*/
+/*-------------------------------------------------------------------
+	Style mixins
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+	Functions
+-------------------------------------------------------------------*/
+/*
+	Acts like a php var_dump but with a SASS list or variable
+*/
+/*
+	Calculate the resize ratio of the svg sprite based on the icon provided
+	The icon needs at least 4 params (x, y, width, height)
+	(optional) w or h based ratio
+*/
+/*
+	Slice a SASS list like php array_slice
+*/
+
+@keyframes crossfade {
+  0% {
+    opacity: 0;
+    z-index: 100;
+    background-color: red; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    background-color: transparent; } }
+
+@keyframes crossfade-2 {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes crossfade-3 {
+  0% {
+    opacity: 0; }
+  6.66667% {
+    opacity: 1; }
+  33.33333% {
+    opacity: 1; }
+  40% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes crossfade-4 {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes crossfade-5 {
+  0% {
+    opacity: 0; }
+  4% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  24% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes crossfade-6 {
+  0% {
+    opacity: 0; }
+  3.33333% {
+    opacity: 1; }
+  16.66667% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes crossfade-7 {
+  0% {
+    opacity: 0; }
+  2.85714% {
+    opacity: 1; }
+  14.28571% {
+    opacity: 1; }
+  17.14286% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes crossfade-8 {
+  0% {
+    opacity: 0; }
+  2.5% {
+    opacity: 1; }
+  12.5% {
+    opacity: 1; }
+  15% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes crossfade-9 {
+  0% {
+    opacity: 0; }
+  2.22222% {
+    opacity: 1; }
+  11.11111% {
+    opacity: 1; }
+  13.33333% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes crossfade-10 {
+  0% {
+    opacity: 0; }
+  2% {
+    opacity: 1; }
+  10% {
+    opacity: 1; }
+  12% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes scale-in {
+  0% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: scale(0);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  100% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: scale(1); } }
+
+@keyframes scale-out {
+  0% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: scale(1); }
+  100% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: scale(0); } }
+
+@keyframes translate-in {
+  0% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: translate(0, -100%);
+    zoom: 1; }
+  100% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: translate(0, 0);
+    zoom: 1; } }
+
+@keyframes move-vertical {
+  16.65% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: translate(-40px, 0);
+    zoom: 1; }
+  33.3% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: translate(20px, 0);
+    zoom: 1; }
+  49.95% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: translate(-20px, 0);
+    zoom: 1; }
+  66.6% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: translate(10px, 0);
+    zoom: 1; }
+  83.25% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: translate(-10px, 0);
+    zoom: 1; }
+  100% {
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: translate(0, 0px);
+    zoom: 1; } }
+
+@keyframes pulse {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    transform: scale(1); } }
+
+@keyframes pulse-visit-quebec {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    /* Saf3.1+, Chrome */
+    /* FF3.5+ */
+    /* IE9 */
+    /* Opera 10.5 */
+    transform: scale(1) translate(-50%, -50%); } }
+
+/*********************************************************
+* LAYOUT
+*********************************************************/
+#layout-header .dropdown-menu li.dropdown.open > .dropdown-menu-2 {
+  display: block; }
+
+#layout-header .dropdown-menu.dropdown-menu-2 {
+  display: none; }
+
+/*********************************************************
+* MODULES
+*********************************************************/
+/**
+* HEADER PRIMARY NAV
+**/
+.block-main-menu > ul {
+  display: block;
+  float: right;
+  padding-right: 25px; }
+  .block-main-menu > ul > li {
+    float: left;
+    margin-left: 20px; }
+
+.pulse:before, .pulse-2:before, .alert-pulse:before {
+  transform: scale(1) !important; }
+
+/**
+* HOMEPAGE VIDEO
+**/
+#block-herosearchblock {
+  background: url(../videos/intro-wide.jpg) no-repeat center center/cover; }
+  #block-herosearchblock video {
+    display: none; }
+
+.region-sub-footer .navbar-nav li {
+  float: none;
+  display: inline-block; }
+
+#nav-footer-primary .navbar-nav li {
+  float: none;
+  display: inline-block; }
+
+.view-page-destinations .view-destinations {
+  overflow: hidden; }
+
+#map-accordion {
+  display: block !important; }
+
+.map-legend,
+.map-view-selector,
+.map-extra,
+.map-destinations {
+  display: none !important; }
+
+.select-wrapper {
+  background: white;
+  overflow: hidden; }
+  .select-wrapper select {
+    width: 100% !important; }
+  .select-wrapper .form-control {
+    padding-right: 5px !important; }

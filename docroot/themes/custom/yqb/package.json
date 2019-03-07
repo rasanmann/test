@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "vpm_d8",
   "dependencies": {},
   "devDependencies": {
@@ -10,5 +11,12 @@
   },
   "scripts": {
     "watch": "gulp watch"
+=======
+  "name": "@libeo/yqb",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-sass": "^4.0.2"
+>>>>>>> feature/90135
   }
 }
