@@ -37,6 +37,14 @@ function yqb_preprocess_html(array &$variables) {
 
   $variables['body_id'] = trim(preg_replace('/[^a-zA-Z\d\s:]/', '-', $path), '-');
 
+  $routeName = \Drupal::service('current_route_match')->getRouteName();
+  $view = FALSE;
+  $viewName = '';
+  if (preg_match('/^view\./i', $routeName)) {
+    $view = TRUE;
+    list($base, $viewName, $displayId) = explode('.', $routeName);
+  }
+
   $variables['body_classes'] = implode(' ', [
     'path-' . $variables['body_id'],
     (!$variables['root_path']) ? 'path-frontpage' : 'path-' . \Drupal\Component\Utility\Html::getClass($variables['root_path']),
@@ -44,7 +52,7 @@ function yqb_preprocess_html(array &$variables) {
     (isset($variables['node_type'])) ? 'page-node-type-' . \Drupal\Component\Utility\Html::getClass($variables['node_type']) : NULL,
     (isset($variables['db_offline'])) ? 'db-offline' : NULL,
     ($variables['theme']['settings']['navbar_position']) ? 'navbar-is-' . \Drupal\Component\Utility\Html::getClass($variables['theme']['settings']['navbar_position']) : NULL,
-    (isset($variables['page']['content']['system_main']['#view_id'])) ? 'view-page-' . $variables['page']['content']['system_main']['#view_id'] : '',
+    ($view) ? 'view-page-' . $viewName : '',
     ($variables['theme']['has_glyphicons']) ? 'has-glyphicons' : NULL,
   ]);
 }
