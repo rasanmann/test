@@ -18,7 +18,9 @@ class ParkingSearchForm extends ParkingFormBase {
     return 'parking_booker_search_form';
   }
 
+
   protected function getDesktopForm($showCouponInput = false) {
+      $config = $this->config('yqb_parking_booker.settings');
     $desktop = [
       // Row
       '#type' => 'container',
@@ -67,7 +69,8 @@ class ParkingSearchForm extends ParkingFormBase {
           '#type' => 'actions',
           'submit' => [
             '#type' => 'submit',
-            '#value' => $this->t('Réserver'),
+              '#value' => $this->t($config->get('yqb_parking_booker.submit_button')),
+//            '#value' => $this->t('Réserver'),
             '#attributes' => ['class' => ['btn-default']],
             '#button_type' => 'default',
             '#weight' => 10,
@@ -95,6 +98,7 @@ class ParkingSearchForm extends ParkingFormBase {
   }
 
   public function getMobileForm($showCouponInput = false) {
+      $config = $this->config('yqb_parking_booker.settings');
     $mobile = [
       // Row
       '#type' => 'container',
@@ -172,7 +176,7 @@ class ParkingSearchForm extends ParkingFormBase {
           '#type' => 'actions',
           'submit' => [
             '#type' => 'submit',
-            '#value' => $this->t('Réserver'),
+              '#value' => $this->t($config->get('yqb_parking_booker.submit_button')),
             '#attributes' => ['class' => ['btn-default']],
             '#button_type' => 'default',
             '#weight' => 10,
@@ -203,6 +207,8 @@ class ParkingSearchForm extends ParkingFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+      $config = $this->config('yqb_parking_booker.settings');
+
     if($this->getRequest()->query->get('webview')){
       $this->store->set('webview', true);
     }

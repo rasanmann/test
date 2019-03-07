@@ -1,3 +1,11 @@
+yqb_bills.admin_display:
+  path: '/admin/config/planifier-son-vol/reserver-un-stationnement'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\ParkingBookerSettingsForm'
+    _title: 'Parking Booker settings'
+  requirements:
+    _permission: 'administer site configuration'
+
 yqb_parking_booker.fr.index:
   path: '/planifier-son-vol/reserver-un-stationnement/recherche'
   defaults:
