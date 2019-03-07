@@ -1,11 +1,3 @@
-#system.yqb_parking_booker:
-#  path: '/admin/config/yqb'
-#  defaults:
-#    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
-#    _title: 'Aéroport de Québec'
-#  requirements:
-#    _permission: 'administer site configuration'
-
 yqb_parking_booker.admin_display:
   path: '/admin/config/yqb/reserver-un-stationnement'
   defaults:
