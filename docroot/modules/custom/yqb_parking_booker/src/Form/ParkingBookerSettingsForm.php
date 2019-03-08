@@ -32,7 +32,7 @@ class ParkingBookerSettingsForm extends ConfigFormBase {
         $form['label'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Libellé du bouton:'),
-            '#default_value' => $config->get('yqb_parking_booker.submit_button'),
+            '#default_value' => $config->get('submit_button'),
             '#description' => $this->t('Entrez le texte qui apparaîtra sur le bouton submit'),
         ];
 
@@ -52,7 +52,7 @@ class ParkingBookerSettingsForm extends ConfigFormBase {
     public function submitForm(array &$form, FormStateInterface $form_state) {
         $config = $this->config('yqb_parking_booker.settings');
 
-        $config->set('yqb_parking_booker.submit_button', $form_state->getValue('label'));
+        $config->set('submit_button', $form_state->getValue('label'));
 
         $config->save();
 

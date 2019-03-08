@@ -1,0 +1,5 @@
+yqb_parking_booker.admin:
+  route_name: yqb_parking_booker.admin
+  title: 'libelle'
+  parent: system.admin_config_ui
+  description: 'libelle'
