@@ -3,5 +3,5 @@ yqb_parking_booker.settings:
   label: 'Parking Booker settings'
   mapping:
     submit_button:
-      type: string
+      type: text
       label: 'Libellé du bouton'
