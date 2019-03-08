@@ -1,6 +1,5 @@
-#system.yqb_parking_booker:
-#  route_name: system.yqb_parking_booker
-#  parent: system.admin_config
-#  title: Parking Booker
-#  description: 'Parking Booker Configuration'
-#  weight: -10
+yqb_parking_booker.admin:
+  route_name: yqb_parking_booker.admin
+  title: 'libelle'
+  parent: system.admin_config_ui
+  description: 'libelle'
