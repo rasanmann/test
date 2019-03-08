@@ -1,5 +1,5 @@
 yqb_parking_booker.admin:
-  route_name: yqb_parking_booker.admin
-  title: 'libelle'
+  route_name: yqb_parking_booker.admin.config
+  title: 'Libellé'
   parent: system.admin_config_ui
-  description: 'libelle'
+  description: 'Libellé bouton submit Réservé stationnement'

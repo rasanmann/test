@@ -1,11 +1,10 @@
-yqb_parking_booker.admin:
+yqb_parking_booker.admin.config:
   path: '/admin/config/user-interface/reserver-un-stationnement'
   defaults:
     _form: '\Drupal\yqb_parking_booker\Form\ParkingBookerSettingsForm'
     _title: 'Parking Booker settings'
   requirements:
     _permission: 'administer site configuration'
-
 
 yqb_parking_booker.fr.index:
   path: '/planifier-son-vol/reserver-un-stationnement/recherche'
