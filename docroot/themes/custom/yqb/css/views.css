@@ -310,6 +310,14 @@
   .view-id-arrivals .view-header,
   .view-id-departures .view-header {
     display: none; }
+  .view-id-arrivals .late-24,
+  .view-id-departures .late-24 {
+    display: none; }
+  .view-id-arrivals tr.warning .late-24,
+  .view-id-departures tr.warning .late-24 {
+    display: block;
+    font-size: 1.1rem;
+    color: #ffcc33; }
   .view-id-arrivals #view-field-flight-number-table-column,
   .view-id-arrivals #view-field-flight-number-table-column--2,
   .view-id-departures #view-field-flight-number-table-column,
