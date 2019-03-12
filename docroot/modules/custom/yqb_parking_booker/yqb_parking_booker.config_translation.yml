@@ -1,0 +1,5 @@
+yqb_parking_booker.config:
+  title: 'Libellé du bouton Réserver un stationnement'
+  base_route_name: 'yqb_parking_booker.admin.config'
+  names:
+    - yqb_parking_booker.settings

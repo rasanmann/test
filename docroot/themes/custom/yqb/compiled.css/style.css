@@ -8467,11 +8467,11 @@ body.toolbar-fixed.toolbar-vertical.toolbar-tray-open.toolbar-fixed {
 
 .window-is-not-mobile .block-parking-booker .is-mobile,
 .window-is-not-mobile .block-reminders .is-mobile {
-  display: none; }
+  display: none !important; }
 
 .window-is-not-mobile .block-parking-booker .is-desktop,
 .window-is-not-mobile .block-reminders .is-desktop {
-  display: block; }
+  display: block !important; }
 
 .touchevents .table-striped > tbody > tr:nth-of-type(odd):hover {
   background-color: #0a0a0b; }

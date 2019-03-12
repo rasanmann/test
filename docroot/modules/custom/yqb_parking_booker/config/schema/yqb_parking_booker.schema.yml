@@ -1,0 +1,7 @@
+yqb_parking_booker.settings:
+  type: config_object
+  label: 'Parking Booker settings'
+  mapping:
+    submit_button:
+      type: text
+      label: 'Libellé du bouton'
