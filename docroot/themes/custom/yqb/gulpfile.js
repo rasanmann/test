@@ -1,12 +1,10 @@
+// 'use strict';
+
 const {parallel, watch} = require('gulp'),
   sass = require('gulp-sass'),
   gulp = require("gulp"),
   autoprefixer = require('gulp-autoprefixer');
 
-function javascript(cb) {
-  // place code for your default task here
-  cb();
-}
 
 function css() {
   return (
@@ -23,5 +21,6 @@ function css() {
 }
 
 exports.default = function() {
+    css();
   watch(['scss/*.scss', 'scss/**/*.scss'], css);
 };
