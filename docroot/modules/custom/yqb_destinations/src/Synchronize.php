@@ -31,7 +31,7 @@ class Synchronize {
 
   public function sync() {
     $updatedDestinations = $this->getUpdatedDestinations(
-      $this->getDirectDepartures('+180 days')
+      $this->getDirectDepartures('+60 days')
     );
     $totalDays = 61;
 
