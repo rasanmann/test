@@ -1,0 +1,38 @@
+.paragraph--type--fiche-employe .row-wrapper {
+  position: relative;
+  display: block;
+  height: 240px;
+  width: 100%;
+  background-color: #f7f7f7;
+  overflow: hidden; }
+
+.paragraph--type--fiche-employe .trio_content {
+  padding-top: 80px;
+  height: 240px;
+  margin: auto;
+  width: 100%;
+  text-align: center; }
+
+.paragraph--type--fiche-employe .field--name-field-title-gouvernance-employe {
+  font-size: 2.4rem;
+  margin: auto;
+  width: 50%;
+  text-align: center; }
+
+.paragraph--type--fiche-employe .field--name-field-sous-titre-gouvernance-emp {
+  margin: auto;
+  width: 50%;
+  text-align: center; }
+
+.paragraph--type--fiche-employe .field--name-field-plus-icon-gouvernance-empl {
+  display: inline-block;
+  margin: auto;
+  width: 25px;
+  text-align: center;
+  padding-top: 20px; }
+
+.paragraph--type--fiche-employe .field--name-field-image-gouvernance-employe {
+  display: inline-block;
+  position: absolute;
+  right: -30px;
+  bottom: 0; }
