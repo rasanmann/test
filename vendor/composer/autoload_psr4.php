@@ -54,6 +54,8 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
+    'Mailchimp\\http\\' => array($vendorDir . '/thinkshout/mailchimp-api-php/src/http'),
+    'Mailchimp\\' => array($vendorDir . '/thinkshout/mailchimp-api-php/src'),
     'League\\Csv\\' => array($vendorDir . '/league/csv/src'),
     'League\\Container\\' => array($vendorDir . '/league/container/src'),
     'JakubOnderka\\PhpConsoleHighlighter\\' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),

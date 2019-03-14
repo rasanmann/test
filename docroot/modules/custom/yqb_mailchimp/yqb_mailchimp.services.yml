@@ -1,0 +1,7 @@
+services:
+  cache.yqb_mailchimp:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: ['yqb_mailchimp']

@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function yqb_mailchimp_cron() {
+  $config = \Drupal::configFactory()
+                   ->getEditable('yqb_mailchimp.settings');
+
+  $interval = $config->get('interval');
+  $interval = !empty($interval) ? $interval : 120;
+
+  $nextExecution = Drupal::state()->get('yqb_mailchimp.next_execution');
+  $nextExecution = !empty($nextExecution) ? $nextExecution : 0;
+
+  if (\Drupal::time()->getRequestTime() >= $nextExecution) {
+    /** @var \Drupal\yqb_mailchimp\Career $career */
+    $career = Drupal::classResolver(\Drupal\yqb_mailchimp\Career::class);
+    $nodes = $career->findAvailableCareerAlerts();
+
+    foreach ($nodes as $node) {
+      $career->sendCareerAlert($node);
+    }
+
+    \Drupal::state()->set(
+      'yqb_mailchimp.next_execution',
+      \Drupal::time()->getRequestTime() + $interval
+    );
+  }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_mailchimp_theme($existing, $type, $theme, $path) {
+  return [
+    'yqb_mailchimp_template' => [
+      'variables' => [
+        'node' => NULL,
+        'title' => '',
+        'type' => '',
+        'department' => '',
+        'location' => '',
+        'summary' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function yqb_mailchimp_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (preg_match('/^mailchimp_signup_subscribe_page/i', $form_id)) {
+    $form['#attached']['library'][] = 'yqb_mailchimp/yqb_mailchimp';
+  }
+}

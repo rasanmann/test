@@ -1,0 +1,11 @@
+name: YQB - Alertes emplois (Mailchimp)
+description: Permet aux utilisateurs de recevoir des alertes pour les offres d'emplois.
+core: 8.x
+package: YQB
+type: module
+dependencies:
+  - drupal:system (>= 8.6)
+  - mailchimp:mailchimp
+  - mailchimp_signup:mailchimp_signup
+  - mailchimp_campaign:mailchimp_campaign
+  - mailchimp_lists:mailchimp_lists

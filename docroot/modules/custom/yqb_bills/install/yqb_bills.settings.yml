@@ -1,2 +1,3 @@
 yqb_bills:
   recipients: 'john@doe.com'
+  form_is_enabled: "1"

@@ -12,11 +12,12 @@
 use Drupal\file\Entity\File;
 use Drupal\image\Entity\ImageStyle;
 
-function recursive_array_search($needle,$haystack) {
-  foreach($haystack as $key=>$value) {
-    if($needle===$value) {
+function recursive_array_search($needle, $haystack) {
+  foreach ($haystack as $key => $value) {
+    if ($needle === $value) {
       return array($key);
-    } else if (is_array($value) && $subkey = recursive_array_search($needle,$value)) {
+    }
+    else if (is_array($value) && $subkey = recursive_array_search($needle, $value)) {
       array_unshift($subkey, $key);
       return $subkey;
     }
@@ -30,146 +31,181 @@ function recursive_array_search($needle,$haystack) {
  * Place your custom PHP code in this file.
  */
 function yqb_preprocess_html(array &$variables) {
-  $variables['base_path'] = str_replace('//', '/', '/'.base_path());
+  $variables['base_path'] = str_replace('//', '/', '/' . base_path());
 
   $path = preg_replace('/\?(.*)/', '', implode('/', array_slice(explode('/', trim(\Drupal::request()->getRequestUri(), '/')), 1)));
 
   $variables['body_id'] = trim(preg_replace('/[^a-zA-Z\d\s:]/', '-', $path), '-');
 
+  $routeName = \Drupal::service('current_route_match')->getRouteName();
+  $view = FALSE;
+  $viewName = '';
+  if (preg_match('/^view\./i', $routeName)) {
+    $view = TRUE;
+    list($base, $viewName, $displayId) = explode('.', $routeName);
+  }
+
   $variables['body_classes'] = implode(' ', [
     'path-' . $variables['body_id'],
-    (!$variables['root_path']) ?                                        'path-frontpage' : 'path-' . \Drupal\Component\Utility\Html::getClass($variables['root_path']),
-    (isset($variables['logged_in'])) ?                                  'user-logged-in' : null,
-    (isset($variables['node_type'])) ?                                  'page-node-type-' . \Drupal\Component\Utility\Html::getClass($variables['node_type']) : null,
-    (isset($variables['db_offline'])) ?                                 'db-offline' : null,
-    ($variables['theme']['settings']['navbar_position']) ?              'navbar-is-' . \Drupal\Component\Utility\Html::getClass($variables['theme']['settings']['navbar_position']) : null,
-    (isset($variables['page']['content']['system_main']['#view_id'])) ? 'view-page-'.$variables['page']['content']['system_main']['#view_id'] : '',
-    ($variables['theme']['has_glyphicons']) ?                           'has-glyphicons' : null,
+    (!$variables['root_path']) ? 'path-frontpage' : 'path-' . \Drupal\Component\Utility\Html::getClass($variables['root_path']),
+    (isset($variables['logged_in'])) ? 'user-logged-in' : NULL,
+    (isset($variables['node_type'])) ? 'page-node-type-' . \Drupal\Component\Utility\Html::getClass($variables['node_type']) : NULL,
+    (isset($variables['db_offline'])) ? 'db-offline' : NULL,
+    ($variables['theme']['settings']['navbar_position']) ? 'navbar-is-' . \Drupal\Component\Utility\Html::getClass($variables['theme']['settings']['navbar_position']) : NULL,
+    ($view) ? 'view-page-' . $viewName : '',
+    ($variables['theme']['has_glyphicons']) ? 'has-glyphicons' : NULL,
   ]);
 }
 
-function yqb_page_attachments_alter(array &$page){
+function yqb_page_attachments_alter(array &$page) {
   // Webview specific css sheet
-  if(isset($_GET['webview'])){
+  if (isset($_GET['webview'])) {
     $page['#attached']['library'][] = 'yqb/webview';
   }
 
   // Viewport meta
-  foreach($page['#attached']['html_head'] as $k => $meta){
-    if($meta[1] == 'viewport'){
+  foreach ($page['#attached']['html_head'] as $k => $meta) {
+    if ($meta[1] == 'viewport') {
       $page['#attached']['html_head'][$k][0]['#attributes']['content'] = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0';
     }
   }
 
   // Add touch icons
   // Apple
-  $page['#attached']['html_head'][] = [[
+  $page['#attached']['html_head'][] = [
+    [
       '#tag' => 'meta',
       '#weight' => 100,
       '#attributes' => [
-          'name' => 'apple-mobile-web-app-capable',
-          'content' => 'yes',
+        'name' => 'apple-mobile-web-app-capable',
+        'content' => 'yes',
       ],
-  ], 'apple-mobile-web-app-capable'];
+    ],
+    'apple-mobile-web-app-capable',
+  ];
 
-  $page['#attached']['html_head'][] = [[
+  $page['#attached']['html_head'][] = [
+    [
       '#tag' => 'meta',
       '#weight' => 100,
       '#attributes' => [
-          'name' => 'apple-mobile-web-app-title',
-          'content' => 'YQB',
+        'name' => 'apple-mobile-web-app-title',
+        'content' => 'YQB',
       ],
-  ], 'apple-mobile-web-app-title'];
+    ],
+    'apple-mobile-web-app-title',
+  ];
 
   $sizes = [57, 60, 72, 76, 114, 120, 144, 152, 180];
 
-  foreach($sizes as $size) {
-    $page['#attached']['html_head'][] = [[
+  foreach ($sizes as $size) {
+    $page['#attached']['html_head'][] = [
+      [
         '#tag' => 'link',
         '#weight' => 100,
         '#attributes' => [
-            'rel' => 'apple-touch-icon',
-            'sizes' => $size . 'x' . $size,
-            'href' => '/' . drupal_get_path('theme', 'yqb') . '/img/icons/apple-icon-' . $size . 'x' . $size . '.png?v3'
+          'rel' => 'apple-touch-icon',
+          'sizes' => $size . 'x' . $size,
+          'href' => '/' . drupal_get_path('theme', 'yqb') . '/img/icons/apple-icon-' . $size . 'x' . $size . '.png?v3',
         ],
-    ], 'apple-' . $size];
+      ],
+      'apple-' . $size,
+    ];
   }
 
   // Android
   $sizes = [36, 48, 72, 96, 144, 192];
 
-  foreach($sizes as $size) {
-    $page['#attached']['html_head'][] = [[
+  foreach ($sizes as $size) {
+    $page['#attached']['html_head'][] = [
+      [
         '#tag' => 'link',
         '#weight' => 200,
         '#attributes' => [
-            'rel' => 'icon',
-            'type' => 'image/png',
-            'sizes' => $size . 'x' . $size,
-            'href' => '/' . drupal_get_path('theme', 'yqb') . '/img/icons/android-icon-' . $size . 'x' . $size . '.png?v3'
+          'rel' => 'icon',
+          'type' => 'image/png',
+          'sizes' => $size . 'x' . $size,
+          'href' => '/' . drupal_get_path('theme', 'yqb') . '/img/icons/android-icon-' . $size . 'x' . $size . '.png?v3',
         ],
-    ], 'android-' . $size];
+      ],
+      'android-' . $size,
+    ];
   }
 
   // Android manifest
-  $page['#attached']['html_head'][] = [[
+  $page['#attached']['html_head'][] = [
+    [
       '#tag' => 'link',
       '#weight' => 200,
       '#attributes' => [
-          'rel' => 'manifest',
-          'href' => '/manifest.json'
+        'rel' => 'manifest',
+        'href' => '/manifest.json',
       ],
-  ], 'android-manifest'];
+    ],
+    'android-manifest',
+  ];
 
   // Favicons
   $sizes = [32, 96];
 
-  foreach($sizes as $size) {
-    $page['#attached']['html_head'][] = [[
+  foreach ($sizes as $size) {
+    $page['#attached']['html_head'][] = [
+      [
         '#tag' => 'link',
         '#weight' => 300,
         '#attributes' => [
-            'rel' => 'icon',
-            'type' => 'image/png',
-            'sizes' => $size . 'x' . $size,
-            'href' => '/' . drupal_get_path('theme', 'yqb') . '/img/icons/favicon-' . $size . 'x' . $size . '.png?v3'
+          'rel' => 'icon',
+          'type' => 'image/png',
+          'sizes' => $size . 'x' . $size,
+          'href' => '/' . drupal_get_path('theme', 'yqb') . '/img/icons/favicon-' . $size . 'x' . $size . '.png?v3',
         ],
-    ], 'favicon-' . $size];
+      ],
+      'favicon-' . $size,
+    ];
   }
 
   // Microsoft specific
-  $page['#attached']['html_head'][] = [[
+  $page['#attached']['html_head'][] = [
+    [
       '#tag' => 'meta',
       '#weight' => 400,
       '#attributes' => [
-          'name' => 'msapplication-TileColor',
-          'content' => '#ffffff',
+        'name' => 'msapplication-TileColor',
+        'content' => '#ffffff',
       ],
-  ], 'microsoft-tile-color'];
+    ],
+    'microsoft-tile-color',
+  ];
 
   $sizes = [70, 144, 150, 310];
 
-  foreach($sizes as $size) {
-    $page['#attached']['html_head'][] = [[
+  foreach ($sizes as $size) {
+    $page['#attached']['html_head'][] = [
+      [
         '#tag' => 'link',
         '#weight' => 400,
         '#attributes' => [
-            'rel' => 'icon',
-            'type' => 'image/png',
-            'sizes' => $size . 'x' . $size,
-            'href' => '/' . drupal_get_path('theme', 'yqb') . '/img/icons/ms-icon-' . $size . 'x' . $size . '.png?v3'
+          'rel' => 'icon',
+          'type' => 'image/png',
+          'sizes' => $size . 'x' . $size,
+          'href' => '/' . drupal_get_path('theme', 'yqb') . '/img/icons/ms-icon-' . $size . 'x' . $size . '.png?v3',
         ],
-    ], 'microsoft-tile-image-' . $size];
+      ],
+      'microsoft-tile-image-' . $size,
+    ];
   }
 
-  $page['#attached']['html_head'][] = [[
+  $page['#attached']['html_head'][] = [
+    [
       '#tag' => 'meta',
       '#weight' => 400,
       '#attributes' => [
-          'name' => 'theme-color',
-          'content' => '#ffffff',
+        'name' => 'theme-color',
+        'content' => '#ffffff',
       ],
-  ], 'theme-color'];
+    ],
+    'theme-color',
+  ];
 }
 
 function yqb_js_settings_alter(array &$javascript) {
@@ -180,17 +216,17 @@ function yqb_js_settings_alter(array &$javascript) {
 
 function yqb_preprocess_page_title(array &$variables) {
   if (\Drupal::service('path.matcher')->isFrontPage()) {
-    $variables['title'] = null;
+    $variables['title'] = NULL;
   }
   // Load the node entity from current route
   if ($contact_form = \Drupal::routeMatch()->getParameter('contact_form')) {
 
-    if($contact_form->id() == 'candidature_spontanee' && isset($_GET['id'])){
+    if ($contact_form->id() == 'candidature_spontanee' && isset($_GET['id'])) {
       $node_storage = \Drupal::entityTypeManager()->getStorage('node');
       $node = $node_storage->load($_GET['id']);
 
       // Set the page title
-      if(!empty($node) && $node->getType() == 'career') {
+      if (!empty($node) && $node->getType() == 'career') {
         $variables['title'] = t('Candidature - @job', array('@job' => $node->getTitle()));
       }
     }
@@ -201,7 +237,7 @@ function yqb_library_info_alter(array &$libraries, $module) {
   if ($module === 'core' && isset($libraries['drupal.autocomplete'])) {
     // Replace buggy search_autocomplete script with theme script
     $libraries['drupal.autocomplete']['js'] = array(
-        '/' . drupal_get_path('theme', 'yqb') . '/js/libraries/autocomplete/jquery.autocomplete.custom.js' => array(),
+      '/' . drupal_get_path('theme', 'yqb') . '/js/libraries/autocomplete/jquery.autocomplete.custom.js' => array(),
     );
   }
 }
@@ -213,7 +249,7 @@ function yqb_preprocess_block(array &$variables) {
       $originals = [];
       $thumbnails = [];
 
-      foreach($variables['elements']['content']['field_image_slide']['#items'] as &$item) {
+      foreach ($variables['elements']['content']['field_image_slide']['#items'] as &$item) {
 
         /** @var Drupal\image\Plugin\Field\FieldType\ImageItem $item */
         $file = \Drupal\file\Entity\File::load($item->getValue()['target_id']);
@@ -232,8 +268,8 @@ function yqb_preprocess_block(array &$variables) {
   }
 
   // Hide About menu in news archives
-  if(isset($variables['elements']['#configuration']['id'])){
-    if(($variables['elements']['#configuration']['id'] == 'system_menu_block:a-propos' || $variables['elements']['#configuration']['id'] == 'system_menu_block:barre-laterale---a-propos-e')  && preg_match('/communiques-de-presse|press-release|blog/', \Drupal::request()->getRequestUri())){
+  if (isset($variables['elements']['#configuration']['id'])) {
+    if (($variables['elements']['#configuration']['id'] == 'system_menu_block:a-propos' || $variables['elements']['#configuration']['id'] == 'system_menu_block:barre-laterale---a-propos-e') && preg_match('/communiques-de-presse|press-release|blog/', \Drupal::request()->getRequestUri())) {
       $variables = array();
     }
   }
@@ -248,46 +284,48 @@ function yqb_preprocess_container(array &$variables) {
   }
 }
 
-function yqb_form_alter(&$form, &$form_state, $form_id){
-  switch($form_id){
+function yqb_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
     case 'contact_message_contact_us_form':
     case 'contact_message_comments_form':
       unset($form['actions']['preview']);
-    break;
+      break;
 
     case 'contact_message_candidature_spontanee_form':
     case 'yamlform_submission_job_application_form':
-      $offer = (isset($_GET['id'])) ? $_GET['id'] : ((isset($_GET['offer'])) ? $_GET['offer'] : null);
-      if(!empty($offer)) {
+      $offer = (isset($_GET['id'])) ? $_GET['id'] : ((isset($_GET['offer'])) ? $_GET['offer'] : NULL);
+      if (!empty($offer)) {
         $node_storage = \Drupal::entityTypeManager()->getStorage('node');
         $node = $node_storage->load($offer);
 
-        if(!empty($node) && $node->getType() == 'career') {
+        if (!empty($node) && $node->getType() == 'career') {
           $form['field_offre']['widget']['#default_value'] = $offer;
 
           $form['field_departement']['#type'] = 'hidden';
           $form['field_departement']['widget']['#default_value'] = current($node->field_department->getValue());
-        }else{
+        }
+        else {
           $form['field_offre']['#type'] = 'hidden';
         }
-      }else{
+      }
+      else {
         $form['field_offre']['#type'] = 'hidden';
       }
 
       // Redirect to same page
       $form['actions']['submit']['#submit'][] = 'yqb_job_submit';
       unset($form['actions']['preview']);
-    break;
+      break;
 
     case 'search_form':
       $form['#method'] = 'get';
-    break;
+      break;
 
     case 'user_form';
       $current_user = \Drupal::currentUser();
 
-      if($current_user){
-        if(!in_array('administrator', $current_user->getRoles())){
+      if ($current_user) {
+        if (!in_array('administrator', $current_user->getRoles())) {
           $form['field_uuid']['#access'] = FALSE;
           $form['field_facebook_user_id']['#access'] = FALSE;
           $form['field_google_user_id']['#access'] = FALSE;
@@ -297,18 +335,19 @@ function yqb_form_alter(&$form, &$form_state, $form_id){
           $form['field_language']['#access'] = FALSE;
         }
       }
-    break;
+      break;
 
     case 'webform_submission_job_application_add_form':
       $offer = \Drupal::request()->query->get('offer');
       $id = \Drupal::request()->query->get('id');
-      $redirect = false;
+      $redirect = FALSE;
 
       if (empty($id)) {
         if (!empty($offer)) {
-          $redirect = true;
+          $redirect = TRUE;
         }
-      } else {
+      }
+      else {
         $node = \Drupal\node\Entity\Node::load($id);
         if ($node && $node->isPublished()) {
           $currentLanguage = \Drupal::languageManager()->getCurrentLanguage(\Drupal\Core\Language\LanguageInterface::TYPE_CONTENT)->getId();
@@ -320,8 +359,9 @@ function yqb_form_alter(&$form, &$form_state, $form_id){
           $form['elements']['department']['#type'] = 'hidden';
 
           $form['field_offre']['widget']['#default_value'] = 'bob';
-        } else {
-          $redirect = true;
+        }
+        else {
+          $redirect = TRUE;
         }
       }
 
@@ -337,17 +377,17 @@ function yqb_form_alter(&$form, &$form_state, $form_id){
 
 
 function yqb_job_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
-    $params = ['contact_form' => 'candidature_spontanee'];
+  $params = ['contact_form' => 'candidature_spontanee'];
 
-    if(isset($_GET['id'])) {
-      $params['id'] = $_GET['id'];
-    }
+  if (isset($_GET['id'])) {
+    $params['id'] = $_GET['id'];
+  }
 
-    // Clear messages
-    $_SESSION['messages'] = '';
-    drupal_set_message(t('Votre candidature a été soumise'));
+  // Clear messages
+  $_SESSION['messages'] = '';
+  drupal_set_message(t('Votre candidature a été soumise'));
 
-    $form_state->setRedirect('entity.contact_form.canonical', $params);
+  $form_state->setRedirect('entity.contact_form.canonical', $params);
 }
 
 function yqb_theme_suggestions_field_alter(array &$suggestions, array $variables) {
@@ -356,8 +396,8 @@ function yqb_theme_suggestions_field_alter(array &$suggestions, array $variables
 
 function yqb_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
   if (isset($variables['menu_name'])) {
-//    var_dump($variables['menu_name']);
-    switch($variables['menu_name']) {
+    //    var_dump($variables['menu_name']);
+    switch ($variables['menu_name']) {
       case 'main':
       case 'main-en':
         $suggestions[] = 'menu__main';
@@ -384,18 +424,18 @@ function yqb_theme_suggestions_menu_alter(array &$suggestions, array $variables)
 
 
 function yqb_theme_suggestions_block_alter(array &$suggestions, array $variables) {
-  switch(true) {
+  switch (TRUE) {
     // Main menu
     case in_array('block__system_menu_block__main', $suggestions):
     case in_array('block__system_menu_block__main_en', $suggestions):
       $suggestions[] = 'block__system_menu_block__main';
-    break;
+      break;
 
     // Flights schedules on home page
     case in_array('block__views_block__arrivals_block_1', $suggestions):
     case in_array('block__views_block__departures_block_1', $suggestions):
       $suggestions[] = 'block__views_block__schedules_block_1';
-    break;
+      break;
 
     case in_array('block__reminders_block', $suggestions):
       $suggestions[] = 'block__remindersblock';
@@ -434,19 +474,19 @@ function yqb_preprocess_views_view_unformatted(&$variables) {
     $variables['rows_square_images'] = $variables['rows'];
     $variables['rows_simple'] = $variables['rows'];
 
-    foreach($variables['rows_simple'] as &$row) {
+    foreach ($variables['rows_simple'] as &$row) {
       array_unshift($row['content']['#theme'], 'views_view_fields__destinations__simple__page_1');
     }
 
-    foreach($variables['rows_header_image'] as &$row) {
+    foreach ($variables['rows_header_image'] as &$row) {
       array_unshift($row['content']['#theme'], 'views_view_fields__destinations__header_image__page_1');
     }
 
-    foreach($variables['rows_iata'] as &$row) {
+    foreach ($variables['rows_iata'] as &$row) {
       array_unshift($row['content']['#theme'], 'views_view_fields__destinations__iata__page_1');
     }
 
-    foreach($variables['rows_square_images'] as &$row) {
+    foreach ($variables['rows_square_images'] as &$row) {
       array_unshift($row['content']['#theme'], 'views_view_fields__destinations__square_images__page_1');
     }
   }
@@ -454,8 +494,9 @@ function yqb_preprocess_views_view_unformatted(&$variables) {
 
 function yqb_preprocess_views_view(array &$variables) {
   if (\Drupal::service('path.matcher')->isFrontPage()) {
-    $variables['title'] = null;
-  }elseif($variables['view_array']['#view_id'] == 'publications'){
+    $variables['title'] = NULL;
+  }
+  elseif (isset($variables['view_array']['#view_id']) && $variables['view_array']['#view_id'] == 'publications') {
     $variables['download_form'] = \Drupal::formBuilder()->getForm('Drupal\yqb_forms\Form\DownloadPublicationsForm');
   }
 }
@@ -465,11 +506,11 @@ function yqb_preprocess_views_view_table(array &$variables) {
   $view = $variables['view']->storage;
 
   if ($view->getOriginalId() === 'arrivals' || $view->getOriginalId() === 'departures') {
-    foreach($variables['rows'] as &$row) {
+    foreach ($variables['rows'] as $index => &$row) {
 
       // Check if scheduled and estimated fields have that same values
-      $scheduled = null;
-      $estimated = null;
+      $scheduled = NULL;
+      $estimated = NULL;
 
       if (array_key_exists('field_sta', $row['columns']) && array_key_exists('field_eta', $row['columns'])) {
         $scheduled = 'field_sta';
@@ -481,9 +522,12 @@ function yqb_preprocess_views_view_table(array &$variables) {
         $estimated = 'field_etd';
       }
 
+      $oldEstimated = FALSE;
+
       // If they have the same value, replace with a long hyphen
       if ($scheduled && $estimated) {
-        /** @var Drupal\Core\Render\Markup $row['attributes'] */
+        $oldEstimated = $row['columns'][$estimated]['content'][0]['field_output']['#markup'];
+        /** @var Drupal\Core\Render\Markup $row ['attributes'] */
         if (trim(strip_tags($row['columns'][$scheduled]['content'][0]['field_output']['#markup'])) === trim(strip_tags($row['columns'][$estimated]['content'][0]['field_output']['#markup']))) {
           $row['columns'][$estimated]['content'][0]['field_output']['#markup'] = '—';
         }
@@ -491,9 +535,9 @@ function yqb_preprocess_views_view_table(array &$variables) {
 
       // Statuses
       if (array_key_exists('field_status', $row['columns'])) {
-        /** @var Drupal\Core\Template\Attribute $row['attributes'] */
+        /** @var Drupal\Core\Template\Attribute $row ['attributes'] */
 
-        switch(true) {
+        switch (TRUE) {
           // On time, nothing to add
           case $row['attributes']->hasClass('status-9'):
 
@@ -513,13 +557,41 @@ function yqb_preprocess_views_view_table(array &$variables) {
           // Default : delayed, or something else
           default:
             $row['attributes']->addClass('warning');
+            if ($oldEstimated) {
+              $row['columns'][$estimated]['content'][0]['field_output']['#markup'] = $oldEstimated;
+            }
             break;
         }
       }
 
+      /** @var Drupal\yqb\Flight $flight */
+      $flight = \Drupal::service('class_resolver')->getInstanceFromDefinition(\Drupal\yqb\Flight::class);
+
+      /** @var Drupal\views\ResultRow $resultRow */
+      $resultRow = $variables['view']->result[$index];
+      $node = $resultRow->_entity;
+
+      if ($flight->delayedTomorrow($node, TRUE)) {
+        /** @var Drupal\views\ViewExecutable $viewExecutable */
+        $viewExecutable = $variables['view'];
+        $currentDisplay = $viewExecutable->getDisplay()->view->current_display;
+
+        if (!$flight->delayedTomorrow($node)) {
+          if ($currentDisplay === 'today' || $currentDisplay === 'block_1') {
+            unset($variables['rows'][$index]);
+          }
+          elseif ($currentDisplay === 'tomorrow') {
+            if ($oldEstimated) {
+              $row['columns'][$estimated]['content'][0]['field_output']['#markup'] = $oldEstimated;
+            }
+            $row['columns'][$scheduled]['content'][0]['field_output']['#markup'] = '—';
+          }
+        }
+      }
     }
-  } else if ($view->getOriginalId() === 'publications') {
-    foreach($variables['rows'] as $index => &$row) {
+  }
+  else if ($view->getOriginalId() === 'publications') {
+    foreach ($variables['rows'] as $index => &$row) {
       if (isset($variables['view']->result[$index])) {
         $row['attributes']->setAttribute('data-created', date('Y-m-d', $variables['view']->result[$index]->node_field_data_created));
       }
@@ -552,32 +624,68 @@ function yqb_preprocess_swiftmailer(&$variables) {
   }
 
   $protocol = ($_SERVER['HTTPS'] && ($_SERVER['HTTPS'] != "off")) ? "https" : "http";
-  $variables['full_path'] = $protocol . "://" . $_SERVER['HTTP_HOST'] . str_replace('//', '/', '/'.base_path());
-  $variables['base_path'] = str_replace('//', '/', '/'.base_path());
+  $variables['full_path'] = $protocol . "://" . $_SERVER['HTTP_HOST'] . str_replace('//', '/', '/' . base_path());
+  $variables['base_path'] = str_replace('//', '/', '/' . base_path());
   $variables['year'] = date('Y');
 }
 
 /**
  * HOOK_paragraph_gallery
  * Rewrites child fields into parent for display purpose
+ *
  * @param $variables
  */
-function yqb_preprocess_paragraph__gallery(&$variables){
-	$i = 0;
-	$slides = [];
-	while(isset($variables['content']['field_gallery_image'][$i])){
-		$item = $variables['content']['field_gallery_image'][$i];
-		if(isset($item['#paragraph'])) {
-			$path = $item['#paragraph']->get('field_image')->entity->getFileUri();
-			$text = $item['#paragraph']->field_text->value;
+function yqb_preprocess_paragraph__gallery(&$variables) {
+  $i = 0;
+  $slides = [];
+  while (isset($variables['content']['field_gallery_image'][$i])) {
+    $item = $variables['content']['field_gallery_image'][$i];
+    if (isset($item['#paragraph'])) {
+      $path = $item['#paragraph']->get('field_image')->entity->getFileUri();
+      $text = $item['#paragraph']->field_text->value;
 
-			$slides[] = array(
-					'image' => file_create_url($path), 'thumbnail' => ImageStyle::load('thumbnail_240xauto_')->buildUrl($path),
-					'text' => (isset($text) && !empty($text)) ? $text : ''
-			);
-		}
-		$i++;
-	}
+      $slides[] = array(
+        'image' => file_create_url($path),
+        'thumbnail' => ImageStyle::load('thumbnail_240xauto_')->buildUrl($path),
+        'text' => (isset($text) && !empty($text)) ? $text : '',
+      );
+    }
+    $i++;
+  }
 
-	$variables['slides'] = $slides;
+  $variables['slides'] = $slides;
+}
+
+function yqb_preprocess_views_view_field(&$variables) {
+  /** @var Drupal\views\Plugin\views\field\EntityField $field */
+  $field = $variables['field'];
+
+  /** @var Drupal\views\ViewExecutable $view */
+  $view = $variables['view'];
+
+  /** @var Drupal\views\ResultRow $row */
+  $row = $variables['row'];
+
+  if ($row->_entity->getEntityTypeId() == 'node') {
+    /** @var Drupal\node\Entity\Node $entity */
+    $node = $row->_entity;
+
+    if ($view->id() == 'arrivals' || $view->id() == 'departures') {
+      /** @var Drupal\yqb\Flight $flight */
+      $flight = \Drupal::service('class_resolver')->getInstanceFromDefinition(\Drupal\yqb\Flight::class);
+
+      if ($flight->delayedTomorrow($node)) {
+        $scheduled = $flight->getScheduled($node)->date->getTimestamp();
+        $estimated = $flight->getEstimated($node)->date->getTimestamp();
+
+        /** @var Drupal\taxonomy\Entity\Term $status */
+        switch ($field->field) {
+          case 'field_etd':
+          case 'field_eta':
+            $variables['output'] = $flight->getDelayedOutput($estimated);
+            break;
+        }
+      }
+    }
+  }
 }

@@ -24,6 +24,18 @@
 
 	.view-header{display: none}
 
+  .late-24 {
+    display: none;
+  }
+
+  tr.warning {
+    .late-24 {
+      display: block;
+      font-size: 1.1rem;
+      color: #ffcc33;
+    }
+  }
+
 	// Schedules tables columns width
 	#view-field-flight-number-table-column,
 	#view-field-flight-number-table-column--2 { width:5%; }

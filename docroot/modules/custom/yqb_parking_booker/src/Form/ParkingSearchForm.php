@@ -18,15 +18,17 @@ class ParkingSearchForm extends ParkingFormBase {
     return 'parking_booker_search_form';
   }
 
+
   protected function getDesktopForm($showCouponInput = false) {
+      $config = $this->config('yqb_parking_booker.settings');
     $desktop = [
       // Row
       '#type' => 'container',
-      '#attributes' => ['class' => ['form-block-container', 'is-desktop']],
+      '#attributes' => ['class' => ['form-block-container', 'is-desktop', 'parking-container']],
 
       'col-1' => [
         '#type' => 'container',
-        '#attributes' => ['class' => ['col-normal','col-full-responsive']],
+        '#attributes' => ['class' => ['col-normal','col-full-responsive', 'parking-container-item-container']],
         'arrival_date' => [
           '#type' => 'textfield',
           '#title' => $this->t("Date d'entrée"),
@@ -44,7 +46,7 @@ class ParkingSearchForm extends ParkingFormBase {
 
       'col-2' => [
         '#type' => 'container',
-        '#attributes' => ['class' => ['col-normal']],
+        '#attributes' => ['class' => ['col-normal', 'parking-container-item-container']],
         'departure_date' => [
           '#type' => 'textfield',
           '#title' => $this->t("Date de sortie"),
@@ -62,12 +64,12 @@ class ParkingSearchForm extends ParkingFormBase {
 
       'col-3' => [
         '#type' => 'container',
-        '#attributes' => ['class' => ['btn-space']],
+        '#attributes' => ['class' => ['btn-space', 'parking-container-item-container', 'parking-container-item-container-button']],
         'actions' => [
           '#type' => 'actions',
           'submit' => [
             '#type' => 'submit',
-            '#value' => $this->t('Réserver'),
+              '#value' => $config->get('submit_button'),
             '#attributes' => ['class' => ['btn-default']],
             '#button_type' => 'default',
             '#weight' => 10,
@@ -79,7 +81,7 @@ class ParkingSearchForm extends ParkingFormBase {
     if ($showCouponInput) {
       $desktop['col-2-1'] = [
           '#type' => 'container',
-          '#attributes' => ['class' => ['col-full', 'col-promo']],
+          '#attributes' => ['class' => ['col-full', 'col-promo', 'parking-container-item-container']],
           'promo_code' => [
               '#type' => 'textfield',
               '#title' => $this->t("Code promotionnel"),
@@ -89,12 +91,13 @@ class ParkingSearchForm extends ParkingFormBase {
       $desktop['col-3']['#attributes']['class'][] = 'is-static';
     }
 
-    ksort($desktop);
+    //ksort($desktop);
 
     return $desktop;
   }
 
   public function getMobileForm($showCouponInput = false) {
+      $config = $this->config('yqb_parking_booker.settings');
     $mobile = [
       // Row
       '#type' => 'container',
@@ -172,8 +175,8 @@ class ParkingSearchForm extends ParkingFormBase {
           '#type' => 'actions',
           'submit' => [
             '#type' => 'submit',
-            '#value' => $this->t('Réserver'),
-            '#attributes' => ['class' => ['btn-default']],
+              '#value' => $config->get('yqb_parking_booker.submit_button'),
+            '#attributes' => ['class' => ['btn-default', 'button-full-width']],
             '#button_type' => 'default',
             '#weight' => 10,
           ]
@@ -184,7 +187,7 @@ class ParkingSearchForm extends ParkingFormBase {
     if ($showCouponInput) {
       $mobile['col-4-1'] = [
           '#type' => 'container',
-          '#attributes' => ['class' => ['col-full', 'col-promo']],
+          '#attributes' => ['class' => ['col-promo']],
           'promo_code' => [
               '#type' => 'textfield',
               '#title' => $this->t("Code promotionnel"),
@@ -203,6 +206,8 @@ class ParkingSearchForm extends ParkingFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+      $config = $this->config('yqb_parking_booker.settings');
+
     if($this->getRequest()->query->get('webview')){
       $this->store->set('webview', true);
     }

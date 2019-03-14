@@ -53,7 +53,10 @@ class MediaLibrarySelectForm extends FieldPluginBase {
     // Render checkboxes for all rows.
     $form[$this->options['id']]['#tree'] = TRUE;
     foreach ($this->view->result as $row_index => $row) {
-      $entity = $this->getEntity($row);
+      if (!$entity = $this->getEntity($row)) {
+        $form[$this->options['id']][$row_index] = [];
+        continue;
+      }
       $form[$this->options['id']][$row_index] = [
         '#type' => 'checkbox',
         '#title' => $this->t('Select @label', [

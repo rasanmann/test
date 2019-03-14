@@ -40,10 +40,10 @@
 	.block-parking-booker,
 	.block-reminders{
 		.is-mobile{
-			display: none !important;
+			display: none;
 		}
 		.is-desktop{
-			display: block !important;
+			display: block;
 		}
 	}
 }

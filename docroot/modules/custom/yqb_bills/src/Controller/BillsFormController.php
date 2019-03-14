@@ -20,17 +20,11 @@ class BillsFormController extends ControllerBase
      */
     public function index() {
 
-        $information = [
-            '#type' => 'html_tag',
-            '#tag' => 'p',
-            '#value' => $this->t("Aéroport de Québec inc. (AQi), gestionnaire de l'aéroport international Jean-Lesage de Québec, met à votre disposition un service gratuit de paiement en ligne qui vous permet d'acquitter vos factures en tout temps et en toute sécurité (maximum de 5000$) par Visa, MasterCard ou American Express. Pour utiliser le service, il vous suffit de compléter les champs suivants&nbsp;:"),
-        ];
-
-      //  $information = [
-     //       '#type' => 'html_tag',
-    //        '#tag' => 'p',
-   //         '#value' => $this->t("Nous éprouvons actuellement des difficultés techniques avec le paiement de facture sur notre site <a href='/'>aeroportdequebec.com</a>. Nous travaillons à rétablir le service le plus rapidement possible. Il est possible d’effectuer des paiements en contactant par téléphone les Comptes recevables de l’Aéroport international Jean-Lesage de Québec au 1 418 640-2700 poste 2763. Merci de votre compréhension."),
-   //     ];
+//        $information = [
+//            '#type' => 'html_tag',
+//            '#tag' => 'p',
+//            '#value' => $this->t("Aéroport de Québec inc. (AQi), gestionnaire de l'aéroport international Jean-Lesage de Québec, met à votre disposition un service gratuit de paiement en ligne qui vous permet d'acquitter vos factures en tout temps et en toute sécurité (maximum de 5000$) par Visa, MasterCard ou American Express. Pour utiliser le service, il vous suffit de compléter les champs suivants&nbsp;:"),
+//        ];
 
         $psStoreId = [
             '#type' => 'hidden',
@@ -84,7 +78,6 @@ class BillsFormController extends ControllerBase
                 '#required' => true,
             ];
         }
-
         $form['note'] = [
           '#type' => 'checkbox',
           '#name' => 'note',

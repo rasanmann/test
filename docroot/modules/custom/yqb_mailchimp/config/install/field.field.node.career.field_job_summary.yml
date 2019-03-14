@@ -1,0 +1,18 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_summary
+    - node.type.career
+id: node.career.field_job_summary
+field_name: field_job_summary
+entity_type: node
+bundle: career
+label: 'Résumé de l''offre'
+description: 'Résumé de l''offre en 1 paragraphe. Cela va être utilisé dans le gabarit Mailchimp.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
