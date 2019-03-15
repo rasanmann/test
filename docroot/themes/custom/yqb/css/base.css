@@ -17,7 +17,7 @@
 	Animation
 -------------------------------------------------------------------*/
 /*
-    Example usage: 
+    Example usage:
     @include animation(changecolour, 5s, 10s)
  */
 /*-------------------------------------------------------------------
@@ -29,7 +29,7 @@
 /*-------------------------------------------------------------------
 	Utilities
 -------------------------------------------------------------------*/
-/* 
+/*
 * @include triangle within a pseudo element and add positioning properties (ie. top, left)
 * $direction: up, down, left, right
 */
@@ -50,7 +50,32 @@
 /*
 	Slice a SASS list like php array_slice
 */
-
+@-webkit-keyframes crossfade {
+  0% {
+    opacity: 0;
+    z-index: 100;
+    background-color: red; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    background-color: transparent; } }
+@-moz-keyframes crossfade {
+  0% {
+    opacity: 0;
+    z-index: 100;
+    background-color: red; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    background-color: transparent; } }
 @keyframes crossfade {
   0% {
     opacity: 0;
@@ -64,7 +89,28 @@
     opacity: 0;
     z-index: 1;
     background-color: transparent; } }
-
+@-webkit-keyframes crossfade-2 {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-2 {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-2 {
   0% {
     opacity: 0; }
@@ -76,7 +122,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-3 {
+  0% {
+    opacity: 0; }
+  6.66667% {
+    opacity: 1; }
+  33.33333% {
+    opacity: 1; }
+  40% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-3 {
+  0% {
+    opacity: 0; }
+  6.66667% {
+    opacity: 1; }
+  33.33333% {
+    opacity: 1; }
+  40% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-3 {
   0% {
     opacity: 0; }
@@ -88,7 +155,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-4 {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-4 {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-4 {
   0% {
     opacity: 0; }
@@ -100,7 +188,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-5 {
+  0% {
+    opacity: 0; }
+  4% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  24% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-5 {
+  0% {
+    opacity: 0; }
+  4% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  24% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-5 {
   0% {
     opacity: 0; }
@@ -112,7 +221,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-6 {
+  0% {
+    opacity: 0; }
+  3.33333% {
+    opacity: 1; }
+  16.66667% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-6 {
+  0% {
+    opacity: 0; }
+  3.33333% {
+    opacity: 1; }
+  16.66667% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-6 {
   0% {
     opacity: 0; }
@@ -124,7 +254,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-7 {
+  0% {
+    opacity: 0; }
+  2.85714% {
+    opacity: 1; }
+  14.28571% {
+    opacity: 1; }
+  17.14286% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-7 {
+  0% {
+    opacity: 0; }
+  2.85714% {
+    opacity: 1; }
+  14.28571% {
+    opacity: 1; }
+  17.14286% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-7 {
   0% {
     opacity: 0; }
@@ -136,7 +287,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-8 {
+  0% {
+    opacity: 0; }
+  2.5% {
+    opacity: 1; }
+  12.5% {
+    opacity: 1; }
+  15% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-8 {
+  0% {
+    opacity: 0; }
+  2.5% {
+    opacity: 1; }
+  12.5% {
+    opacity: 1; }
+  15% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-8 {
   0% {
     opacity: 0; }
@@ -148,7 +320,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-9 {
+  0% {
+    opacity: 0; }
+  2.22222% {
+    opacity: 1; }
+  11.11111% {
+    opacity: 1; }
+  13.33333% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-9 {
+  0% {
+    opacity: 0; }
+  2.22222% {
+    opacity: 1; }
+  11.11111% {
+    opacity: 1; }
+  13.33333% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-9 {
   0% {
     opacity: 0; }
@@ -160,7 +353,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-10 {
+  0% {
+    opacity: 0; }
+  2% {
+    opacity: 1; }
+  10% {
+    opacity: 1; }
+  12% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-10 {
+  0% {
+    opacity: 0; }
+  2% {
+    opacity: 1; }
+  10% {
+    opacity: 1; }
+  12% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-10 {
   0% {
     opacity: 0; }
@@ -172,98 +386,397 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 @keyframes fade-out {
   0% {
     opacity: 1; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 @keyframes fade-in {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
-
-@keyframes scale-in {
+@-webkit-keyframes scale-in {
   0% {
+    -webkit-transform: scale(0);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
     /* FF3.5+ */
+    -ms-transform: scale(0);
     /* IE9 */
     transform: scale(0);
     opacity: 0; }
   25% {
     opacity: 1; }
   100% {
+    -webkit-transform: scale(1);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
     /* FF3.5+ */
+    -ms-transform: scale(1);
     /* IE9 */
     transform: scale(1); } }
-
-@keyframes scale-out {
+@-moz-keyframes scale-in {
   0% {
+    -webkit-transform: scale(0);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
     /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@keyframes scale-in {
+  0% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@-webkit-keyframes scale-out {
+  0% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
     /* IE9 */
     transform: scale(1); }
   100% {
+    -webkit-transform: scale(0);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
     /* FF3.5+ */
+    -ms-transform: scale(0);
     /* IE9 */
     transform: scale(0); } }
-
-@keyframes translate-in {
+@-moz-keyframes scale-out {
   0% {
+    -webkit-transform: scale(1);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
     /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0); } }
+@keyframes scale-out {
+  0% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0); } }
+@-webkit-keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
     /* IE9 */
     transform: translate(0, -100%);
     zoom: 1; }
   100% {
+    -webkit-transform: translate(0, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
     /* FF3.5+ */
+    -ms-transform: translate(0, 0);
     /* IE9 */
     transform: translate(0, 0);
     zoom: 1; } }
-
-@keyframes move-vertical {
-  16.65% {
+@-moz-keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
     /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
+    /* IE9 */
+    transform: translate(0, -100%);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0);
+    /* IE9 */
+    transform: translate(0, 0);
+    zoom: 1; } }
+@keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
+    /* IE9 */
+    transform: translate(0, -100%);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0);
+    /* IE9 */
+    transform: translate(0, 0);
+    zoom: 1; } }
+@-webkit-keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
     /* IE9 */
     transform: translate(-40px, 0);
     zoom: 1; }
   33.3% {
+    -webkit-transform: translate(20px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
     /* IE9 */
     transform: translate(20px, 0);
     zoom: 1; }
   49.95% {
+    -webkit-transform: translate(-20px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
     /* IE9 */
     transform: translate(-20px, 0);
     zoom: 1; }
   66.6% {
+    -webkit-transform: translate(10px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
     /* IE9 */
     transform: translate(10px, 0);
     zoom: 1; }
   83.25% {
+    -webkit-transform: translate(-10px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
     /* IE9 */
     transform: translate(-10px, 0);
     zoom: 1; }
   100% {
+    -webkit-transform: translate(0, 0px);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
     /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
     /* IE9 */
     transform: translate(0, 0px);
     zoom: 1; } }
-
+@-moz-keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
+    /* IE9 */
+    transform: translate(-40px, 0);
+    zoom: 1; }
+  33.3% {
+    -webkit-transform: translate(20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
+    /* IE9 */
+    transform: translate(20px, 0);
+    zoom: 1; }
+  49.95% {
+    -webkit-transform: translate(-20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
+    /* IE9 */
+    transform: translate(-20px, 0);
+    zoom: 1; }
+  66.6% {
+    -webkit-transform: translate(10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
+    /* IE9 */
+    transform: translate(10px, 0);
+    zoom: 1; }
+  83.25% {
+    -webkit-transform: translate(-10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
+    /* IE9 */
+    transform: translate(-10px, 0);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0px);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
+    /* IE9 */
+    transform: translate(0, 0px);
+    zoom: 1; } }
+@keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
+    /* IE9 */
+    transform: translate(-40px, 0);
+    zoom: 1; }
+  33.3% {
+    -webkit-transform: translate(20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
+    /* IE9 */
+    transform: translate(20px, 0);
+    zoom: 1; }
+  49.95% {
+    -webkit-transform: translate(-20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
+    /* IE9 */
+    transform: translate(-20px, 0);
+    zoom: 1; }
+  66.6% {
+    -webkit-transform: translate(10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
+    /* IE9 */
+    transform: translate(10px, 0);
+    zoom: 1; }
+  83.25% {
+    -webkit-transform: translate(-10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
+    /* IE9 */
+    transform: translate(-10px, 0);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0px);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
+    /* IE9 */
+    transform: translate(0, 0px);
+    zoom: 1; } }
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@-moz-keyframes pulse {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
 @keyframes pulse {
   0% {
     opacity: 1; }
@@ -271,11 +784,45 @@
     opacity: 0.75; }
   100% {
     opacity: 0;
+    -webkit-transform: scale(1);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
     /* FF3.5+ */
+    -ms-transform: scale(1);
     /* IE9 */
     transform: scale(1); } }
-
+@-webkit-keyframes pulse-visit-quebec {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
+    /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
+    /* Opera 10.5 */
+    transform: scale(1) translate(-50%, -50%); } }
+@-moz-keyframes pulse-visit-quebec {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
+    /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
+    /* Opera 10.5 */
+    transform: scale(1) translate(-50%, -50%); } }
 @keyframes pulse-visit-quebec {
   0% {
     opacity: 1; }
@@ -283,12 +830,15 @@
     opacity: 0.75; }
   100% {
     opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
     /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
     /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
     /* Opera 10.5 */
     transform: scale(1) translate(-50%, -50%); } }
-
 body {
   margin-top: 0;
   -webkit-font-smoothing: antialiased;
@@ -330,15 +880,21 @@ body {
     background: rgba(255, 255, 255, 0.5);
     z-index: 100;
     opacity: 0;
+    -moz-transition-property: opacity;
     /* FireFox */
+    -webkit-transition-property: opacity;
     /* Safari / Chrome */
     transition-property: opacity;
     /* W3C */
+    -moz-transition-duration: 1s;
     /* FireFox */
+    -webkit-transition-duration: 1s;
     /* Safari / Chrome */
     transition-duration: 1s;
     /* W3C */
     /* linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n); */
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-backface-visibility: hidden; }
   body.is-loading #layout-content *, body.is-loading #layout-content *:before, body.is-loading #layout-content *:after {
@@ -374,7 +930,6 @@ p:last-child,
 
 #layout-header a {
   outline: none; }
-
 #layout-header .logo {
   margin: 0; }
   #layout-header .logo .is-mobile {
@@ -415,6 +970,8 @@ p:last-child,
       top: 0;
       left: -200px;
       z-index: 1;
+      background-image: -webkit-linear-gradient(left, rgba(250, 250, 250, 0) 0%, #f5f5f5 100%);
+      background-image: -o-linear-gradient(left, rgba(250, 250, 250, 0) 0%, #f5f5f5 100%);
       background-image: linear-gradient(to right, rgba(250, 250, 250, 0) 0%, #f5f5f5 100%);
       background-repeat: repeat-x;
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00FAFAFA', endColorstr='#FFF5F5F5', GradientType=1); }
@@ -427,6 +984,8 @@ p:last-child,
       position: absolute;
       top: 0;
       z-index: 1;
+      background-image: -webkit-linear-gradient(left, #f5f5f5 0%, rgba(250, 250, 250, 0) 100%);
+      background-image: -o-linear-gradient(left, #f5f5f5 0%, rgba(250, 250, 250, 0) 100%);
       background-image: linear-gradient(to right, #f5f5f5 0%, rgba(250, 250, 250, 0) 100%);
       background-repeat: repeat-x;
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF5F5F5', endColorstr='#00FAFAFA', GradientType=1); } }
@@ -459,15 +1018,21 @@ p:last-child,
       display: block; } }
   .content-wrapper.content-have-sidebar {
     padding-left: 250px;
+    -moz-transition-property: padding;
     /* FireFox */
+    -webkit-transition-property: padding;
     /* Safari / Chrome */
     transition-property: padding;
     /* W3C */
+    -moz-transition-duration: 0.15s;
     /* FireFox */
+    -webkit-transition-duration: 0.15s;
     /* Safari / Chrome */
     transition-duration: 0.15s;
     /* W3C */
     /* linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n); */
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-backface-visibility: hidden; }
     .content-wrapper.content-have-sidebar:after {
@@ -498,17 +1063,25 @@ p:last-child,
     left: 0;
     top:0;
     */
+    -moz-transition-property: left;
     /* FireFox */
+    -webkit-transition-property: left;
     /* Safari / Chrome */
     transition-property: left;
     /* W3C */
+    -moz-transition-duration: 0.15s;
     /* FireFox */
+    -webkit-transition-duration: 0.15s;
     /* Safari / Chrome */
     transition-duration: 0.15s;
     /* W3C */
     /* linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n); */
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-backface-visibility: hidden;
+    -webkit-box-shadow: inset -1px 3px 4px -1px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset -1px 3px 4px -1px rgba(0, 0, 0, 0.15);
     box-shadow: inset -1px 3px 4px -1px rgba(0, 0, 0, 0.15); }
     @media only screen and (max-width: 992px) {
       .content-wrapper .sidebar-content {
@@ -529,6 +1102,8 @@ p:last-child,
       width: 7px;
       position: absolute;
       top: 0;
+      background-image: -webkit-linear-gradient(left, rgba(10, 10, 11, 0) 0%, rgba(10, 10, 11, 0.13) 100%);
+      background-image: -o-linear-gradient(left, rgba(10, 10, 11, 0) 0%, rgba(10, 10, 11, 0.13) 100%);
       background-image: linear-gradient(to right, rgba(10, 10, 11, 0) 0%, rgba(10, 10, 11, 0.13) 100%);
       background-repeat: repeat-x;
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000A0A0B', endColorstr='#210A0A0B', GradientType=1); }
@@ -536,47 +1111,67 @@ p:last-child,
     padding-left: 0px;
     overflow: hidden; }
     .content-wrapper.has-drawer .map-tiles {
+      -moz-transition-duration: 0.3s;
       /* FireFox */
+      -webkit-transition-duration: 0.3s;
       /* Safari / Chrome */
       transition-duration: 0.3s;
       /* W3C */
+      -webkit-transition-property: -webkit-transform, opacity;
       /* Safari / Chrome */
+      -moz-transition-property: -moz-transform, opacity;
       /* FireFox */
       transition-property: transform, opacity;
       /* W3C */
+      -moz-transition-delay: 0.3s;
       /* FireFox */
+      -webkit-transition-delay: 0.3s;
       /* Safari / Chrome */
       transition-delay: 0.3s;
       /* W3C */
       /* linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n); */
       -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
       -moz-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      -webkit-transform: translate(-260px, 0);
       /* Saf3.1+, Chrome */
+      -moz-transform: translate(-260px, 0);
       /* FF3.5+ */
+      -ms-transform: translate(-260px, 0);
       /* IE9 */
       transform: translate(-260px, 0);
       zoom: 1; }
     .content-wrapper.has-drawer .drawer {
+      -moz-transition-duration: 0.3s;
       /* FireFox */
+      -webkit-transition-duration: 0.3s;
       /* Safari / Chrome */
       transition-duration: 0.3s;
       /* W3C */
+      -webkit-transition-property: -webkit-transform, opacity;
       /* Safari / Chrome */
+      -moz-transition-property: -moz-transform, opacity;
       /* FireFox */
       transition-property: transform, opacity;
       /* W3C */
+      -moz-transition-delay: 0.3s;
       /* FireFox */
+      -webkit-transition-delay: 0.3s;
       /* Safari / Chrome */
       transition-delay: 0.3s;
       /* W3C */
       /* linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n); */
       -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
       -moz-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      -webkit-transform: translate(0, 0);
       /* Saf3.1+, Chrome */
+      -moz-transform: translate(0, 0);
       /* FF3.5+ */
+      -ms-transform: translate(0, 0);
       /* IE9 */
       transform: translate(0, 0);
       zoom: 1;
+      -webkit-box-shadow: -9px 0 18px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: -9px 0 18px 0 rgba(0, 0, 0, 0.15);
       box-shadow: -9px 0 18px 0 rgba(0, 0, 0, 0.15); }
 
 #layout-footer {
@@ -647,8 +1242,11 @@ p:last-child,
     @media only screen and (max-width: 480px) {
       #layout-footer .logo-wrapper {
         left: 50%;
+        -webkit-transform: translate(-50%, 0);
         /* Saf3.1+, Chrome */
+        -moz-transform: translate(-50%, 0);
         /* FF3.5+ */
+        -ms-transform: translate(-50%, 0);
         /* IE9 */
         transform: translate(-50%, 0);
         zoom: 1; } }
@@ -867,7 +1465,6 @@ p:last-child,
 @media only screen and (max-width: 900px) {
   [id^="planifier-son-vol-reserver-un-stationnement-"] .content-wrapper .main-content, [id^="plan-a-flight-parking-reservation-"] .content-wrapper .main-content, [id^="planifier-son-vol-modifier-"] .content-wrapper .main-content, [id^="plan-a-flight-parking-modification"] .content-wrapper .main-content {
     display: block; } }
-
 [id^="planifier-son-vol-reserver-un-stationnement-"] .sidebar-content, [id^="plan-a-flight-parking-reservation-"] .sidebar-content, [id^="planifier-son-vol-modifier-"] .sidebar-content, [id^="plan-a-flight-parking-modification"] .sidebar-content {
   display: none; }
 
@@ -876,7 +1473,10 @@ p:last-child,
  * --------------------------------------------------
  */
 .row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: -moz-flex;
+  display: -ms-flexbox;
   display: flex; }
 
 .row-table {
@@ -918,34 +1518,28 @@ body.maintenance-page {
 
 body.path-frontpage #layout-content .heading {
   display: none; }
-
 @media only screen and (max-width: 768px) {
   body.path-frontpage .region-bottom-actions .block-parking-booker {
     display: none; }
     body.path-frontpage .region-bottom-actions .block-parking-booker.block-parking-booker + section {
       width: 100% !important; } }
-
 body.path-frontpage #block-flightstabsblock .panel-body .block-parking-booker .title-content {
   padding: 0 15px; }
-
 body.path-frontpage #block-homepagetilesblock .icon-blog, body.path-frontpage #block-homepagetilesblock .icon-facebook, body.path-frontpage #block-homepagetilesblock .icon-twitter, body.path-frontpage #block-homepagetilesblock .icon-youtube, body.path-frontpage #block-homepagetilesblock .icon-instagram, body.path-frontpage #block-homepagetilesblock .icon-linkedin, body.path-frontpage #block-homepagetilesblock .icon-watch {
   height: 63px;
   width: 63px; }
   body.path-frontpage #block-homepagetilesblock .icon-blog path, body.path-frontpage #block-homepagetilesblock .icon-facebook path, body.path-frontpage #block-homepagetilesblock .icon-twitter path, body.path-frontpage #block-homepagetilesblock .icon-youtube path, body.path-frontpage #block-homepagetilesblock .icon-instagram path, body.path-frontpage #block-homepagetilesblock .icon-linkedin path, body.path-frontpage #block-homepagetilesblock .icon-watch path {
     fill: white; }
-
 body.path-frontpage #block-homepagetilesblock .icon-car-parking {
   height: 46px;
   width: 63px; }
   body.path-frontpage #block-homepagetilesblock .icon-car-parking path {
     fill: white; }
-
 body.path-frontpage #block-homepagetilesblock .icon-plane-departure {
   height: 54px;
   width: 73px; }
   body.path-frontpage #block-homepagetilesblock .icon-plane-departure path {
     fill: white; }
-
 body.path-frontpage #block-homepagetilesblock .icon-plane-arrival {
   height: 49px;
   width: 66px; }
@@ -987,10 +1581,10 @@ body.path-visiter-quebec #layout-content .heading {
 .path-planifier-son-vol,
 .path-plan-a-flight {
   /*
-	.btn-default{
-		margin-top: 20px;
-	}
-	*/ }
+  .btn-default{
+  	margin-top: 20px;
+  }
+  */ }
   @media only screen and (max-width: 600px) {
     .path-planifier-son-vol .text-right,
     .path-plan-a-flight .text-right {
@@ -1016,20 +1610,15 @@ body.path-visiter-quebec #layout-content .heading {
   @media only screen and (max-width: 768px) {
     .parking-booker-form.parking-booker-form-responsive .is-mobile {
       display: block; } }
-
 @media only screen and (max-width: 768px) {
   .parking-booker-form.parking-booker-form-responsive .is-desktop {
     display: none; } }
-
 .parking-booker-form > .form-wrapper {
-  margin-bottom: 0;
-  display: flex; }
-
+  margin-bottom: 0; }
 .parking-booker-form .table-results ul,
 .parking-booker-form .parking-result ul {
   margin-bottom: 0;
   padding-left: 15px; }
-
 .parking-booker-form .table-results th, .parking-booker-form .table-results td, .parking-booker-form .table-results div,
 .parking-booker-form .parking-result th,
 .parking-booker-form .parking-result td,
@@ -1044,7 +1633,6 @@ body.path-visiter-quebec #layout-content .heading {
     .parking-booker-form .parking-result div {
       font-size: 12px;
       font-size: 1.2rem; } }
-
 @media only screen and (max-width: 1200px) {
   .parking-booker-form .table-results .btn-default,
   .parking-booker-form .parking-result .btn-default {
@@ -1052,46 +1640,36 @@ body.path-visiter-quebec #layout-content .heading {
     font-size: 16px;
     line-height: 40px;
     border-radius: 4px; } }
-
 .parking-booker-form .table-results .parking-proxiparq .parking-name,
 .parking-booker-form .parking-result .parking-proxiparq .parking-name {
   background-color: #139747;
   border-bottom: 1px solid #139747; }
-
 .parking-booker-form .table-results .parking-proxiparq.parking-available,
 .parking-booker-form .parking-result .parking-proxiparq.parking-available {
   background-color: #139747; }
-
 .parking-booker-form .table-results .parking-proxiparq .icon-walking path,
 .parking-booker-form .parking-result .parking-proxiparq .icon-walking path {
   fill: #139747; }
-
 .parking-booker-form .table-results .parking-cellparq .parking-name,
 .parking-booker-form .parking-result .parking-cellparq .parking-name {
   background-color: #004b91;
   border-bottom: 1px solid #004b91; }
-
 .parking-booker-form .table-results .parking-cellparq.parking-available,
 .parking-booker-form .parking-result .parking-cellparq.parking-available {
   background-color: #004b91; }
-
 .parking-booker-form .table-results .parking-cellparq .icon-walking path,
 .parking-booker-form .parking-result .parking-cellparq .icon-walking path {
   fill: #004b91; }
-
 .parking-booker-form .table-results .parking-inparq .parking-name,
 .parking-booker-form .parking-result .parking-inparq .parking-name {
   background-color: #8dc63f;
   border-bottom: 1px solid #8dc63f; }
-
 .parking-booker-form .table-results .parking-inparq.parking-available,
 .parking-booker-form .parking-result .parking-inparq.parking-available {
   background-color: #8dc63f; }
-
 .parking-booker-form .table-results .parking-inparq .icon-walking path,
 .parking-booker-form .parking-result .parking-inparq .icon-walking path {
   fill: #8dc63f; }
-
 .parking-booker-form .table-results.table-results-extra,
 .parking-booker-form .parking-result.table-results-extra {
   margin-bottom: 20px; }
@@ -1151,7 +1729,6 @@ body.path-visiter-quebec #layout-content .heading {
         .parking-booker-form .table-results.table-results-extra .wrap-row > div .col-sm-6,
         .parking-booker-form .parking-result.table-results-extra .wrap-row > div .col-sm-6 {
           margin-bottom: 0; } }
-
 .parking-booker-form .table-results.table-results > tr > div,
 .parking-booker-form .table-results.table-results > tr > th,
 .parking-booker-form .table-results.table-results > tr > td, .parking-booker-form .table-results.table-results > .wrap-row > div,
@@ -1852,10 +2429,8 @@ body.path-visiter-quebec #layout-content .heading {
       .parking-booker-form .parking-result > tbody > .wrap-row > th.parking-price-button,
       .parking-booker-form .parking-result > tbody > .wrap-row > td.parking-price-button {
         padding: 15px; } }
-
 .parking-booker-form .parking-result .form-group {
   margin-bottom: 0; }
-
 .parking-booker-form .parking-result > .parking-available {
   color: white;
   padding: 20px; }
@@ -2016,51 +2591,32 @@ body.path-visiter-quebec #layout-content .heading {
             border-color: white; }
             .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:hover.btn-inverse .icon path {
               fill: white; }
-        .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active,
-        .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle {
+        .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle {
           color: white;
           background-color: #222226;
           border-color: #222226; }
-          .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active .icon path,
-          .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle .icon path {
+          .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active .icon path, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle .icon path {
             fill: white; }
-          .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:hover, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active.focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:hover, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active.focus,
-          .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:hover,
-          .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:focus,
-          .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle.focus {
+          .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:hover, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active.focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:hover, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active.focus, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:hover, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:focus, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle.focus {
             color: white;
             background-color: #222226;
             border-color: #47474e; }
-            .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:hover .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:focus .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active.focus .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:hover .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:focus .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active.focus .icon path,
-            .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:hover .icon path,
-            .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:focus .icon path,
-            .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle.focus .icon path {
+            .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:hover .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:focus .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active.focus .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:hover .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:focus .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active.focus .icon path, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:hover .icon path, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:focus .icon path, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle.focus .icon path {
               fill: white; }
-            .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:hover.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:focus.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active.focus.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:hover.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:focus.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active.focus.btn-inverse,
-            .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:hover.btn-inverse,
-            .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:focus.btn-inverse,
-            .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle.focus.btn-inverse {
+            .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:hover.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:focus.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active.focus.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:hover.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:focus.btn-inverse, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active.focus.btn-inverse, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:hover.btn-inverse, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:focus.btn-inverse, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle.focus.btn-inverse {
               color: white;
               background-color: white;
               border-color: white; }
-              .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:hover.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:focus.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active.focus.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:hover.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:focus.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active.focus.btn-inverse .icon path,
-              .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:hover.btn-inverse .icon path,
-              .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:focus.btn-inverse .icon path,
-              .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle.focus.btn-inverse .icon path {
+              .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:hover.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active:focus.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active.focus.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:hover.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active:focus.btn-inverse .icon path, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active.focus.btn-inverse .icon path, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:hover.btn-inverse .icon path, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle:focus.btn-inverse .icon path, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle.focus.btn-inverse .icon path {
                 fill: white; }
-        .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active,
-        .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle {
+        .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:active, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.active, .open > .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.dropdown-toggle {
           background-image: none; }
-        .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.disabled:hover, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.disabled:focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.disabled.focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default[disabled]:hover, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default[disabled]:focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default[disabled].focus,
-        fieldset[disabled] .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:hover,
-        fieldset[disabled] .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:focus,
-        fieldset[disabled] .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.focus {
+        .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.disabled:hover, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.disabled:focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.disabled.focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default[disabled]:hover, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default[disabled]:focus, .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default[disabled].focus, fieldset[disabled] .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:hover, fieldset[disabled] .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default:focus, fieldset[disabled] .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default.focus {
           background-color: #0a0a0b;
           border-color: #0a0a0b; }
         .parking-booker-form .parking-result > .parking-available .parking-element.parking-price-button .btn-default .badge {
           color: #0a0a0b;
           background-color: white; }
-
 .parking-booker-form .parking-content {
   max-width: 1225px;
   margin: 75px auto 100px; }
@@ -2085,7 +2641,6 @@ body.path-visiter-quebec #layout-content .heading {
         padding: 0; }
   .parking-booker-form .parking-content .btn-lg {
     margin-top: 20px; }
-
 .parking-booker-form .parking-confirmation-content {
   border: 1px solid #e5e5e5;
   border-radius: 10px;
@@ -2120,7 +2675,6 @@ body.path-visiter-quebec #layout-content .heading {
       font-size: 1.4rem; }
   .parking-booker-form .parking-confirmation-content .qr-holder {
     margin-bottom: 40px; }
-
 .parking-booker-form.step-confirmation .parking-booker-status {
   height: 140px; }
 
@@ -2234,8 +2788,11 @@ body.path-visiter-quebec #layout-content .heading {
       position: absolute;
       top: 50%;
       left: 50%;
+      -webkit-transform: translate(-50%, -50%);
       /* Saf3.1+, Chrome */
+      -moz-transform: translate(-50%, -50%);
       /* FF3.5+ */
+      -ms-transform: translate(-50%, -50%);
       /* IE9 */
       transform: translate(-50%, -50%);
       zoom: 1; }
@@ -2303,8 +2860,11 @@ body.path-visiter-quebec #layout-content .heading {
     position: absolute;
     top: 50%;
     line-height: 24px;
+    -webkit-transform: translate(0, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -50%);
     /* FF3.5+ */
+    -ms-transform: translate(0, -50%);
     /* IE9 */
     transform: translate(0, -50%);
     zoom: 1; }
@@ -2350,8 +2910,11 @@ body.path-visiter-quebec #layout-content .heading {
           right: 135px; } }
       .parking-booker-status .parking-choice .parking-choice-name .parking-status-info {
         left: 50%;
+        -webkit-transform: translate(-50%, -50%);
         /* Saf3.1+, Chrome */
+        -moz-transform: translate(-50%, -50%);
         /* FF3.5+ */
+        -ms-transform: translate(-50%, -50%);
         /* IE9 */
         transform: translate(-50%, -50%);
         zoom: 1;
@@ -2376,8 +2939,11 @@ body.path-visiter-quebec #layout-content .heading {
       .parking-booker-status .parking-choice .parking-choice-price .parking-status-info {
         color: white;
         left: 50%;
+        -webkit-transform: translate(-50%, -50%);
         /* Saf3.1+, Chrome */
+        -moz-transform: translate(-50%, -50%);
         /* FF3.5+ */
+        -ms-transform: translate(-50%, -50%);
         /* IE9 */
         transform: translate(-50%, -50%);
         zoom: 1;
@@ -2408,7 +2974,6 @@ body.path-visiter-quebec #layout-content .heading {
     border-color: #222226; }
   #search-node .region-content .search-page-form a:hover {
     text-decoration: underline; }
-
 #search-node .region-content ol {
   max-width: 870px;
   list-style: none;
@@ -2417,10 +2982,8 @@ body.path-visiter-quebec #layout-content .heading {
     padding-bottom: 10px;
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 30px; }
-
 #search-node .region-content h3 a:hover {
   text-decoration: underline; }
-
 #search-node .region-content .pager-nav {
   text-align: left; }
 
@@ -2434,13 +2997,11 @@ body.path-visiter-quebec #layout-content .heading {
     #plan-a-flight-parking-reservation .block-parking-booker .form-block-container.is-desktop > .form-group.col-normal,
     #planifier-son-vol-reserver-un-stationnement .block-parking-booker .form-block-container.is-desktop > .form-group.col-normal {
       width: 50%; } }
-
 @media only screen and (min-width: 676px) {
   #parking-booker-modify-booking-form .block-parking-booker .form-block-container.is-desktop > .form-group.col-full,
   #plan-a-flight-parking-reservation .block-parking-booker .form-block-container.is-desktop > .form-group.col-full,
   #planifier-son-vol-reserver-un-stationnement .block-parking-booker .form-block-container.is-desktop > .form-group.col-full {
     width: 44%; } }
-
 #parking-booker-modify-booking-form .block-parking-booker .form-block-container.is-mobile > .form-group.col-normal,
 #plan-a-flight-parking-reservation .block-parking-booker .form-block-container.is-mobile > .form-group.col-normal,
 #planifier-son-vol-reserver-un-stationnement .block-parking-booker .form-block-container.is-mobile > .form-group.col-normal {
@@ -2517,7 +3078,6 @@ body.path-visiter-quebec #layout-content .heading {
       border-radius: 50%;
       font-size: 18px;
       font-size: 1.8rem; }
-
 #services-aeroportuaires-plan-de-la-C3-A9rogare .field--name-body ol + p span,
 #airport-services-terminal-map .field--name-body ol + p span {
   font-size: 12px;
@@ -2526,7 +3086,6 @@ body.path-visiter-quebec #layout-content .heading {
 #a-propos-entreprise-histoire .title-page,
 #about-company-history .title-page {
   margin-bottom: 0; }
-
 #a-propos-entreprise-histoire .img-mobile,
 #about-company-history .img-mobile {
   display: none;
@@ -2535,7 +3094,6 @@ body.path-visiter-quebec #layout-content .heading {
     #a-propos-entreprise-histoire .img-mobile,
     #about-company-history .img-mobile {
       display: block; } }
-
 #a-propos-entreprise-histoire .section,
 #about-company-history .section {
   color: #0a0a0b;
@@ -2629,6 +3187,8 @@ body.path-visiter-quebec #layout-content .heading {
         right: 0;
         left: 21%;
         z-index: 2;
+        background-image: -webkit-linear-gradient(left, rgba(10, 10, 11, 0) 0%, #0a0a0b 38%);
+        background-image: -o-linear-gradient(left, rgba(10, 10, 11, 0) 0%, #0a0a0b 38%);
         background-image: linear-gradient(to right, rgba(10, 10, 11, 0) 0%, #0a0a0b 38%);
         background-repeat: repeat-x;
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000A0A0B', endColorstr='#FF0A0A0B', GradientType=1); } }
@@ -2720,6 +3280,8 @@ body.path-visiter-quebec #layout-content .heading {
 
 body#planifier-son-vol-reserver-un-stationnement .xdsoft_datetimepicker,
 body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
+  -webkit-box-shadow: 0px 12px 38px 0px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0px 12px 38px 0px rgba(0, 0, 0, 0.47);
   box-shadow: 0px 12px 38px 0px rgba(0, 0, 0, 0.47); }
 
 @media only screen and (max-width: 420px) {
@@ -2728,14 +3290,12 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     padding: 0 15px;
     font-size: 14px;
     font-size: 1.4rem; } }
-
 .view-page-airlines .main-content {
   border-bottom: 0; }
 
 .view-page-arrivals .content-wrapper .sidebar-content + section,
 .view-page-departures .content-wrapper .sidebar-content + section {
   padding-bottom: 0; }
-
 .view-page-arrivals .main-content,
 .view-page-departures .main-content {
   background-color: #1f1f1f; }
@@ -2748,14 +3308,12 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     .view-page-departures .main-content .view-footer p {
       line-height: 1;
       margin: 0 0 10px; }
-
 .view-page-arrivals .bootstrap-switch.bootstrap-switch-off,
 .view-page-departures .bootstrap-switch.bootstrap-switch-off {
   background-color: #0054ff; }
   .view-page-arrivals .bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label,
   .view-page-departures .bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label {
     opacity: 1; }
-
 @media only screen and (max-width: 900px) {
   .view-page-arrivals .content-wrapper .sidebar-content,
   .view-page-arrivals .content-wrapper .main-content,
@@ -2782,7 +3340,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     position: absolute;
     right: 0;
     top: 0; } }
-
 @media only screen and (max-width: 600px) {
   .view-page-arrivals .sidebar-content .switch,
   .view-page-departures .sidebar-content .switch {
@@ -2995,7 +3552,7 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
               width: 50%; } }
       .block-reminders .form-block-container > .form-group.btn-space,
       .block-parking-booker .form-block-container > .form-group.btn-space {
-        position: relative;
+        position: absolute;
         right: 0;
         bottom: 0;
         float: none; }
@@ -3024,7 +3581,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
 
 .block-parking-booker .title-content {
   max-width: 500px; }
-
 .block-parking-booker .btn-default {
   color: white;
   background-color: #0a0a0b;
@@ -3049,66 +3605,43 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       border-color: white; }
       .block-parking-booker .btn-default:hover.btn-inverse .icon path {
         fill: white; }
-  .block-parking-booker .btn-default:active, .block-parking-booker .btn-default.active,
-  .open > .block-parking-booker .btn-default.dropdown-toggle {
+  .block-parking-booker .btn-default:active, .block-parking-booker .btn-default.active, .open > .block-parking-booker .btn-default.dropdown-toggle {
     color: white;
     background-color: #222226;
     border-color: #222226; }
-    .block-parking-booker .btn-default:active .icon path, .block-parking-booker .btn-default.active .icon path,
-    .open > .block-parking-booker .btn-default.dropdown-toggle .icon path {
+    .block-parking-booker .btn-default:active .icon path, .block-parking-booker .btn-default.active .icon path, .open > .block-parking-booker .btn-default.dropdown-toggle .icon path {
       fill: white; }
-    .block-parking-booker .btn-default:active:hover, .block-parking-booker .btn-default:active:focus, .block-parking-booker .btn-default:active.focus, .block-parking-booker .btn-default.active:hover, .block-parking-booker .btn-default.active:focus, .block-parking-booker .btn-default.active.focus,
-    .open > .block-parking-booker .btn-default.dropdown-toggle:hover,
-    .open > .block-parking-booker .btn-default.dropdown-toggle:focus,
-    .open > .block-parking-booker .btn-default.dropdown-toggle.focus {
+    .block-parking-booker .btn-default:active:hover, .block-parking-booker .btn-default:active:focus, .block-parking-booker .btn-default:active.focus, .block-parking-booker .btn-default.active:hover, .block-parking-booker .btn-default.active:focus, .block-parking-booker .btn-default.active.focus, .open > .block-parking-booker .btn-default.dropdown-toggle:hover, .open > .block-parking-booker .btn-default.dropdown-toggle:focus, .open > .block-parking-booker .btn-default.dropdown-toggle.focus {
       color: white;
       background-color: #222226;
       border-color: #47474e; }
-      .block-parking-booker .btn-default:active:hover .icon path, .block-parking-booker .btn-default:active:focus .icon path, .block-parking-booker .btn-default:active.focus .icon path, .block-parking-booker .btn-default.active:hover .icon path, .block-parking-booker .btn-default.active:focus .icon path, .block-parking-booker .btn-default.active.focus .icon path,
-      .open > .block-parking-booker .btn-default.dropdown-toggle:hover .icon path,
-      .open > .block-parking-booker .btn-default.dropdown-toggle:focus .icon path,
-      .open > .block-parking-booker .btn-default.dropdown-toggle.focus .icon path {
+      .block-parking-booker .btn-default:active:hover .icon path, .block-parking-booker .btn-default:active:focus .icon path, .block-parking-booker .btn-default:active.focus .icon path, .block-parking-booker .btn-default.active:hover .icon path, .block-parking-booker .btn-default.active:focus .icon path, .block-parking-booker .btn-default.active.focus .icon path, .open > .block-parking-booker .btn-default.dropdown-toggle:hover .icon path, .open > .block-parking-booker .btn-default.dropdown-toggle:focus .icon path, .open > .block-parking-booker .btn-default.dropdown-toggle.focus .icon path {
         fill: white; }
-      .block-parking-booker .btn-default:active:hover.btn-inverse, .block-parking-booker .btn-default:active:focus.btn-inverse, .block-parking-booker .btn-default:active.focus.btn-inverse, .block-parking-booker .btn-default.active:hover.btn-inverse, .block-parking-booker .btn-default.active:focus.btn-inverse, .block-parking-booker .btn-default.active.focus.btn-inverse,
-      .open > .block-parking-booker .btn-default.dropdown-toggle:hover.btn-inverse,
-      .open > .block-parking-booker .btn-default.dropdown-toggle:focus.btn-inverse,
-      .open > .block-parking-booker .btn-default.dropdown-toggle.focus.btn-inverse {
+      .block-parking-booker .btn-default:active:hover.btn-inverse, .block-parking-booker .btn-default:active:focus.btn-inverse, .block-parking-booker .btn-default:active.focus.btn-inverse, .block-parking-booker .btn-default.active:hover.btn-inverse, .block-parking-booker .btn-default.active:focus.btn-inverse, .block-parking-booker .btn-default.active.focus.btn-inverse, .open > .block-parking-booker .btn-default.dropdown-toggle:hover.btn-inverse, .open > .block-parking-booker .btn-default.dropdown-toggle:focus.btn-inverse, .open > .block-parking-booker .btn-default.dropdown-toggle.focus.btn-inverse {
         color: white;
         background-color: white;
         border-color: white; }
-        .block-parking-booker .btn-default:active:hover.btn-inverse .icon path, .block-parking-booker .btn-default:active:focus.btn-inverse .icon path, .block-parking-booker .btn-default:active.focus.btn-inverse .icon path, .block-parking-booker .btn-default.active:hover.btn-inverse .icon path, .block-parking-booker .btn-default.active:focus.btn-inverse .icon path, .block-parking-booker .btn-default.active.focus.btn-inverse .icon path,
-        .open > .block-parking-booker .btn-default.dropdown-toggle:hover.btn-inverse .icon path,
-        .open > .block-parking-booker .btn-default.dropdown-toggle:focus.btn-inverse .icon path,
-        .open > .block-parking-booker .btn-default.dropdown-toggle.focus.btn-inverse .icon path {
+        .block-parking-booker .btn-default:active:hover.btn-inverse .icon path, .block-parking-booker .btn-default:active:focus.btn-inverse .icon path, .block-parking-booker .btn-default:active.focus.btn-inverse .icon path, .block-parking-booker .btn-default.active:hover.btn-inverse .icon path, .block-parking-booker .btn-default.active:focus.btn-inverse .icon path, .block-parking-booker .btn-default.active.focus.btn-inverse .icon path, .open > .block-parking-booker .btn-default.dropdown-toggle:hover.btn-inverse .icon path, .open > .block-parking-booker .btn-default.dropdown-toggle:focus.btn-inverse .icon path, .open > .block-parking-booker .btn-default.dropdown-toggle.focus.btn-inverse .icon path {
           fill: white; }
-  .block-parking-booker .btn-default:active, .block-parking-booker .btn-default.active,
-  .open > .block-parking-booker .btn-default.dropdown-toggle {
+  .block-parking-booker .btn-default:active, .block-parking-booker .btn-default.active, .open > .block-parking-booker .btn-default.dropdown-toggle {
     background-image: none; }
-  .block-parking-booker .btn-default.disabled:hover, .block-parking-booker .btn-default.disabled:focus, .block-parking-booker .btn-default.disabled.focus, .block-parking-booker .btn-default[disabled]:hover, .block-parking-booker .btn-default[disabled]:focus, .block-parking-booker .btn-default[disabled].focus,
-  fieldset[disabled] .block-parking-booker .btn-default:hover,
-  fieldset[disabled] .block-parking-booker .btn-default:focus,
-  fieldset[disabled] .block-parking-booker .btn-default.focus {
+  .block-parking-booker .btn-default.disabled:hover, .block-parking-booker .btn-default.disabled:focus, .block-parking-booker .btn-default.disabled.focus, .block-parking-booker .btn-default[disabled]:hover, .block-parking-booker .btn-default[disabled]:focus, .block-parking-booker .btn-default[disabled].focus, fieldset[disabled] .block-parking-booker .btn-default:hover, fieldset[disabled] .block-parking-booker .btn-default:focus, fieldset[disabled] .block-parking-booker .btn-default.focus {
     background-color: #0a0a0b;
     border-color: #0a0a0b; }
   .block-parking-booker .btn-default .badge {
     color: #0a0a0b;
     background-color: white; }
-
 .block-parking-booker .form {
   max-width: 750px; }
-
 @media only screen and (min-width: 769px) and (max-width: 950px) {
   .block-parking-booker .form-block-container.is-desktop > .form-group.col-normal {
     width: 100%; } }
-
 @media only screen and (min-width: 951px) {
   .block-parking-booker .is-mobile .col-normal {
     width: 25% !important; } }
-
 @media only screen and (max-width: 768px) {
   .block-parking-booker .is-mobile .col-normal {
     width: 25% !important; } }
-
 @media only screen and (max-width: 460px) {
   .block-parking-booker .is-mobile .col-normal {
     width: 50% !important; } }
@@ -3124,14 +3657,12 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   @media only screen and (max-width: 600px) {
     .block-reminders .title-content {
       max-width: 500px; } }
-
 .block-reminders form {
   max-width: 768px; }
 
 @media only screen and (max-width: 768px) {
   .region-bottom-actions .row-eq-height {
     display: block; } }
-
 .region-bottom-actions .block-parking-booker form,
 .region-bottom-actions .block-reminders form {
   max-width: 105%; }
@@ -3150,6 +3681,8 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   #block-flightstabsblock .panel:first-child {
     border-bottom: 1px solid #e5e5e5; }
   #block-flightstabsblock .panel:last-child a {
+    -webkit-box-shadow: inset 0 -3px 4px -1px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 -3px 4px -1px rgba(0, 0, 0, 0.15);
     box-shadow: inset 0 -3px 4px -1px rgba(0, 0, 0, 0.15); }
   #block-flightstabsblock .panel-title {
     display: table;
@@ -3171,8 +3704,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
         right: 20px;
         top: 50%;
         width: 24px;
+        -webkit-transform: translate(0, -50%);
         /* Saf3.1+, Chrome */
+        -moz-transform: translate(0, -50%);
         /* FF3.5+ */
+        -ms-transform: translate(0, -50%);
         /* IE9 */
         transform: translate(0, -50%);
         zoom: 1; }
@@ -3236,8 +3772,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
         margin-top: -50px;
         z-index: 1;
         left: 50%;
+        -webkit-transform: translate(-50%, -50%);
         /* Saf3.1+, Chrome */
+        -moz-transform: translate(-50%, -50%);
         /* FF3.5+ */
+        -ms-transform: translate(-50%, -50%);
         /* IE9 */
         transform: translate(-50%, -50%);
         zoom: 1; } }
@@ -3263,8 +3802,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
         width: 100%;
         z-index: 1;
         left: 50%;
+        -webkit-transform: translate(-50%, -50%);
         /* Saf3.1+, Chrome */
+        -moz-transform: translate(-50%, -50%);
         /* FF3.5+ */
+        -ms-transform: translate(-50%, -50%);
         /* IE9 */
         transform: translate(-50%, -50%);
         zoom: 1; } }
@@ -3354,20 +3896,29 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   max-width: 550px;
   right: 84px;
   z-index: 401;
+  -webkit-transform: translate(100%, 0);
   /* Saf3.1+, Chrome */
+  -moz-transform: translate(100%, 0);
   /* FF3.5+ */
+  -ms-transform: translate(100%, 0);
   /* IE9 */
   transform: translate(100%, 0);
   zoom: 1;
+  -moz-transition-duration: 0.25s;
   /* FireFox */
+  -webkit-transition-duration: 0.25s;
   /* Safari / Chrome */
   transition-duration: 0.25s;
   /* W3C */
+  -webkit-transition-property: -webkit-transform, opacity;
   /* Safari / Chrome */
+  -moz-transition-property: -moz-transform, opacity;
   /* FireFox */
   transition-property: transform, opacity;
   /* W3C */
+  -moz-transition-delay: 0s;
   /* FireFox */
+  -webkit-transition-delay: 0s;
   /* Safari / Chrome */
   transition-delay: 0s;
   /* W3C */
@@ -3375,8 +3926,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
   -moz-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
   #block-formulairederecherche-2.is-open {
+    -webkit-transform: translate(84px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(84px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(84px, 0);
     /* IE9 */
     transform: translate(84px, 0);
     zoom: 1;
@@ -3477,6 +4031,10 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       position: absolute;
       padding-top: 3px;
       top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
       transform: translateY(-50%);
       width: 100%; }
       @media only screen and (max-width: 992px) {
@@ -3591,7 +4149,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
 #block-views-block-arrivals-block-1 tbody tr:nth-of-type(1n+6),
 #block-views-block-departures-block-1 tbody tr:nth-of-type(1n+6) {
   display: none; }
-
 #block-views-block-arrivals-block-1.show-all tbody tr:nth-of-type(1n+6),
 #block-views-block-departures-block-1.show-all tbody tr:nth-of-type(1n+6) {
   display: table-row; }
@@ -3632,9 +4189,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       top: 0;
       width: 100%;
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+61,000000+61&0.65+0,0+70 */
+      background: -moz-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.8) 56%, transparent 70%);
       /* FF3.6-15 */
+      background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.8) 56%, transparent 70%);
       /* Chrome10-25,Safari5.1-6 */
-      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.8) 56%, rgba(0, 0, 0, 0) 70%);
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.8) 56%, transparent 70%);
       /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
       /* IE6-9 fallback on horizontal gradient */ }
@@ -3715,7 +4274,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
         font-size: 16px; }
       .panels-threerow .top-main .block-basic + .block-basic {
         margin: 20px 0 0 0; } }
-
 .panels-threerow .row-table.blocks-top-secondary {
   background: #e4f5f7; }
   .panels-threerow .row-table.blocks-top-secondary .block-region-topsecondaryleft .tile {
@@ -3727,13 +4285,10 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       width: 100%; }
       .panels-threerow .row-table.blocks-top-secondary > .col-table.is-half + .col-table {
         display: none; } }
-
 .panels-threerow .row-table.blocks-mission .col-table:nth-child(1) {
   background: #23b5c7; }
-
 .panels-threerow .row-table.blocks-mission .col-table:nth-child(2) {
   background: #f8f9fa; }
-
 @media only screen and (max-width: 1100px) {
   .panels-threerow .row-table.blocks-mission {
     display: block; }
@@ -3743,17 +4298,14 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     .panels-threerow .row-table.blocks-mission .col-table:nth-child(2),
     .panels-threerow .row-table.blocks-mission .col-table:nth-child(3) {
       width: 50%; } }
-
 @media only screen and (max-width: 600px) {
   .panels-threerow .row-table.blocks-mission .col-table:nth-child(2),
   .panels-threerow .row-table.blocks-mission .col-table:nth-child(3) {
     display: block;
     width: 100%; } }
-
 .panels-threerow .block-region-middlecenter .block-basic,
 .panels-threerow .block-region-middleright .block-basic {
   padding: 40px 75px; }
-
 .panels-threerow .block-region-middlecenter h2,
 .panels-threerow .block-region-middleright h2 {
   font-weight: 700 !important;
@@ -3771,21 +4323,17 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     .panels-threerow .block-region-middleright h2 {
       font-size: 19px;
       font-size: 1.9rem; } }
-
 .panels-threerow .block-region-middlecenter p,
 .panels-threerow .block-region-middleright p {
   margin: 20px 0 0 0; }
-
 @media only screen and (max-width: 1300px) {
   .panels-threerow .block-region-middlecenter .block-basic,
   .panels-threerow .block-region-middleright .block-basic {
     padding: 40px; } }
-
 @media only screen and (max-width: 600px) {
   .panels-threerow .block-region-middlecenter .block-basic,
   .panels-threerow .block-region-middleright .block-basic {
     padding: 20px; } }
-
 .panels-threerow .row.block-bottom {
   background: url(../img/pages/bg-block-priorities.jpg) no-repeat center center/cover; }
   .panels-threerow .row.block-bottom .tile-priorities-inner {
@@ -3857,7 +4405,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       line-height: 32px; } }
   .blocks-councils > .block-simple-title h2 span {
     display: block; }
-
 .blocks-councils .trigger-toggle {
   bottom: 65px;
   left: 50%;
@@ -3867,7 +4414,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   @media only screen and (max-width: 1200px) {
     .blocks-councils .trigger-toggle {
       bottom: 35px; } }
-
 .blocks-councils .block-basic {
   padding: 40px; }
   .blocks-councils .block-basic h2 {
@@ -3890,7 +4436,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   @media only screen and (max-width: 950px) {
     .blocks-councils .block-basic {
       padding: 20px; } }
-
 .blocks-councils .block-leadership {
   background: #f7f7f7;
   min-height: 300px;
@@ -3936,13 +4481,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     @media only screen and (max-width: 1200px) {
       .blocks-councils .block-leadership img + .trigger-toggle {
         bottom: 35px; } }
-
 .blocks-councils img {
   bottom: 0;
   max-width: 280px;
   position: absolute;
   right: -50px; }
-
 .blocks-councils .leader-infos {
   padding: 20px;
   width: 100%;
@@ -3950,15 +4493,17 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   left: 50%;
   position: absolute;
   top: 50%;
+  -webkit-transform: translate(-50%, -50%);
   /* Saf3.1+, Chrome */
+  -moz-transform: translate(-50%, -50%);
   /* FF3.5+ */
+  -ms-transform: translate(-50%, -50%);
   /* IE9 */
   transform: translate(-50%, -50%); }
   .blocks-councils .leader-infos h3 {
     font-weight: 400;
     margin: 0;
     font-size: 16px; }
-
 @media only screen and (max-width: 1200px) {
   .blocks-councils .block-leadership {
     min-height: 240px; }
@@ -3966,11 +4511,9 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     max-width: 220px; }
   .blocks-councils .leader-infos {
     max-width: 420px; } }
-
 @media only screen and (max-width: 768px) {
   .blocks-councils .leader-infos {
     max-width: 300px; } }
-
 @media only screen and (max-width: 600px) {
   .blocks-councils img {
     display: none; }
@@ -4058,8 +4601,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     left: 50%;
     position: absolute;
     top: 50%;
+    -webkit-transform: translate(-50%, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-50%, -50%);
     /* FF3.5+ */
+    -ms-transform: translate(-50%, -50%);
     /* IE9 */
     transform: translate(-50%, -50%); }
     .panels-fourrow .block-region-first .leader-infos h3 {
@@ -4243,21 +4789,30 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     left: 50%;
     position: absolute;
     top: 50%;
+    -webkit-transform: translate(-50%, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-50%, -50%);
     /* FF3.5+ */
+    -ms-transform: translate(-50%, -50%);
     /* IE9 */
     transform: translate(-50%, -50%);
     font-size: 48px;
     font-size: 4.8rem;
+    -moz-transition-property: opacity;
     /* FireFox */
+    -webkit-transition-property: opacity;
     /* Safari / Chrome */
     transition-property: opacity;
     /* W3C */
+    -moz-transition-duration: 0.3s;
     /* FireFox */
+    -webkit-transition-duration: 0.3s;
     /* Safari / Chrome */
     transition-duration: 0.3s;
     /* W3C */
     /* linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n); */
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-backface-visibility: hidden; }
     .panels-threerow-multiple .block-region-firstabove .block-slider-gallery h1:before, .panels-threerow-multiple .block-region-firstabove .block-slider-gallery h1:after {
@@ -4266,11 +4821,16 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       left: 50%;
       position: absolute;
       top: 50%;
+      -webkit-transform: translate(-50%, -50%);
       /* Saf3.1+, Chrome */
+      -moz-transform: translate(-50%, -50%);
       /* FF3.5+ */
+      -ms-transform: translate(-50%, -50%);
       /* IE9 */
       transform: translate(-50%, -50%);
+      -webkit-border-radius: 50%;
       /* Saf3-4, iOS 1-3.2, Android =1.6 */
+      -moz-border-radius: 50%;
       /* FF1-3.6 */
       border-radius: 50%;
       /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
@@ -4282,17 +4842,28 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       background: #0054ff;
       height: 264px;
       width: 264px;
+      -webkit-box-shadow: 0px 27px 57px 0px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0px 27px 57px 0px rgba(0, 0, 0, 0.3);
       box-shadow: 0px 27px 57px 0px rgba(0, 0, 0, 0.3); }
     .panels-threerow-multiple .block-region-firstabove .block-slider-gallery h1:after {
       background: rgba(0, 84, 255, 0.3);
       height: 380px;
       width: 380px;
+      -webkit-transform-origin: 0 0;
+      -moz-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
       transform-origin: 0 0;
+      -webkit-transform: scale(0.6947) translate(-50%, -50%);
       /* Saf3.1+, Chrome */
+      -moz-transform: scale(0.6947) translate(-50%, -50%);
       /* FF3.5+ */
+      -ms-transform: scale(0.6947) translate(-50%, -50%);
       /* IE9 */
+      -o-transform: scale(0.6947) translate(-50%, -50%);
       /* Opera 10.5 */
       transform: scale(0.6947) translate(-50%, -50%);
+      -webkit-animation: pulse-visit-quebec 1.8s infinite ease-out;
+      -moz-animation: pulse-visit-quebec 1.8s infinite ease-out;
       animation: pulse-visit-quebec 1.8s infinite ease-out; }
     @media only screen and (max-width: 600px) {
       .panels-threerow-multiple .block-region-firstabove .block-slider-gallery h1 {
@@ -4306,18 +4877,15 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
           width: 220px; } }
   .panels-threerow-multiple .block-region-firstabove .block-slider-gallery.is-fading h1 {
     opacity: 0; }
-
 .panels-threerow-multiple .row-table.blocks-intro > .col-table {
   width: 75%; }
   .panels-threerow-multiple .row-table.blocks-intro > .col-table + .col-table {
     width: 25%; }
-
 @media only screen and (max-width: 768px) {
   .panels-threerow-multiple .row-table.blocks-intro > .col-table {
     width: 100%; }
     .panels-threerow-multiple .row-table.blocks-intro > .col-table + .col-table {
       display: none; } }
-
 .panels-threerow-multiple .block-region-firstbelowleft {
   padding: 100px 150px; }
   .panels-threerow-multiple .block-region-firstbelowleft .block-basic:first-child p {
@@ -4352,14 +4920,12 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       padding: 20px; }
       .panels-threerow-multiple .block-region-firstbelowleft .block-basic p {
         font-size: 16px; } }
-
 @media only screen and (max-width: 768px) {
   .panels-threerow-multiple .row-table.blocks-second > .col-table.is-half {
     display: none; }
     .panels-threerow-multiple .row-table.blocks-second > .col-table.is-half + .col-table.is-half {
       display: block;
       width: 100%; } }
-
 .panels-threerow-multiple .block-region-secondright .block-basic-content > div,
 .panels-threerow-multiple .block-region-thirdleft .block-basic-content > div {
   padding: 110px 125px; }
@@ -4390,17 +4956,14 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       .panels-threerow-multiple .block-region-thirdleft .block-basic-content > div p {
         margin: 0 0 20px 0;
         font-size: 16px; } }
-
 .panels-threerow-multiple .block-region-secondright {
   background: rgba(10, 10, 11, 0.9);
   color: white; }
-
 @media only screen and (max-width: 768px) {
   .panels-threerow-multiple .row-table.blocks-third > .col-table.is-half {
     width: 100%; }
     .panels-threerow-multiple .row-table.blocks-third > .col-table.is-half + .col-table.is-half {
       display: none; } }
-
 .panels-threerow-multiple .block-region-thirdleft .block-useful-link {
   background: #0054ff;
   color: white;
@@ -4440,7 +5003,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
           height: 22px;
           margin: -11px 0 0 0;
           width: 12px; } }
-
 .panels-threerow-multiple .row.blocks-fourth > div {
   background: #0a0a0b; }
   .panels-threerow-multiple .row.blocks-fourth > div .block-simple-title,
@@ -4474,8 +5036,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
         .panels-threerow-multiple .row.blocks-fourth > div .block-offer > .block-simple-title-content,
         .panels-threerow-multiple .row.blocks-fourth > div .block-offer > .block-offer-content {
           position: absolute;
+          -webkit-transform: translate(0, -50%);
           /* Saf3.1+, Chrome */
+          -moz-transform: translate(0, -50%);
           /* FF3.5+ */
+          -ms-transform: translate(0, -50%);
           /* IE9 */
           transform: translate(0, -50%);
           zoom: 1; } }
@@ -4545,7 +5110,9 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
         top: 6px;
         width: 8px;
         z-index: -1;
+        -webkit-border-radius: 50%;
         /* Saf3-4, iOS 1-3.2, Android =1.6 */
+        -moz-border-radius: 50%;
         /* FF1-3.6 */
         border-radius: 50%;
         /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
@@ -4564,28 +5131,21 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
           margin: 12px 0 0 0; } }
   .panels-threerow-multiple .row.blocks-fourth > div .block-offer a {
     color: white; }
-
 .panels-threerow-multiple .block-region-fourthleft .block-offer {
   background: #0eadff; }
-
 .panels-threerow-multiple .block-region-fourthcenter .block-offer:nth-child(2n-1) {
   background: #23b5c7; }
-
 .panels-threerow-multiple .block-region-fourthcenter .block-offer:nth-child(2n) {
   background: #1f5be3; }
-
 .panels-threerow-multiple .block-region-fourthright .block-offer:nth-child(2n-1) {
   background: #1f4ba6; }
-
 .panels-threerow-multiple .block-region-fourthright .block-offer:nth-child(2n) {
   background: #2f1f94; }
-
 @media only screen and (max-width: 992px) {
   .panels-threerow-multiple .row.blocks-fourth .col-sm-12 .block-offer {
     float: left;
     padding-bottom: 50%;
     width: 50%; } }
-
 @media only screen and (max-width: 600px) {
   .panels-threerow-multiple .row.blocks-fourth .col-sm-12 .block-offer {
     float: none;
@@ -4618,7 +5178,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       line-height: 32px; } }
   .panels-one-three-one .top .block-simple-title h2 span {
     display: block; }
-
 .panels-one-three-one .row.second {
   background: #f7f7f7;
   padding: 40px; }
@@ -4663,7 +5222,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       padding: 20px 0 0 0;
       font-size: 14px;
       font-size: 1.4rem; } }
-
 .panels-one-three-one .row.block-bordered h2 {
   font-weight: 700;
   margin: 0;
@@ -4677,16 +5235,13 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     .panels-one-three-one .row.block-bordered h2 {
       font-size: 28px;
       font-size: 2.8rem; } }
-
 .panels-one-three-one .row.block-bordered p {
   margin: 0;
   font-size: 12px;
   font-size: 1.2rem; }
-
 @media only screen and (max-width: 992px) {
   .panels-one-three-one .row.block-bordered .block-basic {
     margin: 20px 0 0 0; } }
-
 .panels-one-three-one .row-eq-height.block-parks {
   background: #004b91; }
   .panels-one-three-one .row-eq-height.block-parks:before, .panels-one-three-one .row-eq-height.block-parks:after {
@@ -4711,7 +5266,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       border-bottom: 1px solid rgba(0, 135, 233, 0.3); }
   .panels-one-three-one .row-eq-height.block-parks .col-sm-4 > div {
     height: 100%; }
-
 .panels-one-three-one .block-park-pricing {
   color: white;
   height: 100%;
@@ -4766,7 +5320,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       padding: 30px 20px; }
       .panels-one-three-one .block-park-pricing ul + div p {
         margin: 20px 0 0 0; } }
-
 .panels-one-three-one .row.block-electric-car {
   background: url(../img/pages/bg-block-electric-car.jpg) no-repeat center center/cover;
   color: white; }
@@ -4778,8 +5331,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     width: 100%;
     position: absolute;
     top: 50%;
+    -webkit-transform: translateY(-50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translateY(-50%);
     /* FF3.5+ */
+    -ms-transform: translateY(-50%);
     /* IE9 */
     transform: translateY(-50%); }
     .panels-one-three-one .row.block-electric-car .block-region-middlebottomleft .block-icon-only,
@@ -4818,8 +5374,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
       width: 100%;
       position: absolute;
       top: 50%;
+      -webkit-transform: translateY(-50%);
       /* Saf3.1+, Chrome */
+      -moz-transform: translateY(-50%);
       /* FF3.5+ */
+      -ms-transform: translateY(-50%);
       /* IE9 */
       transform: translateY(-50%); }
       .panels-one-three-one .row.block-electric-car .block-region-middlebottomcenter .block-list .block-list-content {
@@ -4864,8 +5423,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     .panels-one-three-one .row.block-electric-car .block-region-middlebottomright .block-basic {
       position: absolute;
       top: 50%;
+      -webkit-transform: translateY(-50%);
       /* Saf3.1+, Chrome */
+      -moz-transform: translateY(-50%);
       /* FF3.5+ */
+      -ms-transform: translateY(-50%);
       /* IE9 */
       transform: translateY(-50%); }
       .panels-one-three-one .row.block-electric-car .block-region-middlebottomright .block-basic .block-basic-content {
@@ -4890,11 +5452,13 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     .panels-one-three-one .row.block-electric-car .block-region-middlebottomright .block-basic {
       position: relative;
       top: 0;
+      -webkit-transform: translateY(0);
       /* Saf3.1+, Chrome */
+      -moz-transform: translateY(0);
       /* FF3.5+ */
+      -ms-transform: translateY(0);
       /* IE9 */
       transform: translateY(0); } }
-
 .panels-one-three-one .block-region-bottomfull .block-image h2 {
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
@@ -4916,7 +5480,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     .panels-one-three-one .block-region-bottomfull .block-image h2 {
       font-size: 28px;
       font-size: 2.8rem; } }
-
 @media only screen and (max-width: 600px) {
   .panels-one-three-one .block-parks.row-eq-height,
   .panels-one-three-one .block-electric-car.row-eq-height {
@@ -4962,15 +5525,21 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     display: block;
     outline: 0;
     opacity: 0.3;
+    -moz-transition-property: opacity;
     /* FireFox */
+    -webkit-transition-property: opacity;
     /* Safari / Chrome */
     transition-property: opacity;
     /* W3C */
+    -moz-transition-duration: 0.15s;
     /* FireFox */
+    -webkit-transition-duration: 0.15s;
     /* Safari / Chrome */
     transition-duration: 0.15s;
     /* W3C */
     /* linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n); */
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-backface-visibility: hidden; }
   #block-views-block-destinations-block-1 a span {
@@ -4980,8 +5549,11 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     top: 50%;
     width: 80%;
     z-index: 10;
+    -webkit-transform: translate(-50%, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-50%, -50%);
     /* FF3.5+ */
+    -ms-transform: translate(-50%, -50%);
     /* IE9 */
     transform: translate(-50%, -50%); }
 
@@ -4993,15 +5565,21 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   background-color: #0054ff;
   color: white;
   padding: 30px 30px 20px;
+  -moz-transition-duration: 0.5s;
   /* FireFox */
+  -webkit-transition-duration: 0.5s;
   /* Safari / Chrome */
   transition-duration: 0.5s;
   /* W3C */
+  -webkit-transition-property: -webkit-transform, opacity;
   /* Safari / Chrome */
+  -moz-transition-property: -moz-transform, opacity;
   /* FireFox */
   transition-property: transform, opacity;
   /* W3C */
+  -moz-transition-delay: 0s;
   /* FireFox */
+  -webkit-transition-delay: 0s;
   /* Safari / Chrome */
   transition-delay: 0s;
   /* W3C */
@@ -5026,6 +5604,7 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     position: absolute;
     right: 5px;
     top: 0px; }
+
 
 #block-billsblock {
   margin-top: 50px; }
@@ -5114,3 +5693,4 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   .paragraph--type--gouvernance-texte .field--name-field-field-texte-gouvernance-te {
     margin: 40px;
     font-size: 16px; }
+
