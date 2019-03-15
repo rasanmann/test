@@ -50,8 +50,32 @@
 /*
 	Slice a SASS list like php array_slice
 */
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
-
+@-webkit-keyframes crossfade {
+  0% {
+    opacity: 0;
+    z-index: 100;
+    background-color: red; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    background-color: transparent; } }
+@-moz-keyframes crossfade {
+  0% {
+    opacity: 0;
+    z-index: 100;
+    background-color: red; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    background-color: transparent; } }
 @keyframes crossfade {
   0% {
     opacity: 0;
@@ -65,7 +89,28 @@
     opacity: 0;
     z-index: 1;
     background-color: transparent; } }
-
+@-webkit-keyframes crossfade-2 {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-2 {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-2 {
   0% {
     opacity: 0; }
@@ -77,7 +122,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-3 {
+  0% {
+    opacity: 0; }
+  6.66667% {
+    opacity: 1; }
+  33.33333% {
+    opacity: 1; }
+  40% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-3 {
+  0% {
+    opacity: 0; }
+  6.66667% {
+    opacity: 1; }
+  33.33333% {
+    opacity: 1; }
+  40% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-3 {
   0% {
     opacity: 0; }
@@ -89,7 +155,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-4 {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-4 {
+  0% {
+    opacity: 0; }
+  5% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-4 {
   0% {
     opacity: 0; }
@@ -101,7 +188,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-5 {
+  0% {
+    opacity: 0; }
+  4% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  24% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-5 {
+  0% {
+    opacity: 0; }
+  4% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  24% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-5 {
   0% {
     opacity: 0; }
@@ -113,7 +221,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-6 {
+  0% {
+    opacity: 0; }
+  3.33333% {
+    opacity: 1; }
+  16.66667% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-6 {
+  0% {
+    opacity: 0; }
+  3.33333% {
+    opacity: 1; }
+  16.66667% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-6 {
   0% {
     opacity: 0; }
@@ -125,7 +254,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-7 {
+  0% {
+    opacity: 0; }
+  2.85714% {
+    opacity: 1; }
+  14.28571% {
+    opacity: 1; }
+  17.14286% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-7 {
+  0% {
+    opacity: 0; }
+  2.85714% {
+    opacity: 1; }
+  14.28571% {
+    opacity: 1; }
+  17.14286% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-7 {
   0% {
     opacity: 0; }
@@ -137,7 +287,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-8 {
+  0% {
+    opacity: 0; }
+  2.5% {
+    opacity: 1; }
+  12.5% {
+    opacity: 1; }
+  15% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-8 {
+  0% {
+    opacity: 0; }
+  2.5% {
+    opacity: 1; }
+  12.5% {
+    opacity: 1; }
+  15% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-8 {
   0% {
     opacity: 0; }
@@ -149,7 +320,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-9 {
+  0% {
+    opacity: 0; }
+  2.22222% {
+    opacity: 1; }
+  11.11111% {
+    opacity: 1; }
+  13.33333% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-9 {
+  0% {
+    opacity: 0; }
+  2.22222% {
+    opacity: 1; }
+  11.11111% {
+    opacity: 1; }
+  13.33333% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-9 {
   0% {
     opacity: 0; }
@@ -161,7 +353,28 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes crossfade-10 {
+  0% {
+    opacity: 0; }
+  2% {
+    opacity: 1; }
+  10% {
+    opacity: 1; }
+  12% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes crossfade-10 {
+  0% {
+    opacity: 0; }
+  2% {
+    opacity: 1; }
+  10% {
+    opacity: 1; }
+  12% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 @keyframes crossfade-10 {
   0% {
     opacity: 0; }
@@ -173,98 +386,397 @@
     opacity: 0; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@-moz-keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 @keyframes fade-out {
   0% {
     opacity: 1; }
   100% {
     opacity: 0; } }
-
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 @keyframes fade-in {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
-
-@keyframes scale-in {
+@-webkit-keyframes scale-in {
   0% {
+    -webkit-transform: scale(0);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
     /* FF3.5+ */
+    -ms-transform: scale(0);
     /* IE9 */
     transform: scale(0);
     opacity: 0; }
   25% {
     opacity: 1; }
   100% {
+    -webkit-transform: scale(1);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
     /* FF3.5+ */
+    -ms-transform: scale(1);
     /* IE9 */
     transform: scale(1); } }
-
-@keyframes scale-out {
+@-moz-keyframes scale-in {
   0% {
+    -webkit-transform: scale(0);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
     /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@keyframes scale-in {
+  0% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@-webkit-keyframes scale-out {
+  0% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
     /* IE9 */
     transform: scale(1); }
   100% {
+    -webkit-transform: scale(0);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
     /* FF3.5+ */
+    -ms-transform: scale(0);
     /* IE9 */
     transform: scale(0); } }
-
-@keyframes translate-in {
+@-moz-keyframes scale-out {
   0% {
+    -webkit-transform: scale(1);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
     /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0); } }
+@keyframes scale-out {
+  0% {
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(0);
+    /* FF3.5+ */
+    -ms-transform: scale(0);
+    /* IE9 */
+    transform: scale(0); } }
+@-webkit-keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
     /* IE9 */
     transform: translate(0, -100%);
     zoom: 1; }
   100% {
+    -webkit-transform: translate(0, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
     /* FF3.5+ */
+    -ms-transform: translate(0, 0);
     /* IE9 */
     transform: translate(0, 0);
     zoom: 1; } }
-
-@keyframes move-vertical {
-  16.65% {
+@-moz-keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
     /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
+    /* IE9 */
+    transform: translate(0, -100%);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0);
+    /* IE9 */
+    transform: translate(0, 0);
+    zoom: 1; } }
+@keyframes translate-in {
+  0% {
+    -webkit-transform: translate(0, -100%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -100%);
+    /* FF3.5+ */
+    -ms-transform: translate(0, -100%);
+    /* IE9 */
+    transform: translate(0, -100%);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0);
+    /* IE9 */
+    transform: translate(0, 0);
+    zoom: 1; } }
+@-webkit-keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
     /* IE9 */
     transform: translate(-40px, 0);
     zoom: 1; }
   33.3% {
+    -webkit-transform: translate(20px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
     /* IE9 */
     transform: translate(20px, 0);
     zoom: 1; }
   49.95% {
+    -webkit-transform: translate(-20px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
     /* IE9 */
     transform: translate(-20px, 0);
     zoom: 1; }
   66.6% {
+    -webkit-transform: translate(10px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
     /* IE9 */
     transform: translate(10px, 0);
     zoom: 1; }
   83.25% {
+    -webkit-transform: translate(-10px, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
     /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
     /* IE9 */
     transform: translate(-10px, 0);
     zoom: 1; }
   100% {
+    -webkit-transform: translate(0, 0px);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
     /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
     /* IE9 */
     transform: translate(0, 0px);
     zoom: 1; } }
-
+@-moz-keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
+    /* IE9 */
+    transform: translate(-40px, 0);
+    zoom: 1; }
+  33.3% {
+    -webkit-transform: translate(20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
+    /* IE9 */
+    transform: translate(20px, 0);
+    zoom: 1; }
+  49.95% {
+    -webkit-transform: translate(-20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
+    /* IE9 */
+    transform: translate(-20px, 0);
+    zoom: 1; }
+  66.6% {
+    -webkit-transform: translate(10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
+    /* IE9 */
+    transform: translate(10px, 0);
+    zoom: 1; }
+  83.25% {
+    -webkit-transform: translate(-10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
+    /* IE9 */
+    transform: translate(-10px, 0);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0px);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
+    /* IE9 */
+    transform: translate(0, 0px);
+    zoom: 1; } }
+@keyframes move-vertical {
+  16.65% {
+    -webkit-transform: translate(-40px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-40px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-40px, 0);
+    /* IE9 */
+    transform: translate(-40px, 0);
+    zoom: 1; }
+  33.3% {
+    -webkit-transform: translate(20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(20px, 0);
+    /* IE9 */
+    transform: translate(20px, 0);
+    zoom: 1; }
+  49.95% {
+    -webkit-transform: translate(-20px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-20px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-20px, 0);
+    /* IE9 */
+    transform: translate(-20px, 0);
+    zoom: 1; }
+  66.6% {
+    -webkit-transform: translate(10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(10px, 0);
+    /* IE9 */
+    transform: translate(10px, 0);
+    zoom: 1; }
+  83.25% {
+    -webkit-transform: translate(-10px, 0);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(-10px, 0);
+    /* FF3.5+ */
+    -ms-transform: translate(-10px, 0);
+    /* IE9 */
+    transform: translate(-10px, 0);
+    zoom: 1; }
+  100% {
+    -webkit-transform: translate(0, 0px);
+    /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, 0px);
+    /* FF3.5+ */
+    -ms-transform: translate(0, 0px);
+    /* IE9 */
+    transform: translate(0, 0px);
+    zoom: 1; } }
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
+@-moz-keyframes pulse {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
+    /* FF3.5+ */
+    -ms-transform: scale(1);
+    /* IE9 */
+    transform: scale(1); } }
 @keyframes pulse {
   0% {
     opacity: 1; }
@@ -272,11 +784,45 @@
     opacity: 0.75; }
   100% {
     opacity: 0;
+    -webkit-transform: scale(1);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(1);
     /* FF3.5+ */
+    -ms-transform: scale(1);
     /* IE9 */
     transform: scale(1); } }
-
+@-webkit-keyframes pulse-visit-quebec {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
+    /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
+    /* Opera 10.5 */
+    transform: scale(1) translate(-50%, -50%); } }
+@-moz-keyframes pulse-visit-quebec {
+  0% {
+    opacity: 1; }
+  60% {
+    opacity: 0.75; }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
+    /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
+    /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
+    /* Opera 10.5 */
+    transform: scale(1) translate(-50%, -50%); } }
 @keyframes pulse-visit-quebec {
   0% {
     opacity: 1; }
@@ -284,12 +830,15 @@
     opacity: 0.75; }
   100% {
     opacity: 0;
+    -webkit-transform: scale(1) translate(-50%, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: scale(1) translate(-50%, -50%);
     /* FF3.5+ */
+    -ms-transform: scale(1) translate(-50%, -50%);
     /* IE9 */
+    -o-transform: scale(1) translate(-50%, -50%);
     /* Opera 10.5 */
     transform: scale(1) translate(-50%, -50%); } }
-
 /*******************************************************
 *   GENERAL STYLING
 *******************************************************/
@@ -301,6 +850,7 @@ html {
 
 body {
   padding-bottom: 0;
+  @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
   font-size: 16px !important;
   font-family: -apple-system, "Roboto", Helvetica, Arial, sans-serif !important; }
   body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -309,7 +859,6 @@ body {
 #layout-content .page-wrapper .content-wrapper .main-content {
   border: 0;
   padding-bottom: 0; }
-
 #layout-content .page-wrapper {
   margin: 0; }
 
@@ -394,20 +943,40 @@ body {
 
 #app-mobile-aide-et-support .region-content,
 #app-mobile-aide-et-support-en .region-content {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
   #app-mobile-aide-et-support .region-content #block-views-block-questions-block-1,
   #app-mobile-aide-et-support-en .region-content #block-views-block-questions-block-1 {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
     -moz-order: 2;
+    -ms-flex-order: 2;
     order: 2;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+    -moz-box-flex: 1;
     -moz-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
     flex: 1 1 100%; }
   #app-mobile-aide-et-support .region-content article,
   #app-mobile-aide-et-support-en .region-content article {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
     -moz-order: 1;
+    -ms-flex-order: 1;
     order: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+    -moz-box-flex: 1;
     -moz-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
     flex: 1 1 100%; }
 
 .field--name-body > h2 {
@@ -423,23 +992,18 @@ body {
 
 [class*="app-mobile"] .zoomHolderWrapper {
   margin: 0; }
-
 [class*="app-mobile"] .zoomHolderWrapperInner {
   margin: 0 -30px; }
-
 [class*="app-mobile"] .zoomHolder {
   width: 100%;
   height: calc(100vh - 60px); }
-
 [class*="app-mobile"] .main-content p a {
   text-decoration: none !important;
   color: #0eadff; }
   [class*="app-mobile"] .main-content p a.btn {
     color: white; }
-
 [class*="app-mobile"] .wrapperInner {
   margin: -30px -30px 25px; }
-
 [class*="app-mobile"] .region-content {
   padding: 30px !important; }
   [class*="app-mobile"] .region-content .page-mobile .nav-tabs {
@@ -448,7 +1012,6 @@ body {
     margin: 0; }
     [class*="app-mobile"] .region-content .page-mobile .nav-tabs li {
       margin-bottom: 0; }
-
 [class*="app-mobile"] .app-show-more {
   background-color: white;
   padding: 10px 50px 40px !important;
@@ -464,13 +1027,10 @@ body {
     padding: 0px 0 20px; }
   [class*="app-mobile"] .app-show-more .collapse {
     padding-bottom: 30px; }
-
 [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .swiper-container:last-child {
   margin-bottom: 0; }
-
 [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .region-content {
   padding-bottom: 0 !important; }
-
 [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group {
   margin: 0 -30px; }
   [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group.look-like-panel {
@@ -484,17 +1044,23 @@ body {
       width: 18px;
       margin-top: -9px;
       right: 30px;
+      -webkit-transform: rotate(0deg);
       /* Saf3.1+, Chrome */
+      -moz-transform: rotate(0deg);
       /* FF3.5+ */
+      -ms-transform: rotate(0deg);
       /* IE9 */
       transform: rotate(0deg);
+      -webkit-transform-origin: 50% 50%;
+      -moz-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
       transform-origin: 50% 50%;
       /* IE6-IE9
-		Can't implement rotate for IE, no COS functions available in SASS
-		Example : 7.5deg
-		filter: progid:DXImageTransform.Microsoft.Matrix(
-		M11=0.9914448613738104, M12=-0.13052619222005157,M21=0.13052619222005157, M22=0.9914448613738104, sizingMethod='auto expand');
-	*/
+      	Can't implement rotate for IE, no COS functions available in SASS
+      	Example : 7.5deg
+      	filter: progid:DXImageTransform.Microsoft.Matrix(
+      	M11=0.9914448613738104, M12=-0.13052619222005157,M21=0.13052619222005157, M22=0.9914448613738104, sizingMethod='auto expand');
+      */
       zoom: 1; }
   [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title {
     display: table;
@@ -507,8 +1073,11 @@ body {
       position: absolute;
       top: 50%;
       right: 75px;
+      -webkit-transform: translate(0, -50%);
       /* Saf3.1+, Chrome */
+      -moz-transform: translate(0, -50%);
       /* FF3.5+ */
+      -ms-transform: translate(0, -50%);
       /* IE9 */
       transform: translate(0, -50%);
       zoom: 1; }
@@ -529,13 +1098,10 @@ body {
         right: 30px; }
     [class*="app-mobile"][id*="app-mobile-transport-a-C3-A9roport"] .panel-group .panel-title .look-like-panel-a span {
       right: 30px; }
-
 [class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .swiper-container:last-child {
   margin-bottom: 0; }
-
 [class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .region-content {
   padding-bottom: 0 !important; }
-
 [class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .panel-group .panel-title a {
   border-bottom: 0;
   border-top: 0;
@@ -557,26 +1123,20 @@ body {
     width: 19px;
     margin-top: -5px;
     right: 30px; }
-
 [class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .panel-group .panel-body table {
   border-bottom: 0 !important; }
-
 [class*="app-mobile"][id*="app-mobile-vestiaire-et-consigne"] .panel-group .panel-body td {
   position: static; }
-
 [class*="app-mobile"][id*="app-mobile-plan-de-la-C3-A9rogare-carte"] .region-content {
   padding: 0 !important; }
   [class*="app-mobile"][id*="app-mobile-plan-de-la-C3-A9rogare-carte"] .region-content .nav-tabs li {
     max-width: 200px;
     text-align: center;
     width: 50%; }
-
 [class*="app-mobile"][id*="app-mobile-plan-de-la-C3-A9rogare-carte"] .fullscreenToggle {
   display: none; }
-
 [class*="app-mobile"][id*="se-pr-C3-A9parer--C3-A0-linspection"] .region-content {
   padding: 0 30px !important; }
-
 [class*="app-mobile"][id*="se-pr-C3-A9parer--C3-A0-linspection"] .table-wrapper {
   margin-top: 0;
   box-shadow: none; }
@@ -587,18 +1147,14 @@ body {
       padding: 10px 30px 10px 15px !important; }
   [class*="app-mobile"][id*="se-pr-C3-A9parer--C3-A0-linspection"] .table-wrapper td:first-child {
     text-align: center !important; }
-
 [class*="app-mobile"] .wrapper-map {
   margin: -30px -30px 25px; }
-
 [class*="app-mobile"] #map {
   width: 100%;
   min-height: 250px;
   height: calc(100vh - 300px); }
-
 [class*="app-mobile"] a.btn {
   text-decoration: none; }
-
 [class*="app-mobile"] blockquote {
   color: white;
   background-color: #0054ff;
@@ -626,27 +1182,26 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    -webkit-transform: translate(0, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -50%);
     /* FF3.5+ */
+    -ms-transform: translate(0, -50%);
     /* IE9 */
     transform: translate(0, -50%);
     zoom: 1; }
-
 [class*="app-mobile"] blockquote + .table-wrapper {
   margin-top: -15px; }
-
 [class*="app-mobile"] h2 {
   text-align: center;
   font-size: 22px;
   font-size: 2.2rem;
   line-height: 25px;
   margin: 35px 0 25px; }
-
 [class*="app-mobile"] h3 {
   font-size: 18px;
   font-size: 1.8rem;
   font-weight: bold; }
-
 [class*="app-mobile"] .swiper-container, [class*="app-mobile"] .fixe-list {
   margin: 0 -30px 25px;
   opacity: 0;
@@ -695,7 +1250,6 @@ body {
     font-size: 18px !important;
     padding-top: 6px;
     color: #0eadff; }
-
 [class*="app-mobile"] ul li {
   font-size: 14px !important;
   list-style: disc !important;
@@ -704,11 +1258,9 @@ body {
     content: normal !important; }
   [class*="app-mobile"] ul li a {
     color: #0eadff; }
-
 [class*="app-mobile"] .table-wrapper {
   margin: 25px -30px 20px;
   margin-bottom: 30px; }
-
 [class*="app-mobile"] .header-table {
   text-align: center;
   padding: 15px 25px;
@@ -720,7 +1272,6 @@ body {
   text-transform: none; }
   [class*="app-mobile"] .header-table img {
     max-height: 55px; }
-
 [class*="app-mobile"] table {
   width: 100% !important;
   margin: 0 !important;
@@ -776,19 +1327,14 @@ body {
       padding: 10px 30px 10px 10px !important; }
     [class*="app-mobile"] table td strong {
       font-weight: normal; }
-
 [class*="app-mobile"][class*="salon-vip"] tr td:first-child {
   min-width: 140px; }
-
 [class*="app-mobile"][class*="salon-vip"] tr td:last-child {
   min-width: 300px; }
-
 [class*="app-mobile"][class*="salon-vip"] tr td:nth-child(2) {
   min-width: 300px; }
-
 [class*="app-mobile"][class*="salon-vip"] tr td:nth-child(5) {
   min-width: 150px; }
-
 [class*="app-mobile"] .parking-inparq,
 [class*="app-mobile"] .parking-proxiparq,
 [class*="app-mobile"] .parking-cellparq {
@@ -801,24 +1347,18 @@ body {
   [class*="app-mobile"] .parking-cellparq span {
     margin: 0 auto 20px;
     display: block; }
-
 [class*="app-mobile"] .parking-inparq {
   background-color: #8dc63f;
   margin-bottom: 0; }
-
 [class*="app-mobile"] .parking-cellparq {
   background-color: #004b91;
   margin-top: -30px; }
-
 [class*="app-mobile"] .parking-proxiparq {
   background-color: #139747; }
-
 [class*="app-mobile"][id*="app-mobile-bagages-perdus"] .view-tiles {
   margin: 0 -30px !important; }
-
 [class*="app-mobile"][id*="app-mobile-bagages-perdus"] .field--name-body {
   max-width: 100% !important; }
-
 [class*="app-mobile"][id*="app-mobile-aide-et-support"] {
   min-height: 100%;
   background-color: #1f1f1f;
@@ -871,7 +1411,6 @@ body {
         height: 12px; }
         [class*="app-mobile"][id*="app-mobile-aide-et-support"] #block-views-block-questions-block-1 .panel-group .panel .panel-title a .icon path {
           fill: #0eadff; }
-
 [class*="app-mobile"] .btn-pulse {
   height: 140px;
   width: 140px;
@@ -891,8 +1430,11 @@ body {
     z-index: 10;
     left: 0;
     line-height: 22px;
+    -webkit-transform: translate(0, -49%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(0, -49%);
     /* FF3.5+ */
+    -ms-transform: translate(0, -49%);
     /* IE9 */
     transform: translate(0, -49%);
     zoom: 1; }
@@ -919,12 +1461,14 @@ body {
     height: 112px;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-50%, -50%);
     /* FF3.5+ */
+    -ms-transform: translate(-50%, -50%);
     /* IE9 */
     transform: translate(-50%, -50%);
     zoom: 1; }
-
 [class*="app-mobile"] .btn-act-like {
   display: block;
   line-height: 40px; }
@@ -934,19 +1478,16 @@ body {
 #flights-and-destinations-flight-schedules-departures-fids.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #flights-and-destinations-flight-schedules-arrivals-fids.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update {
   top: 79px; }
-
 #vols-et-destinations-horaire-des-vols-arrivees-fids.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #vols-et-destinations-horaire-des-vols-departs-fids.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #flights-and-destinations-flight-schedules-departures-fids.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update,
 #flights-and-destinations-flight-schedules-arrivals-fids.toolbar-tray-open.toolbar-fixed.toolbar-horizontal .sidebar-content .block-last-update {
   top: 118px; }
-
 #vols-et-destinations-horaire-des-vols-arrivees-fids #layout-main,
 #vols-et-destinations-horaire-des-vols-departs-fids #layout-main,
 #flights-and-destinations-flight-schedules-departures-fids #layout-main,
 #flights-and-destinations-flight-schedules-arrivals-fids #layout-main {
   max-width: none; }
-
 #vols-et-destinations-horaire-des-vols-arrivees-fids #layout-header,
 #vols-et-destinations-horaire-des-vols-departs-fids #layout-header,
 #flights-and-destinations-flight-schedules-departures-fids #layout-header,
@@ -969,7 +1510,6 @@ body {
   #flights-and-destinations-flight-schedules-arrivals-fids #layout-header .navbar-collapse,
   #flights-and-destinations-flight-schedules-arrivals-fids #layout-header .search-block-form {
     display: none !important; }
-
 #vols-et-destinations-horaire-des-vols-arrivees-fids .sidebar-content,
 #vols-et-destinations-horaire-des-vols-departs-fids .sidebar-content,
 #flights-and-destinations-flight-schedules-departures-fids .sidebar-content,
@@ -1007,7 +1547,6 @@ body {
       #flights-and-destinations-flight-schedules-departures-fids .sidebar-content .block-last-update,
       #flights-and-destinations-flight-schedules-arrivals-fids .sidebar-content .block-last-update {
         float: none; } }
-
 @media only screen and (min-width: 1025px) {
   #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-arrivals,
   #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-departures,
@@ -1018,7 +1557,6 @@ body {
   #flights-and-destinations-flight-schedules-arrivals-fids .view-id-arrivals,
   #flights-and-destinations-flight-schedules-arrivals-fids .view-id-departures {
     overflow: visible; } }
-
 #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-arrivals #view-field-white-logo-table-column,
 #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-arrivals #view-field-white-logo-table-column--2,
 #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-arrivals .views-field-field-white-logo,
@@ -1052,7 +1590,6 @@ body {
 #flights-and-destinations-flight-schedules-arrivals-fids .view-id-departures .views-field-field-white-logo,
 #flights-and-destinations-flight-schedules-arrivals-fids .view-id-departures .views-field-field-white-logo--2 {
   display: none; }
-
 @media only screen and (min-width: 1025px) {
   #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-arrivals .view-header,
   #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-departures .view-header,
@@ -1069,12 +1606,14 @@ body {
     top: -64px;
     font-size: 36px;
     font-size: 3.6rem;
+    -webkit-transform: translate(-50%, 0);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-50%, 0);
     /* FF3.5+ */
+    -ms-transform: translate(-50%, 0);
     /* IE9 */
     transform: translate(-50%, 0);
     zoom: 1; } }
-
 #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-arrivals .table td,
 #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-departures .table td,
 #vols-et-destinations-horaire-des-vols-departs-fids .view-id-arrivals .table td,
@@ -1105,7 +1644,6 @@ body {
   #flights-and-destinations-flight-schedules-arrivals-fids .view-id-arrivals .table td .visible-xs-inline,
   #flights-and-destinations-flight-schedules-arrivals-fids .view-id-departures .table td .visible-xs-inline {
     display: inline !important; }
-
 #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-arrivals .table th,
 #vols-et-destinations-horaire-des-vols-arrivees-fids .view-id-departures .table th,
 #vols-et-destinations-horaire-des-vols-departs-fids .view-id-arrivals .table th,
@@ -1157,8 +1695,13 @@ body {
     background-repeat: no-repeat;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     /* Saf3.1+, Chrome */
+    -moz-transform: translate(-50%, -50%);
     /* FF3.5+ */
+    -ms-transform: translate(-50%, -50%);
     /* IE9 */
     transform: translate(-50%, -50%);
     zoom: 1; }
+
+/*# sourceMappingURL=webview.css.map */

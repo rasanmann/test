@@ -1,0 +1,43 @@
+#block-billsblock {
+  margin-top: 50px; }
+
+.parking-container {
+  display: flex !important;
+  width: 100% !important;
+  align-items: flex-end !important;
+  justify-content: space-between; }
+
+.parking-container-item-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important; }
+
+.parking-container-item-container-button {
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  position: static !important; }
+
+.button-full-width {
+  width: 100% !important; }
+
+.sms-disclaimer {
+  padding-left: 10px; }
+
+.window-is-not-mobile .block-reminders .parking-booker-form > .form-wrapper > .form-wrapper:not(.is-mobile),
+.window-is-not-mobile .block-parking-booker .parking-booker-form > .form-wrapper > .form-wrapper:not(.is-mobile) {
+  display: flex !important; }
+
+.block-reminders .form-block-container > .form-group.btn-space,
+.block-parking-booker .form-block-container > .form-group.btn-space {
+  position: absolute; }
+
+.view-id-arrivals .late-24,
+.view-id-departures .late-24 {
+  display: none; }
+
+.view-id-arrivals tr.warning .late-24,
+.view-id-departures tr.warning .late-24 {
+  display: block;
+  font-size: 1.1rem;
+  color: #ffcc33; }
