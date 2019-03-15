@@ -175,7 +175,7 @@ class ParkingSearchForm extends ParkingFormBase {
           '#type' => 'actions',
           'submit' => [
             '#type' => 'submit',
-              '#value' => $config->get('yqb_parking_booker.submit_button'),
+              '#value' => $config->get('submit_button'),
             '#attributes' => ['class' => ['btn-default', 'button-full-width']],
             '#button_type' => 'default',
             '#weight' => 10,
@@ -211,17 +211,17 @@ class ParkingSearchForm extends ParkingFormBase {
     if($this->getRequest()->query->get('webview')){
       $this->store->set('webview', true);
     }
-    
+
     if($this->getRequest()->query->get('user_flight')){
       $this->store->set('user_flight', $this->getRequest()->query->get('user_flight'));
     }
-    
+
     if($this->getRequest()->query->get('user_id')){
       if(!empty(User::load($this->getRequest()->query->get('user_id')))) {
         $this->store->set('user_id', $this->getRequest()->query->get('user_id'));
       }
     }
-    
+
     $form = parent::buildForm($form, $form_state);
 
     $form['#attributes']['class'][] = 'form';
@@ -278,7 +278,7 @@ class ParkingSearchForm extends ParkingFormBase {
         $_SESSION['multistep_form_holds_session'] = TRUE;
         $this->sessionManager->start();
     }
-	          
+
     // Start over
     $this->deleteStore(($form_state->get('current_booking')) ? ['current_booking', 'user_id', 'webview'] : null);
 
@@ -318,7 +318,7 @@ class ParkingSearchForm extends ParkingFormBase {
       // New booking, go to results page
       $route = sprintf('yqb_parking_booker.%s.results', \Drupal::languageManager()->getCurrentLanguage()->getId());
     }
-    
+
     $this->parkingRedirect($form_state, $route);
   }
 }
