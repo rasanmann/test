@@ -1,53 +1,96 @@
-//wrapper page /a-propos/entreprise/gouvernance-et-direction-generale
-.paragraph--type--fiche-employe {
+.field--name-body{
+  h2 {
+    font-size:3.6rem;
+    margin:40px;
+  }
+
+  p {
+    font-size:16px;
+    margin:40px;
+  }
+}
+
+
+
+////wrapper page /a-propos/entreprise/gouvernance-et-direction-generale
+.field--name-field-paragraphs {
+  border-top: 1px solid hsl(0,0%,90%);
+  border-bottom: 1px solid hsl(0,0%,90%);
+
   .row-wrapper {
     position:relative;
-    display:block;
-    height:240px;
-    width:100%;
+    min-height:300px;
+    //background-color:red;
+    //border:2px solid black;
+    overflow:hidden !important;
+  }
+
+    .trio_content {
+      padding-top:130px;
+      margin:auto;
+      width:50%;
+      text-align:center;
+      .field--type-image {
+        padding-top:15px;
+        display:inline-block;
+        text-align:center;
+      }
+      .field--name-field-title-gouvernance-employe {
+        font-size:2.4rem;
+      }
+      .field--name-field-sous-titre-gouvernance-emp {
+        font-size:16px;
+      }
+
+
+    }
+
+  .gouvernance-modal {
+    display:none;
+  }
+
+  .field--item:nth-child(odd) .row-wrapper {
     background-color:hsla(0,0%,97%,1);
-    overflow:hidden;
-  }
-  .trio_content {
-    padding-top:80px;
-    height:240px;
-    margin:auto;
-    width:100%;
-    text-align:center;
   }
 
-  .field--name-field-title-gouvernance-employe {
-    font-size:2.4rem;
-    margin:auto;
-    width:50%;
-    text-align:center;
-  }
-
-  .field--name-field-sous-titre-gouvernance-emp{
-    margin:auto;
-    width:50%;
-    text-align:center;
-  }
-
-  .field--name-field-plus-icon-gouvernance-empl {
-    display:inline-block;
-    margin:auto;
-    width:25px;
-    text-align:center;
-    padding-top:20px;
+  .field--item:nth-child(even) .row-wrapper {
+    background-color:hsla(0,0%,100%,1);
   }
 
 
-  .field--name-field-image-gouvernance-employe{
-    display:inline-block;
-    position:absolute;
-    right:-30px;
-    bottom:0;
+  .field--item:nth-child(odd) .row-wrapper .field--name-field-image-gouvernance-employe{
+
+    img {
+      position:absolute;
+      right:-30px;
+      bottom:0;
+    }
   }
 
+  .field--item:nth-child(even) .row-wrapper .field--name-field-image-gouvernance-employe{
+    background-color:#fff;
+    img {
+      position:absolute;
+      left:-30px;
+      bottom:0;
+    }
+  }
+
+}//end
+
+.paragraph--type--gouvernance-texte {
+  border-top: 1px solid hsl(0,0%,90%);
+  border-bottom: 1px solid hsl(0,0%,90%);
 
 
-
-
-
-}//end paragraph--type--fiche-employe
+  .field--name-field-title-gouvernance-texte{
+    margin:40px;
+    font-size:3.6rem;
+  }
+  .field--name-field-field-texte-gouvernance-te {
+    margin:40px;
+    p{
+      font-size:2.1rem;
+    }
+  }
+}
