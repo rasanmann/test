@@ -52,10 +52,12 @@
                 <div class="trio_content">
                     {{ content.field_title_gouvernance_employe }}
                     {{ content.field_sous_titre_gouvernance_emp }}
-                    <a href="#">{{ content.field_plus_icon_gouvernance_empl }}</a>
                 </div>
-
-                <div class="gouvernance-modal row">
+                {{ content.field_image_gouvernance_employe }}
+            </div>
+            <a href="#" class="trigger-toggle">{{ content.field_plus_icon_gouvernance_empl }}</a>
+            <div class="content-toggle gouvernance-modal row" aria-hidden="false">
+                <div>
                     <div class="col-md-6">
                         {{ content.field_left_column_gouvernance_em }}
                     </div>
@@ -63,10 +65,10 @@
                         {{ content.field_right_column_gouvernance_e }}
                     </div>
                 </div>
-                {{ content.field_image_gouvernance_employe }}
+                    <a href="#" class="trigger-toggle">{{ content.field_minus_icon_gouvernance_emp }}</a>
             </div>
 
-            {{ content|without('field_title_gouvernance_employe','field_sous_titre_gouvernance_emp', 'field_plus_icon_gouvernance_empl', 'field_image_gouvernance_employe', 'field_left_column_gouvernance_em', 'field_right_column_gouvernance_e') }}
+            {{ content|without('field_title_gouvernance_employe','field_sous_titre_gouvernance_emp', 'field_plus_icon_gouvernance_empl', 'field_image_gouvernance_employe', 'field_left_column_gouvernance_em', 'field_right_column_gouvernance_e','field_minus_icon_gouvernance_emp') }}
 
 
         {% endblock %}

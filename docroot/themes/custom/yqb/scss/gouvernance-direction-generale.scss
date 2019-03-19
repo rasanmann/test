@@ -45,9 +45,7 @@
 
     }
 
-  .gouvernance-modal {
-    display:none;
-  }
+
 
   .field--item:nth-child(odd) .row-wrapper {
     background-color:hsla(0,0%,97%,1);
@@ -94,3 +92,23 @@
     }
   }
 }
+
+//.gouvernance-modal {
+//  //display:none;
+//  //position:relative;
+//  //top:-30px;
+//  margin:auto;
+//  z-index:101;
+//  background-color:white;
+//  padding:50px;
+//  box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.08);
+//  position: absolute;
+//  top: 92%;
+//  width: 90%;
+//  left: 5%;
+//
+//  p {
+//    padding:0 10px 10px 10px;
+//  }
+//
+//}//end gouvernance modal
