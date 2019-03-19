@@ -1,6 +1,7 @@
 .field--name-body h2 {
-  font-size: 3.6rem;
-  margin: 40px; }
+  font-size: 2.4rem;
+  margin: 40px;
+  font-weight: normal; }
 
 .field--name-body p {
   font-size: 16px;
@@ -54,8 +55,7 @@
   border-bottom: 1px solid #e6e6e6; }
   .paragraph--type--gouvernance-texte .field--name-field-title-gouvernance-texte {
     margin: 40px;
-    font-size: 3.6rem; }
+    font-size: 2.4rem; }
   .paragraph--type--gouvernance-texte .field--name-field-field-texte-gouvernance-te {
-    margin: 40px; }
-    .paragraph--type--gouvernance-texte .field--name-field-field-texte-gouvernance-te p {
-      font-size: 2.1rem; }
+    margin: 40px;
+    font-size: 16px; }
