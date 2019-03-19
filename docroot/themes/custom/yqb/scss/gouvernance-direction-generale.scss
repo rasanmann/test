@@ -10,9 +10,15 @@
   }
 }
 
+.field--name-field-plus-icon-gouvernance-empl{
+  text-align:center;
+  .img-responsive {
+    display:inline-block;
+    max-width:25px;
+    padding-top:15px;
+  }
+}
 
-
-////wrapper page /a-propos/entreprise/gouvernance-et-direction-generale
 .field--name-field-paragraphs {
   border-top: 1px solid hsl(0,0%,90%);
   border-bottom: 1px solid hsl(0,0%,90%);
@@ -20,9 +26,6 @@
   .row-wrapper {
     position:relative;
     min-height:300px;
-    //background-color:red;
-    //border:2px solid black;
-    overflow:hidden !important;
   }
 
     .trio_content {
@@ -30,22 +33,14 @@
       margin:auto;
       width:50%;
       text-align:center;
-      .field--type-image {
-        padding-top:15px;
-        display:inline-block;
-        text-align:center;
-      }
+
       .field--name-field-title-gouvernance-employe {
         font-size:2.4rem;
       }
       .field--name-field-sous-titre-gouvernance-emp {
         font-size:16px;
       }
-
-
     }
-
-
 
   .field--item:nth-child(odd) .row-wrapper {
     background-color:hsla(0,0%,97%,1);
@@ -60,8 +55,11 @@
 
     img {
       position:absolute;
-      right:-30px;
+      right:0px;
       bottom:0;
+        @media only screen and (max-width: 600px){
+          display:none;
+        }
     }
   }
 
@@ -69,8 +67,11 @@
     background-color:#fff;
     img {
       position:absolute;
-      left:-30px;
+      left:0px;
       bottom:0;
+      @media only screen and (max-width: 600px){
+        display:none;
+      }
     }
   }
 
