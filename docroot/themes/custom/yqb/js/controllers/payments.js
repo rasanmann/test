@@ -48,7 +48,27 @@ var Payments = (function ($, Drupal, Bootstrap) {
      --------------------------------- */
 
     var onResultsClick = function(ev) {
-        var $form = $(this);
+      var $form = $(this);
+
+      if ($('#recaptcha_element').length > 0) {
+        var validated = false;
+        if (grecaptcha && grecaptcha.hasOwnProperty('getResponse')) {
+          if (grecaptcha.getResponse() == "") {
+            $('.recaptcha-error').remove();
+            $form.find('#recaptcha_element').append('<p class="recaptcha-error">' + Drupal.t('The reCAPTCHA field is required.') + '</p>');
+            ev.preventDefault();
+            return false;
+          }
+          else {
+            validated = true;
+          }
+        }
+
+        if (!validated) {
+          ev.preventDefault();
+          return false;
+        }
+      }
 
         window.open($form.attr('action'), $form.attr('target'), 'scrollbars=1,resizable=1,width=740,height=690');
 

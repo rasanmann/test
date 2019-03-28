@@ -1,0 +1,10 @@
+recaptcha:
+  version: 1.x
+  js:
+    js/recaptcha.js: {}
+  css:
+    theme:
+      css/recaptcha.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

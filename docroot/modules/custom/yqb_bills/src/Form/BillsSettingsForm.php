@@ -49,6 +49,12 @@ class BillsSettingsForm extends ConfigFormBase {
             '#return_value' => 1
     ];
 
+    $form['recaptcha_sitekey'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('reCAPTCHA Site Key'),
+      '#default_value' => $config->get('yqb_bills.recaptcha_sitekey'),
+      '#required' => TRUE
+    ];
 
 
     return $form;
@@ -69,6 +75,7 @@ class BillsSettingsForm extends ConfigFormBase {
 
     $config->set('yqb_bills.recipients', $form_state->getValue('recipients'));
     $config->set('yqb_bills.form_is_enabled', $form_state->getValue('form_is_enabled'));
+    $config->set('yqb_bills.recaptcha_sitekey', $form_state->getValue('recaptcha_sitekey'));
 
     $config->save();
 
