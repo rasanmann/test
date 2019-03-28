@@ -6,6 +6,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\Form\FormBuilder;
 use Drupal\Core\Form\FormState;
+use Drupal\Core\Url;
 use Drupal\yqb_bills\Form\BillsPaymentForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\yqb_bills\Form;
@@ -25,6 +26,8 @@ class BillsBlock extends BlockBase implements BlockPluginInterface{
    * {@inheritdoc}
    */
   public function build() {
+    $config = \Drupal::config('yqb_bills.settings');
+
     $psStoreId = [
       '#type' => 'hidden',
       '#name' => 'ps_store_id',
@@ -84,6 +87,34 @@ class BillsBlock extends BlockBase implements BlockPluginInterface{
       '#return_value' => $this->t("Factures et états de compte par courriel."),
     ];
 
+    $recaptcha_src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit';
+    $form['recaptcha'] = [
+      '#markup' => '<div id="recaptcha_element"></div>'
+    ];
+    $form['#attached'] = [
+      'library' => ['yqb_bills/recaptcha'],
+      'drupalSettings' => [
+        'yqb_bills' => [
+          'recaptcha' => [
+            'sitekey' => $config->get('yqb_bills.recaptcha_sitekey')
+          ]
+        ]
+      ],
+      'html_head' => [
+        [
+          [
+            '#tag' => 'script',
+            '#attributes' => [
+              'src' => Url::fromUri($recaptcha_src, ['query' => ['hl' => \Drupal::service('language_manager')->getCurrentLanguage()->getId()], 'absolute' => TRUE])->toString(),
+              'async' => TRUE,
+              'defer' => TRUE,
+            ],
+          ],
+          'recaptcha_api',
+        ],
+      ],
+    ];
+
     $form['actions'] = [
       '#type' => 'button',
       '#value' => $this->t("Soumettre"),
@@ -94,7 +125,7 @@ class BillsBlock extends BlockBase implements BlockPluginInterface{
       //$formState = new FormState();
       //$formState->set('form_is_enabled', isset($config['form_is_enabled']) ? 1 : 0);
 
-      $config = \Drupal::config('yqb_bills.settings');
+
 
       $showForm = $config->get('yqb_bills.form_is_enabled');
 
