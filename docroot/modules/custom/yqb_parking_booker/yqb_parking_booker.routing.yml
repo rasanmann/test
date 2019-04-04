@@ -213,3 +213,19 @@ yqb_parking_booker.en.modify.view:
     _title: 'Confirmation'
   requirements:
     _permission: 'access content'
+
+yqb_parking_booker.admin_config:
+  path: '/admin/config/yqb'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Aéroport international Jean-Lesage de Québec'
+  requirements:
+    _permission: 'access administration pages'
+
+yqb_parking_booker.settings:
+  path: '/admin/config/yqb/booker'
+  defaults:
+    _form: '\Drupal\yqb_parking_booker\Form\Settings'
+    _title: 'Parking Booker'
+  requirements:
+    _permission: 'access administration pages'
