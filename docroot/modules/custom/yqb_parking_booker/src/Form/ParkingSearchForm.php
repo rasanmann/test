@@ -319,6 +319,7 @@ class ParkingSearchForm extends ParkingFormBase {
       $route = sprintf('yqb_parking_booker.%s.results', \Drupal::languageManager()->getCurrentLanguage()->getId());
     }
 
+    $this->store->set('process_started', true);
     $this->parkingRedirect($form_state, $route);
   }
 }

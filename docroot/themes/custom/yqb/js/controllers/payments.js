@@ -47,6 +47,14 @@ var Payments = (function ($, Drupal, Bootstrap) {
    * Events
    --------------------------------- */
 
+  var resetReCaptcha = function() {
+    if ($('#recaptcha_element').length > 0) {
+      if (grecaptcha) {
+        grecaptcha.reset();
+      }
+    }
+  };
+
   var validateReCaptcha = function () {
     var validated = true;
 
@@ -79,6 +87,7 @@ var Payments = (function ($, Drupal, Bootstrap) {
 
     // Weird bug with chrome
     setTimeout(function () {
+      resetReCaptcha();
       $form.get(0).reset();
     }, 500);
 
@@ -103,6 +112,11 @@ var Payments = (function ($, Drupal, Bootstrap) {
   };
 
   var onFormSubmit = function (ev) {
+    if($form.data('submitting')) {
+      ev.preventDefault();
+      return false;
+    }
+
     if (!validateReCaptcha()) {
       ev.preventDefault();
       return false;
@@ -112,6 +126,8 @@ var Payments = (function ($, Drupal, Bootstrap) {
     $moneris.prevAll('.alert').remove();
 
     if ($moneris.length) {
+      $form.data('submitting', true);
+      $form.find('button[type="submit"],input[type="submit"]').attr('disabled','disabled');
       var contentWindow = $moneris.get(0).contentWindow;
       contentWindow.postMessage('', $moneris.attr('src').replace(/\?(.*)/, ''));
 
@@ -138,11 +154,14 @@ var Payments = (function ($, Drupal, Bootstrap) {
     }
     else {
       // Error
+      $form.data('submitting', false);
+      resetReCaptcha();
       var $alert = $('<div></div>');
       $alert.addClass('alert alert-danger');
       $alert.text(respData.errorMessage);
 
       $alert.insertBefore($form.find('#moneris_frame'));
+      $form.find('button[type="submit"],input[type="submit"]').removeClass('is-clicked is-loading').removeAttr('disabled');
     }
   };
 
