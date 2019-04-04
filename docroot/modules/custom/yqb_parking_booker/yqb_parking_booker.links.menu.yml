@@ -3,3 +3,16 @@ yqb_parking_booker.admin:
   title: 'Libellé'
   parent: system.admin_config_ui
   description: 'Libellé bouton submit Réservé stationnement'
+
+yqb_parking_booker.admin_config:
+  title: 'Aéroport international Jean-Lesage de Québec'
+  route_name: yqb_parking_booker.admin_config
+  parent: system.admin_config
+  description: 'Business settings'
+  weight: -20
+
+yqb_parking_booker.settings:
+  title: 'Parking Booker'
+  route_name: yqb_parking_booker.settings
+  parent: yqb_parking_booker.admin_config
+  description: 'Parking Booker settings'
