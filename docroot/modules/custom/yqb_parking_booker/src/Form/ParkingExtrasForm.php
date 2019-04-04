@@ -211,10 +211,12 @@ class ParkingExtrasForm extends ParkingFormBase {
 
     // Validation for adult ticket requirement on non adult ticket
     $adultId = 0;
-    foreach($extrasDetails as $k => $detail){
-      if(preg_match('/adult/i', $detail['description'])){
-        $adultId = $k;
-        break;
+    if(!empty($extrasDetails) && is_array($extrasDetails)) {
+      foreach ($extrasDetails as $k => $detail) {
+        if (preg_match('/adult/i', $detail['description'])) {
+          $adultId = $k;
+          break;
+        }
       }
     }
 

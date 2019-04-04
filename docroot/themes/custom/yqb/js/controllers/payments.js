@@ -62,11 +62,6 @@ var Payments = (function ($, Drupal, Bootstrap) {
           validated = true;
         }
       }
-
-      /*        if (!validated) {
-                ev.preventDefault();
-                return false;
-              }*/
     }
 
     return validated;

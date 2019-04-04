@@ -98,6 +98,8 @@ class ParkingReviewForm extends ParkingFormBase {
         '#value' => $this->t("J’accepte de recevoir les offres spéciales, nouvelles et informations de l’Aéroport international Jean-Lesage de Québec concernant les événements ou promotions, par la poste, par courriel, par message texte ou par SMS. Vous pouvez révoquer cette autorisation en tout temps en cliquant sur le lien indiqué dans les courriels ou en communiquant avec nous."),
     ];
 
+    yqb_bills_attach_recaptcha($form['actions']);
+
     $form['actions']['submit']['#value'] = $this->t('Payer et réserver');
 
     $actions = $form['actions'];

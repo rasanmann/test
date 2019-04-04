@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_help().
@@ -46,4 +47,36 @@ function yqb_bills_mail($key, &$message, $params) {
       $message['body'][] = \Drupal\Core\Render\Markup::create($params['body']);
       break;
   }
+}
+
+function yqb_bills_attach_recaptcha(&$form) {
+  $config = \Drupal::config('yqb_bills.settings');
+
+  $recaptcha_src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit';
+  $form['recaptcha'] = [
+    '#markup' => '<div id="recaptcha_element"></div>'
+  ];
+  $form['#attached'] = [
+    'library' => ['yqb_bills/recaptcha'],
+    'drupalSettings' => [
+      'yqb_bills' => [
+        'recaptcha' => [
+          'sitekey' => $config->get('yqb_bills.recaptcha_sitekey')
+        ]
+      ]
+    ],
+    'html_head' => [
+      [
+        [
+          '#tag' => 'script',
+          '#attributes' => [
+            'src' => Url::fromUri($recaptcha_src, ['query' => ['hl' => \Drupal::service('language_manager')->getCurrentLanguage()->getId()], 'absolute' => TRUE])->toString(),
+            'async' => TRUE,
+            'defer' => TRUE,
+          ],
+        ],
+        'recaptcha_api',
+      ],
+    ],
+  ];
 }
