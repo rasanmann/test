@@ -41,3 +41,10 @@
   display: block;
   font-size: 1.1rem;
   color: #ffcc33; }
+
+@media (min-width: 768px) {
+  .region.region-bottom-actions .block-parking-booker {
+    flex-basis: 50%; } }
+
+.disabled-parking-booker-form {
+  font-weight: bold; }

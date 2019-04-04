@@ -68,3 +68,16 @@
     }
   }
 }
+
+.region.region-bottom-actions {
+  .block-parking-booker {
+    @media(min-width: 768px) {
+      flex-basis: 50%;
+    }
+  }
+}
+
+.disabled-parking-booker-form {
+  font-weight: bold;
+  
+}
