@@ -2,154 +2,155 @@ var Drupal = Drupal || {};
 
 var Payments = (function ($, Drupal, Bootstrap) {
 
-    var self = {};
+  var self = {};
 
-    var $form = null;
+  var $form = null;
 
-    /** ------------------------------
-     * Constructor/Destructor
-     --------------------------------- */
+  /** ------------------------------
+   * Constructor/Destructor
+   --------------------------------- */
 
-    self.construct = function() {
-        console.log('Payments constructed');
+  self.construct = function () {
+    console.log('Payments constructed');
 
-        // Initialize things
-        $form = $('#layout-content').find('form');
+    // Initialize things
+    $form = $('#layout-content').find('form');
 
-        return self;
-    };
+    return self;
+  };
 
-    self.destruct = function() {
-        console.log('Payments destructed');
+  self.destruct = function () {
+    console.log('Payments destructed');
 
-        // Clean up and uninitialize things
-        $(window).off('message');
-        $form.off('submit');
-    };
+    // Clean up and uninitialize things
+    $(window).off('message');
+    $form.off('submit');
+  };
 
-    /** -----------------------------
-     * Public methods
-     --------------------------------- */
+  /** -----------------------------
+   * Public methods
+   --------------------------------- */
 
-    self.index = function() {
-        console.log('Payments page initialized');
+  self.index = function () {
+    console.log('Payments page initialized');
 
-        $(window).on('message', onFrameMessage);
-        $form.on('submit', onFormSubmit);
-
-        // TODO : move to module
-        $form.find('.btn-product-id').on('click', onProductBooking);
-
-        $('form[target="results"]').on('submit', onResultsClick);
-    };
-
-    /** -----------------------------
-     * Events
-     --------------------------------- */
-
-    var validateReCaptcha = function() {
-      var validated = true;
-
-      if ($('#recaptcha_element').length > 0) {
-        validated = false;
-        if (grecaptcha && grecaptcha.hasOwnProperty('getResponse')) {
-          if (grecaptcha.getResponse() == "") {
-            $('.recaptcha-error').remove();
-            $form.find('#recaptcha_element').append('<p class="recaptcha-error">' + Drupal.t('The reCAPTCHA field is required.') + '</p>');
-            validated = false;
-          }
-          else {
-            validated = true;
-          }
-        }
-
-/*        if (!validated) {
-          ev.preventDefault();
-          return false;
-        }*/
-      }
-
-      return validated;
-    };
-
-    var onResultsClick = function(ev) {
-      var $form = $(this);
-
-      if(!validateReCaptcha()) {
-        ev.preventDefault();
-        return false;
-      }
-
-        window.open($form.attr('action'), $form.attr('target'), 'scrollbars=1,resizable=1,width=740,height=690');
-
-        // Weird bug with chrome
-        setTimeout(function() {
-            $form.get(0).reset();
-        }, 500);
-
-        $form.find('button').removeClass('is-clicked is-loading');
-    };
+    $(window).on('message', onFrameMessage);
+    $form.on('submit', onFormSubmit);
 
     // TODO : move to module
-    var onProductBooking = function(ev) {
-        console.log('onProductBooking');
+    $form.find('.btn-product-id').on('click', onProductBooking);
 
-        ev.preventDefault();
+    $('form[target="results"]').on('submit', onResultsClick);
+  };
 
-        var $form = $(this).closest('form');
-        var $button = $form.find('.form-actions .btn[type="submit"]');
+  /** -----------------------------
+   * Events
+   --------------------------------- */
 
-        $form.find('input[name="product_id"]').attr('disabled', true);
+  var validateReCaptcha = function () {
+    var validated = true;
 
-        $(this).parent().closest('.form-group').find('input[name="product_id"]').attr('disabled', false);
-
-        // Trigger real submit button
-        $button.trigger('click', [$(this)]);
-    };
-
-    var onFormSubmit = function(ev) {
-      if(!validateReCaptcha()) {
-        ev.preventDefault();
-        return false;
+    if ($('#recaptcha_element').length > 0) {
+      validated = false;
+      if (grecaptcha && grecaptcha.hasOwnProperty('getResponse')) {
+        if (grecaptcha.getResponse() == "") {
+          $('.recaptcha-error').remove();
+          $form.find('#recaptcha_element').append('<p class="recaptcha-error">' + Drupal.t('The reCAPTCHA field is required.') + '</p>');
+          validated = false;
+        }
+        else {
+          validated = true;
+        }
       }
 
-        var $moneris = $form.find('#moneris_frame');
-            $moneris.prevAll('.alert').remove();
+      /*        if (!validated) {
+                ev.preventDefault();
+                return false;
+              }*/
+    }
 
-        if ($moneris.length) {
-            var contentWindow = $moneris.get(0).contentWindow;
-                contentWindow.postMessage('', $moneris.attr('src').replace(/\?(.*)/, ''));
+    return validated;
+  };
 
-            ev.preventDefault();
-        }
-    };
+  var onResultsClick = function (ev) {
+    var $form = $(this);
 
-    var onFrameMessage = function(ev) {
-        console.log('onFrameMessage');
+    if (!validateReCaptcha()) {
+      ev.preventDefault();
+      return false;
+    }
 
-        var respData = JSON.parse(ev.originalEvent.data);
+    window.open($form.attr('action'), $form.attr('target'), 'scrollbars=1,resizable=1,width=740,height=690');
 
-        if (respData.dataKey) {
-            // Great success
+    // Weird bug with chrome
+    setTimeout(function () {
+      $form.get(0).reset();
+    }, 500);
 
-            // Insert token into form
-            $form.find('input[name="data_key"]').val(respData.dataKey);
+    $form.find('button').removeClass('is-clicked is-loading');
+  };
 
-            // Remove event handler
-            $form.off('submit', onFormSubmit);
+  // TODO : move to module
+  var onProductBooking = function (ev) {
+    console.log('onProductBooking');
 
-            // Re-submit form
-            $form.submit();
-        } else  {
-            // Error
-            var $alert = $('<div></div>');
-                $alert.addClass('alert alert-danger');
-                $alert.text(respData.errorMessage);
+    ev.preventDefault();
 
-            $alert.insertBefore($form.find('#moneris_frame'));
-        }
-    };
+    var $form = $(this).closest('form');
+    var $button = $form.find('.form-actions .btn[type="submit"]');
 
-    // Return class
-    return self.construct();
+    $form.find('input[name="product_id"]').attr('disabled', true);
+
+    $(this).parent().closest('.form-group').find('input[name="product_id"]').attr('disabled', false);
+
+    // Trigger real submit button
+    $button.trigger('click', [$(this)]);
+  };
+
+  var onFormSubmit = function (ev) {
+    if (!validateReCaptcha()) {
+      ev.preventDefault();
+      return false;
+    }
+
+    var $moneris = $form.find('#moneris_frame');
+    $moneris.prevAll('.alert').remove();
+
+    if ($moneris.length) {
+      var contentWindow = $moneris.get(0).contentWindow;
+      contentWindow.postMessage('', $moneris.attr('src').replace(/\?(.*)/, ''));
+
+      ev.preventDefault();
+    }
+  };
+
+  var onFrameMessage = function (ev) {
+    console.log('onFrameMessage');
+
+    var respData = JSON.parse(ev.originalEvent.data);
+
+    if (respData.dataKey) {
+      // Great success
+
+      // Insert token into form
+      $form.find('input[name="data_key"]').val(respData.dataKey);
+
+      // Remove event handler
+      $form.off('submit', onFormSubmit);
+
+      // Re-submit form
+      $form.submit();
+    }
+    else {
+      // Error
+      var $alert = $('<div></div>');
+      $alert.addClass('alert alert-danger');
+      $alert.text(respData.errorMessage);
+
+      $alert.insertBefore($form.find('#moneris_frame'));
+    }
+  };
+
+  // Return class
+  return self.construct();
 });
