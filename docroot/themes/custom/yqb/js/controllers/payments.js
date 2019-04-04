@@ -47,27 +47,37 @@ var Payments = (function ($, Drupal, Bootstrap) {
      * Events
      --------------------------------- */
 
-    var onResultsClick = function(ev) {
-      var $form = $(this);
+    var validateReCaptcha = function() {
+      var validated = true;
 
       if ($('#recaptcha_element').length > 0) {
-        var validated = false;
+        validated = false;
         if (grecaptcha && grecaptcha.hasOwnProperty('getResponse')) {
           if (grecaptcha.getResponse() == "") {
             $('.recaptcha-error').remove();
             $form.find('#recaptcha_element').append('<p class="recaptcha-error">' + Drupal.t('The reCAPTCHA field is required.') + '</p>');
-            ev.preventDefault();
-            return false;
+            validated = false;
           }
           else {
             validated = true;
           }
         }
 
-        if (!validated) {
+/*        if (!validated) {
           ev.preventDefault();
           return false;
-        }
+        }*/
+      }
+
+      return validated;
+    };
+
+    var onResultsClick = function(ev) {
+      var $form = $(this);
+
+      if(!validateReCaptcha()) {
+        ev.preventDefault();
+        return false;
       }
 
         window.open($form.attr('action'), $form.attr('target'), 'scrollbars=1,resizable=1,width=740,height=690');
@@ -98,6 +108,11 @@ var Payments = (function ($, Drupal, Bootstrap) {
     };
 
     var onFormSubmit = function(ev) {
+      if(!validateReCaptcha()) {
+        ev.preventDefault();
+        return false;
+      }
+
         var $moneris = $form.find('#moneris_frame');
             $moneris.prevAll('.alert').remove();
 
