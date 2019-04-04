@@ -11,3 +11,6 @@ yql_bills.settings:
         form_is_enabled:
           type: checkbox
           label: 'Cacher le formulaire'
+        recaptcha_sitekey:
+          type: text
+          label: 'reCAPTCHA Site Key'
