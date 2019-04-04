@@ -1,2 +1,4 @@
 submit_button: 'Réserver'
 langcode: 'fr'
+disabled: 0
+disabled_text: ''

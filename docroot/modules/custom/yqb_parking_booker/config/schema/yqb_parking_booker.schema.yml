@@ -5,3 +5,9 @@ yqb_parking_booker.settings:
     submit_button:
       type: text
       label: 'Libellé du bouton'
+    disabled:
+      type: boolean
+      label: 'Disable Parking Booker Form'
+    disabled_text:
+      type: text
+      label: 'Disabled message'
