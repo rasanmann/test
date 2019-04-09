@@ -319,7 +319,8 @@
 * HOMEPAGE VIDEO
 **/
 #block-herosearchblock {
-  background: url(../videos/intro-wide.jpg) no-repeat center center/cover; }
+  /*background: url(../videos/intro-wide.jpg) no-repeat center center/cover; */
+}
   #block-herosearchblock video {
     display: none; }
 
