@@ -10451,7 +10451,8 @@ body.toolbar-fixed.toolbar-vertical.toolbar-tray-open.toolbar-fixed {
   color: white !important; }
 
 .no-videoautoplay #block-herosearchblock {
-  background: url(../videos/intro.jpg) no-repeat center center/cover; }
+  background: url(../img/yqb2019.jpg) no-repeat center center/cover;
+}
   .no-videoautoplay #block-herosearchblock .block-title {
     text-shadow: 2px 2px 1px rgba(10, 10, 11, 0.6);
     /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */ }
@@ -10462,8 +10463,8 @@ body.toolbar-fixed.toolbar-vertical.toolbar-tray-open.toolbar-fixed {
       -webkit-filter: drop-shadow(1px 1px 1px rgba(10, 10, 11, 0.6));
       filter: drop-shadow(1px 1px 1px rgba(10, 10, 11, 0.6));
       /* Same syntax as box-shadow */ }
-  .no-videoautoplay #block-herosearchblock video {
-    display: none; }
+  /*.no-videoautoplay #block-herosearchblock video {*/
+  /*  display: none; }*/
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
