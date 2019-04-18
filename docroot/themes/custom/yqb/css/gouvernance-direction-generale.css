@@ -56,6 +56,8 @@
   .paragraph--type--gouvernance-texte .field--name-field-title-gouvernance-texte {
     margin: 40px;
     font-size: 2.4rem; }
-  .paragraph--type--gouvernance-texte .field--name-field-field-texte-gouvernance-te {
+  .paragraph--type--gouvernance-texte .field--name-field-texte-gouvernance-texte {
     margin: 40px;
-    font-size: 16px; }
+    font-size: 16px;
+    padding-left:40px;
+    padding-right:40px;}
