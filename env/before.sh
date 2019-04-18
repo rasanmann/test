@@ -3,9 +3,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
 
 echo -ne "├─ [composer install] Installation des dépendances PHP"
-$DIR/../composer install
-kubeo status $?
-$DIR/../composer install
+$DIR/../composer install &> /dev/null
 kubeo status $?
 
 if [ ! -f $DIR/../docroot/sites/default/settings.local.php ]; then
