@@ -2,6 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
 
+
 echo -ne "├─ Vidage de la cache "
 $DIR/../drupal cr &> /dev/null
 kubeo status $?
