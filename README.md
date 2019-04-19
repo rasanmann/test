@@ -36,7 +36,10 @@ mysql -u drupal -pdrupal drupal < /bd/20180522-dev.sql
 rsync -avz -e "ssh -p 22" yqb.dev@staging-25038.prod.hosting.acquia.com:/var/www/html/yqbdev/docroot/sites/default/files/ ../../docroot/sites/default/files
 ```
 
-Écrire "yqb.`{dev|stage|prod}`@staging-25038.prod.hosting.acquia.com" pour avoir les fichiers de l'environnement correspondant
+- Note: Il se peut que le premier chargement du site web résulte en une erreur. Simplement rafraîchir une deuxième fois résout le problème.
+
+## Commandes utiles
+
 
 ## Composer install
 
