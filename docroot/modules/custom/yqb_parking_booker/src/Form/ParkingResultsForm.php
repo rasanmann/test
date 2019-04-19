@@ -24,10 +24,11 @@ class ParkingResultsForm extends ParkingFormBase {
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
         // Results weren't stored, user probably accessed this page directly, redirect to homepage
-        if (!$this->store->get('arrival_date') || !$this->store->get('departure_date')) {
+        if (!$this->store->get('process_started')) {
             drupal_set_message($this->t("Une erreur est survenue durant la confirmation de la réservation. Veuillez rééssayer."), 'error');
             return $this->redirect('page_manager.page_view_parking_booking_panels');
         }
+
 
         $form = parent::buildForm($form, $form_state);
         $form['#attributes']['class'][] = 'parking-booker-form-responsive';

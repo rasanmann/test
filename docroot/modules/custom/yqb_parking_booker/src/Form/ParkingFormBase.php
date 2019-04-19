@@ -1183,7 +1183,7 @@ class ParkingFormBase extends FormBase {
 			$fmt = new NumberFormatter(\Drupal::languageManager()->getCurrentLanguage()->getId(), NumberFormatter::CURRENCY);
 			return $fmt->formatCurrency($value, $currency);
 		} else if (function_exists('money_format')) {
-			return money_format('%i$', $value);
+			return money_format('%i$', preg_replace('/[^0-9\.]/', '', $value));
 		} else {
 			return number_format($value, 2) . '$';
 		}

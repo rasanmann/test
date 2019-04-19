@@ -24,6 +24,16 @@ class ParkingConfirmationForm extends ParkingFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $this->store->delete('multistep_data');
+    $this->store->delete('current_booking');
+    $this->store->delete('initialization');
+    $this->store->delete('transaction_processed');
+    $this->store->delete('confirmation_booking_data');
+    $this->store->delete('purchase_data');
+    $this->store->delete('booking_guid');
+    $this->store->delete('reference_number');
+    $this->store->delete('process_started');
+
     // Confirmation wasn't stored, user probably accessed this page directly, redirect to homepage
     if (!$this->store->get('confirmation')) {
       drupal_set_message($this->t("Une erreur est survenue durant la confirmation de la réservation. Veuillez rééssayer."), 'error');

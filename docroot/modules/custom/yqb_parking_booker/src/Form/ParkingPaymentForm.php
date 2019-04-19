@@ -21,17 +21,22 @@ class ParkingPaymentForm extends ParkingFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    if (!$this->store->get('process_started')) {
+      drupal_set_message($this->t("Une erreur est survenue durant la confirmation de la réservation. Veuillez rééssayer."), 'error');
+      return $this->redirect('page_manager.page_view_parking_booking_panels');
+    }
+
     $form = parent::buildForm($form, $form_state);
 
     $form['header'] = $this->generateHeader();
     $form['footer'] = $this->generateFooter();
-    
+
     $userId = ($this->store->get('user_id')) ? $this->store->get('user_id') : \Drupal::currentUser()->id();
-    
+
     $currentUser = \Drupal\user\Entity\User::load($userId);
-    
+
     $isAnon = ($currentUser->get('field_uuid') && !empty($currentUser->get('field_uuid')->value));
-    
+
     // Set default user information if user is connected or not
     $userInformation = [
       'firstName' =>    ($currentUser->get('field_first_name') && !$isAnon) ? $currentUser->get('field_first_name')->value : null,
@@ -150,7 +155,7 @@ class ParkingPaymentForm extends ParkingFormBase {
         ],
         'col-2' => [
           '#type' => 'container',
-          '#attributes' => ['class' => ['col-sm-6']], 
+          '#attributes' => ['class' => ['col-sm-6']],
             'phone_number' => $phoneNumber,
             'address' => $address,
           'container-1' => [
@@ -173,7 +178,7 @@ class ParkingPaymentForm extends ParkingFormBase {
         ]
       ]
     ];
-    
+
     $form['container'] = $container;
 
     return $form;
@@ -203,7 +208,7 @@ class ParkingPaymentForm extends ParkingFormBase {
     $this->store->set('city', $form_state->getValue('city'));
     $this->store->set('postal_code', $form_state->getValue('postal_code'));
     $this->store->set('phone', $form_state->getValue('phone_number'));
-    
+
     $route = sprintf('yqb_parking_booker.%s.review', \Drupal::languageManager()->getCurrentLanguage()->getId());
 
     $this->parkingRedirect($form_state, $route);
