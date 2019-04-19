@@ -4,7 +4,7 @@ assert_options(ASSERT_ACTIVE, TRUE);
 \Drupal\Component\Assertion\Handle::register();
 
 $config_directories = array();
-
+ini_set('memory_limit', '2000M');
 $settings['extension_discovery_scan_tests'] = TRUE;
 $settings['file_public_path'] = 'sites/default/files';
 $settings['file_private_path'] = 'sites/default/files/private';

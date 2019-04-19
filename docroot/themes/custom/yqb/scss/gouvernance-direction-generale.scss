@@ -1,0 +1,94 @@
+.field--name-body{
+  h2 {
+    font-size:2.4rem;
+    margin:40px;
+    font-weight: normal;
+  }
+
+  p {
+    font-size:16px;
+    margin:40px;
+  }
+}
+
+.field--name-field-plus-icon-gouvernance-empl{
+  text-align:center;
+  .img-responsive {
+    display:inline-block;
+    max-width:25px;
+    padding-top:15px;
+  }
+}
+
+.field--name-field-paragraphs {
+  border-top: 1px solid hsl(0,0%,90%);
+  border-bottom: 1px solid hsl(0,0%,90%);
+
+  .row-wrapper {
+    position:relative;
+    min-height:300px;
+  }
+
+    .trio_content {
+      padding-top:130px;
+      margin:auto;
+      width:50%;
+      text-align:center;
+
+      .field--name-field-title-gouvernance-employe {
+        font-size:2.4rem;
+      }
+      .field--name-field-sous-titre-gouvernance-emp {
+        font-size:16px;
+      }
+    }
+
+  .field--item:nth-child(odd) .row-wrapper {
+    background-color:hsla(0,0%,97%,1);
+  }
+
+  .field--item:nth-child(even) .row-wrapper {
+    background-color:hsla(0,0%,100%,1);
+  }
+
+
+  .field--item:nth-child(odd) .row-wrapper .field--name-field-image-gouvernance-employe{
+
+    img {
+      position:absolute;
+      right:0px;
+      bottom:0;
+        @media only screen and (max-width: 600px){
+          display:none;
+        }
+    }
+  }
+
+  .field--item:nth-child(even) .row-wrapper .field--name-field-image-gouvernance-employe{
+    background-color:#fff;
+    img {
+      position:absolute;
+      left:0px;
+      bottom:0;
+      @media only screen and (max-width: 600px){
+        display:none;
+      }
+    }
+  }
+
+}//end
+
+.paragraph--type--gouvernance-texte {
+  border-top: 1px solid hsl(0,0%,90%);
+  border-bottom: 1px solid hsl(0,0%,90%);
+
+
+  .field--name-field-title-gouvernance-texte{
+    margin:40px;
+    font-size:2.4rem;
+  }
+  .field--name-field-texte-gouvernance-texte {
+    margin:40px;
+    font-size:16px;
+  }
+}

@@ -11,6 +11,7 @@ global-styling:
       css/views.css: {}
       css/ie9.css: { browsers: { IE: 'lte IE 9', '!IE': false }, minified: true }
       css/2019-03.css: {}
+      css/gouvernance-direction-generale.css: {}
 
 # Global app js
 global-js:
