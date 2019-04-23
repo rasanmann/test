@@ -2,50 +2,81 @@ var Drupal = Drupal || {};
 
 var Payments = (function ($, Drupal, Bootstrap) {
 
-    var self = {};
+  var self = {};
 
-    var $form = null;
+  var $form = null;
 
-    /** ------------------------------
-     * Constructor/Destructor
-     --------------------------------- */
+  /** ------------------------------
+   * Constructor/Destructor
+   --------------------------------- */
 
-    self.construct = function() {
-        console.log('Payments constructed');
+  self.construct = function () {
+    console.log('Payments constructed');
 
-        // Initialize things
-        $form = $('#layout-content').find('form');
+    // Initialize things
+    $form = $('#layout-content').find('form');
 
-        return self;
-    };
+    return self;
+  };
 
-    self.destruct = function() {
-        console.log('Payments destructed');
+  self.destruct = function () {
+    console.log('Payments destructed');
 
-        // Clean up and uninitialize things
-        $(window).off('message');
-        $form.off('submit');
-    };
+    // Clean up and uninitialize things
+    $(window).off('message');
+    $form.off('submit');
+  };
 
-    /** -----------------------------
-     * Public methods
-     --------------------------------- */
+  /** -----------------------------
+   * Public methods
+   --------------------------------- */
 
-    self.index = function() {
-        console.log('Payments page initialized');
+  self.index = function () {
+    console.log('Payments page initialized');
 
-        $(window).on('message', onFrameMessage);
-        $form.on('submit', onFormSubmit);
+    $(window).on('message', onFrameMessage);
+    $form.on('submit', onFormSubmit);
 
-        // TODO : move to module
-        $form.find('.btn-product-id').on('click', onProductBooking);
+    // TODO : move to module
+    $form.find('.btn-product-id').on('click', onProductBooking);
 
-        $('form[target="results"]').on('submit', onResultsClick);
-    };
+    $('form[target="results"]').on('submit', onResultsClick);
+  };
 
-    /** -----------------------------
-     * Events
-     --------------------------------- */
+  /** -----------------------------
+   * Events
+   --------------------------------- */
+
+  var resetReCaptcha = function() {
+    if ($('#recaptcha_element').length > 0) {
+      if (grecaptcha) {
+        grecaptcha.reset();
+      }
+    }
+  };
+
+  var validateReCaptcha = function () {
+    var validated = true;
+
+    if ($('#recaptcha_element').length > 0) {
+      validated = false;
+      if (grecaptcha && grecaptcha.hasOwnProperty('getResponse')) {
+        if (grecaptcha.getResponse() == "") {
+          $('.recaptcha-error').remove();
+          $form.find('#recaptcha_element').append('<p class="recaptcha-error">' + Drupal.t('The reCAPTCHA field is required.') + '</p>');
+          validated = false;
+        }
+        else {
+          validated = true;
+        }
+      }
+    }
+
+    return validated;
+  };
+
+  var onResultsClick = function (ev) {
+    var $form = $(this);
 
     var onResultsClick = function(ev) {
       var $form = $(this);
@@ -70,71 +101,94 @@ var Payments = (function ($, Drupal, Bootstrap) {
         }
       }
 
-        window.open($form.attr('action'), $form.attr('target'), 'scrollbars=1,resizable=1,width=740,height=690');
 
-        // Weird bug with chrome
-        setTimeout(function() {
-            $form.get(0).reset();
-        }, 500);
+    window.open($form.attr('action'), $form.attr('target'), 'scrollbars=1,resizable=1,width=740,height=690');
 
-        $form.find('button').removeClass('is-clicked is-loading');
-    };
+    // Weird bug with chrome
+    setTimeout(function () {
+      resetReCaptcha();
+      $form.get(0).reset();
+    }, 500);
 
-    // TODO : move to module
-    var onProductBooking = function(ev) {
-        console.log('onProductBooking');
+    $form.find('button').removeClass('is-clicked is-loading');
+  };
 
-        ev.preventDefault();
+  // TODO : move to module
+  var onProductBooking = function (ev) {
+    console.log('onProductBooking');
 
-        var $form = $(this).closest('form');
-        var $button = $form.find('.form-actions .btn[type="submit"]');
+    ev.preventDefault();
 
-        $form.find('input[name="product_id"]').attr('disabled', true);
+    var $form = $(this).closest('form');
+    var $button = $form.find('.form-actions .btn[type="submit"]');
 
-        $(this).parent().closest('.form-group').find('input[name="product_id"]').attr('disabled', false);
+    $form.find('input[name="product_id"]').attr('disabled', true);
 
-        // Trigger real submit button
-        $button.trigger('click', [$(this)]);
-    };
+    $(this).parent().closest('.form-group').find('input[name="product_id"]').attr('disabled', false);
 
-    var onFormSubmit = function(ev) {
-        var $moneris = $form.find('#moneris_frame');
-            $moneris.prevAll('.alert').remove();
+    // Trigger real submit button
+    $button.trigger('click', [$(this)]);
+  };
 
-        if ($moneris.length) {
-            var contentWindow = $moneris.get(0).contentWindow;
-                contentWindow.postMessage('', $moneris.attr('src').replace(/\?(.*)/, ''));
+  var onFormSubmit = function (ev) {
+    if($form.data('submitting')) {
+      ev.preventDefault();
+      return false;
+    }
 
-            ev.preventDefault();
-        }
-    };
+    if (!validateReCaptcha()) {
+      ev.preventDefault();
+      return false;
+    }
 
-    var onFrameMessage = function(ev) {
-        console.log('onFrameMessage');
+    var $moneris = $form.find('#moneris_frame');
+    $moneris.prevAll('.alert').remove();
 
-        var respData = JSON.parse(ev.originalEvent.data);
+    if ($moneris.length) {
+      $form.data('submitting', true);
+      $form.find('button[type="submit"],input[type="submit"]').attr('disabled','disabled');
+      var contentWindow = $moneris.get(0).contentWindow;
+      contentWindow.postMessage('', $moneris.attr('src').replace(/\?(.*)/, ''));
 
-        if (respData.dataKey) {
-            // Great success
+      ev.preventDefault();
+    }
+  };
 
-            // Insert token into form
-            $form.find('input[name="data_key"]').val(respData.dataKey);
+  var onFrameMessage = function (ev) {
+    console.log('onFrameMessage');
 
-            // Remove event handler
-            $form.off('submit', onFormSubmit);
+    var respData = JSON.parse(ev.originalEvent.data);
 
-            // Re-submit form
-            $form.submit();
-        } else  {
-            // Error
-            var $alert = $('<div></div>');
-                $alert.addClass('alert alert-danger');
-                $alert.text(respData.errorMessage);
+    if (respData.dataKey) {
+      // Great success
 
-            $alert.insertBefore($form.find('#moneris_frame'));
-        }
-    };
+      // Insert token into form
+      $form.find('input[name="data_key"]').val(respData.dataKey);
 
+      // Remove event handler
+      $form.off('submit', onFormSubmit);
+
+      // Re-submit form
+      $form.submit();
+    }
+    else {
+      // Error
+      $form.data('submitting', false);
+      resetReCaptcha();
+      var $alert = $('<div></div>');
+      $alert.addClass('alert alert-danger');
+      $alert.text(respData.errorMessage);
+
+      $alert.insertBefore($form.find('#moneris_frame'));
+      $form.find('button[type="submit"],input[type="submit"]').removeClass('is-clicked is-loading').removeAttr('disabled');
+    }
+  };
+
+<<<<<<< HEAD
     // Return class
     return self.construct();
+=======
+  // Return class
+  return self.construct();
+>>>>>>> feature/91183_secure_payment_pages
 });

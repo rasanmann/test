@@ -25,46 +25,46 @@ class ParkingReferenceSearchForm extends ParkingFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $this->deleteStore();
-    
+
     if($this->getRequest()->query->get('webview')){
       $this->store->set('webview', true);
     }
-    
+
     $form = parent::buildForm($form, $form_state);
-    
+
     if($this->getRequest()->query->get('user_id')){
       $current_user = User::load($this->getRequest()->query->get('user_id'));
-      
+
       if(!empty($current_user)) {
         $this->store->set('user_id', $this->getRequest()->query->get('user_id'));
       }
     }else{
       $current_user = \Drupal::currentUser();
     }
-    
+
     $bookings = [];
     if (!empty($current_user) && $current_user->id()) {
       $now = date('Y-m-d');
-      
+
       $query = \Drupal::entityQuery('node');
-      
+
       $andDeparture= $query->andConditionGroup()
         ->condition('field_arrival', $now, '<=')
         ->condition('field_departure', $now, '>');
-      
+
       $orGroup = $query->orConditionGroup()
         ->condition('field_arrival', $now, '>=')
         ->condition($andDeparture);
-      
+
       $results = $query->condition('type', 'parking_booking')
       ->condition('field_user', $current_user->id())
       ->condition($orGroup)
       ->execute();
-      
+
       $node_storage = \Drupal::entityTypeManager()->getStorage('node');
       $bookings = $node_storage->loadMultiple($results);
     }
-    
+
     if (!empty($bookings)) {
       $container = [
         '#type' => 'container',
@@ -87,7 +87,7 @@ class ParkingReferenceSearchForm extends ParkingFormBase {
           'bottom' => []
         ]
       ];
-      
+
       $i = 0;
       foreach($bookings as $booking){
         $container['row']['results']['#rows'][] = [
@@ -120,22 +120,23 @@ class ParkingReferenceSearchForm extends ParkingFormBase {
                   '#attributes' => ['name' => 'booking_reference', 'checked' => ($i == 0)],
                   '#required' => TRUE,
                   '#value' => $booking->field_advam_reference->value,
+                  '#return_value' => $booking->field_advam_reference->value,
                 ]
               ]
             ],
           ],
         ];
-        
+
         $i++;
       }
-      
+
       // Format submit zone
       $form['actions']['submit']['#value'] = $this->t('Voir la réservation');
       $form['actions']['submit']['#attributes'] = ['class' => ['btn', 'btn-primary']];
-      
+
       $actions = $form['actions'];
       unset($form['actions']);
-      
+
       $bottom = [
           '#type' => 'container',
           '#attributes' => ['class' => ['row', 'text-right']],
@@ -149,7 +150,7 @@ class ParkingReferenceSearchForm extends ParkingFormBase {
               'actions' => $actions,
           ],
       ];
-      
+
       $container['row']['bottom'] = $bottom;
     } else {
       $description = [
@@ -211,9 +212,9 @@ class ParkingReferenceSearchForm extends ParkingFormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $bookingReference = (isset($_POST['booking_reference']) && empty($form_state->getValue('booking_reference'))) ? $_POST['booking_reference'] : $form_state->getValue('booking_reference');
-    
+
     $result = $this->advam->searchBooking($form_state->getValue('email'), $bookingReference);
-    
+
     if ($result) {
       $this->store->set('current_booking', reset($result->bookings));
     } else {

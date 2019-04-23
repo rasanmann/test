@@ -79,5 +79,22 @@
 
 .disabled-parking-booker-form {
   font-weight: bold;
+<<<<<<< HEAD
   
+=======
+
+}
+
+.parking-content {
+  #recaptcha_element {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    flex-direction: column;
+    flex-flow: column wrap;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+>>>>>>> feature/91183_secure_payment_pages
 }

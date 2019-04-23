@@ -87,6 +87,7 @@ class BillsBlock extends BlockBase implements BlockPluginInterface{
       '#return_value' => $this->t("Factures et états de compte par courriel."),
     ];
 
+
     $recaptcha_src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit';
     $form['recaptcha'] = [
       '#markup' => '<div id="recaptcha_element"></div>'
@@ -114,6 +115,8 @@ class BillsBlock extends BlockBase implements BlockPluginInterface{
         ],
       ],
     ];
+
+    yqb_bills_attach_recaptcha($form);
 
     $form['actions'] = [
       '#type' => 'button',

@@ -13,7 +13,6 @@ global-styling:
       css/2019-03.css: {}
       css/gouvernance-direction-generale.css: {}
 
-
 # Global app js
 global-js:
   js:

@@ -89,10 +89,10 @@ class ParkingCancelForm extends ParkingFormBase {
                     '#value' => $this->t($category)
                 ];
 
-                if ($cancellationItem->productId) {
+                if (isset($cancellationItem->productId) && $cancellationItem->productId) {
                     $product = $this->advam->getProduct($cancellationItem->productId);
                     $name['#value'] = '<strong>'. $product->name . '</strong>';
-                } else if ($cancellationItem->extraId) {
+                } else if (isset($cancellationItem->extraId) && $cancellationItem->extraId) {
                     $extra = $this->advam->getExtra($cancellationItem->extraId);
                     $name['#value'] = '<strong>'. $extra->name . '</strong>';
 
@@ -247,14 +247,14 @@ class ParkingCancelForm extends ParkingFormBase {
         } else {
             // If refund was successful, cancel the booking
             $result = $this->advam->cancelBooking($booking->guid);
-          
+
             // Delete node
             $toDelete = \Drupal::entityQuery('node')
                 ->condition('type', 'parking_booking')
                 ->condition('field_advam_reference', $cancellation->booking->reference)
                 ->pager(1)
                 ->execute();
-            
+
             if(!empty($toDelete)) {
               $node_storage = \Drupal::entityTypeManager()->getStorage('node');
               $nodes = $node_storage->loadMultiple($toDelete);
