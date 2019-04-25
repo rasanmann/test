@@ -47,7 +47,7 @@ var Payments = (function ($, Drupal, Bootstrap) {
    * Events
    --------------------------------- */
 
-  var resetReCaptcha = function() {
+  var resetReCaptcha = function () {
     if ($('#recaptcha_element').length > 0) {
       if (grecaptcha) {
         grecaptcha.reset();
@@ -75,31 +75,29 @@ var Payments = (function ($, Drupal, Bootstrap) {
     return validated;
   };
 
+
   var onResultsClick = function (ev) {
     var $form = $(this);
 
-    var onResultsClick = function(ev) {
-      var $form = $(this);
-
-      if ($('#recaptcha_element').length > 0) {
-        var validated = false;
-        if (grecaptcha && grecaptcha.hasOwnProperty('getResponse')) {
-          if (grecaptcha.getResponse() == "") {
-            $('.recaptcha-error').remove();
-            $form.find('#recaptcha_element').append('<p class="recaptcha-error">' + Drupal.t('The reCAPTCHA field is required.') + '</p>');
-            ev.preventDefault();
-            return false;
-          }
-          else {
-            validated = true;
-          }
-        }
-
-        if (!validated) {
+    if ($('#recaptcha_element').length > 0) {
+      var validated = false;
+      if (grecaptcha && grecaptcha.hasOwnProperty('getResponse')) {
+        if (grecaptcha.getResponse() == "") {
+          $('.recaptcha-error').remove();
+          $form.find('#recaptcha_element').append('<p class="recaptcha-error">' + Drupal.t('The reCAPTCHA field is required.') + '</p>');
           ev.preventDefault();
           return false;
         }
+        else {
+          validated = true;
+        }
       }
+
+      if (!validated) {
+        ev.preventDefault();
+        return false;
+      }
+    }
 
 
     window.open($form.attr('action'), $form.attr('target'), 'scrollbars=1,resizable=1,width=740,height=690');
@@ -131,7 +129,7 @@ var Payments = (function ($, Drupal, Bootstrap) {
   };
 
   var onFormSubmit = function (ev) {
-    if($form.data('submitting')) {
+    if ($form.data('submitting')) {
       ev.preventDefault();
       return false;
     }
@@ -146,7 +144,7 @@ var Payments = (function ($, Drupal, Bootstrap) {
 
     if ($moneris.length) {
       $form.data('submitting', true);
-      $form.find('button[type="submit"],input[type="submit"]').attr('disabled','disabled');
+      $form.find('button[type="submit"],input[type="submit"]').attr('disabled', 'disabled');
       var contentWindow = $moneris.get(0).contentWindow;
       contentWindow.postMessage('', $moneris.attr('src').replace(/\?(.*)/, ''));
 
@@ -184,11 +182,6 @@ var Payments = (function ($, Drupal, Bootstrap) {
     }
   };
 
-<<<<<<< HEAD
-    // Return class
-    return self.construct();
-=======
   // Return class
   return self.construct();
->>>>>>> feature/91183_secure_payment_pages
 });

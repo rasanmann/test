@@ -33,14 +33,22 @@ class Synchronize {
     $updatedDestinations = $this->getUpdatedDestinations(
       $this->getDirectDepartures('+180 days')
     );
-    $totalDays = 61;
+    $totalDays = 180;
 
     foreach ($updatedDestinations as $destinationId => $airlines) {
       $destination = Node::load($destinationId);
 
-      /** @var \Drupal\Core\Field\FieldItemList $schedules */
-      $schedules = $destination->get('field_destination_schedule');
-      $schedules->delete();
+      $storage = \Drupal::entityTypeManager()->getStorage('field_collection_item');
+      $schedules = [];
+      foreach ($destination->get('field_destination_schedule') as $item) {
+        $schedules[] = $item->value;
+      }
+      if (!empty($schedules)) {
+        $items = $storage->loadMultiple($schedules);
+        $storage->delete($items);
+        $destination->set('field_destination_schedule', []);
+      }
+
       foreach ($airlines as $airlineId => $dates) {
         $dates = array_unique($dates);
         sort($dates);
