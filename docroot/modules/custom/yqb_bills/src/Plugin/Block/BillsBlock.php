@@ -87,35 +87,6 @@ class BillsBlock extends BlockBase implements BlockPluginInterface{
       '#return_value' => $this->t("Factures et états de compte par courriel."),
     ];
 
-
-    $recaptcha_src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit';
-    $form['recaptcha'] = [
-      '#markup' => '<div id="recaptcha_element"></div>'
-    ];
-    $form['#attached'] = [
-      'library' => ['yqb_bills/recaptcha'],
-      'drupalSettings' => [
-        'yqb_bills' => [
-          'recaptcha' => [
-            'sitekey' => $config->get('yqb_bills.recaptcha_sitekey')
-          ]
-        ]
-      ],
-      'html_head' => [
-        [
-          [
-            '#tag' => 'script',
-            '#attributes' => [
-              'src' => Url::fromUri($recaptcha_src, ['query' => ['hl' => \Drupal::service('language_manager')->getCurrentLanguage()->getId()], 'absolute' => TRUE])->toString(),
-              'async' => TRUE,
-              'defer' => TRUE,
-            ],
-          ],
-          'recaptcha_api',
-        ],
-      ],
-    ];
-
     yqb_bills_attach_recaptcha($form);
 
     $form['actions'] = [
