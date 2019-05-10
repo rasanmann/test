@@ -1,0 +1,7 @@
+name: YQB Destinations
+description: Automatically synchronize destinations served by direct Flights.
+package: YQB
+type: module
+core: 8.x
+dependencies:
+  - data_exchange_layer:data_exchange_layer

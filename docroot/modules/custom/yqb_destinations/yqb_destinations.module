@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function yqb_destinations_cron() {
+  /** @var \Drupal\yqb_destinations\Synchronize $synchronizeService */
+  $synchronizeService = Drupal::service('yqb_destinations.synchronize');
+  $synchronizeService->sync();
+}

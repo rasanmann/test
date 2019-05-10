@@ -1,0 +1,3 @@
+services:
+  data_exchange_layer.connector:
+    class: Drupal\data_exchange_layer\Connector\DataExchangeLayerConnector

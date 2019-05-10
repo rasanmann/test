@@ -47,7 +47,7 @@ var Payments = (function ($, Drupal, Bootstrap) {
    * Events
    --------------------------------- */
 
-  var resetReCaptcha = function() {
+  var resetReCaptcha = function () {
     if ($('#recaptcha_element').length > 0) {
       if (grecaptcha) {
         grecaptcha.reset();
@@ -74,6 +74,7 @@ var Payments = (function ($, Drupal, Bootstrap) {
 
     return validated;
   };
+
 
   var onResultsClick = function (ev) {
     var $form = $(this);
@@ -112,7 +113,7 @@ var Payments = (function ($, Drupal, Bootstrap) {
   };
 
   var onFormSubmit = function (ev) {
-    if($form.data('submitting')) {
+    if ($form.data('submitting')) {
       ev.preventDefault();
       return false;
     }
@@ -127,7 +128,7 @@ var Payments = (function ($, Drupal, Bootstrap) {
 
     if ($moneris.length) {
       $form.data('submitting', true);
-      $form.find('button[type="submit"],input[type="submit"]').attr('disabled','disabled');
+      $form.find('button[type="submit"],input[type="submit"]').attr('disabled', 'disabled');
       var contentWindow = $moneris.get(0).contentWindow;
       contentWindow.postMessage('', $moneris.attr('src').replace(/\?(.*)/, ''));
 

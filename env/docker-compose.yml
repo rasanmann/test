@@ -1,0 +1,90 @@
+version: '3'
+services:
+  nginx:
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx
+    privileged: true
+    image: docker.gitlab.libeo.com/libeo/nginx:1.15-fpm
+    environment:
+      CURRENT_UID: ${CURRENT_UID}
+      SERVER_ROOT: /app/docroot/
+      PHP_FPM_HOST: php-fpm
+    depends_on:
+    - php-fpm
+    - mysql
+    volumes:
+    - ../:/app/
+    - ./conf/docker-entrypoint:/docker-entrypoint
+    - ./conf/default-nginx.conf:/conf/default.conf
+    labels:
+    - "traefik.docker.network=traefik_default"
+    - "traefik.frontend.rule=Host:${COMPOSE_PROJECT_NAME}.local.vici.io"
+    - "traefik.frontend.priority=1"
+    networks:
+    - traefik_default
+    - backend
+
+  php-fpm:
+    container_name: ${COMPOSE_PROJECT_NAME}_php-fpm
+    image: docker.gitlab.libeo.com/libeo/php:7.1-fpm
+    depends_on:
+    - maildev
+    - mysql
+    environment:
+      CURRENT_UID: ${CURRENT_UID}
+      PM_MAX_CHILDREN: "25"
+    volumes:
+    - ../:/app/
+    networks:
+      backend:
+        aliases:
+        - php-fpm
+
+  mysql:
+    container_name: ${COMPOSE_PROJECT_NAME}_mysql
+    image: mysql:5.6
+    command:
+    - --innodb-flush-log-at-trx-commit=0
+    environment:
+      MYSQL_ROOT_PASSWORD: yqb
+      MYSQL_USER: yqb
+      MYSQL_PASSWORD: yqb
+      MYSQL_DATABASE: yqb
+    volumes:
+    - yqb-mysql-data:/var/lib/mysql
+    networks:
+      backend:
+        aliases:
+        - mysql
+
+  maildev:
+    container_name: ${COMPOSE_PROJECT_NAME}_maildev
+    image: djfarrelly/maildev
+    labels:
+    - "traefik.docker.network=traefik_default"
+    - "traefik.frontend.rule=Host:mail.${COMPOSE_PROJECT_NAME}.local.vici.io"
+    networks:
+    - traefik_default
+    - backend
+
+  phpmyadmin:
+    container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+    - mysql
+    environment:
+    - PMA_HOSTS=mysql
+    labels:
+    - "traefik.docker.network=traefik_default"
+    - "traefik.frontend.rule=Host:pma.${COMPOSE_PROJECT_NAME}.local.vici.io"
+    networks:
+    - traefik_default
+    - backend
+
+
+volumes:
+  yqb-mysql-data:
+
+networks:
+  backend:
+  traefik_default:
+    external: true
