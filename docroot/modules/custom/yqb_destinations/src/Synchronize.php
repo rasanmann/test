@@ -2,6 +2,7 @@
 
 namespace Drupal\yqb_destinations;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\data_exchange_layer\Connector\DataExchangeLayerConnector;
@@ -33,7 +34,6 @@ class Synchronize {
     $updatedDestinations = $this->getUpdatedDestinations(
       $this->getDirectDepartures('+180 days')
     );
-    $totalDays = 180;
 
     foreach ($updatedDestinations as $destinationId => $airlines) {
       $destination = Node::load($destinationId);
@@ -53,7 +53,17 @@ class Synchronize {
         $dates = array_unique($dates);
         sort($dates);
 
-        $everyday = (count($dates) == $totalDays);
+        $firstDate = new DrupalDateTime($dates[0]);
+        $lastDate = new DrupalDateTime($dates[(count($dates) - 1)]);
+        $totalDays = intval($firstDate->diff($lastDate)->format('%a'));
+
+        $everyday = FALSE;
+        $totalDates = count($dates);
+        if ($totalDates > 100) {
+          if ($totalDates == $totalDays || $totalDates == ($totalDays - 1) || $totalDates == ($totalDays + 1)) {
+            $everyday = TRUE;
+          }
+        }
 
         $newSchedule = FieldCollectionItem::create([
           'field_everyday' => $everyday,
