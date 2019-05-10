@@ -58,8 +58,11 @@
                 </div>
                 <a href="#" class="trigger-toggle">{{ content.field_plus_icon_gouvernance_empl }}</a>
                 <div class="content-toggle is-collapsed" aria-hidden="true">
-                    <div>{{ content.field_employe_title_list }}</div>
-                    <div>
+                    <div class="row job_title_wrapper">
+                        <div class="job_title_list">{{ content.field_job_title }}</div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-12">
                             {{ content.field_left_column_gouvernance_em }}
                         </div>
@@ -70,7 +73,7 @@
                         <a href="#" class="trigger-toggle">{{ content.field_minus_icon_gouvernance_emp }}</a>
                 </div>
             </div>
-            {{ content|without('field_title_gouvernance_employe','field_sous_titre_gouvernance_emp', 'field_plus_icon_gouvernance_empl', 'field_image_gouvernance_employe', 'field_left_column_gouvernance_em', 'field_right_column_gouvernance_e','field_minus_icon_gouvernance_emp','field_employe_title_list') }}
+            {{ content|without('field_title_gouvernance_employe','field_sous_titre_gouvernance_emp', 'field_plus_icon_gouvernance_empl', 'field_image_gouvernance_employe', 'field_left_column_gouvernance_em', 'field_right_column_gouvernance_e','field_minus_icon_gouvernance_emp','field_job_title') }}
         {% endblock %}
     </div>
 {% endblock paragraph %}
