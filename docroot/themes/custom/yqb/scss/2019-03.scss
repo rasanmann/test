@@ -93,3 +93,24 @@
     align-items: flex-end;
   }
 }
+
+.job_title_wrapper {
+  display:flex;
+  justify-content:space-between;
+
+  .field--items {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+
+    .field--item {
+      padding:10px;
+      background-color: #e6e6e6;
+      margin:5px;
+      font-weight: lighter;
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+  }
+}

@@ -58,3 +58,18 @@
   flex-flow: column wrap;
   flex-wrap: wrap;
   align-items: flex-end; }
+
+.job_title_wrapper {
+  display: flex;
+  justify-content: space-between; }
+  .job_title_wrapper .field--items {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; }
+    .job_title_wrapper .field--items .field--item {
+      padding: 10px;
+      background-color: #e6e6e6;
+      margin: 5px;
+      font-weight: lighter; }
+      .job_title_wrapper .field--items .field--item:hover {
+        background-color: #f2f2f2; }

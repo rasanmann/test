@@ -1,0 +1,4 @@
+services:
+  yqb_destinations.synchronize:
+    class: Drupal\yqb_destinations\Synchronize
+    arguments: ['@entity_type.manager', '@data_exchange_layer.connector', '@logger.factory']

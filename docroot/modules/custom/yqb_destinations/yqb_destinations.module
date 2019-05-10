@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function yqb_destinations_cron() {
+  $cronConfig = \Drupal::configFactory()->getEditable('yqb_destinations.settings');
+
+  $interval = $cronConfig->get('interval');
+  $interval = !empty($interval) ? $interval : 86400;
+
+  $nextExecution = \Drupal::state()->get('yqb_destinations.next_execution');
+  $nextExecution = !empty($nextExecution) ? $nextExecution : 0;
+
+  if (\Drupal::time()->getRequestTime() >= $nextExecution) {
+    /** @var \Drupal\yqb_destinations\Synchronize $synchronizeService */
+    $synchronizeService = Drupal::service('yqb_destinations.synchronize');
+    $synchronizeService->sync();
+
+    \Drupal::state()->set('yqb_destinations.next_execution', \Drupal::time()->getRequestTime() + $interval);
+  }
+}
