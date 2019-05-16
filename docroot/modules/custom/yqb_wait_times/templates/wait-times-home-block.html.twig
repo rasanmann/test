@@ -1,9 +1,8 @@
-{% if time > 0 %}
-    {% trans %}
-        Environ {{ time }} minute d’attente au point de contrôle
-    {% plural time %}
-        Environ {{ time }} minutes d’attente au point de contrôle
-    {% endtrans %}
+{% if time <= 15 %}
+  {{ "Between 0 and 15 minutes wait time at the checkpoint"|t }}
+{% elseif time > 15 and time <= 30 %}
+  {{ "Between 15 and 30 minutes wait time at the checkpoint"|t }}
 {% else %}
-    {{ "Moins de 5 minutes d’attente au point de contrôle"|t  }}
+  {{ "More than 30 minutes wait time at the checkpoint"|t }}
 {% endif %}
+wait time at the checkpoint
