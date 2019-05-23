@@ -508,6 +508,7 @@ var Destinations = (function ($, Drupal, Bootstrap) {
      */
     var searchAirlines = function(date, destinationAlias) {
         var airlines = [];
+        var airlineNames = [];
 
         var formattedDate = moment(date).format('Y-MM-DD');
 
@@ -523,12 +524,24 @@ var Destinations = (function ($, Drupal, Bootstrap) {
                 var iata = $carrierSchedule.find('.views-field-field-iata .field-content').text().trim();
                 var url = $carrierSchedule.find('.views-field-field-website .field-content').text().trim();
                     url = prepareBookingUrl(url, date, iata);
+                    var name = $carrierSchedule.find('.views-field-field-airline .field-content').text().trim(),
+                      sameExists = false;
 
-                airlines.push({
-                    airlineName:$carrierSchedule.find('.views-field-field-airline .field-content').text().trim(),
-                    airlineLogo:$carrierSchedule.find('.views-field-uri-2 .field-content').text().trim(),
-                    airlineLink:url
-                });
+                    for(var i = 0; i < airlineNames.length; i++) {
+                      if(airlineNames[i] === name) {
+                        sameExists = true;
+                        break;
+                      }
+                    }
+
+                    if(!sameExists) {
+                      airlineNames.push(name);
+                      airlines.push({
+                        airlineName: name,
+                        airlineLogo: $carrierSchedule.find('.views-field-uri-2 .field-content').text().trim(),
+                        airlineLink: url
+                      });
+                    }
             }
         });
 
