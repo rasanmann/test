@@ -1,0 +1,15 @@
+name: Vidéo page d'accueil
+description: Modification de la vidéo sur la page d'accueil
+package: YQB
+
+type: module
+core: 8.x
+
+dependencies:
+
+#
+#hidden: true
+#
+# Note: do not add the 'version'  property yourself!
+# It will be added automatically by the packager on drupal.org.
+#version: 1.0

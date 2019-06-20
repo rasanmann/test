@@ -1,0 +1,13 @@
+yqb_video_accueil.settings:
+  type: config_object
+  label: 'Video accueil settings'
+  mapping:
+    submit_button:
+      type: text
+      label: 'Libellé du bouton'
+    video_accueil_fid:
+      type: managed_file
+      label: 'Video'
+    poster_video_accueil_fid:
+      type: managed_file
+      label: 'Video Poster'
