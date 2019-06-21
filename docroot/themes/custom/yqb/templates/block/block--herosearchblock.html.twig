@@ -6,10 +6,8 @@
 #}
 <section{{ attributes.addClass('block', 'clearfix') }} >
     <div class="video-wrapper">
-        <video loop autoplay muted playsinline poster="/{{ base_path ~ directory }}/img/yqb2019.jpg?v8">
-            {% for video in videos %}
-                <source src="{{ video.src }}" type="{{ video.mime }}" />
-            {% endfor %}
+        <video loop autoplay muted playsinline poster="{{ poster }}">
+            <source src="{{ video.src }}" type="{{ video.mime }}" />
         </video>
     </div>
 
