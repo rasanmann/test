@@ -1,4 +1,6 @@
 submit_button: 'Téléverser'
 langcode: 'fr'
-video_accueil_fid: ''
-poster_video_accueil_fid: ''
+default_video_accueil_fid: '/themes/custom/yqb/videos/intro.mp4?v8'
+default_poster_video_accueil_fid: '/themes/custom/yqb/img/yqb2019.jpg?v8'
+video_upload_location: 'public://videos'
+poster_upload_location: 'public://default_images'

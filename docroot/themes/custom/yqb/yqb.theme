@@ -692,10 +692,20 @@ function yqb_preprocess_views_view_field(&$variables) {
 
 function yqb_preprocess_block__herosearchblock(&$variables) {
     $config = Drupal::service('config.factory')->getEditable('yqb_video_accueil.settings');
-    $variables['videos'] = array(
+
+    $variables['poster'] = is_array($config->get('poster_video_accueil_fid')) &&
+                           isset($config->get('poster_video_accueil_fid')[0]) ?
+        File::load($config->get('poster_video_accueil_fid')[0])->url() :
+        $config->get('default_poster_video_accueil_fid');
+
+    $variables['video'] = is_array(($config->get('video_accueil_fid'))) &&
+                          isset($config->get('video_accueil_fid')[0]) ?
         array(
             'src' => File::load($config->get('video_accueil_fid')[0])->url(),
             'mime' => File::load($config->get('video_accueil_fid')[0])->getMimeType()
-        )
-    );
+        ) :
+        array(
+            'src' => $config->get('default_video_accueil_fid'),
+            'mime' => 'video/mp4'
+        );
 }
