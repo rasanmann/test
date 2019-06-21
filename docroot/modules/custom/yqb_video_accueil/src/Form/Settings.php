@@ -7,7 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
 
 class Settings extends ConfigFormBase {
-    const MAX_FILE_SIZE = 100;
+    const MAX_FILE_SIZE = 15;
 
     public function getFormId() {
         return 'yqb_video_accueil_settings';
@@ -38,27 +38,19 @@ class Settings extends ConfigFormBase {
             '#type' => 'managed_file',
             '#title' => $this->t('Poster'),
             '#description' => $this->t('The default image displayed while the video is downloading.'),
-            '#upload_location' => 'public://default_images'
+            '#upload_location' => 'public://default_images',
+            '#upload_validators' => array(
+                'file_validate_size' => array(self::MAX_FILE_SIZE * 1024 * 1024),
+            ),
         );
-
-//
-//        $form['disabled'] = [
-//            '#type' => 'managed_file',
-//            '#title' => $this->t('Disable parking booker form'),
-//            '#default_value' => $config->get('disabled'),
-//        ];
-//
-//        $form['disabled_text'] = [
-//            '#type' => 'textarea',
-//            '#title' => $this->t('Disabled message'),
-//            '#default_value' => $config->get('disabled_text'),
-//        ];
 
         return $form;
     }
 
     public function validateForm(array &$form, FormStateInterface $form_state) {
 
+        // validate video
+        // validate image
     //        if ($form_state->getValue('video')) {
     //            dump($form_state->getValue('video'));
     //            die(1);
