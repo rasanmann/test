@@ -1,0 +1,5 @@
+recipients: 'car@yqb.ca'
+form_is_enabled: '0'
+recaptcha_sitekey: ''
+recaptcha_secret: ''
+minimum_amount: 5

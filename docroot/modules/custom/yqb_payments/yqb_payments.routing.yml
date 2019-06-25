@@ -1,0 +1,15 @@
+yqb_payments.yqb_payment:
+  path: '/services-aeroportuaires/paiement-de-facture/recu/{yqb_payment}'
+  defaults:
+    _entity_view: yqb_payment.full
+    _title_callback: '\Drupal\Core\Entity\Controller\EntityController::title'
+  requirements:
+    _entity_access: 'yqb_payment.view'
+
+yqb_payments.settings:
+  path: '/admin/config/yqb/bills'
+  defaults:
+    _form: '\Drupal\yqb_payments\Form\SettingsForm'
+    _title: 'Bills'
+  requirements:
+    _permission: 'access administration pages'

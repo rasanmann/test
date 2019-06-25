@@ -1,0 +1,14 @@
+<?php
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\yqb_payments\Entity\YqbPaymentEntity;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function yqb_payments_entity_base_field_info(EntityTypeInterface $entity_type)
+{
+  if ($entity_type->id() == 'yqb_payment') {
+    return YqbPaymentEntity::getConfigurableFields();
+  }
+}

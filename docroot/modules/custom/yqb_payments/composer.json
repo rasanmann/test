@@ -1,0 +1,11 @@
+{
+    "name": "drupal/yqb_payments",
+    "type": "drupal-module",
+    "description": "Allow people to pay their bills online.",
+    "keywords": [
+        "Drupal"
+    ],
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "require": {}
+}

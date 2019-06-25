@@ -1,0 +1,21 @@
+yqb_payments.settings:
+  type: mapping
+  label: 'YQB Payments Settings'
+  mapping:
+    type: mapping
+    mapping:
+      recipients:
+        type: text
+        label: 'Recipients'
+      form_is_enabled:
+        type: checkbox
+        label: 'Hide form'
+      recaptcha_sitekey:
+        type: text
+        label: 'reCAPTCHA Site Key'
+      recaptcha_secret:
+        type: text
+        label: 'reCAPTCHA Secret'
+      minimum_amount:
+        type: float
+        label: 'Minimum amount'

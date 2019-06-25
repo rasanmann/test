@@ -1,0 +1,5 @@
+entity.yqb_payment.add_form:
+  route_name: entity.yqb_payment.add_form
+  title: 'Add Online Payment'
+  appears_on:
+    - entity.yqb_payment.collection

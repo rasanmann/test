@@ -1,0 +1,4 @@
+services:
+  yqb_payments.recaptcha:
+    class: Drupal\yqb_payments\Service\Recaptcha
+    arguments: ['@config.factory']
