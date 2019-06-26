@@ -30,7 +30,7 @@ class Settings extends ConfigFormBase {
             '#description' => t('The uploaded image that will be displayed on the homepage.'),
             '#upload_location' => $config->get('video_upload_location'),
             '#upload_validators' => array(
-                'file_validate_extensions' => array('mp4 webm ogv'),
+                'file_validate_extensions' => array('mp4'),
                 'file_validate_size' => array(self::MAX_FILE_SIZE * 1024 * 1024),
             ),
         );
@@ -42,6 +42,7 @@ class Settings extends ConfigFormBase {
             '#description' => $this->t('The default image displayed while the video is downloading.'),
             '#upload_location' => $config->get('poster_upload_location'),
             '#upload_validators' => array(
+                'file_validate_extensions' => array('png jpeg jpg'),
                 'file_validate_size' => array(self::MAX_FILE_SIZE * 1024 * 1024),
             ),
         );
