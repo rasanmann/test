@@ -1,0 +1,27 @@
+<h2>{{ 'First name'|t }}</h2>
+{{ customer.first_name }}
+
+<h2>{{ 'Last name'|t }}</h2>
+{{ customer.last_name }}
+
+<h2>{{ 'Email'|t }}</h2>
+{{ customer.email }}
+
+<h2>{{ 'Business name'|t }}</h2>
+{{ customer.business_name }}
+
+<h2>{{ 'Bill number'|t }}</h2>
+{{ customer.bill_no }}
+
+<h2>{{ 'Customer number'|t }}</h2>
+{{ customer.customer_no }}
+
+<h2>{{ 'Amount to pay'|t }}</h2>
+{{ customer.amount }}
+
+<h2>{{ 'I would like to receive invoices and statements by email'|t }}</h2>
+{% if customer.notifications %}
+{{ 'Yes'|t }}
+{% else %}
+{{ 'No'|t }}
+{% endif %}

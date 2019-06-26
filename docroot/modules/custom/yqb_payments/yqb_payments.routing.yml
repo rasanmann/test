@@ -1,4 +1,4 @@
-yqb_payments.yqb_payment:
+yqb_payments.yqb_payment.receipt:
   path: '/services-aeroportuaires/paiement-de-facture/recu/{yqb_payment}'
   defaults:
     _entity_view: yqb_payment.full
@@ -13,3 +13,11 @@ yqb_payments.settings:
     _title: 'Bills'
   requirements:
     _permission: 'access administration pages'
+
+yqb_payments.yqb_payment.checkout:
+  path: '/services-aeroportuaires/paiement-de-facture/paiement'
+  defaults:
+    _controller: '\Drupal\yqb_payments\Controller\PaymentController::checkout'
+    _title: 'Checkout'
+  requirements:
+    _access: 'TRUE'

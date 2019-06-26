@@ -6,7 +6,7 @@ function onloadCallback() {
 }
 
 function submitPayment(token) {
-  jQuery('.recaptcha-submit').unbind('click').removeAttr('disabled');
+  jQuery('.recaptcha-submit').unbind('click').removeAttr('disabled').closest('form').unbind('submit');
 }
 
 (function ($, Drupal) {
@@ -15,6 +15,10 @@ function submitPayment(token) {
   Drupal.behaviors.yqb_payments = {
     attach: function (context, settings) {
       $('.recaptcha-submit', context).attr('disabled', 'disabled').on('click', function (e) {
+        e.preventDefault();
+        return false;
+      });
+      $('.recaptcha-submit', context).closest('form', context).on('submit', function (e) {
         e.preventDefault();
         return false;
       });

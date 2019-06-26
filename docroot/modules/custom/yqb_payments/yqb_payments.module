@@ -12,3 +12,17 @@ function yqb_payments_entity_base_field_info(EntityTypeInterface $entity_type)
     return YqbPaymentEntity::getConfigurableFields();
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_payments_theme($existing, $type, $theme, $path)
+{
+  return [
+    'yqb_payments_checkout' => [
+      'variables' => [
+        'customer' => false
+      ]
+    ]
+  ];
+}
