@@ -21,3 +21,11 @@ yqb_payments.yqb_payment.checkout:
     _title: 'Checkout'
   requirements:
     _access: 'TRUE'
+
+yqb_payments.yqb_payment.success:
+  path: '/services-aeroportuaires/paiement-de-facture/confirmation'
+  defaults:
+    _controller: '\Drupal\yqb_payments\Controller\PaymentController::success'
+    _title: 'Confirmation'
+  requirements:
+    _access: 'TRUE'

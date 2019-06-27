@@ -2,31 +2,41 @@
 
 namespace Drupal\yqb_payments\Service;
 
-use Symfony\Component\HttpFoundation\Session\Session;
+use Drupal\Core\Mail\MailManagerInterface;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
+use Drupal\moneris\Receipt;
 
 class CustomerManager
 {
-  const SESSION_KEY = 'yqb_payments.payment_form.values';
+  static public $attributes = [
+    'first_name',
+    'last_name',
+    'email',
+    'business_name',
+    'bill_no',
+    'customer_no',
+    'amount',
+    'notifications',
+  ];
 
-  protected $session;
+  protected $tempStore;
 
-  protected $values = [];
+  protected $mailManager;
 
-  public function __construct(Session $session)
+  public function __construct(PrivateTempStoreFactory $tempStoreFactory, MailManagerInterface $mailManager)
   {
-    $this->session = $session;
-    $this->values = $this->session->get(static::SESSION_KEY, []);
+    $this->tempStore = $tempStoreFactory->get('yqb_payments');
+    $this->mailManager = $mailManager;
   }
 
-  public function save()
-  {
-    $this->session->set(static::SESSION_KEY, $this->values);
-  }
-
+  /**
+   * @throws \Drupal\Core\TempStore\TempStoreException
+   */
   public function reset()
   {
-    $this->values = [];
-    $this->session->remove(static::SESSION_KEY);
+    foreach (static::$attributes as $attribute) {
+      $this->tempStore->delete($attribute);
+    }
   }
 
   public function canCheckout()
@@ -40,20 +50,57 @@ class CustomerManager
       !empty($this->get('amount'));
   }
 
-  public function get($key, $default = '')
+  public function successful()
   {
-    return isset($this->values[$key]) ? $this->values[$key] : $default;
+    $receipt = $this->get('receipt');
+    return $this->canCheckout() &&
+      !empty($receipt) &&
+      $receipt instanceof Receipt;
   }
 
+  public function getReferenceNumber()
+  {
+    return preg_replace('/\s+/', '', sprintf('drupal_%s_%s_%s', $this->get('bill_no'), $this->get('customer_no'), time()));
+  }
+
+  public function get($key, $default = '')
+  {
+    $value = $this->tempStore->get($key);
+    return is_null($value) ? $default : $value;
+  }
+
+  /**
+   * @throws \Drupal\Core\TempStore\TempStoreException
+   */
   public function set($key, $value)
   {
-    $this->values[$key] = $value;
-
+    $this->tempStore->set($key, $value);
     return $this;
   }
 
   public function all()
   {
-    return $this->values;
+    $values = [];
+    foreach (static::$attributes as $attribute) {
+      $values[$attribute] = $this->get($attribute);
+    }
+    return $values;
+  }
+
+  public function setReceipt(Receipt $receipt)
+  {
+    $this->set('receipt', $receipt);
+  }
+
+  public function getReceipt()
+  {
+    return $this->get('receipt');
+  }
+
+  public function sendReceipt()
+  {
+    if (!$this->successful()) {
+      return;
+    }
   }
 }

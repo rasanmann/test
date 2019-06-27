@@ -2,6 +2,7 @@
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\yqb_payments\Entity\YqbPaymentEntity;
+use Drupal\yqb_payments\Form\CheckoutForm;
 
 /**
  * Implements hook_entity_base_field_info().
@@ -23,6 +24,17 @@ function yqb_payments_theme($existing, $type, $theme, $path)
       'variables' => [
         'customer' => false
       ]
+    ],
+    'yqb_payments_success' => [
+      'variables' => [
+        'customer' => false,
+        'receipt' => false
+      ]
     ]
   ];
+}
+
+function yqb_payments_preprocess_yqb_payments_checkout(&$variables)
+{
+  $variables['checkout_form'] = Drupal::formBuilder()->getForm(CheckoutForm::class);
 }

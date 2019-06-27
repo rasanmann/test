@@ -1,3 +1,10 @@
+{#
+/**
+ * Available variables:
+ * - customer
+ * - checkout_form
+ */
+#}
 <h2>{{ 'First name'|t }}</h2>
 {{ customer.first_name }}
 
@@ -25,3 +32,5 @@
 {% else %}
 {{ 'No'|t }}
 {% endif %}
+
+{{ checkout_form }}

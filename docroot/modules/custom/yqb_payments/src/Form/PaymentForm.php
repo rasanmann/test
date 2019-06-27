@@ -141,11 +141,8 @@ class PaymentForm extends FormBase
       ->set('bill_no', $form_state->getValue('bill_no'))
       ->set('customer_no', $form_state->getValue('customer_no'))
       ->set('amount', $form_state->getValue('amount'))
-      ->set('notifications', $form_state->getValue('notifications'))
-      ->save();
+      ->set('notifications', $form_state->getValue('notifications'));
 
-    $form_state->setRedirect('yqb_payments.yqb_payment.checkout', [], [
-      'query' => Drupal::destination()->getAsArray()
-    ]);
+    $form_state->setRedirect('yqb_payments.yqb_payment.checkout');
   }
 }

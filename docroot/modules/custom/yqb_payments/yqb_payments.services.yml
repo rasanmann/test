@@ -4,4 +4,4 @@ services:
     arguments: ['@config.factory']
   yqb_payments.customer_manager:
     class: Drupal\yqb_payments\Service\CustomerManager
-    arguments: ['@session']
+    arguments: ['@tempstore.private', '@plugin.manager.mail']

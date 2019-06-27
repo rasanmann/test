@@ -22,13 +22,13 @@ yqb_bills.fr.review:
   requirements:
     _permission: 'access content'
 
-yqb_bills.fr.confirmation:
-  path: '/services-aeroportuaires/paiement-de-facture/confirmation'
-  defaults:
-    _form: '\Drupal\yqb_bills\Form\BillsConfirmationForm'
-    _title: 'Confirmation'
-  requirements:
-    _permission: 'access content'
+#yqb_bills.fr.confirmation:
+#  path: '/services-aeroportuaires/paiement-de-facture/confirmation'
+#  defaults:
+#    _form: '\Drupal\yqb_bills\Form\BillsConfirmationForm'
+#    _title: 'Confirmation'
+#  requirements:
+#    _permission: 'access content'
 
 #yqb_bills.en.index:
 #  path: '/airport-services/pay-bills'

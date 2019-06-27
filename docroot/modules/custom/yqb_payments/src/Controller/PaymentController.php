@@ -27,21 +27,25 @@ class PaymentController extends ControllerBase
   public function checkout()
   {
     if (!$this->customerManager->canCheckout()) {
-      $routeName = '<front>';
-      $routeParameters = [];
-      $destination = Url::fromUserInput(Drupal::destination()->get());
-      if ($destination->isRouted() && $destination->getRouteName() != Drupal::routeMatch()->getRouteName()) {
-        $routeName = $destination->getRouteName();
-        $routeParameters = $destination->getRouteParameters();
-      }
-      $this->customerManager->reset();
-      Drupal::messenger()->addWarning($this->t("You must fill out the Pay Bills form before proceeding to checkout."));
-      return $this->redirect($routeName, $routeParameters);
+      // @todo redirect to paiement page with error
     }
 
     return [
       '#theme' => 'yqb_payments_checkout',
       '#customer' => $this->customerManager->all()
+    ];
+  }
+
+  public function success()
+  {
+    if (!$this->customerManager->successful()) {
+      //@todo
+    }
+
+    return [
+      '#theme' => 'yqb_payments_success',
+      '#customer' => $this->customerManager->all(),
+      '#receipt' => $this->customerManager->getReceipt()
     ];
   }
 }
