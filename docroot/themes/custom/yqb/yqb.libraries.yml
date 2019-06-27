@@ -38,7 +38,7 @@ webview:
     theme:
       css/webview.css: {}
   js:
-      js/modules/page-reloader.js: {}
+    js/modules/page-reloader.js: {}
 
 ## HELPDESK CSS
 
@@ -63,7 +63,7 @@ bootstrap:
     url: https://github.com/twbs/bootstrap/blob/master/LICENSE
     gpl-compatible: true
   js:
-   'https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js': { type: external }
+    'https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js': { type: external }
 
 helpers:
   js:
@@ -95,6 +95,15 @@ libraries:
 modules:
   js:
     js/modules/swiper-slider.js: {}
+
+accordion:
+  js:
+    js/accordion.js: {}
+  css:
+    theme:
+      css/accordion.css: {}
+  dependencies:
+    - core/jquery
 
 controllers:
   js:
