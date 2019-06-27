@@ -2,6 +2,7 @@
 
 namespace Drupal\moneris\Render;
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Component\Utility\Html;
 
 /**
  * Class MonerisFrameRenderer
@@ -16,14 +17,15 @@ class MonerisFrameRenderer {
     'pan_label' => 'Card Number',
     'exp_label' => 'Expiry Date',
     'cvd_label' => 'CVD',
+    'pmmsg' => 'true'
   ];
 
   private $defaultAttributes = [
-    'id' => 'moneris_frame',
     'src' => '',
     'frameborder' => '0',
     'width' => '100%',
     'height' => '300px',
+    'class' => ['moneris-frame']
   ];
 
   private $defaultStylesheet = [
@@ -69,19 +71,21 @@ class MonerisFrameRenderer {
 
     $this->params = array_merge($this->defaultParams, $params);
     $this->attributes = array_merge($this->defaultAttributes, $attributes);
+
     $this->stylesheet = $this->prepareStylesheet(array_merge($this->defaultStylesheet, $stylesheet));
 
     // Moneris profile ID -- Pick the one that fits the domain
     if($profileConfig = Yaml::decode($config->get('moneris.profile_id'))){
       $prefix = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443 || (isset($_SERVER['HTTP_X_FORWARDED_PORT']) && $_SERVER['HTTP_X_FORWARDED_PORT'] == 443)) ? "https" : "http";
       $currentDomain = $prefix . '://' . $_SERVER['HTTP_HOST'];
-      
+
       $profileId = (isset($profileConfig[$currentDomain])) ? $profileConfig[$currentDomain] : $config->get('moneris.profile_id');
     }else{
       $profileId = $config->get('moneris.profile_id');
     }
-    
+
     $this->params['id'] = $profileId;
+    $this->attributes['id'] = Html::getUniqueId('moneris-frame-' . $profileId);
 
     // Form SRC
     $this->attributes['src'] = $config->get('moneris.api_url') . '/HPPtoken/index.php?' . http_build_query(array_merge($this->params, $this->stylesheet));
@@ -96,6 +100,11 @@ class MonerisFrameRenderer {
 
       return implode(';', $directives);
     }, $stylesheet);
+  }
+
+  public function getId()
+  {
+    return isset($this->attributes['id']) ? $this->attributes['id'] : null;
   }
 
   public function getRenderArray() {

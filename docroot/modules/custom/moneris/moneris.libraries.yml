@@ -1,0 +1,7 @@
+moneris:
+  version: 1.x
+  js:
+    js/moneris.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\moneris\Connector;
 
 use Moneris;
@@ -7,19 +8,21 @@ use Moneris;
  * Class MonerisConnector
  * @package Drupal\moneris\Connector
  */
-class MonerisConnector {
+class MonerisConnector
+{
   public $apiKey = null;
   public $storeId = null;
 
   private $api = null;
 
-  public function __construct() {
+  public function __construct()
+  {
     $config = \Drupal::config('moneris.settings');
 
-    $this->apiKey =  $config->get('moneris.api_key');
-    $this->storeId =  $config->get('moneris.store_id');
-    $this->apiUrl =  $config->get('moneris.api_url');
-    $this->environment =  $config->get('moneris.environment');
+    $this->apiKey = $config->get('moneris.api_key');
+    $this->storeId = $config->get('moneris.store_id');
+    $this->apiUrl = $config->get('moneris.api_url');
+    $this->environment = $config->get('moneris.environment');
 
     $this->api = Moneris::create([
       'api_key' => $this->apiKey,
@@ -32,7 +35,8 @@ class MonerisConnector {
    * @param $params
    * @return \Moneris_Result
    */
-  public function verify($params) {
+  public function verify($params)
+  {
     $verification = $this->api->verify($params);
 
     return $verification;
@@ -42,7 +46,8 @@ class MonerisConnector {
    * @param $params
    * @return \Moneris_Result
    */
-  public function preauth($params) {
+  public function preauth($params)
+  {
     $preauthorization = $this->api->preauth($params);
 
     return $preauthorization;
@@ -52,7 +57,8 @@ class MonerisConnector {
    * @param $params
    * @return \Moneris_Result
    */
-  public function purchase($params) {
+  public function purchase($params)
+  {
     $purchase = $this->api->purchase($params);
 
     return $purchase;
@@ -64,7 +70,8 @@ class MonerisConnector {
    * @param null $amount
    * @return \Moneris_Result
    */
-  public function refund($transaction_number, $order_id = null, $amount = null) {
+  public function refund($transaction_number, $order_id = null, $amount = null)
+  {
     $refund = $this->api->refund($transaction_number, $order_id, $amount);
 
     return $refund;
@@ -75,9 +82,15 @@ class MonerisConnector {
    * @param null $order_id
    * @return \Moneris_Result
    */
-  public function void($transaction_number, $order_id = null) {
+  public function void($transaction_number, $order_id = null)
+  {
     $void = $this->api->void($transaction_number, $order_id);
 
     return $void;
+  }
+
+  public function connector()
+  {
+    return $this->api;
   }
 }
