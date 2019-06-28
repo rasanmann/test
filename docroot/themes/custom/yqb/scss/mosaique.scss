@@ -18,20 +18,8 @@
 }
 
 .field--name-field-mosaique-image > .field--item {
-  width: 25%;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  width: 22.5%;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
   cursor: pointer;
-}
-
-.field--name-field-mosaique-image > .field--item:nth-child(even) {
-  padding-left: 1rem;
-}
-
-.field--name-field-mosaique-image > .field--item:nth-child(odd) {
-  padding-right: 1rem;
-}
-
-.field--name-field-mosaique-image > .field--item:nth-child(3n) {
-  padding-left: 2rem;
 }
