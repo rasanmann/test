@@ -96,6 +96,21 @@ modules:
   js:
     js/modules/swiper-slider.js: {}
 
+accordion:
+  css:
+    theme:
+      css/accordion.css: {}
+
+mosaique:
+  js:
+    js/libraries/isotope/isotope.min.js: {}
+    js/mosaique.js: {}
+  css:
+    theme:
+      css/mosaique.css: {}
+  dependencies:
+    - core/jquery
+
 controllers:
   js:
     js/controllers/home.js: {}

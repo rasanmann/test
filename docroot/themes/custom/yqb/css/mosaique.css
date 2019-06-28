@@ -1,0 +1,29 @@
+.paragraph--type--mosaique .field--name-field-image {
+  display: block; }
+
+.paragraph--type--mosaique img {
+  max-width: 100%;
+  max-height: auto;
+  position: relative;
+  vertical-align: middle;
+  left: 50%;
+  transform: translate(-50%);
+  height: 240px;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
+.field--name-field-mosaique-image > .field--item {
+  width: 25%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  cursor: pointer; }
+
+.field--name-field-mosaique-image > .field--item:nth-child(even) {
+  padding-left: 1rem; }
+
+.field--name-field-mosaique-image > .field--item:nth-child(odd) {
+  padding-right: 1rem; }
+
+.field--name-field-mosaique-image > .field--item:nth-child(3n) {
+  padding-left: 2rem; }
