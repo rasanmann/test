@@ -1,15 +1,13 @@
-.paragraph--type--tirroir {
-  margin-top: 3rem; }
-  .paragraph--type--tirroir .field--name-field-titre,
-  .paragraph--type--tirroir .field--name-field-description {
-    padding: 3rem; }
-  .paragraph--type--tirroir .field--name-field-titre {
-    background: #0055ff;
-    font-weight: 700;
-    color: #fff;
-    font-size: 3rem;
-    margin: 0;
-    font-family: "nimbus-sans", Helvetica, Arial, sans-serif; }
-  .paragraph--type--tirroir .field--name-field-description {
-    background: transparent;
-    box-shadow: inset 0 0 3px #e5e5e5; }
+.paragraph--type--tirroir .field--name-field-titre {
+  font-weight: 700;
+  color: #fff;
+  font-size: 3rem;
+  margin: 0;
+  font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+  cursor: pointer; }
+
+.paragraph--type--tirroir .field--name-field-description {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px;
+  max-width: none;
+  font-size: 1.4rem; }

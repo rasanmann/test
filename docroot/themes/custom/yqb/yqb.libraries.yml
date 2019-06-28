@@ -96,15 +96,6 @@ modules:
   js:
     js/modules/swiper-slider.js: {}
 
-accordion:
-  js:
-    js/accordion.js: {}
-  css:
-    theme:
-      css/accordion.css: {}
-  dependencies:
-    - core/jquery
-
 controllers:
   js:
     js/controllers/home.js: {}

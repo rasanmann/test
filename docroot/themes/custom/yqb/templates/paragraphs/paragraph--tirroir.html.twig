@@ -38,17 +38,30 @@
  * @ingroup themeable
  */
 #}
-{%
-    set classes = [
+{% set classes = [
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-]
-%}
+    'panel-vip',
+    'panel-default'
+] %}
+{# Mise en page copiée du paragraphe type custom vip-drawer #}
 {% block paragraph %}
     <div{{ attributes.addClass(classes) }}>
-        {% block content %}
-            {{ content }}
-        {% endblock %}
+        <div class="panel-heading" id="panel-heading-{{ paragraph.id() }}" role="tab">
+            <h3 class="panel-title panel-title-region">
+                <a href="#panel-collapse-{{ paragraph.id() }}" class="collapsed" role="button" data-toggle="collapse"
+                   aria-expanded="false" aria-controls="panel-collapse-{{ paragraph.id() }}">
+                    <div class="panel-title-content">
+                        {{ content.field_titre }}
+                    </div>
+                    <span class="icon icon-down-arrow-2" data-grunticon-embed></span>
+                </a>
+            </h3>
+        </div>
+        <div class="panel-collapse collapse" id="panel-collapse-{{ paragraph.id() }}" role="tabpanel"
+             aria-labelledby="panel-heading-{{ paragraph.id() }}" aria-expanded="false">
+            {{ content.field_description }}
+        </div>
     </div>
 {% endblock paragraph %}
