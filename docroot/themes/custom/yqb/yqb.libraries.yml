@@ -110,6 +110,7 @@ mosaique:
       css/mosaique.css: {}
   dependencies:
     - core/jquery
+    - yqb/bootstrap
 
 controllers:
   js:
