@@ -34,13 +34,13 @@
   text-align: center;
   height: 100%; }
 
-.controls .prev {
-  left: 20px; }
-  .controls .prev svg {
-    transform: rotate(90deg);
-    margin-top: 6px; }
-    .controls .prev svg path {
-      fill: #fff; }
+.controls .close {
+  position: absolute;
+  top: 22%;
+  left: 84%;
+  color: #fff;
+  z-index: 1080;
+  opacity: .9; }
 
 .controls .next {
   right: 20px; }
@@ -48,6 +48,14 @@
     transform: rotate(-90deg);
     margin-top: 6px; }
     .controls .next svg path {
+      fill: #fff; }
+
+.controls .prev {
+  left: 20px; }
+  .controls .prev svg {
+    transform: rotate(90deg);
+    margin-top: 6px; }
+    .controls .prev svg path {
       fill: #fff; }
 
 .controls .next, .controls .prev {
@@ -76,14 +84,13 @@
   transition: opacity 0.15s ease 0s;
   opacity: 0;
   z-index: -1; }
+  .caroussel-outer img {
+    vertical-align: middle;
+    width: 100%;
+    height: auto !important; }
   .caroussel-outer.in {
     opacity: 1;
     z-index: 1050; }
-
-.caroussel-outer img {
-  vertical-align: middle;
-  width: 100%;
-  height: auto !important; }
 
 .backdrop {
   position: fixed;
@@ -91,10 +98,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1040;
+  z-index: -1;
   background-color: #000;
   opacity: 0;
   transition: opacity 0.15s ease 0s;
   transition-duration: 0.15s; }
   .backdrop.in {
-    opacity: .2; }
+    opacity: .4;
+    z-index: 1040; }
