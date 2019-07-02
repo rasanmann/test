@@ -24,9 +24,8 @@
             var self = this;
 
             $(document).on('click', this.selector.galleryTrigger, function (e) {
-                e.preventDefault();
-                e.stopPropagation();
                 self.createCloseEvent();
+                self.caroussel.goTo($(self.selector.galleryTrigger).index(this));
                 // on ne peut pas encore utiliser les propriétés backdrop et
                 // carousselContainer à ce stade
                 document.querySelector(self.selector.backdrop).classList.add('in');
@@ -87,7 +86,7 @@
                 );
 
                 this.caroussel = new Siema({
-                    selector: '.siema',
+                    selector: self.selector.caroussel,
                     duration: 200,
                     easing: 'ease-out',
                     perPage: 1,
