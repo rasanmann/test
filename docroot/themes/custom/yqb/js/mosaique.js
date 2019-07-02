@@ -9,6 +9,7 @@
             caroussel: '.siema',
             carousselContainer: '.caroussel-outer',
             galleryTrigger: '.field--light-gallery',
+            images: '.field--light-gallery > img',
             nextBtn: '.next',
             prevBtn: '.prev'
         },
@@ -23,7 +24,7 @@
         addListeners: function () {
             var self = this;
 
-            $(document).on('click', this.selector.galleryTrigger, function (e) {
+            $(document).on('click', this.selector.galleryTrigger, function () {
                 self.createCloseEvent();
                 self.caroussel.goTo($(self.selector.galleryTrigger).index(this));
                 // on ne peut pas encore utiliser les propriétés backdrop et
@@ -44,7 +45,7 @@
         },
 
         getItems: function () {
-            var items = Array.prototype.slice.call(document.querySelectorAll('.field--light-gallery > img'));
+            var items = Array.prototype.slice.call(document.querySelectorAll(this.selector.images));
 
             return items.map(function (el) {
                 return el.src;
