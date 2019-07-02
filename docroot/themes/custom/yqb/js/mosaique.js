@@ -1,4 +1,4 @@
-(function ($, Drupal, Isotope, Siema) {
+(function ($, Drupal, Siema) {
     Drupal.behaviors.yqb_mosaique = {
 
         backdrop: null,
@@ -15,7 +15,6 @@
         },
 
         attach: function (context, settings) {
-            this.setupIsotope(context);
             this.setupBackdrop();
             this.setupCaroussel();
             this.addListeners();
@@ -122,16 +121,5 @@
             }
         },
 
-        setupIsotope: function (context) {
-            $('.field--name-field-mosaique-image', context).isotope({
-                itemSelector: '.field--name-field-mosaique-image > .field--item',
-                percentPosition: true,
-                layoutMode: 'fitRows',
-                masonry: {
-                    columnWidth: 50,
-                    gutter: 10
-                }
-            });
-        }
     }
-}(window.jQuery, window.Drupal, window.Isotope, window.Siema));
+}(window.jQuery, window.Drupal, window.Siema));

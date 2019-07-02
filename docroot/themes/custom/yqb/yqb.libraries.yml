@@ -104,7 +104,6 @@ accordion:
 mosaique:
   js:
     js/libraries/siema-1.5/dist/siema.min.js: {}
-    js/libraries/isotope/isotope.min.js: {}
     js/mosaique.js: {}
   css:
     theme:

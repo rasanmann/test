@@ -15,11 +15,21 @@
   object-fit: cover;
 }
 
+.field--name-field-mosaique-image {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .field--name-field-mosaique-image > .field--item {
-  width: 22.5%;
+  flex: 1 0 21%;
   margin-bottom: 2rem;
   margin-right: 2rem;
   cursor: pointer;
+}
+
+.field--name-field-mosaique-image > .field--item:nth-child(4n),
+.field--name-field-mosaique-image > .field--item:last-child {
+  margin-right: 0;
 }
 
 .siema {
@@ -139,12 +149,19 @@
 
 @media screen and (max-width: 992px) {
   .field--name-field-mosaique-image > .field--item {
-    width: 47%;
+    flex: 1 0 40%;
+  }
+
+  .field--name-field-mosaique-image > .field--item:nth-child(2n),
+  .field--name-field-mosaique-image > .field--item:last-child {
+    margin-right: 0;
   }
 }
 
 @media screen and (max-width: 768px) {
   .field--name-field-mosaique-image > .field--item {
-    width: 100%;
+    flex: 1 0 100%;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
