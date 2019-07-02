@@ -61,9 +61,28 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1050;
-  transition: opacity 0.15s ease 0s; }
-  .caroussel-outer img {
-    vertical-align: middle;
-    width: 100%;
-    height: auto !important; }
+  transition: opacity 0.15s ease 0s;
+  opacity: 0;
+  z-index: -1; }
+  .caroussel-outer.in {
+    opacity: 1;
+    z-index: 1050; }
+
+.caroussel-outer img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto !important; }
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1040;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.15s ease 0s;
+  transition-duration: 0.15s; }
+  .backdrop.in {
+    opacity: .2; }

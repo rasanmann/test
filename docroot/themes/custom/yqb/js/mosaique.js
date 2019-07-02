@@ -1,16 +1,51 @@
-(function ($, Drupal, Isotope) {
+(function ($, Drupal, Isotope, Siema) {
     Drupal.behaviors.yqb_mosaique = {
 
-        carousselSelector: '.siema',
         caroussel: null,
+        selector: {
+            backdrop: '.backdrop',
+            caroussel: '.siema',
+            carousselContainer: '.caroussel-outer',
+            galleryTrigger: '.field--light-gallery'
+        },
 
         attach: function (context, settings) {
             this.setupIsotope(context);
             this.setupCaroussel();
+            this.addListeners();
+        },
+
+        addListeners: function() {
+            var self = this;
+
+            $(document).on('click', this.selector.galleryTrigger, function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                self.setupBackdrop();
+                document.querySelector(self.selector.carousselContainer).classList.add('in');
+            });
+        },
+
+        getItems: function() {
+            var items = Array.prototype.slice.call(document.querySelectorAll('.field--light-gallery > img'));
+
+            return items.map(function(el) {
+                return el.src;
+            });
+        },
+
+        setupBackdrop: function() {
+            if (document.querySelector(this.selector.backdrop) === null) {
+                document.body.insertAdjacentHTML(
+                    'beforeend',
+                    '<div class="backdrop"></div>'
+                );
+            }
+            document.querySelector(this.selector.backdrop).classList.add('in');
         },
 
         setupCaroussel: function () {
-            if (document.querySelector(this.carousselSelector) === null) {
+            if (document.querySelector(this.selector.caroussel) === null) {
                 var list = '';
                 var items = this.getItems();
 
@@ -61,4 +96,4 @@
             });
         }
     }
-}(window.jQuery, window.Drupal, window.Isotope));
+}(window.jQuery, window.Drupal, window.Isotope, window.Siema));
