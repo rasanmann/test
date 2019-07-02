@@ -103,6 +103,7 @@ accordion:
 
 mosaique:
   js:
+    js/libraries/siema-1.5/dist/siema.min.js: {}
     js/libraries/isotope/isotope.min.js: {}
     js/mosaique.js: {}
   css:
@@ -110,7 +111,6 @@ mosaique:
       css/mosaique.css: {}
   dependencies:
     - core/jquery
-    - yqb/bootstrap
 
 controllers:
   js:
