@@ -8,8 +8,8 @@
             backdrop: '.backdrop',
             caroussel: '.siema',
             carousselContainer: '.caroussel-outer',
-            galleryTrigger: '.field--light-gallery',
-            images: '.field--light-gallery > img',
+            galleryTrigger: '.field--name-field-paragraph-media-mosaique > .field--item',
+            images: '.field--name-field-paragraph-media-mosaique > .field--item img',
             nextBtn: '.next',
             prevBtn: '.prev'
         },
