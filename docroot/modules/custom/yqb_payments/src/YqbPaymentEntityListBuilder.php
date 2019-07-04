@@ -27,7 +27,7 @@ class YqbPaymentEntityListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     /* @var $entity \Drupal\yqb_payments\Entity\YqbPaymentEntity */
-    $row['transaction_no'] = Link::createFromRoute(
+    $row['reference_num'] = Link::createFromRoute(
       $entity->label(),
       'entity.yqb_payment.canonical',
       ['yqb_payment' => $entity->id()]

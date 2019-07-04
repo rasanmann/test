@@ -8,7 +8,6 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\State\State;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\moneris\Connector\MonerisConnector;
-use Moneris_Result;
 
 class Gateway
 {
@@ -43,6 +42,7 @@ class Gateway
     ]);
 
     if (!$monerisResult->was_successful()) {
+      ksm($monerisResult);
       $errorDetails = [
         'errors' => $monerisResult->errors(),
         'error_code' => $monerisResult->error_code(),
@@ -59,7 +59,7 @@ class Gateway
     return $monerisResult;
   }
 
-  protected function getUuid($email)
+  public function getUuid($email)
   {
     $email = empty($email) ? '_empty_' : trim($email);
     $key = 'customer_' . Crypt::hashBase64($email);

@@ -2,6 +2,9 @@
 
 namespace Drupal\moneris;
 
+use DateTime;
+use DateTimeInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Moneris_Result;
 
 class Receipt
@@ -69,6 +72,18 @@ class Receipt
   public function getTransactionDate()
   {
     return $this->get('TransDate');
+  }
+
+  public function getTransactionDateTime()
+  {
+    $date = new DrupalDateTime($this->getTransactionDate() . ' ' . $this->getTransactionTime());
+    return $date->format('Y-m-d\TH:i:s');
+  }
+
+  public function getFormattedCardNumber()
+  {
+    $lastDigits = substr($this->getMaskedPan(), -4);
+    return '**** **** **** ' . $lastDigits;
   }
 
   public function getAmount()

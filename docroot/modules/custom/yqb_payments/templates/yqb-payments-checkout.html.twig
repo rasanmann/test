@@ -5,32 +5,25 @@
  * - checkout_form
  */
 #}
-<h2>{{ 'First name'|t }}</h2>
-{{ customer.first_name }}
+<div class="yqb-payments-checkout">
+  <p>{{ 'Please make sure that the information below is valid.' }}</p>
 
-<h2>{{ 'Last name'|t }}</h2>
-{{ customer.last_name }}
+  <p class="user-info"><span class="info"><strong>{{ 'First name:'|t }}</strong></span> <span class="value">{{ customer.first_name }}</span><br>
+    <span class="info"><strong>{{ 'Last name:'|t }}</strong></span> <span class="value">{{ customer.last_name }}</span><br>
+    <span class="info"><strong>{{ 'Email:'|t }}</strong></span> <span class="value">{{ customer.email }}</span><br>
+    <span class="info"><strong>{{ 'Business name:'|t }}</strong></span> <span class="value">{{ customer.business_name }}</span><br>
+    <span class="info"><strong>{{ 'Bill number:'|t }}</strong></span> <span class="value">{{ customer.bill_no }}</span><br>
+    <span class="info"><strong>{{ 'Customer number:'|t }}</strong></span> <span class="value">{{ customer.customer_no }}</span><br>
+    <span class="info"><strong>{{ 'Amount to pay:'|t }}</strong></span> <span class="value">{{ customer.amount }}</span><br>
+    <span class="info"><strong>{{ 'I would like to receive invoices and statements by email:'|t }}</strong></span> <span class="value">
+    {% if customer.notifications %}
+      {{ 'Yes'|t }}
+    {% else %}
+      {{ 'No'|t }}
+    {% endif %}
+  </span></p>
 
-<h2>{{ 'Email'|t }}</h2>
-{{ customer.email }}
+  <h2>{{ 'Payment information'|t }}</h2>
 
-<h2>{{ 'Business name'|t }}</h2>
-{{ customer.business_name }}
-
-<h2>{{ 'Bill number'|t }}</h2>
-{{ customer.bill_no }}
-
-<h2>{{ 'Customer number'|t }}</h2>
-{{ customer.customer_no }}
-
-<h2>{{ 'Amount to pay'|t }}</h2>
-{{ customer.amount }}
-
-<h2>{{ 'I would like to receive invoices and statements by email'|t }}</h2>
-{% if customer.notifications %}
-{{ 'Yes'|t }}
-{% else %}
-{{ 'No'|t }}
-{% endif %}
-
-{{ checkout_form }}
+  {{ checkout_form }}
+</div>

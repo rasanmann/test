@@ -117,7 +117,7 @@ abstract class BillsFormBase extends FormBase {
 
     $segments = [
         '<p>Bonjour,</p>',
-        '<p>Une facture a été payée</p>',
+        '<p>Une facture a été payée.</p>',
         '<h2>Informations</h2>',
     ];
 

@@ -90,9 +90,9 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setLabel(t('ID'))
       ->setReadOnly(TRUE);
 
-    $fields['transaction_no'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Transaction number'))
-      ->setDescription(t('The name of the Online Payment entity.'))
+    $fields['reference_num'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Reference Number'))
+      ->setDescription(t('Moneris Reference Number'))
       ->setSettings([
         'max_length' => 50,
         'text_processing' => 0,
@@ -124,7 +124,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
 
   public static function getConfigurableFields()
   {
-    $fields['first_name'] = BaseFieldDefinition::create('string')
+    $fields['field_first_name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('First name'))
       ->setDescription(t('Payer first name.'))
       ->setDefaultValue('')
@@ -137,7 +137,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['last_name'] = BaseFieldDefinition::create('string')
+    $fields['field_last_name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Last name'))
       ->setDescription(t('Payer last name.'))
       ->setDefaultValue('')
@@ -150,7 +150,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['email'] = BaseFieldDefinition::create('email')
+    $fields['field_email'] = BaseFieldDefinition::create('email')
       ->setLabel(t('Email'))
       ->setDescription(t('Payer email.'))
       ->setDefaultValue('')
@@ -160,7 +160,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['business_name'] = BaseFieldDefinition::create('string')
+    $fields['field_business_name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Business name'))
       ->setDescription(t('Payer business name.'))
       ->setDefaultValue('')
@@ -173,7 +173,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['bill_no'] = BaseFieldDefinition::create('string')
+    $fields['field_bill_no'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Bill number'))
       ->setDescription(t('Payer bill no.'))
       ->setDefaultValue('')
@@ -186,7 +186,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['customer_no'] = BaseFieldDefinition::create('string')
+    $fields['field_customer_no'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Customer number'))
       ->setDescription(t('Payer customer number.'))
       ->setDefaultValue('')
@@ -199,7 +199,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['amount'] = BaseFieldDefinition::create('float')
+    $fields['field_amount'] = BaseFieldDefinition::create('float')
       ->setLabel(t('Amount to pay'))
       ->setDescription(t('Amount paid by the customer.'))
       ->setDefaultValue('')
@@ -209,7 +209,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['notifications'] = BaseFieldDefinition::create('boolean')
+    $fields['field_notifications'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('I would like to receive invoices and statements by email.'))
       ->setRevisionable(FALSE)
       ->setTranslatable(FALSE)
@@ -223,11 +223,76 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
+    $fields['field_customer_id'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Customer number'))
+      ->setDescription(t('Moneris Customer ID'))
+      ->setDefaultValue('')
+      ->setRevisionable(FALSE)
+      ->setTranslatable(FALSE)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
+    $fields['field_reference_num'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Reference Number'))
+      ->setDescription(t('Moneris Reference Number'))
+      ->setDefaultValue('')
+      ->setRevisionable(FALSE)
+      ->setTranslatable(FALSE)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
+    $fields['field_auth_code'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Authorization code'))
+      ->setDescription(t('Moneris Auth Code'))
+      ->setDefaultValue('')
+      ->setRevisionable(FALSE)
+      ->setTranslatable(FALSE)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
+    $fields['field_card_num'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Card number'))
+      ->setDescription(t('Moneris Auth Code'))
+      ->setDefaultValue('')
+      ->setRevisionable(FALSE)
+      ->setTranslatable(FALSE)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
+    $fields['field_date_time'] = BaseFieldDefinition::create('datetime')
+      ->setLabel(t('Date and time'))
+      ->setDescription(t('Transaction date/time'))
+      ->setDefaultValue('')
+      ->setRevisionable(FALSE)
+      ->setTranslatable(FALSE)
+      ->setDisplayOptions('form', [
+        'type' => 'datetime_default',
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
     return $fields;
   }
 
   public function label()
   {
-    return $this->get('transaction_no')->value;
+    return $this->get('reference_num')->value;
   }
 }

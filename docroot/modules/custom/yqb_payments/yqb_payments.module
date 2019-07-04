@@ -28,7 +28,8 @@ function yqb_payments_theme($existing, $type, $theme, $path)
     'yqb_payments_success' => [
       'variables' => [
         'customer' => false,
-        'receipt' => false
+        'receipt' => false,
+        'entity' => false
       ]
     ]
   ];
@@ -37,4 +38,9 @@ function yqb_payments_theme($existing, $type, $theme, $path)
 function yqb_payments_preprocess_yqb_payments_checkout(&$variables)
 {
   $variables['checkout_form'] = Drupal::formBuilder()->getForm(CheckoutForm::class);
+}
+
+function yqb_payments_preprocess_yqb_payments_success(&$variables)
+{
+  $variables['url'] = $variables['entity']->url('canonical', ['absolute' => TRUE]);
 }

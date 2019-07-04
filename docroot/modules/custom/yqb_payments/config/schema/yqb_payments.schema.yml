@@ -19,3 +19,6 @@ yqb_payments.settings:
       minimum_amount:
         type: float
         label: 'Minimum amount'
+      payment_page:
+        type: text
+        label: 'Payment page'

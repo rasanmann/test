@@ -623,7 +623,7 @@ function yqb_preprocess_swiftmailer(&$variables) {
     $variables['body'] = \Drupal\Core\Render\Markup::create($content);
   }
 
-  $protocol = ($_SERVER['HTTPS'] && ($_SERVER['HTTPS'] != "off")) ? "https" : "http";
+  $protocol = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] != "off")) ? "https" : "http";
   $variables['full_path'] = $protocol . "://" . $_SERVER['HTTP_HOST'] . str_replace('//', '/', '/' . base_path());
   $variables['base_path'] = str_replace('//', '/', '/' . base_path());
   $variables['year'] = date('Y');

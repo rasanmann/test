@@ -61,6 +61,14 @@ class SettingsForm extends ConfigFormBase
       '#required' => TRUE
     ];
 
+    $form['payment_page'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Payment Page'),
+      '#description' => $this->t('Provide the relative URL without the host / domain name.'),
+      '#default_value' => $config->get('payment_page'),
+      '#required' => TRUE
+    ];
+
     return $form;
   }
 
@@ -73,6 +81,7 @@ class SettingsForm extends ConfigFormBase
       ->set('form_is_enabled', $form_state->getValue('form_is_enabled'))
       ->set('recaptcha_sitekey', $form_state->getValue('recaptcha_sitekey'))
       ->set('recaptcha_secret', $form_state->getValue('recaptcha_secret'))
+      ->set('payment_page', $form_state->getValue('payment_page'))
       ->save();
   }
 }

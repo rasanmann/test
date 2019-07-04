@@ -73,3 +73,30 @@
       font-weight: lighter; }
       .job_title_wrapper .field--items .field--item:hover {
         background-color: #f2f2f2; }
+
+.block-yqb-payments {
+  margin: 0 40px 40px 40px;
+  max-width: 600px;
+  width: calc(100% - 80px); }
+
+.yqb-payments-checkout .user-info span {
+  display: inline-block; }
+  @media (min-width: 680px) {
+    .yqb-payments-checkout .user-info span.info {
+      min-width: 440px;
+      text-align: right;
+      margin-bottom: 10px; } }
+
+@media print {
+  #layout-header {
+    display: none; }
+  #layout-content > .header {
+    display: none; }
+  #layout-content nav.tabs {
+    display: none; }
+  .breadcrumb-wrapper {
+    display: none; }
+  .region.region-bottom,
+  .region.region-bottom-actions,
+  #layout-footer {
+    display: none; } }

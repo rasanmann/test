@@ -3,6 +3,24 @@
  * Available variables:
  * - customer
  * - receipt
+ * - entity
+ * - url
  */
 #}
-{{ receipt.getReceiptId() }}
+<p>
+  {% trans %}
+    Thank you, we received your payment. Your reference number is: <strong>{{ receipt.getReferenceNumber() }}</strong>.
+  {% endtrans %}
+</p>
+{% if customer.get('notifications') == 1 %}
+  <p>
+    {% trans %}
+      All details of the transaction have been sent to your email <a href="mailto:{{ customer.get('email') }}">{{ customer.get('email') }}</a>.
+    {% endtrans %}
+  </p>
+{% endif %}
+<p>
+  {% trans %}
+    The following link allows you to access your receipt at any time: <a href="{{ url }}">{{ url }}</a>
+  {% endtrans %}
+</p>

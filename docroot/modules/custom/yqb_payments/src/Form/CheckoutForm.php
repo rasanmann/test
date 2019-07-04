@@ -73,6 +73,7 @@ class CheckoutForm extends FormBase
       ))) {
         $receipt = Receipt::create($monerisResult);
         $this->customerManager->setReceipt($receipt);
+        $this->customerManager->createPaymentEntity();
         $this->customerManager->sendReceipt();
         return $form_state->setRedirect('yqb_payments.yqb_payment.success');
       }
