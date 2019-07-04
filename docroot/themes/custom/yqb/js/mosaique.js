@@ -34,11 +34,17 @@
             });
         },
 
+        close: function () {
+            if (this.backdrop && this.caroussel) {
+                this.backdrop.classList.remove('in');
+                this.carousselContainer.classList.remove('in');
+            }
+        },
+
         createCloseEvent: function () {
             var self = this;
 
             $('button.close').one(function (e) {
-
                 self.close();
             });
 
@@ -123,10 +129,12 @@
                 document.querySelector(this.selector.prevBtn).addEventListener('click', function (e) {
                     e.stopPropagation();
                     self.caroussel.prev();
+                    self.updateControlsStyle();
                 });
                 document.querySelector(this.selector.nextBtn).addEventListener('click', function (e) {
                     e.stopPropagation();
                     self.caroussel.next();
+                    self.updateControlsStyle();
                 });
                 document.querySelector(this.selector.caroussel).addEventListener('click', function (e) {
                     e.stopPropagation();
@@ -140,12 +148,18 @@
             return el.indexOf('.mp4') !== -1;
         },
 
-        close: function () {
-            if (this.backdrop && this.caroussel) {
-                this.backdrop.classList.remove('in');
-                this.carousselContainer.classList.remove('in');
+        updateControlsStyle: function() {
+            if (this.caroussel.currentSlide === 0) {
+                $(this.selector.prevBtn).css('display', 'none');
+                $(this.selector.nextBtn).css('display', 'block');
+            } else if ((this.caroussel.currentSlide + 1) === this.caroussel.innerElements.length) {
+                $(this.selector.prevBtn).css('display', 'block');
+                $(this.selector.nextBtn).css('display', 'none');
+            } else {
+                $(this.selector.prevBtn).css('display', 'block');
+                $(this.selector.nextBtn).css('display', 'block');
             }
-        },
 
+        }
     }
 }(window.jQuery, window.Drupal, window.Siema));
