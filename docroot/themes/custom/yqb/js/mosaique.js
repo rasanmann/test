@@ -8,8 +8,9 @@
             backdrop: '.backdrop',
             caroussel: '.siema',
             carousselContainer: '.caroussel-outer',
+            closeBtn: 'button.close',
             galleryTrigger: '.field--name-field-paragraph-media-mosaique > .field--item',
-            images: '.field--name-field-paragraph-media-mosaique > .field--item img',
+            medias: '.paragraph--type--mosaique .contextual-region',
             nextBtn: '.next',
             prevBtn: '.prev'
         },
@@ -36,18 +37,30 @@
         createCloseEvent: function () {
             var self = this;
 
+            $('button.close').one(function (e) {
+
+                self.close();
+            });
+
             $(document.body).one('click', function (e) {
                 e.stopPropagation();
 
                 self.close();
             });
+
+
         },
 
         getItems: function () {
-            var items = Array.prototype.slice.call(document.querySelectorAll(this.selector.images));
+            var items = Array.prototype.slice.call(document.querySelectorAll(this.selector.medias));
 
             return items.map(function (el) {
-                return el.src;
+                if (el.querySelector('img') !== null) {
+                    return el.querySelector('img').src;
+                }
+                else if (el.querySelector('video') !== null) {
+                    return el.querySelector('source').getAttribute('src');
+                }
             });
         },
 
@@ -68,12 +81,21 @@
                 var items = this.getItems();
 
                 for (var i = 0; i < items.length; i++) {
-                    list += '<img src="' + items[i] + '"/>';
+                    list += '<div class="siema-item-container">' +
+                        '<button class="close" name="close">X</button>';
+                    if (this.isVideo(items[i])) {
+                        list += '<video controls="controls">' +
+                            '<source src="' + items[i] + '" type="video/mp4">' +
+                            '</video>'
+                    }
+                    else {
+                        list += '<img src="' + items[i] + '"/>';
+                    }
+                    list += '</div>';
                 }
                 var controls = '<div class="controls">' +
                     '<button class="prev"><span style="background-image: none;" class="icon icon-left-arrow-2"><svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" width="126.9" height="68.1" viewBox="0 0 126.9 68.1"><style>.st0{fill:#05f}</style><path class="st0" d="M125.8 6.1l-59.9 61c-1.4 1.4-3.6 1.4-5 0L1 6.1C-.4 4.7-.4 2.4 1 1S4.6-.4 6 1l57.4 58.4L120.8 1c1.4-1.4 3.6-1.4 5 0 .7.7 1 1.6 1 2.5.1 1.1-.3 2-1 2.6z"></path></svg></span></button>' +
                     '<button class="next"><span style="background-image: none;" class="icon icon-right-arrow-2"><svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" width="126.9" height="68.1" viewBox="0 0 126.9 68.1"><style>.st0{fill:#05f}</style><path class="st0" d="M125.8 6.1l-59.9 61c-1.4 1.4-3.6 1.4-5 0L1 6.1C-.4 4.7-.4 2.4 1 1S4.6-.4 6 1l57.4 58.4L120.8 1c1.4-1.4 3.6-1.4 5 0 .7.7 1 1.6 1 2.5.1 1.1-.3 2-1 2.6z"></path></svg></span></button>' +
-                    '<button class="close">x</button>' +
                     '</div>';
                 var caroussel = '<div class="siema">' + list + '</div>';
 
@@ -106,12 +128,16 @@
                     e.stopPropagation();
                     self.caroussel.next();
                 });
-                document.querySelector(this.selector.caroussel).addEventListener('click', function(e) {
+                document.querySelector(this.selector.caroussel).addEventListener('click', function (e) {
                     e.stopPropagation();
                 });
 
                 this.carousselContainer = document.querySelector(this.selector.carousselContainer);
             }
+        },
+
+        isVideo: function (el) {
+            return el.indexOf('.mp4') !== -1;
         },
 
         close: function () {

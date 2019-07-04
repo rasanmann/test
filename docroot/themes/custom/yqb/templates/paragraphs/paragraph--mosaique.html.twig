@@ -41,43 +41,11 @@
 {% set classes = [
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'paragraph--type--mosaique',
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ] %}
 {% block paragraph %}
-    <div class="modal fade" id="mosaique-modal" tabindex="-1" role="dialog" aria-labelledby="mosaique-modal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header"></div>
-                <div class="modal-body">
-                    <!-- CAROUSSEL -->
-                    <div id="myGallery" class="carousel slide" data-interval="false">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="https://placeimg.com/600/400/nature/1" alt="item0"/>
-                                <div class="carousel-caption">
-                                    <h3>Heading 3</h3>
-                                    <p>Slide 0 description.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Begin Previous and Next buttons-->
-                        <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#myGallery" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                        <!--end carousel-->
-                    </div>
-                </div>
-                <div class="modal-footer"></div>
-            </div>
-        </div>
-    </div>
     <div{{ attributes.addClass(classes) }}>
-        <div class="grid-element">
-            {{ content.field_mosaique_image }}
-        </div>
+        {{ content.field_paragraph_media_mosaique }}
     </div>
 {% endblock paragraph %}
