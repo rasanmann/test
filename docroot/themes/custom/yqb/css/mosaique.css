@@ -44,6 +44,8 @@
     color: #fff;
     padding: 5px 0px;
     width: 15px; }
+    #siema button.close svg {
+      fill: #fff; }
     #siema button.close:hover {
       opacity: 1; }
   #siema video {
@@ -52,14 +54,6 @@
     text-align: center;
     height: 100%;
     display: relative; }
-
-.controls .close {
-  position: absolute;
-  top: 22%;
-  left: 84%;
-  color: #fff;
-  z-index: 1080;
-  opacity: .9; }
 
 .controls .next {
   right: 15%; }

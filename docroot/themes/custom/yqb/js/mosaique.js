@@ -31,6 +31,7 @@
                 self.caroussel.goTo($(self.selector.galleryTrigger).index(this));
                 // on ne peut pas encore utiliser les propriétés backdrop et
                 // carousselContainer à ce stade
+                self.updateControlsStyle();
                 $(self.selector.backdrop).addClass('in');
                 $(self.selector.carousselContainer).addClass('in');
             });
@@ -65,7 +66,7 @@
             for (var i = 0; i < items.length; i++) {
                 list += '<div class="siema-item-container">' +
                     '<button class="close" name="close">' +
-                    '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>' +
+                    '<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 77.07 77.07" enable-background="new 0 0 77.07 77.07" xml:space="preserve"><g><g i:extraneous="self"><g><g><polygon points="0,7.071 7.071,0 77.07,69.998 69.999,77.07 0,7.071"></polygon></g><g><polygon points="0,69.998 69.999,0 77.07,7.071 7.071,77.07 0,69.998"></polygon></g></g></g></g></svg>' +
                     '</button>';
                 if (this.isVideo(items[i])) {
                     list += '<video controls="controls">' +
