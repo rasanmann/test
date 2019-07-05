@@ -54,18 +54,19 @@
 
             $(document.body).one('click', function (e) {
                 e.stopPropagation();
-                console.log(e);
                 self.close();
             });
         },
 
-        createCarousselHTML: function() {
+        createCarousselHTML: function () {
             var list = '';
             var items = this.getItems();
 
             for (var i = 0; i < items.length; i++) {
-                    list += '<div class="siema-item-container">' +
-                    '<button class="close" name="close">X</button>';
+                list += '<div class="siema-item-container">' +
+                    '<button class="close" name="close">' +
+                    '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>' +
+                    '</button>';
                 if (this.isVideo(items[i])) {
                     list += '<video controls="controls">' +
                         '<source src="' + items[i] + '" type="video/mp4">' +
@@ -88,7 +89,7 @@
                 '</div>';
         },
 
-        getItems: function() {
+        getItems: function () {
             var items = Array.prototype.slice.call(document.querySelectorAll(this.selector.medias));
 
             return items.map(function (el) {
@@ -151,17 +152,21 @@
                 document.querySelector(this.selector.caroussel).addEventListener('click', function (e) {
                     e.stopPropagation();
                 });
+
+                this.updateControlsStyle();
             }
         },
 
-        updateControlsStyle: function() {
+        updateControlsStyle: function () {
             if (this.caroussel.currentSlide === 0) {
                 $(this.selector.prevBtn).addClass('disabled');
                 $(this.selector.nextBtn).removeClass('disabled');
-            } else if ((this.caroussel.currentSlide + 1) === this.caroussel.innerElements.length) {
+            }
+            else if ((this.caroussel.currentSlide + 1) === this.caroussel.innerElements.length) {
                 $(this.selector.prevBtn).removeClass('disabled');
                 $(this.selector.nextBtn).addClass('disabled');
-            } else {
+            }
+            else {
                 $(this.selector.prevBtn).removeClass('disabled');
                 $(this.selector.nextBtn).removeClass('disabled');
             }

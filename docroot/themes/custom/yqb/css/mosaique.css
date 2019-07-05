@@ -42,7 +42,8 @@
     opacity: 0.7;
     float: right;
     color: #fff;
-    padding: 5px 0px; }
+    padding: 5px 0px;
+    width: 15px; }
     #siema button.close:hover {
       opacity: 1; }
   #siema video {
@@ -94,8 +95,7 @@
   height: 75px; }
 
 .controls .next.disabled, .controls .prev.disabled {
-  opacity: .5;
-  pointer-events: none; }
+  opacity: .5; }
 
 .caroussel-outer {
   width: 100%;
