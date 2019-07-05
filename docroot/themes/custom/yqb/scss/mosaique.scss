@@ -37,7 +37,7 @@
   margin-right: 0;
 }
 
-.siema {
+#siema {
   overflow: hidden;
   direction: ltr;
   position: absolute;
@@ -48,28 +48,24 @@
 
   button.close {
     opacity: 0.7;
+    float: right;
+    color: #fff;
+    padding: 5px 0px;
 
     &:hover {
       opacity: 1;
     }
   }
-}
 
-.siema > div,
-.siema > div > div {
-  text-align: center;
-  height: 100%;
-  display: relative;
-}
+  video {
+    width: 100%;
+  }
 
-.siema button[name='close'] {
-  float: right;
-  color: #fff;
-  padding: 5px 0px;
-}
-
-.siema video {
-  width: 100%;
+  & > div, & > div > div {
+    text-align: center;
+    height: 100%;
+    display: relative;
+  }
 }
 
 .controls {
