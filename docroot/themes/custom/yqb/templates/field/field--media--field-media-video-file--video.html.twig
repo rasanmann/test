@@ -38,20 +38,16 @@
  * @see template_preprocess_field()
  */
 #}
-{%
-    set classes = [
+{% set classes = [
     'field',
     'field--name-' ~ field_name|clean_class,
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
-]
-%}
-{%
-    set title_classes = [
+] %}
+{% set title_classes = [
     'field--label',
     label_display == 'visually_hidden' ? 'sr-only',
-]
-%}
+] %}
 
 {% if label_hidden %}
     {% if multiple %}
@@ -64,7 +60,17 @@
         {% for item in items %}
             <div{{ attributes.addClass(classes, 'field--item') }}>
                 {{ item.content }}
-                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="play-circle" class="svg-inline--fa fa-play-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#fff" d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"></path></svg>
+                <svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/"
+                     xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px"
+                     y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve"><g>
+                        <g i:extraneous="self">
+                            <g>
+                                <path d="M65.8,47.5L42.7,32.1c-2-1.3-4.6,0.1-4.6,2.5v30.8c0,2.4,2.7,3.8,4.6,2.5l23.1-15.4C67.6,51.3,67.6,48.7,65.8,47.5z"></path>
+                                <path d="M50,2.5C23.8,2.5,2.5,23.8,2.5,50c0,26.2,21.3,47.5,47.5,47.5S97.5,76.2,97.5,50C97.5,23.8,76.2,2.5,50,2.5z M50,90.1 c-22.1,0-40.1-18-40.1-40.1c0-22.1,18-40.1,40.1-40.1s40.1,18,40.1,40.1C90.1,72.1,72.1,90.1,50,90.1z"></path>
+                            </g>
+                        </g>
+                    </g></svg>
             </div>
         {% endfor %}
     {% endif %}
@@ -77,7 +83,18 @@
             {% for item in items %}
                 <div{{ item.attributes.addClass('field--item') }}>
                     {{ item.content }}
-                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="play-circle" class="svg-inline--fa fa-play-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#fff" d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"></path></svg>
+                    <svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/"
+                         xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
+                         xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
+                         style="enable-background:new 0 0 100 100;" xml:space="preserve"><g>
+                            <g i:extraneous="self">
+                                <g>
+                                    <path d="M65.8,47.5L42.7,32.1c-2-1.3-4.6,0.1-4.6,2.5v30.8c0,2.4,2.7,3.8,4.6,2.5l23.1-15.4C67.6,51.3,67.6,48.7,65.8,47.5z"></path>
+                                    <path d="M50,2.5C23.8,2.5,2.5,23.8,2.5,50c0,26.2,21.3,47.5,47.5,47.5S97.5,76.2,97.5,50C97.5,23.8,76.2,2.5,50,2.5z M50,90.1     c-22.1,0-40.1-18-40.1-40.1c0-22.1,18-40.1,40.1-40.1s40.1,18,40.1,40.1C90.1,72.1,72.1,90.1,50,90.1z"></path>
+                                </g>
+                            </g>
+                        </g></svg>
                 </div>
             {% endfor %}
             {% if multiple %}

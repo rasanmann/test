@@ -18,6 +18,7 @@
     transform: translate(-50%, -50%);
     width: 20%;
     opacity: .9;
+    fill: #fff;
   }
 }
 
@@ -121,9 +122,9 @@
 
   .next.disabled, .prev.disabled {
     opacity: .5;
+    cursor: default;
   }
 }
-
 
 .caroussel-outer {
   width: 100%;
@@ -161,7 +162,7 @@
   transition-duration: 0.15s;
 
   &.in {
-    opacity: .6;
+    opacity: .8;
     z-index: 1040;
   }
 }

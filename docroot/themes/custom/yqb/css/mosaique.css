@@ -14,7 +14,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 20%;
-    opacity: .9; }
+    opacity: .9;
+    fill: #fff; }
 
 .field--name-field-paragraph-media-mosaique > .field--item {
   display: inline-block;
@@ -89,7 +90,8 @@
   height: 75px; }
 
 .controls .next.disabled, .controls .prev.disabled {
-  opacity: .5; }
+  opacity: .5;
+  cursor: default; }
 
 .caroussel-outer {
   width: 100%;
@@ -119,7 +121,7 @@
   transition: opacity 0.15s ease 0s;
   transition-duration: 0.15s; }
   .backdrop.in {
-    opacity: .6;
+    opacity: .8;
     z-index: 1040; }
 
 @media screen and (max-width: 992px) {

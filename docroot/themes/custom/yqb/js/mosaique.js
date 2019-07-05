@@ -41,8 +41,14 @@
             if (this.backdrop && this.caroussel) {
                 $(this.selector.backdrop).removeClass('in');
                 $(this.selector.carousselContainer).removeClass('in');
+
                 $(this.componentId + ' ' + this.selector.closeBtn).unbind('click');
                 $(document.body).unbind('click');
+
+                $(this.componentId).find('video').each(function () {
+                    this.pause();
+                    this.currentTime = '0.0';
+                });
             }
         },
 
@@ -133,8 +139,8 @@
                     easing: 'ease-out',
                     perPage: 1,
                     startIndex: 0,
-                    draggable: true,
-                    multipleDrag: true,
+                    draggable: false,
+                    multipleDrag: false,
                     threshold: 20,
                     loop: false,
                     rtl: false
