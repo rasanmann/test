@@ -38,6 +38,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%; }
+  .siema button.close {
+    opacity: 0.7; }
+    .siema button.close:hover {
+      opacity: 1; }
 
 .siema > div,
 .siema > div > div {
@@ -48,7 +52,7 @@
 .siema button[name='close'] {
   float: right;
   color: #fff;
-  padding: 0 5px; }
+  padding: 5px 0px; }
 
 .siema video {
   width: 100%; }
@@ -62,7 +66,7 @@
   opacity: .9; }
 
 .controls .next {
-  right: 20px; }
+  right: 15%; }
   .controls .next svg {
     transform: rotate(-90deg);
     margin-top: 6px; }
@@ -70,7 +74,7 @@
       fill: #fff; }
 
 .controls .prev {
-  left: 20px; }
+  left: 15%; }
   .controls .prev svg {
     transform: rotate(90deg);
     margin-top: 6px; }
@@ -91,8 +95,12 @@
   z-index: 1080;
   border: none;
   outline: none;
-  width: 50px;
-  height: 50px; }
+  width: 75px;
+  height: 75px; }
+
+.controls .next.disabled, .controls .prev.disabled {
+  opacity: .5;
+  pointer-events: none; }
 
 .caroussel-outer {
   width: 100%;

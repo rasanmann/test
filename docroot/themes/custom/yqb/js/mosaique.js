@@ -4,6 +4,7 @@
         backdrop: null,
         caroussel: null,
         carousselContainer: null,
+        componentId: '',
         selector: {
             backdrop: '.backdrop',
             caroussel: '.siema',
@@ -24,7 +25,9 @@
         addListeners: function () {
             var self = this;
 
-            $(document).on('click', this.selector.galleryTrigger, function () {
+            $(document).on('click', this.selector.galleryTrigger, function (e) {
+                e.stopPropagation();
+                e.stopImmediatePropagation();
                 self.createCloseEvent();
                 self.caroussel.goTo($(self.selector.galleryTrigger).index(this));
                 // on ne peut pas encore utiliser les propriétés backdrop et
@@ -38,13 +41,17 @@
             if (this.backdrop && this.caroussel) {
                 this.backdrop.classList.remove('in');
                 this.carousselContainer.classList.remove('in');
+
+                $('button.close').unbind('click');
+                $(document.body).unbind('click');
             }
         },
 
         createCloseEvent: function () {
             var self = this;
 
-            $('button.close').one(function (e) {
+            $('button.close').one('click', function (e) {
+                console.log(e);
                 self.close();
             });
 
@@ -61,7 +68,7 @@
             var items = this.getItems();
 
             for (var i = 0; i < items.length; i++) {
-                list += '<div class="siema-item-container">' +
+                    list += '<div class="siema-item-container">' +
                     '<button class="close" name="close">X</button>';
                 if (this.isVideo(items[i])) {
                     list += '<video controls="controls">' +
@@ -155,14 +162,14 @@
 
         updateControlsStyle: function() {
             if (this.caroussel.currentSlide === 0) {
-                $(this.selector.prevBtn).css('display', 'none');
-                $(this.selector.nextBtn).css('display', 'block');
+                $(this.selector.prevBtn).addClass('disabled');
+                $(this.selector.nextBtn).removeClass('disabled');
             } else if ((this.caroussel.currentSlide + 1) === this.caroussel.innerElements.length) {
-                $(this.selector.prevBtn).css('display', 'block');
-                $(this.selector.nextBtn).css('display', 'none');
+                $(this.selector.prevBtn).removeClass('disabled');
+                $(this.selector.nextBtn).addClass('disabled');
             } else {
-                $(this.selector.prevBtn).css('display', 'block');
-                $(this.selector.nextBtn).css('display', 'block');
+                $(this.selector.prevBtn).removeClass('disabled');
+                $(this.selector.nextBtn).removeClass('disabled');
             }
 
         }
