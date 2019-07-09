@@ -10,7 +10,7 @@
             carousselContainer: '.caroussel-outer',
             closeBtn: 'button.close',
             galleryTrigger: '.field--name-field-paragraph-media-mosaique > .field--item',
-            medias: '.paragraph--type--mosaique .contextual-region',
+            medias: '.paragraph--type--mosaique .field--name-field-media-image',
             nextBtn: '.next',
             prevBtn: '.prev'
         },
