@@ -1,0 +1,7 @@
+yqb_alert.admin_display:
+  path: '/admin/config/alert/yqb_alert'
+  defaults:
+    _form: 'Drupal\yqb_alert\Form\AlertForm'
+    _title: 'Create an alert'
+  requirements:
+    _permission: 'administer site configuration'

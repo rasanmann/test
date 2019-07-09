@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains yqb_alert.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function yqb_alert_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the yqb_alert module.
+    case 'help.page.yqb_alert':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Create an alert from the main menu') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function yqb_alert_theme() {
+  return [
+    'yqb_alert' => [
+      'render element' => 'children',
+    ],
+  ];
+}

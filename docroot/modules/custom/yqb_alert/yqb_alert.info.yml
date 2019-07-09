@@ -1,0 +1,5 @@
+name: 'yqb_alert'
+type: module
+description: 'Create an alert from the main menu'
+core: 8.x
+package: 'Custom'
