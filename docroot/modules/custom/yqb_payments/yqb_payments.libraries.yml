@@ -8,3 +8,10 @@ recaptcha:
   dependencies:
     - core/jquery
     - core/drupalSettings
+
+confirm:
+  version: 1.x
+  js:
+    js/confirm.js: {}
+  dependencies:
+    - core/jquery

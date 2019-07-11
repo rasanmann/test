@@ -7,8 +7,7 @@ use Drupal\yqb_payments\Form\CheckoutForm;
 /**
  * Implements hook_entity_base_field_info().
  */
-function yqb_payments_entity_base_field_info(EntityTypeInterface $entity_type)
-{
+function yqb_payments_entity_base_field_info(EntityTypeInterface $entity_type) {
   if ($entity_type->id() == 'yqb_payment') {
     return YqbPaymentEntity::getConfigurableFields();
   }
@@ -17,30 +16,37 @@ function yqb_payments_entity_base_field_info(EntityTypeInterface $entity_type)
 /**
  * Implements hook_theme().
  */
-function yqb_payments_theme($existing, $type, $theme, $path)
-{
+function yqb_payments_theme($existing, $type, $theme, $path) {
   return [
     'yqb_payments_checkout' => [
       'variables' => [
-        'customer' => false
-      ]
+        'customer' => FALSE,
+      ],
     ],
     'yqb_payments_success' => [
       'variables' => [
-        'customer' => false,
-        'receipt' => false,
-        'entity' => false
-      ]
-    ]
+        'customer' => FALSE,
+        'receipt' => FALSE,
+        'entity' => FALSE,
+      ],
+    ],
   ];
 }
 
-function yqb_payments_preprocess_yqb_payments_checkout(&$variables)
-{
-  $variables['checkout_form'] = Drupal::formBuilder()->getForm(CheckoutForm::class);
+function yqb_payments_preprocess_yqb_payments_checkout(&$variables) {
+  $variables['checkout_form'] = Drupal::formBuilder()
+    ->getForm(CheckoutForm::class);
 }
 
-function yqb_payments_preprocess_yqb_payments_success(&$variables)
-{
+function yqb_payments_preprocess_yqb_payments_success(&$variables) {
   $variables['url'] = $variables['entity']->url('canonical', ['absolute' => TRUE]);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ */
+function yqb_payments_yqb_payment_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+  if ('full' == $build['#view_mode']) {
+    $build['#title'] = t('Thank you for your payment');
+  }
 }

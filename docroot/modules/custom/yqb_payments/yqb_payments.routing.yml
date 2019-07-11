@@ -2,7 +2,7 @@ yqb_payments.yqb_payment.receipt:
   path: '/services-aeroportuaires/paiement-de-facture/recu/{yqb_payment}'
   defaults:
     _entity_view: yqb_payment.full
-    _title_callback: '\Drupal\Core\Entity\Controller\EntityController::title'
+    _title: '\Drupal\Core\Entity\Controller\EntityController::title'
   requirements:
     _entity_access: 'yqb_payment.view'
 

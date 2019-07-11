@@ -100,3 +100,7 @@
   .region.region-bottom-actions,
   #layout-footer {
     display: none; } }
+
+.form-group.error input,
+.has-error .form-control {
+  background: #fff1f1; }

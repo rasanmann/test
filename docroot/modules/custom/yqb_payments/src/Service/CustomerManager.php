@@ -2,6 +2,7 @@
 
 namespace Drupal\yqb_payments\Service;
 
+use Drupal;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Mail\MailManagerInterface;
@@ -197,5 +198,15 @@ class CustomerManager
   public function getEntity()
   {
     return $this->get('entity', false);
+  }
+
+  public function billNoIsUnique($billNo)
+  {
+    $resultFound = Drupal::entityQuery('yqb_payment')
+      ->condition('field_bill_no', $billNo)
+      ->count()
+      ->execute();
+
+    return (int)$resultFound === 0;
   }
 }

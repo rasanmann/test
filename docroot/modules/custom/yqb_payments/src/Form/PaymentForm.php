@@ -30,6 +30,7 @@ class PaymentForm extends FormBase
     $this->recaptchaService = $recaptchaService;
     $this->config = $configFactory->get('yqb_payments.settings');
     $this->customerManager = $customerManager;
+    $this->customerManager->reset();
   }
 
   public static function create(ContainerInterface $container)
@@ -96,8 +97,10 @@ class PaymentForm extends FormBase
       '#title' => $this->t('Amount to pay'),
       '#step' => 0.01,
       '#min' => $this->config->get('minimum_amount'), //@todo use the configuration for the minimum amount.
+      '#max' => 5000,
       '#size' => 8,
       '#default_value' => $this->customerManager->get('amount'),
+      '#suffix' => $this->t('Use the dot as decimal separator (0.00)')
     ];
 
     $form['notifications'] = [
@@ -125,6 +128,10 @@ class PaymentForm extends FormBase
     parent::validateForm($form, $form_state);
     if (!$this->recaptchaService->validate($form_state)) {
       $form_state->setErrorByName('recaptcha', $this->t("Something went wrong, we were unable to validate the CAPTCHA. Please try again."));
+    }
+
+    if (!$this->customerManager->billNoIsUnique($form_state->getValue('bill_no'))) {
+      $form_state->setErrorByName('bill_no', $this->t('This bill number has already been used.'));
     }
 
     if ($form_state->hasAnyErrors()) {
