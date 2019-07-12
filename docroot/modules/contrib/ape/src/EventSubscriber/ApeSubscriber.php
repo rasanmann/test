@@ -88,7 +88,6 @@ class ApeSubscriber implements EventSubscriberInterface {
     // Check to see if another module or hook has already set an age. This
     // allows rules or other module integration to take precedent.
     if (is_null($maxAge)) {
-
       // Check if request matches the alternatives, otherwise use default.
       /* @var \Drupal\system\Plugin\Condition\RequestPath $condition */
       $condition = $this->conditionManager->createInstance('request_path');
@@ -165,11 +164,12 @@ class ApeSubscriber implements EventSubscriberInterface {
   private function setCacheHeader(FilterResponseEvent $event, $maxAge) {
     $response = $event->getResponse();
 
-    $value = 'no-cache, must-revalidate';
+    $value = 'no-cache, must-revalidate, max-age=0';
 
     if ($this->checkCacheable($event, $maxAge)) {
       $value = 'public, max-age=' . $maxAge;
     }
+
     $response->headers->set('Cache-Control', $value);
   }
 
