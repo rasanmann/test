@@ -7,4 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     $vendorDir . '/ironkeith/moneris-eselectplus-api/lib',
+    $vendorDir . '/pear/archive_tar',
+    $vendorDir . '/pear/console_getopt',
+    $vendorDir . '/pear/pear-core-minimal/src',
+    $vendorDir . '/pear/pear_exception',
 );
