@@ -30,8 +30,7 @@ class PaymentController extends ControllerBase
     );
   }
 
-  public function checkout()
-  {
+  public function checkout() {
     if (!$this->customerManager->canCheckout()) {
       $url = Url::fromUserInput($this->config->get('payment_page'));
       return $this->redirect($url->getRouteName(), $url->getRouteParameters());
@@ -39,7 +38,10 @@ class PaymentController extends ControllerBase
 
     return [
       '#theme' => 'yqb_payments_checkout',
-      '#customer' => $this->customerManager->all()
+      '#customer' => $this->customerManager->all(),
+      '#cache' => [
+        'max-age' => 0,
+      ]
     ];
   }
 
@@ -53,7 +55,10 @@ class PaymentController extends ControllerBase
       '#theme' => 'yqb_payments_success',
       '#customer' => $this->customerManager->all(),
       '#receipt' => $this->customerManager->getReceipt(),
-      '#entity' => $this->customerManager->getEntity()
+      '#entity' => $this->customerManager->getEntity(),
+      '#cache' => [
+        'max-age' => 0,
+      ]
     ];
 
     $this->customerManager->reset();

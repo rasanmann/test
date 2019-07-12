@@ -164,7 +164,7 @@ class ApeSubscriber implements EventSubscriberInterface {
   private function setCacheHeader(FilterResponseEvent $event, $maxAge) {
     $response = $event->getResponse();
 
-    $value = 'no-cache, must-revalidate, max-age=0';
+    $value = 'no-cache, must-revalidate';
 
     if ($this->checkCacheable($event, $maxAge)) {
       $value = 'public, max-age=' . $maxAge;
