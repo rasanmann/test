@@ -40,10 +40,10 @@ class SettingsForm extends ConfigFormBase
       '#min' => 0
     ];
 
-    $form['form_is_enabled'] = [
+    $form['form_is_disabled'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Hide and disable pay bills form'),
-      '#default_value' => $config->get('form_is_enabled'),
+      '#default_value' => $config->get('form_is_disabled'),
       '#return_value' => 1
     ];
 
@@ -78,7 +78,7 @@ class SettingsForm extends ConfigFormBase
     $this->config('yqb_payments.settings')
       ->set('recipients', $form_state->getValue('recipients'))
       ->set('minimum_amount', $form_state->getValue('minimum_amount'))
-      ->set('form_is_enabled', $form_state->getValue('form_is_enabled'))
+      ->set('form_is_disabled', $form_state->getValue('form_is_disabled'))
       ->set('recaptcha_sitekey', $form_state->getValue('recaptcha_sitekey'))
       ->set('recaptcha_secret', $form_state->getValue('recaptcha_secret'))
       ->set('payment_page', $form_state->getValue('payment_page'))

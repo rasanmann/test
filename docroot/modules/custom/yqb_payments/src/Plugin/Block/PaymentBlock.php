@@ -14,9 +14,12 @@ use Drupal\Core\Block\BlockBase;
  */
 class PaymentBlock extends BlockBase
 {
-
   public function build()
   {
+    if (Drupal::config('yqb_payments.settings')->get('form_is_disabled')) {
+      return [];
+    }
+
     return Drupal::formBuilder()->getForm(Drupal\yqb_payments\Form\PaymentForm::class);
   }
 }

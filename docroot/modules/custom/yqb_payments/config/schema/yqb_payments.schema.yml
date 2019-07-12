@@ -7,7 +7,7 @@ yqb_payments.settings:
       recipients:
         type: text
         label: 'Recipients'
-      form_is_enabled:
+      form_is_disabled:
         type: checkbox
         label: 'Hide form'
       recaptcha_sitekey:
