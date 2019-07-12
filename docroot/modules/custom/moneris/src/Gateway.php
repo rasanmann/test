@@ -42,7 +42,6 @@ class Gateway
     ]);
 
     if (!$monerisResult->was_successful()) {
-      ksm($monerisResult);
       $errorDetails = [
         'errors' => $monerisResult->errors(),
         'error_code' => $monerisResult->error_code(),
