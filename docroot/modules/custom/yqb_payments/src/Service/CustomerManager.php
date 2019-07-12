@@ -158,7 +158,7 @@ class CustomerManager
     $segments[] = $this->t('<p>Bill No: @bill_no</p>', ['@bill_no' => $this->get('bill_no')]);
     $segments[] = $this->t('<p>Customer No: @customer_no</p>', ['@customer_no' => $this->get('customer_no')]);
     $segments[] = $this->t('<p>Amount: @amount</p>', ['@amount' => $this->get('amount')]);
-    $segments[] = $this->t('<p>Notifications: @notifications</p>', ['@notifications' => $this->get('notifications')]);
+    $segments[] = $this->t('<p>I would like to receive invoices and statements by email: @notifications</p>', ['@notifications' => $this->get('notifications')]);
     $segments[] = $this->t('<p>Customer ID: @customer_id</p>', ['@customer_id' => $this->monerisGateway->getUuid($this->get('email'))]);
     $segments[] = $this->t('<p>Authorization code: @auth_code</p>', ['@auth_code' => $this->getReceipt()->getAuthorizationCode()]);
     $segments[] = $this->t('<p>Card Number: @card_num</p>', ['@card_num' => $this->getReceipt()->getFormattedCardNumber()]);

@@ -45,8 +45,6 @@ class CheckoutForm extends FormBase
       '#default_value' => ''
     ];
 
-    $form['#attached']['library'] = ['yqb_payments/confirm'];
-
     $form['actions']['#type'] = 'actions';
     $form['actions']['submit'] = [
       '#type' => 'submit',
