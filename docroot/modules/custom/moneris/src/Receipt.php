@@ -4,6 +4,7 @@ namespace Drupal\moneris;
 
 use DateTime;
 use DateTimeInterface;
+use DateTimeZone;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Moneris_Result;
 
@@ -76,7 +77,8 @@ class Receipt
 
   public function getTransactionDateTime()
   {
-    $date = new DrupalDateTime($this->getTransactionDate() . ' ' . $this->getTransactionTime());
+    $date = new DrupalDateTime($this->getTransactionDate() . ' ' . $this->getTransactionTime(), 'America/Toronto');
+    $date->setTimezone(new DateTimeZone('GMT'));
     return $date->format('Y-m-d\TH:i:s');
   }
 
