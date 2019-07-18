@@ -31,6 +31,19 @@ class MonerisConnector
     ]);
   }
 
+  public function overrideApi($apiKey, $storeId, $apiUrl, $environment) {
+    $this->apiKey = $apiKey;
+    $this->storeId = $storeId;
+    $this->apiUrl = $apiUrl;
+    $this->environment = $environment;
+
+    $this->api = Moneris::create([
+      'api_key' => $apiKey,
+      'store_id' => $storeId,
+      'environment' => $environment,
+    ]);
+  }
+
   /**
    * @param $params
    * @return \Moneris_Result

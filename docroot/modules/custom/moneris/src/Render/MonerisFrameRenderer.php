@@ -66,8 +66,8 @@ class MonerisFrameRenderer {
   protected $attributes = [];
   protected $stylesheet = [];
 
-  public function __construct($params = [], $attributes = [], $stylesheet = []) {
-    $config = \Drupal::config('moneris.settings');
+  public function __construct($params = [], $attributes = [], $stylesheet = [], $configName = 'moneris.settings') {
+    $config = \Drupal::config($configName);
 
     $this->params = array_merge($this->defaultParams, $params);
     $this->attributes = array_merge($this->defaultAttributes, $attributes);

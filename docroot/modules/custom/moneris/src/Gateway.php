@@ -2,6 +2,7 @@
 
 namespace Drupal\moneris;
 
+use Drupal;
 use Drupal\Component\Utility\Crypt;
 use Drupal\Component\Uuid\Php;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -27,6 +28,16 @@ class Gateway
     $this->stateService = $stateService;
     $this->uuidService = $uuidService;
     $this->logger = $loggerFactory->get('moneris');
+  }
+
+  public function switchSettings($configuration) {
+    $config = Drupal::config($configuration);
+    $this->monerisGateway->overrideApi(
+      $config->get('moneris.api_key'),
+      $config->get('moneris.store_id'),
+      $config->get('moneris.api_url'),
+      $config->get('moneris.environment')
+    );
   }
 
   /**

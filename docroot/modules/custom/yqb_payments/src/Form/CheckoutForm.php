@@ -23,6 +23,7 @@ class CheckoutForm extends FormBase
   {
     $this->customerManager = $customerManager;
     $this->monerisGateway = $gateway;
+    $this->monerisGateway->switchSettings('moneris.payment_settings');
   }
 
   public static function create(ContainerInterface $container)
@@ -42,7 +43,8 @@ class CheckoutForm extends FormBase
   {
     $form['moneris'] = [
       '#type' => 'moneris',
-      '#default_value' => ''
+      '#default_value' => '',
+      '#moneris_config' => 'moneris.payment_settings',
     ];
 
     $form['actions']['#type'] = 'actions';

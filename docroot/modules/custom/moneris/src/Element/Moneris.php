@@ -32,9 +32,10 @@ class Moneris extends FormElement
 
   public static function preRenderMoneris($element)
   {
-    $config = Drupal::config('moneris.settings');
+    $configName = isset($element['#moneris_config']) ? $element['#moneris_config'] : 'moneris.settings';
+    $config = Drupal::config($configName);
     $elementId = Html::getUniqueId('moneris-token');
-    $monerisFrameRenderer = new MonerisFrameRenderer();
+    $monerisFrameRenderer = new MonerisFrameRenderer([], [], [], $configName);
 
     $element['#children']['iframe'] = $monerisFrameRenderer->getRenderArray();
     $element['#id'] = $elementId;
