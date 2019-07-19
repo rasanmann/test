@@ -75,10 +75,10 @@ class Receipt
     return $this->get('TransDate');
   }
 
-  public function getTransactionDateTime()
+  public function getTransactionDateTime($timezone = 'GMT')
   {
     $date = new DrupalDateTime($this->getTransactionDate() . ' ' . $this->getTransactionTime(), 'America/Toronto');
-    $date->setTimezone(new DateTimeZone('GMT'));
+    $date->setTimezone(new DateTimeZone($timezone));
     return $date->format('Y-m-d\TH:i:s');
   }
 

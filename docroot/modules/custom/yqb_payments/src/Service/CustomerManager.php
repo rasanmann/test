@@ -162,7 +162,7 @@ class CustomerManager
     $segments[] = $this->t('<p>Customer ID: @customer_id</p>', ['@customer_id' => $this->monerisGateway->getUuid($this->get('email'))]);
     $segments[] = $this->t('<p>Authorization code: @auth_code</p>', ['@auth_code' => $this->getReceipt()->getAuthorizationCode()]);
     $segments[] = $this->t('<p>Card Number: @card_num</p>', ['@card_num' => $this->getReceipt()->getFormattedCardNumber()]);
-    $segments[] = $this->t('<p>Date and time: @date_time</p>', ['@date_time' => $this->getReceipt()->getTransactionDateTime()]);
+    $segments[] = $this->t('<p>Date and time: @date_time</p>', ['@date_time' => $this->getReceipt()->getTransactionDateTime('America/Toronto')]);
 
     $params = [
       'reference' => $this->getReceipt()->getReferenceNumber(),
