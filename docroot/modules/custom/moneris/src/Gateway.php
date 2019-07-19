@@ -9,6 +9,7 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\State\State;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\moneris\Connector\MonerisConnector;
+use SimpleXMLElement;
 
 class Gateway
 {
@@ -57,8 +58,16 @@ class Gateway
         'errors' => $monerisResult->errors(),
         'error_code' => $monerisResult->error_code(),
         'error_message' => $monerisResult->error_message(),
-        'response' => $monerisResult->response()->__toString()
+        'response' => $monerisResult->response()->__toString(),
       ];
+      if(isset($monerisResult->transaction()->response()->receipt) && $monerisResult->transaction()->response()->receipt instanceof SimpleXMLElement) {
+        $errorDetails['receipt'] = [
+          'ResponseCode' => $monerisResult->transaction()->response()->receipt->ResponseCode->__toString(),
+          'ISO' => $monerisResult->transaction()->response()->receipt->ISO->__toString(),
+          'AuthCode' => $monerisResult->transaction()->response()->receipt->AuthCode->__toString(),
+          'Message' => $monerisResult->transaction()->response()->receipt->Message->__toString(),
+        ];
+      }
       $this->logger->error('<pre>' . print_r($errorDetails, true) . '</pre>');
       $exception = new TransactionException($this->t('We are unable to process the payment at the moment.'));
       $exception->setErrors($monerisResult->errors());
