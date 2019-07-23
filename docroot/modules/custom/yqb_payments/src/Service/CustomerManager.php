@@ -161,6 +161,7 @@ class CustomerManager
     $segments[] = $this->t('<p>I would like to receive invoices and statements by email: @notifications</p>', ['@notifications' => $this->get('notifications')]);
     $segments[] = $this->t('<p>Customer ID: @customer_id</p>', ['@customer_id' => $this->monerisGateway->getUuid($this->get('email'))]);
     $segments[] = $this->t('<p>Authorization code: @auth_code</p>', ['@auth_code' => $this->getReceipt()->getAuthorizationCode()]);
+    $segments[] = $this->t('<p>Card Type: @card_type</p>', ['@card_type' => $this->getReceipt()->getCardType()]);
     $segments[] = $this->t('<p>Card Number: @card_num</p>', ['@card_num' => $this->getReceipt()->getFormattedCardNumber()]);
     $segments[] = $this->t('<p>Date and time: @date_time</p>', ['@date_time' => $this->getReceipt()->getTransactionDateTime('America/Toronto')]);
 
@@ -177,6 +178,7 @@ class CustomerManager
     if ($this->successful()) {
       $payment = YqbPaymentEntity::create([
         'reference_num' => $this->getReceipt()->getReferenceNumber(),
+        'field_reference_num' => $this->getReceipt()->getReferenceNumber(),
         'field_first_name' => $this->get('first_name'),
         'field_last_name' => $this->get('last_name'),
         'field_email' => $this->get('email'),
@@ -187,7 +189,7 @@ class CustomerManager
         'field_notifications' => $this->get('notifications'),
         'field_customer_id' => $this->monerisGateway->getUuid($this->get('email')),
         'field_auth_code' => $this->getReceipt()->getAuthorizationCode(),
-        'field_card_num' => $this->getReceipt()->getFormattedCardNumber(),
+        'field_card_num' => $this->getReceipt()->getFormattedCardNumber() . ' (' . $this->getReceipt()->getCardType() . ')',
         'field_date_time' => $this->getReceipt()->getTransactionDateTime(),
       ]);
       $payment->save();

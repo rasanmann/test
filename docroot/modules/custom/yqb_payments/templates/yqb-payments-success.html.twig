@@ -12,10 +12,10 @@
     Thank you, we received your payment. Your reference number is: <strong>{{ receipt.getReferenceNumber() }}</strong>.
   {% endtrans %}
 </p>
-{% if customer.get('notifications') == 1 %}
+{% if customer['notifications'] == 1 %}
   <p>
     {% trans %}
-      All details of the transaction have been sent to your email <a href="mailto:{{ customer.get('email') }}">{{ customer.get('email') }}</a>.
+      All details of the transaction have been sent to your email <a href="mailto:{{ customer['email'] }}">{{ customer['email'] }}</a>.
     {% endtrans %}
   </p>
 {% endif %}
