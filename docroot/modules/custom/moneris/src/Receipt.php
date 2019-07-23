@@ -12,6 +12,15 @@ class Receipt
 {
   protected $values;
 
+  const CARD_TYPES = [
+    'M' => 'MasterCard',
+    'V' => 'Visa',
+    'AX' => 'American Express',
+    'D' => 'Debit',
+    'P' => 'Pin Debit',
+    'unknown' => 'Unknown',
+  ];
+
   public function __construct(array $values = [])
   {
     $this->values = $values;
@@ -30,6 +39,7 @@ class Receipt
           'TransAmount' => $source->response()->receipt->TransAmount->__toString(),
           'expdate' => $source->response()->receipt->ResolveData->expdate->__toString(),
           'masked_pan' => $source->response()->receipt->ResolveData->masked_pan->__toString(),
+          'CardType' => $source->response()->receipt->CardType->__toString(),
         ]);
         break;
       default:
@@ -91,6 +101,13 @@ class Receipt
   public function getAmount()
   {
     return $this->get('TransAmount');
+  }
+
+  public function getCardType() {
+    $transactionValue = $this->get('CardType', 'unknown');
+
+    return isset(static::CARD_TYPES[$transactionValue]) ?
+      static::CARD_TYPES[$transactionValue] : 'Unknown';
   }
 
   public function getExpirationDate()

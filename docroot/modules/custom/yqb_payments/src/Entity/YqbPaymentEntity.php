@@ -221,7 +221,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
-      ->setRequired(TRUE);
+      ->setRequired(FALSE);
 
     $fields['field_customer_id'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Customer number'))
@@ -247,7 +247,7 @@ class YqbPaymentEntity extends ContentEntityBase implements YqbPaymentEntityInte
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
-      ->setRequired(TRUE);
+      ->setRequired(FALSE);
 
     $fields['field_auth_code'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Authorization code'))
