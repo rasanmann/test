@@ -15,3 +15,10 @@ confirm:
     js/confirm.js: {}
   dependencies:
     - core/jquery
+
+payment:
+  version: 1.x
+  js:
+    js/payment.js: {}
+  dependencies:
+    - core/jquery
