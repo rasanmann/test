@@ -47,6 +47,10 @@ class CheckoutForm extends FormBase
       '#moneris_config' => 'moneris.payment_settings',
     ];
 
+    $form['#attached'] = [
+      'library' => ['yqb_payments/payment'],
+    ];
+
     $form['actions']['#type'] = 'actions';
     $form['actions']['submit'] = [
       '#type' => 'submit',
