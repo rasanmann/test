@@ -53,7 +53,9 @@ class Gateway
       'cust_id' => $this->getUuid($email)
     ]);
 
-    if (!$monerisResult->was_successful()) {
+    $receiptId = $monerisResult->transaction()
+                               ->response()->receipt->ReceiptId->__toString();
+    if (!$monerisResult->was_successful() || $receiptId == 'null') {
       $errorDetails = [
         'errors' => $monerisResult->errors(),
         'error_code' => $monerisResult->error_code(),
