@@ -1,0 +1,18 @@
+entity.yqb_payment.collection:
+  title: 'Online Payment list'
+  route_name: entity.yqb_payment.collection
+  description: 'List Online Payment entities'
+  parent: system.admin_structure
+  weight: 100
+
+yqb_payment.admin.structure.settings:
+  title: 'Online Payment settings'
+  description: 'Configure Online Payment entities'
+  route_name: yqb_payment.settings
+  parent: system.admin_structure
+
+yqb_payments.settings:
+  title: 'Bills'
+  route_name: yqb_payments.settings
+  parent: yqb_parking_booker.admin_config
+  description: 'Pay Bills online settings (minimum amount, disable form, etc.)'

@@ -1,0 +1,23 @@
+yqb_payments.settings:
+  path: '/admin/config/yqb/bills'
+  defaults:
+    _form: '\Drupal\yqb_payments\Form\SettingsForm'
+    _title: 'Bills'
+  requirements:
+    _permission: 'access administration pages'
+
+yqb_payments.yqb_payment.checkout:
+  path: '/airport-services/pay-bills/checkout'
+  defaults:
+    _controller: '\Drupal\yqb_payments\Controller\PaymentController::checkout'
+    _title: 'Checkout'
+  requirements:
+    _access: 'TRUE'
+
+yqb_payments.yqb_payment.success:
+  path: '/airport-services/pay-bills/confirmation'
+  defaults:
+    _controller: '\Drupal\yqb_payments\Controller\PaymentController::success'
+    _title: 'Confirmation'
+  requirements:
+    _access: 'TRUE'

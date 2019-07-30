@@ -1,0 +1,8 @@
+name: 'YQB Payments'
+type: module
+description: 'Allow people to pay their bills online.'
+core: 8.x
+package: 'YQB'
+requirements:
+  yqb_parking_booker:yqb_parking_booker
+  moneris:moneris

@@ -88,3 +88,30 @@
 
 .block-alert {
   top: 75px; }
+  .block-alert .block-yqb-payments {
+    margin: 0 40px 40px 40px;
+    max-width: 600px;
+    width: calc(100% - 80px); }
+  .block-alert .yqb-payments-checkout .user-info span {
+    display: inline-block; }
+    @media (min-width: 680px) {
+      .block-alert .yqb-payments-checkout .user-info span.info {
+        min-width: 440px;
+        text-align: right;
+        margin-bottom: 10px; } }
+  @media print {
+    .block-alert #layout-header {
+      display: none; }
+    .block-alert #layout-content > .header {
+      display: none; }
+    .block-alert #layout-content nav.tabs {
+      display: none; }
+    .block-alert .breadcrumb-wrapper {
+      display: none; }
+    .block-alert .region.region-bottom,
+    .block-alert .region.region-bottom-actions,
+    .block-alert #layout-footer {
+      display: none; } }
+  .block-alert .form-group.error input,
+  .block-alert .has-error .form-control {
+    background: #fff1f1; }

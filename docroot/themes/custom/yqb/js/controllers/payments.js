@@ -123,14 +123,14 @@ var Payments = (function ($, Drupal, Bootstrap) {
       return false;
     }
 
-    var $moneris = $form.find('#moneris_frame');
+    var $moneris = $form.find('.moneris-frame');
     $moneris.prevAll('.alert').remove();
 
     if ($moneris.length) {
       $form.data('submitting', true);
       $form.find('button[type="submit"],input[type="submit"]').attr('disabled', 'disabled');
       var contentWindow = $moneris.get(0).contentWindow;
-      contentWindow.postMessage('', $moneris.attr('src').replace(/\?(.*)/, ''));
+      contentWindow.postMessage('tokenize', $moneris.attr('src').replace(/\?(.*)/, ''));
 
       ev.preventDefault();
     }
@@ -138,6 +138,8 @@ var Payments = (function ($, Drupal, Bootstrap) {
 
   var onFrameMessage = function (ev) {
     console.log('onFrameMessage');
+
+    if (ev.originalEvent.data === 'recaptcha-setup') return;
 
     var respData = JSON.parse(ev.originalEvent.data);
 

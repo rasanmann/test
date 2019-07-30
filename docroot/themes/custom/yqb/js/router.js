@@ -16,7 +16,7 @@ var Router = (function ($, Drupal, Bootstrap) {
         {filter: 'body[id*="app-mobile"]', cls: 'Pages', method: 'appMobile'},
         {filter: 'body[id*="mission-vision"]', cls: 'Pages', method: 'mission'},
         {filter: 'body[id*="vestiaire"], body[id*="coat-check"], body[id*="service-demballage"], body[id*="wrap-baggage"]', cls: 'Pages', method: 'storage'},
-        {filter: 'body[id*="facture"], body[id*="bill"], body[id*="stationnement"], body[id*="parking"]', cls: 'Payments', method: 'index'},
+        {filter: 'body[id*="bill"], body[id*="stationnement"], body[id*="parking"]', cls: 'Payments', method: 'index'},
         {filter: '.slider-gallery-thumbs', cls: 'SwiperSlider', method: 'initWithThumbs'}
     ];
 

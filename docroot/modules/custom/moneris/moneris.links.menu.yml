@@ -1,0 +1,11 @@
+moneris.admin_display:
+  title: 'Moneris (parking booker)'
+  route_name: moneris.admin_display
+  parent: yqb_parking_booker.admin_config
+  description: 'Moneris account settings for parking booker'
+
+moneris.payment_settings:
+  title: 'Moneris (pay bills)'
+  route_name: moneris.payment_settings
+  parent: yqb_parking_booker.admin_config
+  description: 'Moneris account settings for pay bills'

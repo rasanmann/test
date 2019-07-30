@@ -1,0 +1,8 @@
+.recaptcha-error {
+  color: #c70000;
+  font-weight: bold;
+}
+
+#recaptcha_element {
+  margin-bottom: 20px;
+}

@@ -14,3 +14,20 @@ moneris.settings:
         profile_id:
           type: text
           label: 'Profile ID:'
+
+moneris.payment_settings:
+  type: mapping
+  label: 'Moneris payment settings'
+  mapping:
+    moneris:
+      type: mapping
+      mapping:
+        store_id:
+          type: text
+          label: 'Store ID:'
+        api_key:
+          type: text
+          label: 'API key:'
+        profile_id:
+          type: text
+          label: 'Profile ID:'

@@ -1,0 +1,24 @@
+recaptcha:
+  version: 1.x
+  js:
+    js/recaptcha.js: {}
+  css:
+    theme:
+      css/recaptcha.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+confirm:
+  version: 1.x
+  js:
+    js/confirm.js: {}
+  dependencies:
+    - core/jquery
+
+payment:
+  version: 1.x
+  js:
+    js/payment.js: {}
+  dependencies:
+    - core/jquery

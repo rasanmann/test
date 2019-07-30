@@ -1,0 +1,29 @@
+{#
+/**
+ * Available variables:
+ * - customer
+ * - checkout_form
+ */
+#}
+<div class="yqb-payments-checkout">
+  <p>{{ 'Please make sure that the information below is valid.'|t }}</p>
+
+  <p class="user-info"><span class="info"><strong>{{ 'First name:'|t }}</strong></span> <span class="value">{{ customer.first_name }}</span><br>
+    <span class="info"><strong>{{ 'Last name:'|t }}</strong></span> <span class="value">{{ customer.last_name }}</span><br>
+    <span class="info"><strong>{{ 'Email:'|t }}</strong></span> <span class="value">{{ customer.email }}</span><br>
+    <span class="info"><strong>{{ 'Business name:'|t }}</strong></span> <span class="value">{{ customer.business_name }}</span><br>
+    <span class="info"><strong>{{ 'Bill number:'|t }}</strong></span> <span class="value">{{ customer.bill_no }}</span><br>
+    <span class="info"><strong>{{ 'Customer number:'|t }}</strong></span> <span class="value">{{ customer.customer_no }}</span><br>
+    <span class="info"><strong>{{ 'Amount to pay:'|t }}</strong></span> <span class="value">{{ customer.amount }}</span><br>
+    <span class="info"><strong>{{ 'I would like to receive invoices and statements by email:'|t }}</strong></span> <span class="value">
+    {% if customer.notifications %}
+      {{ 'Yes'|t }}
+    {% else %}
+      {{ 'No'|t }}
+    {% endif %}
+  </span></p>
+
+  <h2>{{ 'Payment information'|t }}</h2>
+
+  {{ checkout_form }}
+</div>

@@ -1,32 +1,33 @@
 #block-billsblock {
-  margin-top:50px;}
+  margin-top: 50px;
+}
 
 .parking-container {
-  display:flex !important;
-  width:100% !important;
-  align-items:flex-end !important;
+  display: flex !important;
+  width: 100% !important;
+  align-items: flex-end !important;
   justify-content: space-between;
 }
 
-.parking-container-item-container{
-  margin:0 !important;
-  padding:0 !important;
-  width:auto !important;
+.parking-container-item-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
 }
 
-.parking-container-item-container-button{
-  margin:0 !important;
-  padding:0 !important;
+.parking-container-item-container-button {
+  margin: 0 !important;
+  padding: 0 !important;
   align-items: center !important;
-  position:static !important;
+  position: static !important;
 }
 
-.button-full-width{
-  width:100% !important;
+.button-full-width {
+  width: 100% !important;
 }
 
 .sms-disclaimer {
-  padding-left:10px;
+  padding-left: 10px;
 }
 
 .window-is-not-mobile {
@@ -45,8 +46,8 @@
 .block-reminders,
 .block-parking-booker {
 
-  .form-block-container{
-    > .form-group{
+  .form-block-container {
+    > .form-group {
       &.btn-space {
         position: absolute;
       }
@@ -95,25 +96,27 @@
 }
 
 .job_title_wrapper {
-  display:flex;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
 
   .field--items {
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 
     .field--item {
-      padding:10px;
+      padding: 10px;
       background-color: #e6e6e6;
-      margin:5px;
+      margin: 5px;
       font-weight: lighter;
+
       &:hover {
         background-color: #f2f2f2;
       }
     }
   }
 }
+
 
 #block-yqbblockalert .form-group {
   position: relative;
@@ -129,5 +132,60 @@
 }
 
 .block-alert {
-  top:75px;
+  top: 75px;
+
+  .block-yqb-payments {
+    margin: 0 40px 40px 40px;
+    max-width: 600px;
+    width: calc(100% - 80px);
+  }
+
+
+  .yqb-payments-checkout {
+    .user-info {
+      span {
+        display: inline-block;
+
+        @media(min-width: 680px) {
+          &.info {
+            min-width: 440px;
+            text-align: right;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  @media print {
+    #layout-header {
+      display: none;
+    }
+
+    #layout-content {
+      > .header {
+        display: none;
+      }
+
+      nav.tabs {
+        display: none;
+      }
+    }
+
+    .breadcrumb-wrapper {
+      display: none;
+    }
+
+    .region.region-bottom,
+    .region.region-bottom-actions,
+    #layout-footer {
+      display: none;
+    }
+  }
+
+  .form-group.error input,
+  .has-error .form-control {
+    background: #fff1f1;
+
+  }
 }

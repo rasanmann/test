@@ -1,0 +1,16 @@
+add online payment entities:
+  title: 'Create new Online Payment entities'
+
+administer online payment entities:
+  title: 'Administer Online Payment entities'
+  description: 'Allow to access the administration form to configure Online Payment entities.'
+  restrict access: true
+
+delete online payment entities:
+  title: 'Delete Online Payment entities'
+
+edit online payment entities:
+  title: 'Edit Online Payment entities'
+
+view online payment entities:
+  title: 'View published Online Payment entities'

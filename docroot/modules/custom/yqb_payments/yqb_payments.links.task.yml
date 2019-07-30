@@ -1,0 +1,22 @@
+# Online Payment routing definition
+yqb_payment.settings_tab:
+  route_name: yqb_payment.settings
+  title: 'Settings'
+  base_route: yqb_payment.settings
+
+entity.yqb_payment.canonical:
+  route_name: entity.yqb_payment.canonical
+  base_route: entity.yqb_payment.canonical
+  title: 'View'
+
+entity.yqb_payment.edit_form:
+  route_name: entity.yqb_payment.edit_form
+  base_route: entity.yqb_payment.canonical
+  title: 'Edit'
+
+entity.yqb_payment.delete_form:
+  route_name:  entity.yqb_payment.delete_form
+  base_route:  entity.yqb_payment.canonical
+  title: Delete
+  weight: 10
+

@@ -1,0 +1,4 @@
+services:
+  moneris.gateway:
+    class: Drupal\moneris\Gateway
+    arguments: ['@state', '@uuid', '@logger.factory']
