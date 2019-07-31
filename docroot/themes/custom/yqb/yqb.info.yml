@@ -29,6 +29,7 @@ libraries:
   - 'yqb/global-styling'
   - 'yqb/bootstrap-scripts'
   - 'yqb/global-js'
+  - 'yqb/alerts'
 
 libraries-override:
   # Remove an entire library.

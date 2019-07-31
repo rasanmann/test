@@ -110,6 +110,14 @@ router:
   js:
     js/router.js: {}
 
+
+alerts:
+    version: 1.x
+    js:
+      js/alerts.js: {}
+    dependencies:
+      - core/jquery
+
 #bootstrap-scripts:
 #  js:
 #    bootstrap/js/affix.js: {}

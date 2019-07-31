@@ -44,23 +44,39 @@ class YqbAlertBlock extends BlockBase {
 
     $form['french_alert'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('French Alert'),
+      '#title' => $this->t('Alerte française (courte)'),
       '#placeholder' => "Entrer le text de l'alerte ici",
-      '#description' => 'description',
+      '#description' => 'Alerte francaise boîte rouge',
       '#default_value'=> isset($config['french_alert']) ? $config['french_alert'] : "",
     ];
 
     $form['english_alert'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('English Alert'),
+      '#title' => $this->t('English Alert (short)'),
       '#placeholder' => "Enter the text for the alert",
-      '#description' => 'description',
+      '#description' => 'English alert in red box',
       '#default_value'=> isset($config['english_alert']) ? $config['english_alert'] : "",
+    ];
+
+    $form['french_alert_full'] = [
+        '#type' => 'textarea',
+        '#title' => $this->t('Alerte française (Complète)'),
+        '#placeholder' => "Entrer le text complet de l'alerte ici",
+        '#description' => 'Le texte mis dans cette zone sera celui afficher sur la page alerte complete',
+        '#default_value'=> isset($config['french_alert_full']) ? $config['french_alert_full'] : "",
+    ];
+
+    $form['english_alert_full'] = [
+        '#type' => 'textarea',
+        '#title' => $this->t('English Alert Full'),
+        '#placeholder' => "Enter the text for the full alert here",
+        '#description' => 'The text compose in this zone will be shown on the full page alert',
+        '#default_value'=> isset($config['english_alert_full']) ? $config['english_alert_full'] : "",
     ];
 
     $form['alert_is_enable'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Cocher pour afficher l\'alerte'),
+      '#title' => $this->t('(IMPORTANT !) Cocher pour afficher l\'alerte'),
       '#default_value' => isset($config['alert_is_enable']) ? $config['alert_is_enable'] : false,
     ];
 
@@ -75,7 +91,10 @@ class YqbAlertBlock extends BlockBase {
 
     $this->configuration['french_alert'] = $form_state->getValue('french_alert');
     $this->configuration['english_alert'] = $form_state->getValue('english_alert');
+    $this->configuration['french_alert_full'] = $form_state->getValue('french_alert_full');
+    $this->configuration['english_alert_full'] = $form_state->getValue('english_alert_full');
     $this->configuration['alert_is_enable'] = $form_state->getValue('alert_is_enable');
+    
 
   }
 }
