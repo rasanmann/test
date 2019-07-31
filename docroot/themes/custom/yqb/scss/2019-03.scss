@@ -115,6 +115,12 @@
   }
 }
 
+#block-yqbblockalert{
+    display:none;
+}
+
+
+
 #block-yqbblockalert .form-group {
   position: relative;
   padding: 1.25rem 1.25rem;
@@ -129,5 +135,5 @@
 }
 
 .block-alert {
-  top:75px;
+    top:75px;
 }

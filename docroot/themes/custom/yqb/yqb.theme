@@ -689,3 +689,8 @@ function yqb_preprocess_views_view_field(&$variables) {
     }
   }
 }
+
+function yqb_preprocess_block__yqb_alert(&$variables){
+    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $variables['language'] = $language;
+}
