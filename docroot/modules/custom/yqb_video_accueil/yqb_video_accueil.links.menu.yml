@@ -1,0 +1,12 @@
+yqb_video_accueil.admin_config:
+  title: "Vidéo accueil"
+  route_name: yqb_video_accueil.settings
+  parent: system.admin_config_ui
+  description: "Modifier la vidéo et le poster de la page d'accueil"
+  weight: -20
+
+yqb_video_accueil.settings:
+  title: 'Vidéo accueil'
+  route_name: yqb_video_accueil.settings
+  parent: yqb_video_accueil.admin_config
+  description: 'Vidéo accueil settings'

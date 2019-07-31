@@ -1,0 +1,7 @@
+yqb_video_accueil.settings:
+  path: '/admin/config/yqb/video-accueil'
+  defaults:
+    _form: '\Drupal\yqb_video_accueil\Form\Settings'
+    _title: 'Vidéo accueil'
+  requirements:
+    _permission: 'access administration pages'
