@@ -6,10 +6,10 @@ yqb_alert.fr.index:
   requirements:
     _permission: 'access content'
 
-yqb_alert.fr.index:
+yqb_alert.en.index:
   path: '/alert'
   defaults:
     _controller: '\Drupal\yqb_alert\Controller\ShowAlert::index'
-    _title: 'Alerte YQB'
+    _title: 'YQB Alert'
   requirements:
     _permission: 'access content'
