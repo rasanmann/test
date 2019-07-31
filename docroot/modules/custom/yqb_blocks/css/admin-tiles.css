@@ -1,0 +1,4 @@
+#table-ajax-container tr.odd .form-item, tr.even .form-item {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
