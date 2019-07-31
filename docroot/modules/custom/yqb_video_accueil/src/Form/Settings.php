@@ -7,7 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
 
 class Settings extends ConfigFormBase {
-    const MAX_FILE_SIZE = 15;
+    const MAX_FILE_SIZE = 30;
 
     public function getFormId() {
         return 'yqb_video_accueil_settings';
