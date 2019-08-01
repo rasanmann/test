@@ -78,8 +78,17 @@ abstract class PreviewBlock extends BlockBase {
   }
 
   public function previewBlock($form, FormStateInterface $form_state) {
+    Drupal\Core\Cache\Cache::invalidateTags(['preview:block.' . $this->getDerivativeId()]);
     $form_state->set('preview_block', TRUE);
     $this->previewSubmit($form, $form_state);
     $form_state->setRebuild();
+  }
+
+  public function getCacheTags() {
+    $tags = parent::getCacheTags();
+
+    $tags[] = 'preview:block.' . $this->getDerivativeId();
+
+    return $tags;
   }
 }
