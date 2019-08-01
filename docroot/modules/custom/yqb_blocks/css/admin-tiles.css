@@ -2,3 +2,15 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+
+#preview-zone.is-preview {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 2px solid #CCC;
+}
+
+#preview-zone.is-preview iframe {
+  width: 100% !important;
+  display: block;
+  border: none;
+}

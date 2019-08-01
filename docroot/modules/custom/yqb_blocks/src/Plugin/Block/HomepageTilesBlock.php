@@ -7,9 +7,12 @@
 
 namespace Drupal\yqb_blocks\Plugin\Block;
 
+use Drupal;
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 
 /**
  * Provides a 'Homepage Tiles Block' Block
@@ -20,6 +23,12 @@ use Drupal\node\Entity\Node;
  * )
  */
 class HomepageTilesBlock extends PreviewBlock {
+
+  const SIZE_LABELS = [
+    'embed-responsive-1by1' => 'Simple',
+    'embed-responsive-2by1' => 'Double',
+    '' => '',
+  ];
 
   public function blockForm($form, FormStateInterface $form_state) {
     $form = parent::blockForm($form, $form_state);
@@ -42,6 +51,7 @@ class HomepageTilesBlock extends PreviewBlock {
       '#type' => 'table',
       '#header' => [
         $this->t('Tile'),
+        $this->t('Size'),
         $this->t('Remove'),
         $this->t('Weight'),
       ],
@@ -57,6 +67,12 @@ class HomepageTilesBlock extends PreviewBlock {
     ];
 
     foreach ($rowKeys as $rowKey) {
+      $node = isset($config['rows'][$rowKey]) ? Node::load($config['rows'][$rowKey]['tile']) : NULL;
+      $size = '';
+      if ($node instanceof NodeInterface) {
+        $size = $node->field_format->value;
+      }
+
       $weight = isset($config['rows'][$rowKey]) ? $config['rows'][$rowKey]['weight'] : $rowKey;
 
       $form['container']['table-row'][$weight]['#attributes']['class'][] = 'draggable';
@@ -64,11 +80,23 @@ class HomepageTilesBlock extends PreviewBlock {
       $form['container']['table-row'][$weight]['tile'] = [
         '#type' => 'entity_autocomplete',
         '#target_type' => 'node',
+        '#title' => $this->t('Tile'),
+        '#title_display' => 'invisible',
         '#selection_settings' => [
           'target_bundles' => ['homepage_tiles'],
         ],
-        '#default_value' => isset($config['rows'][$rowKey]) ? Node::load($config['rows'][$rowKey]['tile']) : NULL,
+        '#default_value' => $node,
         '#required' => TRUE,
+        '#ajax' => [
+          'callback' => [$this, 'updateRowSize'],
+          'wrapper' => 'size' . $weight,
+          'event' => 'autocompleteclose',
+        ],
+      ];
+      $form['container']['table-row'][$weight]['size'] = [
+        '#markup' => '<span><strong>' . static::SIZE_LABELS[$size] . '</strong></span>',
+        '#prefix' => '<div id="size' . $weight . '">',
+        '#suffix' => '</div>',
       ];
       $buttonName = 'remove' . $weight;
       $form['container']['table-row'][$weight][$buttonName] = [
@@ -80,6 +108,10 @@ class HomepageTilesBlock extends PreviewBlock {
         '#ajax' => [
           'callback' => [$this, 'updateForm'],
           'wrapper' => 'table-ajax-container',
+          'progress' => [
+            'type' => 'throbber',
+            'message' => NULL,
+          ],
         ],
         '#attributes' => [
           'class' => ['tile-button'],
@@ -99,10 +131,22 @@ class HomepageTilesBlock extends PreviewBlock {
       ];
     }
 
-    $form['container']['actions'] = ['#type' => 'actions'];
-    $form['container']['actions']['add'] = [
+    $form['help_text'] = [
+      '#theme' => 'status_messages',
+      '#weight' => 150,
+      '#message_list' => [
+        'warning' => [
+          $this->t('Always add or remove tiles before changing their position otherwise new positions will be lost. <strong>"Preview" must be used before saving.</strong>'),
+        ],
+      ],
+      '#status_headings' => [
+        'warning' => t('Warning message'),
+      ],
+    ];
+
+    $form['actions']['add'] = [
       '#type' => 'submit',
-      '#limit_validation_errors' => TRUE,
+      '#limit_validation_errors' => [],
       '#value' => $this->t('Add new tile'),
       '#name' => 'add',
       '#submit' => [[$this, 'addRow']],
@@ -112,14 +156,37 @@ class HomepageTilesBlock extends PreviewBlock {
       '#ajax' => [
         'callback' => [$this, 'updateForm'],
         'wrapper' => 'table-ajax-container',
+        'progress' => [
+          'type' => 'throbber',
+          'message' => NULL,
+        ],
       ],
     ];
 
     return $form;
   }
 
-  public function blockValidate($form, FormStateInterface $form_state) {
+  public function updateRowSize($form, FormStateInterface $form_state) {
+    $triggeringElement = $form_state->getTriggeringElement();
+    $values = $form_state->getValues();
+    $nid = NestedArray::getValue($values, $triggeringElement['#array_parents']);
+    $weightParents = array_slice($triggeringElement['#array_parents'], 0, count($triggeringElement['#array_parents']) - 1);
+    array_push($weightParents, 'weight');
+    $weight = NestedArray::getValue($values, $weightParents);
+    $size = '';
 
+    if (!empty($nid)) {
+      $node = Node::load($nid);
+      if ($node instanceof NodeInterface) {
+        $size = $node->field_format->value;
+      }
+    }
+
+    return [
+      '#markup' => '<span><strong>' . static::SIZE_LABELS[$size] . '</strong></span>',
+      '#prefix' => '<div id="size' . $weight . '">',
+      '#suffix' => '</div>',
+    ];
   }
 
   public function blockSubmit($form, FormStateInterface $form_state) {
@@ -169,63 +236,67 @@ class HomepageTilesBlock extends PreviewBlock {
    */
   public function build() {
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $tiles = [];
 
-    $menu = \Drupal::menuTree()
-                   ->load('homepage-tiles-global',
-                     new \Drupal\Core\Menu\MenuTreeParameters());
-    $manipulators = [
-      ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
-    ];
-    $menu = \Drupal::menuTree()->transform($menu, $manipulators);
-
-    $ids = [];
-    foreach ($menu as $key => $item) {
-      $url = $item->link->getUrlObject();
-      $path = $url->getInternalPath();
-
-      if (preg_match('/node\/(\d+)/', $path, $matches)) {
-        $ids[] = $matches[1];
-      }
+    if (Drupal::currentUser()->hasPermission('preview homepage tiles') &&
+        $rows = $this->tempStore->get('rows')) {
+      $this->tempStore->delete('rows');
+    }
+    else {
+      $rows = $this->configuration['rows'];
     }
 
-    $tiles = [];
-    if (!empty($ids)) {
-      $nodes = Node::loadMultiple($ids);
+    if (!empty($rows) && is_array($rows)) {
+      $ids = [];
+      foreach ($rows as $row) {
+        $ids[] = $row['tile'];
+      }
 
-      foreach ($nodes as $node) {
-        if ($node->hasTranslation($language)) {
-          $node = $node->getTranslation($language);
+      if (!empty($ids)) {
+        $nodes = Node::loadMultiple($ids);
 
-          $tile = [
-            'title' => $node->title->value,
-            'description' => $node->field_tile_body->value,
-            'hide_content' => (bool) $node->field_tile_hide_content->value,
-            'icon_class' => $node->field_tile_icon_list->value,
-            'background_color' => $node->field_tile_background_color->value,
-            'format' => $node->field_format->value,
-            'trigger_nav' => $node->field_trigger_nav->value,
-          ];
+        if (!empty($nodes)) {
+          foreach ($rows as $row) {
+            $node = $nodes[$row['tile']];
+            if (!$node instanceof NodeInterface) {
+              continue;
+            }
 
-          if (isset($node->field_tile_link->first()->uri)) {
-            $uri = $node->field_tile_link->first()->uri;
-            $tile['url'] = Url::fromUri($uri);
-            $tile['target'] = (preg_match('/^internal|^entity|aeroportdequebec\.com/',
-              $uri)) ? '_self' : '_blank';
+            if ($node->hasTranslation($language)) {
+              $node = $node->getTranslation($language);
+
+              $tile = [
+                'title' => $node->title->value,
+                'description' => $node->field_tile_body->value,
+                'hide_content' => (bool) $node->field_tile_hide_content->value,
+                'icon_class' => $node->field_tile_icon_list->value,
+                'background_color' => $node->field_tile_background_color->value,
+                'format' => $node->field_format->value,
+                'trigger_nav' => $node->field_trigger_nav->value,
+              ];
+
+              if (isset($node->field_tile_link->first()->uri)) {
+                $uri = $node->field_tile_link->first()->uri;
+                $tile['url'] = Url::fromUri($uri);
+                $tile['target'] = (preg_match('/^internal|^entity|aeroportdequebec\.com/',
+                  $uri)) ? '_self' : '_blank';
+              }
+
+              if (isset($node->field_tile_link->first()->uri)) {
+                $tile['cta'] = $node->field_tile_link->first()->title;
+              }
+
+              if (isset($node->get('field_tile_background_image')->entity)) {
+                $tile['background_image'] = file_create_url($node->get('field_tile_background_image')->entity->getFileUri());
+              }
+
+              if (isset($node->get('field_tile_icon')->entity)) {
+                $tile['icon'] = file_create_url($node->get('field_tile_icon')->entity->getFileUri());
+              }
+
+              $tiles[] = $tile;
+            }
           }
-
-          if (isset($node->field_tile_link->first()->uri)) {
-            $tile['cta'] = $node->field_tile_link->first()->title;
-          }
-
-          if (isset($node->get('field_tile_background_image')->entity)) {
-            $tile['background_image'] = file_create_url($node->get('field_tile_background_image')->entity->getFileUri());
-          }
-
-          if (isset($node->get('field_tile_icon')->entity)) {
-            $tile['icon'] = file_create_url($node->get('field_tile_icon')->entity->getFileUri());
-          }
-
-          $tiles[] = $tile;
         }
       }
     }
@@ -234,5 +305,23 @@ class HomepageTilesBlock extends PreviewBlock {
       '#theme' => 'homepage-tiles-block',
       '#tiles' => $tiles,
     ];
+  }
+
+  protected function getPreviewUrl() {
+    return Url::fromRoute('<front>')->toString();
+  }
+
+  protected function previewSubmit($form, FormStateInterface $form_state) {
+    $values = $form_state->getValue(['settings', 'container', 'table-row']);
+    $rowKeys = [];
+    $rows = [];
+
+    foreach ($values as $row) {
+      $rowKeys[] = $row['weight'];
+      $rows[$row['weight']] = $row;
+    }
+
+    sort($rowKeys);
+    $this->tempStore->set('rows', $rows);
   }
 }
