@@ -42,11 +42,9 @@ class YqbAlertBlock extends BlockBase {
   public function blockForm($form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
 
-    ksm($config);
-
     $form['french_alert'] = [
-      '#type' => 'textarea',
-      '#title' => $this->t('Alerte française (courte)'),
+        '#type' => 'textarea',
+        '#title' => $this->t('Alerte française (courte)'),
       '#placeholder' => "Entrer le text de l'alerte ici",
       '#description' => 'Alerte francaise boîte rouge',
       '#default_value'=> isset($config['french_alert']) ? $config['french_alert'] : "",
@@ -98,7 +96,7 @@ class YqbAlertBlock extends BlockBase {
     $this->configuration['french_alert_full'] = $form_state->getValue('french_alert_full');
     $this->configuration['english_alert_full'] = $form_state->getValue('english_alert_full');
     $this->configuration['alert_is_enable'] = $form_state->getValue('alert_is_enable');
-    
+
 
   }
 }
