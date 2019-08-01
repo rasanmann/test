@@ -18,13 +18,18 @@ class ShowAlert extends ControllerBase{
         $language == 'fr' ? $content = $settings['french_alert_full'] : $content = $settings['english_alert_full'];
 
         if(!$settings['alert_is_enable']){
-            $content = "";
-        }
-
-        return [
-            '#markup' => $content,
+            return ['#markup' => ""];
+                              
+        } else {
+            return [
+            '#markup' => $content['value'],
         ];
-        
     }
+
+    
+
+   
+        
+}
 
 }

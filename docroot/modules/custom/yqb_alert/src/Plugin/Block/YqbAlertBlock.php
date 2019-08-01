@@ -42,6 +42,8 @@ class YqbAlertBlock extends BlockBase {
   public function blockForm($form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
 
+    ksm($config);
+
     $form['french_alert'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Alerte française (courte)'),
@@ -59,19 +61,21 @@ class YqbAlertBlock extends BlockBase {
     ];
 
     $form['french_alert_full'] = [
-        '#type' => 'textarea',
+        '#type' => 'text_format',
         '#title' => $this->t('Alerte française (Complète)'),
+        '#format'=> 'full_html',
         '#placeholder' => "Entrer le text complet de l'alerte ici",
         '#description' => 'Le texte mis dans cette zone sera celui afficher sur la page alerte complete',
-        '#default_value'=> isset($config['french_alert_full']) ? $config['french_alert_full'] : "",
+        '#default_value'=> isset($config['french_alert_full']['value']) ? $config['french_alert_full']['value'] : "",
     ];
 
     $form['english_alert_full'] = [
-        '#type' => 'textarea',
+        '#type' => 'text_format',
         '#title' => $this->t('English Alert Full'),
+        '#format' => 'full_html',
         '#placeholder' => "Enter the text for the full alert here",
         '#description' => 'The text compose in this zone will be shown on the full page alert',
-        '#default_value'=> isset($config['english_alert_full']) ? $config['english_alert_full'] : "",
+        '#default_value'=> isset($config['english_alert_full']['value']) ? $config['english_alert_full']['value'] : "",
     ];
 
     $form['alert_is_enable'] = [
