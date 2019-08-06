@@ -67,7 +67,10 @@ class Alert {
       '#node' => $this->node,
       '#title' => $this->node->getTitle(),
       '#type' => $this->node->field_career_type->entity->getName(),
-      '#department' => $this->node->field_department->entity->getName(),
+      '#department' => \Drupal::service('entity.repository')
+          ->getTranslationFromContext(
+              $this->node->field_department->entity, \Drupal::languageManager()->getCurrentLanguage()->getId()
+          )->getName(),
       '#location' => $this->node->field_location_name->value,
       '#summary' => $this->node->field_job_summary->value
     ];
