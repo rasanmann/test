@@ -10,7 +10,8 @@
             carousselContainer: '.caroussel-outer',
             closeBtn: 'button.close',
             galleryTrigger: '.field--name-field-paragraph-media-mosaique > .field--item',
-            medias: '.paragraph--type--mosaique .field--name-field-media-mosaique .field--item',
+            medias: '.paragraph--type--mosaique .field--name-field-paragraph-media-mosaique .field--item img, ' +
+                '.paragraph--type--mosaique .field--name-field-paragraph-media-mosaique .field--item video',
             nextBtn: '.next',
             prevBtn: '.prev'
         },
@@ -66,8 +67,7 @@
         },
 
         createCarousselHTML: function () {
-            var list = '';
-            var items = this.getItems();
+            var list = '', items = this.getItems();
 
             for (var i = 0; i < items.length; i++) {
                 list += '<div class="siema-item-container">' +
@@ -77,7 +77,7 @@
                 if (this.isVideo(items[i])) {
                     list += '<video controls="controls">' +
                         '<source src="' + items[i] + '" type="video/mp4">' +
-                        '</video>'
+                        '</video>';
                 }
                 else {
                     list += '<img src="' + items[i] + '"/>';
@@ -100,10 +100,10 @@
             var items = Array.prototype.slice.call(document.querySelectorAll(this.selector.medias));
 
             return items.map(function (el) {
-                if (el.querySelector('img') !== null) {
-                    return el.querySelector('img').src;
+                if (el.nodeName && el.nodeName === 'IMG') {
+                    return el.src;
                 }
-                else if (el.querySelector('video') !== null) {
+                else if (el.nodeName && el.nodeName === 'VIDEO') {
                     return el.querySelector('source').getAttribute('src');
                 }
             });
@@ -125,8 +125,7 @@
 
         setupCaroussel: function () {
             if (document.querySelector(this.selector.caroussel) === null) {
-                var html = this.createCarousselHTML();
-                var self = this;
+                var html = this.createCarousselHTML(), self = this;
 
                 document.body.insertAdjacentHTML(
                     'beforeend',
@@ -179,5 +178,5 @@
             }
 
         }
-    }
+    };
 }(window.jQuery, window.Drupal, window.Siema));
