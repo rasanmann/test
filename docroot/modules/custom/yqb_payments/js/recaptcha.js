@@ -21,7 +21,7 @@ function submitPayment(token) {
       $('.recaptcha-submit', context).closest('form', context).on('submit', function (e) {
         e.preventDefault();
         return false;
-      });
+      }).prop('disabled',true);
     }
   };
 })(jQuery, Drupal);
