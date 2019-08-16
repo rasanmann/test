@@ -29,7 +29,7 @@
 
 
 jQuery(document).ready(function($){
-  $("#edit-submit").attr("disabled", true);
+  $("#edit-actions").attr("disabled", true);
 
   var monerisDataInput  = false;
   var monerisExpInput   = false;
@@ -47,9 +47,9 @@ jQuery(document).ready(function($){
     }
 
     if(monerisDataInput && monerisExpInput &&  monerisCVDInput){
-      $("#edit-submit").attr('disabled', false);
+      $("#edit-actions").attr('disabled', false);
     }else {
-      $("#edit-submit").attr('disabled', true);
+      $("#edit-actions").attr('disabled', true);
     }
   };
 
@@ -63,7 +63,7 @@ jQuery(document).ready(function($){
     validateInput(e);
   });
 
-  $("#edit-submit").on("click",function(e){
+  $("#edit-actions").on("click",function(e){
     e.preventDefault();
     if(monerisDataInput && monerisExpInput &&  monerisCVDInput){
       $(e.currentTarget).attr('disabled', true);
