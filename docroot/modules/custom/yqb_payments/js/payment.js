@@ -3,7 +3,7 @@
 
   Drupal.behaviors.yqb_payments = {
     attach: function (context, settings) {
-      $('#edit-actions').on('click', function(e){
+      $('button :submit').on('click', function(e){
         e.preventDefault();
         return false;
       });
@@ -26,7 +26,7 @@
 //   };
 //
 // })(jQuery, Drupal);
-
+//
 //
 // jQuery(document).ready(function($){
 //   $("#edit-actions").attr("disabled", true);
