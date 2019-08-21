@@ -20,5 +20,8 @@ payment:
   version: 1.x
   js:
     js/payment.js: {}
+  css:
+    theme:
+      css/payment.css: {}
   dependencies:
     - core/jquery

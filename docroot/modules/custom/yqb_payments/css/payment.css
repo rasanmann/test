@@ -1,0 +1,15 @@
+.payment-processing {
+  font-style: italic;
+  position: relative;
+  align-items: center;
+  display: none;
+}
+
+.payment-processing:after {
+  content: '';
+  background: url(../img/Spinner-1s-200px.gif) no-repeat center center;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  display: block;
+}

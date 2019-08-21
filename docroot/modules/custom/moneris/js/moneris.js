@@ -46,6 +46,7 @@
                     message = Drupal.t('Something went wrong, we were unable to process the transaction.');
                 }
                 input.before($('<div class="alert alert-danger alert-dismissible status-message moneris-error" role="alert"></div>').html(message));
+                $(document).trigger('moneris.transaction_error');
               });
             }
           }
