@@ -44,35 +44,39 @@ class Gateway
   /**
    * @throws TransactionException
    */
-  public function purchase($token, $orderId, $amount, $email = null)
-  {
+  public function purchase($token, $orderId, $amount, $email = NULL) {
     $monerisResult = $this->monerisGateway->purchase([
       'data_key' => $token,
       'order_id' => substr($orderId, 0, 50),
       'amount' => $amount,
-      'cust_id' => $this->getUuid($email)
+      'cust_id' => $this->getUuid($email),
     ]);
 
     $receiptId = $monerisResult->transaction()
                                ->response()->receipt->ReceiptId->__toString();
     if (!$monerisResult->was_successful() || $receiptId == 'null') {
+      $errors = $monerisResult->errors();
       $errorDetails = [
-        'errors' => $monerisResult->errors(),
+        'errors' => $errors,
         'error_code' => $monerisResult->error_code(),
         'error_message' => $monerisResult->error_message(),
         'response' => $monerisResult->response()->__toString(),
       ];
-      if(isset($monerisResult->transaction()->response()->receipt) && $monerisResult->transaction()->response()->receipt instanceof SimpleXMLElement) {
+      if (isset($monerisResult->transaction()->response()->receipt) && $monerisResult->transaction()->response()->receipt instanceof SimpleXMLElement) {
+        $receiptMessage = $monerisResult->transaction()->response()->receipt->Message->__toString();
         $errorDetails['receipt'] = [
           'ResponseCode' => $monerisResult->transaction()->response()->receipt->ResponseCode->__toString(),
           'ISO' => $monerisResult->transaction()->response()->receipt->ISO->__toString(),
           'AuthCode' => $monerisResult->transaction()->response()->receipt->AuthCode->__toString(),
-          'Message' => $monerisResult->transaction()->response()->receipt->Message->__toString(),
+          'Message' => $receiptMessage,
         ];
+        if (!empty($receiptMessage)) {
+          $errors[] = $monerisResult->transaction()->response()->receipt->Message->__toString();
+        }
       }
-      $this->logger->error('<pre>' . print_r($errorDetails, true) . '</pre>');
+      $this->logger->error('<pre>' . print_r($errorDetails, TRUE) . '</pre>');
       $exception = new TransactionException($this->t('We are unable to process the payment at the moment.'));
-      $exception->setErrors($monerisResult->errors());
+      $exception->setErrors($errors);
       $exception->setMonerisResult($monerisResult);
       throw $exception;
     }
