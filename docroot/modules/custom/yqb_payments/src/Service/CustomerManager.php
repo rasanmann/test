@@ -54,13 +54,13 @@ class CustomerManager
   /**
    * @throws \Drupal\Core\TempStore\TempStoreException
    */
-  public function reset()
-  {
+  public function reset() {
     foreach (static::$attributes as $attribute) {
       $this->tempStore->delete($attribute);
     }
     $this->tempStore->delete('entity');
     $this->tempStore->delete('receipt');
+    $this->tempStore->delete('iteration');
   }
 
   public function canCheckout()
@@ -84,7 +84,11 @@ class CustomerManager
 
   public function getReferenceNumber()
   {
-    return preg_replace('/\s+/', '', sprintf('drupal_%s_%s_%s', $this->get('bill_no'), $this->get('customer_no'), time()));
+    return preg_replace('/\s+/', '', sprintf('drupal_%s_%s_%s', $this->get('bill_no'), $this->get('customer_no'), $this->get('iteration', 0)));
+  }
+
+  public function iterateReferenceNumber() {
+    $this->set('iteration', ($this->get('iteration', 0) + 1));
   }
 
   public function get($key, $default = '')
@@ -116,29 +120,35 @@ class CustomerManager
     $this->set('receipt', $receipt);
   }
 
+  public function clearReceipt() {
+    $this->tempStore->delete('receipt');
+  }
+
   /**
    * @return Receipt
    */
   public function getReceipt()
   {
-    return $this->get('receipt');
+    return $this->get('receipt', NULL);
   }
 
-  public function sendReceipt()
-  {
+  public function sendReceipt() {
     if ($this->successful()) {
-      $recipients = trim($this->config->get('recipients'));
-      if ($this->get('notifications') == 1) {
-        $recipients .= ',' . $this->get('email');
-      }
+      if (!$this->get('receipt_sent', FALSE)) {
+        $recipients = trim($this->config->get('recipients'));
+        if ($this->get('notifications') == 1) {
+          $recipients .= ',' . $this->get('email');
+        }
 
-      $this->mailManager->mail(
-        'yqb_bills',
-        'pay_bill',
-        $recipients,
-        $this->languageManager->getCurrentLanguage()->getId(),
-        $this->getReceiptEmailParams()
-      );
+        $this->mailManager->mail(
+          'yqb_bills',
+          'pay_bill',
+          $recipients,
+          $this->languageManager->getCurrentLanguage()->getId(),
+          $this->getReceiptEmailParams()
+        );
+        $this->tempStore->set('receipt_sent', TRUE);
+      }
     }
   }
 
@@ -173,27 +183,28 @@ class CustomerManager
     return $params;
   }
 
-  public function createPaymentEntity()
-  {
+  public function createPaymentEntity() {
     if ($this->successful()) {
-      $payment = YqbPaymentEntity::create([
-        'reference_num' => $this->getReceipt()->getReferenceNumber(),
-        'field_reference_num' => $this->getReceipt()->getReferenceNumber(),
-        'field_first_name' => $this->get('first_name'),
-        'field_last_name' => $this->get('last_name'),
-        'field_email' => $this->get('email'),
-        'field_business_name' => $this->get('business_name'),
-        'field_bill_no' => $this->get('bill_no'),
-        'field_customer_no' => $this->get('customer_no'),
-        'field_amount' => $this->get('amount'),
-        'field_notifications' => $this->get('notifications'),
-        'field_customer_id' => $this->monerisGateway->getUuid($this->get('email')),
-        'field_auth_code' => $this->getReceipt()->getAuthorizationCode(),
-        'field_card_num' => $this->getReceipt()->getFormattedCardNumber() . ' (' . $this->getReceipt()->getCardType() . ')',
-        'field_date_time' => $this->getReceipt()->getTransactionDateTime(),
-      ]);
-      $payment->save();
-      $this->set('entity', $payment);
+      if (!$this->getEntity()) {
+        $payment = YqbPaymentEntity::create([
+          'reference_num' => $this->getReceipt()->getReferenceNumber(),
+          'field_reference_num' => $this->getReceipt()->getReferenceNumber(),
+          'field_first_name' => $this->get('first_name'),
+          'field_last_name' => $this->get('last_name'),
+          'field_email' => $this->get('email'),
+          'field_business_name' => $this->get('business_name'),
+          'field_bill_no' => $this->get('bill_no'),
+          'field_customer_no' => $this->get('customer_no'),
+          'field_amount' => $this->get('amount'),
+          'field_notifications' => $this->get('notifications'),
+          'field_customer_id' => $this->monerisGateway->getUuid($this->get('email')),
+          'field_auth_code' => $this->getReceipt()->getAuthorizationCode(),
+          'field_card_num' => $this->getReceipt()->getFormattedCardNumber() . ' (' . $this->getReceipt()->getCardType() . ')',
+          'field_date_time' => $this->getReceipt()->getTransactionDateTime(),
+        ]);
+        $payment->save();
+        $this->set('entity', $payment);
+      }
     }
   }
 
