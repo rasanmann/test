@@ -118,3 +118,16 @@
   .block-alert .form-group.error input,
   .block-alert .has-error .form-control {
     background: #fff1f1; }
+
+.block-yqb-payments {
+  margin: 0 40px 40px 40px;
+  max-width: 600px;
+  width: calc(100% - 80px); }
+
+.yqb-payments-checkout .user-info span {
+  display: inline-block; }
+  @media (min-width: 680px) {
+    .yqb-payments-checkout .user-info span.info {
+      min-width: 440px;
+      text-align: right;
+      margin-bottom: 10px; } }
