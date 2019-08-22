@@ -61,6 +61,7 @@ class CustomerManager
     $this->tempStore->delete('entity');
     $this->tempStore->delete('receipt');
     $this->tempStore->delete('iteration');
+    $this->tempStore->delete('receipt_sent');
   }
 
   public function canCheckout()
