@@ -46,6 +46,8 @@
 ] %}
 {% block paragraph %}
     <div{{ attributes.addClass(classes) }}>
+      {% block content %}
         {{ content.field_paragraph_media_mosaique }}
+      {% endblock %}
     </div>
 {% endblock paragraph %}
