@@ -6,4 +6,5 @@ docroot/sites/*/private
 .composer
 .npm
 .config
+.history
 .history/

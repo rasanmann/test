@@ -1,5 +1,8 @@
 {
   "name": "@libeo/yqb",
+  "scripts": {
+    "start": "gulp"
+  },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",

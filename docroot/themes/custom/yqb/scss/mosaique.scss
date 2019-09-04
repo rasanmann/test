@@ -4,6 +4,7 @@
 
 .paragraph--type--mosaique img,
 .paragraph--type--mosaique video {
+  width: 100%;
   max-width: 100%;
   height: auto;
 }
@@ -24,7 +25,7 @@
 
 .field--name-field-paragraph-media-mosaique > .field--item {
   display: inline-block;
-  width: 22.5%;
+  width: 22.9%;
   margin-bottom: 24px;
   margin-right: 2.5%;
   text-align: left;
@@ -65,12 +66,17 @@
 
   video {
     width: 100%;
+    transform: translateY(8%);
   }
 
   & > div, & > div > div {
     text-align: center;
     height: 100%;
     display: relative;
+  }
+
+  .siema-item-container img {
+    width: 100%;
   }
 }
 
