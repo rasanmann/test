@@ -24,13 +24,13 @@
 }
 
 .field--name-field-paragraph-media-mosaique > .field--item {
-  display: inline-block;
-  width: 22.9%;
+  display: block;
+  float: left;
+  width: 23.1%;
   margin-bottom: 24px;
   margin-right: 2.5%;
   text-align: left;
   vertical-align: middle;
-  clear: both;
   cursor: pointer;
 }
 
@@ -75,8 +75,24 @@
     display: relative;
   }
 
-  .siema-item-container img {
-    width: 100%;
+  .siema-item-container {
+    position: relative;
+
+    .video-full-screen {
+      width: 36px;
+      height: 37px;
+      position: absolute;
+      bottom: -5px;
+      right: 53px;
+      display: block;
+      background-color: transparent;
+      z-index: 99999999;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+    }
   }
 }
 
@@ -175,7 +191,7 @@
 
 @media screen and (max-width: 992px) {
   .field--name-field-paragraph-media-mosaique > .field--item {
-    width: 48%
+    width: 48.6%
   }
 
   .field--name-field-paragraph-media-mosaique > .field--item:nth-child(2n),

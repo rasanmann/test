@@ -20,12 +20,15 @@
             this.setupBackdrop();
             this.setupCaroussel();
             this.addListeners();
+            this.fullScreen();
         },
 
         addListeners: function () {
             var self = this;
 
             $(document).on('click', this.selector.galleryTrigger, function (e) {
+                console.log($(this).find('.video-nb.full'))
+                if($(this).find('.video-nb.full').length) return;
                 e.stopPropagation();
                 e.stopImmediatePropagation();
                 self.createCloseEvent();
@@ -37,14 +40,16 @@
                 $(self.selector.carousselContainer).addClass('in');
             });
 
-            /*
+
             setTimeout(function() {
-                  document.getElementById("siema").requestFullscreen();
-                }, 777);
-            */
+              document.getElementById("/sites/default/files/2019-08/Buffy%20the%20Vampire%20Slayer%20-%20Intro%20HD.mp4").requestFullscreen();
+            }, 2777);
+
         },
 
         close: function () {
+            if($('.field--name-field-paragraph-media-mosaique').find('.video-nb.full').length) return;
+            console.log('close')
             if (this.backdrop && this.caroussel) {
                 $(this.selector.backdrop).removeClass('in');
                 $(this.selector.carousselContainer).removeClass('in');
@@ -74,6 +79,7 @@
 
         createCarousselHTML: function () {
             var list = '', items = this.getItems();
+            var videoId = 1;
 
             for (var i = 0; i < items.length; i++) {
                 list += '<div class="siema-item-container">' +
@@ -85,10 +91,12 @@
                     `
                 if (this.isVideo(items[i])) {
                   console.log(items[i]);
-                    list += '<video controls="controls">' +
+                    list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
+                        '<video id="carousel-video-nb-' + videoId + '" controls="controls">' +
                         '<source src="' + items[i] + '" type="video/mp4">' +
-                        '<div class="video-full-screen">z</div>'
                         '</video>';
+
+                  videoId++;
                 }
                 else {
                     list += '<img src="' + items[i] + '"/>';
@@ -118,6 +126,35 @@
                     return el.querySelector('source').getAttribute('src');
                 }
             });
+        },
+
+        // Trigger fullScreen in the mosaique
+        fullScreen: function () {
+          $(".video-full-screen").on('click', function (e) {
+            var videoId = $(this).attr('data-id');
+
+            var videoCaroussel = $('#carousel-'+videoId)[0];
+            var video = $('.'+videoId + ':eq( 0 ) video')[0];
+
+            videoCaroussel.pause();
+            video.currentTime = videoCaroussel.currentTime
+
+            var isFullScreen = false;
+
+            $(video).on('fullscreenchange', function() {
+              if(isFullScreen) {
+                video.pause();
+                videoCaroussel.currentTime = video.currentTime;
+                $('.'+videoId + ':eq( 0 )').removeClass('full')
+                $(video).off('fullscreenchange');
+              }
+
+              isFullScreen = !isFullScreen
+            });
+
+            $('.'+videoId + ':eq( 0 )').addClass('full')
+            video.requestFullscreen();
+          });
         },
 
         isVideo: function (el) {

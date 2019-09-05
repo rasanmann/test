@@ -81,7 +81,7 @@
         <div class="field--items">
             {% endif %}
             {% for item in items %}
-                <div{{ item.attributes.addClass('field--item') }}>
+                <div{{ item.attributes.addClass("field--item video-nb video-nb-#{loop.index}") }}>
                     {{ item.content }}
                     <svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/"
                          xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
