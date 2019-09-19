@@ -38,7 +38,7 @@ else
 
     drush scr tools/log.php --channel='cron' --message='Cron tasks are starting.'
 
-    drush cron
+    drush cron --uri=https://www.aeroportdequebec.com
 
     drush scr tools/log.php --channel='cron' --message='Cron tasks are complete.'
 
