@@ -18,10 +18,10 @@ function submitPayment(token) {
         e.preventDefault();
         return false;
       });
-      $('.recaptcha-submit', context).closest('form', context).on('submit', function (e) {
+      $('.recaptcha-submit', context).prop('disabled',true).closest('form', context).on('submit', function (e) {
         e.preventDefault();
         return false;
-      }).prop('disabled',true);
+      });
     }
   };
 })(jQuery, Drupal);
