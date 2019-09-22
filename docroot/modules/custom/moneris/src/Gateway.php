@@ -11,8 +11,8 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\moneris\Connector\MonerisConnector;
 use SimpleXMLElement;
 
-class Gateway
-{
+class Gateway {
+
   use StringTranslationTrait;
 
   protected $monerisGateway;
@@ -23,8 +23,7 @@ class Gateway
 
   protected $logger;
 
-  public function __construct(State $stateService, Php $uuidService, LoggerChannelFactoryInterface $loggerFactory)
-  {
+  public function __construct(State $stateService, Php $uuidService, LoggerChannelFactoryInterface $loggerFactory) {
     $this->monerisGateway = new MonerisConnector();
     $this->stateService = $stateService;
     $this->uuidService = $uuidService;
@@ -45,16 +44,17 @@ class Gateway
    * @throws TransactionException
    */
   public function purchase($token, $orderId, $amount, $email = NULL) {
-    $monerisResult = $this->monerisGateway->purchase([
+    $params = [
       'data_key' => $token,
       'order_id' => substr($orderId, 0, 50),
       'amount' => $amount,
       'cust_id' => $this->getUuid($email),
-    ]);
+    ];
+    $monerisResult = $this->monerisGateway->purchase($params);
+    $receiptId = $monerisResult->transaction()->response()->receipt->ReceiptId->__toString();
 
-    $receiptId = $monerisResult->transaction()
-                               ->response()->receipt->ReceiptId->__toString();
-    if (!$monerisResult->was_successful() || $receiptId == 'null') {
+    if (!$monerisResult->was_successful() || $receiptId == 'null' || $monerisResult->failed_avs() || $monerisResult->failed_cvd()) {
+      $this->monerisGateway->void($monerisResult->transaction());
       $errors = $monerisResult->errors();
       $errorDetails = [
         'errors' => $errors,
@@ -74,18 +74,24 @@ class Gateway
           $errors[] = $monerisResult->transaction()->response()->receipt->Message->__toString();
         }
       }
+      if ($monerisResult->failed_avs()) {
+        $errors[] = $this->t('The AVS verification failed.');
+      }
+      if ($monerisResult->failed_cvd()) {
+        $errors[] = $this->t('The CVD verification failed.');
+      }
       $this->logger->error('<pre>' . print_r($errorDetails, TRUE) . '</pre>');
       $exception = new TransactionException($this->t('We are unable to process the payment at the moment.'));
       $exception->setErrors($errors);
       $exception->setMonerisResult($monerisResult);
       throw $exception;
     }
-
-    return $monerisResult;
+    else {
+      return $monerisResult;
+    }
   }
 
-  public function getUuid($email)
-  {
+  public function getUuid($email) {
     $email = empty($email) ? '_empty_' : trim($email);
     $key = 'customer_' . Crypt::hashBase64($email);
     $uuid = $this->stateService->get($key, $this->uuidService->generate());
