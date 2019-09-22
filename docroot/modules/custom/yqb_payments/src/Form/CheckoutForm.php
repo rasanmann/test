@@ -89,7 +89,9 @@ class CheckoutForm extends FormBase {
 
         if (!empty($e->getErrors())) {
           foreach ($e->getErrors() as $error) {
-            Drupal::messenger()->addError($error);
+            if (!preg_match('/^APPROVED/i', $error)) {
+              Drupal::messenger()->addError($error);
+            }
           }
         }
         Drupal::messenger()->addError($e->getMessage());
