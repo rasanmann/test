@@ -34,9 +34,6 @@ class WebformSubmissionViewTest extends WebformTestBase {
   public function setUp() {
     parent::setUp();
 
-    // Create users.
-    $this->createUsers();
-
     // Create filters.
     $this->createFilters();
   }
@@ -45,21 +42,28 @@ class WebformSubmissionViewTest extends WebformTestBase {
    * Tests view submissions.
    */
   public function testView() {
+    $admin_submission_user = $this->drupalCreateUser([
+      'administer webform submission',
+    ]);
+
+    /**************************************************************************/
+
     $account = User::load(1);
 
     $webform_element = Webform::load('test_element');
     $sid = $this->postSubmission($webform_element);
     $submission = WebformSubmission::load($sid);
 
-    $this->drupalLogin($this->adminSubmissionUser);
+    $this->drupalLogin($admin_submission_user);
 
-    $this->drupalGet('admin/structure/webform/manage/test_element/submission/' . $submission->id());
+    $this->drupalGet('/admin/structure/webform/manage/test_element/submission/' . $submission->id());
 
     // Check displayed values.
     $elements = [
       'hidden' => '{hidden}',
       'value' => '{value}',
       'textarea' => "{textarea line 1}<br />\n{textarea line 2}",
+      'empty' => '{Empty}',
       'textfield' => '{textfield}',
       'select' => 'one',
       'select_multiple' => 'one, two',
@@ -71,7 +75,7 @@ class WebformSubmissionViewTest extends WebformTestBase {
       'range' => '1',
       'tel' => '<a href="tel:999-999-9999">999-999-9999</a>',
       'url' => '<a href="http://example.com">http://example.com</a>',
-      'color' => '<span style="display:inline-block; height:1em; width:1em; border:1px solid #000; background-color:#ffffcc"></span> #ffffcc',
+      'color' => '<font color="#ffffcc">█</font> #ffffcc',
       'weight' => '0',
       'date' => 'Tuesday, August 18, 2009',
       'datetime' => 'Tuesday, August 18, 2009 - 4:00 PM',

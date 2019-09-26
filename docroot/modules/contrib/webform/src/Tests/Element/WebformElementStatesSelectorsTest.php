@@ -3,7 +3,6 @@
 namespace Drupal\webform\Tests\Element;
 
 use Drupal\Core\Form\OptGroup;
-use Drupal\webform\Tests\WebformTestBase;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\WebformInterface;
 
@@ -12,7 +11,7 @@ use Drupal\webform\WebformInterface;
  *
  * @group Webform
  */
-class WebformElementStatesSelectorsTest extends WebformTestBase {
+class WebformElementStatesSelectorsTest extends WebformElementTestBase {
 
   /**
    * Modules to enable.
@@ -36,6 +35,15 @@ class WebformElementStatesSelectorsTest extends WebformTestBase {
 
     // Create 'tags' vocabulary.
     $this->createTags();
+
+    \Drupal::configFactory()->getEditable('webform.settings')
+      ->set('libraries.excluded_libraries', [])
+      ->save();
+
+    // Enable all elements, including password and password_confirm.
+    \Drupal::configFactory()->getEditable('webform.settings')
+      ->set('element.excluded_elements', [])
+      ->save();
   }
 
   /**
@@ -47,7 +55,7 @@ class WebformElementStatesSelectorsTest extends WebformTestBase {
       $webform = Webform::load($webform_id);
       $webform->setStatus(WebformInterface::STATUS_OPEN)->save();
 
-      $this->drupalGet('webform/' . $webform_id);
+      $this->drupalGet('/webform/' . $webform_id);
 
       $selectors = OptGroup::flattenOptions($webform->getElementsSelectorOptions());
       // Ignore text format and captcha selectors which are not available during
@@ -62,6 +70,16 @@ class WebformElementStatesSelectorsTest extends WebformTestBase {
         $this->assertCssSelect($selector);
       }
     }
+
+    $webform = Webform::load('test_example_elements');
+
+    // Check the value element is excluded.
+    $selectors = $webform->getElementsSelectorOptions();
+    $this->assert(!isset($selectors[':input[name="value"]']));
+
+    // Check the value element is included.
+    $selectors = $webform->getElementsSelectorOptions(['excluded_elements' => []]);
+    $this->assertEqual($selectors[':input[name="value"]'], 'Value [Value]');
   }
 
 }

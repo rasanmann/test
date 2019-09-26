@@ -5,29 +5,28 @@ namespace Drupal\webform\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\webform\WebformHelpManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides route responses for webform help.
+ * Provides route responses for Webform help.
  */
 class WebformHelpController extends ControllerBase implements ContainerInjectionInterface {
 
   /**
    * The webform help manager.
    *
-   * @var \Drupal\Component\Plugin\PluginManagerInterface
+   * @var \Drupal\webform\WebformHelpManagerInterface
    */
-  protected $helpManager;
+  protected $help;
 
   /**
    * Constructs a WebformHelpController object.
    *
-   * @param \Drupal\webform\WebformHelpManagerInterface $help_manager
+   * @param \Drupal\webform\WebformHelpManagerInterface $help
    *   The webform help manager.
    */
-  public function __construct(WebformHelpManagerInterface $help_manager) {
-    $this->helpManager = $help_manager;
+  public function __construct(WebformHelpManagerInterface $help) {
+    $this->help = $help;
   }
 
   /**
@@ -40,23 +39,13 @@ class WebformHelpController extends ControllerBase implements ContainerInjection
   }
 
   /**
-   * Returns dedicated help about (aka How can we help you?) page.
-   *
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   The current request.
+   * Returns the Webform help page.
    *
    * @return array
-   *   A renderable array containing a help about (aka How can we help you?) page.
+   *   The webform submission webform.
    */
-  public function about(Request $request) {
-    $build = $this->helpManager->buildAbout();
-    unset($build['title']);
-    $build += [
-      '#prefix' => '<div class="webform-help">',
-      '#suffix' => '</div>',
-    ];
-    $build['#attached']['library'][] = 'webform/webform.help';
-    return $build;
+  public function index() {
+    return $this->help->buildIndex();
   }
 
 }

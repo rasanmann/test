@@ -26,19 +26,15 @@ class WebformResultsExportOptionsTest extends WebformTestBase {
   protected static $testWebforms = ['test_submissions'];
 
   /**
-   * {@inheritdoc}
-   */
-  public function setUp() {
-    parent::setUp();
-
-    // Create users.
-    $this->createUsers();
-  }
-
-  /**
    * Tests export options.
    */
   public function testExportOptions() {
+    $admin_submission_user = $this->drupalCreateUser([
+      'administer webform submission',
+    ]);
+
+    /**************************************************************************/
+
     /** @var \Drupal\webform\WebformInterface $webform */
     $webform = Webform::load('test_submissions');
     /** @var \Drupal\webform\WebformSubmissionInterface[] $submissions */
@@ -46,7 +42,7 @@ class WebformResultsExportOptionsTest extends WebformTestBase {
     /** @var \Drupal\node\NodeInterface[] $node */
     $nodes = array_values(\Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'webform_test_submissions']));
 
-    $this->drupalLogin($this->adminSubmissionUser);
+    $this->drupalLogin($admin_submission_user);
 
     // Check default options.
     $this->getExport($webform);
@@ -54,6 +50,9 @@ class WebformResultsExportOptionsTest extends WebformTestBase {
     $this->assertRaw('George,Washington');
     $this->assertRaw('Abraham,Lincoln');
     $this->assertRaw('Hillary,Clinton');
+
+    // Check special characters.
+    $this->assertRaw("quotes' \"\"", "html <markup>");
 
     // Check delimiter.
     $this->getExport($webform, ['delimiter' => '|']);
@@ -128,17 +127,25 @@ class WebformResultsExportOptionsTest extends WebformTestBase {
 
     // Check composite w/o header prefix.
     $this->getExport($webform, ['header_format' => 'label', 'header_prefix' => TRUE]);
-    $this->assertRaw('"Address: Address","Address: Address 2","Address: City/Town","Address: State/Province","Address: Zip/Postal Code","Address: Country"');
+    $this->assertRaw('"Address: Address","Address: Address 2","Address: City/Town","Address: State/Province","Address: ZIP/Postal Code","Address: Country"');
 
     // Check composite w header prefix.
     $this->getExport($webform, ['header_format' => 'label', 'header_prefix' => FALSE]);
-    $this->assertRaw('Address,"Address 2",City/Town,State/Province,"Zip/Postal Code",Country');
+    $this->assertRaw('Address,"Address 2",City/Town,State/Province,"ZIP/Postal Code",Country');
 
     // Check limit.
-    $this->getExport($webform, ['range_type' => 'latest', 'range_latest' => 1]);
+    $this->getExport($webform, ['range_type' => 'latest', 'range_latest' => 2]);
     $this->assertRaw('Hillary,Clinton');
     $this->assertNoRaw('George,Washington');
     $this->assertNoRaw('Abraham,Lincoln');
+
+    // Check sort ASC.
+    $this->getExport($webform, ['order' => 'asc']);
+    $this->assertPattern('/George.*Abraham.*Hillary/ms');
+
+    // Check sort DESC.
+    $this->getExport($webform, ['order' => 'desc']);
+    $this->assertPattern('/Hillary.*Abraham.*George/ms');
 
     // Check sid start.
     $this->getExport($webform, ['range_type' => 'sid', 'range_start' => $submissions[1]->id()]);
@@ -159,7 +166,7 @@ class WebformResultsExportOptionsTest extends WebformTestBase {
     $this->assertNoRaw('Hillary,Clinton');
 
     // Check entity type and id hidden.
-    $this->drupalGet('admin/structure/webform/manage/' . $webform->id() . '/results/download');
+    $this->drupalGet('/admin/structure/webform/manage/' . $webform->id() . '/results/download');
     $this->assertNoFieldById('edit-entity-type');
 
     // Change submission 0 & 1 to be submitted user account.
@@ -167,7 +174,7 @@ class WebformResultsExportOptionsTest extends WebformTestBase {
     $submissions[1]->set('entity_type', 'user')->set('entity_id', '2')->save();
 
     // Check entity type and id visible.
-    $this->drupalGet('admin/structure/webform/manage/' . $webform->id() . '/results/download');
+    $this->drupalGet('/admin/structure/webform/manage/' . $webform->id() . '/results/download');
     $this->assertFieldById('edit-entity-type');
 
     // Check entity type limit.
@@ -182,20 +189,31 @@ class WebformResultsExportOptionsTest extends WebformTestBase {
     $this->assertNoRaw('Abraham,Lincoln');
     $this->assertNoRaw('Hillary,Clinton');
 
-    // Check changing default exporter to 'table' settings.
     $this->drupalLogin($this->rootUser);
-    $this->drupalPostForm('admin/structure/webform/manage/' . $webform->id() . '/results/download', ['exporter' => 'table'], t('Download'));
+
+    // Check changing default exporter to 'table' settings.
+    $edit = [
+      'exporter' => 'table',
+    ];
+    $this->drupalPostForm('admin/structure/webform/manage/' . $webform->id() . '/results/download', $edit, t('Download'));
     $this->assertRaw('<body><table border="1"><thead><tr bgcolor="#cccccc" valign="top"><th>Serial number</th>');
     $this->assertPattern('#<td>George</td>\s+<td>Washington</td>\s+<td>Male</td>#ms');
 
     // Check changing default export (delimiter) settings.
-    $this->drupalLogin($this->rootUser);
-    $this->drupalPostForm('admin/structure/webform/settings/exporters', ['delimiter' => '|'], t('Save configuration'));
+    $edit = [
+      'exporter' => 'delimited',
+      'exporters[delimited][delimiter]' => '|',
+    ];
+    $this->drupalPostForm('admin/structure/webform/config/exporters', $edit, t('Save configuration'));
     $this->drupalPostForm('admin/structure/webform/manage/' . $webform->id() . '/results/download', [], t('Download'));
     $this->assertRaw('"Submission ID"|"Submission URI"');
 
     // Check saved webform export (delimiter) settings.
-    $this->drupalPostForm('admin/structure/webform/manage/' . $webform->id() . '/results/download', ['delimiter' => '.'], t('Save settings'));
+    $edit = [
+      'exporter' => 'delimited',
+      'exporters[delimited][delimiter]' => '.',
+    ];
+    $this->drupalPostForm('admin/structure/webform/manage/' . $webform->id() . '/results/download', $edit, t('Save settings'));
     $this->drupalPostForm('admin/structure/webform/manage/' . $webform->id() . '/results/download', [], t('Download'));
     $this->assertRaw('"Submission ID"."Submission URI"');
 

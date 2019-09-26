@@ -6,8 +6,8 @@ use Drupal\Component\Serialization\Json;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Mail\MailFormatHelper;
 use Drupal\filter\Entity\FilterFormat;
+use Drupal\user\Entity\User;
 use Drupal\webform\Plugin\WebformElementBase;
-use Drupal\webform\WebformSubmissionConditionsValidator;
 use Drupal\webform\WebformSubmissionInterface;
 
 /**
@@ -29,22 +29,22 @@ class TextFormat extends WebformElementBase {
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    $default_properties = parent::getDefaultProperties() + [
+    $properties = [
+      'default_value' => [],
       // Text format settings.
       'allowed_formats' => [],
       'hide_help' => FALSE,
-    ];
+    ] + parent::getDefaultProperties();
     unset(
-      $default_properties['disabled'],
-      $default_properties['attributes'],
-      $default_properties['wrapper_attributes'],
-      $default_properties['title_display'],
-      $default_properties['description_display'],
-      $default_properties['field_prefix'],
-      $default_properties['field_suffix'],
-      $default_properties['help']
+      $properties['disabled'],
+      $properties['attributes'],
+      $properties['wrapper_attributes'],
+      $properties['title_display'],
+      $properties['description_display'],
+      $properties['field_prefix'],
+      $properties['field_suffix']
     );
-    return $default_properties;
+    return $properties;
   }
 
   /**
@@ -59,8 +59,46 @@ class TextFormat extends WebformElementBase {
    */
   public function prepare(array &$element, WebformSubmissionInterface $webform_submission = NULL) {
     parent::prepare($element, $webform_submission);
+    $this->setElementDefaultCallback($element, 'process');
+    $element['#process'][] = [get_class($this), 'process'];
     $element['#after_build'] = [[get_class($this), 'afterBuild']];
     $element['#attached']['library'][] = 'webform/webform.element.text_format';
+  }
+
+  /**
+   * Fix text format #more property.
+   *
+   * @param array $element
+   *   The form element to process. See main class documentation for properties.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   * @param array $complete_form
+   *   The complete form structure.
+   *
+   * @return array
+   *   The form element.
+   *
+   * @see template_preprocess_text_format_wrapper()
+   * @see text-format-wrapper.html.twig
+   */
+  public static function process(&$element, FormStateInterface $form_state, &$complete_form) {
+    if (!empty($element['#more'])) {
+      // Process #more and append to #description.
+      $variables = ['element' => $element, 'description' => []];
+      _webform_preprocess_element($variables);
+
+      // Update element description.
+      $element['#description'] = $variables['description'];
+
+      // Remove attributes which causes conflicts.
+      unset($element['#description']['attributes']);
+
+      // Unset old #more attributes.
+      unset($element['value']['#more']);
+      unset($element['#more']);
+    }
+
+    return $element;
   }
 
   /**
@@ -101,7 +139,46 @@ class TextFormat extends WebformElementBase {
       // Can't hide the format via #access but we can use CSS.
       $element['format']['#attributes']['style'] = 'display: none';
     }
+    return $element;
+  }
 
+  /**
+   * Set an elements #states and flexbox wrapper.
+   *
+   * @param array $element
+   *   An element.
+   */
+  protected function prepareWrapper(array &$element) {
+    $element['#pre_render'][] = [get_class($this), 'preRenderFixTextFormatStates'];
+    parent::prepareWrapper($element);
+  }
+
+  /**
+   * Fix state .js-webform-states-hidden wrapper for text format element.
+   *
+   * Adds .js-webform-states-hidden to wrapper to text format because
+   * text format's wrapper is hard-coded.
+   *
+   * @param array $element
+   *   An element.
+   *
+   * @return array
+   *   An element with .js-webform-states-hidden added to the #prefix
+   *   and #suffix.
+   *
+   * @see \Drupal\webform\Utility\WebformElementHelper::fixStatesWrapper
+   * @see text-format-wrapper.html.twig
+   */
+  public static function preRenderFixTextFormatStates(array $element) {
+    if (isset($element['#attributes']) && isset($element['#attributes']['class'])) {
+      $index = array_search('js-webform-states-hidden', $element['#attributes']['class']);
+      if ($index !== FALSE) {
+        unset($element['#attributes']['class'][$index]);
+        $element += ['#prefix' => '', '#suffix' => ''];
+        $element['#prefix'] = '<div class="js-webform-text-format-hidden">';
+        $element['#suffix'] = $element['#suffix'] . '</div>';
+      }
+    }
     return $element;
   }
 
@@ -122,16 +199,19 @@ class TextFormat extends WebformElementBase {
   /**
    * {@inheritdoc}
    */
-  public function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  protected function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
 
-    $value = (isset($value['value'])) ? $value['value'] : $value;
     $format = (isset($value['format'])) ? $value['format'] : $this->getItemFormat($element);
+    $value = (isset($value['value'])) ? $value['value'] : $value;
     switch ($format) {
       case 'raw':
         return $value;
 
       case 'value':
+        $default_format = filter_default_format(User::load($webform_submission->getOwnerId()));
+        return check_markup($value, $default_format);
+
       default:
         return check_markup($value, $format);
     }
@@ -140,10 +220,11 @@ class TextFormat extends WebformElementBase {
   /**
    * {@inheritdoc}
    */
-  public function formatTextItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  protected function formatTextItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
 
     $format = (isset($value['format'])) ? $value['format'] : $this->getItemFormat($element);
+    $value = (isset($value['value'])) ? $value['value'] : $value;
     switch ($format) {
       case 'raw':
         return $value;
@@ -162,13 +243,6 @@ class TextFormat extends WebformElementBase {
   /**
    * {@inheritdoc}
    */
-  public function getItemDefaultFormat() {
-    return (function_exists('filter_default_format')) ? filter_default_format() : parent::getItemDefaultFormat();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getItemFormats() {
     $formats = parent::getItemFormats();
     $filters = (class_exists('\Drupal\filter\Entity\FilterFormat')) ? FilterFormat::loadMultiple() : [];
@@ -176,6 +250,14 @@ class TextFormat extends WebformElementBase {
       $formats[$filter->id()] = $filter->label();
     }
     return $formats;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildExportRecord(array $element, WebformSubmissionInterface $webform_submission, array $export_options) {
+    $element['#format_items'] = $export_options['multiple_delimiter'];
+    return [$this->formatHtml($element, $webform_submission, $export_options)];
   }
 
   /**
@@ -237,13 +319,58 @@ class TextFormat extends WebformElementBase {
   }
 
   /**
-   * Get composite element.
+   * {@inheritdoc}
+   */
+  public function postSave(array &$element, WebformSubmissionInterface $webform_submission, $update = TRUE) {
+    $webform = $webform_submission->getWebform();
+    if ($webform->isResultsDisabled()) {
+      return;
+    }
+
+    // Get current value and original value for this element.
+    $key = $element['#webform_key'];
+
+    $data = $webform_submission->getData();
+    $value = (isset($data[$key]) && isset($data[$key]['value'])) ? $data[$key]['value'] : '';
+    $uuids = _webform_parse_file_uuids($value);
+
+    if ($update) {
+      $original_data = $webform_submission->getOriginalData();
+      $original_value = isset($original_data[$key]) ? $original_data[$key]['value'] : '';
+      $original_uuids = _webform_parse_file_uuids($original_value);
+
+      // Detect file usages that should be incremented.
+      $added_files = array_diff($uuids, $original_uuids);
+      _webform_record_file_usage($added_files, $webform_submission->getEntityTypeId(), $webform_submission->id());
+
+      // Detect file usages that should be decremented.
+      $removed_files = array_diff($original_uuids, $uuids);
+      _webform_delete_file_usage($removed_files, $webform_submission->getEntityTypeId(), $webform_submission->id(), 1);
+    }
+    else {
+      _webform_record_file_usage($uuids, $webform_submission->getEntityTypeId(), $webform_submission->id());
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function postDelete(array &$element, WebformSubmissionInterface $webform_submission) {
+    $key = $element['#webform_key'];
+    $value = $webform_submission->getElementData($key);
+    $uuids = _webform_parse_file_uuids($value['value']);
+    _webform_delete_file_usage($uuids, $webform_submission->getEntityTypeId(), $webform_submission->id(), 0);
+  }
+
+  /**
+   * Check if composite element exists.
    *
-   * @return array
-   *   A composite sub-elements.
+   * @return bool
+   *   TRUE if composite element exists.
    */
   public function hasCompositeElement(array $element, $key) {
     $elements = $this->getCompositeElements();
     return (isset($elements[$key])) ? TRUE : FALSE;
   }
+
 }

@@ -21,16 +21,16 @@ class Email extends TextBase {
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    return parent::getDefaultProperties() + [
-      'multiple' => FALSE,
-      'multiple__header_label' => '',
-    ];
+    return [
+      'input_hide' => FALSE,
+    ] + parent::getDefaultProperties()
+      + $this->getDefaultMultipleProperties();
   }
 
   /**
    * {@inheritdoc}
    */
-  public function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
+  protected function formatHtmlItem(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $value = $this->getValue($element, $webform_submission, $options);
 
     if (empty($value)) {

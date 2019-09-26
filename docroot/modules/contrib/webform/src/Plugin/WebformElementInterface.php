@@ -3,6 +3,7 @@
 namespace Drupal\webform\Plugin;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -48,10 +49,24 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
    *   An element's property name.
    *
    * @return mixed
-   *   An element's default property value or NULL is default property does not
+   *   An element's default property value or NULL if default property does not
    *   exist.
    */
   public function getDefaultProperty($property_name);
+
+  /**
+   * Get an element's property value.
+   *
+   * @param array $element
+   *   An element.
+   * @param string $property_name
+   *   An element's property name.
+   *
+   * @return mixed
+   *   An element's property value, default value, or NULL if
+   *   property does not exist.
+   */
+  public function getElementProperty(array $element, $property_name);
 
   /**
    * Determine if the element supports a specified property.
@@ -72,7 +87,7 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
    * Get the URL for the element's API documentation.
    *
    * @return \Drupal\Core\Url|null
-   *   The the URL for the element's API documentation.
+   *   The URL for the element's API documentation.
    */
   public function getPluginApiUrl();
 
@@ -99,6 +114,14 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
    *   The description of the plugin instance.
    */
   public function getPluginDescription();
+
+  /**
+   * Gets the category of the plugin instance.
+   *
+   * @return string
+   *   The category of the plugin instance.
+   */
+  public function getPluginCategory();
 
   /**
    * Gets the type name (aka id) of the plugin instance with the 'webform_' prefix.
@@ -236,6 +259,17 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
   public function hasMultipleValues(array $element);
 
   /**
+   * Determine if the element is or includes a managed_file upload element.
+   *
+   * @param array $element
+   *   An element.
+   *
+   * @return bool
+   *   TRUE if the element is or includes a managed_file upload element.
+   */
+  public function hasManagedFiles(array $element);
+
+  /**
    * Retrieves the default properties for the defined element type.
    *
    * @return array
@@ -299,6 +333,18 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
   public function finalize(array &$element, WebformSubmissionInterface $webform_submission = NULL);
 
   /**
+   * Alter an element's associated form.
+   *
+   * @param array $element
+   *   An element.
+   * @param array $form
+   *   An associative array containing the structure of the form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   */
+  public function alterForm(array &$element, array &$form, FormStateInterface $form_state);
+
+  /**
    * Check element access (rules).
    *
    * @param string $operation
@@ -312,9 +358,19 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
    * @return bool
    *   TRUE is the element can be accessed by the user.
    *
-   * @see \Drupal\webform\Entity\Webform::checkAccessRules
+   * @see \Drupal\webform\WebformAccessRulesManagerInterface::checkWebformAccess
    */
   public function checkAccessRules($operation, array $element, AccountInterface $account = NULL);
+
+  /**
+   * Replace tokens for all element properties.
+   *
+   * @param array $element
+   *   An element.
+   * @param \Drupal\Core\Entity\EntityInterface|null $entity
+   *   A webform or webform submission entity.
+   */
+  public function replaceTokens(array &$element, EntityInterface $entity = NULL);
 
   /**
    * Display element disabled warning.
@@ -327,8 +383,14 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
   /**
    * Set an element's default value using saved data.
    *
+   * The method allows the submission's 'saved' #default_value to be different
+   * from the element's #default_value.
+   *
    * @param array $element
    *   An element.
+   *
+   * @see \Drupal\webform\Plugin\WebformElement\DateBase::setDefaultValue
+   * @see \Drupal\webform\Plugin\WebformElement\EntityAutocomplete::setDefaultValue
    */
   public function setDefaultValue(array &$element);
 
@@ -430,6 +492,21 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
   public function formatText(array $element, WebformSubmissionInterface $webform_submission, array $options = []);
 
   /**
+   * Determine if an element's has a submission value.
+   *
+   * @param array $element
+   *   An element.
+   * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
+   *   A webform submission.
+   * @param array $options
+   *   An array of options.
+   *
+   * @return bool
+   *   TRUE if them element's has a submission value.
+   */
+  public function hasValue(array $element, WebformSubmissionInterface $webform_submission, array $options = []);
+
+  /**
    * Get an element's submission value.
    *
    * @param array $element
@@ -512,6 +589,19 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
    *   An element's format name.
    */
   public function getItemsFormat(array $element);
+
+  /**
+   * Checks if an empty element is excluded.
+   *
+   * @param array $element
+   *   An element.
+   * @param array $options
+   *   An array of options.
+   *
+   * @return bool
+   *   TRUE if an empty element is excluded.
+   */
+  public function isEmptyExcluded(array $element, array $options);
 
   /****************************************************************************/
   // Preview method.
@@ -666,8 +756,23 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
    *
    * @return array
    *   An array of element selectors.
+   *
+   * @see \Drupal\webform\Entity\Webform::getElementsSelectorSourceOption
    */
   public function getElementSelectorOptions(array $element);
+
+  /**
+   * Get an element's selectors source values.
+   *
+   * @param array $element
+   *   An element.
+   *
+   * @return array
+   *   An array of element selectors source values.
+   *
+   * @see \Drupal\webform\Entity\Webform::getElementsSelectorSourceValues
+   */
+  public function getElementSelectorSourceValues(array $element);
 
   /**
    * Get an element's (sub)input selector value.
@@ -695,10 +800,10 @@ interface WebformElementInterface extends PluginInspectionInterface, PluginFormI
    *
    * @param array $element
    *   An element.
-   * @param mixed[] $values
+   * @param mixed[] &$values
    *   An array of values to set, keyed by property name.
    */
-  public function preCreate(array &$element, array $values);
+  public function preCreate(array &$element, array &$values);
 
   /**
    * Acts on a webform submission element after it is created.

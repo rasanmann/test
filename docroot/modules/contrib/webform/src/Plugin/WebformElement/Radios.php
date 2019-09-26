@@ -21,12 +21,15 @@ class Radios extends OptionsBase {
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    return parent::getDefaultProperties() + [
+    return [
       // Form display.
       'options_display' => 'one_column',
+      'options_description_display' => 'description',
       // iCheck settings.
       'icheck' => '',
-    ];
+      // Wrapper.
+      'wrapper_type' => 'fieldset',
+    ] + parent::getDefaultProperties();
   }
 
   /**

@@ -29,16 +29,6 @@ class WebformResultsExportDownloadTest extends WebformTestBase {
   protected static $testWebforms = ['test_element_managed_file'];
 
   /**
-   * {@inheritdoc}
-   */
-  public function setUp() {
-    parent::setUp();
-
-    // Create users.
-    $this->createUsers();
-  }
-
-  /**
    * Tests download files.
    */
   public function testDownloadFiles() {
@@ -79,7 +69,7 @@ class WebformResultsExportDownloadTest extends WebformTestBase {
     $submissions = WebformSubmission::loadMultiple($sids);
     foreach ($submissions as $submission) {
       $serial = $submission->serial();
-      $fid = $submission->getData('managed_file_single');
+      $fid = $submission->getElementData('managed_file_single');
       $filename = File::load($fid)->getFilename();
 
       $this->assert(isset($files["submission-$serial/$filename"]));
@@ -110,7 +100,7 @@ class WebformResultsExportDownloadTest extends WebformTestBase {
     $submissions = WebformSubmission::loadMultiple($sids);
     foreach ($submissions as $submission) {
       $serial = $submission->serial();
-      $fid = $submission->getData('managed_file_single');
+      $fid = $submission->getElementData('managed_file_single');
       $filename = File::load($fid)->getFilename();
 
       $this->assert(isset($files["submission-$serial.yml"]));

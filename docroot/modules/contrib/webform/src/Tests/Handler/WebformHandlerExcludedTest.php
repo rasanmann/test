@@ -12,6 +12,21 @@ use Drupal\webform\Tests\WebformTestBase;
 class WebformHandlerExcludedTest extends WebformTestBase {
 
   /**
+   * Modules to enable.
+   *
+   * @var array
+   */
+  public static $modules = ['block', 'webform'];
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp() {
+    parent::setUp();
+    $this->drupalPlaceBlock('local_actions_block');
+  }
+
+  /**
    * Test excluded handlers.
    */
   public function testExcludeHandlers() {
@@ -21,31 +36,31 @@ class WebformHandlerExcludedTest extends WebformTestBase {
     $handler_manager = $this->container->get('plugin.manager.webform.handler');
 
     // Check add mail and handler plugin.
-    $this->drupalGet('admin/structure/webform/manage/contact/handlers');
+    $this->drupalGet('/admin/structure/webform/manage/contact/handlers');
     $this->assertLink('Add email');
     $this->assertLink('Add handler');
 
     // Check add mail accessible.
-    $this->drupalGet('admin/structure/webform/manage/contact/handlers/add/email');
+    $this->drupalGet('/admin/structure/webform/manage/contact/handlers/add/email');
     $this->assertResponse(200);
 
     // Exclude the email handler.
     \Drupal::configFactory()->getEditable('webform.settings')->set('handler.excluded_handlers', ['email' => 'email'])->save();
 
     // Check add mail hidden.
-    $this->drupalGet('admin/structure/webform/manage/contact/handlers');
+    $this->drupalGet('/admin/structure/webform/manage/contact/handlers');
     $this->assertNoLink('Add email');
     $this->assertLink('Add handler');
 
     // Check add mail access denied.
-    $this->drupalGet('admin/structure/webform/manage/contact/handlers/add/email');
+    $this->drupalGet('/admin/structure/webform/manage/contact/handlers/add/email');
     $this->assertResponse(403);
 
     // Exclude the email handler.
-    \Drupal::configFactory()->getEditable('webform.settings')->set('handler.excluded_handlers', ['broken' => 'broken', 'debug' => 'debug', 'email' => 'email', 'remote_post' => 'remote_post'])->save();
+    \Drupal::configFactory()->getEditable('webform.settings')->set('handler.excluded_handlers', ['action' => 'action', 'broken' => 'broken', 'debug' => 'debug', 'email' => 'email', 'remote_post' => 'remote_post', 'settings' => 'settings'])->save();
 
     // Check add mail and handler hidden.
-    $this->drupalGet('admin/structure/webform/manage/contact/handlers');
+    $this->drupalGet('/admin/structure/webform/manage/contact/handlers');
     $this->assertNoLink('Add email');
     $this->assertNoLink('Add handler');
 

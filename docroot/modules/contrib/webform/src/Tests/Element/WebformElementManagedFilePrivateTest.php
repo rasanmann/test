@@ -2,7 +2,9 @@
 
 namespace Drupal\webform\Tests\Element;
 
+use Drupal\Core\Url;
 use Drupal\file\Entity\File;
+use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
 
 /**
@@ -13,21 +15,36 @@ use Drupal\webform\Entity\WebformSubmission;
 class WebformElementManagedFilePrivateTest extends WebformElementManagedFileTestBase {
 
   /**
+   * Webforms to load.
+   *
+   * @var array
+   */
+  protected static $testWebforms = ['test_element_managed_file'];
+
+  /**
    * Test private files.
    */
   public function testPrivateFiles() {
-    $elements = $this->webform->getElementsDecoded();
-    $elements['managed_file_single']['#uri_scheme'] = 'private';
-    $this->webform->setElements($elements);
-    $this->webform->save();
+    $admin_submission_user = $this->drupalCreateUser([
+      'administer webform submission',
+    ]);
 
-    $this->drupalLogin($this->adminSubmissionUser);
+    $webform = Webform::load('test_element_managed_file');
+
+    /**************************************************************************/
+
+    $elements = $webform->getElementsDecoded();
+    $elements['managed_file_single']['#uri_scheme'] = 'private';
+    $webform->setElements($elements);
+    $webform->save();
+
+    $this->drupalLogin($admin_submission_user);
 
     // Upload private file as authenticated user.
     $edit = [
       'files[managed_file_single]' => \Drupal::service('file_system')->realpath($this->files[0]->uri),
     ];
-    $sid = $this->postSubmission($this->webform, $edit);
+    $sid = $this->postSubmission($webform, $edit);
 
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     $submission = WebformSubmission::load($sid);
@@ -37,7 +54,7 @@ class WebformElementManagedFilePrivateTest extends WebformElementManagedFileTest
     $file = File::load($fid);
 
     // Check that test file 3 was uploaded to the current submission.
-    $this->assertEqual($submission->getData('managed_file_single'), $fid, 'Test file 3 was upload to the current submission');
+    $this->assertEqual($submission->getElementData('managed_file_single'), $fid, 'Test file 3 was upload to the current submission');
 
     // Check test file 3 file usage.
     $this->assertIdentical(['webform' => ['webform_submission' => [$sid => '1']]], $this->fileUsage->listUsage($file), 'The file has 3 usage.');
@@ -54,13 +71,23 @@ class WebformElementManagedFilePrivateTest extends WebformElementManagedFileTest
     // Check private file access redirects to user login page with destination.
     $this->drupalGet(file_create_url($file->getFileUri()));
     $this->assertResponse(200);
-    $this->assertUrl('user/login', ['query' => ['destination' => 'system/files/webform/test_element_managed_file/' . $sid . '/' . $this->files[0]->filename]]);
+
+    $destination_url = Url::fromUri('base://system/files', [
+      'query' => [
+        'file' => 'webform/test_element_managed_file/' . $sid . '/' . $this->files[0]->filename,
+      ],
+    ]);
+    $this->assertUrl('user/login', [
+      'query' => [
+        'destination' => $destination_url->toString(),
+      ],
+    ]);
 
     // Upload private file and preview as anonymous user.
     $edit = [
       'files[managed_file_single]' => \Drupal::service('file_system')->realpath($this->files[1]->uri),
     ];
-    $this->drupalPostForm('webform/' . $this->webform->id(), $edit, t('Preview'));
+    $this->drupalPostForm('webform/' . $webform->id(), $edit, t('Preview'));
 
     $temp_file_uri = file_create_url('private://webform/test_element_managed_file/_sid_/' . basename($this->files[1]->uri));
 
@@ -73,7 +100,7 @@ class WebformElementManagedFilePrivateTest extends WebformElementManagedFileTest
     $this->assertResponse(403);
 
     // Check that authenticated user can't access temp file.
-    $this->drupalLogin($this->adminSubmissionUser);
+    $this->drupalLogin($admin_submission_user);
     $this->drupalGet($temp_file_uri);
     $this->assertResponse(403);
 

@@ -22,18 +22,26 @@
    *
    * @prop {Drupal~behaviorAttach} attach
    *   Attaches the behavior for form tabs using jQuery UI.
+   *
+   * @see \Drupal\webform\Utility\WebformFormHelper::buildTabs
    */
   Drupal.behaviors.webformFormTabs = {
     attach: function (context) {
-      // Set active tab and clear the location hash once it is set.
-      if (location.hash) {
-        var active = $('a[href="' + location.hash + '"]').data('tab-index');
-        if (active != undefined) {
-          Drupal.webform.formTabs.options.active = active;
-          location.hash = '';
+      $(context).find('div.webform-tabs').once('webform-tabs').each(function () {
+        var $tabs = $(this);
+        var options = jQuery.extend({}, Drupal.webform.formTabs.options);
+
+        // Set active tab and clear the location hash once it is set.
+        if (location.hash) {
+          var active = $('a[href="' + location.hash + '"]').data('tab-index');
+          if (typeof active !== 'undefined') {
+            options.active = active;
+            location.hash = '';
+          }
         }
-      }
-      $(context).find('div.webform-tabs').once('webform-tabs').tabs(Drupal.webform.formTabs.options);
+
+        $tabs.tabs(options);
+      });
     }
   };
 

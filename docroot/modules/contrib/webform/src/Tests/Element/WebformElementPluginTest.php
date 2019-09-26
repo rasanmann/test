@@ -4,14 +4,13 @@ namespace Drupal\webform\Tests\Element;
 
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
-use Drupal\webform\Tests\WebformTestBase;
 
 /**
  * Tests for the webform element plugin.
  *
  * @group Webform
  */
-class WebformElementPluginTest extends WebformTestBase {
+class WebformElementPluginTest extends WebformElementTestBase {
 
   /**
    * Modules to enable.
@@ -39,7 +38,7 @@ class WebformElementPluginTest extends WebformTestBase {
 
     // Check that managed_file and webform_term-select are not available when
     // dependent modules are not installed.
-    $this->drupalGet('admin/structure/webform/plugins/elements');
+    $this->drupalGet('/admin/reports/webform-plugins/elements');
     $this->assertNoRaw('<td><div class="webform-form-filter-text-source">managed_file</div></td>');
     $this->assertNoRaw('<td><div class="webform-form-filter-text-source">webform_term_select</div></td>');
 
@@ -48,7 +47,7 @@ class WebformElementPluginTest extends WebformTestBase {
 
     // Check that managed_file and webform_term-select are available when
     // dependent modules are installed.
-    $this->drupalGet('admin/structure/webform/plugins/elements');
+    $this->drupalGet('/admin/reports/webform-plugins/elements');
     $this->assertRaw('<td><div class="webform-form-filter-text-source">managed_file</div></td>');
     $this->assertRaw('<td><div class="webform-form-filter-text-source">webform_term_select</div></td>');
 
@@ -60,7 +59,7 @@ class WebformElementPluginTest extends WebformTestBase {
     $webform_plugin_test = Webform::load('test_element_plugin');
 
     // Check prepare and setDefaultValue().
-    $this->drupalGet('webform/test_element_plugin');
+    $this->drupalGet('/webform/test_element_plugin');
     $this->assertRaw('Invoked: Drupal\webform_test_element\Plugin\WebformElement\WebformTestElement:preCreate');
     $this->assertRaw('Invoked: Drupal\webform_test_element\Plugin\WebformElement\WebformTestElement:postCreate');
     $this->assertRaw('Invoked: Drupal\webform_test_element\Plugin\WebformElement\WebformTestElement:prepare');
@@ -101,7 +100,7 @@ class WebformElementPluginTest extends WebformTestBase {
     $this->drupalPostForm('/admin/structure/webform/manage/test_element_plugin/submission/' . $sid . '/delete', [], t('Delete'));
     $this->assertRaw('Invoked: Drupal\webform_test_element\Plugin\WebformElement\WebformTestElement:preDelete');
     $this->assertRaw('Invoked: Drupal\webform_test_element\Plugin\WebformElement\WebformTestElement:postDelete');
-    $this->assertRaw('Test: Element: Test (plugin): Submission #' . $webform_submission->serial() . ' has been deleted.');
+    $this->assertRaw('<em class="placeholder">Test: Element: Test (plugin): Submission #' . $webform_submission->serial() . '</em> has been deleted.');
   }
 
 }

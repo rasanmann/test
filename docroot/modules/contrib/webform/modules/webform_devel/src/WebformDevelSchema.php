@@ -2,7 +2,6 @@
 
 namespace Drupal\webform_devel;
 
-use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Form\OptGroup;
 use Drupal\Core\Render\ElementInfoManagerInterface;
 use Drupal\Core\Render\Element\Email as EmailElement;
@@ -20,7 +19,6 @@ use Drupal\webform\WebformInterface;
 
 /**
  * Provides a webform schema generator.
- *
  */
 class WebformDevelSchema implements WebformDevelSchemaInterface {
 
@@ -53,6 +51,12 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
     $this->elementManager = $element_manager;
   }
 
+  /**
+   * Get webform scheme columns.
+   *
+   * @return array
+   *   Associative array container webform scheme columns
+   */
   public function getColumns() {
     return [
       'name' => $this->t('Name'),
@@ -61,9 +65,19 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
       'maxlength' => $this->t('Maxlength'),
       'required' => $this->t('Required'),
       'multiple' => $this->t('Multiple'),
+      'options' => $this->t('Options'),
     ];
   }
 
+  /**
+   * Get a webform's scheme elements.
+   *
+   * @param \Drupal\webform\WebformInterface $webform
+   *   A webform.
+   *
+   * @return array
+   *   An associative containing a webform's scheme elements.
+   */
   public function getElements(WebformInterface $webform) {
     $records = [];
     $elements = $webform->getElementsInitializedFlattenedAndHasValue();
@@ -84,7 +98,7 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
   /**
    * Get webform element schema.
    *
-   * @param $element_key
+   * @param string $element_key
    *   The webform element key.
    * @param array $element
    *   The webform element.
@@ -187,6 +201,13 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
     }
     $data['multiple'] = $multiple;
 
+    if (isset($element['#options'])) {
+      $data['options'] = OptGroup::flattenOptions($element['#options']);
+    }
+    else {
+      $data['options'] = [];
+    }
+
     return $data;
   }
 
@@ -203,7 +224,7 @@ class WebformDevelSchema implements WebformDevelSchemaInterface {
     $options = OptGroup::flattenOptions($element['#options']);
     $maxlength = 0;
     foreach ($options as $option_value => $option_text) {
-      $maxlength = max(Unicode::strlen($option_value), $maxlength);
+      $maxlength = max(mb_strlen($option_value), $maxlength);
     }
 
     // Check element w/ other value maxlength.

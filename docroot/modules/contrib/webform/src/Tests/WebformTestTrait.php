@@ -145,7 +145,7 @@ trait WebformTestTrait {
    *   A webform.
    *
    * @return int|null
-   *   The last submission id. NULL is saving of results is disabled.
+   *   The last submission id. NULL if saving of results is disabled.
    */
   protected function getLastSubmissionId(WebformInterface $webform) {
     if ($webform->getSetting('results_disabled')) {
@@ -161,6 +161,7 @@ trait WebformTestTrait {
       $entity_ids = \Drupal::entityQuery('webform_submission')
         ->sort('sid', 'DESC')
         ->condition('webform_id', $webform->id())
+        ->accessCheck(FALSE)
         ->execute();
       return reset($entity_ids);
     }

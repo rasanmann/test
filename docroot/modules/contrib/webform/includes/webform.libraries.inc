@@ -9,19 +9,43 @@
  * Implements hook_library_info_alter().
  */
 function webform_library_info_alter(&$libraries, $extension) {
-  // Only alter webform libraries.
-  if ($extension != 'webform') {
+  // Only alter modules that declare webform libraries.
+  // @see hook_webform_libraries_info()
+  $webform_libraries_modules = \Drupal::moduleHandler()->getImplementations('webform_libraries_info');
+  $webform_libraries_modules[] = 'webform';
+  if (!in_array($extension, $webform_libraries_modules)) {
     return;
+  }
+
+  // If chosen_lib.module is installed, then update the dependency.
+  if (\Drupal::moduleHandler()->moduleExists('chosen_lib')) {
+    if (isset($libraries['webform.element.chosen'])) {
+      $dependencies =& $libraries['webform.element.chosen']['dependencies'];
+      foreach ($dependencies as $index => $dependency) {
+        if ($dependency === 'webform/libraries.jquery.chosen') {
+          $dependencies[$index] = 'chosen_lib/chosen';
+          $dependencies[] = 'chosen_lib/chosen.css';
+          break;
+        }
+      }
+    }
+  }
+
+  // If select2.module is installed, then update the dependency.
+  if (\Drupal::moduleHandler()->moduleExists('select2')) {
+    if (isset($libraries['webform.element.select2'])) {
+      $dependencies =& $libraries['webform.element.select2']['dependencies'];
+      foreach ($dependencies as $index => $dependency) {
+        if ($dependency === 'webform/libraries.jquery.select2') {
+          $dependencies[$index] = 'select2/select2';
+          break;
+        }
+      }
+    }
   }
 
   /** @var \Drupal\webform\WebformLibrariesManagerInterface $libraries_manager */
   $libraries_manager = \Drupal::service('webform.libraries_manager');
-
-  // Add off-canvas system tray to dialog dependencies.
-  if (isset($libraries['webform.admin.dialog']) && (floatval(\Drupal::VERSION) >= 8.3) && \Drupal::moduleHandler()->moduleExists('outside_in')) {
-    $libraries['webform.admin.dialog']['dependencies'][] = 'outside_in/drupal.off_canvas';
-    $libraries['webform.admin.dialog']['dependencies'][] = 'outside_in/drupal.outside_in';
-  }
 
   // Map /library/* paths to CDN.
   // @see webform.libraries.yml.
@@ -29,6 +53,11 @@ function webform_library_info_alter(&$libraries, $extension) {
     // Remove excluded libraries.
     if ($libraries_manager->isExcluded($library_name)) {
       unset($libraries[$library_name]);
+      continue;
+    }
+
+    // Skip libraries installed by other modules.
+    if (isset($library['module'])) {
       continue;
     }
 
@@ -77,7 +106,7 @@ function _webform_library_info_alter_recursive(array &$library, array $cdn) {
       continue;
     }
 
-    // Replace the CDN sources (ie /library/*) with the CDN URL destination
+    // Replace the CDN sources (i.e. /library/*) with the CDN URL destination
     // (https://cdnjs.cloudflare.com/ajax/libs/*).
     foreach ($cdn as $source => $destination) {
       if (strpos($key, $source) === 0) {

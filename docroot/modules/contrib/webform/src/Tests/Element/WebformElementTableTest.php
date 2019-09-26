@@ -3,14 +3,13 @@
 namespace Drupal\webform\Tests\Element;
 
 use Drupal\webform\Entity\Webform;
-use Drupal\webform\Tests\WebformTestBase;
 
 /**
  * Tests for table elements.
  *
  * @group Webform
  */
-class WebformElementTableTest extends WebformTestBase {
+class WebformElementTableTest extends WebformElementTestBase {
 
   /**
    * Webforms to load.
@@ -31,7 +30,7 @@ class WebformElementTableTest extends WebformTestBase {
     /**************************************************************************/
 
     // Check display elements within a table.
-    $this->drupalGet('webform/test_element_table');
+    $this->drupalGet('/webform/test_element_table');
     $this->assertRaw('<table class="js-form-wrapper responsive-enabled" data-drupal-selector="edit-table" id="edit-table" data-striping="1">');
     $this->assertRaw('<th>First Name</th>');
     $this->assertRaw('<th>Last Name</th>');
