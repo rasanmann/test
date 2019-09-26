@@ -270,7 +270,9 @@ function yqb_preprocess_block(array &$variables) {
   // Hide About menu in news archives
   if (isset($variables['elements']['#configuration']['id'])) {
     if (($variables['elements']['#configuration']['id'] == 'system_menu_block:a-propos' || $variables['elements']['#configuration']['id'] == 'system_menu_block:barre-laterale---a-propos-e') && preg_match('/communiques-de-presse|press-release|blog/', \Drupal::request()->getRequestUri())) {
-      $variables = array();
+      $variables = array(
+        'theme_hook_original' => 'block'
+      );
     }
   }
 }
