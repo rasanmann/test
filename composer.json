@@ -86,7 +86,7 @@
         "Views field view PHP warnings": "patches/views_field_view.patch"
       },
       "drupal/core": {
-        "Multiple usages of FieldPluginBase::getEntity do not check for NULL, leading to WSOD": "https://www.drupal.org/files/issues/2019-01-30/drupal-Multiple-usages-of-FieldPluginBase-getEntity-3007424-7.patch"
+        "Multiple usages of FieldPluginBase::getEntity do not check for NULL, leading to WSOD": "https://www.drupal.org/files/issues/2019-09-21/3007424-28.patch"
       }
     },
     "merge-plugin": {
