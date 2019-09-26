@@ -354,11 +354,8 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
           $taxonomyTerm = $node->get('field_department')->first()->get('entity')->getTarget()->getValue();
           $taxonomyTermTrans = \Drupal::service('entity.repository')->getTranslationFromContext($taxonomyTerm, $currentLanguage);
           $translatedTerm = $taxonomyTermTrans->getName();
-          $form['elements']['offer']['#default_value'] = $node->getTitle();
+          $form['elements']['offer']['#value'] = $node->getTitle();
           $form['elements']['department']['#default_value'] = $translatedTerm;
-          $form['elements']['department']['#type'] = 'hidden';
-
-          $form['field_offre']['widget']['#default_value'] = 'bob';
         }
         else {
           $redirect = TRUE;
