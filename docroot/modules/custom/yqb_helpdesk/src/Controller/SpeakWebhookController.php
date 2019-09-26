@@ -16,9 +16,9 @@ use Services_Twilio_RestException;
  * Provides route responses for the Reminders module.
  */
 class SpeakWebhookController extends ControllerBase {
-  
+
   private $helpdeskPhoneNumber;
-  
+
   public function __construct() {
     $config = \Drupal::config('yqb_helpdesk.settings');
     $this->helpdeskPhoneNumber = $config->get('yqb_helpdesk.phone_number');
@@ -29,13 +29,13 @@ class SpeakWebhookController extends ControllerBase {
    */
   public function call(){
     header("content-type: text/xml");
-    
+
     echo '<?xml version="1.0" encoding="UTF-8"?>
     <Response>
       <Gather action="'.Url::fromRoute('yqb_helpdesk.enqueue', [], ['absolute' => true])->toString().'" numDigits="8"> </Gather>
       <Dial>'.$this->helpdeskPhoneNumber.'</Dial>
     </Response>';
-    
+
     exit;
   }
 
@@ -53,11 +53,11 @@ class SpeakWebhookController extends ControllerBase {
       'language' => 'fr',
       'langcode' => 'fr-CA'
     ];
-    
+
     if(isset($_REQUEST['Digits'])){
       $query = \Drupal::entityQuery('user')->condition('field_caller_id', $_REQUEST['Digits'])->pager(1);
       $results = $query->execute();
-      
+
       if(!empty($results)) {
         $dbUser = User::load(current($results));
 
@@ -70,20 +70,20 @@ class SpeakWebhookController extends ControllerBase {
         }
       }
     }
-    
+
     // Log user
     $this->logAndClean(json_encode($user, JSON_PRETTY_PRINT), $user['id'].'_'.date('Y_m_d__H_i_s', strtotime($user['logDate'])).'_enqueue', 'call');
     \Drupal::logger('yqb_helpdesk')->notice(sprintf('Enqueue User %d (%s %s) on %s', $user['id'], $user['first_name'], $user['last_name'], $user['logDate']));
-    
+
     // Prepare message
-    $say = $this->t("Bonjour, un agent vous répondra sous peu.", 
+    $say = $this->t("Bonjour, un agent vous répondra sous peu.",
       [],
       ['langcode' => $user['language']]
     );
-    
+
     // Helpdesk queue
     $workflowSid = "WWf4281d21d79d13a36b351bb7548504dd";
-    
+
     // Enqueue caller
     header("content-type: text/xml");
     echo '<?xml version="1.0" encoding="UTF-8"?>
@@ -94,23 +94,23 @@ class SpeakWebhookController extends ControllerBase {
           <Task>'.json_encode($user).'</Task>
         </Enqueue>
     </Response>';
-    
+
     exit;
   }
-  
+
   public function connect(){
     header("content-type: application/json");
-    
+
     $params = json_decode($_REQUEST['TaskAttributes'], true);
     $params['ReservationSid'] = $_REQUEST['ReservationSid'];
     $params['IfMachine'] = 'Continue';
-    
+
     echo json_encode([
       "instruction" =>  "call",
       "from" => "+18885128763",
       "url" =>  Url::fromRoute('yqb_helpdesk.callback', $params, ['absolute' => true])->toString()
     ]);
-    
+
     exit;
   }
 
@@ -120,13 +120,13 @@ class SpeakWebhookController extends ControllerBase {
   public function callback(){
     $this->logAndClean(json_encode($_GET, JSON_PRETTY_PRINT), $_GET['id'].'_'.date('Y_m_d__H_i_s', strtotime($_GET['logDate'])).'_callback', 'call');
     \Drupal::logger('yqb_helpdesk')->notice(sprintf('Agent receives User %d (%s %s) on %s', $_GET['id'], $_GET['first_name'], $_GET['last_name'], $_GET['logDate']));
-    
+
     if($_GET['id'] != 0){
       $lang = ($_GET['language'] == 'fr') ? 'français' : 'anglais';
       if(!empty($_GET['first_name'])) {
         $message = "Vous avez un appel de l'utilisateur {$_GET['first_name']} {$_GET['last_name']}. Son numéro est ".implode(' ', str_split($_GET['id']))." et son application est en {$lang}.";
       }else{
-         $message = "Vous avez un appel de l'utilisateur ".implode(' ', str_split($_GET['id']))." et son application est en {$lang}."; 
+         $message = "Vous avez un appel de l'utilisateur ".implode(' ', str_split($_GET['id']))." et son application est en {$lang}.";
       }
     }else{
       $message = "Vous avez un appel d'un utilisateur inconnu.";
@@ -143,18 +143,18 @@ class SpeakWebhookController extends ControllerBase {
       <Say language="fr-CA" voice="alice">Désolé, je n\'ai pas reçu votre réponse.</Say>
       <Redirect>'.htmlspecialchars(Url::fromRoute('yqb_helpdesk.callback', $_GET, ['absolute' => true])->toString()).'</Redirect>
     </Response>';
-    
+
     exit;
   }
-  
-  
-  
+
+
+
   /**
    * Check if agent pushed right button and connect to client
    */
   public function gather(){
     $user_pushed = (int) $_REQUEST['Digits'];
-    
+
     if ($user_pushed == 1) {
       $action = '<Say language="fr-CA" voice="alice">Connexion au client</Say>
         <Dial>
@@ -163,22 +163,22 @@ class SpeakWebhookController extends ControllerBase {
     }else {
       $action = "<Hangup />";
     }
-    
+
     // Dial agent
     header("content-type: text/xml");
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
     <Response>
         {$action}
     </Response>";
-    
+
     exit;
   }
-  
-  
+
+
   /************************************************************************************************************************* */
-  
-  
-  
+
+
+
   /**
    * Log data into files and trigger cleaning process
    * @param $data
@@ -191,28 +191,30 @@ class SpeakWebhookController extends ControllerBase {
     if (!is_dir('public://webhooks/'.$folder)) {
       mkdir('public://webhooks/'.$folder);
     }
-    
+
     if(!empty($folder)) $folder .= '/';
-    
+
     // Get all log files and order by most recent
     $realPublicPath = \Drupal::service('file_system')->realpath(file_default_scheme() . "://");
     $files = glob($realPublicPath . '/webhooks/'.$folder.'*.log');
-    
+
     $this->cleanLogFiles($files, $limit);
-    
+
     if (!file_put_contents(sprintf('public://webhooks/'.$folder.'%s.log', $filename), $data)) {
       echo "Couldn't log file" . PHP_EOL;
     }
   }
 
   /**
-   * Clear oldest files 
+   * Clear oldest files
    * @param $files
    * @param int $limit
    */
   private function cleanLogFiles($files, $limit = 10){
-    usort($files, create_function('$a, $b', 'return filemtime($a) < filemtime($b);'));
-      
+    usort($files, function ($a, $b) {
+      return filemtime($a) < filemtime($b);
+    });
+
     // Clean up, keep most recent files
     if (count($files) > $limit) {
         $deletes = array_slice($files, $limit - 1);

@@ -9,10 +9,10 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Route;
 
 class YQBResourceBase extends ResourceBase {
-  
+
   protected $language;
   protected $defaultDestinationImage = 'themes/yqb/img/maps/default-destination.jpg';
-  
+
   protected $yqb = [
     "id" => null,
     "iata" => "YQB",
@@ -31,7 +31,7 @@ class YQBResourceBase extends ResourceBase {
       'client_id' => '741806413961-akc5n7omdv4oqdjveeeen56jei5gtnvv.apps.googleusercontent.com',
       'client_secret' => 'go9SP2raZoSPVqImHVUejJPW'
   ];
-  
+
   protected $states = [
     'travel', 'companion'
   ];
@@ -94,22 +94,22 @@ class YQBResourceBase extends ResourceBase {
     );
     return $route;
   }
-  
+
   protected function validateUserFlight($data, $user){
     $rest = new UserFlightRestResource($this->configuration, $this->pluginId, $this->pluginDefinition, $this->serializerFormats, $this->logger, $user);
     $currentUserFlights = $rest->fetchUserFlights($data['state']);
-    
+
     foreach($currentUserFlights as $flight){
       if($flight['number'] == $data['number'] && $flight['type'] == $data['type'] && $flight['date'] == $data['date'] && $flight['time'] == $data['time']){
         return false;
       }
     }
-    
+
     return true;
   }
 
   /**
-   * Receives user_flight data and save the node 
+   * Receives user_flight data and save the node
    * Used from /users POST and /users/flights POST
    * @param $data
    * @return array|mixed
@@ -118,18 +118,18 @@ class YQBResourceBase extends ResourceBase {
    */
   protected function createUserFlight($data, $user){
     $userFlight = [
-      'type' => 'user_flight', 
+      'type' => 'user_flight',
       'title' => sprintf('%s on %s for %s', $data['number'], $data['date'], $user->id()),
       'langcode' => $this->language,
-      'field_flight_type' => $data['type'], 
-      'field_flight_date' => $data['date'], 
-      'field_flight_time' => $data['time'], 
+      'field_flight_type' => $data['type'],
+      'field_flight_date' => $data['date'],
+      'field_flight_time' => $data['time'],
       'field_gate' => $data['gate'],
-      'field_flight_number' => $data['number'], 
-      'field_flight_airline' => $data['airline']['realIcao'], 
-      'field_airline' => $data['airline']['id'], 
-      'field_destination_airport' => $data['destination']['id'], 
-      'field_origin_airport' => $data['origin']['id'], 
+      'field_flight_number' => $data['number'],
+      'field_flight_airline' => $data['airline']['realIcao'],
+      'field_airline' => $data['airline']['id'],
+      'field_destination_airport' => $data['destination']['id'],
+      'field_origin_airport' => $data['origin']['id'],
       'field_user' => $user->id(),
       'field_status' => $data['status']['id'],
       'field_state' => $data['state'],
@@ -137,17 +137,17 @@ class YQBResourceBase extends ResourceBase {
       'field_completed' => 0,
       'field_carousel_name' => ($data['type'] == 'arrival') ? $data['carousel'] : null,
     ];
-    
+
     // Add departure flight to arrival
     if(isset($data['departure'])){
       $userFlight['field_user_flight'] = $data['departure'];
     }
-    
+
     $node = Node::create($userFlight);
-        
+
     if($node->save()){
       $userFlight['id'] = $node->id();
-      
+
       return $userFlight;
     }else{
       return false;
@@ -173,7 +173,7 @@ class YQBResourceBase extends ResourceBase {
     $currentFlight->set('field_destination_airport', $data['destination']['id']);
     $currentFlight->set('field_origin_airport', $data['origin']['id']);
     $currentFlight->set('field_status', $data['status']['id']);
-   
+
     return $currentFlight->save();
   }
 
@@ -184,13 +184,13 @@ class YQBResourceBase extends ResourceBase {
    */
   protected function getUnauthorizedResponse($dependency = null){
     $response = new ResourceResponse([
-      'error' => $this->t("Unauthorized", [], ['langcode' => $this->language]) 
-    ], 403); 
-    
+      'error' => $this->t("Unauthorized", [], ['langcode' => $this->language])
+    ], 403);
+
     if(!empty($dependency)) {
       $response->addCacheableDependency($dependency);
     }
-    
+
     return $response;
   }
 
@@ -247,7 +247,7 @@ class YQBResourceBase extends ResourceBase {
 
     return $msg;
   }
-  
+
   /**
    * Log data into files and trigger cleaning process
    * @param $data
@@ -260,19 +260,19 @@ class YQBResourceBase extends ResourceBase {
     if (!is_dir('public://api')) {
       mkdir('public://api');
     }
-    
+
     if (!is_dir('public://api/'.$folder)) {
       mkdir('public://api/'.$folder);
     }
-    
+
     if(!empty($folder)) $folder .= '/';
-    
+
     // Get all log files and order by most recent
     $realPublicPath = \Drupal::service('file_system')->realpath(file_default_scheme() . "://");
     $files = glob($realPublicPath . '/api/'.$folder.'*.json');
-    
+
     $this->cleanLogFiles($files, $limit);
-    
+
     file_put_contents(sprintf('public://api/'.$folder.'%s.json', $filename), json_encode($data));
   }
 
@@ -284,9 +284,9 @@ class YQBResourceBase extends ResourceBase {
    */
   protected function readCache($filename, $folder){
     $realPublicPath = \Drupal::service('file_system')->realpath(file_default_scheme() . "://");
-    
+
     if(!empty($folder)) $folder .= '/';
-    
+
     if(is_file($realPublicPath . '/api/'.$folder.$filename.'.json')){
       return json_decode(file_get_contents($realPublicPath . '/api/'.$folder.$filename.'.json'), true);
     }else{
@@ -295,13 +295,15 @@ class YQBResourceBase extends ResourceBase {
   }
 
   /**
-   * Clear oldest files 
+   * Clear oldest files
    * @param $files
    * @param int $limit
    */
   private function cleanLogFiles($files, $limit = 10){
-    usort($files, create_function('$a, $b', 'return filemtime($a) < filemtime($b);'));
-      
+    usort($files, function ($a, $b) {
+      return filemtime($a) < filemtime($b);
+    });
+
     // Clean up, keep most recent files
     if (count($files) > $limit) {
         $deletes = array_slice($files, $limit - 1);
