@@ -549,7 +549,9 @@ class AdvamConnector {
    * @param int $limit
    */
   protected function cleanLogFiles($files, $limit = 10){
-    usort($files, create_function('$a, $b', 'return filemtime($a) < filemtime($b);'));
+    usort($files, function ($a, $b) {
+      return filemtime($a) < filemtime($b);
+    });
 
     // Clean up, keep most recent files
     if (count($files) > $limit) {
