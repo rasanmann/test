@@ -14,41 +14,49 @@
     max-width: 25px;
     padding-top: 15px; }
 
-.field--name-field-paragraphs {
-  border-top: 1px solid #e6e6e6;
+.field--name-field-paragraphs > .field--item:first-child .paragraph--type--gouvernance-employe {
+  border-top: 1px solid #e6e6e6; }
+
+.field--name-field-paragraphs > .field--item:last-child .paragraph--type--gouvernance-employe {
   border-bottom: 1px solid #e6e6e6; }
-  .field--name-field-paragraphs .row-wrapper {
-    position: relative;
-    min-height: 300px; }
-  .field--name-field-paragraphs .trio_content {
-    padding-top: 130px;
-    margin: auto;
-    width: 50%;
-    text-align: center; }
-    .field--name-field-paragraphs .trio_content .field--name-field-title-gouvernance-employe {
-      font-size: 2.4rem; }
-    .field--name-field-paragraphs .trio_content .field--name-field-sous-titre-gouvernance-emp {
-      font-size: 16px; }
-  .field--name-field-paragraphs .field--item:nth-child(odd) .row-wrapper {
-    background-color: #f7f7f7; }
-  .field--name-field-paragraphs .field--item:nth-child(even) .row-wrapper {
-    background-color: white; }
-  .field--name-field-paragraphs .field--item:nth-child(odd) .row-wrapper .field--name-field-image-gouvernance-employe img {
+
+.field--name-field-paragraphs .row-wrapper {
+  position: relative;
+  min-height: 300px; }
+
+.field--name-field-paragraphs .trio_content {
+  padding-top: 130px;
+  margin: auto;
+  width: 50%;
+  text-align: center; }
+  .field--name-field-paragraphs .trio_content .field--name-field-title-gouvernance-employe {
+    font-size: 2.4rem; }
+  .field--name-field-paragraphs .trio_content .field--name-field-sous-titre-gouvernance-emp {
+    font-size: 16px; }
+
+.field--name-field-paragraphs .field--item:nth-child(odd) .row-wrapper {
+  background-color: #f7f7f7; }
+
+.field--name-field-paragraphs .field--item:nth-child(even) .row-wrapper {
+  background-color: white; }
+
+.field--name-field-paragraphs .field--item:nth-child(odd) .row-wrapper .field--name-field-image-gouvernance-employe img {
+  position: absolute;
+  right: 0px;
+  bottom: 0; }
+  @media only screen and (max-width: 600px) {
+    .field--name-field-paragraphs .field--item:nth-child(odd) .row-wrapper .field--name-field-image-gouvernance-employe img {
+      display: none; } }
+
+.field--name-field-paragraphs .field--item:nth-child(even) .row-wrapper .field--name-field-image-gouvernance-employe {
+  background-color: #fff; }
+  .field--name-field-paragraphs .field--item:nth-child(even) .row-wrapper .field--name-field-image-gouvernance-employe img {
     position: absolute;
-    right: 0px;
+    left: 0px;
     bottom: 0; }
     @media only screen and (max-width: 600px) {
-      .field--name-field-paragraphs .field--item:nth-child(odd) .row-wrapper .field--name-field-image-gouvernance-employe img {
+      .field--name-field-paragraphs .field--item:nth-child(even) .row-wrapper .field--name-field-image-gouvernance-employe img {
         display: none; } }
-  .field--name-field-paragraphs .field--item:nth-child(even) .row-wrapper .field--name-field-image-gouvernance-employe {
-    background-color: #fff; }
-    .field--name-field-paragraphs .field--item:nth-child(even) .row-wrapper .field--name-field-image-gouvernance-employe img {
-      position: absolute;
-      left: 0px;
-      bottom: 0; }
-      @media only screen and (max-width: 600px) {
-        .field--name-field-paragraphs .field--item:nth-child(even) .row-wrapper .field--name-field-image-gouvernance-employe img {
-          display: none; } }
 
 .paragraph--type--gouvernance-texte {
   border-top: 1px solid #e6e6e6;

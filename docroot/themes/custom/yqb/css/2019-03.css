@@ -131,3 +131,7 @@
       min-width: 440px;
       text-align: right;
       margin-bottom: 10px; } }
+
+.field--name-field-primary-title h2 {
+  margin-top: 60px;
+  margin-bottom: 10px; }
