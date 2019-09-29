@@ -717,3 +717,7 @@ function yqb_preprocess_block__yqb_alert(&$variables){
 function yqb_preprocess_paragraph__tirroir(&$variables) {
   $variables['#attached'] = ['library' => 'yqb/accordion'];
 }
+
+function yqb_preprocess_paragraph__mosaique(&$variables) {
+  $variables['#attached'] = ['library' => 'yqb/mosaique'];
+}
