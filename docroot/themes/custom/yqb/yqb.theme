@@ -689,7 +689,6 @@ function yqb_preprocess_views_view_field(&$variables) {
   }
 }
 
-
 function yqb_preprocess_block__herosearchblock(&$variables) {
     $config = Drupal::service('config.factory')->getEditable('yqb_video_accueil.settings');
 
@@ -715,3 +714,6 @@ function yqb_preprocess_block__yqb_alert(&$variables){
     $variables['language'] = $language;
 }
 
+function yqb_preprocess_paragraph__tirroir(&$variables) {
+  $variables['#attached'] = ['library' => 'yqb/accordion'];
+}

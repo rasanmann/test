@@ -1,0 +1,20 @@
+// Styles tirés en partie du paragraphe type vip-drawer
+.paragraph--type--tirroir {
+
+  .field--name-field-titre {
+    // .title-main
+    font-weight: 700;
+    color: #fff;
+    font-size: 3rem;
+    margin: 0;
+    font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+  }
+
+  .field--name-field-description {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px;
+    max-width: none;
+    font-size: 1.4rem;
+  }
+}
