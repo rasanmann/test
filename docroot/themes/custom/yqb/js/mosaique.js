@@ -36,6 +36,12 @@
                 $(self.selector.backdrop).addClass('in');
                 $(self.selector.carousselContainer).addClass('in');
             });
+
+            /*
+            setTimeout(function() {
+                  document.getElementById("siema").requestFullscreen();
+                }, 777);
+            */
         },
 
         close: function () {
@@ -74,9 +80,14 @@
                     '<button class="close" name="close">' +
                     '<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 77.07 77.07" enable-background="new 0 0 77.07 77.07" xml:space="preserve"><g><g i:extraneous="self"><g><g><polygon points="0,7.071 7.071,0 77.07,69.998 69.999,77.07 0,7.071"></polygon></g><g><polygon points="0,69.998 69.999,0 77.07,7.071 7.071,77.07 0,69.998"></polygon></g></g></g></g></svg>' +
                     '</button>';
+                    `
+
+                    `
                 if (this.isVideo(items[i])) {
+                  console.log(items[i]);
                     list += '<video controls="controls">' +
                         '<source src="' + items[i] + '" type="video/mp4">' +
+                        '<div class="video-full-screen">z</div>'
                         '</video>';
                 }
                 else {
