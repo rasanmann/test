@@ -1,0 +1,24 @@
+uuid: 722c392f-af9f-4471-a554-60ba867db9d5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.media_mosaique.field_media_mosaique
+    - paragraphs.paragraphs_type.media_mosaique
+id: paragraph.media_mosaique.default
+targetEntityType: paragraph
+bundle: media_mosaique
+mode: default
+content:
+  field_media_mosaique:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

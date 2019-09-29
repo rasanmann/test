@@ -35,8 +35,8 @@ settings:
       gallery: gallery
       vip_drawer: vip_drawer
       gouvernance_employe: gouvernance_employe
-      mosaique: mosaique
       gouvernance_texte: gouvernance_texte
+      mosaique: mosaique
       accordeon: accordeon
     target_bundles_drag_drop:
       content:
@@ -60,10 +60,10 @@ settings:
       vip_drawer_section:
         weight: 12
         enabled: false
-      mosaique:
+      gouvernance_texte:
         enabled: true
         weight: 13
-      gouvernance_texte:
+      mosaique:
         enabled: true
         weight: 13
       accordeon:

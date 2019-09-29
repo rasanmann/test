@@ -1,9 +1,9 @@
-uuid: 3375b9c2-a9df-442b-9d5b-03f1ec67e5d1
+uuid: 48671b03-ac02-458a-a8a7-ba21dca74459
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.field.paragraph.mosaique.field_image_mosaique
+    - field.field.paragraph.mosaique.field_paragraph_media_mosaique
     - paragraphs.paragraphs_type.mosaique
   module:
     - paragraphs
@@ -12,7 +12,7 @@ targetEntityType: paragraph
 bundle: mosaique
 mode: default
 content:
-  field_image_mosaique:
+  field_paragraph_media_mosaique:
     type: entity_reference_paragraphs
     weight: 0
     settings:
