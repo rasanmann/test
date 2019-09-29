@@ -24,6 +24,7 @@ class Career implements ContainerInjectionInterface {
     $query = \Drupal::entityQuery('node');
     $query->condition('status', Node::PUBLISHED);
     $query->condition('type', 'career');
+    $query->condition('langcode', 'fr');
     $query->condition('field_start_date', date('Y-m-d', \Drupal::time()->getCurrentTime()), '<=');
     $query->condition('field_end_date', date('Y-m-d', \Drupal::time()->getCurrentTime()), '>=');
     $results = $query->execute();
