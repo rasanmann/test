@@ -1,0 +1,38 @@
+uuid: c343ff8e-f5c5-4fc4-8652-82e59d354b0d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.vols-et-destinations
+  module:
+    - language
+    - system
+  theme:
+    - yqb
+id: yqb_volsetdestinations
+theme: yqb
+region: sidebar_first
+weight: -23
+provider: null
+plugin: 'system_menu_block:vols-et-destinations'
+settings:
+  id: 'system_menu_block:vols-et-destinations'
+  label: 'Barre latérale - Vols et destinations'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/vols-et-destinations\r\n/vols-et-destinations/alerte-sms\r\n/vols-et-destinations/alerte-sms/*\r\n/vols-et-destinations/forfaits-vacances\r\n/vols-et-destinations/forfaits-vacances/*"
+    negate: false
+    context_mapping: {  }
+  language:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'

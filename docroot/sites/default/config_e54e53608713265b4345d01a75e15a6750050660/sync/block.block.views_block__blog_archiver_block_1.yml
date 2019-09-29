@@ -1,0 +1,30 @@
+uuid: 39cf6363-bf79-4f5f-b623-1f75b639414c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.blog_archiver
+  module:
+    - system
+    - views
+  theme:
+    - yqb
+id: views_block__blog_archiver_block_1
+theme: yqb
+region: sidebar_first
+weight: -26
+provider: null
+plugin: 'views_block:blog_archiver-block_1'
+settings:
+  id: 'views_block:blog_archiver-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: "/a-propos/blogue\r\n/a-propos/blogue/*\r\n/about/blog\r\n/about/blog/*\r\n/archive-blogue/*\r\n/blog-archive/*"
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,31 @@
+uuid: 3f8c35cd-2cd2-4c29-aec3-749d03390897
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tirroir.field_description
+    - field.field.paragraph.tirroir.field_titre
+    - paragraphs.paragraphs_type.tirroir
+  module:
+    - text
+id: paragraph.tirroir.default
+targetEntityType: paragraph
+bundle: tirroir
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_titre:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

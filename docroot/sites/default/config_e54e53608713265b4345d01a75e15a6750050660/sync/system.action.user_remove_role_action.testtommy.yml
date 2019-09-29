@@ -1,0 +1,14 @@
+uuid: b6ea8d6f-2b5c-43b6-977a-c790632fbcb5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.testtommy
+  module:
+    - user
+id: user_remove_role_action.testtommy
+label: 'Retirer le rôle Testtommy aux utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: testtommy

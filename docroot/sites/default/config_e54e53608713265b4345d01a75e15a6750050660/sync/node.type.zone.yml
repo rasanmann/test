@@ -1,0 +1,17 @@
+uuid: a91658bd-292c-4e43-a730-c5f424110551
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Zone
+type: zone
+description: 'Zones de l''aéroport où l''on retrouve les balises'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

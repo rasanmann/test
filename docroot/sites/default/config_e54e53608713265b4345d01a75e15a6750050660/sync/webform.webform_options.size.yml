@@ -1,0 +1,10 @@
+uuid: 322df4c4-2bc2-4e60-86f0-fa290a25c6e9
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: kwxic4Mu35urjplc_H57KMJ21N5hO8-zK1JU2RuajtU
+id: size
+label: Taille
+category: General
+options: "Extra Small: Extra Small\nSmall: Small\nMedium: Medium\nLarge: Large\nExtra Large: Extra Large\n"

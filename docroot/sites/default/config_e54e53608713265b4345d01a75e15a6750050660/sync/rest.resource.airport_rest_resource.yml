@@ -1,0 +1,20 @@
+uuid: dbaa449b-667e-4228-be52-5817e2bb31e0
+langcode: fr
+status: true
+dependencies:
+  module:
+    - serialization
+    - user
+    - yqb_api
+_core:
+  default_config_hash: 2HgGkklL-RJGRIqVkPpRLZjb-6PJLyBdVMLtPJCe0XU
+id: airport_rest_resource
+plugin_id: airport_rest_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

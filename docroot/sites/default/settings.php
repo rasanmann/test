@@ -28,7 +28,7 @@ $databases['default']['default'] = array (
 
 $settings['hash_salt'] = 'muvxYCDkSL08VsMcpVLQIUZwRGJiUSdlby9YRq9ZFylRLeh1MUIhgd2neowII9uEqliR7SZWAw';
 $settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/yqb.dev/files/config_GNGIARzWYNBvbL7xFdV9ayMF77WX2ao8XRxZkOrzF01UsrPjjNtnQARaWTcX3mJ9TxXSB5raEQ/sync';
+$config_directories['sync'] = 'sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync';
 
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {

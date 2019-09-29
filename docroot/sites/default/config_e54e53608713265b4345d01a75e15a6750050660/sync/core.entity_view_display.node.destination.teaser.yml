@@ -1,0 +1,36 @@
+uuid: 56c75873-8b48-46f0-b900-a6983d480473
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.destination.field_airport
+    - field.field.node.destination.field_destination_category
+    - field.field.node.destination.field_destination_schedule
+    - field.field.node.destination.field_frequency
+    - field.field.node.destination.field_header_image
+    - field.field.node.destination.field_label_position
+    - field.field.node.destination.field_region
+    - node.type.destination
+  module:
+    - user
+id: node.destination.teaser
+targetEntityType: node
+bundle: destination
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_airport: true
+  field_destination_category: true
+  field_destination_schedule: true
+  field_frequency: true
+  field_header_image: true
+  field_label_position: true
+  field_region: true
+  langcode: true

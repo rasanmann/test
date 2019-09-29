@@ -1,0 +1,21 @@
+uuid: 89f232e5-e49d-4a5c-ba4d-eb00cfc5bcf4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_flight_number
+    - node.type.user_flight
+_core:
+  default_config_hash: hjiVDQndrdnWynjTdva6vy3JGkQ5fuHpS2webouSqKk
+id: node.user_flight.field_flight_number
+field_name: field_flight_number
+entity_type: node
+bundle: user_flight
+label: 'Numéro du vol'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

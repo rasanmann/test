@@ -1,0 +1,24 @@
+uuid: 07e0ba84-503f-4c4d-b32e-3d291b793540
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.vip_drawer_section
+_core:
+  default_config_hash: w-5-61R78TFe2PG0tvvfjRXVXxVYC9i94AX2_UJiygg
+id: paragraph.vip_drawer_section.status
+field_name: status
+entity_type: paragraph
+bundle: vip_drawer_section
+label: Publié
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

@@ -1,0 +1,171 @@
+uuid: 8fcea2d7-aa21-464a-9765-5ee041fcef6f
+langcode: fr
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_icon_only
+field_name: field_icon_only
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: access
+      label: 'Icon Access'
+    -
+      value: add
+      label: 'Icon Add'
+    -
+      value: americanexpress
+      label: 'Icon American Express'
+    -
+      value: arrow
+      label: 'Icon Arrow'
+    -
+      value: arrow-arrow
+      label: 'Icon Arrow Arrow'
+    -
+      value: car-parking
+      label: 'Icon Car Parking'
+    -
+      value: cellparq
+      label: 'Icon Cellparq'
+    -
+      value: clear
+      label: 'Icon Clear'
+    -
+      value: close
+      label: 'Icon Close'
+    -
+      value: cloud
+      label: 'Icon Cloud'
+    -
+      value: crossroad
+      label: 'Icon Crossroad'
+    -
+      value: day-cloud
+      label: 'Icon Day Cloud'
+    -
+      value: destinations-served
+      label: 'Icon Destinations Served'
+    -
+      value: down-arrow
+      label: 'Icon Down Arrow'
+    -
+      value: down-arrow-2
+      label: 'Icon Down Arrow #2'
+    -
+      value: down-arrow-blue
+      label: 'Icon Down Arrow Blue'
+    -
+      value: electric-car
+      label: 'Icon Electric Car'
+    -
+      value: facebook
+      label: 'Icon Facebook'
+    -
+      value: gouvernance
+      label: 'Icon Gouvernance'
+    -
+      value: info
+      label: 'Icon Info'
+    -
+      value: inparq
+      label: 'Icon Inparq'
+    -
+      value: key-car-rental
+      label: 'Icon Key Car Rental'
+    -
+      value: left-arrow
+      label: 'Icon Left Arrow'
+    -
+      value: logo
+      label: 'Icon Logo'
+    -
+      value: logo-text
+      label: 'Icon Logo Text'
+    -
+      value: luggage
+      label: 'Icon Luggage'
+    -
+      value: map-list
+      label: 'Icon Map List'
+    -
+      value: map-view
+      label: 'Icon Map View'
+    -
+      value: mastercard
+      label: 'Icon MasterCard'
+    -
+      value: night-cloud
+      label: 'Icon Night Cloud'
+    -
+      value: parking
+      label: 'Icon Parking'
+    -
+      value: plane-arrival
+      label: 'Icon Plane Arrival'
+    -
+      value: plane-departure
+      label: 'Icon Plane Departure'
+    -
+      value: plane-flights
+      label: 'Icon Plane Flights'
+    -
+      value: planning
+      label: 'Icon Planning'
+    -
+      value: proxiparq
+      label: 'Icon Proxiparq'
+    -
+      value: rain
+      label: 'Icon Rain'
+    -
+      value: remove
+      label: 'Icon Remove'
+    -
+      value: restauration
+      label: 'Icon Restauration'
+    -
+      value: right-arrow
+      label: 'Icon Right Arrow'
+    -
+      value: search
+      label: 'Icon Search'
+    -
+      value: snow
+      label: 'Icon Snow'
+    -
+      value: sunny
+      label: 'Icon Sunny'
+    -
+      value: thumb-up
+      label: 'Icon Thumb Up'
+    -
+      value: twitter
+      label: 'Icon Twitter'
+    -
+      value: user
+      label: 'Icon User'
+    -
+      value: visa
+      label: 'Icon VISA'
+    -
+      value: walking
+      label: 'Icon Walking'
+    -
+      value: watch
+      label: 'Icon Watch'
+    -
+      value: youtube
+      label: 'Icon Youtube'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

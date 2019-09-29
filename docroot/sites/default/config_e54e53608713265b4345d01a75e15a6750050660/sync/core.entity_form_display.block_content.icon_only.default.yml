@@ -1,0 +1,39 @@
+uuid: e0e51a9f-82f1-4c73-b7b2-61c3455992bf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.icon_only
+    - field.field.block_content.icon_only.field_icon_only
+id: block_content.icon_only.default
+targetEntityType: block_content
+bundle: icon_only
+mode: default
+content:
+  field_icon_only:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+    region: content
+  translation:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

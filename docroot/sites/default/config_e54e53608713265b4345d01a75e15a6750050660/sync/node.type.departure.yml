@@ -1,0 +1,17 @@
+uuid: e00a85bf-4fe1-412d-b700-cd8ac41f72cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Départ
+type: departure
+description: 'Vols partant de l''aéroport.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

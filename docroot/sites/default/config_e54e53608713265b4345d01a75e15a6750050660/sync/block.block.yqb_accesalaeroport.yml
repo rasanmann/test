@@ -1,0 +1,38 @@
+uuid: fb87df60-7f29-4074-af0e-145d26135a23
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.acces-a-l-aeroport
+  module:
+    - language
+    - system
+  theme:
+    - yqb
+id: yqb_accesalaeroport
+theme: yqb
+region: sidebar_first
+weight: -19
+provider: null
+plugin: 'system_menu_block:acces-a-l-aeroport'
+settings:
+  id: 'system_menu_block:acces-a-l-aeroport'
+  label: 'Barre latérale - Accès à l''aéroport'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/acces-a-l-aeroport\r\n/acces-a-l-aeroport/*"
+    negate: false
+    context_mapping: {  }
+  language:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'

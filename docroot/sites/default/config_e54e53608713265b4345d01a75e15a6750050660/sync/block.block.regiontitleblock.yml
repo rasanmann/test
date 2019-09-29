@@ -1,0 +1,26 @@
+uuid: 13420ede-b111-4579-9100-fa5cd3a1415e
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+    - yqb_blocks
+  theme:
+    - yqb
+id: regiontitleblock
+theme: yqb
+region: bottom
+weight: -20
+provider: null
+plugin: region-title-block
+settings:
+  id: region-title-block
+  label: 'Avoir l’esprit tranquille'
+  provider: yqb_blocks
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: "/a-propos/*\r\n/about/*\r\n/visiter-quebec\r\n/visit-quebec-city\r\n/questions-et-commentaires/*\r\n/questions-and-comments/*\r\n/nous-joindre\r\n/contact-us\r\n/planifier-son-vol/reserver-un-stationnement\r\n/planifier-son-vol/reserver-un-stationnement/*\r\n/planifier-son-vol/modifier-un-stationnement\r\n/planifier-son-vol/modifier-un-stationnement/*\r\n/plan-a-flight/parking-reservation\r\n/plan-a-flight/parking-reservation/*\r\n/plan-a-flight/parking-modification\r\n/plan-a-flight/parking-modification/*\r\n/vols-et-destinations/alerte-sms\r\n/vols-et-destinations/alerte-sms/*\r\n/flights-and-destinations/text-reminders\r\n/flights-and-destinations/text-reminders/*"
+    negate: true
+    context_mapping: {  }

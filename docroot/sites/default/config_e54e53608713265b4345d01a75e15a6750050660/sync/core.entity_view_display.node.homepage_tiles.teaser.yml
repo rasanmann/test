@@ -1,0 +1,42 @@
+uuid: 0843fac7-266f-433e-bb13-79b2ebff49b5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.homepage_tiles.field_format
+    - field.field.node.homepage_tiles.field_tile_background_color
+    - field.field.node.homepage_tiles.field_tile_background_image
+    - field.field.node.homepage_tiles.field_tile_body
+    - field.field.node.homepage_tiles.field_tile_hide_content
+    - field.field.node.homepage_tiles.field_tile_icon
+    - field.field.node.homepage_tiles.field_tile_icon_list
+    - field.field.node.homepage_tiles.field_tile_link
+    - field.field.node.homepage_tiles.field_trigger_nav
+    - node.type.homepage_tiles
+  module:
+    - user
+_core:
+  default_config_hash: LCy1vV3tuiDutc50S1FLLO_nbe9djBoj8lsMVgV9cQo
+id: node.homepage_tiles.teaser
+targetEntityType: node
+bundle: homepage_tiles
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_format: true
+  field_tile_background_color: true
+  field_tile_background_image: true
+  field_tile_body: true
+  field_tile_hide_content: true
+  field_tile_icon: true
+  field_tile_icon_list: true
+  field_tile_link: true
+  field_trigger_nav: true
+  langcode: true

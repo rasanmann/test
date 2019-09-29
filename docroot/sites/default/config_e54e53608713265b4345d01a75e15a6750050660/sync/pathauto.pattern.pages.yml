@@ -1,0 +1,24 @@
+uuid: f74322b0-7439-4f01-9612-f39749cfb4db
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: pages
+label: Pages
+type: 'canonical_entities:node'
+pattern: 'pages/[node:title]'
+selection_criteria:
+  d3d8707d-926e-4489-ac33-4696571e05dd:
+    id: node_type
+    bundles:
+      page: page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: d3d8707d-926e-4489-ac33-4696571e05dd
+selection_logic: and
+weight: -5
+relationships:
+  'node:langcode:language':
+    label: Langue

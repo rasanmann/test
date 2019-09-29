@@ -1,0 +1,18 @@
+uuid: 61503f04-156f-4b3a-bd8e-9ab186bfbdb4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.career_types
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.career_types
+target_entity_type_id: taxonomy_term
+target_bundle: career_types
+default_langcode: current_interface
+language_alterable: false

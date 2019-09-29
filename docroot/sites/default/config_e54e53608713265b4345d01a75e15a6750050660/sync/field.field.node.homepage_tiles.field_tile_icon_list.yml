@@ -1,0 +1,23 @@
+uuid: c173bd8c-94b0-4af1-b6de-8940c0138ae4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tile_icon_list
+    - node.type.homepage_tiles
+  module:
+    - options
+_core:
+  default_config_hash: BsPeGGPzjIpOWOPKrL6q6yMwg7K6CjNkGB1eXjuRKQw
+id: node.homepage_tiles.field_tile_icon_list
+field_name: field_tile_icon_list
+entity_type: node
+bundle: homepage_tiles
+label: 'Icône prédéfinie'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

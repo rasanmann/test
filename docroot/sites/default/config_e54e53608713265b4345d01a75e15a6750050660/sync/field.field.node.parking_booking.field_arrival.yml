@@ -1,0 +1,21 @@
+uuid: e8cd3a6c-bdba-4c47-bf7d-e8ab78491699
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_arrival
+    - node.type.parking_booking
+  module:
+    - datetime
+id: node.parking_booking.field_arrival
+field_name: field_arrival
+entity_type: node
+bundle: parking_booking
+label: Arrival
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

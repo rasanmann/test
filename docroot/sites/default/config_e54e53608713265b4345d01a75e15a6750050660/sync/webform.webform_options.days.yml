@@ -1,0 +1,10 @@
+uuid: e0a5262b-78a4-4d23-a84f-3f82c1645e4b
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dMkS8VI_XKn04dSgE6iGda2LDbYyin5Sr18Xd4MyN6A
+id: days
+label: Days
+category: 'Date et heure'
+options: "Sunday: Sunday\nMonday: Monday\nTuesday: Tuesday\nWednesday: Wednesday\nThursday: Thursday\nFriday: Friday\nSaturday: Saturday\n"

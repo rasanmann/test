@@ -1,0 +1,22 @@
+uuid: c984d7c1-8ec1-423f-a6ab-462e56cb7868
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.user_flight
+_core:
+  default_config_hash: yA0VRz3A_KP8dWziT2DrEH3zNom3kR1LclU1dZEGzgw
+id: node.user_flight.uid
+field_name: uid
+entity_type: node
+bundle: user_flight
+label: 'Écrit par'
+description: 'Le nom d''utilisateur de l''auteur du contenu.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

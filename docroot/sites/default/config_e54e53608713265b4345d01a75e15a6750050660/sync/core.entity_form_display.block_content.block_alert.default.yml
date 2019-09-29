@@ -1,0 +1,44 @@
+uuid: a21458ea-eb7f-472e-97ed-4376995d8db2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_alert
+    - field.field.block_content.block_alert.body
+  module:
+    - text
+id: block_content.block_alert.default
+targetEntityType: block_content
+bundle: block_alert
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+    region: content
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

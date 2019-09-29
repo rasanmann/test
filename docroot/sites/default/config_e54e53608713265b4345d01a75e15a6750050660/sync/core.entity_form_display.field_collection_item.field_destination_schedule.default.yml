@@ -1,0 +1,46 @@
+uuid: 0d9820af-88bd-4c8d-aaf8-09dea61a7407
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_destination_schedule.field_airline
+    - field.field.field_collection_item.field_destination_schedule.field_everyday
+    - field.field.field_collection_item.field_destination_schedule.field_schedule
+    - field.field.field_collection_item.field_destination_schedule.field_stops
+    - field_collection.field_collection.field_destination_schedule
+  module:
+    - datetime_multiselect
+id: field_collection_item.field_destination_schedule.default
+targetEntityType: field_collection_item
+bundle: field_destination_schedule
+mode: default
+content:
+  field_airline:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_everyday:
+    weight: 1
+    settings:
+      display_label: false
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_schedule:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_multiselect
+    region: content
+  field_stops:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden: {  }

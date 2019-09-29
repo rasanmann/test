@@ -1,0 +1,19 @@
+uuid: b72b6acb-841e-4dcc-a6a0-419e40aeba5f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_park_pricing
+    - field.storage.block_content.field_detail
+id: block_content.block_park_pricing.field_detail
+field_name: field_detail
+entity_type: block_content
+bundle: block_park_pricing
+label: Detail
+description: 'Détail à propos du stationnement'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,9 @@
+uuid: 12bbdd3e-59e6-419a-8c38-c23d1287e193
+langcode: fr
+status: true
+dependencies: {  }
+id: mosaique
+label: Mosaïque
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

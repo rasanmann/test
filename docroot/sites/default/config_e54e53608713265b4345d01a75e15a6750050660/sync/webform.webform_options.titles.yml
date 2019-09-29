@@ -1,0 +1,10 @@
+uuid: 4354f4ff-2fa7-4102-b63e-7ba9a3b231f9
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 25qe1Z3iyWsoqllQGDvIY529Ox93XlsAMrPSwEK9i7g
+id: titles
+label: Titles
+category: Demographic
+options: "Miss: Miss\nMs: Ms\nMr: Mr\nMrs: Mrs\nDr: Dr\n"

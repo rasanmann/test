@@ -1,0 +1,12 @@
+uuid: 2034ce1e-3890-41a2-a233-77e2edbb42f2
+langcode: fr
+status: true
+dependencies: {  }
+id: noise
+label: 'Plainte pour le bruit'
+recipients:
+  - plaintesyqb@YQB.ca
+reply: 'Merci pour votre commentaire.'
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

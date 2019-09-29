@@ -1,0 +1,24 @@
+uuid: 9dd1592f-b098-47b8-bce6-dafc32a6dff9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mosaique.field_image_mosaique
+    - paragraphs.paragraphs_type.mosaique
+  module:
+    - entity_reference_revisions
+id: paragraph.mosaique.default
+targetEntityType: paragraph
+bundle: mosaique
+mode: default
+content:
+  field_image_mosaique:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

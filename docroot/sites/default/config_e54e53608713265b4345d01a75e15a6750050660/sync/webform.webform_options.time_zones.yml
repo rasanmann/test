@@ -1,0 +1,10 @@
+uuid: 8ba27889-3694-4efe-bf0e-e14e574d4ccf
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: VUu3_vmCXS-tPhOE2ZWvL8fdPL_iCVavOp_S-1HO0IU
+id: time_zones
+label: 'Time zones'
+category: 'Date et heure'
+options: ''

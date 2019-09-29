@@ -1,0 +1,28 @@
+uuid: 830f998e-d11f-4d62-9747-71c0f4c2beee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_status
+    - node.type.departure
+    - taxonomy.vocabulary.flight_statuses
+id: node.departure.field_status
+field_name: field_status
+entity_type: node
+bundle: departure
+label: Status
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      flight_statuses: flight_statuses
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

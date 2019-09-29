@@ -1,0 +1,35 @@
+uuid: 554c71ed-7c26-4c01-b2b4-c9ea8d4eb437
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.gouvernance_texte.field_texte_gouvernance_texte
+    - field.field.paragraph.gouvernance_texte.field_title_gouvernance_texte
+    - paragraphs.paragraphs_type.gouvernance_texte
+  module:
+    - text
+id: paragraph.gouvernance_texte.default
+targetEntityType: paragraph
+bundle: gouvernance_texte
+mode: default
+content:
+  field_texte_gouvernance_texte:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_title_gouvernance_texte:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

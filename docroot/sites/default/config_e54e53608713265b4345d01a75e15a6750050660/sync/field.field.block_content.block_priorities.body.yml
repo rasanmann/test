@@ -1,0 +1,22 @@
+uuid: e1079a6b-e627-43e2-a72f-659251e7886f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_priorities
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.block_priorities.body
+field_name: body
+entity_type: block_content
+bundle: block_priorities
+label: Body
+description: 'Texte descriptif de la priorité'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

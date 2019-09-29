@@ -1,0 +1,78 @@
+uuid: 65990fd6-05be-4b2d-90a9-9650a56d44b0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.page
+    - paragraphs.paragraphs_type.accordeon
+    - paragraphs.paragraphs_type.content
+    - paragraphs.paragraphs_type.gallery
+    - paragraphs.paragraphs_type.gouvernance_employe
+    - paragraphs.paragraphs_type.gouvernance_texte
+    - paragraphs.paragraphs_type.mosaique
+    - paragraphs.paragraphs_type.vip_drawer
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: Iqe9KKZle23ilCI3OFZX3msyI3h8CGq1V1r-6Pfpw2o
+id: node.page.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: page
+label: 'Contenu modulable'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content: content
+      gallery: gallery
+      vip_drawer: vip_drawer
+      gouvernance_employe: gouvernance_employe
+      mosaique: mosaique
+      gouvernance_texte: gouvernance_texte
+      accordeon: accordeon
+    target_bundles_drag_drop:
+      content:
+        enabled: true
+        weight: 7
+      gallery:
+        enabled: true
+        weight: 8
+      gallery_image:
+        weight: 9
+        enabled: false
+      vip_drawer:
+        enabled: true
+        weight: 10
+      vip_drawer_card:
+        weight: 11
+        enabled: false
+      gouvernance_employe:
+        enabled: true
+        weight: 12
+      vip_drawer_section:
+        weight: 12
+        enabled: false
+      mosaique:
+        enabled: true
+        weight: 13
+      gouvernance_texte:
+        enabled: true
+        weight: 13
+      accordeon:
+        enabled: true
+        weight: 14
+      image_mosaique:
+        weight: 20
+        enabled: false
+      tirroir:
+        weight: 21
+        enabled: false
+field_type: entity_reference_revisions
