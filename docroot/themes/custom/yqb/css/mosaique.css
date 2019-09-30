@@ -18,6 +18,11 @@
     opacity: .9;
     fill: #fff; }
 
+.field--name-field-paragraph-media-mosaique:after {
+  content: "";
+  display: table;
+  clear: both; }
+
 .field--name-field-paragraph-media-mosaique > .field--item {
   display: block;
   float: left;

@@ -23,15 +23,23 @@
   }
 }
 
-.field--name-field-paragraph-media-mosaique > .field--item {
-  display: block;
-  float: left;
-  width: 23.1%;
-  margin-bottom: 24px;
-  margin-right: 2.5%;
-  text-align: left;
-  vertical-align: middle;
-  cursor: pointer;
+.field--name-field-paragraph-media-mosaique {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  > .field--item {
+    display: block;
+    float: left;
+    width: 23.1%;
+    margin-bottom: 24px;
+    margin-right: 2.5%;
+    text-align: left;
+    vertical-align: middle;
+    cursor: pointer;
+  }
 }
 
 .field--name-field-paragraph-media-mosaique > .field--item:nth-child(4n),
