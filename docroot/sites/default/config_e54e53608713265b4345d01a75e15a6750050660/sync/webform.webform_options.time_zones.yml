@@ -7,4 +7,5 @@ _core:
 id: time_zones
 label: 'Time zones'
 category: 'Date et heure'
+likert: false
 options: ''

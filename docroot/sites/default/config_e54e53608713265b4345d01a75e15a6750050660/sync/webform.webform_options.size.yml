@@ -7,4 +7,5 @@ _core:
 id: size
 label: Taille
 category: General
+likert: false
 options: "Extra Small: Extra Small\nSmall: Small\nMedium: Medium\nLarge: Large\nExtra Large: Extra Large\n"

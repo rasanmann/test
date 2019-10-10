@@ -4,10 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.media.image.field_media_image
+    - image.style.304x171_16_9
     - media.type.image
-    - responsive_image.styles.narrow
   module:
-    - responsive_image
+    - image
 _core:
   default_config_hash: jOwnt_yq6AKAfqU6f0xKnxEkFQ2eTPJWxrk3WMLbL68
 id: media.image.default
@@ -18,10 +18,10 @@ content:
   field_media_image:
     label: hidden
     settings:
-      responsive_image_style: narrow
-      image_link: ''
+      image_style: 304x171_16_9
+      image_link: file
     third_party_settings: {  }
-    type: responsive_image
+    type: image
     weight: 1
     region: content
 hidden:
