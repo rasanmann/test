@@ -17,6 +17,14 @@
         },
 
         attach: function (context, settings) {
+          var _this = this;
+          $(document).on('pjax:success', function(){
+            $('#siema').remove();
+            _this.setupBackdrop();
+            _this.setupCaroussel();
+            _this.addListeners();
+            _this.fullScreen();
+          });
             this.setupBackdrop();
             this.setupCaroussel();
             this.addListeners();
