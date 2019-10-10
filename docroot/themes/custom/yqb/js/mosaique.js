@@ -84,9 +84,7 @@
                     '<button class="close" name="close">' +
                     '<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 77.07 77.07" enable-background="new 0 0 77.07 77.07" xml:space="preserve"><g><g i:extraneous="self"><g><g><polygon points="0,7.071 7.071,0 77.07,69.998 69.999,77.07 0,7.071"></polygon></g><g><polygon points="0,69.998 69.999,0 77.07,7.071 7.071,77.07 0,69.998"></polygon></g></g></g></g></svg>' +
                     '</button>';
-                    `
 
-                    `
                 if (this.isVideo(items[i])) {
                     list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
                         '<video id="carousel-video-nb-' + videoId + '" controls="controls">' +
@@ -117,7 +115,7 @@
 
             return items.map(function (el) {
                 if (el.nodeName && el.nodeName === 'IMG') {
-                    return $(el).parent().attr('href');
+                    return el.src;
                 }
                 else if (el.nodeName && el.nodeName === 'VIDEO') {
                     return el.querySelector('source').getAttribute('src');
