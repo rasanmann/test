@@ -4,8 +4,10 @@ status: open
 dependencies: {  }
 open: null
 close: null
+weight: 0
 uid: 1
 template: false
+archive: false
 id: job_application
 title: Candidature
 description: ''
@@ -129,11 +131,11 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: default
+      from_mail: _default
       from_options: {  }
       from_name: '[webform-submission:values:name:raw]'
       subject: 'Candidature - [webform-submission:values:department:value][webform-submission:values:offer:value]'
-      body: default
+      body: _default
       excluded_elements:
         explication: explication
       ignore_access: false
@@ -143,6 +145,11 @@ handlers:
       debug: false
       reply_to: ''
       return_path: ''
+      exclude_empty_checkbox: false
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
   confirmation:
     id: email
     label: Confirmation
@@ -159,9 +166,9 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: default
+      from_mail: _default
       from_options: {  }
-      from_name: default
+      from_name: _default
       subject: 'Confirmation de candidature - [webform-submission:values:department:value][webform-submission:values:offer:value]'
       body: "Bonjour,\n\nNous accusons réception de votre demande d’emploi au sein de notre organisation. \n\nVeuillez noter que nous conserverons votre curriculum vitae pour une période de 6 (six) mois. \n\nNous vous invitons à consulter régulièrement notre site Web dans la section « Carrières ».\n\nNous vous remercions de l’intérêt manifesté à l’égard de l’Aéroport de Québec inc. et vous prions d’agréer nos salutations distinguées. \n\n* Veuillez noter que lors d’une ouverture de poste, seuls les candidats retenus pour une entrevue seront contactés. \n\n---------------------------\n\nCe courriel a été envoyé de façon automatisé, veuillez ne pas répondre à ce message."
       excluded_elements: {  }
@@ -172,3 +179,8 @@ handlers:
       debug: false
       reply_to: ''
       return_path: ''
+      exclude_empty_checkbox: false
+      twig: false
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''

@@ -8,3 +8,16 @@ docroot/sites/*/private
 .config
 .history
 .history/
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/mailchimp.settings.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/moneris.payment_settings.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/moneris.settings.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_api.cron.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_api.settings.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_bills.settings.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_mailchimp.settings.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_migrate.cron.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_reminders.cron.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_wait_times.cron.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_wait_times.wait.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_weather.cron.yml
+docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_weather.weather.yml
