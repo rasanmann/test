@@ -26,9 +26,13 @@
         addListeners: function () {
             var self = this;
 
+          $(document).on('click', '.field--name-field-paragraph-media-mosaique > .field--item a', function(e) {
+            e.preventDefault();
+          });
+
             $(document).on('click', this.selector.galleryTrigger, function (e) {
-                console.log($(this).find('.video-nb.full'))
                 if($(this).find('.video-nb.full').length) return;
+                e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
                 self.createCloseEvent();
@@ -40,16 +44,10 @@
                 $(self.selector.carousselContainer).addClass('in');
             });
 
-
-            setTimeout(function() {
-              document.getElementById("/sites/default/files/2019-08/Buffy%20the%20Vampire%20Slayer%20-%20Intro%20HD.mp4").requestFullscreen();
-            }, 2777);
-
         },
 
         close: function () {
             if($('.field--name-field-paragraph-media-mosaique').find('.video-nb.full').length) return;
-            console.log('close')
             if (this.backdrop && this.caroussel) {
                 $(this.selector.backdrop).removeClass('in');
                 $(this.selector.carousselContainer).removeClass('in');
@@ -90,7 +88,6 @@
 
                     `
                 if (this.isVideo(items[i])) {
-                  console.log(items[i]);
                     list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
                         '<video id="carousel-video-nb-' + videoId + '" controls="controls">' +
                         '<source src="' + items[i] + '" type="video/mp4">' +
@@ -120,7 +117,7 @@
 
             return items.map(function (el) {
                 if (el.nodeName && el.nodeName === 'IMG') {
-                    return el.src;
+                    return $(el).parent().attr('href');
                 }
                 else if (el.nodeName && el.nodeName === 'VIDEO') {
                     return el.querySelector('source').getAttribute('src');

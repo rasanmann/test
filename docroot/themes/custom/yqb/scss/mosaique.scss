@@ -24,6 +24,10 @@
 }
 
 .field--name-field-paragraph-media-mosaique {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+
   &:after {
     content: "";
     display: table;
@@ -31,8 +35,6 @@
   }
 
   > .field--item {
-    display: block;
-    float: left;
     width: 23.1%;
     margin-bottom: 24px;
     margin-right: 2.5%;

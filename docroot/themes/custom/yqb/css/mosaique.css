@@ -18,20 +18,21 @@
     opacity: .9;
     fill: #fff; }
 
-.field--name-field-paragraph-media-mosaique:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-.field--name-field-paragraph-media-mosaique > .field--item {
-  display: block;
-  float: left;
-  width: 23.1%;
-  margin-bottom: 24px;
-  margin-right: 2.5%;
-  text-align: left;
-  vertical-align: middle;
-  cursor: pointer; }
+.field--name-field-paragraph-media-mosaique {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap; }
+  .field--name-field-paragraph-media-mosaique:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .field--name-field-paragraph-media-mosaique > .field--item {
+    width: 23.1%;
+    margin-bottom: 24px;
+    margin-right: 2.5%;
+    text-align: left;
+    vertical-align: middle;
+    cursor: pointer; }
 
 .field--name-field-paragraph-media-mosaique > .field--item:nth-child(4n),
 .field--name-field-paragraph-media-mosaique > .field--item:last-child {
