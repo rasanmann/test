@@ -13,6 +13,7 @@ global-styling:
       css/2019-03.css: {}
       css/gouvernance-direction-generale.css: {}
       css/mosaique.css: {}
+      css/accordion.css: {}
 
 # Global app js
 global-js:
@@ -98,11 +99,6 @@ libraries:
 modules:
   js:
     js/modules/swiper-slider.js: {}
-
-accordion:
-  css:
-    theme:
-      css/accordion.css: {}
 
 controllers:
   js:
