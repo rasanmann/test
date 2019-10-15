@@ -345,9 +345,7 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       $redirect = FALSE;
 
       if (empty($id)) {
-        if (!empty($offer)) {
-          $redirect = TRUE;
-        }
+        $redirect = TRUE;
       }
       else {
         $node = \Drupal\node\Entity\Node::load($id);
