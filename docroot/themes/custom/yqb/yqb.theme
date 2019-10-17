@@ -345,9 +345,7 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       $redirect = FALSE;
 
       if (empty($id)) {
-        if (!empty($offer)) {
-          $redirect = TRUE;
-        }
+        $redirect = TRUE;
       }
       else {
         $node = \Drupal\node\Entity\Node::load($id);
@@ -485,8 +483,15 @@ function yqb_preprocess_views_view_unformatted(&$variables) {
       array_unshift($row['content']['#theme'], 'views_view_fields__destinations__iata__page_1');
     }
 
-    foreach ($variables['rows_square_images'] as &$row) {
-      array_unshift($row['content']['#theme'], 'views_view_fields__destinations__square_images__page_1');
+    $airlineNids = [];
+    foreach ($variables['rows_square_images'] as $key => &$row) {
+      if (in_array($row['content']['#row']->node_field_data_field_collection_item__field_airline_nid, $airlineNids)) {
+        unset($variables['rows_square_images'][$key]);
+      }
+      else {
+        array_unshift($row['content']['#theme'], 'views_view_fields__destinations__square_images__page_1');
+        $airlineNids[] = $row['content']['#row']->node_field_data_field_collection_item__field_airline_nid;
+      }
     }
   }
 }
