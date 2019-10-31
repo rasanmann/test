@@ -293,31 +293,32 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       unset($form['actions']['preview']);
       break;
 
-    case 'contact_message_candidature_spontanee_form':
-    case 'yamlform_submission_job_application_form':
-      $offer = (isset($_GET['id'])) ? $_GET['id'] : ((isset($_GET['offer'])) ? $_GET['offer'] : NULL);
-      if (!empty($offer)) {
-        $node_storage = \Drupal::entityTypeManager()->getStorage('node');
-        $node = $node_storage->load($offer);
-
-        if (!empty($node) && $node->getType() == 'career') {
-          $form['field_offre']['widget']['#default_value'] = $offer;
-
-          $form['field_departement']['#type'] = 'hidden';
-          $form['field_departement']['widget']['#default_value'] = current($node->field_department->getValue());
-        }
-        else {
-          $form['field_offre']['#type'] = 'hidden';
-        }
-      }
-      else {
-        $form['field_offre']['#type'] = 'hidden';
-      }
-
-      // Redirect to same page
-      $form['actions']['submit']['#submit'][] = 'yqb_job_submit';
-      unset($form['actions']['preview']);
-      break;
+//    case 'contact_message_candidature_spontanee_form':
+//    case 'yamlform_submission_job_application_form':
+//      $offer = (isset($_GET['id'])) ? $_GET['id'] : ((isset($_GET['offer'])) ? $_GET['offer'] : NULL);
+//      if (!empty($offer)) {
+//        $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+//        $node = $node_storage->load($offer);
+//
+//        if (!empty($node) && $node->getType() == 'career') {
+//          $node = \Drupal\node\Entity\Node::load($offer);
+//          $form['field_offre']['widget']['#default_value'] = $node->getTitle();
+//
+//          $form['field_departement']['#type'] = 'hidden';
+//          $form['field_departement']['widget']['#default_value'] = current($node->field_department->getValue());
+//        }
+//        else {
+//          $form['field_offre']['#type'] = 'hidden';
+//        }
+//      }
+//      else {
+//        $form['field_offre']['#type'] = 'hidden';
+//      }
+//
+//      // Redirect to same page
+//      $form['actions']['submit']['#submit'][] = 'yqb_job_submit';
+//      unset($form['actions']['preview']);
+//      break;
 
     case 'search_form':
       $form['#method'] = 'get';
@@ -342,6 +343,7 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
     case 'webform_submission_job_application_add_form':
       $offer = \Drupal::request()->query->get('offer');
       $id = \Drupal::request()->query->get('id');
+
       $redirect = FALSE;
 
       if (empty($id)) {
@@ -349,7 +351,8 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       }
       else {
         $node = \Drupal\node\Entity\Node::load($id);
-        if ($node && $node->isPublished()) {
+
+        if ($node && $node->isPublished() || $node->id() == "1128231") {
           $currentLanguage = \Drupal::languageManager()->getCurrentLanguage(\Drupal\Core\Language\LanguageInterface::TYPE_CONTENT)->getId();
           $taxonomyTerm = $node->get('field_department')->first()->get('entity')->getTarget()->getValue();
           $taxonomyTermTrans = \Drupal::service('entity.repository')->getTranslationFromContext($taxonomyTerm, $currentLanguage);
