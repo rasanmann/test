@@ -64,7 +64,7 @@ abstract class PreviewBlock extends BlockBase {
       '#attributes' => [
         'src' => $this->getPreviewUrl(),
         'height' => 800,
-        'width' => 800,
+        'width' => "100%",
       ],
     ];
   }

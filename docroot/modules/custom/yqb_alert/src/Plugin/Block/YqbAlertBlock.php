@@ -6,6 +6,8 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
+use Drupal\yqb_blocks\Plugin\Block\PreviewBlock;
 
 /**
  * Provides a block with a simple text.
@@ -15,7 +17,7 @@ use Drupal\Core\Session\AccountInterface;
  *   admin_label = @Translation("Yqb Block Alert"),
  * )
  */
-class YqbAlertBlock extends BlockBase {
+class YqbAlertBlock extends PreviewBlock {
   /**
    * {@inheritdoc}
    */
@@ -40,6 +42,7 @@ class YqbAlertBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function blockForm($form, FormStateInterface $form_state) {
+    $form = parent::blockForm($form, $form_state);
     $config = $this->getConfiguration();
 
     $form['french_alert'] = [
@@ -99,4 +102,29 @@ class YqbAlertBlock extends BlockBase {
 
 
   }
+
+  //#feature102204
+
+  protected function getPreviewUrl() {
+    return Url::fromRoute('<front>')->toString();
+  }
+
+  protected function previewSubmit($form, FormStateInterface $form_state) {
+    $values = $form_state->getValue(['settings', 'container', 'table-row']);
+    $rowKeys = [];
+    $rows = [];
+
+    foreach ($values as $row) {
+      $rowKeys[] = $row['weight'];
+      $rows[$row['weight']] = $row;
+    }
+
+    sort($rowKeys);
+    $this->tempStore->set('rows', $rows);
+  }
+
+
+
+
+
 }
