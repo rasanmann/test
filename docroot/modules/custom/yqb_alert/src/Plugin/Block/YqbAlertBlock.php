@@ -2,6 +2,7 @@
 
 namespace Drupal\yqb_alert\Plugin\Block;
 
+use Drupal;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -26,6 +27,13 @@ class YqbAlertBlock extends PreviewBlock {
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $content = null;
 
+//    if (Drupal::currentUser()->hasPermission('preview homepage tiles') &&
+//      $tempAlert = $this->tempStore->get('french_alert');
+//    {
+//      $this->tempStore->delete('french_alert');
+//    }
+    ksm($this->tempStore);
+
     $language == 'fr' ? $content = $this->configuration['french_alert'] : $content = $this->configuration['english_alert'];
 
     if(!$this->configuration['alert_is_enable']){
@@ -44,6 +52,9 @@ class YqbAlertBlock extends PreviewBlock {
   public function blockForm($form, FormStateInterface $form_state) {
     $form = parent::blockForm($form, $form_state);
     $config = $this->getConfiguration();
+
+
+
 
     $form['french_alert'] = [
         '#type' => 'textarea',
@@ -109,10 +120,22 @@ class YqbAlertBlock extends PreviewBlock {
     return Url::fromRoute('<front>')->toString();
   }
 
+  public function updateForm($form, FormStateInterface $form_state) {
+    return $form['settings']['container'];
+  }
+
   protected function previewSubmit($form, FormStateInterface $form_state) {
-    $values = $form_state->getValue(['settings', 'container', 'table-row']);
-    $rowKeys = [];
-    $rows = [];
+
+//    $form_state->getValue('french_alert');
+//    $form_state->getValue('english_alert');
+
+    $values = $form_state->getValue('settings');
+//    $values = $form_state->getValue('settings')['french_alert'];
+//    ksm($values);
+//    ksm($form_state->getValues());
+//    ksm($form_state->get('french_alert'));
+
+    $this->tempStore->set('french_alert', $values['french_alert']);
 
     foreach ($values as $row) {
       $rowKeys[] = $row['weight'];
@@ -121,6 +144,11 @@ class YqbAlertBlock extends PreviewBlock {
 
     sort($rowKeys);
     $this->tempStore->set('rows', $rows);
+
+
+
+
+
   }
 
 
