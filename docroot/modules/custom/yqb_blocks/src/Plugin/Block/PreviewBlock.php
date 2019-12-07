@@ -54,6 +54,7 @@ abstract class PreviewBlock extends BlockBase {
       'content' => $preview ? $this->getPreviewRenderArray() : ['#markup' => ''],
     ];
 
+
     return $form;
   }
 

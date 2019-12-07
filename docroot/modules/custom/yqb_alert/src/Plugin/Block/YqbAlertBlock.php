@@ -26,15 +26,7 @@ class YqbAlertBlock extends PreviewBlock {
 
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $content = null;
-
-//    if (Drupal::currentUser()->hasPermission('preview homepage tiles') &&
-//      $tempAlert = $this->tempStore->get('french_alert');
-//    {
-//      $this->tempStore->delete('french_alert');
-//    }
-    ksm($this->tempStore);
-
-    $language == 'fr' ? $content = $this->configuration['french_alert'] : $content = $this->configuration['english_alert'];
+    $language == 'fr' ? $content = $this->tempStore->get("french_alert") : $content = $this->tempStore->get("english_alert");
 
     if(!$this->configuration['alert_is_enable']){
       return;
@@ -52,8 +44,6 @@ class YqbAlertBlock extends PreviewBlock {
   public function blockForm($form, FormStateInterface $form_state) {
     $form = parent::blockForm($form, $form_state);
     $config = $this->getConfiguration();
-
-
 
 
     $form['french_alert'] = [
@@ -104,18 +94,14 @@ class YqbAlertBlock extends PreviewBlock {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
-
     $this->configuration['french_alert'] = $form_state->getValue('french_alert');
     $this->configuration['english_alert'] = $form_state->getValue('english_alert');
     $this->configuration['french_alert_full'] = $form_state->getValue('french_alert_full');
     $this->configuration['english_alert_full'] = $form_state->getValue('english_alert_full');
     $this->configuration['alert_is_enable'] = $form_state->getValue('alert_is_enable');
-
-
   }
 
   //#feature102204
-
   protected function getPreviewUrl() {
     return Url::fromRoute('<front>')->toString();
   }
@@ -125,29 +111,8 @@ class YqbAlertBlock extends PreviewBlock {
   }
 
   protected function previewSubmit($form, FormStateInterface $form_state) {
-
-//    $form_state->getValue('french_alert');
-//    $form_state->getValue('english_alert');
-
-    $values = $form_state->getValue('settings');
-//    $values = $form_state->getValue('settings')['french_alert'];
-//    ksm($values);
-//    ksm($form_state->getValues());
-//    ksm($form_state->get('french_alert'));
-
-    $this->tempStore->set('french_alert', $values['french_alert']);
-
-    foreach ($values as $row) {
-      $rowKeys[] = $row['weight'];
-      $rows[$row['weight']] = $row;
-    }
-
-    sort($rowKeys);
-    $this->tempStore->set('rows', $rows);
-
-
-
-
+    $this->tempStore->set('french_alert', $form_state->getValue('settings')['french_alert']);
+    $this->tempStore->set('english_alert', $form_state->getValue('settings')['english_alert']);
 
   }
 
