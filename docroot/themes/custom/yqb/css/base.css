@@ -5604,5 +5604,92 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     position: absolute;
     right: 5px;
     top: 0px; }
+.btn-default .btn-close{
+  display: none;
+}
 
+/*feature nd (max-width: 600px)  @media only screen and (max-width: 600px)*/
+@media only screen and (max-width: 950px) {
+  #block-formulairederecherche{
+    display: none;
+  }
+}
+@media only screen and (min-width: 950px){
+  #block-formulairederecherche .icon-close {
+    display: none;
+  }
+  #block-formulairederecherche .form-control {
+    height: 35px;
+    margin-top: 4px;
+    /*border-radius: 10px*/
+  }
+
+  #block-formulairederecherche .icon-search {
+    vertical-align:top ;
+    margin-top: 10px;
+  }
+  #block-formulairederecherche .input-group-btn {
+    padding: 0 0;
+  }
+  #block-formulairederecherche .btn-default .icon {
+    margin-left: -20px;
+    margin-top: 6px;
+    fill: black;
+  }
+  #block-formulairederecherche .input-group-btn button {
+    background-color: white;
+    height: 35px;
+    margin-top: 4px;
+    width: 1px;
+  }
+  #block-formulairederecherche .input-group-btn button path{
+    fill: black;
+  }
+
+  #block-formulairederecherche .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group{
+    margin-right: -30px;
+  }
+  #ui-id-1{
+    /*z-index: 2000000 !important;*/
+    /*display: none;*/
+  }
+  .region-sub-navigation{
+    display:flex;
+  }
+  .clearfix.nav-secondary-target{
+    margin-left: auto;
+  }
+  #ui-id-1{
+    /*position:absolute;*/
+    left: 0px;
+  }
+  .dropdown.menu.trigger-menu-parent{
+    overflow: visible;
+  }
+  .ps-container {
+    overflow: visible !important;
+    }
+  #layout-header.dropdown{
+    overflow: visible;
+  }
+  #navbar-metas{
+    overflow: visible;
+  }
+  #layout-header .dropdown{
+    overflow: visible !important;
+  }
+  .ps-scrollbar-y-rail{
+    display: none;
+  }
+  .ps-container.ps-active-x > .ps-scrollbar-x-rail,
+  .ps-container.ps-active-y > .ps-scrollbar-y-rail {
+    display: none;
+  }
+}
+/*#block-formulairederecherche .button-l {*/
+/*  vertical-align:top ;*/
+/*}*/
+/*#block-formulairederecherche .input-lg {*/
+/*  display: none;*/
+/*}*/
 /*# sourceMappingURL=base.css.map */
