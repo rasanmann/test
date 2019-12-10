@@ -1,6 +1,5 @@
 (function ($, Drupal, Siema) {
     Drupal.behaviors.yqb_mosaique = {
-
         backdrop: null,
         caroussel: null,
         componentId: '#siema',
@@ -29,7 +28,10 @@
             this.setupCaroussel();
             this.addListeners();
             this.fullScreen();
+            this.putLabelOnvideo();
         },
+
+
 
         addListeners: function () {
             var self = this;
@@ -84,7 +86,8 @@
         },
 
         createCarousselHTML: function () {
-            var list = '', items = this.getItems();
+            var list = '';
+            var items = this.getItems();
             var videoId = 1;
 
             for (var i = 0; i < items.length; i++) {
@@ -126,9 +129,20 @@
                     return el.src;
                 }
                 else if (el.nodeName && el.nodeName === 'VIDEO') {
+
+                    var hook = $(el).closest( ".video-nb").siblings(".field--name-field-media-video-file").children();
+                  //   // var hook = $(el).closest().siblings;
+                  //   var thep = ($(el).parent().parent().find("p"));
+                  //
+                  // console.log($(thep).last());
+                  //
+                  //   // var label = $(hook)[0];
+                  //   // console.log($(label).children());
                     return el.querySelector('source').getAttribute('src');
                 }
             });
+
+
         },
 
         // Trigger fullScreen in the mosaique
@@ -140,7 +154,7 @@
             var video = $('.'+videoId + ':eq( 0 ) video')[0];
 
             videoCaroussel.pause();
-            video.currentTime = videoCaroussel.currentTime
+            video.currentTime = videoCaroussel.currentTime;
 
             var isFullScreen = false;
 
@@ -148,14 +162,14 @@
               if(isFullScreen) {
                 video.pause();
                 videoCaroussel.currentTime = video.currentTime;
-                $('.'+videoId + ':eq( 0 )').removeClass('full')
+                $('.'+videoId + ':eq( 0 )').removeClass('full');
                 $(video).off('fullscreenchange');
               }
 
               isFullScreen = !isFullScreen
             });
 
-            $('.'+videoId + ':eq( 0 )').addClass('full')
+            $('.'+videoId + ':eq( 0 )').addClass('full');
             video.requestFullscreen();
           });
         },
@@ -228,6 +242,30 @@
                 $(this.selector.nextBtn).removeClass('disabled');
             }
 
+        },
+
+        putLabelOnvideo: function(){
+          var query = $(".field--name-field-media-video-file");
+          $.each(query,function(index, value){
+
+            //find the video
+            var video = $(value).find("video").first();
+
+            //get the label
+            var hook = $(value).next(".field--name-field-text-over-video")[0];
+            var label = $(hook).children(".field--item").first().text();
+
+            //append the label to the video container
+            $(value).prepend(`<p style="position:absolute; color:white; padding: 5px;">${label}</p>`);
+
+            //remove original label
+            $(hook).children(".field--item").remove();
+          });
+
+          //fix the remote video
+          // var test = $(".field--item iframe div.ytp-chrome-top.ytp-show-cards-title");
         }
+
+
     };
 }(window.jQuery, window.Drupal, window.Siema));
