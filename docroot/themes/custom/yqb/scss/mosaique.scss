@@ -222,7 +222,7 @@
   iframe.media-oembed-content {
     @media screen and (min-width: 768px) {
       width:310px !important;
-      height:180px !important;
+      height:auto;
     }
   }
 }
@@ -244,4 +244,8 @@
     position:absolute;
     font-size: 3rem;
   }
+}
+
+.field--name-field-text-over-video {
+  visibility: hidden;
 }

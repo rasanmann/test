@@ -29,6 +29,7 @@
             this.addListeners();
             this.fullScreen();
             this.putLabelOnvideo();
+            this.fixIframeHeight()
         },
 
         addListeners: function () {
@@ -263,6 +264,13 @@
 
             //remove original label
             $(hook).children(".field--item").css({"visibility":"hidden"});
+          });
+        },
+
+        fixIframeHeight: function(){
+          $(window).on("resize load",function(){
+            var videoHeight = $("video").height();
+            $(".field--item iframe.media-oembed-content").css("height", videoHeight);
           });
         }
 
