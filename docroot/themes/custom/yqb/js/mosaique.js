@@ -17,7 +17,7 @@
 
         attach: function (context, settings) {
           var _this = this;
-          $(document).on('pjax:success', function(){
+          $(document, settings).on('pjax:success', function(){
             $('#siema').remove();
             _this.setupBackdrop();
             _this.setupCaroussel();
@@ -30,8 +30,6 @@
             this.fullScreen();
             this.putLabelOnvideo();
         },
-
-
 
         addListeners: function () {
             var self = this;
@@ -53,7 +51,6 @@
                 $(self.selector.backdrop).addClass('in');
                 $(self.selector.carousselContainer).addClass('in');
             });
-
         },
 
         close: function () {
@@ -91,7 +88,12 @@
             var videoId = 1;
 
             for (var i = 0; i < items.length; i++) {
-                list += '<div class="siema-item-container">' +
+                list += '<div class="siema-item-container">';
+
+              if (this.isVideo(items[i])){
+                list += '<p class="label-over-video-in-carousel">' + items[i].label + '</p>'
+              }
+              list +=
                     '<button class="close" name="close">' +
                     '<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 77.07 77.07" enable-background="new 0 0 77.07 77.07" xml:space="preserve"><g><g i:extraneous="self"><g><g><polygon points="0,7.071 7.071,0 77.07,69.998 69.999,77.07 0,7.071"></polygon></g><g><polygon points="0,69.998 69.999,0 77.07,7.071 7.071,77.07 0,69.998"></polygon></g></g></g></g></svg>' +
                     '</button>';
@@ -99,7 +101,7 @@
                 if (this.isVideo(items[i])) {
                     list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
                         '<video id="carousel-video-nb-' + videoId + '" controls="controls">' +
-                        '<source src="' + items[i] + '" type="video/mp4">' +
+                        '<source src="' + items[i].src + '" type="video/mp4">' +
                         '</video>';
 
                   videoId++;
@@ -130,15 +132,16 @@
                 }
                 else if (el.nodeName && el.nodeName === 'VIDEO') {
 
-                    var hook = $(el).closest( ".video-nb").siblings(".field--name-field-media-video-file").children();
-                  //   // var hook = $(el).closest().siblings;
-                  //   var thep = ($(el).parent().parent().find("p"));
-                  //
-                  // console.log($(thep).last());
-                  //
-                  //   // var label = $(hook)[0];
-                  //   // console.log($(label).children());
-                    return el.querySelector('source').getAttribute('src');
+                  // var hook = $(el).closest( ".video-nb").siblings(".field--name-field-media-video-file").children();
+                  var label = $($(el).parent().parent().next(".field--name-field-text-over-video")[0]).find(".field--item").text();
+
+                  var objElement = {
+                    'src' : el.querySelector('source').getAttribute('src'),
+                    'label' : label
+                  }
+
+                  // return el.querySelector('source').getAttribute('src');
+                  return objElement;
                 }
             });
 
@@ -175,7 +178,8 @@
         },
 
         isVideo: function (el) {
-            return el.indexOf('.mp4') !== -1;
+          return typeof(el) === "object" ? true : false;
+            // return el.indexOf('.mp4') !== -1;
         },
 
         setupBackdrop: function () {
@@ -247,7 +251,6 @@
         putLabelOnvideo: function(){
           var query = $(".field--name-field-media-video-file");
           $.each(query,function(index, value){
-
             //find the video
             var video = $(value).find("video").first();
 
@@ -259,11 +262,8 @@
             $(value).prepend(`<p style="position:absolute; color:white; padding: 5px;">${label}</p>`);
 
             //remove original label
-            $(hook).children(".field--item").remove();
+            $(hook).children(".field--item").css({"visibility":"hidden"});
           });
-
-          //fix the remote video
-          // var test = $(".field--item iframe div.ytp-chrome-top.ytp-show-cards-title");
         }
 
 
