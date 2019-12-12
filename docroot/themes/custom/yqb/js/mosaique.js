@@ -11,9 +11,13 @@
             galleryTrigger: '.field--name-field-paragraph-media-mosaique > .field--item',
             medias: '.paragraph--type--mosaique .field--name-field-paragraph-media-mosaique .field--item img, ' +
                 '.paragraph--type--mosaique .field--name-field-paragraph-media-mosaique .field--item video',
+                // '.video-stream html5-main-video',
+                // '.field--item iframe.media-oembed-content',
             nextBtn: '.next',
             prevBtn: '.prev'
         },
+
+        arrAllIframes: [],
 
         attach: function (context, settings) {
           var _this = this;
@@ -29,8 +33,11 @@
             this.addListeners();
             this.fullScreen();
             this.putLabelOnvideo();
-            this.fixIframeHeight()
-        },
+            this.fixIframeHeight();
+            // this.allIframesVideos();
+            },
+
+
 
         addListeners: function () {
             var self = this;
@@ -83,15 +90,27 @@
             });
         },
 
+        // isIframe(el){
+        //   console.log(el);
+        //
+        // },
+
         createCarousselHTML: function () {
             var list = '';
-            var items = this.getItems();
+            var items =   this.getItems();
             var videoId = 1;
+
+            // console.log(instanceof(items);
 
             for (var i = 0; i < items.length; i++) {
                 list += '<div class="siema-item-container">';
 
-              if (this.isVideo(items[i])){
+              if(items[i].tagName === 'IFRAME'){
+                list += items[i];
+
+              }
+
+              if (items[i].video === true){
                 list += '<p class="label-over-video-in-carousel">' + items[i].label + '</p>'
               }
               list +=
@@ -99,18 +118,19 @@
                     '<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 77.07 77.07" enable-background="new 0 0 77.07 77.07" xml:space="preserve"><g><g i:extraneous="self"><g><g><polygon points="0,7.071 7.071,0 77.07,69.998 69.999,77.07 0,7.071"></polygon></g><g><polygon points="0,69.998 69.999,0 77.07,7.071 7.071,77.07 0,69.998"></polygon></g></g></g></g></svg>' +
                     '</button>';
 
-                if (this.isVideo(items[i])) {
-                    list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
-                        '<video id="carousel-video-nb-' + videoId + '" controls="controls">' +
-                        '<source src="' + items[i].src + '" type="video/mp4">' +
-                        '</video>';
+              if (items[i].video === true) {
+                  list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
+                      '<video id="carousel-video-nb-' + videoId + '" controls="controls">' +
+                      '<source src="' + items[i].src + '" type="video/mp4">' +
+                      '</video>';
 
-                  videoId++;
-                }
-                else {
-                    list += '<img src="' + items[i] + '"/>';
-                }
-                list += '</div>';
+                videoId++;
+              }
+
+              else {
+                  list += '<img src="' + items[i] + '"/>';
+              }
+              list += '</div>';
             }
             var controls = '<div class="controls">' +
                 '<button class="prev"><span style="background-image: none;" class="icon icon-left-arrow-2"><svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" width="126.9" height="68.1" viewBox="0 0 126.9 68.1"><style>.st0{fill:#05f}</style><path class="st0" d="M125.8 6.1l-59.9 61c-1.4 1.4-3.6 1.4-5 0L1 6.1C-.4 4.7-.4 2.4 1 1S4.6-.4 6 1l57.4 58.4L120.8 1c1.4-1.4 3.6-1.4 5 0 .7.7 1 1.6 1 2.5.1 1.1-.3 2-1 2.6z"></path></svg></span></button>' +
@@ -126,25 +146,90 @@
 
         getItems: function () {
             var items = Array.prototype.slice.call(document.querySelectorAll(this.selector.medias));
+            var iframes = this.allIframesVideos();
+            var intLastVideoIndex;
+            // console.log(items);
 
-            return items.map(function (el) {
-                if (el.nodeName && el.nodeName === 'IMG') {
-                    return el.src;
-                }
-                else if (el.nodeName && el.nodeName === 'VIDEO') {
 
-                  // var hook = $(el).closest( ".video-nb").siblings(".field--name-field-media-video-file").children();
-                  var label = $($(el).parent().parent().next(".field--name-field-text-over-video")[0]).find(".field--item").text();
+            //as the iframes are being put after the images we need to find the last video and insert them there
+            for(i = 0; i < items.length; i++){
+              // console.log(items[i].nodeName);
 
-                  var objElement = {
-                    'src' : el.querySelector('source').getAttribute('src'),
-                    'label' : label
-                  }
+              if (items[i].nodeName !== 'VIDEO'){
+                intLastVideoIndex = i;
+                break
+              }
+           }
+            // items = items.concat(iframes);
+            items.splice(intLastVideoIndex, 0, ...iframes)
 
-                  // return el.querySelector('source').getAttribute('src');
-                  return objElement;
-                }
-            });
+
+            console.log(items);
+
+
+            // items = items.concat(iframes);
+
+            //work with promise because iframe is a=synchornous and apprently not ready when create the carousel
+            // const promise1 = new Promise((resolve, reject) => {
+            //   resolve(iframes = this.allIframesVideos())
+            // }).then((data) => {
+            //     items  = items.concat(data);
+            //   return items.map(function (el) {
+            //   if (el === null){
+            //       return el;
+            //     }
+            //   else if (el.nodeName === 'IFRAME'){
+            //     return el;
+            //   }
+            //   else if (el.nodeName && el.nodeName === 'IMG') {
+            //     return el.src;
+            //   }
+            //   else if(el.nodeName && el.nodeName === 'VIDEO') {
+            //
+            //     // var hook = $(el).closest( ".video-nb").siblings(".field--name-field-media-video-file").children();
+            //     var label = $($(el).parent().parent().next(".field--name-field-text-over-video")[0]).find(".field--item").text();
+            //
+            //     var objElement = {
+            //       'src' : el.querySelector('source').getAttribute('src'),
+            //       'label' : label
+            //     };
+            //
+            //     // return el.querySelector('source').getAttribute('src');
+            //     return objElement;
+            //   }
+            //
+            //
+            //
+            //   });
+            //
+            //   }
+            // );
+
+
+          return items.map(function (el) {
+
+              if (el.nodeName === 'IFRAME'){
+                return el;
+              }
+              else if (el.nodeName && el.nodeName === 'IMG') {
+                return el.src;
+              }
+              else if(el.nodeName && el.nodeName === 'VIDEO') {
+
+                // var hook = $(el).closest( ".video-nb").siblings(".field--name-field-media-video-file").children();
+                var label = $($(el).parent().parent().next(".field--name-field-text-over-video")[0]).find(".field--item").text();
+
+                var objElement = {
+                  'src' : el.querySelector('source').getAttribute('src'),
+                  'label' : label,
+                  'video' : true
+                };
+
+                // return el.querySelector('source').getAttribute('src');
+                return objElement;
+              }
+
+          });
 
 
         },
@@ -267,12 +352,34 @@
           });
         },
 
+        //feature #100921
         fixIframeHeight: function(){
           $(window).on("resize load",function(){
             var videoHeight = $("video").height();
             $(".field--item iframe.media-oembed-content").css("height", videoHeight);
+
+            // console.log($(".field--item iframe.media-oembed-content .video-stream .html5-main-video"));
           });
-        }
+
+        },
+
+      allIframesVideos: () => {
+          var iframes = document.querySelectorAll("iframe");
+          var arrIframes = [];
+
+
+          Array.from(iframes).forEach(function (iframe){
+            // arrIframes.push(iframe.contentDocument.querySelector("iframe"));
+            arrIframes.push(iframe.cloneNode(true));
+            // console.log(iframe.contentDocument.querySelector("video"));
+            // this.iframeVideos.push($(iframe.contentDocument).find("video"));
+          });
+
+          return arrIframes;
+
+      },
+
+
 
 
     };
