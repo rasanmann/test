@@ -158,3 +158,26 @@
     width: 100%;
     margin-right: 0;
     margin-left: 0; } }
+
+@media screen and (min-width: 768px) {
+  .field--item iframe.media-oembed-content {
+    width: 310px !important;
+    height: auto; } }
+
+.field--name-field-media-video-file::before {
+  content: '';
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 30%; }
+
+@media screen and (min-width: 768px) {
+  .label-over-video-in-carousel {
+    color: white;
+    position: absolute;
+    font-size: 3rem; } }
+
+.field--name-field-text-over-video {
+  visibility: hidden; }

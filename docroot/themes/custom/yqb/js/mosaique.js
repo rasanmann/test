@@ -90,25 +90,22 @@
             });
         },
 
-        // isIframe(el){
-        //   console.log(el);
-        //
-        // },
+        isIframe: function(el){
+          if(typeof(el) == "string" && (el.indexOf("oembed") != -1)){
+            return true;
+          }
+
+        },
 
         createCarousselHTML: function () {
             var list = '';
             var items =   this.getItems();
             var videoId = 1;
 
-            // console.log(instanceof(items);
-
             for (var i = 0; i < items.length; i++) {
                 list += '<div class="siema-item-container">';
 
-              if(items[i].tagName === 'IFRAME'){
-                list += items[i];
 
-              }
 
               if (items[i].video === true){
                 list += '<p class="label-over-video-in-carousel">' + items[i].label + '</p>'
@@ -125,6 +122,8 @@
                       '</video>';
 
                 videoId++;
+              } else if(this.isIframe(items[i])){
+                list += '<iframe src="' + items[i] +   '" width=\"100%\" height=\"480\"></iframe>';
               }
 
               else {
@@ -148,13 +147,10 @@
             var items = Array.prototype.slice.call(document.querySelectorAll(this.selector.medias));
             var iframes = this.allIframesVideos();
             var intLastVideoIndex;
-            // console.log(items);
 
 
             //as the iframes are being put after the images we need to find the last video and insert them there
             for(i = 0; i < items.length; i++){
-              // console.log(items[i].nodeName);
-
               if (items[i].nodeName !== 'VIDEO'){
                 intLastVideoIndex = i;
                 break
@@ -164,51 +160,12 @@
             items.splice(intLastVideoIndex, 0, ...iframes)
 
 
-            console.log(items);
-
-
-            // items = items.concat(iframes);
-
-            //work with promise because iframe is a=synchornous and apprently not ready when create the carousel
-            // const promise1 = new Promise((resolve, reject) => {
-            //   resolve(iframes = this.allIframesVideos())
-            // }).then((data) => {
-            //     items  = items.concat(data);
-            //   return items.map(function (el) {
-            //   if (el === null){
-            //       return el;
-            //     }
-            //   else if (el.nodeName === 'IFRAME'){
-            //     return el;
-            //   }
-            //   else if (el.nodeName && el.nodeName === 'IMG') {
-            //     return el.src;
-            //   }
-            //   else if(el.nodeName && el.nodeName === 'VIDEO') {
-            //
-            //     // var hook = $(el).closest( ".video-nb").siblings(".field--name-field-media-video-file").children();
-            //     var label = $($(el).parent().parent().next(".field--name-field-text-over-video")[0]).find(".field--item").text();
-            //
-            //     var objElement = {
-            //       'src' : el.querySelector('source').getAttribute('src'),
-            //       'label' : label
-            //     };
-            //
-            //     // return el.querySelector('source').getAttribute('src');
-            //     return objElement;
-            //   }
-            //
-            //
-            //
-            //   });
-            //
-            //   }
-            // );
+            items = items.concat(iframes);
 
 
           return items.map(function (el) {
 
-              if (el.nodeName === 'IFRAME'){
+              if (typeof(el) == "string" && (el.indexOf("oembed") != -1)){
                 return el;
               }
               else if (el.nodeName && el.nodeName === 'IMG') {
@@ -370,11 +327,12 @@
 
           Array.from(iframes).forEach(function (iframe){
             // arrIframes.push(iframe.contentDocument.querySelector("iframe"));
-            arrIframes.push(iframe.cloneNode(true));
+            // console.log(iframe.contentWindow.location.href);
+            // arrIframes.push(iframe.cloneNode(true));
+            arrIframes.push(iframe.contentWindow.location.href);
             // console.log(iframe.contentDocument.querySelector("video"));
             // this.iframeVideos.push($(iframe.contentDocument).find("video"));
           });
-
           return arrIframes;
 
       },
