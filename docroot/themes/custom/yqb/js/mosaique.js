@@ -11,8 +11,6 @@
             galleryTrigger: '.field--name-field-paragraph-media-mosaique > .field--item',
             medias: '.paragraph--type--mosaique .field--name-field-paragraph-media-mosaique .field--item img, ' +
                 '.paragraph--type--mosaique .field--name-field-paragraph-media-mosaique .field--item video',
-                // '.video-stream html5-main-video',
-                // '.field--item iframe.media-oembed-content',
             nextBtn: '.next',
             prevBtn: '.prev'
         },
@@ -34,10 +32,7 @@
             this.fullScreen();
             this.putLabelOnvideo();
             this.fixIframeHeight();
-            // this.allIframesVideos();
             },
-
-
 
         addListeners: function () {
             var self = this;
@@ -156,12 +151,9 @@
                 break
               }
            }
-            // items = items.concat(iframes);
+
             items.splice(intLastVideoIndex, 0, ...iframes)
-
-
             items = items.concat(iframes);
-
 
           return items.map(function (el) {
 
@@ -173,7 +165,6 @@
               }
               else if(el.nodeName && el.nodeName === 'VIDEO') {
 
-                // var hook = $(el).closest( ".video-nb").siblings(".field--name-field-media-video-file").children();
                 var label = $($(el).parent().parent().next(".field--name-field-text-over-video")[0]).find(".field--item").text();
 
                 var objElement = {
@@ -182,7 +173,6 @@
                   'video' : true
                 };
 
-                // return el.querySelector('source').getAttribute('src');
                 return objElement;
               }
 
@@ -218,11 +208,6 @@
             $('.'+videoId + ':eq( 0 )').addClass('full');
             video.requestFullscreen();
           });
-        },
-
-        isVideo: function (el) {
-          return typeof(el) === "object" ? true : false;
-            // return el.indexOf('.mp4') !== -1;
         },
 
         setupBackdrop: function () {
@@ -294,8 +279,6 @@
         putLabelOnvideo: function(){
           var query = $(".field--name-field-media-video-file");
           $.each(query,function(index, value){
-            //find the video
-            var video = $(value).find("video").first();
 
             //get the label
             var hook = $(value).next(".field--name-field-text-over-video")[0];
@@ -314,8 +297,6 @@
           $(window).on("resize load",function(){
             var videoHeight = $("video").height();
             $(".field--item iframe.media-oembed-content").css("height", videoHeight);
-
-            // console.log($(".field--item iframe.media-oembed-content .video-stream .html5-main-video"));
           });
 
         },
@@ -324,17 +305,10 @@
           var iframes = document.querySelectorAll("iframe");
           var arrIframes = [];
 
-
           Array.from(iframes).forEach(function (iframe){
-            // arrIframes.push(iframe.contentDocument.querySelector("iframe"));
-            // console.log(iframe.contentWindow.location.href);
-            // arrIframes.push(iframe.cloneNode(true));
             arrIframes.push(iframe.contentWindow.location.href);
-            // console.log(iframe.contentDocument.querySelector("video"));
-            // this.iframeVideos.push($(iframe.contentDocument).find("video"));
           });
           return arrIframes;
-
       },
 
 
