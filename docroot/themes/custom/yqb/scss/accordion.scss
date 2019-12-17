@@ -5,7 +5,7 @@
     // .title-main
     font-weight: 700;
     color: #fff;
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0;
     font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
     cursor: pointer;
@@ -16,5 +16,15 @@
     padding: 20px;
     max-width: none;
     font-size: 1.4rem;
+  }
+}
+
+
+
+//feature 104449
+.paragraph.paragraph--type--accordeon.paragraph--view-mode--default {
+  @media (min-width: 768px) {
+    margin:40px;
+    width:70%;
   }
 }
