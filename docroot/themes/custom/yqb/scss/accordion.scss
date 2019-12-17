@@ -26,5 +26,30 @@
   @media (min-width: 768px) {
     margin:40px;
     width:70%;
+    max-width: 870px
+  }
+}
+.paragraph.paragraph--type--content.paragraph--view-mode--default {
+  @media (min-width: 768px) {
+    margin-left:40px;
+  }
+}
+
+.field--type-text-with-summary {
+  ol {
+    @media (min-width: 768px) {
+      margin-left:20px;
+    }
+  }
+}
+
+article .field--type-text-with-summary h2 {
+  font-weight: 700;
+  font-size: 2.7rem;
+}
+
+article .field--type-text-with-summary p {
+  @media (min-width: 768px) {
+    margin-right:0px;
   }
 }
