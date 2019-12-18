@@ -25,14 +25,12 @@ class YqbAlertBlock extends PreviewBlock {
   public function build() {
 
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-//    $content = null;
-
 
     if (Drupal::currentUser()->hasPermission('preview') &&
        $content = $this->tempStore->get("french_alert") || $content = $this->tempStore->get("english_alert")) {
 
-        $language == 'fr' ? $content = $this->tempStore->get('french_alert') : $content = $this->tempStore->get('english_alert');
-        $showContent = $this->tempStore->get("alert_is_enable");
+      $language == 'fr' ? $content = $this->tempStore->get('french_alert') : $content = $this->tempStore->get('english_alert');
+      $showContent = $this->tempStore->get("alert_is_enable");
 
       $this->tempStore->delete('french_alert');
       $this->tempStore->delete('english_alert');
