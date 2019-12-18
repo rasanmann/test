@@ -10,6 +10,6 @@ jQuery(document).ready(function($){
     link.css("text-decoration","none")
   }
   if(window.location.href.indexOf('/fr/') !== -1) {
-    buttonMaker('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'PRENDRE RENDEZ-VOUS')
+    HrefToButtonConverter('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'PRENDRE RENDEZ-VOUS')
   }
 });
