@@ -25,8 +25,21 @@ class YqbAlertBlock extends PreviewBlock {
   public function build() {
 
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-    $content = null;
-    $language == 'fr' ? $content = $this->tempStore->get("french_alert") : $content = $this->tempStore->get("english_alert");
+//    $content = null;
+
+    if (Drupal::currentUser()->hasPermission('preview') &&
+       $content = $this->tempStore->get("french_alert") || $content = $this->tempStore->get("english_alert")) {
+       $content = $this->tempStore->get('french_alert');
+      $this->tempStore->delete('french_alert');
+      $this->tempStore->delete('english_alert');
+      $this->tempStore->delete('french_alert_full');
+      $this->tempStore->delete('english_alert_full');
+      $this->tempStore->delete('alert_is_enable');
+    }
+    else {
+      $language == 'fr' ? $content = $this->configuration["french_alert"] : $content = $this->configuration["english_alert"];
+    }
+
 
     if(!$this->configuration['alert_is_enable']){
       return;
@@ -115,9 +128,4 @@ class YqbAlertBlock extends PreviewBlock {
     $this->tempStore->set('english_alert', $form_state->getValue('settings')['english_alert']);
 
   }
-
-
-
-
-
 }
