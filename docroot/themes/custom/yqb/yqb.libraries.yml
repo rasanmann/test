@@ -21,6 +21,7 @@ global-js:
     js/app.js: {}
     js/libraries/siema-1.5/dist/siema.min.js: {}
     js/mosaique.js: {}
+    js/buttonMaker.js: {}
   dependencies:
     - yqb/modernizr
     - core/classList
