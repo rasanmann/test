@@ -27,9 +27,13 @@ class YqbAlertBlock extends PreviewBlock {
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 //    $content = null;
 
+
     if (Drupal::currentUser()->hasPermission('preview') &&
        $content = $this->tempStore->get("french_alert") || $content = $this->tempStore->get("english_alert")) {
-       $content = $this->tempStore->get('french_alert');
+
+        $language == 'fr' ? $content = $this->tempStore->get('french_alert') : $content = $this->tempStore->get('english_alert');
+        $showContent = $this->tempStore->get("alert_is_enable");
+
       $this->tempStore->delete('french_alert');
       $this->tempStore->delete('english_alert');
       $this->tempStore->delete('french_alert_full');
@@ -37,11 +41,11 @@ class YqbAlertBlock extends PreviewBlock {
       $this->tempStore->delete('alert_is_enable');
     }
     else {
+      $showContent = $this->configuration["alert_is_enable"];
       $language == 'fr' ? $content = $this->configuration["french_alert"] : $content = $this->configuration["english_alert"];
     }
 
-
-    if(!$this->configuration['alert_is_enable']){
+    if($showContent !== 1){
       return;
     }
 
@@ -126,6 +130,7 @@ class YqbAlertBlock extends PreviewBlock {
   protected function previewSubmit($form, FormStateInterface $form_state) {
     $this->tempStore->set('french_alert', $form_state->getValue('settings')['french_alert']);
     $this->tempStore->set('english_alert', $form_state->getValue('settings')['english_alert']);
+    $this->tempStore->set('alert_is_enable', $form_state->getValue('settings')['alert_is_enable']);
 
   }
 }
