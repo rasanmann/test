@@ -5621,7 +5621,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   #block-formulairederecherche .form-control {
     height: 35px;
     margin-top: 4px;
-    /*border-radius: 10px*/
   }
 
   #block-formulairederecherche .icon-search {
@@ -5649,10 +5648,7 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   #block-formulairederecherche .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group{
     margin-right: -30px;
   }
-  #ui-id-1{
-    /*z-index: 2000000 !important;*/
-    /*display: none;*/
-  }
+
   .region-sub-navigation{
     display:flex;
   }
@@ -5660,7 +5656,6 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
     margin-left: auto;
   }
   #ui-id-1{
-    /*position:absolute;*/
     left: 0px;
   }
   .dropdown.menu.trigger-menu-parent{
@@ -5685,11 +5680,7 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   .ps-container.ps-active-y > .ps-scrollbar-y-rail {
     display: none;
   }
+  #block-formulairederecherche .form-control::placeholder {
+    opacity: 0;
+  }
 }
-/*#block-formulairederecherche .button-l {*/
-/*  vertical-align:top ;*/
-/*}*/
-/*#block-formulairederecherche .input-lg {*/
-/*  display: none;*/
-/*}*/
-/*# sourceMappingURL=base.css.map */
