@@ -285,7 +285,7 @@
             var label = $(hook).children(".field--item").first().text();
 
             //append the label to the video container
-            $(value).prepend(`<p style="position:absolute; color:white; padding: 5px;">${label}</p>`);
+            $(value).prepend(`<p style="position:absolute; color:white; padding:20px 15px 15px 15px;">${label}</p>`);
 
             //remove original label
             $(hook).children(".field--item").css({"visibility":"hidden"});

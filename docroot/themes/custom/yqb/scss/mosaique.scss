@@ -11,15 +11,32 @@
 
 .field--name-field-media-video-file {
   position: relative;
-
+  .theover:hover {
+    path:nth-child(1){
+      fill: hsla(0,0,20%,0.8);
+    }
+  }
   svg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 20%;
+    width: 70px;
     opacity: .9;
-    fill: #fff;
+
+    path:nth-child(1):hover{
+        fill: hsla(0,0,20%,0.8);
+    }
+
+    path:nth-child(1) {
+      fill: hsla(0,0%,0%,0.6);
+
+    }
+    path:nth-child(2){
+      fill: hsla(0,0%,100%,1);
+    }
+    z-index:1000;
+
   }
 }
 
@@ -231,11 +248,11 @@
 .field--name-field-media-video-file::before{
   content: '';
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   top: 0;
   right: 0;
   left: 0;
-  height:30%;
+  height:96%;
 }
 
 .label-over-video-in-carousel {
@@ -248,4 +265,17 @@
 
 .field--name-field-text-over-video {
   visibility: hidden;
+}
+
+.theover {
+  display:block;
+  width:70px;
+  height:50px;
+  //background-color:tomato;
+  z-index:50000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius:10px;
 }
