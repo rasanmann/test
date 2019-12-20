@@ -5680,6 +5680,9 @@ body#plan-a-flight-parking-reservation .xdsoft_datetimepicker {
   .ps-container.ps-active-y > .ps-scrollbar-y-rail {
     display: none;
   }
+  .form-autocomplete.form-search.form-control.ui-autocomplete-input.input-lg{
+    border-radius: 4px;
+  }
   #block-formulairederecherche .form-control::placeholder {
     opacity: 0;
   }
