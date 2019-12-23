@@ -112,6 +112,7 @@
 
               if (items[i].video === true) {
                   list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
+                      '<div class="blackscreen"></div>' +
                       '<video id="carousel-video-nb-' + videoId + '" controls="controls">' +
                       '<source src="' + items[i].src + '" type="video/mp4">' +
                       '</video>';
@@ -285,7 +286,7 @@
             var label = $(hook).children(".field--item").first().text();
 
             //append the label to the video container
-            $(value).prepend(`<p class="weird-p" style="position:absolute; color:white; padding:20px 15px 15px 15px;">${label}</p>`);
+            $(value).prepend(`<p class="weird-p" style="position:absolute; font-size:18px; color:#d9d9d9; padding:20px 15px 15px 15px;">${label}</p>`);
 
             //remove original label
             $(hook).children(".field--item").css({"visibility":"hidden"});

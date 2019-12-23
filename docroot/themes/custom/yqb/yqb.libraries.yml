@@ -16,7 +16,7 @@ global-styling:
       css/accordion.css: {}
       css/menu.css: {}
       css/bureau_controle_access.css: {}
-      'https://fonts.googleapis.com/css?family=Roboto:100&display=swap': { type: external}
+      'https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap': { type: external}
 
 # Global app js
 global-js:
