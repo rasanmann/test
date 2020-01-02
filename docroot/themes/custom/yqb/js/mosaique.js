@@ -112,18 +112,17 @@
 
               if (items[i].video === true) {
                   list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
-                      '<div class="blackscreen"></div>' +
-                      '<video id="carousel-video-nb-' + videoId + '" controls="controls">' +
+                      '<video id="carousel-video-nb-' + videoId + '" controls="controls" height="100%">' +
                       '<source src="' + items[i].src + '" type="video/mp4">' +
                       '</video>';
 
                 videoId++;
               } else if(this.isIframe(items[i])){
-                list += '<iframe src="' + items[i] +   '" width=\"100%\" height=\"480\"></iframe>';
+                list += '<iframe src="' + items[i] +   '" width=\"100%\" height=\"535\" style=\"margin-top:40px\" frameborder=0 ></iframe>';
               }
 
               else {
-                  list += '<img src="' + items[i] + '"/>';
+                  list += '<img src="' + items[i]  + '" style="margin-top:40px"' +'/>';
               }
               list += '</div>';
             }
