@@ -8,7 +8,7 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
-use Drupal\yqb_blocks\Plugin\Block\PreviewBlock;
+use Drupal\yqb_alert\Plugin\Block\YqbAlertPreview;
 
 /**
  * Provides a block with a simple text.
@@ -18,7 +18,7 @@ use Drupal\yqb_blocks\Plugin\Block\PreviewBlock;
  *   admin_label = @Translation("Yqb Block Alert"),
  * )
  */
-class YqbAlertBlock extends PreviewBlock {
+class YqbAlertBlock extends YqbAlertPreview {
   /**
    * {@inheritdoc}
    */
@@ -128,7 +128,8 @@ class YqbAlertBlock extends PreviewBlock {
   protected function previewSubmit($form, FormStateInterface $form_state) {
     $this->tempStore->set('french_alert', $form_state->getValue('settings')['french_alert']);
     $this->tempStore->set('english_alert', $form_state->getValue('settings')['english_alert']);
+    $this->tempStore->set('french_alert_full', $form_state->getValue('settings')['french_alert_full']['value']);
+    $this->tempStore->set('english_alert_full', $form_state->getValue('settings')['english_alert_full']['value']);
     $this->tempStore->set('alert_is_enable', $form_state->getValue('settings')['alert_is_enable']);
-
   }
 }
