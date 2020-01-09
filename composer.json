@@ -51,6 +51,7 @@
     "drupal/yamlform": "1.0-beta29",
     "drush/drush": "^9.3",
     "league/csv": "^8.0",
+    "santerref/e-commerce-unified-api-php": "dev-master",
     "wikimedia/composer-merge-plugin": "^1.0"
   },
   "require-dev": {
