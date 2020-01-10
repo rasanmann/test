@@ -9,7 +9,9 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\State\State;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\moneris\Connector\MonerisConnector;
-use SimpleXMLElement;
+use MonerisUnified\mpgHttpsPostStatus;
+use MonerisUnified\mpgRequest;
+use MonerisUnified\mpgTransaction;
 
 class Gateway {
 
@@ -43,52 +45,53 @@ class Gateway {
   /**
    * @throws TransactionException
    */
-  public function purchase($token, $orderId, $amount, $email = NULL) {
+  public function purchase($token, $orderId, $amount, $email = NULL, $status = FALSE) {
+    $config = Drupal::config('moneris.payment_settings');
+    $testMode = ($config->get('moneris.environment') != 'live');
+
+    $siteName = \Drupal::config('system.site')->get('name');
     $params = [
+      'type' => 'res_purchase_cc',
       'data_key' => $token,
-      'order_id' => substr($orderId, 0, 50),
+      'order_id' => strtoupper(substr($orderId, 0, 50)),
       'amount' => $amount,
       'cust_id' => $this->getUuid($email),
+      'crypt_type' => 7,
+      'dynamic_descriptor' => substr($siteName, 0, 20),
     ];
-    $monerisResult = $this->monerisGateway->purchase($params);
-    $receiptId = $monerisResult->transaction()->response()->receipt->ReceiptId->__toString();
 
-    if (!$monerisResult->was_successful() || $receiptId == 'null' || $monerisResult->failed_avs() || $monerisResult->failed_cvd()) {
-      $this->monerisGateway->void($monerisResult->transaction());
-      $errors = $monerisResult->errors();
-      $errorDetails = [
-        'errors' => $errors,
-        'error_code' => $monerisResult->error_code(),
-        'error_message' => $monerisResult->error_message(),
-        'response' => $monerisResult->response()->__toString(),
-      ];
-      if (isset($monerisResult->transaction()->response()->receipt) && $monerisResult->transaction()->response()->receipt instanceof SimpleXMLElement) {
-        $receiptMessage = $monerisResult->transaction()->response()->receipt->Message->__toString();
-        $errorDetails['receipt'] = [
-          'ResponseCode' => $monerisResult->transaction()->response()->receipt->ResponseCode->__toString(),
-          'ISO' => $monerisResult->transaction()->response()->receipt->ISO->__toString(),
-          'AuthCode' => $monerisResult->transaction()->response()->receipt->AuthCode->__toString(),
-          'Message' => $receiptMessage,
-        ];
-        if (!empty($receiptMessage)) {
-          $errors[] = $monerisResult->transaction()->response()->receipt->Message->__toString();
-        }
+    $mpgTxn = new mpgTransaction($params);
+    $mpgRequest = new mpgRequest($mpgTxn);
+    $mpgRequest->setProcCountryCode("CA");
+    $mpgRequest->setTestMode($testMode);
+
+    $mpgHttpPost = new mpgHttpsPostStatus($config->get('moneris.store_id'), $config->get('moneris.api_key'), $status, $mpgRequest);
+    $mpgResponse = $mpgHttpPost->getMpgResponse();
+
+    $complete = $mpgResponse->getComplete();
+    $timeout = $mpgResponse->getTimedOut();
+
+    if ($complete == 'false' && $timeout == 'true' && !$status) {
+      return $this->purchase($token, $orderId, $amount, $email, TRUE);
+    }
+
+    $responseCode = $mpgResponse->getResponseCode();
+    if ($responseCode == 'null' || $responseCode >= 50 || $complete == 'false') {
+      $this->logger->error(print_r($mpgResponse->getMpgResponseData(), TRUE));
+
+      if ($responseCode != 'null') {
+        $errorMessage = $this->t('An error occured: @code - @message', ['@code' => $responseCode, '@message' => $mpgResponse->getMessage()]);
       }
-      if ($monerisResult->failed_avs()) {
-        $errors[] = $this->t('The AVS verification failed.');
+      else {
+        $errorMessage = $this->t('An unknown error occured: @message.', ['@message' => $mpgResponse->getMessage()]);
       }
-      if ($monerisResult->failed_cvd()) {
-        $errors[] = $this->t('The CVD verification failed.');
-      }
-      $this->logger->error('<pre>' . print_r($errorDetails, TRUE) . '</pre>');
-      $exception = new TransactionException($this->t('We are unable to process the payment at the moment.'));
-      $exception->setErrors($errors);
-      $exception->setMonerisResult($monerisResult);
+
+      $exception = new TransactionException($errorMessage);
+      $exception->setMonerisResult($mpgResponse);
       throw $exception;
     }
-    else {
-      return $monerisResult;
-    }
+
+    return $mpgResponse;
   }
 
   public function getUuid($email) {

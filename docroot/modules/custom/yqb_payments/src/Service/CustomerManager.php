@@ -84,7 +84,7 @@ class CustomerManager
 
   public function getReferenceNumber()
   {
-    return preg_replace('/\s+/', '', sprintf('drupal_%s_%s', $this->get('bill_no'), $this->get('customer_no')));
+    return preg_replace('/\s+/', '', sprintf('D8_%s_%s_%s', $this->get('bill_no'), $this->get('customer_no'), date('His')));
   }
 
   public function get($key, $default = '')

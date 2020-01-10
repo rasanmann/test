@@ -6782,12 +6782,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/santerref/eCommerce-Unified-API-PHP.git",
-                "reference": "2721c0b875a45ee43288690c5f88f0b5bd9526a3"
+                "reference": "680d1d91e04dec4bfffcd56e69a340da72837685"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santerref/eCommerce-Unified-API-PHP/zipball/2721c0b875a45ee43288690c5f88f0b5bd9526a3",
-                "reference": "2721c0b875a45ee43288690c5f88f0b5bd9526a3",
+                "url": "https://api.github.com/repos/santerref/eCommerce-Unified-API-PHP/zipball/680d1d91e04dec4bfffcd56e69a340da72837685",
+                "reference": "680d1d91e04dec4bfffcd56e69a340da72837685",
                 "shasum": ""
             },
             "require": {
@@ -6802,7 +6802,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Unified PHP SDK for Moneris",
-            "time": "2020-01-09T21:15:52+00:00"
+            "time": "2020-01-10T20:48:17+00:00"
         },
         {
             "name": "stack/builder",

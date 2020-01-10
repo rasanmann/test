@@ -1178,7 +1178,8 @@
             "MIT"
         ],
         "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
-        "homepage": "https://github.com/container-interop/container-interop"
+        "homepage": "https://github.com/container-interop/container-interop",
+        "abandoned": "psr/container"
     },
     {
         "name": "cweagans/composer-patches",
@@ -7114,6 +7115,36 @@
         "description": "A polyfill for getallheaders."
     },
     {
+        "name": "santerref/e-commerce-unified-api-php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/santerref/eCommerce-Unified-API-PHP.git",
+            "reference": "680d1d91e04dec4bfffcd56e69a340da72837685"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/santerref/eCommerce-Unified-API-PHP/zipball/680d1d91e04dec4bfffcd56e69a340da72837685",
+            "reference": "680d1d91e04dec4bfffcd56e69a340da72837685",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.5"
+        },
+        "time": "2020-01-10T20:48:17+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "mpgClasses.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "Unified PHP SDK for Moneris"
+    },
+    {
         "name": "stack/builder",
         "version": "v1.0.5",
         "version_normalized": "1.0.5.0",
@@ -9424,7 +9455,8 @@
             "http",
             "psr",
             "psr-7"
-        ]
+        ],
+        "abandoned": "laminas/laminas-diactoros"
     },
     {
         "name": "zendframework/zend-escaper",
@@ -9471,7 +9503,8 @@
             "ZendFramework",
             "escaper",
             "zf"
-        ]
+        ],
+        "abandoned": "laminas/laminas-escaper"
     },
     {
         "name": "zendframework/zend-feed",
@@ -9536,7 +9569,8 @@
             "ZendFramework",
             "feed",
             "zf"
-        ]
+        ],
+        "abandoned": "laminas/laminas-feed"
     },
     {
         "name": "zendframework/zend-stdlib",
@@ -9584,6 +9618,7 @@
             "ZendFramework",
             "stdlib",
             "zf"
-        ]
+        ],
+        "abandoned": "laminas/laminas-stdlib"
     }
 ]
