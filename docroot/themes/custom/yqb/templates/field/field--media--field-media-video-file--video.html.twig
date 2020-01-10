@@ -58,6 +58,7 @@
         </div>
     {% else %}
         {% for item in items %}
+          {{ loop.index }}
             <div{{ attributes.addClass(classes, 'field--item') }}>
                 {{ item.content }}
               <div class="theover">

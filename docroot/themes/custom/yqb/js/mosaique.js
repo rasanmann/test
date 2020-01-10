@@ -8,7 +8,7 @@
             caroussel: '#siema',
             carousselContainer: '.caroussel-outer',
             closeBtn: 'button.close',
-            galleryTrigger: '.field--name-field-paragraph-media-mosaique > .field--item',
+            galleryTrigger: '.field--name-field-paragraph-media-mosaique .row.row-cols-2 > .field--item.col-md-6',
             medias: '.paragraph--type--mosaique .field--name-field-paragraph-media-mosaique .field--item img, ' +
                 '.paragraph--type--mosaique .field--name-field-paragraph-media-mosaique .field--item video',
             nextBtn: '.next',
@@ -37,13 +37,14 @@
         addListeners: function () {
             var self = this;
 
-          $(document).on('click', '.field--name-field-paragraph-media-mosaique > .field--item a', function(e) {
+          $(document).on('click', '.field--name-field-paragraph-media-mosaique .row.row-cols-3 > .field--item.col-md-6 a', function(e) {
             e.preventDefault();
           });
 
             $(document).on('click', this.selector.galleryTrigger, function (e) {
                 if($(this).find('.video-nb.full').length) return;
                 e.preventDefault();
+                console.log("allo");
                 e.stopPropagation();
                 e.stopImmediatePropagation();
                 self.createCloseEvent();
@@ -295,8 +296,10 @@
         //feature #100921
         fixIframeHeight: function(){
           $(window).on("resize load",function(){
-            var videoHeight = $("video").height();
-            $(".field--item iframe.media-oembed-content").css("height", videoHeight);
+            var videoHook = $("video");
+            var videoWidth = videoHook.width();
+            var videoHeight = videoHook.height();
+            $(".field--item iframe.media-oembed-content").css({"height":videoHeight, "width": videoWidth});
           });
 
         },
