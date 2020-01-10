@@ -1,0 +1,13 @@
+{
+  "name": "santerref/e-commerce-unified-api-php",
+  "description": "Unified PHP SDK for Moneris",
+  "type": "library",
+  "require": {
+    "php": ">=5.5",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "classmap": ["mpgClasses.php"]
+  }
+}
+
