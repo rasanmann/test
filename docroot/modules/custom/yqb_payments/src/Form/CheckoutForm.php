@@ -85,7 +85,6 @@ class CheckoutForm extends FormBase {
         }
       } catch (TransactionException $e) {
         $this->customerManager->clearReceipt();
-        $this->customerManager->iterateReferenceNumber();
 
         if (!empty($e->getErrors())) {
           foreach ($e->getErrors() as $error) {
