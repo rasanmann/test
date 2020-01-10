@@ -1,0 +1,8 @@
+uuid: 888a02ba-8764-4ab5-a45c-eec1f832291c
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Career Types'
+vid: career_types
+description: ''
+weight: 0

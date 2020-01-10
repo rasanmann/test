@@ -1,0 +1,19 @@
+uuid: c77aa53d-fe04-46cd-8d49-736f7f8594ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_country
+    - node.type.airport
+id: node.airport.field_country
+field_name: field_country
+entity_type: node
+bundle: airport
+label: Country
+description: 'Country or territory where airport is located.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,15 @@
+uuid: 96e103b3-e753-486f-93be-6dc9d127af45
+langcode: fr
+status: true
+dependencies: {  }
+name: 304x171_16_9
+label: '304x171 (16/9)'
+effects:
+  70e3fea4-f1e1-4909-9331-dca1c9fded50:
+    uuid: 70e3fea4-f1e1-4909-9331-dca1c9fded50
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 450
+      anchor: center-center

@@ -1,0 +1,23 @@
+uuid: 6cc5eb84-a8a8-4b4a-b2bd-e7b34d6813fd
+langcode: fr
+status: true
+dependencies:
+  module:
+    - serialization
+    - user
+    - yqb_api
+_core:
+  default_config_hash: 5pQ8qvtx3aIUjPqkYVKb4ypu8pSzCQZmxzx2u5tkTgg
+id: user_flight_rest_resource
+plugin_id: user_flight_rest_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+    - DELETE
+    - PATCH
+  formats:
+    - json
+  authentication:
+    - cookie

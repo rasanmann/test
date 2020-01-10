@@ -1,0 +1,50 @@
+uuid: 7447bb14-3968-4fbc-b200-c1dd1077ded3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.airline.field_airline_alias
+    - field.field.node.airline.field_airline_type
+    - field.field.node.airline.field_callsign
+    - field.field.node.airline.field_check_in_link
+    - field.field.node.airline.field_color_logo
+    - field.field.node.airline.field_hidden
+    - field.field.node.airline.field_iata
+    - field.field.node.airline.field_icao
+    - field.field.node.airline.field_location
+    - field.field.node.airline.field_phone_numbers
+    - field.field.node.airline.field_search_link
+    - field.field.node.airline.field_square_logo
+    - field.field.node.airline.field_website
+    - field.field.node.airline.field_white_logo
+    - node.type.airline
+  module:
+    - user
+id: node.airline.teaser
+targetEntityType: node
+bundle: airline
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_airline_alias: true
+  field_airline_type: true
+  field_callsign: true
+  field_check_in_link: true
+  field_color_logo: true
+  field_hidden: true
+  field_iata: true
+  field_icao: true
+  field_location: true
+  field_phone_numbers: true
+  field_search_link: true
+  field_square_logo: true
+  field_website: true
+  field_white_logo: true
+  langcode: true

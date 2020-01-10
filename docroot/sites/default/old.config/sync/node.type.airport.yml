@@ -1,0 +1,17 @@
+uuid: 661fc88f-c165-41e1-bd00-cbc287a72416
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Aéroport
+type: airport
+description: 'Aéroports avec connexion directe avec YQB.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

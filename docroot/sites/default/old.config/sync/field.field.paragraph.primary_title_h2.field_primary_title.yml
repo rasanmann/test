@@ -1,0 +1,19 @@
+uuid: b034f650-6ad4-4a7d-b565-6bb8e986f74d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_primary_title
+    - paragraphs.paragraphs_type.primary_title_h2
+id: paragraph.primary_title_h2.field_primary_title
+field_name: field_primary_title
+entity_type: paragraph
+bundle: primary_title_h2
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

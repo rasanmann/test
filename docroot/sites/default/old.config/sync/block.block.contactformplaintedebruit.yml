@@ -1,0 +1,31 @@
+uuid: 499928c6-1fc2-461e-82b0-e1ea067bb00d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:adfeeb82-1a4c-492c-a99d-644d4dabdb1d'
+  module:
+    - block_content
+    - system
+  theme:
+    - yqb
+id: contactformplaintedebruit
+theme: yqb
+region: content
+weight: -29
+provider: null
+plugin: 'block_content:adfeeb82-1a4c-492c-a99d-644d4dabdb1d'
+settings:
+  id: 'block_content:adfeeb82-1a4c-492c-a99d-644d4dabdb1d'
+  label: 'Contact form / Plainte de bruit'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/questions-et-commentaires/plainte-pour-le-bruit\r\n/questions-and-comments/file-a-complaint-about-noise"
+    negate: false
+    context_mapping: {  }

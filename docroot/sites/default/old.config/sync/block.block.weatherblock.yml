@@ -1,0 +1,20 @@
+uuid: 3cab71b6-9732-4c1d-8b06-6f59907c371f
+langcode: fr
+status: true
+dependencies:
+  module:
+    - yqb_weather
+  theme:
+    - yqb
+id: weatherblock
+theme: yqb
+region: sub_navigation
+weight: -25
+provider: null
+plugin: weather-menu-block
+settings:
+  id: weather-menu-block
+  label: 'Weather block'
+  provider: yqb_weather
+  label_display: '0'
+visibility: {  }

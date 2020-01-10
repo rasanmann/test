@@ -1,0 +1,38 @@
+uuid: cca9fae4-952d-4206-bd00-ac409203c082
+langcode: fr
+status: false
+dependencies:
+  config:
+    - system.menu.homepage-tiles
+  module:
+    - language
+    - system
+  theme:
+    - yqb
+id: homepagetiles
+theme: yqb
+region: content
+weight: -14
+provider: null
+plugin: 'system_menu_block:homepage-tiles'
+settings:
+  id: 'system_menu_block:homepage-tiles'
+  label: 'Homepage Tiles'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
+  language:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'

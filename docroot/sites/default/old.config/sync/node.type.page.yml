@@ -1,0 +1,32 @@
+uuid: 4c41f761-0130-46e5-af52-82f21a8eebd6
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - scheduler
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: true
+    publish_past_date: error
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    unpublish_enable: true
+    unpublish_required: false
+    unpublish_revision: false
+_core:
+  default_config_hash: zhtPXoRcC6REiepM0k16zw__FDW5YOXDR6U2WlldTrs
+name: 'Page de base'
+type: page
+description: 'Utilisez les <em>pages de base</em> pour votre contenu statique, tel que la page ''Qui sommes-nous''.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

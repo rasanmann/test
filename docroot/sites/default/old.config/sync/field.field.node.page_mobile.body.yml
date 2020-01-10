@@ -1,0 +1,24 @@
+uuid: d8b98499-07fc-45a8-bbba-fe6d986f8605
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.page_mobile
+  module:
+    - text
+_core:
+  default_config_hash: 9ZQLK0DHgLWK2Qact9YEdoKjDKM0E08o8U1x5nYxqD0
+id: node.page_mobile.body
+field_name: body
+entity_type: node
+bundle: page_mobile
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

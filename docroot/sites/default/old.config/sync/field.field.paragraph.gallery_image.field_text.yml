@@ -1,0 +1,23 @@
+uuid: a2e2af29-7ca8-4d39-acbe-32778d64632b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.gallery_image
+  module:
+    - text
+_core:
+  default_config_hash: prkdYxEnycnoWRe9_gjmlMTYuLNOkigMWlYEyURHPmA
+id: paragraph.gallery_image.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: gallery_image
+label: Contenu
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

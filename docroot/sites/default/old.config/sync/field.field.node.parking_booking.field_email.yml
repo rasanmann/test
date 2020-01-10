@@ -1,0 +1,19 @@
+uuid: 7a53e917-94ca-469c-a2a5-13ec11cee810
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.parking_booking
+id: node.parking_booking.field_email
+field_name: field_email
+entity_type: node
+bundle: parking_booking
+label: Email
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

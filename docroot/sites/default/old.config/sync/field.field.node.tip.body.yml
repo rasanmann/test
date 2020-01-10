@@ -1,0 +1,22 @@
+uuid: 6a69d831-ea89-436c-938f-a801b4250ff3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.tip
+  module:
+    - text
+id: node.tip.body
+field_name: body
+entity_type: node
+bundle: tip
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

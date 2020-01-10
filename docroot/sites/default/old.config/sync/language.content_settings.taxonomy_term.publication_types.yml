@@ -1,0 +1,18 @@
+uuid: c900958a-4b3a-4908-a0fa-5c11c8fd6cf0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.publication_types
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.publication_types
+target_entity_type_id: taxonomy_term
+target_bundle: publication_types
+default_langcode: site_default
+language_alterable: false

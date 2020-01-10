@@ -1,0 +1,11 @@
+uuid: 96eba861-4c21-4d01-974c-dd27ba46e44c
+langcode: fr
+status: true
+dependencies: {  }
+id: reminders
+label: 'Alerte SMS'
+use_admin_theme: false
+path: /vols-et-destinations/alerte-sms
+access_logic: and
+access_conditions: {  }
+parameters: {  }

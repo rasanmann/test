@@ -1,0 +1,20 @@
+uuid: 32bffab4-84e3-4f9e-9b57-1a372c55cbde
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.beacon
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: GYLswSgMsTSRqp0yUaUoK12b5zQ493GyoiVygcoafr8
+id: node.beacon
+target_entity_type_id: node
+target_bundle: beacon
+default_langcode: site_default
+language_alterable: false

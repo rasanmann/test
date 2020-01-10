@@ -1,0 +1,12 @@
+title: 'Job application'
+elements: "offer:\n  '#title': 'Job offer'\nname:\n  '#title': 'Your name'\nemail:\n  '#title': 'Your email address'\nphone:\n  '#title': 'Phone number'\ndepartment:\n  '#title': Department\ndemande_de_stage:\n  '#title': 'Internship Request'\nfemme:\n  '#title': Woman\nminorite_visible:\n  '#title': 'Visible minority'\npersonne_handicapee:\n  '#title': 'Disabled person'\nautochtone:\n  '#title': Aboriginal\nexplication:\n  '#title': 'Employment equity'\n  '#default_value': 'As an employer who subscribes to employment equity requirements, Aéroport de Québec Inc. values diversity within its work teams and aims to integrate all groups. If you are a member of one of the groups designated by law (women, visible minorities, persons with disabilities and aboriginal peoples), please do not hesitate to notify us by completing the appropriate section in your candidate profile. This mention does not act in a discriminatory manner but for statistical purposes.'\ncv:\n  '#title': 'Attach your C.V (PDF / DOC)'\ncover_letter:\n  '#title': 'Attach your letter of motivation (PDF / DOC)'\nactions:\n  '#submit__label': Submit\n"
+settings:
+  confirmation_message: '<p>Thank you for your application.</p>'
+handlers:
+  application:
+    settings:
+      subject: 'Job application - [webform-submission:values:department:value][webform-submission:values:offer:value]'
+  confirmation:
+    settings:
+      subject: 'Job application confirmation - [webform-submission:values:department:value][webform-submission:values:offer:value]'
+      body: 'Thank you for your application.'

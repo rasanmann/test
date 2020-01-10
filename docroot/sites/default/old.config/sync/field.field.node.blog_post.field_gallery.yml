@@ -1,0 +1,23 @@
+uuid: 925c667c-08e7-440b-8fa9-1384a2d907c8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gallery
+    - node.type.blog_post
+  module:
+    - field_collection
+id: node.blog_post.field_gallery
+field_name: field_gallery
+entity_type: node
+bundle: blog_post
+label: Galerie
+description: ''
+required: false
+translatable: false
+default_value:
+  - {  }
+  - {  }
+default_value_callback: ''
+settings: {  }
+field_type: field_collection

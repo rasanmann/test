@@ -1,0 +1,21 @@
+uuid: a0e4d3b6-9c4b-463b-80dd-e69e3d5ecae5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_motto
+    - field.storage.block_content.field_title_main
+  module:
+    - text
+id: block_content.block_motto.field_title_main
+field_name: field_title_main
+entity_type: block_content
+bundle: block_motto
+label: 'Title main'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

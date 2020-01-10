@@ -1,0 +1,8 @@
+uuid: 00f51ded-6413-45f2-ab00-af18d408f62b
+langcode: fr
+status: true
+dependencies: {  }
+id: secondary
+label: 'Navigation secondaire (français)'
+description: ''
+locked: false

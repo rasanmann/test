@@ -1,0 +1,8 @@
+uuid: 9e3384ac-ae9e-4503-ac00-a417b2155bc5
+langcode: und
+status: true
+dependencies: {  }
+name: 'Destination Categories'
+vid: destination_categories
+description: 'Grouped destinations'
+weight: 0

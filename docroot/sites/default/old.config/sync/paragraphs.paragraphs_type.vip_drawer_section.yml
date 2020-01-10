@@ -1,0 +1,9 @@
+uuid: 5bfb8fdf-1e0e-4c40-a187-8e3eb91cb10d
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: fVe1XMc8g1M8Tv91kacmM7D67Cai72aZ7TfD1ifjL60
+id: vip_drawer_section
+label: 'VIP Drawer Section'
+behavior_plugins: {  }

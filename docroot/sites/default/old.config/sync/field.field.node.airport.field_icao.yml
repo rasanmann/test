@@ -1,0 +1,19 @@
+uuid: 4c4b762d-71c5-485c-ad00-faeb18b9b885
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icao
+    - node.type.airport
+id: node.airport.field_icao
+field_name: field_icao
+entity_type: node
+bundle: airport
+label: ICAO
+description: "4-letter ICAO code.\r\nBlank if not assigned."
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

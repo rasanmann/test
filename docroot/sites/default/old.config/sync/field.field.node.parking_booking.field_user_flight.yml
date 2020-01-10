@@ -1,0 +1,30 @@
+uuid: 04936e8f-749c-4587-b638-95c29d6f4127
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user_flight
+    - node.type.parking_booking
+    - node.type.user_flight
+_core:
+  default_config_hash: eGFofvA2rS1ifIrMtqCeqk2oaZFd_ccVeiw6Vdx45s0
+id: node.parking_booking.field_user_flight
+field_name: field_user_flight
+entity_type: node
+bundle: parking_booking
+label: 'Vol associé'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      user_flight: user_flight
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

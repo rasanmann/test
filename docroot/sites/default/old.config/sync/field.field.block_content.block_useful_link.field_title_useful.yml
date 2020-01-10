@@ -1,0 +1,19 @@
+uuid: a7826888-a5a1-4856-9b64-e6eca0959180
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_useful_link
+    - field.storage.block_content.field_title_useful
+id: block_content.block_useful_link.field_title_useful
+field_name: field_title_useful
+entity_type: block_content
+bundle: block_useful_link
+label: 'Title useful'
+description: 'Titre pour le bloc utile'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

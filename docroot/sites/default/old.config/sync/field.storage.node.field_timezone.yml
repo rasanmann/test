@@ -1,0 +1,18 @@
+uuid: f5c7af66-016d-4db3-9509-9c333b59a3e7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_timezone
+field_name: field_timezone
+entity_type: node
+type: float
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

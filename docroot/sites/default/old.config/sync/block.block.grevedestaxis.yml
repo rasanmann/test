@@ -1,0 +1,25 @@
+uuid: 5df4d83c-bcc0-4158-a2ca-ff00454a370c
+langcode: fr
+status: false
+dependencies:
+  content:
+    - 'block_content:block_alert:57c79512-c254-4fdd-8f7b-d70df0b2581c'
+  module:
+    - block_content
+  theme:
+    - yqb
+id: grevedestaxis
+theme: yqb
+region: top
+weight: -26
+provider: null
+plugin: 'block_content:57c79512-c254-4fdd-8f7b-d70df0b2581c'
+settings:
+  id: 'block_content:57c79512-c254-4fdd-8f7b-d70df0b2581c'
+  label: 'Grève des taxis '
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

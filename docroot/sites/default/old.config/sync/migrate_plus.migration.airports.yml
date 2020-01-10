@@ -1,0 +1,60 @@
+uuid: 27fecb6b-d579-4777-96a9-778d4c349502
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: N1NHJZUqWBwi1a-P2t3lFB-SH0K2gMc8ZfP-cTt42cw
+id: airports
+migration_tags:
+  - CSV
+migration_group: null
+label: 'Airports file migration'
+source:
+  plugin: csv
+  path: 'public://csv/airports.csv'
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    -
+      id: Identifier
+    -
+      title: Title
+    -
+      city: City
+    -
+      country: Country
+    -
+      iata: IATA
+    -
+      icao: ICAO
+    -
+      latitude: Latitude
+    -
+      longitude: Longitude
+    -
+      altitude: Altitude
+    -
+      timezone: Timezone
+    -
+      dst: DST
+    -
+      tz: TZ
+process:
+  type:
+    plugin: default_value
+    default_value: airport
+  title: title
+  field_city: city
+  field_country: country
+  field_iata: iata
+  field_icao: icao
+  field_latitude: latitude
+  field_longitude: longitude
+  field_altitude: altitude
+  field_timezone: timezone
+  field_dst: dst
+  field_tz: tz
+destination:
+  plugin: 'entity:node'
+migration_dependencies: {  }

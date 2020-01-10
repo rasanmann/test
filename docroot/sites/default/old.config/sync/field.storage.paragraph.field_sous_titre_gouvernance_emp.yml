@@ -1,0 +1,21 @@
+uuid: 483ea80f-8dd9-4011-952d-deec700d6ce7
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_sous_titre_gouvernance_emp
+field_name: field_sous_titre_gouvernance_emp
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

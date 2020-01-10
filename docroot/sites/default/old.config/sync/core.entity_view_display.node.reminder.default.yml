@@ -1,0 +1,86 @@
+uuid: c56766fc-a714-42e5-a70f-249a9ad37b3e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.reminder.field_completed
+    - field.field.node.reminder.field_flight
+    - field.field.node.reminder.field_flight_airline
+    - field.field.node.reminder.field_flight_date
+    - field.field.node.reminder.field_flight_type
+    - field.field.node.reminder.field_last_update
+    - field.field.node.reminder.field_phone_number
+    - node.type.reminder
+  module:
+    - datetime
+    - user
+id: node.reminder.default
+targetEntityType: node
+bundle: reminder
+mode: default
+content:
+  field_completed:
+    weight: 107
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_flight:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_flight_airline:
+    weight: 111
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_flight_date:
+    weight: 105
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_flight_type:
+    weight: 110
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_last_update:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_phone_number:
+    weight: 108
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  langcode: true

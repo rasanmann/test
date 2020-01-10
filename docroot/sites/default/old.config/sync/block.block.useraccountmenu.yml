@@ -1,0 +1,25 @@
+uuid: 02b6c6c9-5daa-4044-9f2b-430d190da182
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - yqb
+id: useraccountmenu
+theme: yqb
+region: sub_navigation
+weight: -21
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

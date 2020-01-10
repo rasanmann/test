@@ -1,0 +1,22 @@
+uuid: 69df05fd-0f97-4029-9997-71014af9a5d7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_council
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.block_council.body
+field_name: body
+entity_type: block_content
+bundle: block_council
+label: Body
+description: Biographie
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

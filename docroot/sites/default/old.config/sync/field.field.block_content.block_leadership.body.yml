@@ -1,0 +1,22 @@
+uuid: da6c6c1b-4ec6-4a55-8a00-c1c6aa64b49a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_leadership
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.block_leadership.body
+field_name: body
+entity_type: block_content
+bundle: block_leadership
+label: Body
+description: Biographie
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

@@ -1,0 +1,21 @@
+uuid: 50532094-9a02-4696-9e00-f97aa816e3fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_airline_alias
+field_name: field_airline_alias
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

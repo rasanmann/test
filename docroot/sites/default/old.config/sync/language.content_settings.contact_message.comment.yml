@@ -1,0 +1,11 @@
+uuid: 49448908-2646-4b52-8d87-7f7a8b183b31
+langcode: fr
+status: true
+dependencies:
+  config:
+    - contact.form.comment
+id: contact_message.comment
+target_entity_type_id: contact_message
+target_bundle: comment
+default_langcode: site_default
+language_alterable: false

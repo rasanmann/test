@@ -1,0 +1,394 @@
+uuid: a87cc180-b569-4113-b661-be94682f6d57
+langcode: fr
+status: true
+dependencies:
+  config:
+    - page_manager.page.governance_and_general_management
+  content:
+    - 'block_content:basic:19831d6a-e348-46b5-a959-9f4f0a852c7a'
+    - 'block_content:basic:39d67d49-c0f1-4af4-8729-56a1053b3e61'
+    - 'block_content:basic:80a03da0-4f6c-4a57-a2f4-9bb574501102'
+    - 'block_content:basic:d3c9945b-52c3-4276-a11d-07522c847633'
+    - 'block_content:block_council:0234026b-84f3-469d-8092-0ab61db08b84'
+    - 'block_content:block_council:0f775b2c-6d7c-420f-aacf-634ca7a54672'
+    - 'block_content:block_council:1fe666b7-a533-4edd-be75-c831b8b4753c'
+    - 'block_content:block_council:3d141565-462c-497d-b2d8-62a1e3a157e1'
+    - 'block_content:block_council:64a4c319-4f0a-4313-a631-dbc213e79cf1'
+    - 'block_content:block_council:80a749e3-931c-45ef-8884-96a0ae60e91b'
+    - 'block_content:block_council:a1604b41-2c39-415a-9305-fcf2616ea127'
+    - 'block_content:block_council:b94bce07-b6b6-4427-91ea-fb34c1efeeda'
+    - 'block_content:block_council:d13e0a4d-3f96-434c-b99f-d1b696dc87c0'
+    - 'block_content:block_council:e687ee02-510b-4606-b7dc-ab0bbc63893c'
+    - 'block_content:block_council:f3972d1e-38f9-4f12-934b-ea140640251a'
+    - 'block_content:block_council:f5fba510-3b44-4543-ac27-4171a821fe2f'
+    - 'block_content:block_council:f869acd6-ae31-40f9-b21c-6e62e541439f'
+    - 'block_content:block_leadership:026ba071-b8fc-4fba-a3a6-5716b4d52e99'
+    - 'block_content:block_leadership:10e856a0-fe63-4375-9b02-2b5bc13730b8'
+    - 'block_content:block_leadership:362b3882-0514-4e47-b883-b5d296b8bc36'
+    - 'block_content:block_leadership:401ade36-a1ef-4389-ae00-a0862de9fa40'
+    - 'block_content:block_leadership:a1516999-dc30-4332-a700-a3ff8b3f247a'
+    - 'block_content:block_leadership:b6a48a1b-9569-48b2-ab00-a576c7237bfd'
+    - 'block_content:block_leadership:eb2ec833-92c5-4f67-a842-66d3f2d88d1a'
+    - 'block_content:icon_only:d26bbffe-3292-4d6d-a469-e03122011db7'
+    - 'block_content:simple_title:1e978879-d312-4649-a742-80769f8113de'
+    - 'block_content:simple_title:2fd933a0-1992-483a-abd7-4ccbd0f7cef8'
+    - 'block_content:simple_title:53afa830-f9db-46de-a98d-1d2a93171d0c'
+  module:
+    - block_content
+    - panels
+id: panels_governance
+label: 'Panels governance'
+variant: panels_variant
+variant_settings:
+  blocks:
+    514dd307-780d-4a67-9e38-6bd760e838b0:
+      id: 'block_content:80a03da0-4f6c-4a57-a2f4-9bb574501102'
+      label: 'Les comités'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: fourth
+      weight: 1
+      context_mapping: {  }
+      uuid: 514dd307-780d-4a67-9e38-6bd760e838b0
+    b440bcf5-02f5-40c9-9024-04ffeed4c812:
+      id: 'block_content:2fd933a0-1992-483a-abd7-4ccbd0f7cef8'
+      label: 'Membres du conseil'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: second
+      weight: 5
+      context_mapping: {  }
+      uuid: b440bcf5-02f5-40c9-9024-04ffeed4c812
+    c291148d-f2e3-4d78-9d55-23a91cb5bc14:
+      id: 'block_content:53afa830-f9db-46de-a98d-1d2a93171d0c'
+      label: 'Gouvernance (titre)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: second
+      weight: 1
+      context_mapping: {  }
+      uuid: c291148d-f2e3-4d78-9d55-23a91cb5bc14
+    3768965d-a8a6-4c16-bd9f-ac6600496f05:
+      id: 'block_content:d3c9945b-52c3-4276-a11d-07522c847633'
+      label: 'Gouvernance (texte)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: second
+      weight: 3
+      context_mapping: {  }
+      uuid: 3768965d-a8a6-4c16-bd9f-ac6600496f05
+    c75b0e20-cbea-46a6-9b56-7e845e16deab:
+      id: 'block_content:d26bbffe-3292-4d6d-a469-e03122011db7'
+      label: 'Gouvernance (icône)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: second
+      weight: 2
+      context_mapping: {  }
+      uuid: c75b0e20-cbea-46a6-9b56-7e845e16deab
+    d30c6569-039d-49be-a9b9-d4ab3ce3ba0c:
+      id: 'block_content:a1516999-dc30-4332-a700-a3ff8b3f247a'
+      label: 'Gaëtan Gagné (direction)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 3
+      context_mapping: {  }
+      uuid: d30c6569-039d-49be-a9b9-d4ab3ce3ba0c
+    9180b321-904b-4459-ae16-7a75e2654eb3:
+      id: 'block_content:026ba071-b8fc-4fba-a3a6-5716b4d52e99'
+      label: 'Marc-André Bédard (direction)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 4
+      context_mapping: {  }
+      uuid: 9180b321-904b-4459-ae16-7a75e2654eb3
+    31cb103e-bb18-4364-99c3-efb97ecd818b:
+      id: 'block_content:b6a48a1b-9569-48b2-ab00-a576c7237bfd'
+      label: 'François Bilodeau (direction)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 5
+      context_mapping: {  }
+      uuid: 31cb103e-bb18-4364-99c3-efb97ecd818b
+    25733765-2a7c-4ac1-9994-f3e018c4a3ba:
+      id: 'block_content:10e856a0-fe63-4375-9b02-2b5bc13730b8'
+      label: 'Sophie Lefrançois (direction)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 6
+      context_mapping: {  }
+      uuid: 25733765-2a7c-4ac1-9994-f3e018c4a3ba
+    617adebb-9c82-45c4-9a86-c7a350ba2b43:
+      id: 'block_content:401ade36-a1ef-4389-ae00-a0862de9fa40'
+      label: 'Daniel Perreault (direction)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 7
+      context_mapping: {  }
+      uuid: 617adebb-9c82-45c4-9a86-c7a350ba2b43
+    3a7fbb2f-b727-4472-b831-3f2145f324b1:
+      id: 'block_content:eb2ec833-92c5-4f67-a842-66d3f2d88d1a'
+      label: 'Serge St-Laurent (direction)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 8
+      context_mapping: {  }
+      uuid: 3a7fbb2f-b727-4472-b831-3f2145f324b1
+    9ed2f148-48fb-457d-9d22-e7051e89b028:
+      id: 'block_content:362b3882-0514-4e47-b883-b5d296b8bc36'
+      label: 'Bernard Thiboutot (direction)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 9
+      context_mapping: {  }
+      uuid: 9ed2f148-48fb-457d-9d22-e7051e89b028
+    a9a9c7a4-0e50-4b89-81c6-66d29e18d520:
+      id: 'block_content:19831d6a-e348-46b5-a959-9f4f0a852c7a'
+      label: 'Équipe de direction'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 2
+      context_mapping: {  }
+      uuid: a9a9c7a4-0e50-4b89-81c6-66d29e18d520
+    8bb7c47f-e29f-4e10-82c0-b5d21b78fd21:
+      id: 'block_content:39d67d49-c0f1-4af4-8729-56a1053b3e61'
+      label: 'Conseil d’administration'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: second
+      weight: 4
+      context_mapping: {  }
+      uuid: 8bb7c47f-e29f-4e10-82c0-b5d21b78fd21
+    c7f31cf5-25f7-4ef7-848a-e4b92856c6c9:
+      id: 'block_content:1e978879-d312-4649-a742-80769f8113de'
+      label: 'Gouvernance d’entreprise et direction générale (titre page)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: first
+      weight: 1
+      context_mapping: {  }
+      uuid: c7f31cf5-25f7-4ef7-848a-e4b92856c6c9
+    9dde22d3-13a6-4e3e-9aa5-bf76c493983e:
+      id: 'block_content:0234026b-84f3-469d-8092-0ab61db08b84'
+      label: 'M. Gaëtan Gagné (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.left
+      weight: 6
+      context_mapping: {  }
+      uuid: 9dde22d3-13a6-4e3e-9aa5-bf76c493983e
+    34abcad8-7137-4884-8425-13197cbbefad:
+      id: 'block_content:1fe666b7-a533-4edd-be75-c831b8b4753c'
+      label: 'France Bilodeau (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.left
+      weight: 3
+      context_mapping: {  }
+      uuid: 34abcad8-7137-4884-8425-13197cbbefad
+    dcaef141-53a8-4b8c-8aaf-816174bcda51:
+      id: 'block_content:a1604b41-2c39-415a-9305-fcf2616ea127'
+      label: 'M. Jean-Claude L’Abbée (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.left
+      weight: 1
+      context_mapping: {  }
+      uuid: dcaef141-53a8-4b8c-8aaf-816174bcda51
+    6126f434-24ed-4744-b464-aa97f44c7c0f:
+      id: 'block_content:d13e0a4d-3f96-434c-b99f-d1b696dc87c0'
+      label: 'Mme Lise Lapierre (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.left
+      weight: 8
+      context_mapping: {  }
+      uuid: 6126f434-24ed-4744-b464-aa97f44c7c0f
+    0fd057f8-7f3a-4053-9029-5fcf7ccf0469:
+      id: 'block_content:b94bce07-b6b6-4427-91ea-fb34c1efeeda'
+      label: 'Mme Liliane Laverdière (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.left
+      weight: 9
+      context_mapping: {  }
+      uuid: 0fd057f8-7f3a-4053-9029-5fcf7ccf0469
+    372adf5e-267d-4c4a-973f-fe68532a55b6:
+      id: 'block_content:e687ee02-510b-4606-b7dc-ab0bbc63893c'
+      label: 'Mme Sophie Lefrançois (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.left
+      weight: 2
+      context_mapping: {  }
+      uuid: 372adf5e-267d-4c4a-973f-fe68532a55b6
+    5950b7c7-b3e4-4109-a2c7-a79e8d23a29b:
+      id: 'block_content:f869acd6-ae31-40f9-b21c-6e62e541439f'
+      label: 'M. Jean-Guy Paquet (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.right
+      weight: 2
+      context_mapping: {  }
+      uuid: 5950b7c7-b3e4-4109-a2c7-a79e8d23a29b
+    d43a7439-a925-4dbf-a004-221f0463a657:
+      id: 'block_content:f3972d1e-38f9-4f12-934b-ea140640251a'
+      label: 'M. Louis Têtu (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.right
+      weight: 6
+      context_mapping: {  }
+      uuid: d43a7439-a925-4dbf-a004-221f0463a657
+    ffd8f915-bffa-4019-af56-480f0d6b0793:
+      id: 'block_content:80a749e3-931c-45ef-8884-96a0ae60e91b'
+      label: 'M. Denis Therrien (membre conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.right
+      weight: 7
+      context_mapping: {  }
+      uuid: ffd8f915-bffa-4019-af56-480f0d6b0793
+    9a8bf0e3-1ed6-40f2-ad03-284fb995838e:
+      id: 'block_content:64a4c319-4f0a-4313-a631-dbc213e79cf1'
+      label: 'M. André Fortin (membre conseil)'
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: third.left
+      weight: 5
+      uuid: 9a8bf0e3-1ed6-40f2-ad03-284fb995838e
+      context_mapping: {  }
+    6eac3744-52e9-49a6-b70b-e8562195f676:
+      id: 'block_content:3d141565-462c-497d-b2d8-62a1e3a157e1'
+      label: 'Thom Skinner (membre du conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.right
+      weight: 5
+      uuid: 6eac3744-52e9-49a6-b70b-e8562195f676
+      context_mapping: {  }
+    d7011ce7-375d-48b8-be9f-112d9e4984c2:
+      id: 'block_content:f5fba510-3b44-4543-ac27-4171a821fe2f'
+      label: 'Gilles Filiatreault (membre du conseil)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: third.left
+      weight: 4
+      uuid: d7011ce7-375d-48b8-be9f-112d9e4984c2
+      context_mapping: {  }
+    b1e9e59c-b704-4962-a66a-17bb06db5225:
+      id: 'block_content:0f775b2c-6d7c-420f-aacf-634ca7a54672'
+      label: 'Maxime Laviolette (membre conseil) '
+      provider: block_content
+      label_display: visible
+      status: true
+      info: ''
+      view_mode: full
+      region: third.right
+      weight: 0
+      uuid: b1e9e59c-b704-4962-a66a-17bb06db5225
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 0d0b26d9-672a-4ca0-a265-b829fdf75653
+  label: null
+  weight: 0
+  layout: fourrow
+  layout_settings: {  }
+  page_title: 'Gouvernance d’entreprise et direction générale'
+  storage_type: page_manager
+  storage_id: panels_governance
+  builder: ipe
+page: governance_and_general_management
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

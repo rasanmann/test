@@ -1,0 +1,20 @@
+uuid: 4e77f3f6-4e04-4afe-85ae-7c14f326d638
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.vip_drawer
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: QQAcdRFfCvbRs_XXoaIuNu6fY4SoIoiCFiA5-2i6jfE
+id: paragraph.vip_drawer
+target_entity_type_id: paragraph
+target_bundle: vip_drawer
+default_langcode: current_interface
+language_alterable: false

@@ -1,0 +1,19 @@
+uuid: 4b7978fb-8193-4263-9806-6f7bf4512bcf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_airline
+field_name: field_airline
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
