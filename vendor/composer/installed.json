@@ -3109,21 +3109,21 @@
     },
     {
         "name": "drupal/ctools",
-        "version": "3.0.0",
-        "version_normalized": "3.0.0.0",
+        "version": "3.2.0",
+        "version_normalized": "3.2.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/ctools.git",
-            "reference": "8.x-3.0"
+            "reference": "8.x-3.2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/ctools-8.x-3.0.zip",
-            "reference": "8.x-3.0",
-            "shasum": "302e869ecd1e59fe55663673999fee2ccac5daa8"
+            "url": "https://ftp.drupal.org/files/projects/ctools-8.x-3.2.zip",
+            "reference": "8.x-3.2",
+            "shasum": "d6da87239b64ba708a5977e7b33b1e009e36b091"
         },
         "require": {
-            "drupal/core": "~8.0"
+            "drupal/core": "^8.5"
         },
         "type": "drupal-module",
         "extra": {
@@ -3131,8 +3131,8 @@
                 "dev-3.x": "3.x-dev"
             },
             "drupal": {
-                "version": "8.x-3.0",
-                "datestamp": "1493401742",
+                "version": "8.x-3.2",
+                "datestamp": "1550728386",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -3291,18 +3291,18 @@
     },
     {
         "name": "drupal/editor_advanced_link",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/editor_advanced_link.git",
-            "reference": "8.x-1.4"
+            "reference": "8.x-1.6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/editor_advanced_link-8.x-1.4.zip",
-            "reference": "8.x-1.4",
-            "shasum": "52cf139a313d5fa6a461a25a1ba36ae987bc403d"
+            "url": "https://ftp.drupal.org/files/projects/editor_advanced_link-8.x-1.6.zip",
+            "reference": "8.x-1.6",
+            "shasum": "920f22fd7841bc1c77b56c6ae51436319b47636e"
         },
         "require": {
             "drupal/core": "*"
@@ -3313,8 +3313,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.4",
-                "datestamp": "1490108883",
+                "version": "8.x-1.6",
+                "datestamp": "1577188383",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -3335,23 +3335,23 @@
         "description": "Add title, target etc. attributes to Text Editor's link dialog if the text format allows them.",
         "homepage": "https://www.drupal.org/project/editor_advanced_link",
         "support": {
-            "source": "http://cgit.drupalcode.org/editor_advanced_link"
+            "source": "https://git.drupalcode.org/project/editor_advanced_link"
         }
     },
     {
         "name": "drupal/editor_file",
-        "version": "1.2.0",
-        "version_normalized": "1.2.0.0",
+        "version": "1.4.0",
+        "version_normalized": "1.4.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/editor_file.git",
-            "reference": "8.x-1.2"
+            "reference": "8.x-1.4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/editor_file-8.x-1.2.zip",
-            "reference": "8.x-1.2",
-            "shasum": "e1fdfec93f98c219a6adea133033f1d21b8c53de"
+            "url": "https://ftp.drupal.org/files/projects/editor_file-8.x-1.4.zip",
+            "reference": "8.x-1.4",
+            "shasum": "9a03e0ac4f21cfa3fa4772fb30861d7e4a82a8c1"
         },
         "require": {
             "drupal/core": "*"
@@ -3362,8 +3362,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.2",
-                "datestamp": "1478115534",
+                "version": "8.x-1.4",
+                "datestamp": "1554478985",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -3384,23 +3384,23 @@
         "description": "Allow users to link uploaded files in the text Editor.",
         "homepage": "https://www.drupal.org/project/editor_file",
         "support": {
-            "source": "http://cgit.drupalcode.org/editor_file"
+            "source": "https://git.drupalcode.org/project/editor_file"
         }
     },
     {
         "name": "drupal/email_registration",
-        "version": "1.0.0-rc5",
-        "version_normalized": "1.0.0.0-RC5",
+        "version": "1.0.0-rc7",
+        "version_normalized": "1.0.0.0-RC7",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/email_registration.git",
-            "reference": "8.x-1.0-rc5"
+            "reference": "8.x-1.0-rc7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/email_registration-8.x-1.0-rc5.zip",
-            "reference": "8.x-1.0-rc5",
-            "shasum": "8e068ad37077bb3937150155ce13617d98b9b6b1"
+            "url": "https://ftp.drupal.org/files/projects/email_registration-8.x-1.0-rc7.zip",
+            "reference": "8.x-1.0-rc7",
+            "shasum": "a3ebc1e38539e7916f48e827d5bd7b1abeef0011"
         },
         "require": {
             "drupal/core": "*"
@@ -3411,8 +3411,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.0-rc5",
-                "datestamp": "1491318182",
+                "version": "8.x-1.0-rc7",
+                "datestamp": "1557344281",
                 "security-coverage": {
                     "status": "not-covered",
                     "message": "RC releases are not covered by Drupal security advisories."
@@ -3422,30 +3422,35 @@
         "installation-source": "dist",
         "notification-url": "https://packages.drupal.org/8/downloads",
         "license": [
-            "GPL-2.0-or-later"
+            "GPL-2.0+"
         ],
         "authors": [
             {
+                "name": "Greg Knaddison (greggles)",
+                "homepage": "https://www.drupal.org/u/greggles",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Andrey Postnikov (andypost)",
+                "homepage": "https://www.drupal.org/u/andypost",
+                "role": "Maintainer"
+            },
+            {
                 "name": "Chris Herberte",
-                "homepage": "https://www.drupal.org/user/1171"
+                "homepage": "https://www.drupal.org/u/chris-herberte",
+                "role": "Maintainer"
             },
             {
-                "name": "andypost",
-                "homepage": "https://www.drupal.org/user/118908"
-            },
-            {
-                "name": "greggles",
-                "homepage": "https://www.drupal.org/user/36762"
-            },
-            {
-                "name": "moshe weitzman",
-                "homepage": "https://www.drupal.org/user/23"
+                "name": "Moshe Weitzman (moshe weitzman)",
+                "homepage": "https://www.drupal.org/u/moshe-weitzman",
+                "role": "Maintainer"
             }
         ],
-        "description": "Allows users to register with an e-mail address as their username.",
+        "description": "Allows users to register with an email address as their username.",
         "homepage": "https://www.drupal.org/project/email_registration",
         "support": {
-            "source": "http://cgit.drupalcode.org/email_registration"
+            "source": "http://cgit.drupalcode.org/email_registration",
+            "issues": "http://drupal.org/project/issues/email_registration"
         }
     },
     {
@@ -3897,21 +3902,21 @@
     },
     {
         "name": "drupal/mailsystem",
-        "version": "4.1.0",
-        "version_normalized": "4.1.0.0",
+        "version": "4.2.0",
+        "version_normalized": "4.2.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/mailsystem.git",
-            "reference": "8.x-4.1"
+            "reference": "8.x-4.2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/mailsystem-8.x-4.1.zip",
-            "reference": "8.x-4.1",
-            "shasum": "318b87f1fdf96e6db30b04a98108af02a0fc3dcc"
+            "url": "https://ftp.drupal.org/files/projects/mailsystem-8.x-4.2.zip",
+            "reference": "8.x-4.2",
+            "shasum": "51d3f4831cdc3fd2748efc750d4946ddb5b50c3c"
         },
         "require": {
-            "drupal/core": "^8.0.5"
+            "drupal/core": "^8.7.7 || ^9"
         },
         "type": "drupal-module",
         "extra": {
@@ -3919,8 +3924,8 @@
                 "dev-4.x": "4.x-dev"
             },
             "drupal": {
-                "version": "8.x-4.1",
-                "datestamp": "1467993646",
+                "version": "8.x-4.2",
+                "datestamp": "1574194688",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -3942,6 +3947,10 @@
                 "homepage": "https://www.drupal.org/user/84263"
             },
             {
+                "name": "Manuel Garcia",
+                "homepage": "https://www.drupal.org/user/213194"
+            },
+            {
                 "name": "Nafes",
                 "homepage": "https://www.drupal.org/user/2489926"
             },
@@ -3957,7 +3966,7 @@
         "description": "Mail System",
         "homepage": "https://www.drupal.org/project/mailsystem",
         "support": {
-            "source": "http://cgit.drupalcode.org/mailsystem"
+            "source": "https://git.drupalcode.org/project/mailsystem"
         }
     },
     {
@@ -4159,25 +4168,28 @@
     },
     {
         "name": "drupal/migrate_plus",
-        "version": "4.0.0",
-        "version_normalized": "4.0.0.0",
+        "version": "4.2.0",
+        "version_normalized": "4.2.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/migrate_plus.git",
-            "reference": "8.x-4.0"
+            "reference": "8.x-4.2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/migrate_plus-8.x-4.0.zip",
-            "reference": "8.x-4.0",
-            "shasum": "63dad289defe8298aa5ca5e30062fe9761d19eca"
+            "url": "https://ftp.drupal.org/files/projects/migrate_plus-8.x-4.2.zip",
+            "reference": "8.x-4.2",
+            "shasum": "5736a43e39cc5c091d54ceef2849ea35ba979af3"
         },
         "require": {
             "drupal/core": "^8.3"
         },
         "require-dev": {
+            "drupal/entity": "*",
             "drupal/migrate_example_advanced_setup": "*",
-            "drupal/migrate_example_setup": "*"
+            "drupal/migrate_example_setup": "*",
+            "drupal/migrate_tools": "*",
+            "drupal/profile": "*"
         },
         "suggest": {
             "ext-soap": "*",
@@ -4189,8 +4201,8 @@
                 "dev-4.x": "4.x-dev"
             },
             "drupal": {
-                "version": "8.x-4.0",
-                "datestamp": "1536264180",
+                "version": "8.x-4.2",
+                "datestamp": "1555683487",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -4284,26 +4296,27 @@
     },
     {
         "name": "drupal/migrate_tools",
-        "version": "4.0.0",
-        "version_normalized": "4.0.0.0",
+        "version": "4.5.0",
+        "version_normalized": "4.5.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/migrate_tools.git",
-            "reference": "8.x-4.0"
+            "reference": "8.x-4.5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/migrate_tools-8.x-4.0.zip",
-            "reference": "8.x-4.0",
-            "shasum": "016dfb010df76723c5a6a447921fdccd3c885237"
+            "url": "https://ftp.drupal.org/files/projects/migrate_tools-8.x-4.5.zip",
+            "reference": "8.x-4.5",
+            "shasum": "06390b359bf53c50a30f2d6dc4c7542bfb1fe7ca"
         },
         "require": {
-            "drupal/core": "^8.3",
-            "drupal/migrate_plus": "^4"
+            "drupal/core": "^8 || ^9",
+            "drupal/migrate_plus": "^4 || ^5"
         },
         "require-dev": {
-            "drupal/coder": "^8",
-            "drupal/migrate_source_csv": "^2.2"
+            "drupal/migrate_plus": "4.x-dev",
+            "drupal/migrate_source_csv": "^2.2",
+            "drush/drush": "^10"
         },
         "type": "drupal-module",
         "extra": {
@@ -4311,8 +4324,8 @@
                 "dev-4.x": "4.x-dev"
             },
             "drupal": {
-                "version": "8.x-4.0",
-                "datestamp": "1535380084",
+                "version": "8.x-4.5",
+                "datestamp": "1574693285",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -4320,14 +4333,14 @@
             },
             "drush": {
                 "services": {
-                    "drush.services.yml": "^9"
+                    "drush.services.yml": "^9 || ^10"
                 }
             }
         },
         "installation-source": "dist",
         "notification-url": "https://packages.drupal.org/8/downloads",
         "license": [
-            "GPL-2.0+"
+            "GPL-2.0-or-later"
         ],
         "authors": [
             {
@@ -4353,22 +4366,22 @@
     },
     {
         "name": "drupal/page_manager",
-        "version": "4.0.0-beta3",
-        "version_normalized": "4.0.0.0-beta3",
+        "version": "4.0.0-beta4",
+        "version_normalized": "4.0.0.0-beta4",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/page_manager.git",
-            "reference": "8.x-4.0-beta3"
+            "reference": "8.x-4.0-beta4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/page_manager-8.x-4.0-beta3.zip",
-            "reference": "8.x-4.0-beta3",
-            "shasum": "d4776dd32ca34f647bf7f2cfb1acf4800646e231"
+            "url": "https://ftp.drupal.org/files/projects/page_manager-8.x-4.0-beta4.zip",
+            "reference": "8.x-4.0-beta4",
+            "shasum": "f77d57fa0f0a734c26d9119850672a51e2760d5f"
         },
         "require": {
-            "drupal/core": "^8.0.5",
-            "drupal/ctools": "~3"
+            "drupal/core": "~8.5",
+            "drupal/ctools": "~3.1"
         },
         "type": "drupal-module",
         "extra": {
@@ -4376,8 +4389,8 @@
                 "dev-4.x": "4.x-dev"
             },
             "drupal": {
-                "version": "8.x-4.0-beta3",
-                "datestamp": "1523670484",
+                "version": "8.x-4.0-beta4",
+                "datestamp": "1559135889",
                 "security-coverage": {
                     "status": "not-covered",
                     "message": "Project has not opted into security advisory coverage!"
@@ -4404,8 +4417,12 @@
                 "homepage": "https://www.drupal.org/user/45640"
             },
             {
-                "name": "tim.plunkett",
-                "homepage": "https://www.drupal.org/user/241634"
+                "name": "manuel.adan",
+                "homepage": "https://www.drupal.org/user/516420"
+            },
+            {
+                "name": "phenaproxima",
+                "homepage": "https://www.drupal.org/user/205645"
             }
         ],
         "description": "Provides a way to place blocks on a custom page.",
@@ -4711,18 +4728,18 @@
     },
     {
         "name": "drupal/restui",
-        "version": "1.15.0",
-        "version_normalized": "1.15.0.0",
+        "version": "1.17.0",
+        "version_normalized": "1.17.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/restui.git",
-            "reference": "8.x-1.15"
+            "reference": "8.x-1.17"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/restui-8.x-1.15.zip",
-            "reference": "8.x-1.15",
-            "shasum": "c3a9acd9355c1ee1690cbc8a1458f960f8c25c36"
+            "url": "https://ftp.drupal.org/files/projects/restui-8.x-1.17.zip",
+            "reference": "8.x-1.17",
+            "shasum": "2fff1b74759d5e490884d002330ad04d1bf241ba"
         },
         "require": {
             "drupal/core": "^8.2.0"
@@ -4733,8 +4750,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.15",
-                "datestamp": "1496919842",
+                "version": "8.x-1.17",
+                "datestamp": "1557845581",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -4764,10 +4781,10 @@
                 "homepage": "https://www.drupal.org/user/262198"
             }
         ],
-        "description": "Provides a user interface to manage REST resources",
+        "description": "Provides a user interface to manage REST resources.",
         "homepage": "https://www.drupal.org/project/restui",
         "support": {
-            "source": "http://cgit.drupalcode.org/restui"
+            "source": "https://git.drupalcode.org/project/restui"
         }
     },
     {
