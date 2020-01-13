@@ -23,8 +23,15 @@ jQuery(document).ready(function($){
   }
 
 
-
+  //for button cizr
   if(window.location.href.indexOf('/fr/') !== -1) {
     HrefToButtonConverter('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'PRENDRE RENDEZ-VOUS')
   }
+
+  //for button gtaa on page cizr
+  if(window.location.href.indexOf('/fr/') !== -1) {
+    HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Commencer la formation'.toUpperCase())
+  }
+
+
 });
