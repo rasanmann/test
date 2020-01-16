@@ -9,7 +9,6 @@ return array(
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Stack' => array($vendorDir . '/stack/builder/src'),
     'Passbook\\' => array($vendorDir . '/eo/passbook/src'),
-    'PEAR' => array($vendorDir . '/pear/pear_exception'),
     'Moneris' => array($vendorDir . '/ironkeith/moneris-eselectplus-api/lib'),
     'Mailchimp' => array($baseDir . '/docroot/modules/contrib/mailchimp/src'),
     'EasyRdf_' => array($vendorDir . '/easyrdf/easyrdf/lib'),
