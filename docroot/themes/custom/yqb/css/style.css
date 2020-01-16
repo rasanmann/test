@@ -11256,4 +11256,18 @@ p {
   height: 274px;
   width: 274px; }
 
+a[target="_blank"]:after {
+  content: "\e164";
+  top: 1px;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  margin-left: 3px;
+  font-size: 75%;
+}
+
+a.no-after:after {
+  display: none !important;
+}
+
 /*# sourceMappingURL=style.css.map */

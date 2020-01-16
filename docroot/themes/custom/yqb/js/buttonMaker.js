@@ -14,12 +14,12 @@ Drupal.behaviors.changeLinkToButton = {
 
   vefiryIfUrl: function(context){
     if (window.location.href.indexOf('/fr/') !== -1) {
-      this.HrefToButtonConverter('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'PRENDRE RENDEZ-VOUS','href-to-button-converter')
+      this.HrefToButtonConverter('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'PRENDRE RENDEZ-VOUS','href-to-button-converter no-after')
     }
 
     //for button gtaa on page cizr
     if (window.location.href.indexOf('/fr/') !== -1) {
-      this.HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Commencer la formation'.toUpperCase())
+      this.HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Commencer la formation'.toUpperCase(), 'no-after')
     }
   },
 
