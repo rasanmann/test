@@ -19,7 +19,7 @@ Drupal.behaviors.changeLinkToButton = {
 
     //for button gtaa on page cizr
     if (window.location.href.indexOf('/fr/') !== -1) {
-      this.HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Commencer la formation'.toUpperCase(),'href-to-button-converter')
+      this.HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Commencer la formation'.toUpperCase())
     }
   },
 
