@@ -13,19 +13,21 @@ Drupal.behaviors.changeLinkToButton = {
 
 
   vefiryIfUrl: function(context){
-    console.log(context);
     if (window.location.href.indexOf('/fr/') !== -1) {
-      this.HrefToButtonConverter('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'PRENDRE RENDEZ-VOUS')
+      this.HrefToButtonConverter('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'PRENDRE RENDEZ-VOUS','href-to-button-converter')
     }
 
     //for button gtaa on page cizr
     if (window.location.href.indexOf('/fr/') !== -1) {
-      this.HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Commencer la formation'.toUpperCase())
+      this.HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Commencer la formation'.toUpperCase(),'href-to-button-converter')
     }
   },
 
-  HrefToButtonConverter: function(href, text){
+  HrefToButtonConverter: function(href, text, css_class){
     var link = jQuery("a[href = '"+href+"']");
+    if(css_class) {
+      link.addClass(css_class);
+    }
     link.text(text);
     link.css("background", "#0054ff");
     link.css("padding", "10px");

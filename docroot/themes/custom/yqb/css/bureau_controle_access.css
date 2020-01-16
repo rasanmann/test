@@ -1,2 +1,7 @@
 .panel-vip .panel-title a {
   height: 60px; }
+
+.href-to-button-converter {
+  float: left;
+  margin-right: 12px;
+  display: inline-block; }
