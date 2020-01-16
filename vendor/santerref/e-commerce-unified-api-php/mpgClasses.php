@@ -1,5 +1,7 @@
 <?php
 
+namespace MonerisUnified;
+
 #################### mpgGlobals #############################################
 
 

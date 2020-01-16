@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd0e608e218688755e59e94ac8858923",
+    "content-hash": "5f246dbed0424d966a532d401b537bbb",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -6891,6 +6891,34 @@
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
+            "name": "santerref/e-commerce-unified-api-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/santerref/eCommerce-Unified-API-PHP.git",
+                "reference": "680d1d91e04dec4bfffcd56e69a340da72837685"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/santerref/eCommerce-Unified-API-PHP/zipball/680d1d91e04dec4bfffcd56e69a340da72837685",
+                "reference": "680d1d91e04dec4bfffcd56e69a340da72837685",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "mpgClasses.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Unified PHP SDK for Moneris",
+            "time": "2020-01-10T20:48:17+00:00"
+        },
+        {
             "name": "stack/builder",
             "version": "v1.0.5",
             "source": {
@@ -9533,6 +9561,7 @@
         "drupal/insert_block": 20,
         "drupal/layout_plugin": 15,
         "drupal/stage_file_proxy": 15,
+        "santerref/e-commerce-unified-api-php": 20,
         "drupal/config_devel": 20,
         "eo/passbook": 20
     },

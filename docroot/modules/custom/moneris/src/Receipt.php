@@ -2,11 +2,10 @@
 
 namespace Drupal\moneris;
 
-use DateTime;
-use DateTimeInterface;
 use DateTimeZone;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Moneris_Result;
+use MonerisUnified\mpgResponse;
 
 class Receipt
 {
@@ -40,6 +39,20 @@ class Receipt
           'expdate' => $source->response()->receipt->ResolveData->expdate->__toString(),
           'masked_pan' => $source->response()->receipt->ResolveData->masked_pan->__toString(),
           'CardType' => $source->response()->receipt->CardType->__toString(),
+        ]);
+        break;
+      case mpgResponse::class:
+        /** @var mpgResponse $source */
+        $receipt = new Receipt([
+          'ReceiptId' => $source->getReceiptId(),
+          'ReferenceNum' => $source->getReferenceNum(),
+          'AuthCode' => $source->getAuthCode(),
+          'TransTime' => $source->getTransTime(),
+          'TransDate' => $source->getTransDate(),
+          'TransAmount' => $source->getTransAmount(),
+          'expdate' => $source->getResDataExpDate(),
+          'masked_pan' => $source->getMaskedPan(),
+          'CardType' => $source->getCardType(),
         ]);
         break;
       default:

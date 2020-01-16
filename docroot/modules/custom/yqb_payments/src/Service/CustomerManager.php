@@ -60,7 +60,6 @@ class CustomerManager
     }
     $this->tempStore->delete('entity');
     $this->tempStore->delete('receipt');
-    $this->tempStore->delete('iteration');
     $this->tempStore->delete('receipt_sent');
   }
 
@@ -85,11 +84,7 @@ class CustomerManager
 
   public function getReferenceNumber()
   {
-    return preg_replace('/\s+/', '', sprintf('drupal_%s_%s_%s', $this->get('bill_no'), $this->get('customer_no'), $this->get('iteration', 0)));
-  }
-
-  public function iterateReferenceNumber() {
-    $this->set('iteration', ($this->get('iteration', 0) + 1));
+    return preg_replace('/\s+/', '', sprintf('D8_%s_%s_%s', $this->get('bill_no'), $this->get('customer_no'), date('His')));
   }
 
   public function get($key, $default = '')

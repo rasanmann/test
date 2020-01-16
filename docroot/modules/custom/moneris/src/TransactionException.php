@@ -23,7 +23,7 @@ class TransactionException extends Exception
     $this->errors = $errors;
   }
 
-  public function setMonerisResult(Moneris_Result $result)
+  public function setMonerisResult($result)
   {
     $this->monerisResult = $result;
   }
