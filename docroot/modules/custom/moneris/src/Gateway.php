@@ -48,6 +48,8 @@ class Gateway {
   public function purchase($token, $orderId, $amount, $email = NULL, $status = FALSE) {
     $config = Drupal::config('moneris.payment_settings');
     $testMode = ($config->get('moneris.environment') != 'live');
+    $amount = (float) $amount;
+    $amount = number_format($amount, 2);
 
     $siteName = \Drupal::config('system.site')->get('name');
     $params = [
@@ -66,7 +68,9 @@ class Gateway {
     $mpgRequest->setTestMode($testMode);
 
     $mpgHttpPost = new mpgHttpsPostStatus($config->get('moneris.store_id'), $config->get('moneris.api_key'), $status, $mpgRequest);
+    $this->logger->debug(print_r($params, true));
     $mpgResponse = $mpgHttpPost->getMpgResponse();
+    $this->logger->debug(print_r($mpgResponse, true));
 
     $complete = $mpgResponse->getComplete();
     $timeout = $mpgResponse->getTimedOut();
