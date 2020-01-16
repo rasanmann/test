@@ -4090,7 +4090,7 @@ ul[data-sa-theme="minimal"] {
 .field--name-body,
 .field--name-field-text,
 .view-careers {
-  max-width: 870px; }
+  max-width: 909px; }
   #questions-et-commentaires-poser-une-question .region-content form figure,
   #questions-and-comments-submit-a-question .region-content form figure,
   #nous-joindre .block-basic-content figure,
@@ -4148,7 +4148,6 @@ ul[data-sa-theme="minimal"] {
   #contact-us .block-basic-content ul,
   #nous-joindre .contact-form ul,
   #contact-us .contact-form ul,
-  .field--name-body ul,
   .field--name-field-text ul,
   .view-careers ul {
     margin-bottom: 20px;
