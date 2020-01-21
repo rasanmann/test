@@ -1,0 +1,11 @@
+ul.dropdown-menu li a {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important; }
+  ul.dropdown-menu li a span svg {
+    fill: white !important; }
+
+.no-touchevents #layout-header .dropdown-menu > li > a .icon-right-arrow path {
+  fill: white; }
+
+.no-touchevents #layout-header .dropdown-menu > li > a:hover .icon-right-arrow path {
+  fill: blue; }
