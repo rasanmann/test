@@ -222,3 +222,11 @@
     margin-bottom: 10px;
   }
 }
+
+#nav-footer-socials {
+  a[target=_blank] {
+    &:after {
+      display: none;
+    }
+  }
+}

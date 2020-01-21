@@ -135,3 +135,6 @@
 .field--name-field-primary-title h2 {
   margin-top: 60px;
   margin-bottom: 10px; }
+
+#nav-footer-socials a[target=_blank]:after {
+  display: none; }

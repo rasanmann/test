@@ -1102,7 +1102,7 @@ ul[data-sa-theme="minimal"] {
     .breadcrumb > li + li:before {
       content: "";
       padding: 0;
-      background-image: url("../svg/right-arrow.svg");
+      background-image: url("../svg/right-arrow-blue.svg");
       height: 15px;
       width: 8px;
       margin: 0 12px 1px 14px;
@@ -11259,11 +11259,11 @@ p {
 a[target="_blank"]:after {
   content: "\e164";
   top: 1px;
-  display: inline-block;
+  display: inherit;
   font-family: "Glyphicons Halflings";
   font-style: normal;
-  margin-left: 3px;
-  font-size: 75%;
+  padding-left: 3px;
+  font-size: 65%;
 }
 
 a.no-after:after {
