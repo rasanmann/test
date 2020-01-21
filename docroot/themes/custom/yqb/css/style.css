@@ -1102,7 +1102,7 @@ ul[data-sa-theme="minimal"] {
     .breadcrumb > li + li:before {
       content: "";
       padding: 0;
-      background-image: url("../svg/right-arrow-blue.svg");
+      background-image: url("../svg/right-arrow.svg");
       height: 15px;
       width: 8px;
       margin: 0 12px 1px 14px;
