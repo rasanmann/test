@@ -6,7 +6,7 @@ Drupal.behaviors.changeLinkToButton = {
   attach: function (context, settings) {
     this.vefiryIfUrl(context);
     var _this = this;
-    jQuery(document, settings).on('pjax:success', function(){
+    jQuery(document).on('pjax:success', function(){
       _this.vefiryIfUrl(context);
     });
   },
