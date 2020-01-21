@@ -26,7 +26,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/a-propos\r\n/a-propos/*\r\n/a-propos/*/*\r\n/pages/travaux-de-construction\r\n"
+    pages: "/a-propos\r\n/a-propos/*\r\n/a-propos/*/*\r\n/pages/travaux-de-construction\r\n/pages/demande-de-transport-réservé\r\n"
     negate: false
     context_mapping: {  }
   language:

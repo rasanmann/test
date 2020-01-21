@@ -11,10 +11,7 @@ function css() {
     gulp
       .src(['scss/*.scss', 'scss/**/*.scss'])
       .pipe(sass())
-      .pipe(autoprefixer({
-        browsers: ['> 1%'],
-        cascade: false
-      }))
+      .pipe(autoprefixer())
       .on('error', sass.logError)
       .pipe(gulp.dest('css'))
   );

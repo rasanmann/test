@@ -21,3 +21,5 @@ docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_w
 docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_wait_times.wait.yml
 docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_weather.cron.yml
 docroot/sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync/yqb_weather.weather.yml
+backup-*.sql.gz
+.lando.yml

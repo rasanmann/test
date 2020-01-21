@@ -26,7 +26,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/about\r\n/about/*\r\n/about/*/*"
+    pages: "/about\r\n/about/*\r\n/about/*/*\r\n/about/reserved-transport-request"
     negate: false
     context_mapping: {  }
   language:

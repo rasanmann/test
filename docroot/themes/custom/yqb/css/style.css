@@ -4090,7 +4090,7 @@ ul[data-sa-theme="minimal"] {
 .field--name-body,
 .field--name-field-text,
 .view-careers {
-  max-width: 870px; }
+  max-width: 909px; }
   #questions-et-commentaires-poser-une-question .region-content form figure,
   #questions-and-comments-submit-a-question .region-content form figure,
   #nous-joindre .block-basic-content figure,
@@ -4148,7 +4148,6 @@ ul[data-sa-theme="minimal"] {
   #contact-us .block-basic-content ul,
   #nous-joindre .contact-form ul,
   #contact-us .contact-form ul,
-  .field--name-body ul,
   .field--name-field-text ul,
   .view-careers ul {
     margin-bottom: 20px;
@@ -11256,5 +11255,19 @@ p {
   background: url(/themes/custom/yqb/img/yqb-2018.png) center center/contain no-repeat;
   height: 274px;
   width: 274px; }
+
+a[target="_blank"]:after {
+  content: "\e164";
+  top: 1px;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  margin-left: 3px;
+  font-size: 75%;
+}
+
+a.no-after:after {
+  display: none !important;
+}
 
 /*# sourceMappingURL=style.css.map */
