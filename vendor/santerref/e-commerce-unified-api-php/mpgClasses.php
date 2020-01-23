@@ -1,6 +1,7 @@
 <?php
 
 namespace MonerisUnified;
+
 #################### mpgGlobals #############################################
 
 
@@ -35,7 +36,7 @@ class mpgGlobals
 }//end class mpgGlobals
 
 ###################### curlPost #############################################
-class httpsPost
+class httpsPost 
 {
 	var $url;
 	var $dataToSend;
@@ -54,13 +55,13 @@ class httpsPost
 			echo "DataToSend= ".$this->dataToSend;
 			echo "\n\nPostURL= " . $this->url;
 		}
-
+		
 		$g=new mpgGlobals();
 		$gArray=$g->getGlobals();
 		$connectTimeOut = $gArray['CONNECT_TIMEOUT'];
 		$clientTimeOut = $gArray['CLIENT_TIMEOUT'];
 		$apiVersion = $gArray['API_VERSION'];
-
+		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$this->url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
@@ -73,17 +74,17 @@ class httpsPost
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 		//curl_setopt($ch, CURLOPT_CAINFO, "PATH_TO_CA_BUNDLE");
-
+		
 		$this->response=curl_exec ($ch);
-
+		
 		curl_close ($ch);
-
+		
 		if($this->debug == true)
 		{
 			echo "\n\nRESPONSE= $this->response\n";
 		}
 	}
-
+	
 	public function getHttpsResponse()
 	{
 		return $this->response;
@@ -113,10 +114,10 @@ class mpgHttpsPost
   		$this->mpgRequest=$mpgRequestOBJ;
   		$this->isMPI=$mpgRequestOBJ->getIsMPI();
   		$dataToSend=$this->toXML();
-
+  		
 		$url = $this->mpgRequest->getURL();
-
-  		$httpsPost= new httpsPost($url, $dataToSend);
+		
+  		$httpsPost= new httpsPost($url, $dataToSend);	
   		$response = $httpsPost->getHttpsResponse();
 
   		if(!$response)
@@ -154,19 +155,19 @@ class mpgHttpsPost
 
   		$req=$this->mpgRequest;
   		$reqXMLString=$req->toXML();
-
+  		
   		if($this->isMPI === true)
   		{
   			$this->xmlString .="<?xml version=\"1.0\"?>".
 								"<MpiRequest>".
 									"<store_id>$this->store_id</store_id>".
 									"<api_token>$this->api_token</api_token>";
-
+  			
   			if($this->app_version != null)
   			{
   				$this->xmlString .= "<app_version>$this->app_version</app_version>";
   			}
-
+									
 			$this->xmlString .= 	$reqXMLString.
 								"</MpiRequest>";
   		}
@@ -176,12 +177,12 @@ class mpgHttpsPost
                					"<request>".
                						"<store_id>$this->store_id</store_id>".
                						"<api_token>$this->api_token</api_token>";
-
+  			
   			if($this->app_version != null)
   			{
   				$this->xmlString .= "<app_version>$this->app_version</app_version>";
   			}
-
+  			
             $this->xmlString .=    	$reqXMLString.
                 				"</request>";
   		}
@@ -217,10 +218,10 @@ class mpgHttpsPostStatus
   		$dataToSend=$this->toXML();
 
   		//$transactionType=$mpgRequestOBJ->getTransactionType();
-
+ 		
   		$url = $this->mpgRequest->getURL();
 
-  		$httpsPost= new httpsPost($url, $dataToSend);
+  		$httpsPost= new httpsPost($url, $dataToSend);	
   		$response = $httpsPost->getHttpsResponse();
 
   		if(!$response)
@@ -262,12 +263,12 @@ class mpgHttpsPostStatus
 	               			"<request>".
 	               			"<store_id>$this->store_id</store_id>".
 	               			"<api_token>$this->api_token</api_token>";
-
+  		
   		if($this->app_version != null)
   		{
   			$this->xmlString .= "<app_version>$this->app_version</app_version>";
   		}
-
+  		
 	    $this->xmlString .= "<status_check>$this->status</status_check>".
 	                		$reqXMLString.
 	                		"</request>";
@@ -308,11 +309,11 @@ class mpgResponse
  	var $data_key="";
  	var $DataKeys = array();
  	var $isResolveData;
-
+ 	
  	//specifically for VdotMe transactions
  	var $vDotMeInfo;
  	var $isVdotMeInfo;
-
+ 	
  	//specifically for MasterPass transactions
  	var $isPaypass;
  	var $isPaypassInfo;
@@ -321,14 +322,14 @@ class mpgResponse
  	//specifically for MPI transactions
  	var $ACSUrl;
  	var $isMPI = false;
-
+ 	
  	//specifically for Risk transactions
  	var $isResults;
  	var $isRule;
  	var $ruleName;
  	var $results = array();
  	var $rules = array();
-
+ 	
  	//specifically for MCP transaction
  	var $mcpRatesDataHash = array();
  	var $mcpRateData;
@@ -353,7 +354,7 @@ class mpgResponse
 	{
    		return($this->responseData);
  	}
-
+ 	
  	//To prevent Undefined Index Notices
  	private function getMpgResponseValue($responseData, $value)
  	{
@@ -484,52 +485,52 @@ class mpgResponse
 	{
 		return $this->getMpgResponseValue($this->responseData,'ITDResponse');
 	}
-
+	
 	public function getIsVisaDebit()
 	{
-		return $this->getMpgResponseValue($this->responseData,'IsVisaDebit');
+		return $this->getMpgResponseValue($this->responseData,'IsVisaDebit');	
 	}
-
+	
 	public function getMaskedPan()
 	{
 		return $this->getMpgResponseValue($this->responseData,'MaskedPan');
 	}
-
+	
 	public function getCfSuccess()
 	{
 		return $this->getMpgResponseValue($this->responseData,'CfSuccess');
 	}
-
+	
 	public function getCfStatus()
 	{
 		return $this->getMpgResponseValue($this->responseData,'CfStatus');
 	}
-
+	
 	public function getFeeAmount()
 	{
 		return $this->getMpgResponseValue($this->responseData,'FeeAmount');
 	}
-
+	
 	public function getFeeRate()
 	{
 		return $this->getMpgResponseValue($this->responseData,'FeeRate');
 	}
-
+	
 	public function getFeeType()
 	{
 		return $this->getMpgResponseValue($this->responseData,'FeeType');
 	}
-
+	
 	public function getHostId()
 	{
 		return $this->getMpgResponseValue($this->responseData,'HostId');
 	}
-
+		
 	public function getIssuerId()
 	{
 		return $this->getMpgResponseValue($this->responseData,'IssuerId');
 	}
-
+	
 	//--------------------------- RecurUpdate response fields ----------------------------//
 
 	public function getRecurUpdateSuccess()
@@ -546,84 +547,84 @@ class mpgResponse
 	{
 		return $this->getMpgResponseValue($this->responseData,'RecurEndDate');
 	}
-
+	
 	//--------------------------- MCP response fields ----------------------------//
-
+	
 	//MCP Fields
 	/*
 	public function getMerchantSettlementAmount()
 	{
 		return $this->getMpgResponseValue($this->responseData,"MerchantSettlementAmount");
 	}
-
+	
 	public function getCardholderAmount()
 	{
 		return $this->getMpgResponseValue($this->responseData,"CardholderAmount");
 	}
-
+	
 	public function getMCPRate()
 	{
 		return $this->getMpgResponseValue($this->responseData,"MCPRate");
 	}
-
+	
 	public function getMCPErrorStatusCode()
 	{
 		return $this->getMpgResponseValue($this->responseData,"MCPErrorStatusCode");
 	}
-
+	
 	public function getMCPErrorMessage()
 	{
 		return $this->getMpgResponseValue($this->responseData,"MCPErrorMessage");
 	}
 	*/
-
+	
 	public function getMCPRateToken()
 	{
 		return $this->getMpgResponseValue($this->responseData,"MCPRateToken");
 	}
-
+	
 	public function getRateTxnType()
 	{
 		return $this->getMpgResponseValue($this->responseData,"RateTxnType");
 	}
-
+	
 	public function getRateInqStartTime()
 	{
 		return $this->getMpgResponseValue($this->responseData,"RateInqStartTime");
 	}
-
+	
 	public function getRateInqEndTime()
 	{
 		return $this->getMpgResponseValue($this->responseData,"RateInqEndTime");
 	}
-
+	
 	public function getRateValidityStartTime()
 	{
 		return $this->getMpgResponseValue($this->responseData,"RateValidityStartTime");
 	}
-
+	
 	public function getRateValidityEndTime()
 	{
 		return $this->getMpgResponseValue($this->responseData,"RateValidityEndTime");
 	}
-
+	
 	public function getRateValidityPeriod()
 	{
 		return $this->getMpgResponseValue($this->responseData,"RateValidityPeriod");
 	}
-
+	
 	public function getCardholderCurrencyCode($index = '')
 	{
 		if($index !== '')
 		{
 			return $this->getMpgResponseValue($this->mcpRatesDataHash[$index],"CardholderCurrencyCode");
 		}
-		else
+		else 
 		{
 			return $this->getMpgResponseValue($this->responseData,"CardholderCurrencyCode");
 		}
 	}
-
+	
 	public function getCardholderAmount($index = '')
 	{
 		if($index !== '')
@@ -635,7 +636,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,"CardholderAmount");
 		}
 	}
-
+	
 	public function getMerchantSettlementCurrency($index = '')
 	{
 		if($index !== '')
@@ -647,7 +648,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,"MerchantSettlementCurrency");
 		}
 	}
-
+	
 	public function getMerchantSettlementAmount($index = '')
 	{
 		if($index !== '')
@@ -659,7 +660,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,"MerchantSettlementAmount");
 		}
 	}
-
+	
 	public function getMCPRate($index = '')
 	{
 		if($index !== '')
@@ -671,7 +672,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,"MCPRate");
 		}
 	}
-
+	
 	public function getMCPErrorStatusCode($index = '')
 	{
 		if($index !== '')
@@ -683,7 +684,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,"MCPErrorStatusCode");
 		}
 	}
-
+	
 	public function getMCPErrorMessage($index = '')
 	{
 		if($index !== '')
@@ -695,7 +696,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,"MCPErrorMessage");
 		}
 	}
-
+	
 	public function getRatesCount()
 	{
 		return count($this->mcpRatesDataHash);
@@ -808,88 +809,88 @@ class mpgResponse
 	{
 		return $this->getMpgResponseValue($this->resolveData,'crypt_type');
 	}
-
+	
 	public function getResDataSec()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'sec');
 	}
-
+	
 	public function getResDataCustFirstName()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'cust_first_name');
 	}
-
+	
 	public function getResDataCustLastName()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'cust_last_name');
 	}
-
+	
 	public function getResDataCustAddress1()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'cust_address1');
 	}
-
+	
 	public function getResDataCustAddress2()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'cust_address2');
 	}
-
+	
 	public function getResDataCustCity()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'cust_city');
 	}
-
+	
 	public function getResDataCustState()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'cust_state');
 	}
-
+	
 	public function getResDataCustZip()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'cust_zip');
 	}
-
+	
 	public function getResDataRoutingNum()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'routing_num');
 	}
-
+	
 	public function getResDataAccountNum()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'account_num');
 	}
-
+	
 	public function getResDataMaskedAccountNum()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'masked_account_num');
 	}
-
+	
 	public function getResDataCheckNum()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'check_num');
 	}
-
+	
 	public function getResDataAccountType()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'account_type');
 	}
-
+	
 	public function getResDataPresentationType()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'presentation_type');
 	}
-
+	
 	public function getResDataPAccountNumber()
 	{
 		return $this->getMpgResponseValue($this->resolveData,'p_account_number');
 	}
-
+	
 	//-------------------------- VdotMe specific fields --------------------------------//
 	public function getVDotMeData()
 	{
 		return($this->vDotMeInfo);
 	}
-
+	
 	public function getCurrencyCode()
 	{
 		return $this->getMpgResponseValue($this->vDotMeInfo,'currencyCode');
@@ -949,7 +950,7 @@ class mpgResponse
 	{
 		return $this->getMpgResponseValue($this->vDotMeInfo,'id');
 	}
-
+	
 	public function getLastFourDigits()
 	{
 		return $this->getMpgResponseValue($this->vDotMeInfo,'lastFourDigits');
@@ -969,7 +970,7 @@ class mpgResponse
 	{
 		return $this->getMpgResponseValue($this->vDotMeInfo,'cardType');
 	}
-
+	
 	public function getBillingPersonName()
 	{
 		return $this->getMpgResponseValue($this->vDotMeInfo['billingAddress'],'personName');
@@ -1009,7 +1010,7 @@ class mpgResponse
 	{
 		return $this->getMpgResponseValue($this->vDotMeInfo,'verificationStatus');
 	}
-
+	
 	public function getIsExpired()
 	{
 		return $this->getMpgResponseValue($this->vDotMeInfo,'expired');
@@ -1109,229 +1110,229 @@ class mpgResponse
 	{
 		return $this->getMpgResponseValue($this->vDotMeInfo['riskData'],'cvvResponseCode');
 	}
-
+	
 	//--------------------------- MasterPass response fields -----------------------------//
-
+	
 	public function getCardBrandId()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBrandId');
 	}
-
-
+	
+	
 	public function getCardBrandName()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBrandName');
 	}
-
-
+	
+	
 	public function getCardBillingAddressCity()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBillingAddressCity');
 	}
-
-
+	
+	
 	public function getCardBillingAddressCountry()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBillingAddressCountry');
 	}
-
-
+	
+	
 	public function getCardBillingAddressCountrySubdivision()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBillingAddressCountrySubdivision');
 	}
-
-
+	
+	
 	public function getCardBillingAddressLine1()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBillingAddressLine1');
 	}
-
-
+	
+	
 	public function getCardBillingAddressLine2()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBillingAddressLine2');
 	}
-
-
+	
+	
 	public function getCardBillingAddressPostalCode()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBillingAddressPostalCode');
 	}
-
-
+	
+	
 	public function getCardBillingAddressRecipientPhoneNumber()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBillingAddressRecipientPhoneNumber');
 	}
-
-
+	
+	
 	public function getCardBillingAddressRecipientName()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardBillingAddressRecipientName');
 	}
-
-
+	
+	
 	public function getCardCardHolderName()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardCardHolderName');
 	}
-
-
+	
+	
 	public function getCardExpiryMonth()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardExpiryMonth');
 	}
-
-
+	
+	
 	public function getCardExpiryYear()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardExpiryYear');
 	}
-
-
+	
+	
 	public function getContactEmailAddress()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ContactEmailAddress');
 	}
-
-
+	
+	
 	public function getContactFirstName()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ContactFirstName');
 	}
-
-
+	
+	
 	public function getContactLastName()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ContactLastName');
 	}
-
-
+	
+	
 	public function getContactPhoneNumber()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ContactPhoneNumber');
 	}
-
-
+	
+	
 	public function getShippingAddressCity()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ShippingAddressCity');
 	}
-
-
+	
+	
 	public function getShippingAddressCountry()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ShippingAddressCountry');
 	}
-
-
+	
+	
 	public function getShippingAddressCountrySubdivision()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ShippingAddressCountrySubdivision');
 	}
-
+	
 	public function getShippingAddressLine2()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ShippingAddressLine2');
 	}
-
-
+	
+	
 	public function getShippingAddressPostalCode()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ShippingAddressPostalCode');
 	}
-
-
+	
+	
 	public function getShippingAddressRecipientName()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ShippingAddressRecipientName');
 	}
-
-
+	
+	
 	public function getShippingAddressRecipientPhoneNumber()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'ShippingAddressRecipientPhoneNumber');
 	}
-
-
+	
+	
 	public function getPayPassWalletIndicator()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'PayPassWalletIndicator');
 	}
-
-
+	
+	
 	public function getAuthenticationOptionsAuthenticateMethod()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'AuthenticationOptionsAuthenticateMethod');
 	}
-
-
+	
+	
 	public function getAuthenticationOptionsCardEnrollmentMethod()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'AuthenticationOptionsCardEnrollmentMethod');
 	}
-
-
+	
+	
 	public function getCardAccountNumber()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'CardAccountNumber');
 	}
-
-
+	
+	
 	public function getAuthenticationOptionsEciFlag()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'AuthenticationOptionsEciFlag');
 	}
-
-
+	
+	
 	public function getAuthenticationOptionsPaResStatus()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'AuthenticationOptionsPaResStatus');
 	}
-
-
+	
+	
 	public function getAuthenticationOptionsSCEnrollmentStatus()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'AuthenticationOptionsSCEnrollmentStatus');
 	}
-
-
+	
+	
 	public function getAuthenticationOptionsSignatureVerification()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'AuthenticationOptionsSignatureVerification');
 	}
-
-
+	
+	
 	public function getAuthenticationOptionsXid()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'AuthenticationOptionsXid');
 	}
-
-
+	
+	
 	public function getAuthenticationOptionsCAvv()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'AuthenticationOptionsCAvv');
 	}
-
-
+	
+	
 	public function getTransactionId()
 	{
 		return $this->getMpgResponseValue($this->masterPassData,'TransactionId');
 	}
-
+	
 	public function getMPRequestToken()
 	{
 		return $this->getMpgResponseValue($this->responseData,'MPRequestToken');
 	}
-
+	
 	public function getMPRedirectUrl()
 	{
 		return $this->getMpgResponseValue($this->responseData,'MPRedirectUrl');
 	}
-
+	
 	//------------------- VDotMe & MasterPass shared response fields ---------------------//
-
+	
 	public function getShippingAddressLine1()
 	{
 		if ($this->isPaypass)
@@ -1372,7 +1373,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,'message');
 		}
 	}
-
+	
 	public function getMpiPaReq()
 	{
 		if ($this->isMPI === false)
@@ -1396,7 +1397,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,'TermUrl');
 		}
 	}
-
+	
 	public function getMpiMD()
 	{
 		if ($this->isMPI === false)
@@ -1420,7 +1421,7 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,'ACSUrl');
 		}
 	}
-
+	
 	public function getMpiCavv()
 	{
 		if ($this->isMPI === false)
@@ -1457,16 +1458,16 @@ class mpgResponse
 			return $this->getMpgResponseValue($this->responseData,'PAResVerified');
 		}
 	}
-
+	
 	public function getMpiResponseData()
 	{
 		return($this->responseData);
 	}
-
+	
 	public function getMpiInLineForm()
 	{
-
-		$inLineForm ='<html><head><title>Title for Page</title></head><SCRIPT LANGUAGE="Javascript" >' .
+		
+		$inLineForm ='<html><head><title>Title for Page</title></head><SCRIPT LANGUAGE="Javascript" >' . 
 				"<!--
 				function OnLoadEvent()
 				{
@@ -1475,7 +1476,7 @@ class mpgResponse
 				-->
 				</SCRIPT>" .
 				'<body onload="OnLoadEvent()">
-					<form name="downloadForm" action="' . $this->getMpiACSUrl() .
+					<form name="downloadForm" action="' . $this->getMpiACSUrl() . 
 					'" method="POST">
 					<noscript>
 					<br>
@@ -1497,10 +1498,10 @@ class mpgResponse
 				</form>
 				</body>
 				</html>';
-
-		return $inLineForm;
+	
+		return $inLineForm; 
 	}
-
+	
 	public function getMpiPopUpWindow()
 	{
 		$popUpForm ='<html><head><title>Title for Page</title></head><SCRIPT LANGUAGE="Javascript" >' .
@@ -1537,28 +1538,28 @@ class mpgResponse
 						</form>
 					</body>
 					</html>';
-
+	
 		return $popUpForm;
 	}
-
-
+	
+	
 	//-----------------  Risk response fields  ---------------------------------------------------------//
-
+	
 	public function getRiskResponse()
 	{
 		return ($this->responseData);
 	}
-
+	
 	public function getResults()
 	{
 		return ($this->results);
 	}
-
+	
 	public function getRules()
 	{
 		return ($this->rules);
 	}
-
+	
 	//--------------------------- BatchClose response fields -----------------------------//
 
 	public function getTerminalStatus($ecr_no)
@@ -1706,17 +1707,17 @@ class mpgResponse
  		elseif($this->isResults)
  		{
  			$this->results[$this->currentTag] = $data;
-
+ 			 
  		}
  		elseif($this->isRule)
  		{
-
+ 		
  			if ($this->currentTag == "RuleName")
  			{
  				$this->ruleName=$data;
  			}
  			$this->rules[$this->ruleName][$this->currentTag] = $data;
-
+ 		
  		}
  		elseif($this->isMCPRatesData)
  		{
@@ -1841,11 +1842,11 @@ class mpgResponse
 				$this->resolveDataHash[$this->data_key]=$this->resolveData;
 				$this->resolveData=array();
 			}
-	 	}
+	 	} 	
 	 	elseif($this->currentTag == "VDotMeInfo")
 	 	{
 	 		$this->isVdotMeInfo=0;
-	 	}
+	 	} 	
 	 	elseif($this->isVdotMeInfo)
 	 	{
 	 		switch($this->currentTag){
@@ -1873,7 +1874,7 @@ class mpgResponse
 	 				{
 	 					$this->ParentNode="";
 	 					break;
-	 				}
+	 				}	
 	 		}
 	 	}
 	 	elseif($name == "BankTotals")
@@ -1895,7 +1896,7 @@ class mpgResponse
 	   	elseif($this->currentTag == "Rate")
 	   	{
 	   		array_push($this->mcpRatesDataHash, $this->mcpRateData);
-
+	   		
 	   		$this->isMCPRatesData=0;
 	   	}
 
@@ -1929,7 +1930,7 @@ class mpgRequest
 	 			'reauth' =>array('order_id','cust_id', 'amount', 'orig_order_id', 'txn_number', 'crypt_type', 'dynamic_descriptor'),
 	 			'recur_update' => array('order_id','cust_id','pan','expdate','recur_amount','add_num_recurs','total_num_recurs','hold','terminate'),
 	 			'refund' => array('order_id', 'amount', 'txn_number', 'crypt_type', 'cust_id', 'dynamic_descriptor'),
-
+ 				
  				//Encrypted
  				'enc_card_verification' => array('order_id','cust_id','enc_track2','device_type', 'crypt_type'),
  				'enc_forcepost' => array('order_id','cust_id','amount','enc_track2','device_type','auth_code','crypt_type','dynamic_descriptor'),
@@ -1942,11 +1943,11 @@ class mpgRequest
  				'enc_track2_ind_refund' => array('order_id','cust_id','amount','enc_track2','pos_code','device_type','dynamic_descriptor'),
  				'enc_track2_preauth' => array('order_id','cust_id','amount','enc_track2','pos_code','device_type','dynamic_descriptor'),
  				'enc_track2_purchase' => array('order_id','cust_id','amount','enc_track2','pos_code','device_type','dynamic_descriptor'),
-
+ 				
  				//Interac Online
 	 			'idebit_purchase' =>array('order_id', 'cust_id', 'amount','idebit_track2','dynamic_descriptor'),
 	 			'idebit_refund' =>array('order_id','amount','txn_number'),
-
+ 			
  				//Vault
  				'res_add_cc' => array('cust_id','phone','email','note','pan','expdate','crypt_type', 'data_key_format'),
 				'res_add_token' => array('data_key','cust_id','phone','email','note','expdate','crypt_type', 'data_key_format'),
@@ -1967,7 +1968,7 @@ class mpgRequest
 				'res_tokenize_cc' => array('order_id','txn_number','cust_id','phone','email','note', 'data_key_format'),
 				'res_update_cc' => array('data_key','cust_id','phone','email','note','pan','expdate','crypt_type'),
  				'res_forcepost_cc' => array('order_id','cust_id','amount','data_key','auth_code', 'crypt_type','dynamic_descriptor'),
-
+ 				
  				//Track2
  				'track2_completion' => array('order_id', 'comp_amount','txn_number','pos_code','dynamic_descriptor'),
  				'track2_forcepost'=>array('order_id','cust_id', 'amount', 'track2','pan','expdate','pos_code','auth_code','dynamic_descriptor'),
@@ -1976,7 +1977,7 @@ class mpgRequest
 	 			'track2_purchase' =>array('order_id','cust_id','amount','track2','pan','expdate','pos_code','dynamic_descriptor'),
 	 			'track2_purchasecorrection' => array('order_id', 'txn_number'),
 	 			'track2_refund' => array('order_id', 'amount', 'txn_number','dynamic_descriptor'),
-
+ 				
  				//VDotMe
  				'vdotme_completion' => array('order_id','comp_amount','txn_number','crypt_type','cust_id','dynamic_descriptor'),
  				'vdotme_getpaymentinfo' => array('callid'),
@@ -1985,7 +1986,7 @@ class mpgRequest
  				'vdotme_purchasecorrection' => array('order_id','txn_number','crypt_type','cust_id','dynamic_descriptor'),
  				'vdotme_reauth' => array('order_id','orig_order_id','txn_number','amount','crypt_type','cust_id','dynamic_descriptor'),
  				'vdotme_refund' => array('order_id','txn_number','amount','crypt_type','cust_id','dynamic_descriptor'),
-
+ 				
  				//MasterPass
 	 			'paypass_send_shopping_cart' => array('subtotal', 'suppress_shipping_address'),
 	 			'paypass_retrieve_checkout_data' => array('oauth_token', 'oauth_verifier', 'checkout_resource_url'),
@@ -1994,13 +1995,13 @@ class mpgRequest
 	 			'paypass_preauth' => array('order_id', 'cust_id', 'amount', 'mp_request_token', 'crypt_type', 'dynamic_descriptor'),
 	 			'paypass_cavv_preauth' => array('order_id', 'cavv', 'cust_id', 'amount', 'mp_request_token', 'crypt_type', 'dynamic_descriptor'),
 	 			'paypass_txn' => array('xid', 'amount', 'mp_request_token', 'MD', 'merchantUrl', 'accept', 'userAgent'),
-
+ 				
  				//US ACH
 	 			'us_ach_credit' => array('order_id','cust_id','amount'),
  				'us_ach_debit' => array('order_id','cust_id','amount'),
 	 			'us_ach_fi_enquiry' => array('routing_num'),
 	 			'us_ach_reversal' => array('order_id','txn_number'),
-
+	 			
  				//US Basic
  				'us_batchclose' => array('ecr_number'),
  				'us_card_verification' => array('order_id','cust_id','pan','expdate'),
@@ -2021,7 +2022,7 @@ class mpgRequest
 	 			'us_reauth' => array('order_id','cust_id','orig_order_id','txn_number','amount','crypt_type'),
 	 			'us_recur_update' => array('order_id', 'cust_id', 'pan', 'expdate', 'recur_amount','add_num_recurs', 'total_num_recurs', 'hold', 'terminate','avs_street_number', 'avs_street_name', 'avs_zipcode'),
 	 			'us_refund' => array('order_id', 'amount', 'txn_number', 'crypt_type'),
-
+ 				
  				//US Encrypted
  				'us_enc_card_verification' => array('order_id','cust_id','enc_track2','device_type'),
  				'us_enc_forcepost' => array('order_id','cust_id','amount','enc_track2','device_type','auth_code','crypt_type','dynamic_descriptor'),
@@ -2034,7 +2035,7 @@ class mpgRequest
  				'us_enc_track2_ind_refund' => array('order_id','cust_id','amount','enc_track2','pos_code','device_type','dynamic_descriptor'),
 	 			'us_enc_track2_preauth' => array('order_id','cust_id','amount','enc_track2','pos_code','device_type','dynamic_descriptor'),
 	 			'us_enc_track2_purchase' => array('order_id','cust_id','amount','enc_track2','pos_code','device_type','commcard_invoice','commcard_tax_amount','dynamic_descriptor'),
-
+ 				
  				//US Vault
  				'us_res_add_cc' => array('cust_id','phone','email','note','pan','expdate','crypt_type', 'data_key_format'),
  				'us_res_add_ach' => array('cust_id','phone','email','note'),
@@ -2051,12 +2052,12 @@ class mpgRequest
  				'us_res_purchase_ach' => array('data_key','order_id','cust_id','amount'),
  				'us_res_purchase_cc' => array('data_key','order_id','cust_id','amount','crypt_type','commcard_invoice','commcard_tax_amount','dynamic_descriptor'),
  				'us_res_purchase_pinless' => array('data_key','order_id','cust_id','amount','intended_use','p_account_number'),
- 				'us_res_temp_add' => array('pan','expdate','duration','crypt_type', 'data_key_format'),
+ 				'us_res_temp_add' => array('pan','expdate','duration','crypt_type', 'data_key_format'),	
  				'us_res_tokenize_cc' => array('order_id','txn_number','cust_id','phone','email','note', 'data_key_format'),
  				'us_res_update_cc' => array('data_key','cust_id','phone','email','note','pan','expdate','crypt_type'),
  				'us_res_update_ach' => array('data_key','cust_id','phone','email','note'),
  				'us_res_update_pinless' => array('data_key','cust_id','phone','email','note','pan','expdate','presentation_type','p_account_number'),
-
+ 				
  				//US Track2
 	 			'us_track2_completion' => array('order_id', 'comp_amount','txn_number','pos_code', 'commcard_invoice','commcard_tax_amount'),
 	 			'us_track2_forcepost'=>array('order_id','cust_id', 'amount', 'track2','pan','expdate','pos_code','auth_code','dynamic_descriptor'),
@@ -2065,35 +2066,35 @@ class mpgRequest
  				'us_track2_purchase' =>array('order_id','cust_id','amount','track2','pan','expdate', 'commcard_invoice','commcard_tax_amount','pos_code','dynamic_descriptor'),
 	 			'us_track2_purchasecorrection' => array('order_id', 'txn_number'),
 	 			'us_track2_refund' => array('order_id', 'amount', 'txn_number'),
-
+ 				
  				//MPI - Common CA and US
 	 			'txn' =>array('xid', 'amount', 'pan', 'expdate','MD', 'merchantUrl','accept','userAgent','currency','recurFreq', 'recurEnd','install'),
 	 			'acs'=> array('PaRes','MD'),
-
+ 				
  				//Group Transaction - Common CA and US
  				'group'=> array('order_id', 'txn_number', 'group_ref_num', 'group_type'),
-
+ 			
  				//Risk - CA only
  				'session_query' => array('order_id','session_id','service_type','event_type'),
  				'attribute_query' => array('order_id','policy_id','service_type'),
-
+ 			
 	 			//Level 23
 	 			'iscorporatecard' => array('pan','expdate'),
-
+	 				
 	 			//Amex General level23
 	 			'axcompletion' => array('order_id', 'comp_amount', 'txn_number', 'crypt_type'),
 	 			'axrefund' => array('order_id', 'amount', 'txn_number', 'crypt_type'),
 	 			'axind_refund' => array('order_id', 'cust_id', 'amount', 'pan', 'expdate', 'crypt_type'),
 	 			'axpurchasecorrection' => array('order_id', 'txn_number', 'crypt_type'),
 	 			'axforcepost' => array('order_id', 'cust_id', 'amount', 'pan', 'expdate', 'auth_code', 'crypt_type'),
-
+	 			
 	 			//Amex Air & Rail level23
 	 			'axracompletion' => array('order_id', 'comp_amount', 'txn_number', 'crypt_type'),
 	 			'axrarefund' => array('order_id', 'amount', 'txn_number', 'crypt_type'),
 	 			'axraind_refund' => array('order_id', 'cust_id', 'amount', 'pan', 'expdate', 'crypt_type'),
 	 			'axrapurchasecorrection' => array('order_id', 'txn_number', 'crypt_type'),
 	 			'axraforcepost' => array('order_id', 'cust_id', 'amount', 'pan', 'expdate', 'auth_code', 'crypt_type'),
-
+	 				
 	 			//Visa General, Air & Rail Level23
 	 			'vscompletion' => array('order_id', 'comp_amount', 'txn_number', 'crypt_type', 'national_tax', 'merchant_vat_no', 'local_tax', 'customer_vat_no', 'cri', 'customer_code', 'invoice_number', 'local_tax_no'),
 	 			'vsrefund' => array('order_id', 'amount', 'txn_number', 'crypt_type', 'national_tax', 'merchant_vat_no', 'local_tax', 'customer_vat_no', 'cri','customer_code', 'invoice_number', 'local_tax_no'),
@@ -2101,7 +2102,7 @@ class mpgRequest
 	 			'vsforcepost' => array('order_id', 'cust_id', 'amount', 'pan', 'expdate', 'auth_code', 'crypt_type', 'national_tax', 'merchant_vat_no', 'local_tax', 'customer_vat_no', 'cri','customer_code', 'invoice_number', 'local_tax_no'),
 	 			'vspurchasecorrection' => array('order_id', 'txn_number', 'crypt_type'),
 	 			'vscorpais' => array('order_id', 'txn_number'),
-
+	 				
 	 			//MasterCard General, Air and Rail Level23
 	 			'mccompletion' => array('order_id', 'comp_amount', 'txn_number', 'merchant_ref_no', 'crypt_type'),
 	 			'mcrefund' => array('order_id', 'amount', 'txn_number', 'merchant_ref_no', 'crypt_type'),
@@ -2109,7 +2110,7 @@ class mpgRequest
 	 			'mcpurchasecorrection' => array('order_id', 'txn_number', 'crypt_type'),
 	 			'mcforcepost' => array('order_id', 'cust_id', 'amount', 'pan', 'expdate', 'auth_code', 'merchant_ref_no', 'crypt_type'),
 	 			'mccorpais' => array('order_id', 'txn_number'),
-
+ 		
  				//MCP transactions
  				'mcp_completion' => array('order_id','txn_number', 'crypt_type', 'cust_id', 'dynamic_descriptor', 'ship_indicator', 'mcp_version', 'cardholder_amount', 'cardholder_currency_code', 'mcp_rate_token'),
  				'mcp_ind_refund' => array('order_id','cust_id','pan','expdate', 'crypt_type','dynamic_descriptor', 'mcp_version', 'cardholder_amount', 'cardholder_currency_code', 'mcp_rate_token'),
@@ -2127,7 +2128,7 @@ class mpgRequest
 	var $procCountryCode = "";
 	var $testMode = "";
 	var $isMPI = "";
-
+	
 	public function __construct($txn)
 	{
 
@@ -2141,16 +2142,16 @@ class mpgRequest
     			$this->txnArray=$temp;
    		}
 	}
-
+	
 	public function setProcCountryCode($countryCode)
 	{
 		$this->procCountryCode = ((strcmp(strtolower($countryCode), "us") >= 0) ? "_US" : "");
 	}
-
-	public function getIsMPI()
+	
+	public function getIsMPI() 
 	{
 		$txnType = $this->getTransactionType();
-
+		
 		if((strcmp($txnType, "txn") === 0) || (strcmp($txnType, "acs") === 0))
   		{
   			//$this->setIsMPI(true);
@@ -2161,7 +2162,7 @@ class mpgRequest
   			return false;
   		}
 	}
-
+	
 	public function setTestMode($state)
 	{
 		if($state === true)
@@ -2181,19 +2182,19 @@ class mpgRequest
   		$jtmp2=array_shift($jtmp1);
   		return $jtmp2;
 	}
-
+	
 	public function getURL()
 	{
 		$g=new mpgGlobals();
   		$gArray=$g->getGlobals();
-
+  		
   		$txnType = $this->getTransactionType();
-
+  		
   		if(strpos($txnType, "us_") !== false)
   		{
   			$this->setProcCountryCode("US");
   		}
-
+  		
   		if((strcmp($txnType, "txn") === 0) || (strcmp($txnType, "acs") === 0))
   		{
   			$this->isMPI = "_MPI";
@@ -2202,15 +2203,15 @@ class mpgRequest
   		{
   			$this->isMPI = "";
   		}
-
+  		
   		$hostId = "MONERIS".$this->procCountryCode.$this->testMode."_HOST";
   		$fileId = "MONERIS".$this->procCountryCode.$this->isMPI."_FILE";
-
+  		
   		$url =  $gArray['MONERIS_PROTOCOL']."://".
   				$gArray[$hostId].":".
   				$gArray['MONERIS_PORT'].
   				$gArray[$fileId];
-
+  		
   		return $url;
 	}
 
@@ -2242,13 +2243,13 @@ class mpgRequest
 			$txnTypeArrayLen=count($txnTypeArray); //length of a specific txn type
 
 			$txnXMLString="";
-
+			
 			//for risk transactions only
 			if((strcmp($txnType, "attribute_query") === 0) || (strcmp($txnType, "session_query") === 0))
 			{
 				$txnXMLString .="<risk>";
 			}
-
+				
 			$txnXMLString .="<$txnType>";
 
 			for($i=0;$i < $txnTypeArrayLen ;$i++)
@@ -2261,13 +2262,13 @@ class mpgRequest
 									. "</$txnTypeArray[$i]>"; //end tag
 				}
 			}
-
+			
    			$recur  = $txnObj->getRecur();
   			if($recur != null)
    			{
          		$txnXMLString .= $recur->toXML();
    			}
-
+   			
 			$avs  = $txnObj->getAvsInfo();
 			if($avs != null)
 			{
@@ -2291,31 +2292,31 @@ class mpgRequest
    			{
         		$txnXMLString .= $custInfo->toXML();
    			}
-
+   			
    			$ach = $txnObj->getAchInfo();
    			if($ach != null)
    			{
    				$txnXMLString .= $ach->toXML();
    			}
-
+   			
    			$convFee  = $txnObj->getConvFeeInfo();
    			if($convFee != null)
    			{
    				$txnXMLString .= $convFee->toXML();
    			}
-
-   			$sessionQuery  = $txnObj->getSessionAccountInfo();
+   			
+   			$sessionQuery  = $txnObj->getSessionAccountInfo(); 			
    			if($sessionQuery != null)
    			{
    				$txnXMLString .= $sessionQuery->toXML();
    			}
-
-   			$attributeQuery  = $txnObj->getAttributeAccountInfo();
+   			
+   			$attributeQuery  = $txnObj->getAttributeAccountInfo();   			
    			if($attributeQuery != null)
    			{
    				$txnXMLString .= $attributeQuery->toXML();
    			}
-
+   			
    			$level23Data = $txnObj->getLevel23Data();
    			if($level23Data != null)
    			{
@@ -2327,15 +2328,15 @@ class mpgRequest
    			{
    				$txnXMLString .= "<rate_info>".$mcpRateInfo->toXML()."</rate_info>";
    			}
-
+   			
    			$txnXMLString .="</$txnType>";
-
+   			
    			//for risk transactions only
    			if((strcmp($txnType, "attribute_query") === 0) || (strcmp($txnType, "session_query") === 0))
    			{
    				$txnXMLString .="</risk>";
    			}
-
+   			
    			$this->xmlString .=$txnXMLString;
 
  		}
@@ -2394,7 +2395,7 @@ class mpgCustInfo
  	public function setInstructions($instructions)
 	{
  		$this->instructions=$instructions;
-
+ 		
    		$this->setCustinfo(array('email'=>$this->email,'instructions'=>$instructions));
  	}
 
@@ -2692,7 +2693,7 @@ class mpgTransaction
 	{
 		$this->avs = $avs;
 	}
-
+	
 	public function getCofInfo()
 	{
 		return $this->cof;
@@ -2700,74 +2701,74 @@ class mpgTransaction
 
 	public function setCofInfo($cof)
 	{
-		$this->cof = $cof;
+		$this->cof = $cof;	
 	}
-
+	
 	public function getMCPRateInfo()
 	{
 		return $this->mcpRateInfo;
 	}
-
+	
 	public function setMCPRateInfo($mcpRate)
 	{
 		$this->mcpRateInfo = $mcpRate;
 	}
-
+	
 	public function getAchInfo()
 	{
 		return $this->ach;
 	}
-
+	
 	public function setAchInfo($ach)
 	{
 		$this->ach = $ach;
 	}
-
+	
 	public function setConvFeeInfo($convFee)
 	{
 		$this->convFee = $convFee;
 	}
-
+	
 	public function getConvFeeInfo()
 	{
 		return $this->convFee;
 	}
-
+	
 	public function setExpiryDate($expdate)
 	{
 		$this->expdate = $expdate;
 	}
-
+	
 	public function getExpiryDate()
 	{
 		return $this->expdate;
 	}
-
+	
 	public function getAttributeAccountInfo()
 	{
 		return $this->attributeAccountInfo;
 	}
-
+	
 	public function setAttributeAccountInfo($attributeAccountInfo)
 	{
 		$this->attributeAccountInfo = $attributeAccountInfo;
 	}
-
+	
 	public function getSessionAccountInfo()
 	{
 		return $this->sessionAccountInfo;
 	}
-
+	
 	public function setSessionAccountInfo($sessionAccountInfo)
 	{
 		$this->sessionAccountInfo = $sessionAccountInfo;
 	}
-
+	
 	public function setLevel23Data($level23Object)
 	{
 		$this->level23Data = $level23Object;
 	}
-
+	
 	public function getLevel23Data()
 	{
 		return $this->level23Data;
@@ -2795,7 +2796,7 @@ class MpiHttpsPost
 
 		$url = $this->mpiRequest->getURL();
 
-  		$httpsPost= new httpsPost($url, $dataToSend);
+  		$httpsPost= new httpsPost($url, $dataToSend);	
   		$response = $httpsPost->getHttpsResponse();
 
 		if(!$response)
@@ -2816,7 +2817,7 @@ class MpiHttpsPost
 		}
 
 		$this->mpiResponse=new MpiResponse($response);
-
+			
 	}
 
 
@@ -2876,7 +2877,7 @@ class MpiResponse{
 	}//end of constructor
 
 	//vbv start
-
+	
 	//To prevent Undefined Index Notices
 	private function getMpiResponseValue($responseData, $value)
 	{
@@ -2908,7 +2909,7 @@ class MpiResponse{
 	{
 		return $this->getMpiResponseValue($this->responseData,'PaReq');
 	}
-
+	
 	public function getMpiTermUrl()
 	{
 		return $this->getMpiResponseValue($this->responseData,'TermUrl');
@@ -3048,7 +3049,7 @@ class MpiRequest
 						'txn' =>array('xid', 'amount', 'pan', 'expdate','MD', 'merchantUrl','accept','userAgent','currency','recurFreq', 'recurEnd','install'),
 						'acs'=> array('PaRes','MD')
 					);
-
+	
 	var $txnArray;
 	var $procCountryCode = "";
 	var $testMode = "";
@@ -3070,7 +3071,7 @@ class MpiRequest
 	{
 		$this->procCountryCode = ((strcmp(strtolower($countryCode), "us") >= 0) ? "_US" : "");
 	}
-
+	
 	public function setTestMode($state)
 	{
 		if($state === true)
@@ -3082,27 +3083,27 @@ class MpiRequest
 			$this->testMode = "";
 		}
 	}
-
+	
 	public function getURL()
 	{
 		$g=new mpgGlobals();
 		$gArray=$g->getGlobals();
-
+	
 		//$txnType = $this->getTransactionType();
-
+	
 		$hostId = "MONERIS".$this->procCountryCode.$this->testMode."_HOST";
 		$fileId = "MONERIS".$this->procCountryCode."_MPI_FILE";
-
+	
 		$url =  $gArray['MONERIS_PROTOCOL']."://".
 				$gArray[$hostId].":".
 				$gArray['MONERIS_PORT'].
 				$gArray[$fileId];
-
+	
 		//echo "PostURL: " . $url;
-
+	
 		return $url;
 	}
-
+	
 	public function toXML()
 	{
 		$xmlString = "";
@@ -3113,14 +3114,14 @@ class MpiRequest
 		{
 			$txnObj=$tmpTxnArray[$x];
 			$txn=$txnObj->getTransaction();
-
+	
 			$txnType=array_shift($txn);
 			$tmpTxnTypes=$this->txnTypes;
 			$txnTypeArray=$tmpTxnTypes[$txnType];
 			$txnTypeArrayLen=count($txnTypeArray); //length of a specific txn type
-
+	
 			$txnXMLString="";
-
+			
 			for($i=0;$i < $txnTypeArrayLen ;$i++)
 			{
 				//Will only add to the XML if the tag was passed in by merchant
@@ -3131,11 +3132,11 @@ class MpiRequest
 									. "</$txnTypeArray[$i]>"; //end tag
 				}
 			}
-
+		 
 			$txnXMLString = "<$txnType>$txnXMLString";
 
 			$txnXMLString .="</$txnType>";
-
+	
 			$xmlString .=$txnXMLString;
 		}
 
@@ -3179,10 +3180,10 @@ class riskHttpsPost{
 		$this->api_token= $apitoken;
 		$this->riskRequest=$riskRequestOBJ;
 		$dataToSend=$this->toXML();
-
+	
 		$url = $this->riskRequest->getURL();
 
-  		$httpsPost= new httpsPost($url, $dataToSend);
+  		$httpsPost= new httpsPost($url, $dataToSend);	
   		$response = $httpsPost->getHttpsResponse();
 
 		if(!$response)
@@ -3270,7 +3271,7 @@ class riskResponse{
 	{
 		return($this->responseData);
 	}
-
+	
 	//To prevent Undefined Index Notices
 	private function getMpgResponseValue($responseData, $value)
 	{
@@ -3314,7 +3315,7 @@ class riskResponse{
 		{
 			//print("\n".$this->currentTag."=".$data);
 			$this->results[$this->currentTag] = $data;
-
+			 
 		}
 
 		if($this->isRule)
@@ -3393,12 +3394,12 @@ class riskRequest{
 			$this->txnArray=$temp;
 		}
 	}
-
+	
 	public function setProcCountryCode($countryCode)
 	{
 		$this->procCountryCode = ((strcmp(strtolower($countryCode), "us") >= 0) ? "_US" : "");
 	}
-
+	
 	public function setTestMode($state)
 	{
 		if($state === true)
@@ -3410,24 +3411,24 @@ class riskRequest{
 			$this->testMode = "";
 		}
 	}
-
+	
 	public function getURL()
 	{
 		$g=new mpgGlobals();
 		$gArray=$g->getGlobals();
-
+	
 		//$txnType = $this->getTransactionType();
-
+	
 		$hostId = "MONERIS".$this->procCountryCode.$this->testMode."_HOST";
 		$fileId = "MONERIS".$this->procCountryCode."_FILE";
-
+	
 		$url =  $gArray['MONERIS_PROTOCOL']."://".
 				$gArray[$hostId].":".
 				$gArray['MONERIS_PORT'].
 				$gArray[$fileId];
-
+	
 		//echo "PostURL: " . $url;
-
+	
 		return $url;
 	}
 
@@ -3463,23 +3464,23 @@ class riskRequest{
 			$txnXMLString = "<$txnType>$txnXMLString";
 
 			$sessionQuery  = $txnObj->getSessionAccountInfo();
-
+			 
 			if($sessionQuery != null)
 			{
 				$txnXMLString .= $sessionQuery->toXML();
 			}
 
 			$attributeQuery  = $txnObj->getAttributeAccountInfo();
-
+	
 			if($attributeQuery != null)
 			{
 				$txnXMLString .= $attributeQuery->toXML();
 			}
-
+	
 			$txnXMLString .="</$txnType>";
-
+	
 			$xmlString .=$txnXMLString;
-
+	
 			return $xmlString;
 		}
 
@@ -3575,7 +3576,7 @@ class riskTransaction{
 	{
 		return $this->attributeAccountInfo;
 	}
-
+	
 	public function setAttributeAccountInfo($attributeAccountInfo)
 	{
 		$this->attributeAccountInfo = $attributeAccountInfo;
@@ -3585,7 +3586,7 @@ class riskTransaction{
 	{
 		return $this->sessionAccountInfo;
 	}
-
+	
 	public function setSessionAccountInfo($sessionAccountInfo)
 	{
 		$this->sessionAccountInfo = $sessionAccountInfo;
@@ -3646,7 +3647,7 @@ class mpgAxLevel23
 			{
 				$xmlRoot .= "</$root><$root>";
 			}
-
+				
 			if(is_array($value))
 			{
 				$xmlRoot .= $this->toXML_low($value, $key);
@@ -3655,7 +3656,7 @@ class mpgAxLevel23
 			{
 				$xmlRoot .= $value;
 			}
-
+				
 			if(!is_numeric($key) && $value != "" && $value != null)
 			{
 				$xmlRoot .= "</$key>";
@@ -3675,11 +3676,11 @@ class axN1Loop
 {
 	private $template = array (
 							'n101' => null ,
-							'n102' => null ,
-							'n301' => null ,
-							'n401' => null ,
-							'n402' => null ,
-							'n403' => null ,
+							'n102' => null , 
+							'n301' => null , 
+							'n401' => null , 
+							'n402' => null , 
+							'n403' => null , 
 							'ref' => null
 	);
 
@@ -3781,12 +3782,12 @@ class axIt106s
 	{
 		$this->data = $this->template;
 	}
-
+	
 	public function setIt10618($it10618)
 	{
 		$this->data['it10618'] = $it10618;
 	}
-
+	
 	public function setIt10719($it10719)
 	{
 		$this->data['it10719'] = $it10719;
@@ -5080,7 +5081,7 @@ class CofInfo
 {
 	private $template = array(
 		'payment_indicator' => null,
-		'payment_information' => null,
+		'payment_information' => null, 
 		'issuer_id' => null);
 
 	private $data;
@@ -5127,50 +5128,50 @@ class MCPRate
 	private $template = array (
 							"merchant_settlement_amount" => null,
 							"cardholder_amount" => null,
-							"cardholder_currency_code" => null,
+							"cardholder_currency_code" => null, 
 	);
-
+	
 	private $data;
 	private $mcp_rate;
-
+	
 	public function __construct()
 	{
 		$this->mcp_rate = array();
 	}
-
+	
 	public function setMerchantSettlementAmount($merchant_settlement_amount, $cardholder_currency_code)
 	{
 		$this->data = $this->template;
 		$this->data['merchant_settlement_amount'] = $merchant_settlement_amount;
 		$this->data['cardholder_currency_code'] = $cardholder_currency_code;
-
+		
 		array_push($this->mcp_rate, $this->data);
 	}
-
+	
 	public function setCardholderAmount($cardholder_amount, $cardholder_currency_code)
 	{
 		$this->data = $this->template;
 		$this->data['cardholder_amount'] = $cardholder_amount;
 		$this->data['cardholder_currency_code'] = $cardholder_currency_code;
-
+		
 		array_push($this->mcp_rate, $this->data);
 	}
-
-
+	
+	
 	public function toXML()
 	{
 		$final_data['rate'] = $this->mcp_rate;
-
+		
 		$xmlString = $this->toXML_low($final_data, "rate");
-
+		
 		return $xmlString;
 		//return "<rate>". $xmlString. "</rate>";
 	}
-
+	
 	private function toXML_low($dataArray, $root)
 	{
 		$xmlRoot = "";
-
+		
 		foreach ($dataArray as $key => $value)
 		{
 			if(!is_numeric($key) && $value != "" && $value != null)
@@ -5181,7 +5182,7 @@ class MCPRate
 			{
 				$xmlRoot .= "</$root><$root>";
 			}
-
+			
 			if(is_array($value))
 			{
 				$xmlRoot .= $this->toXML_low($value, $key);
@@ -5190,13 +5191,13 @@ class MCPRate
 			{
 				$xmlRoot .= $value;
 			}
-
+			
 			if(!is_numeric($key) && $value != "" && $value != null)
 			{
 				$xmlRoot .= "</$key>";
 			}
 		}
-
+		
 		return $xmlRoot;
 	}
 }
