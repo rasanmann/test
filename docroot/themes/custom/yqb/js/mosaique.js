@@ -37,14 +37,13 @@
         addListeners: function () {
             var self = this;
 
-          $(document).on('click', '.field--name-field-paragraph-media-mosaique .row.row-cols-3 > .field--item.col-md-6 a', function(e) {
+          $(document).on('click', '.field--name-field-paragraph-media-mosaique .row.row-cols-2 > .field--item.col-md-6 a', function(e) {
             e.preventDefault();
           });
 
             $(document).on('click', this.selector.galleryTrigger, function (e) {
                 if($(this).find('.video-nb.full').length) return;
                 e.preventDefault();
-                console.log("allo");
                 e.stopPropagation();
                 e.stopImmediatePropagation();
                 self.createCloseEvent();
