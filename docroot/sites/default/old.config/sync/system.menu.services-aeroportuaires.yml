@@ -1,8 +1,0 @@
-uuid: 848ed6bb-bddd-4001-8837-55a62a4bd9d2
-langcode: fr
-status: true
-dependencies: {  }
-id: services-aeroportuaires
-label: 'Barre latérale - Services'
-description: ''
-locked: false

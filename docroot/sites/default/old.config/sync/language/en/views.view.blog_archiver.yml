@@ -1,5 +1,0 @@
-description: 'All blog posts, sorted by month'
-display:
-  default:
-    display_options:
-      title: 'Monthly archive'

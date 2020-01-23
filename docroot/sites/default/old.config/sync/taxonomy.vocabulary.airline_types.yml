@@ -1,8 +1,0 @@
-uuid: d74181c2-9a4d-4ed2-af01-1a93e9b936d4
-langcode: fr
-status: true
-dependencies: {  }
-name: 'Airline types'
-vid: airline_types
-description: 'Types de transporteurs.'
-weight: 0

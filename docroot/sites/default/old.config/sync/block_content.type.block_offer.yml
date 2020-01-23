@@ -1,8 +1,0 @@
-uuid: 2c8d60c1-69a1-4dea-a4b2-09d5dac52738
-langcode: fr
-status: true
-dependencies: {  }
-id: block_offer
-label: 'Block offer'
-revision: 0
-description: 'Bloc démontrant ce qu''offre la ville de Québec aux visiteurs. Sommaire + offres'

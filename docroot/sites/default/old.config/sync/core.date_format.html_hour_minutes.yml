@@ -1,8 +1,0 @@
-uuid: e09685b9-9006-4f17-bc8c-54f840ebdd3d
-langcode: fr
-status: true
-dependencies: {  }
-id: html_hour_minutes
-label: 'Heure et minutes HTML'
-locked: false
-pattern: 'H:i'

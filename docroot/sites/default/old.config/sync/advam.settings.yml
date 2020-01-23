@@ -1,5 +1,0 @@
-advam:
-  api_url: 'http://api-altitude.aeroportdequebec.com/v2/'
-  api_key: 2C12B7B7-7BD9-4C9C-9AF2-C0F85B62F843
-  airport_code: YQB
-  use_legacy: false

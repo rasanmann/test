@@ -1,8 +1,0 @@
-submit_button: Téléverser
-langcode: fr
-default_video_accueil_fid: '/themes/custom/yqb/videos/intro.mp4?v8'
-default_poster_video_accueil_fid: '/themes/custom/yqb/img/yqb2019.jpg?v8'
-video_upload_location: 'public://videos'
-poster_upload_location: 'public://default_images'
-_core:
-  default_config_hash: 28IQyReKOws-thV3VYgDPioEBpHOcq9NTXZL6ui6PcQ

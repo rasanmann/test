@@ -1,8 +1,0 @@
-uuid: 484bceb4-cc7b-457f-8912-2030745e38de
-langcode: fr
-status: true
-dependencies: {  }
-id: block_list
-label: 'Block list'
-revision: 0
-description: 'Bloc pour l''ajout d''une liste d''éléments'

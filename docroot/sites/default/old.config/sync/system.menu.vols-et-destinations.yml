@@ -1,8 +1,0 @@
-uuid: 1300333f-59de-42b7-a401-1f931dd5f816
-langcode: fr
-status: true
-dependencies: {  }
-id: vols-et-destinations
-label: 'Barre latérale - Vols et destinations'
-description: ''
-locked: false

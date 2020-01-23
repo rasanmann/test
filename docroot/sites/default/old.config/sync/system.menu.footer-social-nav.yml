@@ -1,8 +1,0 @@
-uuid: 4c7bc4a1-3555-45d0-8d00-d319ac4ff94e
-langcode: fr
-status: true
-dependencies: {  }
-id: footer-social-nav
-label: 'Navigation réseaux sociaux - Pied de page'
-description: ''
-locked: false

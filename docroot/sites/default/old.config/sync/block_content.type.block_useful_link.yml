@@ -1,8 +1,0 @@
-uuid: eb35dd76-91b3-4a6e-85fb-838772f404b6
-langcode: fr
-status: true
-dependencies: {  }
-id: block_useful_link
-label: 'Block useful link'
-revision: 0
-description: 'Bloc personnalisé d''un lien utile'

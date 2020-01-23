@@ -1,9 +1,0 @@
-recipients: car@yqb.ca
-form_is_disabled: 0
-recaptcha_sitekey: 6LfKYpsUAAAAAJaxdEgMWED4T6vuq79XZbV9vg28
-recaptcha_secret: 6LfKYpsUAAAAAJTDYbiWQbE4YJzFuthv_N759IvZ
-minimum_amount: '5'
-payment_page: /services-aeroportuaires/paiement-de-facture
-_core:
-  default_config_hash: FYKlrxrQnFI4SpvY-2698JeSQMJyfG7Wt5fg1ql_ymo
-langcode: fr

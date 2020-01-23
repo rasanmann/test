@@ -1,8 +1,0 @@
-uuid: 4ed2f539-31c8-4cf8-add6-03d37e1a883d
-langcode: fr
-status: true
-dependencies: {  }
-id: block_park_pricing
-label: 'Block park pricing'
-revision: 0
-description: 'Bloc détaillant les tarifications pour les stationnements. Icône + détail (facultatif) + offres/prix + description (facultatif)'

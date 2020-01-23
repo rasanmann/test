@@ -1,9 +1,0 @@
-uuid: 1432dffc-317d-45f7-82f5-b4c749bf7341
-langcode: fr
-status: true
-dependencies: {  }
-id: tirroir
-label: Tirroir
-icon_uuid: null
-description: ''
-behavior_plugins: {  }

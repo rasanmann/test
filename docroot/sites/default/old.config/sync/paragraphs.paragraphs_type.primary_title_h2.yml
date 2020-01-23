@@ -1,9 +1,0 @@
-uuid: fd2a8f9d-2c3d-4552-b710-05eaf80f76cb
-langcode: fr
-status: true
-dependencies: {  }
-id: primary_title_h2
-label: 'Titre principal (h2)'
-icon_uuid: null
-description: ''
-behavior_plugins: {  }

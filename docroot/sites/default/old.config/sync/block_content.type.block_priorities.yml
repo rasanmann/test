@@ -1,8 +1,0 @@
-uuid: a60dec1a-7c38-4ec4-b094-0c585084173b
-langcode: fr
-status: true
-dependencies: {  }
-id: block_priorities
-label: 'Block priorities'
-revision: 0
-description: 'Bloc pour mettre de l''avant les priorités de la compagnie. Titre de section + texte d''accroche + titre principal + texte principal'

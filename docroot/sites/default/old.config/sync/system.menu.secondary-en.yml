@@ -1,8 +1,0 @@
-uuid: d09e6e43-7283-4238-bbae-d7731a05d951
-langcode: en
-status: true
-dependencies: {  }
-id: secondary-en
-label: 'Navigation secondaire (english)'
-description: ''
-locked: false

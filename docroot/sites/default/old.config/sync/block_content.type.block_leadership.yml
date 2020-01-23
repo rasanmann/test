@@ -1,8 +1,0 @@
-uuid: 08afe733-52ee-4690-9000-bf0b68a45256
-langcode: fr
-status: true
-dependencies: {  }
-id: block_leadership
-label: 'Block leadership'
-revision: 0
-description: 'Bloc de contenu réservé à la gouvernance. Nom et titre + rôle + biographie + image'

@@ -1,9 +1,0 @@
-uuid: da036c1d-1da1-4d49-a802-1871673db26c
-langcode: fr
-status: true
-dependencies: {  }
-id: gouvernance_texte
-label: 'Gouvernance texte'
-icon_uuid: null
-description: 'gouvernance bloc de texte'
-behavior_plugins: {  }

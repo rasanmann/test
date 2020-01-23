@@ -1,8 +1,0 @@
-uuid: 9c345a4a-a6e8-468c-8a06-6c645cbda202
-langcode: fr
-status: true
-dependencies: {  }
-id: offers
-label: Offres
-description: ''
-locked: false

@@ -1,8 +1,0 @@
-uuid: b54fa08f-3a8e-4109-af07-7eff74625a8b
-langcode: en
-status: true
-dependencies: {  }
-name: 'Flight statuses'
-vid: flight_statuses
-description: 'Delayed, arrived, on time...'
-weight: 0

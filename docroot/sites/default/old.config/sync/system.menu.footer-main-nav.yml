@@ -1,8 +1,0 @@
-uuid: ffde1259-1147-4218-b700-d01985eb146c
-langcode: fr
-status: true
-dependencies: {  }
-id: footer-main-nav
-label: 'Navigation principale - Pied de page'
-description: ''
-locked: false

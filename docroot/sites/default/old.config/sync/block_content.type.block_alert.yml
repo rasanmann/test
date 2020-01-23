@@ -1,8 +1,0 @@
-uuid: b0bfe873-2020-4fce-acc2-d2d7bbdd9b95
-langcode: fr
-status: true
-dependencies: {  }
-id: block_alert
-label: 'Block alert'
-revision: 0
-description: 'Alerts on home page.'

@@ -1,7 +1,0 @@
-display:
-  default:
-    display_options:
-      pager:
-        options:
-          tags:
-            next: 'next ›'

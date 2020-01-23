@@ -1,8 +1,0 @@
-uuid: 9d47e207-0374-43a9-969a-7d151a66359c
-langcode: en
-status: true
-dependencies: {  }
-name: Department
-vid: department
-description: 'Job departments'
-weight: 0

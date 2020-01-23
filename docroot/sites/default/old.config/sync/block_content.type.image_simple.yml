@@ -1,8 +1,0 @@
-uuid: 5a228d2f-7609-48b8-a4fe-c6942dc310bc
-langcode: fr
-status: true
-dependencies: {  }
-id: image_simple
-label: 'Image simple'
-revision: 0
-description: 'Ajout d''une image simple avec un texte alternatif'

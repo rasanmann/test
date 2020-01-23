@@ -1,8 +1,0 @@
-uuid: 10bc67b7-0fe8-408c-8d00-d53d381418a1
-langcode: fr
-status: true
-dependencies: {  }
-id: a-propos
-label: 'Barre latérale - À propos'
-description: ''
-locked: false

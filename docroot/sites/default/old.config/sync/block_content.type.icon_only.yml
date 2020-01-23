@@ -1,8 +1,0 @@
-uuid: 9dddc7d0-e285-4cde-a4b9-a21a65653396
-langcode: fr
-status: true
-dependencies: {  }
-id: icon_only
-label: 'Icon only'
-revision: 0
-description: 'Ajout d''une icône visuelle au contenu'

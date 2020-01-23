@@ -1,9 +1,0 @@
-uuid: 59b4f06d-8e02-4849-970b-10d1f92d5f8d
-langcode: fr
-status: true
-dependencies: {  }
-_core:
-  default_config_hash: g_9UU20HrQEQvFfJ8g7FDlL7BJ_Ub8_mz2LokHw_TiA
-id: vip_drawer_card
-label: 'VIP Drawer Card'
-behavior_plugins: {  }

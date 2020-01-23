@@ -1,8 +1,0 @@
-uuid: cd049dec-a6cb-4869-8575-32ec9bf84882
-langcode: fr
-status: true
-dependencies: {  }
-id: block_dismissable
-label: 'Block dismissable'
-revision: 0
-description: ''

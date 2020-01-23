@@ -1,8 +1,0 @@
-uuid: ea6edef8-b300-4d57-85fb-9737f0421bc2
-langcode: en
-status: true
-dependencies: {  }
-id: main-en
-label: 'Navigation principale (english)'
-description: ''
-locked: false

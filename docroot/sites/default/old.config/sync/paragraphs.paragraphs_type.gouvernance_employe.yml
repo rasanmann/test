@@ -1,9 +1,0 @@
-uuid: 4894fdd9-5e9f-46e6-9863-ea801298e42d
-langcode: fr
-status: true
-dependencies: {  }
-id: gouvernance_employe
-label: 'Gouvernance employé'
-icon_uuid: null
-description: 'gouvernance employe rangee'
-behavior_plugins: {  }

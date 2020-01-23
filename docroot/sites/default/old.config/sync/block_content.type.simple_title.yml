@@ -1,8 +1,0 @@
-uuid: 0cae83a7-0040-44b4-ad46-01baf66b061e
-langcode: fr
-status: true
-dependencies: {  }
-id: simple_title
-label: 'Simple title'
-revision: 0
-description: 'Ajout d''un titre simple au contenu'
