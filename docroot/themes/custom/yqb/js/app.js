@@ -120,7 +120,7 @@ var App = (function ($, Drupal, Bootstrap) {
                 NProgress.configure({parent: '#layout-header'});
 
                 // PJAX normal request
-                $document.pjax('a:not([target="_blank"], [target="_self"], [target="_top"], [href$="/edit"], [href$="/delete"], [href*="/admin/"], [href="/fr/services-aeroportuaires/paiement-de-facture"], [href="/en/airport-services/pay-bills"])', '#layout-content', {
+                $document.pjax('a:not([target="_blank"], [target="_self"], [target="_top"], [href$="/edit"], [href$="/delete"], [href*="/admin/"], [href="/fr/affaires/paiement-de-facture"], [href="/en/business/pay-bills"])', '#layout-content', {
                     timeout: 20 * 1000,
                     fragment: '#layout-content',
                     xhr: pjaxXHR
