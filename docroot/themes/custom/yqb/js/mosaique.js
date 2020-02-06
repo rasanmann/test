@@ -18,21 +18,22 @@
         arrAllIframes: [],
 
         attach: function (context, settings) {
-          var _this = this;
-          $(document, settings).on('pjax:success', function(){
-            $('#siema').remove();
-            _this.setupBackdrop();
-            _this.setupCaroussel();
-            _this.addListeners();
-            _this.fullScreen();
-          });
-            this.setupBackdrop();
-            this.setupCaroussel();
-            this.addListeners();
-            this.fullScreen();
-            this.putLabelOnvideo();
-            this.fixIframeHeight();
-            },
+          if($(".field--name-field-paragraph-media-mosaique", context).length > 0){
+            this.callEverything();
+            var _this = this;
+            $(document).on('pjax:success', function(){
+              _this.callEverything();
+            });
+          }},
+
+        callEverything : function(){
+          this.setupBackdrop();
+          this.setupCaroussel();
+          this.addListeners();
+          this.fullScreen();
+          this.putLabelOnvideo();
+          this.fixIframeHeight();
+        },
 
         addListeners: function () {
             var self = this;
