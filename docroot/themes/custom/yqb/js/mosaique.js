@@ -296,10 +296,12 @@
         //feature #100921
         fixIframeHeight: function(){
           $(window).on("resize load",function(){
-            var videoHook = $("video");
+            var videoHook = $(".field--item.video-nb > video");
             var videoWidth = videoHook.width();
+            console.log(videoWidth);
             var videoHeight = videoHook.height();
             $(".field--item iframe.media-oembed-content").css({"height":videoHeight, "width": videoWidth});
+
           });
 
         },
