@@ -103,7 +103,7 @@
 
 
 
-              if (items[i].video === true){
+              if (typeof(items[i].video) != "undefined" && items[i].video === true){
                 list += '<p class="label-over-video-in-carousel">' + items[i].label + '</p>'
               }
               list +=
@@ -295,18 +295,17 @@
 
         //feature #100921
         fixIframeHeight: function(){
-          $(document).ready(function(){
-            $(window).on("resize load",function(){
+            $(window).on("load resize",function(){
               var videoHook = $(".field--item.video-nb > video");
               var videoWidth = videoHook.width();
-              console.log(videoWidth);
+              console.log("vidoe width: " + videoWidth);
               var videoHeight = videoHook.height();
               $(".field--item iframe.media-oembed-content").css({"height":videoHeight, "width": videoWidth});
-
             });
-          });
-
         },
+
+
+
 
       allIframesVideos: () => {
           var iframes = document.querySelectorAll("iframe");
