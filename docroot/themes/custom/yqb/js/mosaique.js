@@ -27,12 +27,13 @@
           }},
 
         callEverything : function(){
+          this.fixIframeHeight();
           this.setupBackdrop();
           this.setupCaroussel();
           this.addListeners();
           this.fullScreen();
           this.putLabelOnvideo();
-          this.fixIframeHeight();
+
         },
 
         addListeners: function () {
