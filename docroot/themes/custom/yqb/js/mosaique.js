@@ -1,5 +1,5 @@
 (function ($, Drupal, Siema) {
-  Drupal.behaviors.yqb_mosaique = {
+  var yqb_mosaique = {
     backdrop: null,
     caroussel: null,
     componentId: '#siema',
@@ -19,10 +19,10 @@
 
     attach: function () {
         if ($(".field--name-field-paragraph-media-mosaique").length > 0) {
-          Drupal.behaviors.yqb_mosaique.callEverything();
+          // yqb_mosaique.callEverything();
           // var _this = this;
-          $(document).on('pjax:success', function () {
-            Drupal.behaviors.yqb_mosaique.callEverything();
+          $(document).on('pjax:success load', function () {
+            yqb_mosaique.callEverything();
           });
         }
     },
@@ -292,7 +292,7 @@
       $(window).on("load resize", function () {
         var videoHook = $(".field--item.video-nb > video");
         var videoWidth = videoHook.width();
-        console.log("vidoe width: " + videoWidth);
+        console.log("video width: " + videoWidth);
         var videoHeight = videoHook.height();
         $(".field--item iframe.media-oembed-content").css({"height": videoHeight, "width": videoWidth});
       });
@@ -310,5 +310,5 @@
     }
   };
 
-  Drupal.behaviors.yqb_mosaique.callEverything();
+  yqb_mosaique.callEverything();
 }(window.jQuery, window.Drupal, window.Siema));
