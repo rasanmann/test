@@ -37,8 +37,10 @@ class FilesService {
             $file->save();
           }
           else {
-            $file->delete();
-            $deleted_files_count++;
+            if (!file_exists($file->getFileUri())) {
+              $file->delete();
+              $deleted_files_count++;
+            }
           }
         }
       }
