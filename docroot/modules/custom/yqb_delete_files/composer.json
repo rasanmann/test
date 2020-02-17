@@ -1,0 +1,11 @@
+{
+    "name": "drupal/yqb_delete_files",
+    "type": "drupal-module",
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9"
+            }
+        }
+    }
+}
