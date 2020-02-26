@@ -1,0 +1,6 @@
+services:
+  yqb_delete_files.commands:
+    class: \Drupal\yqb_delete_files\Commands\YqbDeleteFilesCommands
+    arguments: ['@yqb_delete_files.files']
+    tags:
+      - { name: drush.command }

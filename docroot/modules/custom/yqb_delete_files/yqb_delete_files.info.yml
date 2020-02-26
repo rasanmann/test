@@ -1,0 +1,4 @@
+name: YQB Delete files
+description: Commande Drush pour supprimer les fichiers temporaires
+type: module
+core: 8.x

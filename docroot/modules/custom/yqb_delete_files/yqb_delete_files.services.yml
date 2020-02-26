@@ -1,0 +1,4 @@
+services:
+  yqb_delete_files.files:
+    class: \Drupal\yqb_delete_files\FilesService
+    arguments: ['@entity_type.manager', '@file.usage']
