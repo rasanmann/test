@@ -28,7 +28,6 @@ class RemindersForm extends RemindersFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $useFullWidth = ($form_state->get('full_width'));
-
       // Find airline with corresponding code
     $query = \Drupal::entityQuery('node')
         ->condition('type', 'airline')
@@ -129,6 +128,18 @@ class RemindersForm extends RemindersFormBase {
       '#type' => 'container',
       '#attributes' => ['class' => ['form-block-container', ($useFullWidth) ? 'form-block-container-full' : null]],
 
+      'col-title' => [
+        '#type' => 'text',
+        '#attributes' => ['class' => ['col-normal', 'col-tel']],
+        'message' => [
+          '#type' => 'html_tag',
+          '#tag' => 'h3',
+          'text' => [
+            '#markup' => t('Suivez le statut de votre vol par SMS'),
+          ]
+        ]
+      ],
+
       // Phone number
       'col-phone' => [
         '#type' => 'container',
@@ -193,13 +204,13 @@ class RemindersForm extends RemindersFormBase {
                 '#type' => 'html_tag',
                 '#tag' => 'p',
                 'text' => [
-                    '#markup' => t(' Avertissement relatif aux informations de vols Les informations de vols diffusées 
-                    sur notre site web ou via les alertes SMS sont fournies pour votre commodité seulement et ne doivent pas 
-                    remplacer les dispositions à prendre avant de vous diriger vers l\'aéroport. Comme ces informations 
-                    proviennent de sources variées, nous ne pouvons garantir que ces renseignements sont exacts, complets et à 
-                    jour. Veuillez toujours confirmer les renseignements sur l’arrivée et le départ de votre vol auprès de votre 
-                    compagnie aérienne. Nous ne sommes pas responsables des dommages causés directement ou indirectement par 
-                    l\'utilisation de ces outils d’information. Dans le cas des alertes SMS, votre fournisseur de service 
+                    '#markup' => t('Avertissement relatif aux informations de vols Les informations de vols diffusées
+                    sur notre site web ou via les alertes SMS sont fournies pour votre commodité seulement et ne doivent pas
+                    remplacer les dispositions à prendre avant de vous diriger vers l\'aéroport. Comme ces informations
+                    proviennent de sources variées, nous ne pouvons garantir que ces renseignements sont exacts, complets et à
+                    jour. Veuillez toujours confirmer les renseignements sur l’arrivée et le départ de votre vol auprès de votre
+                    compagnie aérienne. Nous ne sommes pas responsables des dommages causés directement ou indirectement par
+                    l\'utilisation de ces outils d’information. Dans le cas des alertes SMS, votre fournisseur de service
                     cellulaire pourrait vous facturer des frais de messagerie texte.'),
                 ]
             ]
@@ -225,7 +236,7 @@ class RemindersForm extends RemindersFormBase {
     parse_str(\Drupal::request()->getQueryString(), $params);
 
     $Reminders = new Reminders();
-    
+
     // Format + validate phone number via Twilio API
     $data = [];
     $data['phone_number'] = $Reminders->formatPhoneNumber($form_state->getValue('phone_number'));
@@ -233,10 +244,10 @@ class RemindersForm extends RemindersFormBase {
     $data['flight_date'] = $form_state->getValue('flight_date');
     $data['flight_airline'] = $form_state->getValue('flight_airline');
     $data['flight_type'] = $form_state->getValue('flight_type');
-    
+
     if($data['phone_number'] !== false) {
       $route = sprintf('yqb_reminders.%s.confirmation', \Drupal::languageManager()->getCurrentLanguage()->getId());
-      
+
       if($Reminders->saveReminder($data)){
         $form_state->setRedirect($route, array(), array('query' => array_merge($params, array('confirm' => 1))));
       }else{
