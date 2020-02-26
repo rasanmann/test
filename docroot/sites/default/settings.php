@@ -35,6 +35,7 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
    include $app_root . '/' . $site_path . '/settings.local.php';
 }
 
+$config['file.settings']['make_unused_managed_files_temporary'] = TRUE;
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod). To use this
 // settings.php for development on your local workstation, set $db_url
@@ -64,4 +65,6 @@ if (file_exists('/var/www/site-php')) {
 	// Memcache settings.
   $settings['cache']['default'] = 'cache.backend.memcache';
   $settings['memcache']['stampede_protection'] = TRUE;
+
+
 }
