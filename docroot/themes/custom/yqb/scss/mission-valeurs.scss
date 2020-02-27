@@ -18,17 +18,25 @@
 
             &.bg-image{
                 background-size: cover;
-                
+                background-position: bottom;
             }
         }
     }
 
     .field--name-field-text{
         padding: 80px 60px 72px 40px;
+      
+        max-width: 450px;
 
         @media (min-width: 768px) {
-            padding: 80px 145px 72px 59px;
+            // padding: 80px 60px 72px 40px;
+            max-width: 500px;
+            padding: 80px 90px 72px 59px;
         }
+
+        // @media (min-width: 1024px) {
+        //     padding: 80px 205px 72px 59px;
+        // }
 
         h2{
             margin-bottom: 50px;
