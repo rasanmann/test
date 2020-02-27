@@ -44,6 +44,7 @@
 
     .field--name-field-image{
         display: block;
+        
     }
 }
 
@@ -138,6 +139,11 @@
                     height: 80px;
                     display: flex;
                     align-items: center;
+                    
+                    img{
+                        max-height: 80px;
+                        width: auto;
+                    }
                 }
 
 
