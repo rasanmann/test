@@ -12,7 +12,10 @@
       .paragraph--type--texte-et-image.paragraph--dual > div.bg-image {
         background-size: cover; }
   .paragraph--type--texte-et-image .field--name-field-text {
-    padding: 80px 145px 72px 59px; }
+    padding: 80px 60px 72px 40px; }
+    @media (min-width: 768px) {
+      .paragraph--type--texte-et-image .field--name-field-text {
+        padding: 80px 145px 72px 59px; } }
     .paragraph--type--texte-et-image .field--name-field-text h2 {
       margin-bottom: 50px; }
     .paragraph--type--texte-et-image .field--name-field-text p {
@@ -28,7 +31,10 @@
   background-position: bottom;
   background-color: #2b4c8f;
   background-size: cover;
-  padding: 90px 90px 140px; }
+  padding: 90px 20px 140px; }
+  @media (min-width: 768px) {
+    .paragraph--type--texte-avec-arriere-plan {
+      padding: 90px 90px 140px; } }
   .paragraph--type--texte-avec-arriere-plan .field--name-field-text {
     width: 100%;
     max-width: 675px;

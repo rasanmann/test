@@ -24,7 +24,11 @@
     }
 
     .field--name-field-text{
-        padding: 80px 145px 72px 59px;
+        padding: 80px 60px 72px 40px;
+
+        @media (min-width: 768px) {
+            padding: 80px 145px 72px 59px;
+        }
 
         h2{
             margin-bottom: 50px;
@@ -49,7 +53,13 @@
     background-position: bottom;
     background-color: #2b4c8f;
     background-size: cover;
-    padding: 90px 90px 140px;
+    padding: 90px 20px 140px;
+
+    @media (min-width: 768px) {
+        padding: 90px 90px 140px;
+    }
+
+
     .field--name-field-text{
 
         width: 100%;
