@@ -1,0 +1,105 @@
+.paragraph--type--texte-et-image {
+  background-color: #e5eeff; }
+  .paragraph--type--texte-et-image.paragraph--dual {
+    display: flex;
+    flex-wrap: wrap; }
+    .paragraph--type--texte-et-image.paragraph--dual > div {
+      min-height: 410px;
+      width: 100%; }
+      @media (min-width: 768px) {
+        .paragraph--type--texte-et-image.paragraph--dual > div {
+          width: calc(100% / 2); } }
+      .paragraph--type--texte-et-image.paragraph--dual > div.bg-image {
+        background-size: cover; }
+  .paragraph--type--texte-et-image .field--name-field-text {
+    padding: 80px 145px 72px 59px; }
+    .paragraph--type--texte-et-image .field--name-field-text h2 {
+      margin-bottom: 50px; }
+    .paragraph--type--texte-et-image .field--name-field-text p {
+      font-size: 2.1rem;
+      line-height: 2.4rem;
+      font-weight: bold; }
+  .paragraph--type--texte-et-image .field--name-field-image {
+    display: block; }
+
+.paragraph--type--texte-avec-arriere-plan {
+  text-align: center;
+  background-image: url(../img/background-aerogard.jpg);
+  background-position: bottom;
+  background-color: #2b4c8f;
+  background-size: cover;
+  padding: 90px 90px 140px; }
+  .paragraph--type--texte-avec-arriere-plan .field--name-field-text {
+    width: 100%;
+    max-width: 675px;
+    padding: 10px;
+    color: white;
+    margin: auto; }
+    .paragraph--type--texte-avec-arriere-plan .field--name-field-text h2 {
+      margin-bottom: 50px; }
+    .paragraph--type--texte-avec-arriere-plan .field--name-field-text p {
+      font-size: 2.1rem;
+      line-height: 2.5rem;
+      font-weight: bold; }
+
+.paragraph--type--valeurs .field--label {
+  padding: 60px;
+  text-align: center; }
+
+.paragraph--type--valeurs .field--items {
+  display: flex;
+  flex-wrap: wrap; }
+  .paragraph--type--valeurs .field--items > .field--item {
+    width: 100%; }
+    @media (min-width: 768px) {
+      .paragraph--type--valeurs .field--items > .field--item {
+        width: calc(100% / 2); } }
+    @media (min-width: 1024px) {
+      .paragraph--type--valeurs .field--items > .field--item {
+        width: calc(100% / 4); } }
+    .paragraph--type--valeurs .field--items > .field--item .paragraph--type--valeur {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 35px 40px 50px;
+      height: 100%; }
+    .paragraph--type--valeurs .field--items > .field--item:nth-child(4n+1) {
+      background-color: #23b5c7;
+      color: white; }
+    .paragraph--type--valeurs .field--items > .field--item:nth-child(4n+2) {
+      background-color: #f8f9fa;
+      color: #0a0a0b; }
+    .paragraph--type--valeurs .field--items > .field--item:nth-child(4n+3) {
+      background-color: #e4f5f7;
+      color: #0a0a0b; }
+    .paragraph--type--valeurs .field--items > .field--item:nth-child(4n+4) {
+      background-color: #393939;
+      color: white; }
+    .paragraph--type--valeurs .field--items > .field--item .field--type-image {
+      padding: 5px;
+      height: 80px;
+      display: flex;
+      align-items: center; }
+    .paragraph--type--valeurs .field--items > .field--item .field--name-field-titre {
+      font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      font-size: 2.1rem;
+      padding: 20px 10px;
+      text-align: center; }
+    .paragraph--type--valeurs .field--items > .field--item .field--name-field-text p {
+      text-align: center;
+      font-size: 1.6rem;
+      line-height: 2.2rem; }
+
+.paragraph--type--valeurs .field--name-field-image {
+  display: block; }
+
+.paragraph--type--texte-avec-arriere-plan .field--label, .paragraph--type--texte-avec-arriere-plan h2, .paragraph--type--valeurs .field--label, .paragraph--type--valeurs h2,
+.paragraph--type--texte-et-image .field--label,
+.paragraph--type--texte-et-image h2 {
+  text-transform: uppercase;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 3rem;
+  letter-spacing: 4px;
+  font-family: "nimbus-sans", Helvetica, Arial, sans-serif; }
