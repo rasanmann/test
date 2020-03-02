@@ -2,10 +2,13 @@
 
 namespace Drupal\yqb_alert\Plugin\Block;
 
+use Drupal;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
+use Drupal\yqb_alert\Plugin\Block\YqbAlertPreview;
 
 /**
  * Provides a block with a simple text.
@@ -15,18 +18,32 @@ use Drupal\Core\Session\AccountInterface;
  *   admin_label = @Translation("Yqb Block Alert"),
  * )
  */
-class YqbAlertBlock extends BlockBase {
+class YqbAlertBlock extends YqbAlertPreview {
   /**
    * {@inheritdoc}
    */
   public function build() {
 
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-    $content = null;
 
-    $language == 'fr' ? $content = $this->configuration['french_alert'] : $content = $this->configuration['english_alert'];
+    if (Drupal::currentUser()->hasPermission('preview') &&
+       $content = $this->tempStore->get("french_alert") || $content = $this->tempStore->get("english_alert")) {
 
-    if(!$this->configuration['alert_is_enable']){
+      $language == 'fr' ? $content = $this->tempStore->get('french_alert') : $content = $this->tempStore->get('english_alert');
+      $showContent = $this->tempStore->get("alert_is_enable");
+
+      $this->tempStore->delete('french_alert');
+      $this->tempStore->delete('english_alert');
+      $this->tempStore->delete('french_alert_full');
+      $this->tempStore->delete('english_alert_full');
+      $this->tempStore->delete('alert_is_enable');
+    }
+    else {
+      $showContent = $this->configuration["alert_is_enable"];
+      $language == 'fr' ? $content = $this->configuration["french_alert"] : $content = $this->configuration["english_alert"];
+    }
+
+    if($showContent !== 1){
       return;
     }
 
@@ -40,7 +57,9 @@ class YqbAlertBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function blockForm($form, FormStateInterface $form_state) {
+    $form = parent::blockForm($form, $form_state);
     $config = $this->getConfiguration();
+
 
     $form['french_alert'] = [
         '#type' => 'textarea',
@@ -90,13 +109,27 @@ class YqbAlertBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
-
     $this->configuration['french_alert'] = $form_state->getValue('french_alert');
     $this->configuration['english_alert'] = $form_state->getValue('english_alert');
     $this->configuration['french_alert_full'] = $form_state->getValue('french_alert_full');
     $this->configuration['english_alert_full'] = $form_state->getValue('english_alert_full');
     $this->configuration['alert_is_enable'] = $form_state->getValue('alert_is_enable');
+  }
 
+  //#feature102204
+  protected function getPreviewUrl() {
+    return Url::fromRoute('<front>')->toString();
+  }
 
+  public function updateForm($form, FormStateInterface $form_state) {
+    return $form['settings']['container'];
+  }
+
+  protected function previewSubmit($form, FormStateInterface $form_state) {
+    $this->tempStore->set('french_alert', $form_state->getValue('settings')['french_alert']);
+    $this->tempStore->set('english_alert', $form_state->getValue('settings')['english_alert']);
+    $this->tempStore->set('french_alert_full', $form_state->getValue('settings')['french_alert_full']['value']);
+    $this->tempStore->set('english_alert_full', $form_state->getValue('settings')['english_alert_full']['value']);
+    $this->tempStore->set('alert_is_enable', $form_state->getValue('settings')['alert_is_enable']);
   }
 }
