@@ -2,7 +2,7 @@ yqb_alert.settings:
   type: mapping
   label: "no label"
   mapping:
-    alert_is_enabled:
+    alert_is_enable:
       type: checkbox
       label: 'Cacher le formulaire'
       value: "0"

@@ -16,12 +16,12 @@
     'view-display-id-' ~ display_id,
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
-  
+
 
 %}
 
-{%  if id|clean_class == 'news' %} 
-  {% set classes = classes|merge(['view-archive']) %} 
+{%  if id|clean_class == 'news' %}
+  {% set classes = classes|merge(['view-archive']) %}
 {%  endif %}
 
 <div{{ attributes.addClass(classes) }}>
@@ -69,9 +69,12 @@
   {% endif %}
   {% if footer %}
     <div class="view-footer">
+      <p><small><strong>{{ 'Avertissement relatif aux informations de vols'|t }}</strong></small></p>
+      <p><small>{{ "Les informations de vols diffusées sur notre site web ou via les alertes SMS sont fournies pour votre commodité seulement et ne doivent pas remplacer les dispositions à prendre avant de vous diriger vers l'aéroport. Comme ces informations proviennent de sources variées, nous ne pouvons garantir que ces renseignements sont exacts, complets et à jour. Veuillez toujours confirmer les renseignements sur l’arrivée et le départ de votre vol auprès de votre compagnie aérienne. Nous ne sommes pas responsables des dommages causés directement ou indirectement par l'utilisation de ces outils d’information. Dans le cas des alertes SMS, votre fournisseur de service cellulaire pourrait vous facturer des frais de messagerie texte."|t }}</small></p>
       {{ footer }}
     </div>
   {% endif %}
+
   {% if feed_icons %}
     <div class="feed-icons">
       {{ feed_icons }}
