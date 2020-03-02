@@ -1,0 +1,197 @@
+.paragraph--type--texte-et-image { 
+
+    background-color: #e5eeff;
+
+    &.paragraph--dual{
+        display: flex;
+        flex-wrap: wrap;
+       
+        > div{
+            
+            min-height: 410px;
+            
+
+            width: 100%;
+            @media (min-width: 768px) {
+                width: calc(100% / 2);
+            }
+
+            &.bg-image{
+                background-size: cover;
+                background-position: bottom;
+            }
+        }
+    }
+
+    .field--name-field-text{
+        padding: 80px 60px 72px 40px;
+      
+        max-width: 450px;
+
+        @media (min-width: 768px) {
+            // padding: 80px 60px 72px 40px;
+            max-width: 500px;
+            padding: 80px 90px 72px 59px;
+        }
+
+        // @media (min-width: 1024px) {
+        //     padding: 80px 205px 72px 59px;
+        // }
+
+        h2{
+            margin-bottom: 50px;
+        }
+
+        
+        p{
+            font-size: 2.1rem;
+            line-height: 2.4rem;
+            font-weight: bold;
+        }
+    }
+
+    .field--name-field-image{
+        display: block;
+        
+    }
+}
+
+.paragraph--type--texte-avec-arriere-plan{
+    text-align: center;
+    background-image: url(../img/background-aerogard.jpg);
+    background-position: bottom;
+    background-color: #2b4c8f;
+    background-size: cover;
+    padding: 90px 20px 140px;
+
+    @media (min-width: 768px) {
+        padding: 90px 90px 140px;
+    }
+
+
+    .field--name-field-text{
+
+        width: 100%;
+        max-width: 675px;
+        padding: 10px;
+        color: white;
+        margin: auto;
+
+        h2{
+            margin-bottom: 50px;
+        }
+
+        p{
+            font-size: 2.1rem;
+            line-height: 2.5rem;
+            font-weight: bold;
+        }
+    }
+}
+
+
+.paragraph--type--valeurs{
+
+        .field--label{
+            padding: 60px;
+            text-align: center;
+        }
+
+        .field--items{
+            display: flex;
+            flex-wrap: wrap;
+            > .field--item{
+                
+                
+                width: 100%;
+
+                @media (min-width: 768px) {
+                    width: calc(100% / 2);
+                }
+
+                @media (min-width: 1024px) {
+                    width: calc(100% / 4);
+                }
+
+                .paragraph--type--valeur{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 35px 40px 50px;
+                    height: 100%;
+                }
+                
+
+                &:nth-child(4n+1){
+                    background-color: #23b5c7;
+                    color: white;
+                }
+
+                &:nth-child(4n+2){
+                    background-color: #f8f9fa;
+                    color: #0a0a0b;
+                }
+
+                &:nth-child(4n+3){
+                    background-color: #e4f5f7;
+                    color: #0a0a0b;
+                }
+
+                &:nth-child(4n+4){
+                    background-color: #393939;
+                    color: white;
+                }
+                
+                .field--type-image{
+                    padding: 5px;
+                    height: 80px;
+                    display: flex;
+                    align-items: center;
+                    
+                    img{
+                        max-height: 73px;
+                        width: auto;
+                    }
+                }
+
+
+                .field--name-field-titre{
+                    font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+                    font-weight: bold;
+                    font-size: 2.1rem;
+                    padding: 20px 10px;
+                    text-align: center;
+                }
+
+                .field--name-field-text{
+                    p{
+                        text-align: center;
+                        font-size: 1.6rem;
+                        line-height: 2.2rem;
+                    }
+                }
+            }
+        }
+
+        
+
+    .field--name-field-image{
+        display: block;
+    }
+}
+
+
+.paragraph--type--texte-avec-arriere-plan, .paragraph--type--valeurs,
+.paragraph--type--texte-et-image{
+
+    .field--label, h2{
+        
+        text-transform: uppercase;
+        font-size: 2.4rem;
+        font-weight: bold;
+        line-height: 3rem;
+        letter-spacing: 4px;
+        font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+    }
+
+}
