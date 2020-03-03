@@ -13,6 +13,7 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         'cf97c57bfe0f23854afd2f3818abb7a0' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/create_uploaded_file.php',
         '9bf37a3d0dad93e29cb4e1b1bfab04e9' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php',
         'ce70dccb4bcc2efc6e94d2ee526e6972' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_method_from_sapi.php',
@@ -73,6 +74,7 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
             'Symfony\\Polyfill\\Php70\\' => 23,
             'Symfony\\Polyfill\\Php56\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
             'Symfony\\Polyfill\\Iconv\\' => 23,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
@@ -184,10 +186,6 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
             'Composer\\Semver\\' => 16,
             'Composer\\Installers\\' => 20,
         ),
-        'B' => 
-        array (
-            'Brumann\\Polyfill\\' => 17,
-        ),
         'A' => 
         array (
             'Asm89\\Stack\\' => 12,
@@ -263,6 +261,10 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Intl\\Idn\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-idn',
         ),
         'Symfony\\Polyfill\\Iconv\\' => 
         array (
@@ -563,10 +565,6 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
         'Composer\\Installers\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
-        ),
-        'Brumann\\Polyfill\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/brumann/polyfill-unserialize/src',
         ),
         'Asm89\\Stack\\' => 
         array (
