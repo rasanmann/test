@@ -1,0 +1,15 @@
+--- modules/views/src/Plugin/views/field/EntityLink.php
++++ modules/views/src/Plugin/views/field/EntityLink.php
+@@ -37,7 +38,11 @@ protected function renderLink(ResultRow $row) {
+    */
+   protected function getUrlInfo(ResultRow $row) {
+     $template = $this->getEntityLinkTemplate();
+-    return $this->getEntity($row)->toUrl($template)->setAbsolute($this->options['absolute']);
++    $entity = $this->getEntity($row);
++    if ($entity) {
++      return $entity->toUrl($template)->setAbsolute($this->options['absolute']);
++    }
++    return NULL;
+   }
+ 
+   /**
