@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ */
+#}
+{%
+set classes = [
+node.bundle|clean_class,
+view_mode ? view_mode|clean_class,
+'clearfix',
+'swiper-slide'
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  {{ content }}
+</article>
