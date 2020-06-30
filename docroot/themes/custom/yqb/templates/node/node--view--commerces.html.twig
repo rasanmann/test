@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ */
+#}
+{%
+set classes = [
+node.bundle|clean_class,
+not node.isPublished() ? 'is-unpublished',
+view_mode ? view_mode|clean_class,
+'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+    {# <h2{{ title_attributes }}>
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2> #}
+
+  <div style="background-image: url('{{ file_url(content.field_tile_background_image.0['#item'].entity.uri.value) }}')">
+
+
+    {{ content.field_color_logo[0].entity.uri.value }} 
+
+
+    {{ content.body['#items'][0].summary }}
+
+    {{ content.field_tile_link }}
+  </div>
+
+  <!-- Exemple : récupérer l'URL de l'image -->
+  {# {% if content.field_image and content.field_image['#items'] %}
+    <div class="field-intro-img" style="background-image: url('{{ file_url(content.field_image.0['#item'].entity.uri.value) }}')"></div>
+  {% endif %} #}
+
+  {# {{ content }} #}
+  
+    <h4{{ title_attributes }}>
+       {{ label }}
+    </h4>
+
+</article>

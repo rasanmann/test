@@ -9,9 +9,13 @@ set classes = [
 node.bundle|clean_class,
 view_mode ? view_mode|clean_class,
 'clearfix',
-'swiper-slide'
+content.field_tile_background_color[0]['#markup']
 ]
 %}
 <article{{ attributes.addClass(classes) }}>
-  {{ content }}
+  <div class="align-content">
+    <h2>{{label}}</h2>
+    <p>{{content.field_tile_text[0]}}</p>
+    {{content.field_tile_link[0]}}
+  </div>
 </article>
