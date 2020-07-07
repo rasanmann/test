@@ -1,0 +1,18 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_advam_guid
+    - node.type.parking_booking
+id: node.parking_booking.field_advam_guid
+field_name: field_advam_guid
+entity_type: node
+bundle: parking_booking
+label: 'Advam GUID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

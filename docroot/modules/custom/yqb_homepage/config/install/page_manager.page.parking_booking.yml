@@ -1,0 +1,11 @@
+langcode: fr
+status: true
+dependencies: {  }
+id: parking_booking
+label: 'Réserver un stationnement'
+description: null
+use_admin_theme: false
+path: /planifier-son-vol/reserver-un-stationnement
+access_logic: and
+access_conditions: {  }
+parameters: {  }

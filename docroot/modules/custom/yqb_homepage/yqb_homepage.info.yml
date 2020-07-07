@@ -5,6 +5,7 @@ dependencies:
   - block
   - block_content
   - content_translation
+  - datetime
   - field
   - field_collection
   - file
@@ -16,13 +17,20 @@ dependencies:
   - menu_ui
   - node
   - options
+  - page_manager
+  - panels
   - path
   - pathauto
+  - rest
   - scheduler
+  - serialization
   - system
   - taxonomy
+  - telephone
   - text
   - user
   - views
+  - yqb_api
   - yqb_blocks
+  - yqb_parking_booker
 description: 'Incluant les Commerces (Boutiques et Restaurants), les Nouvelles.'

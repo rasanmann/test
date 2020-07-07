@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.parking_booking
+id: node.parking_booking.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: parking_booking
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
