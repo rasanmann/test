@@ -1,0 +1,23 @@
+uuid: 23f14e16-1ffd-44e3-90bd-be198ddb3c3f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.commerce
+  module:
+    - text
+id: node.commerce.body
+field_name: body
+entity_type: node
+bundle: commerce
+label: Description
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: true
+field_type: text_with_summary

@@ -1,6 +1,6 @@
-uuid: 5b8f1223-9cde-49ae-b211-177e120456f8
+uuid: e3be7a73-c930-4f2b-8d55-d0e4d20571c8
 langcode: fr
-status: false
+status: true
 dependencies:
   config:
     - views.view.news
@@ -9,18 +9,18 @@ dependencies:
     - views
   theme:
     - yqb
-id: views_block__news_block_1
+id: views_block__news_block_news
 theme: yqb
 region: content
-weight: -23
+weight: -25
 provider: null
-plugin: 'views_block:news-block_1'
+plugin: 'views_block:news-block_news'
 settings:
-  id: 'views_block:news-block_1'
-  label: ''
+  id: 'views_block:news-block_news'
+  label: Nouvelles
   provider: views
   label_display: visible
-  views_label: ''
+  views_label: Nouvelles
   items_per_page: none
 visibility:
   request_path:

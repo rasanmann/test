@@ -1,0 +1,23 @@
+uuid: 951fd6f9-f694-49e4-9d34-eabc0ec50812
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_website
+    - node.type.nouvelle
+  module:
+    - link
+id: node.nouvelle.field_website
+field_name: field_website
+entity_type: node
+bundle: nouvelle
+label: Lien
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

@@ -1,26 +1,26 @@
-uuid: 5b8f1223-9cde-49ae-b211-177e120456f8
+uuid: 7c9fa06f-f7a7-4091-ab4e-231e0e606f51
 langcode: fr
-status: false
+status: true
 dependencies:
   config:
-    - views.view.news
+    - views.view.commerces
   module:
     - system
     - views
   theme:
     - yqb
-id: views_block__news_block_1
+id: views_block__commerces_block_restaurant
 theme: yqb
 region: content
-weight: -23
+weight: -27
 provider: null
-plugin: 'views_block:news-block_1'
+plugin: 'views_block:commerces-block_restaurant'
 settings:
-  id: 'views_block:news-block_1'
-  label: ''
+  id: 'views_block:commerces-block_restaurant'
+  label: Restaurants
   provider: views
   label_display: visible
-  views_label: ''
+  views_label: Restaurants
   items_per_page: none
 visibility:
   request_path:
