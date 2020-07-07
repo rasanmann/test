@@ -1,0 +1,30 @@
+uuid: 4a3c8052-b396-43f5-be68-2021cec54dbe
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.barre-laterale---affaires
+  module:
+    - system
+  theme:
+    - yqb
+id: barrelateraleaffaires
+theme: yqb
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:barre-laterale---affaires'
+settings:
+  id: 'system_menu_block:barre-laterale---affaires'
+  label: 'Barre latérale - Affaires'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/affaires\r\n/affaires/immobilier-et-services-commerciaux\r\n/affaires/services-aériens\r\n/affaires/paiement-de-facture\r\n/affaires/frais-dameliorations-aeroportuaires-faa\r\n/affaires/fournisseurs\r\n\r\n"
+    negate: false
+    context_mapping: {  }

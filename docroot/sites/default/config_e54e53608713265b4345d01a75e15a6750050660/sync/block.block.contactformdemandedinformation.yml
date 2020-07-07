@@ -12,7 +12,7 @@ dependencies:
 id: contactformdemandedinformation
 theme: yqb
 region: content
-weight: -30
+weight: -35
 provider: null
 plugin: 'block_content:6d66770b-8977-46a2-9f58-d57a3e15c68b'
 settings:

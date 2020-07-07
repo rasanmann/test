@@ -1,0 +1,14 @@
+langcode: fr
+status: true
+dependencies: {  }
+name: thumbnail_325
+label: 'Thumbnail 325'
+effects:
+  70ec7d98-1fee-4700-a43d-ce1d49e840fa:
+    uuid: 70ec7d98-1fee-4700-a43d-ce1d49e840fa
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 325
+      height: 325
+      anchor: center-center

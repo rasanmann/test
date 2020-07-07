@@ -13,6 +13,7 @@ dependencies:
   - image_url_formatter
   - language
   - link
+  - menu_ui
   - node
   - options
   - path

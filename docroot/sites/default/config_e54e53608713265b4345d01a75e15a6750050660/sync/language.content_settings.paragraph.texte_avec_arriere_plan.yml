@@ -1,0 +1,18 @@
+uuid: 450b9ea9-aca4-4b9a-8505-e67bedddd99c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.texte_avec_arriere_plan
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.texte_avec_arriere_plan
+target_entity_type_id: paragraph
+target_bundle: texte_avec_arriere_plan
+default_langcode: site_default
+language_alterable: true

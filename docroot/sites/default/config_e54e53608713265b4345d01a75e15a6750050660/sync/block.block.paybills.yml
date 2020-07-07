@@ -10,7 +10,7 @@ dependencies:
 id: paybills
 theme: yqb
 region: content
-weight: -18
+weight: -20
 provider: null
 plugin: yqb_payments_payment_block
 settings:
@@ -21,6 +21,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/airport-services/pay-bills\r\n/services-aeroportuaires/paiement-de-facture"
+    pages: "/business/pay-bills\r\n/affaires/paiement-de-facture"
     negate: false
     context_mapping: {  }

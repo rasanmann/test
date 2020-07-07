@@ -1,0 +1,9 @@
+uuid: be412f9a-9da9-454d-b0ff-ac89faf1e958
+langcode: fr
+status: true
+dependencies: {  }
+id: texte_et_image
+label: 'Texte et image'
+icon_uuid: null
+description: "Du texte et une image sur deux colonnes\t"
+behavior_plugins: {  }

@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - homepage-tiles-global
+    parent: 'homepage-tiles-global:'
+name: 'Tuiles d''accueil'
+type: homepage_tiles
+description: 'Content type for Tiles found on the homepage'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

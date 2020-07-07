@@ -14,7 +14,7 @@ _core:
 id: views_block__questions_block_1
 theme: yqb
 region: content
-weight: -28
+weight: -33
 provider: null
 plugin: 'views_block:questions-block_1'
 settings:

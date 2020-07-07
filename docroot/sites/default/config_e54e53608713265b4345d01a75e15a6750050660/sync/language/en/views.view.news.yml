@@ -6,13 +6,6 @@ display:
           alter:
             text: 'Read more'
       title: 'Press Releases'
-      pager:
-        options:
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
   block_1:
     display_options:
       use_more_text: 'See all press releases'

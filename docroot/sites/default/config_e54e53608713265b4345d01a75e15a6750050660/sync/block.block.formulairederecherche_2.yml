@@ -17,4 +17,5 @@ settings:
   label: 'Formulaire de recherche'
   provider: search
   label_display: '0'
+  page_id: ''
 visibility: {  }

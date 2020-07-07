@@ -10,7 +10,7 @@ dependencies:
 id: homepagetilesblock
 theme: yqb
 region: content
-weight: -17
+weight: -18
 provider: null
 plugin: homepage-tiles-block
 settings:
