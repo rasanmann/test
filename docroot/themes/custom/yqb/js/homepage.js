@@ -1,9 +1,7 @@
 jQuery(document).ready(function($){
 
   if($('.block-views-blockslider-homepage-block-1 .swiper-container').length){
-    console.log('init swiper v6');
     var homepageSwiper = new Swiper ('.block-views-blockslider-homepage-block-1 .swiper-container', {
-        // Optional parameters
         direction: 'horizontal',
         loop: true,
         effect: 'fade',
@@ -11,25 +9,71 @@ jQuery(document).ready(function($){
         autoplay: {
             delay: 5000,
         },
-        // If we need pagination
-        // pagination: {
-        //   el: '.swiper-pagination',
-        // //   type: 'bullets',
-        //   renderBullet: function (index, className) {
-        //     return '<span class="' + className + '">' + (index + 1) + '</span>';
-        //   },
-        //   clickable: true,
-        // },
+        simulateTouch: false,
+        paginationClickable: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+      })
+  }
 
-        pagination: '.swiper-pagination',
-    
-        // Navigation arrows
-        // navigation: {
-        //   nextEl: '.swiper-button-next',
-        //   prevEl: '.swiper-button-prev',
-        // },
-    
+  if($('#block-views-block-commerces-block-boutique .swiper-container').length){
+    var boutiquesSwiper = new Swiper ('#block-views-block-commerces-block-boutique .swiper-container', {
+        direction: 'horizontal',
+        loop: true,    
+        slidesPerView: 4,
+        navigation: {
+          nextEl: '#block-views-block-commerces-block-boutique .swiper-button-next',
+          prevEl: '#block-views-block-commerces-block-boutique .swiper-button-prev',
+        },
+        breakpoints: {
+          320: {
+              slidesPerView: 1,
+              spaceBetween: 10
+          },
+          800: {
+              slidesPerView: 2,
+              spaceBetween: 20
+          },
+          1082: {
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+          1300: {
+              slidesPerView: 4,
+              spaceBetween: 30
+          }
+      }
+      })
+  }
 
+  if($('#block-views-block-commerces-block-restaurant .swiper-container').length){
+    var restaurantSwiper = new Swiper ('#block-views-block-commerces-block-restaurant .swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        navigation: {
+            nextEl: '#block-views-block-commerces-block-restaurant  .swiper-button-next',
+            prevEl: '#block-views-block-commerces-block-restaurant  .swiper-button-prev',
+          },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            },
+            800: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            1082: {
+              slidesPerView: 3,
+              spaceBetween: 20
+            },
+            1300: {
+                slidesPerView: 4,
+                spaceBetween: 30
+            }
+        }
       })
   }
 

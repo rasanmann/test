@@ -1,0 +1,29 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.news
+  module:
+    - system
+    - views
+  theme:
+    - yqb
+id: views_block__news_block_news
+theme: yqb
+region: content
+weight: -25
+provider: null
+plugin: 'views_block:news-block_news'
+settings:
+  id: 'views_block:news-block_news'
+  label: Nouvelles
+  provider: views
+  label_display: visible
+  views_label: Nouvelles
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

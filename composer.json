@@ -45,6 +45,7 @@
     "drupal/search_autocomplete": "1.1",
     "drupal/sitemap": "^1.5",
     "drupal/stage_file_proxy": "^1.0@alpha",
+    "drupal/svg_image": "^1.14",
     "drupal/swiftmailer": "~1.0",
     "drupal/token": "~1.0",
     "drupal/views_field_view": "1.0-beta2",

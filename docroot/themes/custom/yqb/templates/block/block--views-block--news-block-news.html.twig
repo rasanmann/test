@@ -5,6 +5,7 @@
  */
 #}
 <section{{ attributes.addClass('block', 'clearfix') }}>
+  <div>
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes.addClass('block-title', 'text-center', 'title-section') }}>{{ label }}</h2>
@@ -14,5 +15,6 @@
   {% block content %}
     {{ content }}
   {% endblock %}
+  </div>
 </section>
 

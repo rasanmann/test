@@ -1,0 +1,30 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.slide.field_image
+    - field.field.node.slide.field_order
+    - field.field.node.slide.field_tile_background_color
+    - field.field.node.slide.field_tile_link
+    - field.field.node.slide.field_tile_text
+    - node.type.slide
+  module:
+    - user
+id: node.slide.teaser
+targetEntityType: node
+bundle: slide
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_image: true
+  field_order: true
+  field_tile_background_color: true
+  field_tile_link: true
+  field_tile_text: true
+  langcode: true

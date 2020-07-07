@@ -17,6 +17,7 @@ global-styling:
       css/preview_block.css: {}
       css/menu.css: {}
       css/mission-valeurs.css: {}
+      css/homepage.css: {}
       css/bureau_controle_access.css: {}
       'https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap': { type: external}
 
@@ -27,6 +28,7 @@ global-js:
     js/libraries/siema-1.5/dist/siema.min.js: {}
     js/mosaique.js: {async: true}
     js/buttonMaker.js: {}
+    js/homepage.js: {}
   dependencies:
     - yqb/modernizr
     - core/classList

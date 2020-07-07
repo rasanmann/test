@@ -38,6 +38,7 @@
     'swiper-wrapper'
   ]
 %}
+
 <div class="swiper-container">
   <div{{ attributes.addClass(classes) }}>
     {% if rows -%}
@@ -46,9 +47,7 @@
       {{ empty }}
     {% endif %}
   </div>
-
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
 </div>
-
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
 

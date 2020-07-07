@@ -1,0 +1,23 @@
+name: 'YQB Homepage'
+type: module
+core: 8.x
+dependencies:
+  - block
+  - content_translation
+  - field
+  - field_collection
+  - homepage_tiles
+  - image
+  - image_url_formatter
+  - language
+  - link
+  - node
+  - options
+  - path
+  - pathauto
+  - scheduler
+  - system
+  - text
+  - user
+  - views
+  - yqb_blocks

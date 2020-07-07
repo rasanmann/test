@@ -13,31 +13,35 @@ view_mode ? view_mode|clean_class,
 ]
 %}
 <article{{ attributes.addClass(classes) }}>
+    <div class="wrapper">
+        <div class="bg-color"></div>
+        <div class="bg-image" style="background-image: url('{{ file_url(content.field_tile_background_image.0['#item'].entity.uri.value) }}')"></div>
+        {# <div class="bg-image" style="background-image: url('https://i.imgur.com/enfpHfl.jpg')"></div> #}
+        {# <img class="logo" src="https://i.imgur.com/JAonC2m.png" alt="Starbuck"> #}
+        {% set logo = {
+            '#theme':      'image_style',
+            '#style_name': 'logo',
+            '#uri':        content.field_color_logo.0['#item'].entity.uri.value,
+            '#alt':        content.field_color_logo.0['#item'].alt,
+            '#width':      content.field_color_logo.0['#item'].alt.width,
+            '#height':     content.field_color_logo.0['#item'].alt.height,
+            } %}
+            {{ logo }}
 
-    {# <h2{{ title_attributes }}>
-        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2> #}
+        <div class="info">
+             <p>{{ content.body['#items'][0].summary }}</p>
+            {% if content.field_tile_link[0] is not empty %}
+                 <a href="{{content.field_tile_link[0]['#url_title']}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
+            {% else %}
+                 <a href="{{ path('entity.node.canonical', {'node': 149670}) }}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
+            {% endif %}
+        </div>
+    </div>
 
-  <div style="background-image: url('{{ file_url(content.field_tile_background_image.0['#item'].entity.uri.value) }}')">
-
-
-    {{ content.field_color_logo[0].entity.uri.value }} 
-
-
-    {{ content.body['#items'][0].summary }}
-
-    {{ content.field_tile_link }}
-  </div>
-
-  <!-- Exemple : récupérer l'URL de l'image -->
-  {# {% if content.field_image and content.field_image['#items'] %}
-    <div class="field-intro-img" style="background-image: url('{{ file_url(content.field_image.0['#item'].entity.uri.value) }}')"></div>
-  {% endif %} #}
-
-  {# {{ content }} #}
-  
-    <h4{{ title_attributes }}>
-       {{ label }}
-    </h4>
-
+    {% if content.field_tile_link[0] is not empty %}
+        <a href="{{content.field_tile_link[0]['#url_title']}}" class="label-commerce">{{ label }}</a>
+    {% else %}
+        <a href="{{path('entity.node.canonical', {'node': 149670}) }}" class="label-commerce">{{ label }}</a>
+    {% endif %}
+    
 </article>
