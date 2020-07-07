@@ -1,0 +1,23 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_gallery.field_picture
+    - field_collection.field_collection.field_gallery
+    - image.style.thumbnail
+  module:
+    - image
+id: field_collection_item.field_gallery.default
+targetEntityType: field_collection_item
+bundle: field_gallery
+mode: default
+content:
+  field_picture:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden: {  }

@@ -1,0 +1,7 @@
+langcode: fr
+status: true
+dependencies: {  }
+id: block_slider_gallery
+label: 'Block slider gallery'
+revision: 0
+description: 'Bloc d''un carrousel d''images (avec vignettes comme navigation) pour promouvoir la ville de Québec'
