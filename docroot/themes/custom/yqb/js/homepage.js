@@ -52,9 +52,10 @@ jQuery(document).ready(function($){
     var restaurantSwiper = new Swiper ('#block-views-block-commerces-block-restaurant .swiper-container', {
         direction: 'horizontal',
         loop: true,
+        slidesPerView: 4,
         navigation: {
-            nextEl: '#block-views-block-commerces-block-restaurant  .swiper-button-next',
-            prevEl: '#block-views-block-commerces-block-restaurant  .swiper-button-prev',
+            nextEl: '#block-views-block-commerces-block-restaurant .swiper-button-next',
+            prevEl: '#block-views-block-commerces-block-restaurant .swiper-button-prev',
           },
         breakpoints: {
             320: {
