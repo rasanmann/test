@@ -28,9 +28,9 @@
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-color {
       opacity: 1; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image {
-      background-position: center;
       background-size: cover;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      background-position: bottom; }
       .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image + .bg-color {
         opacity: 0.8; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .tile-teal {
@@ -415,3 +415,9 @@
       @media (max-width: 600px) {
         .tiles-cols a.tile.vertical-align .vertical-align-content {
           padding-top: 35px; } }
+
+#block-formulairederecherche .btn-default .icon svg {
+  margin-top: 3px;
+  margin-right: 4px; }
+  #block-formulairederecherche .btn-default .icon svg * {
+    fill: #434eff; }

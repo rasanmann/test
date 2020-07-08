@@ -38,9 +38,10 @@
             }
 
             .bg-image{
-                background-position: center;
+                
                 background-size: cover;
                 background-repeat: no-repeat;
+                background-position: bottom;
 
                 & + .bg-color{
                     opacity: 0.8;
@@ -577,3 +578,12 @@
     }
 }
 
+#block-formulairederecherche .btn-default .icon{
+    svg {
+        margin-top: 3px;
+        margin-right: 4px;
+        *{
+            fill: #434eff;
+        }
+    }
+}

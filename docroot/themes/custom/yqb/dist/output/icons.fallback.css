@@ -118,6 +118,8 @@
 
 .icon-right-arrow { background-image: url('png/right-arrow.png'); background-repeat: no-repeat; }
 
+.icon-search-blue { background-image: url('png/search-blue.png'); background-repeat: no-repeat; }
+
 .icon-search { background-image: url('png/search.png'); background-repeat: no-repeat; }
 
 .icon-shaving { background-image: url('png/shaving.png'); background-repeat: no-repeat; }
@@ -126,11 +128,15 @@
 
 .icon-snow { background-image: url('png/snow.png'); background-repeat: no-repeat; }
 
+.icon-stationnement { background-image: url('png/stationnement.png'); background-repeat: no-repeat; }
+
 .icon-sunny { background-image: url('png/sunny.png'); background-repeat: no-repeat; }
 
 .icon-thumb-up { background-image: url('png/thumb-up.png'); background-repeat: no-repeat; }
 
 .icon-thunderstorm { background-image: url('png/thunderstorm.png'); background-repeat: no-repeat; }
+
+.icon-travaux { background-image: url('png/travaux.png'); background-repeat: no-repeat; }
 
 .icon-twitter { background-image: url('png/twitter.png'); background-repeat: no-repeat; }
 
