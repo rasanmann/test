@@ -127,6 +127,9 @@
             background: white;
             line-height: 40px;
             padding: 0 10px; }
+          #block-flightstabslinksblock .nav-tabs > li.search-btn .input-group .icon svg * {
+            fill: #434eff;
+            stroke: #434eff; }
       #block-flightstabslinksblock .nav-tabs > li:not(:last-child) {
         border-right: 1px solid black; }
         @media (max-width: 992px) {
@@ -416,8 +419,6 @@
         .tiles-cols a.tile.vertical-align .vertical-align-content {
           padding-top: 35px; } }
 
-#block-formulairederecherche .btn-default .icon svg {
-  margin-top: 3px;
-  margin-right: 4px; }
-  #block-formulairederecherche .btn-default .icon svg * {
-    fill: #434eff; }
+#block-formulairederecherche .btn-default .icon svg * {
+  fill: #434eff;
+  stroke: #434eff; }

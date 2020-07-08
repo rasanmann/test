@@ -187,6 +187,13 @@
                         line-height: 40px;
                         padding: 0 10px;
                     }
+
+                    .icon svg {
+                        *{
+                            fill: #434eff;
+                            stroke: #434eff;
+                        }
+                    }
                 }
 
                 
@@ -580,10 +587,9 @@
 
 #block-formulairederecherche .btn-default .icon{
     svg {
-        margin-top: 3px;
-        margin-right: 4px;
         *{
             fill: #434eff;
+            stroke: #434eff;
         }
     }
 }
