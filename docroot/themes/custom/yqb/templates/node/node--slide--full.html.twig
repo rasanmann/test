@@ -9,10 +9,16 @@ set classes = [
 node.bundle|clean_class,
 view_mode ? view_mode|clean_class,
 'clearfix',
-content.field_tile_background_color[0]['#markup']
 ]
 %}
 <article{{ attributes.addClass(classes) }}>
+  
+  {% if content.field_image.0['#item'].entity.uri.value is not empty %}
+    <div class="bg-image" style="background-image: url('{{ file_url(content.field_image.0['#item'].entity.uri.value) }}')"></div>
+  {% endif %}
+
+  <div class="bg-color {{content.field_tile_background_color[0]['#markup']}}"></div>
+
   <div class="align-content">
     <h2>{{label}}</h2>
     <p>{{content.field_tile_text[0]}}</p>

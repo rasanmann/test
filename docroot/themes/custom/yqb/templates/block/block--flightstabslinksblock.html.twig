@@ -42,17 +42,19 @@
                         </div>
                     </form>
                 </li>
-                <li role="presentation">
-                    <a href="{{ path('view.arrivals.today') }}">
-                        <span class="icon icon-plane-arrival" data-grunticon-embed></span> {{ '<span>Prochaines </span>arrivées'|t }}
-                    </a>
-                </li>
 
                 <li role="presentation">
                     <a href="{{ path('view.departures.today') }}">
                         <span class="icon icon-plane-departure" data-grunticon-embed></span> {{ '<span>Prochains </span>départs'|t }}
                     </a>
                 </li>
+
+                <li role="presentation">
+                    <a href="{{ path('view.arrivals.today') }}">
+                        <span class="icon icon-plane-arrival" data-grunticon-embed></span> {{ '<span>Prochaines </span>arrivées'|t }}
+                    </a>
+                </li>
+
 
                 <li class="" role="presentation">
                     <a href="{{ url('page_manager.page_view_parking_booking_panels') }}">

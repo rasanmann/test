@@ -16,7 +16,23 @@
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .align-content {
       max-width: 740px;
       margin: auto;
-      text-align: center; }
+      text-align: center;
+      z-index: 1; }
+    .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-color, .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 0; }
+    .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-color {
+      opacity: 1; }
+    .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat; }
+      .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image + .bg-color {
+        opacity: 0.8; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .tile-teal {
       background-color: #23b5c7; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .tile-blue {
@@ -42,7 +58,6 @@
         padding: 15px 20px;
         border-radius: 5px;
         transition: all 0.15s ease-in-out;
-        background: #1f5be3;
         margin: 15px 0; }
         .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide p + a:hover {
           background: white;
@@ -89,7 +104,8 @@
         display: block; } }
     #block-flightstabslinksblock .nav-tabs > li {
       float: none;
-      width: 100%; }
+      width: 100%;
+      font-family: "nimbus-sans", Helvetica, Arial, sans-serif; }
       #block-flightstabslinksblock .nav-tabs > li > a {
         padding: 0 20px 0 24px;
         text-align: center; }
@@ -101,7 +117,8 @@
       #block-flightstabslinksblock .nav-tabs > li.search-btn {
         padding: 10px 20px; }
         #block-flightstabslinksblock .nav-tabs > li.search-btn .input-group {
-          border: 1px solid black; }
+          border: 1px solid black;
+          border-radius: 5px; }
           #block-flightstabslinksblock .nav-tabs > li.search-btn .input-group input.form-search {
             height: 40px;
             font-size: 14px;
