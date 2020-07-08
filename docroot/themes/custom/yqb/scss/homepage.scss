@@ -14,6 +14,7 @@
                 display: flex;
                 justify-content: center;     
                 align-items: center;
+                padding: 0 10px;
             }
 
             .align-content{
@@ -97,6 +98,14 @@
 
 #block-flightstabslinksblock{
     margin: -100px auto 60px;
+    
+    @media (max-width: 800px) { 
+        margin: -64px auto 60px;
+    }
+
+    @media (max-width: 360px) { 
+        margin: -32px auto 60px;
+    }
 
     .links-only{
         #collapse-schedules{
@@ -481,6 +490,16 @@
 
     a.tile{
 
+        height: 390px;
+
+        @media (max-width: 1082px) { 
+            height: 450px;
+        }
+
+        @media (max-width: 500px) { 
+            height: 350px;
+        }
+
         .btn{
            top: 71%
         }
@@ -492,8 +511,6 @@
         img{
             bottom: 0;
         }
-
-        height: 390px;
 
         &.embed-responsive-1by1{
             padding-bottom: 0;

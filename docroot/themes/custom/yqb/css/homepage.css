@@ -11,7 +11,8 @@
       height: 100%;
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      padding: 0 10px; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .align-content {
       max-width: 740px;
       margin: auto;
@@ -67,6 +68,12 @@
 
 #block-flightstabslinksblock {
   margin: -100px auto 60px; }
+  @media (max-width: 800px) {
+    #block-flightstabslinksblock {
+      margin: -64px auto 60px; } }
+  @media (max-width: 360px) {
+    #block-flightstabslinksblock {
+      margin: -32px auto 60px; } }
   #block-flightstabslinksblock .links-only #collapse-schedules {
     min-height: auto;
     border: 0; }
@@ -361,6 +368,12 @@
         width: 100%; } }
   .tiles-cols a.tile {
     height: 390px; }
+    @media (max-width: 1082px) {
+      .tiles-cols a.tile {
+        height: 450px; } }
+    @media (max-width: 500px) {
+      .tiles-cols a.tile {
+        height: 350px; } }
     .tiles-cols a.tile .btn {
       top: 71%; }
     .tiles-cols a.tile .title-default {
