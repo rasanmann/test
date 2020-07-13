@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
               slidesPerView: 1,
               spaceBetween: 10
           },
-          800: {
+          768: {
               slidesPerView: 2,
               spaceBetween: 20
           },
@@ -62,7 +62,7 @@ jQuery(document).ready(function($){
                 slidesPerView: 1,
                 spaceBetween: 10
             },
-            800: {
+            768: {
                 slidesPerView: 2,
                 spaceBetween: 20
             },
@@ -76,6 +76,20 @@ jQuery(document).ready(function($){
             }
         }
       })
+  }
+
+
+  if($('#block-homepagetilesblock-2 .swiper-container').length && $(window).width() < 600){ 
+    var tilesSwiper = new Swiper ('#block-homepagetilesblock-2 .swiper-container', {
+      direction: 'horizontal',
+      loop: true,
+      slidesPerView: 1,
+      navigation: {
+          nextEl: '#block-homepagetilesblock-2 .swiper-button-next',
+          prevEl: '#block-homepagetilesblock-2 .swiper-button-prev',
+        },
+    })
+
   }
 
 });

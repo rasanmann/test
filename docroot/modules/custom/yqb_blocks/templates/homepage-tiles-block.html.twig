@@ -1,32 +1,37 @@
-<div{{ attributes.addClass('tiles', 'tiles-cols') }}>
-	{% for tile in tiles %}
-		<div>
-			<a class="tile tile-home text-center vertical-align embed-responsive {{ tile.format }} {% if tile.background_color %}{{ tile.background_color }}{% endif %} {% if tile.trigger_nav %}trigger-nav{% endif %}" href="{{ tile.url }}" {{ (tile.target) ? "target=" ~ tile.target : '' }}>
-				<div class="vertical-align-content {% if tile.hide_content %} content-hidden{% endif %}">
+<div class="swiper-container">
+	<div{{ attributes.addClass('tiles', 'tiles-cols', 'swiper-wrapper') }}>
+		{% for tile in tiles %}
+			<div class="swiper-slide">
+				<a class="tile tile-home text-center vertical-align embed-responsive {{ tile.format }} {% if tile.background_color %}{{ tile.background_color }}{% endif %} {% if tile.trigger_nav %}trigger-nav{% endif %}" href="{{ tile.url }}" {{ (tile.target) ? "target=" ~ tile.target : '' }}>
+					<div class="vertical-align-content {% if tile.hide_content %} content-hidden{% endif %}">
 
-					{% if tile.icon %}
-						<img src="{{ tile.icon }}" class="tile-icon" alt="" aria-hidden="true" />
-					{% elseif tile.icon_class %}
-						<span class="icon {{ tile.icon_class }}" aria-hidden="true" data-grunticon-embed></span>
-					{% endif %}
-
-					<h2 class="title-default">{{ tile.title }}</h2>
-
-					{% if tile.description %}
-						{% if tile.cta %}
-							<span class="btn btn-primary btn-inverse btn-sm">{{ tile.cta }}</span>
+						{% if tile.icon %}
+							<img src="{{ tile.icon }}" class="tile-icon" alt="" aria-hidden="true" />
+						{% elseif tile.icon_class %}
+							<span class="icon {{ tile.icon_class }}" aria-hidden="true" data-grunticon-embed></span>
 						{% endif %}
 
-						{# <span class="tile-description">{{ tile.description }}</span> #}
+						<h2 class="title-default">{{ tile.title }}</h2>
+
+						{% if tile.description %}
+							{% if tile.cta %}
+								<span class="btn btn-primary btn-inverse btn-sm">{{ tile.cta }}</span>
+							{% endif %}
+
+							{# <span class="tile-description">{{ tile.description }}</span> #}
+						{% endif %}
+					</div>
+
+					{% if tile.background_image %}
+						<img data-src="{{ tile.background_image }}" alt="{{ tile.title }}" class="background-image">
 					{% endif %}
-				</div>
 
-				{% if tile.background_image %}
-					<img data-src="{{ tile.background_image }}" alt="{{ tile.title }}" class="background-image">
-				{% endif %}
-
-				<span class="top-bottom-hover"></span>
-			</a>
-		</div>
-	{% endfor %}
+					<span class="top-bottom-hover"></span>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
 </div>
+

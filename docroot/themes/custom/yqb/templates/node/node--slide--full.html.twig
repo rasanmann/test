@@ -22,6 +22,10 @@ view_mode ? view_mode|clean_class,
   <div class="align-content">
     <h2>{{label}}</h2>
     <p>{{content.field_tile_text[0]}}</p>
-    {{content.field_tile_link[0]}}
+    {% if content.field_tile_link[0] is not empty %}
+      <div class="btn-wrapper">
+        {{content.field_tile_link[0]}}
+      </div>
+    {% endif %}
   </div>
 </article>
