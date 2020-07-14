@@ -396,7 +396,6 @@ function yqb_theme_suggestions_field_alter(array &$suggestions, array $variables
 
 function yqb_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
   if (isset($variables['menu_name'])) {
-    //    var_dump($variables['menu_name']);
     switch ($variables['menu_name']) {
       case 'main':
       case 'main-en':
@@ -720,4 +719,14 @@ function yqb_preprocess_block__herosearchblock(&$variables) {
 function yqb_preprocess_block__yqb_alert(&$variables){
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $variables['language'] = $language;
+}
+
+function yqb_preprocess_node(&$variables){
+  $node = $variables['node'];
+  
+  if($node->getType() == 'commerce'){
+    $view_page = \Drupal\Core\Url::fromRoute('view.commerces.page_1')->toString();
+    $variables['view_commerces_path'] = $view_page;
+  }
+
 }

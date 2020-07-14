@@ -436,7 +436,17 @@
     }
 }
 
-.commerce{  
+.commerce.page-view{
+    margin: 40px;
+    .field--name-body p{
+        margin: 40px 0;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}
+
+.commerce.homepage-view{  
 
     width: 272px;
     margin: auto;

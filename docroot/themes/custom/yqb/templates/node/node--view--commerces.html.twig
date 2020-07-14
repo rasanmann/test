@@ -10,14 +10,14 @@ node.bundle|clean_class,
 not node.isPublished() ? 'is-unpublished',
 view_mode ? view_mode|clean_class,
 'clearfix',
+'homepage-view'
 ]
 %}
+
 <article{{ attributes.addClass(classes) }}>
     <div class="wrapper">
         <div class="bg-color"></div>
         <div class="bg-image" style="background-image: url('{{ file_url(content.field_tile_background_image.0['#item'].entity.uri.value) }}')"></div>
-        {# <div class="bg-image" style="background-image: url('https://i.imgur.com/enfpHfl.jpg')"></div> #}
-        {# <img class="logo" src="https://i.imgur.com/JAonC2m.png" alt="Starbuck"> #}
         {% set logo = {
             '#theme':      'image_style',
             '#style_name': 'logo',
@@ -31,17 +31,17 @@ view_mode ? view_mode|clean_class,
         <div class="info">
              <p>{{ content.body['#items'][0].summary }}</p>
             {% if content.field_tile_link[0] is not empty %}
-                 <a href="{{content.field_tile_link[0]['#url_title']}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
+                 <a href="{{content.field_tile_link[0]['#url_title']}}#{{node.id}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
             {% else %}
-                 <a href="{{ path('entity.node.canonical', {'node': 149670}) }}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
+                 <a href="{{ view_commerces_path }}#{{node.id}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
             {% endif %}
         </div>
+         {# path('entity.node.canonical', {'node': 149670}) #}
     </div>
-
     {% if content.field_tile_link[0] is not empty %}
-        <a href="{{content.field_tile_link[0]['#url_title']}}" class="label-commerce">{{ label }}</a>
+        <a href="{{content.field_tile_link[0]['#url_title']}}#{{node.id}}" class="label-commerce">{{ label }}</a>
     {% else %}
-        <a href="{{path('entity.node.canonical', {'node': 149670}) }}" class="label-commerce">{{ label }}</a>
+        <a href="{{view_commerces_path }}#{{node.id}}" class="label-commerce">{{ label }}</a>
     {% endif %}
     
 </article>
