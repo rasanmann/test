@@ -3,7 +3,7 @@ services:
   nginx:
     container_name: ${COMPOSE_PROJECT_NAME}_nginx
     privileged: true
-    image: docker.gitlab.libeo.com/libeo/nginx:1.15-fpm
+    image: docker.gitlab.libeo.com/docker/nginx:1.15-fpm
     environment:
       CURRENT_UID: ${CURRENT_UID}
       SERVER_ROOT: /app/docroot/
@@ -25,7 +25,7 @@ services:
 
   php-fpm:
     container_name: ${COMPOSE_PROJECT_NAME}_php-fpm
-    image: docker.gitlab.libeo.com/libeo/php:7.1-fpm
+    image: docker.gitlab.libeo.com/docker/php:7.1-fpm
     depends_on:
     - maildev
     - mysql
