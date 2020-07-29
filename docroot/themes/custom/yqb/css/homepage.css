@@ -581,9 +581,9 @@
   fill: #434eff;
   stroke: #434eff; }
 
-.block-main-menu > ul > li {
-  width: 20%; }
-
 @media (max-width: 992px) {
   .block-alert {
     position: static; } }
+
+.nav-bar {
+  padding: 0 10px; }

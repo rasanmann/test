@@ -777,12 +777,12 @@
     }
 }
 
-.block-main-menu > ul > li {
-    width: 20%;
-}
-
 .block-alert{
     @media (max-width: 992px) {
         position: static;
     }
+}
+
+.nav-bar{
+    padding: 0 10px;
 }
