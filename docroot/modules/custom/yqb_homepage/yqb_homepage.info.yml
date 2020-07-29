@@ -34,4 +34,4 @@ dependencies:
   - yqb_api
   - yqb_blocks
   - yqb_parking_booker
-description: 'Incluant les Commerces (Boutiques et Restaurants), les Nouvelles.'
+description: 'Incluant les Commerces (Boutiques et Restaurants) et les Nouvelles.'
