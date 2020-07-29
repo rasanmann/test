@@ -585,5 +585,12 @@
   .block-alert {
     position: static; } }
 
-.nav-bar {
+ul.navbar-nav {
   padding: 0 10px; }
+  @media (max-width: 550px) {
+    ul.navbar-nav {
+      padding: 0; } }
+  @media (max-width: 550px) {
+    ul.navbar-nav > li {
+      width: 20%;
+      padding: 0 1px; } }
