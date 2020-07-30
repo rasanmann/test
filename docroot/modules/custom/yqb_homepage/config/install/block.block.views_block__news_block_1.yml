@@ -1,5 +1,5 @@
 langcode: fr
-status: false
+status: true
 dependencies:
   config:
     - views.view.news
@@ -16,10 +16,10 @@ provider: null
 plugin: 'views_block:news-block_1'
 settings:
   id: 'views_block:news-block_1'
-  label: ''
+  label: Nouvelles
   provider: views
   label_display: visible
-  views_label: ''
+  views_label: Nouvelles
   items_per_page: none
 visibility:
   request_path:
