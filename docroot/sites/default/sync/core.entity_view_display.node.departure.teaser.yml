@@ -1,0 +1,42 @@
+uuid: cad7573c-8f50-4d17-a200-e1e0043bb75b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.departure.field_airline
+    - field.field.node.departure.field_atd
+    - field.field.node.departure.field_destination_airport
+    - field.field.node.departure.field_etd
+    - field.field.node.departure.field_flight_number
+    - field.field.node.departure.field_gate
+    - field.field.node.departure.field_status
+    - field.field.node.departure.field_std
+    - field.field.node.departure.field_stops
+    - field.field.node.departure.field_unique_id
+    - node.type.departure
+  module:
+    - user
+id: node.departure.teaser
+targetEntityType: node
+bundle: departure
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_airline: true
+  field_atd: true
+  field_destination_airport: true
+  field_etd: true
+  field_flight_number: true
+  field_gate: true
+  field_status: true
+  field_std: true
+  field_stops: true
+  field_unique_id: true
+  langcode: true

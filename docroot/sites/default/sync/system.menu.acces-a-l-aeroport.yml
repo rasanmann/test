@@ -1,0 +1,8 @@
+uuid: a9fe244a-cfaf-4ef1-ad42-66c19453e1fd
+langcode: fr
+status: true
+dependencies: {  }
+id: acces-a-l-aeroport
+label: 'Barre latérale - Accès à l''aéroport'
+description: ''
+locked: false

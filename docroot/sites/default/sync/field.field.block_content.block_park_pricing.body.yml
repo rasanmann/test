@@ -1,0 +1,23 @@
+uuid: 87007f95-6cfb-4fc9-9ec8-ec096b79425d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_park_pricing
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.block_park_pricing.body
+field_name: body
+entity_type: block_content
+bundle: block_park_pricing
+label: Body
+description: 'Description additionnelle pour le stationnement'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,23 @@
+uuid: 61e4bbd2-c165-48c4-b0d0-5a05c74e3f60
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_label_position
+    - node.type.destination
+  module:
+    - options
+id: node.destination.field_label_position
+field_name: field_label_position
+entity_type: node
+bundle: destination
+label: 'Position du titre'
+description: 'Position du titre dans la carte.'
+required: true
+translatable: false
+default_value:
+  -
+    value: MC
+default_value_callback: ''
+settings: {  }
+field_type: list_string

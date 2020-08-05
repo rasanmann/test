@@ -1,0 +1,22 @@
+uuid: e00091b3-44df-4b30-ab11-02bda33d34bf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.texte_avec_arriere_plan.field_text
+    - paragraphs.paragraphs_type.texte_avec_arriere_plan
+  module:
+    - text
+id: paragraph.texte_avec_arriere_plan.default
+targetEntityType: paragraph
+bundle: texte_avec_arriere_plan
+mode: default
+content:
+  field_text:
+    weight: 0
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

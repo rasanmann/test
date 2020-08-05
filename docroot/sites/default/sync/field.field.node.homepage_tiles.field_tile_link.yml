@@ -1,0 +1,25 @@
+uuid: d605374d-848f-4281-9cae-4c83adb76029
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tile_link
+    - node.type.homepage_tiles
+  module:
+    - link
+_core:
+  default_config_hash: pzXSbxwhQEDFa_eq0V28obY5fpPdCgNNXH6j2C9XpZw
+id: node.homepage_tiles.field_tile_link
+field_name: field_tile_link
+entity_type: node
+bundle: homepage_tiles
+label: Lien
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

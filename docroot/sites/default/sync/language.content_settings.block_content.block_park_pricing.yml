@@ -1,0 +1,18 @@
+uuid: 9ce96e5d-8554-4b83-9845-f52fddd2e408
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_park_pricing
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: block_content.block_park_pricing
+target_entity_type_id: block_content
+target_bundle: block_park_pricing
+default_langcode: current_interface
+language_alterable: false

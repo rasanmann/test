@@ -1,0 +1,24 @@
+uuid: bddf69a5-7d6d-4149-bbd1-5b3f0b36403b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.user_flight
+_core:
+  default_config_hash: 3gORkq3LsJdGXJhjet7Fxs9u0kaMB4_pd8krqdBV8t8
+id: node.user_flight.sticky
+field_name: sticky
+entity_type: node
+bundle: user_flight
+label: 'Epinglé en haut des listes'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

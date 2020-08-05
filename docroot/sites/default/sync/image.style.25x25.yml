@@ -1,0 +1,15 @@
+uuid: 5765b7cb-7f70-439c-8d5a-20b20de0e653
+langcode: fr
+status: true
+dependencies: {  }
+name: 25x25
+label: 25x25
+effects:
+  d7535a6d-b3da-4869-8884-3a60ca39a984:
+    uuid: d7535a6d-b3da-4869-8884-3a60ca39a984
+    id: image_scale
+    weight: 1
+    data:
+      width: 25
+      height: 25
+      upscale: false

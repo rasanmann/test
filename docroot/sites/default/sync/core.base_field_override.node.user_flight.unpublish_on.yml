@@ -1,0 +1,18 @@
+uuid: 2df8dfd8-edfe-472c-b26e-d6e85fccd3f7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.user_flight
+id: node.user_flight.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: user_flight
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

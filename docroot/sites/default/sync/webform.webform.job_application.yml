@@ -1,0 +1,254 @@
+langcode: fr
+status: open
+dependencies: {  }
+open: null
+close: null
+weight: 0
+uid: 1
+template: false
+archive: false
+id: job_application
+title: Candidature
+description: ''
+category: ''
+elements: "offer:\n  '#type': textfield\n  '#title': 'Offre d''emploi'\n  '#default_value': '[current-page:query:offer]'\n  '#states':\n    visible:\n      ':input[name=\"offer\"]':\n        filled: true\n  '#attributes':\n    readonly: readonly\nname:\n  '#type': textfield\n  '#title': 'Votre nom'\n  '#required': true\nemail:\n  '#type': email\n  '#title': 'Votre adresse de courriel'\n  '#required': true\nphone:\n  '#type': tel\n  '#title': Téléphone\n  '#required': true\ndepartment:\n  '#type': select\n  '#title': Département\n  '#options':\n    Finances: Finances\n    Communications: Communications\n    'Ressources humaines': 'Ressources humaines'\n    Développement: Développement\n    'Protection aéroportuaire': 'Protection aéroportuaire'\n    'Service incendie': 'Service incendie'\n    'Environnement et SGS': 'Environnement et SGS'\n    'Service à la clientèle (Expérience passagers)': 'Service à la clientèle (Expérience passagers)'\n    'Ingénierie et construction': 'Ingénierie et construction'\n    'Électromécanique et électricité': 'Électromécanique et électricité'\n    'Mécanique du bâtiment et menuiserie': 'Mécanique du bâtiment et menuiserie'\n    'Technologie de l’information (TI)': 'Technologie de l’information (TI)'\n    'Mécanique de véhicule': 'Mécanique de véhicule'\n    'Déneigement (Opérateur)': 'Déneigement (Opérateur)'\n    'Soutien administratif': 'Soutien administratif'\n    Stage: Stage\n    Autres: Autres\n  '#states_clear': false\ndemande_de_stage:\n  '#type': checkbox\n  '#title': 'Demande de stage'\nfemme:\n  '#type': checkbox\n  '#title': Femme\nminorite_visible:\n  '#type': checkbox\n  '#title': 'Minorité visible'\npersonne_handicapee:\n  '#type': checkbox\n  '#title': 'Personne handicapée'\nautochtone:\n  '#type': checkbox\n  '#title': Autochtone\nexplication:\n  '#type': textarea\n  '#title': 'Équité en matière d''emploi'\n  '#default_value': 'En tant qu’employeur souscrivant aux exigences d’équité en matière d’emploi, Aéroport de Québec inc. valorise la diversité au sein de ses équipes de travail et vise à intégrer tous les groupes. Si vous faites partie de l’un des groupes désignés par la Loi (femmes, minorités visibles, personnes handicapées et autochtones), n’hésitez pas à nous le signaler en complétant la section appropriée dans votre profil de candidat. Cette mention n’agit pas à titre discriminatoire, mais bien à des fins de statistiques.'\n  '#disabled': true\ncv:\n  '#type': managed_file\n  '#title': '  Joindre votre C.V (PDF / DOC)'\n  '#required': true\n  '#uri_scheme': public\n  '#file_extensions': 'pdf doc docx'\n  '#wrapper_attributes':\n    class:\n      - field--type-file\ncover_letter:\n  '#type': managed_file\n  '#title': 'Joindre votre lettre de motivation (PDF / DOC)'\n  '#required': true\n  '#uri_scheme': public\n  '#file_extensions': 'pdf doc docx'\n  '#wrapper_attributes':\n    class:\n      - field--type-file\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Soumettre"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: a-propos/carrieres/candidature
+  page_confirm_path: a-propos/carrieres/candidature/confirmation
+  page_admin_theme: false
+  form_title: both
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: true
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: "<p>Nous accusons r&eacute;ception de votre demande d&rsquo;emploi au sein de notre organisation.</p>\r\n\r\n<p>Veuillez noter que nous conserverons votre curriculum vitae pour une p&eacute;riode de 6 (six) mois.</p>\r\n\r\n<p>Nous vous invitons &agrave; consulter r&eacute;guli&egrave;rement notre site Web dans la section &laquo; Carri&egrave;res &raquo;.</p>\r\n\r\n<p>Nous vous remercions de l&rsquo;int&eacute;r&ecirc;t manifest&eacute; &agrave; l&rsquo;&eacute;gard de l&rsquo;A&eacute;roport de Qu&eacute;bec inc. et vous prions d&rsquo;agr&eacute;er nos salutations distingu&eacute;es.</p>\r\n\r\n<p>* Veuillez noter que lors d&rsquo;une ouverture de poste, seuls les candidats retenus pour une entrevue seront contact&eacute;s.</p>"
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_view: false
+  token_update: false
+  wizard_complete: true
+  wizard_complete_label: ''
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  application:
+    id: email
+    label: Application
+    handler_id: application
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: cv@yqb.ca
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: '[webform-submission:values:name:raw]'
+      subject: 'Candidature - [webform-submission:values:department:value][webform-submission:values:offer:value]'
+      body: _default
+      excluded_elements:
+        explication: explication
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: true
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+  confirmation:
+    id: email
+    label: Confirmation
+    handler_id: confirmation
+    status: true
+    conditions: {  }
+    weight: 1
+    settings:
+      states:
+        - completed
+      to_mail: '[webform-submission:values:email:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Confirmation de candidature - [webform-submission:values:department:value][webform-submission:values:offer:value]'
+      body: "Bonjour,\n\nNous accusons réception de votre demande d’emploi au sein de notre organisation. \n\nVeuillez noter que nous conserverons votre curriculum vitae pour une période de 6 (six) mois. \n\nNous vous invitons à consulter régulièrement notre site Web dans la section « Carrières ».\n\nNous vous remercions de l’intérêt manifesté à l’égard de l’Aéroport de Québec inc. et vous prions d’agréer nos salutations distinguées. \n\n* Veuillez noter que lors d’une ouverture de poste, seuls les candidats retenus pour une entrevue seront contactés. \n\n---------------------------\n\nCe courriel a été envoyé de façon automatisé, veuillez ne pas répondre à ce message."
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+variants: {  }
+uuid: dc6cbb31-c0fe-4a87-8039-31cac97ccb3f

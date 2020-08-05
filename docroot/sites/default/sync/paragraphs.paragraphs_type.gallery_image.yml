@@ -1,0 +1,9 @@
+uuid: c093e1cb-551e-4636-b4a3-80c95c09df79
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9z1wpTNR8hujyk93-Pai3BBEZTN7rkwNH89sMs6wLvU
+id: gallery_image
+label: 'Gallery Image'
+behavior_plugins: {  }

@@ -1,0 +1,33 @@
+uuid: c1bed348-30b4-481e-ae82-2bd25d01b0d8
+langcode: fr
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: arrivals_fr
+label: 'Arrivals FR'
+type: 'canonical_entities:node'
+pattern: '/vols-et-destinations/arrivees/[node:title]'
+selection_criteria:
+  af5fc298-9b45-4ee3-988d-a6c4d35ef51d:
+    id: node_type
+    bundles:
+      arrival: arrival
+    negate: false
+    context_mapping:
+      node: node
+    uuid: af5fc298-9b45-4ee3-988d-a6c4d35ef51d
+  c1a9e481-2986-4b1d-ab49-c205d4e11198:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: c1a9e481-2986-4b1d-ab49-c205d4e11198
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Langue

@@ -1,0 +1,23 @@
+uuid: 4f31968a-21c8-43ae-a4c1-5a3dc62da092
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hidden
+    - node.type.airline
+id: node.airline.field_hidden
+field_name: field_hidden
+entity_type: node
+bundle: airline
+label: Hidden
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Caché
+  off_label: Visible
+field_type: boolean

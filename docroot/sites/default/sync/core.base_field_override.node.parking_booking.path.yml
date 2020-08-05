@@ -1,0 +1,20 @@
+uuid: 55bc261a-b267-4f63-ae31-441fa2a89fd8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.parking_booking
+  module:
+    - path
+id: node.parking_booking.path
+field_name: path
+entity_type: node
+bundle: parking_booking
+label: 'Alias d''URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

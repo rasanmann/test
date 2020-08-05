@@ -1,0 +1,122 @@
+uuid: 901eb2a2-7d4a-4a38-b9fc-d23f69c31b9f
+langcode: fr
+status: true
+dependencies:
+  module:
+    - datetime
+    - yqb_payments
+id: yqb_payment.yqb_payment.default
+targetEntityType: yqb_payment
+bundle: yqb_payment
+mode: default
+content:
+  field_amount:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_auth_code:
+    type: string_textfield
+    region: content
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bill_no:
+    type: string_textfield
+    region: content
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_business_name:
+    type: string_textfield
+    region: content
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_card_num:
+    type: string_textfield
+    region: content
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_customer_id:
+    type: string_textfield
+    region: content
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_customer_no:
+    type: string_textfield
+    region: content
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_date_time:
+    type: datetime_default
+    region: content
+    weight: 13
+    settings: {  }
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_first_name:
+    type: string_textfield
+    region: content
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_last_name:
+    type: string_textfield
+    region: content
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_notifications:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    region: content
+    weight: 8
+    third_party_settings: {  }
+  field_reference_num:
+    type: string_textfield
+    region: content
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  reference_num:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true

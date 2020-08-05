@@ -1,0 +1,25 @@
+uuid: a9a4e3ac-4231-4d31-a516-225ea80f4063
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.footer-social-nav
+  module:
+    - system
+  theme:
+    - yqb
+id: navigationreseauxsociauxpieddepage
+theme: yqb
+region: footer
+weight: -10
+provider: null
+plugin: 'system_menu_block:footer-social-nav'
+settings:
+  id: 'system_menu_block:footer-social-nav'
+  label: 'Navigation réseaux sociaux - Pied de page'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

@@ -1,0 +1,33 @@
+uuid: 86de2e77-e1a2-418e-b400-d44a6dd123fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: news_fr
+label: 'Communiqué de presse FR'
+type: 'canonical_entities:node'
+pattern: '/a-propos/communiques-de-presse/[node:title]'
+selection_criteria:
+  040dd146-0578-48b2-a10d-c7205fe6b1d4:
+    id: node_type
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 040dd146-0578-48b2-a10d-c7205fe6b1d4
+  eac79fd1-1ff8-4518-876a-a4c34baae60e:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: eac79fd1-1ff8-4518-876a-a4c34baae60e
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

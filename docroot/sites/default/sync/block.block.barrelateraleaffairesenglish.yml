@@ -1,0 +1,30 @@
+uuid: a60c4eef-4524-4822-8931-44daa09876d2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.barre-laterale---affaires-e
+  module:
+    - system
+  theme:
+    - yqb
+id: barrelateraleaffairesenglish
+theme: yqb
+region: sidebar_first
+weight: -14
+provider: null
+plugin: 'system_menu_block:barre-laterale---affaires-e'
+settings:
+  id: 'system_menu_block:barre-laterale---affaires-e'
+  label: 'Barre latérale - Affaires (english)'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/business\r\n/business/*"
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,21 @@
+uuid: 21616405-bc98-4c1a-95aa-24ee1941159a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_minor
+    - node.type.beacon
+_core:
+  default_config_hash: Rkx1XCmuk8e_427q7x0LhtUUszEA8uZKMD1j6kK9hn4
+id: node.beacon.field_minor
+field_name: field_minor
+entity_type: node
+bundle: beacon
+label: Minor
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: f85c4d3f-2ee6-450a-9db0-b5196a1fc6ac
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.user_flight
+_core:
+  default_config_hash: yXIfF8L8UJwm_Y9hqI8vBwZYwpKGAn3DyGqYVr2AZAs
+id: node.user_flight.created
+field_name: created
+entity_type: node
+bundle: user_flight
+label: 'Écrit le'
+description: 'L''heure à laquelle le nœud a été créé.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

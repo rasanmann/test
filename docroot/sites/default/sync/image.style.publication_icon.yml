@@ -1,0 +1,15 @@
+uuid: 43490be3-251c-49be-a4f9-fe718fe81020
+langcode: fr
+status: true
+dependencies: {  }
+name: publication_icon
+label: publication_icon
+effects:
+  84abc8c6-76df-479b-a638-6e4ca8ff64a6:
+    uuid: 84abc8c6-76df-479b-a638-6e4ca8ff64a6
+    id: image_scale
+    weight: 1
+    data:
+      width: 75
+      height: 75
+      upscale: false

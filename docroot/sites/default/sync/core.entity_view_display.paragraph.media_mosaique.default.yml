@@ -1,0 +1,22 @@
+uuid: b07b310f-96b4-4682-819d-9f7b8114e1b7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.media_mosaique.field_media_mosaique
+    - paragraphs.paragraphs_type.media_mosaique
+id: paragraph.media_mosaique.default
+targetEntityType: paragraph
+bundle: media_mosaique
+mode: default
+content:
+  field_media_mosaique:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden: {  }

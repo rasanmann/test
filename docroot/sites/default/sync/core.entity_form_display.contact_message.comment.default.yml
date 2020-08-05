@@ -1,0 +1,65 @@
+uuid: 5489adab-a5d0-4942-8adc-77af80f18740
+langcode: fr
+status: true
+dependencies:
+  config:
+    - contact.form.comment
+    - field.field.contact_message.comment.field_telephone
+  module:
+    - telephone
+id: contact_message.comment.default
+targetEntityType: contact_message
+bundle: comment
+mode: default
+content:
+  copy:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_telephone:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  langcode:
+    type: language_select
+    weight: 5
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+    region: content
+  mail:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  message:
+    type: string_textarea
+    weight: 4
+    settings:
+      rows: 12
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  name:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  preview:
+    weight: 40
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  subject:
+    type: string_textfield
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

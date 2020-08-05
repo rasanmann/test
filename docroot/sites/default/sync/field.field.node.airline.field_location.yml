@@ -1,0 +1,19 @@
+uuid: b2c327a9-cc1d-4fbb-bd62-987abb1351a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.airline
+id: node.airline.field_location
+field_name: field_location
+entity_type: node
+bundle: airline
+label: Location
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

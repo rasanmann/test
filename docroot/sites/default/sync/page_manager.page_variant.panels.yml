@@ -1,0 +1,237 @@
+uuid: a2ce653b-525c-4272-83a3-d6cbde390a5f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - page_manager.page.parking_booking
+  content:
+    - 'block_content:basic:1e411326-58b8-4656-8307-43392d7ea56e'
+    - 'block_content:basic:342b6d92-eaa0-42e6-866e-bd647eb3d00a'
+    - 'block_content:basic:64fa5440-743a-402a-a28e-2d996a1d5eac'
+    - 'block_content:basic:d8f260f5-ca4d-4626-8ac5-4f823491f8ce'
+    - 'block_content:basic:e14f9b22-a0ab-434b-bb85-29cc03af77c1'
+    - 'block_content:basic:e546d8e7-0d35-42c8-b545-f22c7af7db33'
+    - 'block_content:block_list:9da94468-3dc2-4bd1-96f9-6cc32abe36ad'
+    - 'block_content:block_park_pricing:7b2e7537-ea96-4e1f-a828-c6611c3c9c44'
+    - 'block_content:block_park_pricing:8f5180c9-fd1e-40a5-8339-591b07b8f10a'
+    - 'block_content:block_park_pricing:dff72857-da72-42e5-be05-63da2df6958c'
+    - 'block_content:icon_only:2d3c5205-5504-40dc-b2a2-cdbcb426539f'
+    - 'block_content:icon_only:8d14100f-e81c-4219-9710-a129ddf37f71'
+    - 'block_content:image_simple:e58ec1a3-c38f-4ecd-b533-9471796a9a9b'
+    - 'block_content:simple_title:46d941ab-e567-4831-8ead-077fe80d2af5'
+    - 'block_content:simple_title:9a4c62f1-60cd-46b2-86ee-89dec442afab'
+  module:
+    - block_content
+    - panels
+    - yqb_parking_booker
+id: panels
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    4ef17b9e-281f-4f10-875a-7fc22e38303f:
+      id: 'block_content:2d3c5205-5504-40dc-b2a2-cdbcb426539f'
+      label: 'Stationnement (icône)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: top.one.two.top
+      weight: 1
+      context_mapping: {  }
+      uuid: 4ef17b9e-281f-4f10-875a-7fc22e38303f
+    3bd23a41-bdb1-4c9a-bb09-68c748525390:
+      id: 'block_content:e546d8e7-0d35-42c8-b545-f22c7af7db33'
+      label: Stationnement
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: top.one.two.left
+      weight: 1
+      context_mapping: {  }
+      uuid: 3bd23a41-bdb1-4c9a-bb09-68c748525390
+    6851b7fb-857b-4ce1-95d0-4b3a011508ee:
+      id: 'block_content:d8f260f5-ca4d-4626-8ac5-4f823491f8ce'
+      label: 'Stationnement (notes)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: top.one.two.right
+      weight: 1
+      context_mapping: {  }
+      uuid: 6851b7fb-857b-4ce1-95d0-4b3a011508ee
+    d1d915cb-4e48-41fb-b43a-27e7ee2665d1:
+      id: 'block_content:9a4c62f1-60cd-46b2-86ee-89dec442afab'
+      label: Tarification
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.mixed.left
+      weight: 1
+      context_mapping: {  }
+      uuid: d1d915cb-4e48-41fb-b43a-27e7ee2665d1
+    f88c65c5-fa27-4b75-a168-8753df95b3f7:
+      id: 'block_content:1e411326-58b8-4656-8307-43392d7ea56e'
+      label: 'Tarification (notes)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.mixed.center
+      weight: 1
+      context_mapping: {  }
+      uuid: f88c65c5-fa27-4b75-a168-8753df95b3f7
+    416652d9-2b26-4ff1-98d9-9005a3ccbca8:
+      id: 'block_content:342b6d92-eaa0-42e6-866e-bd647eb3d00a'
+      label: 'Tarification (paiement)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.mixed.right
+      weight: 1
+      context_mapping: {  }
+      uuid: 416652d9-2b26-4ff1-98d9-9005a3ccbca8
+    9d16f622-c748-447a-b580-bac65c569c2d:
+      id: 'block_content:8f5180c9-fd1e-40a5-8339-591b07b8f10a'
+      label: INPARQ
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.equal.left
+      weight: 1
+      context_mapping: {  }
+      uuid: 9d16f622-c748-447a-b580-bac65c569c2d
+    384265e0-0bff-41d9-8f7d-fbf3704e3b95:
+      id: 'block_content:dff72857-da72-42e5-be05-63da2df6958c'
+      label: PROXIPARQ
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.equal.center
+      weight: 1
+      context_mapping: {  }
+      uuid: 384265e0-0bff-41d9-8f7d-fbf3704e3b95
+    e5e3b94b-ac8c-457c-b51b-f2dc8ff7fb9f:
+      id: 'block_content:7b2e7537-ea96-4e1f-a828-c6611c3c9c44'
+      label: CELLPARQ
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.equal.right
+      weight: 1
+      context_mapping: {  }
+      uuid: e5e3b94b-ac8c-457c-b51b-f2dc8ff7fb9f
+    62036aa4-6e36-4463-9d24-b3efddaeed16:
+      id: 'block_content:e14f9b22-a0ab-434b-bb85-29cc03af77c1'
+      label: 'Voitures électriques'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.bottom.left
+      weight: 2
+      context_mapping: {  }
+      uuid: 62036aa4-6e36-4463-9d24-b3efddaeed16
+    60fe1633-3042-4fcd-a8db-5b541687a30f:
+      id: 'block_content:9da94468-3dc2-4bd1-96f9-6cc32abe36ad'
+      label: 'Voitures électriques (tarifs)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.bottom.center
+      weight: 1
+      context_mapping: {  }
+      uuid: 60fe1633-3042-4fcd-a8db-5b541687a30f
+    66daade2-6191-48bf-a0bf-225a3333af44:
+      id: 'block_content:64fa5440-743a-402a-a28e-2d996a1d5eac'
+      label: 'Voitures électriques (notes)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.bottom.right
+      weight: 1
+      context_mapping: {  }
+      uuid: 66daade2-6191-48bf-a0bf-225a3333af44
+    0117e8e5-9506-4a5a-8feb-ea41cd3274de:
+      id: 'block_content:8d14100f-e81c-4219-9710-a129ddf37f71'
+      label: 'Voitures électriques (icône)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: middle.bottom.left
+      weight: 1
+      context_mapping: {  }
+      uuid: 0117e8e5-9506-4a5a-8feb-ea41cd3274de
+    c3c5193f-2f97-4583-9f2a-a00ead776bcd:
+      id: 'block_content:46d941ab-e567-4831-8ead-077fe80d2af5'
+      label: 'Réserver un stationnement (titre page)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      region: top.full
+      weight: 1
+      context_mapping: {  }
+      uuid: c3c5193f-2f97-4583-9f2a-a00ead776bcd
+    2ed59884-5099-4250-83cd-27d30e3ca2dc:
+      id: 'block_content:e58ec1a3-c38f-4ecd-b533-9471796a9a9b'
+      label: 'Plan de l''aérogare'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: bottom.full
+      uuid: 2ed59884-5099-4250-83cd-27d30e3ca2dc
+      weight: 1
+    92fa17a0-e8c0-45da-9460-720ec4f0f2d1:
+      id: parking_booker_block
+      label: 'La réservation doit être effectuée minimum 24 h à l''avance'
+      provider: yqb_parking_booker
+      label_display: '0'
+      region: top.full
+      weight: 2
+      coupon_input: 0
+      context_mapping: {  }
+      uuid: 92fa17a0-e8c0-45da-9460-720ec4f0f2d1
+      warning: 1
+  id: panels_variant
+  uuid: 9eba3b99-ec16-4b42-a584-4ff96735522e
+  label: null
+  weight: 0
+  layout: one-three-one
+  layout_settings: {  }
+  page_title: 'Réserver un stationnement'
+  storage_type: page_manager
+  storage_id: panels
+  builder: ipe
+page: parking_booking
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

@@ -1,0 +1,25 @@
+uuid: 6abc4647-777f-43b0-9aea-a5dfe3420b21
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notified_parking
+    - node.type.user_flight
+_core:
+  default_config_hash: 7_ypqlwopP8wRI465pCq0Umk_sfPkUdnw5Ni9btXQq8
+id: node.user_flight.field_notified_parking
+field_name: field_notified_parking
+entity_type: node
+bundle: user_flight
+label: 'Notified Parking'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Notified for parking'
+  off_label: 'Not notified for parking'
+field_type: boolean

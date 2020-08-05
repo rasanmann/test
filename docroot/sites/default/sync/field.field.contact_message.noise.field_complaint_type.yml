@@ -1,0 +1,28 @@
+uuid: 886c56b1-4fb5-4a8b-9ada-b97fea2833cb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - contact.form.noise
+    - field.storage.contact_message.field_complaint_type
+    - taxonomy.vocabulary.complaint_types
+id: contact_message.noise.field_complaint_type
+field_name: field_complaint_type
+entity_type: contact_message
+bundle: noise
+label: 'Type de plainte'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      complaint_types: complaint_types
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

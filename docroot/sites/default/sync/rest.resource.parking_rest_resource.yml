@@ -1,0 +1,21 @@
+uuid: 10bf9dfa-86f8-4618-ac2f-7eb8f33ea691
+langcode: fr
+status: true
+dependencies:
+  module:
+    - serialization
+    - user
+    - yqb_api
+_core:
+  default_config_hash: kWKM0uR1tT-59wuHXKuj5PKTNnYGruQ3Bism5Ch8x20
+id: parking_rest_resource
+plugin_id: parking_rest_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+  formats:
+    - json
+  authentication:
+    - cookie

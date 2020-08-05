@@ -1,0 +1,23 @@
+uuid: 2b2cb2e4-ff5f-4dad-b400-a3c403d3505f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_check_in_link
+    - node.type.airline
+  module:
+    - link
+id: node.airline.field_check_in_link
+field_name: field_check_in_link
+entity_type: node
+bundle: airline
+label: 'Check-in Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

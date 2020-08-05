@@ -1,0 +1,12 @@
+uuid: 01b7b871-3f7e-4f7f-851f-9006bac25c15
+langcode: fr
+status: false
+dependencies: {  }
+id: mission_vision_and_values
+label: 'Mission, vision, valeurs'
+description: null
+use_admin_theme: false
+path: /a-propos/entreprise/mission-vision-et-valeurs
+access_logic: and
+access_conditions: {  }
+parameters: {  }

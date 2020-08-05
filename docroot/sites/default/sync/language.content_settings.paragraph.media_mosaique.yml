@@ -1,0 +1,18 @@
+uuid: 8b64f270-8770-4b62-9fc9-d340969d5556
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.media_mosaique
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.media_mosaique
+target_entity_type_id: paragraph
+target_bundle: media_mosaique
+default_langcode: site_default
+language_alterable: false

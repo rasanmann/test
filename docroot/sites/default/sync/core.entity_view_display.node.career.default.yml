@@ -1,0 +1,91 @@
+uuid: 36c33a09-1c91-445b-bd1c-3d9ae272a8f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.career.body
+    - field.field.node.career.field_alert_sent
+    - field.field.node.career.field_career_type
+    - field.field.node.career.field_company_name
+    - field.field.node.career.field_department
+    - field.field.node.career.field_end_date
+    - field.field.node.career.field_job_summary
+    - field.field.node.career.field_location_name
+    - field.field.node.career.field_start_date
+    - node.type.career
+  module:
+    - datetime
+    - text
+    - user
+id: node.career.default
+targetEntityType: node
+bundle: career
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_career_type:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_company_name:
+    weight: 106
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_department:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_end_date:
+    weight: 108
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_location_name:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_start_date:
+    weight: 107
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_alert_sent: true
+  field_job_summary: true
+  langcode: true

@@ -1,0 +1,27 @@
+uuid: da3d0a44-df04-432f-a901-1ec6beaa10bb
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - yqb
+_core:
+  default_config_hash: 1TQP4b3ZnlzvIH9bj6cpCz_SyUHdJjLQkZnHpikjjhw
+id: yqb_page_title
+theme: yqb
+region: content
+weight: -32
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: "/vols-et-destinations/horaire-des-vols/*\r\n/vols-et-destinations/destinations-desservies\r\n/vols-et-destinations/transporteurs\r\n\r\n/a-propos/entreprise/mission-vision-et-valeurs\r\n/about/company/mission-vision-values\r\n/visiter-quebec\r\n/visit-quebec-city\r\n/planifier-son-vol/reserver-un-stationnement\r\n/plan-a-flight/parking-reservation\r\n/planifier-son-vol/reserver-un-stationnement/*\r\n/plan-a-flight/parking-reservation/*\r\n/planifier-son-vol/modifier-un-stationnement/*\r\n/plan-a-flight/parking-modification/*\r\n/a-propos/entreprise/histoire\r\n/about/company/history"
+    negate: true
+    context_mapping: {  }
