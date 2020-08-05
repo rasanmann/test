@@ -12,10 +12,14 @@ field_name: body
 entity_type: node
 bundle: commerce
 label: Description
-description: ''
+description: "Le résumé du champ description sert au carousel du commerce.\r\nLa description s'affichera dans la page Boutiques & Restaurants. \r\n/en/airport-services/shops-and-restaurants, /fr/services-aeroportuaires/boutiques-et-restaurants"
 required: true
 translatable: true
-default_value: {  }
+default_value:
+  -
+    summary: 'Fill this summary'
+    value: ''
+    format: full_html
 default_value_callback: ''
 settings:
   display_summary: true

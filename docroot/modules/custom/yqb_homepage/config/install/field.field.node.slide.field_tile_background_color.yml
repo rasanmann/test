@@ -13,7 +13,7 @@ bundle: slide
 label: 'Couleur de fond'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: tile-blue

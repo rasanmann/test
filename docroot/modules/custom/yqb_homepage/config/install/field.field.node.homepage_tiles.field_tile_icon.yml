@@ -17,7 +17,7 @@ id: node.homepage_tiles.field_tile_icon
 field_name: field_tile_icon
 entity_type: node
 bundle: homepage_tiles
-label: 'Icône personnalisée'
+label: 'Icône personnalisé'
 description: ''
 required: false
 translatable: true

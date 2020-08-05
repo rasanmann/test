@@ -28,17 +28,6 @@ label: Panels
 variant: panels_variant
 variant_settings:
   blocks:
-    92fa17a0-e8c0-45da-9460-720ec4f0f2d1:
-      id: parking_booker_block
-      label: 'La réservation doit être effectuée minimum 24 h à l''avance'
-      provider: yqb_parking_booker
-      label_display: '0'
-      region: top.full
-      weight: 2
-      coupon_input: 0
-      context_mapping: {  }
-      uuid: 92fa17a0-e8c0-45da-9460-720ec4f0f2d1
-      warning: 1
     4ef17b9e-281f-4f10-875a-7fc22e38303f:
       id: 'block_content:2d3c5205-5504-40dc-b2a2-cdbcb426539f'
       label: 'Stationnement (icône)'
@@ -219,6 +208,17 @@ variant_settings:
       region: bottom.full
       uuid: 2ed59884-5099-4250-83cd-27d30e3ca2dc
       weight: 1
+    92fa17a0-e8c0-45da-9460-720ec4f0f2d1:
+      id: parking_booker_block
+      label: 'La réservation doit être effectuée minimum 24 h à l''avance'
+      provider: yqb_parking_booker
+      label_display: '0'
+      region: top.full
+      weight: 2
+      coupon_input: 0
+      context_mapping: {  }
+      uuid: 92fa17a0-e8c0-45da-9460-720ec4f0f2d1
+      warning: 1
   id: panels_variant
   uuid: 9eba3b99-ec16-4b42-a584-4ff96735522e
   label: null

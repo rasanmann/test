@@ -9,9 +9,9 @@ dependencies:
     - field.field.node.commerce.field_tile_link
     - node.type.commerce
   module:
-    - image
     - image_url_formatter
     - link
+    - svg_image
     - text
     - user
 id: node.commerce.default

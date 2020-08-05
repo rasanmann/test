@@ -5,14 +5,7 @@ dependencies:
     - field.storage.node.field_tile_background_image
     - node.type.commerce
   module:
-    - content_translation
     - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      file: '0'
-      alt: '0'
-      title: '0'
 id: node.commerce.field_tile_background_image
 field_name: field_tile_background_image
 entity_type: node
@@ -20,7 +13,7 @@ bundle: commerce
 label: 'Image de fond'
 description: 'Taille recommandée : 300x300px'
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -10,10 +10,10 @@ dependencies:
     - image.style.thumbnail
     - node.type.slide
   module:
-    - image
     - link
     - path
     - scheduler
+    - svg_image
 id: node.slide.default
 targetEntityType: node
 bundle: slide

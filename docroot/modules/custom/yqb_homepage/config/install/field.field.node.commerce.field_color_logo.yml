@@ -5,22 +5,15 @@ dependencies:
     - field.storage.node.field_color_logo
     - node.type.commerce
   module:
-    - content_translation
     - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      alt: alt
-      title: title
-      file: '0'
 id: node.commerce.field_color_logo
 field_name: field_color_logo
 entity_type: node
 bundle: commerce
 label: Logo
-description: 'Taille recommandée : 125x125px'
+description: 'Taille recommandée : 125x125 px'
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

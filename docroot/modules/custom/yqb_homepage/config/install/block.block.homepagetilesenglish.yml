@@ -11,7 +11,7 @@ dependencies:
 id: homepagetilesenglish
 theme: yqb
 region: content
-weight: -14
+weight: -15
 provider: null
 plugin: 'system_menu_block:homepage-tiles-en'
 settings:

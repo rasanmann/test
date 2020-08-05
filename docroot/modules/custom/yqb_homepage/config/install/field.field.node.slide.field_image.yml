@@ -5,22 +5,15 @@ dependencies:
     - field.storage.node.field_image
     - node.type.slide
   module:
-    - content_translation
     - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      alt: alt
-      title: title
-      file: '0'
 id: node.slide.field_image
 field_name: field_image
 entity_type: node
 bundle: slide
 label: Background
-description: ''
+description: 'Taille recommandée : 1600x900px'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

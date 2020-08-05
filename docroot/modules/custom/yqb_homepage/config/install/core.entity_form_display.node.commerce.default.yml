@@ -10,10 +10,10 @@ dependencies:
     - image.style.thumbnail
     - node.type.commerce
   module:
-    - image
     - link
     - path
     - scheduler
+    - svg_image
     - text
 id: node.commerce.default
 targetEntityType: node
