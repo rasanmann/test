@@ -33,7 +33,7 @@ view_mode ? view_mode|clean_class,
             {% if content.field_tile_link[0] is not empty %}
                  <a href="{{content.field_tile_link[0]['#url_title']}}#{{node.id}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
             {% else %}
-                 <a href="{{ view_commerces_path }}#{{node.id}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
+                 <a href="{{ path('entity.node.canonical', {'node': 1321156}) }}#{{node.id}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
             {% endif %}
         </div>
          {# path('entity.node.canonical', {'node': 149670}) #}
@@ -41,7 +41,6 @@ view_mode ? view_mode|clean_class,
     {% if content.field_tile_link[0] is not empty %}
         <a href="{{content.field_tile_link[0]['#url_title']}}#{{node.id}}" class="label-commerce">{{ label }}</a>
     {% else %}
-        <a href="{{view_commerces_path }}#{{node.id}}" class="label-commerce">{{ label }}</a>
+        <a href="{{ path('entity.node.canonical', {'node': 1321156}) }}#{{node.id}}" class="label-commerce">{{ label }}</a>
     {% endif %}
-    
 </article>

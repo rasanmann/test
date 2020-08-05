@@ -466,7 +466,7 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
-      title: 'Communiqués de presse'
+      title: Nouvelles
       header: {  }
       footer: {  }
       empty: {  }
