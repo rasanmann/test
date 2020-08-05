@@ -90,6 +90,9 @@
       },
       "drupal/core": {
         "Multiple usages of FieldPluginBase::getEntity do not check for NULL, leading to WSOD": "https://www.drupal.org/files/issues/2019-11-12/3007424-57-8-7-x.patch"
+      },
+      "drupal/pathauto":{
+        "Bulk generate should be able to recreate aliases" : "https://www.drupal.org/files/issues/patch_2678558_2.diff"
       }
     },
     "merge-plugin": {
