@@ -36,7 +36,6 @@ view_mode ? view_mode|clean_class,
                  <a href="{{ path('entity.node.canonical', {'node': 1321156}) }}#{{node.id}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
             {% endif %}
         </div>
-         {# path('entity.node.canonical', {'node': 149670}) #}
     </div>
     {% if content.field_tile_link[0] is not empty %}
         <a href="{{content.field_tile_link[0]['#url_title']}}#{{node.id}}" class="label-commerce">{{ label }}</a>
