@@ -41,7 +41,7 @@
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image {
       background-size: cover;
       background-repeat: no-repeat;
-      background-position: bottom; }
+      background-position: center; }
       .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image + .bg-color {
         opacity: 0.8; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .tile-teal {
