@@ -17,16 +17,20 @@
 							{% if tile.cta %}
 								<span class="btn btn-primary btn-inverse btn-sm">{{ tile.cta }}</span>
 							{% endif %}
-
-							{# <span class="tile-description">{{ tile.description }}</span> #}
 						{% endif %}
 					</div>
-
 					{% if tile.background_image %}
-						<img data-src="{{ tile.background_image }}" alt="{{ tile.title }}" class="background-image">
+						{%
+						set tilebg = {
+							'#theme':      'image_style',
+							'#style_name': '304x171_16_9',
+							'#uri':        tile.background_image,
+							'#alt':        tile.title,
+							'#attributes': { class: 'background-image' },
+						}
+						%}
+						{{tilebg}}
 					{% endif %}
-
-					<span class="top-bottom-hover"></span>
 				</a>
 			</div>
 		{% endfor %}

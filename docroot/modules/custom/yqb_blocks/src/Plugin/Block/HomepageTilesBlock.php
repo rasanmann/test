@@ -287,7 +287,7 @@ class HomepageTilesBlock extends PreviewBlock {
               }
 
               if (isset($node->get('field_tile_background_image')->entity)) {
-                $tile['background_image'] = file_create_url($node->get('field_tile_background_image')->entity->getFileUri());
+                $tile['background_image'] = $node->get('field_tile_background_image')->entity->getFileUri();
               }
 
               if (isset($node->get('field_tile_icon')->entity)) {
