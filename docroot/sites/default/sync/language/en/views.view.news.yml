@@ -8,7 +8,7 @@ display:
       title: News
   block_1:
     display_options:
-      use_more_text: 'See all press releases'
+      use_more_text: 'See all news'
       fields:
         view_node:
           text: 'Read more'
