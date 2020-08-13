@@ -6,7 +6,7 @@
 					<div class="vertical-align-content {% if tile.hide_content %} content-hidden{% endif %}">
 
 						{% if tile.icon %}
-							<img src="{{ tile.icon }}" class="tile-icon" alt="" aria-hidden="true" />
+							<img src="{{ tile.icon }}" class="tile-icon icon icon-{{tile.id}}" alt="{{tile.title}}" aria-hidden="true" />
 						{% elseif tile.icon_class %}
 							<span class="icon {{ tile.icon_class }}" aria-hidden="true" data-grunticon-embed></span>
 						{% endif %}

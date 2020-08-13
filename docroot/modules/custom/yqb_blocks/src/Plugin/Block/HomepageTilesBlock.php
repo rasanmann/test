@@ -266,6 +266,7 @@ class HomepageTilesBlock extends PreviewBlock {
               $node = $node->getTranslation($language);
 
               $tile = [
+                'id' => $node->id(),
                 'title' => $node->title->value,
                 'description' => $node->field_tile_body->value,
                 'hide_content' => (bool) $node->field_tile_hide_content->value,

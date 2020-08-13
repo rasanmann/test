@@ -724,16 +724,33 @@
             transform: translate(0, -15px);
         }
 
-        img{
+        img.icon-208526{
+            padding-bottom: 15px;
+        }
+
+        img.icon-215616{
+            padding-bottom: 9px;
+        }
+
+        img.background-image{
             bottom: 0;
         }
 
         &.embed-responsive-1by1{
             padding-bottom: 0;
-            :hover .tile-icon + h2 {
-                margin-top: 30px;
+            &:hover .tile-icon + h2 {
+                margin-top: 20px;
+            }
+
+            &:hover .icon + h2 {
+                margin-top: 20px;
             }
         }
+
+        .icon + h2 {
+            margin-top: 30px;
+        }
+
 
         &:before, &:after{
             width: 10px;

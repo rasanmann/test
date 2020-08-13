@@ -820,7 +820,7 @@ display:
           output_url_as_text: true
       use_more: true
       use_more_always: true
-      use_more_text: 'Voir tous les nouvelles'
+      use_more_text: 'Voir toutes les nouvelles'
       block_description: 'Homepage News (Communiqué de presse)'
       css_class: row
       arguments: {  }
