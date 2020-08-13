@@ -243,6 +243,7 @@ var App = (function ($, Drupal, Bootstrap) {
             initializeGallery();
             setMenuActiveClass();
             initSliderHomePage();
+            initSliderTilesHomePage();
             Router.init();
         };
 
@@ -790,19 +791,44 @@ var App = (function ($, Drupal, Bootstrap) {
                     }
                   })
               }
-        
-        
-              if($('#block-homepagetilesblock-2 .swiper-container').length && $(window).width() < 600){ 
-                var tilesSwiper = new Swiper ('#block-homepagetilesblock-2 .swiper-container', {
-                  direction: 'horizontal',
-                  loop: true,
-                  slidesPerView: 1,
-                  navigation: {
-                      nextEl: '#block-homepagetilesblock-2 .swiper-button-next',
-                      prevEl: '#block-homepagetilesblock-2 .swiper-button-prev',
-                    },
-                })
-              }
+        }
+
+       
+        var initSliderTilesHomePage = function () {
+            
+            if($('#block-homepagetilesblock-2 .swiper-container').length){
+
+                if( !$('#block-homepagetilesblock-2 .swiper-container').hasClass('swiper-container-initialized') 
+                    && $(window).width() < 585 ){ 
+
+                    var tilesSwiper = new Swiper ('#block-homepagetilesblock-2 .swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,
+                    slidesPerView: 1,
+                    on: {
+                        resize: function () {
+                            var swiper = this;
+                            if($(window).width() > 585 && swiper){
+                                // To prevent event attach on undefined after resize like updateSize
+                                setTimeout(function(){
+                                    swiper.destroy(true, true);
+                                    console.log('swiper tile destroyed');
+                                }, 100);
+                            }
+                        },
+                        init: function() {
+                            console.log('swiper tile initialized');
+                        }
+                      },
+                    navigation: {
+                        nextEl: '#block-homepagetilesblock-2 .swiper-button-next',
+                        prevEl: '#block-homepagetilesblock-2 .swiper-button-prev',
+                        },
+                    })
+
+                
+                }
+            } 
         }
 
         var initializeReminders = function() {
@@ -1091,6 +1117,7 @@ var App = (function ($, Drupal, Bootstrap) {
 
         var onWindowResize = function(ev) {
             didResize = true;
+            initSliderTilesHomePage();
         };
 
         var onWindowDelayedResize = function(ev) {

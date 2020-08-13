@@ -416,7 +416,7 @@
         height: 90px;
         width: 45px;
         background-color: #1f1f1f;
-        top: 35%;
+        top: 37%;
         color: white;
 
         &:after{
@@ -686,7 +686,7 @@
 
     @media (max-width: 600px) { 
         flex-wrap: nowrap;
-        padding: 0;
+        padding: 45px 0;
     }
 
     > div{
@@ -709,6 +709,7 @@
 
         @media (max-width: 1082px) { 
             height: 450px;
+            margin-bottom: 20px;
         }
 
         @media (max-width: 500px) { 

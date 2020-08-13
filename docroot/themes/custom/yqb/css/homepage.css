@@ -315,7 +315,7 @@
   height: 90px;
   width: 45px;
   background-color: #1f1f1f;
-  top: 35%;
+  top: 37%;
   color: white; }
   #block-views-block-commerces-block-restaurant .swiper-button-next:after,
   #block-views-block-commerces-block-restaurant .swiper-button-prev:after,
@@ -532,7 +532,7 @@
   @media (max-width: 600px) {
     .tiles-cols {
       flex-wrap: nowrap;
-      padding: 0; } }
+      padding: 45px 0; } }
   .tiles-cols > div {
     width: calc( (100%/4) - 15px);
     margin: auto; }
@@ -547,7 +547,8 @@
     height: 390px; }
     @media (max-width: 1082px) {
       .tiles-cols a.tile {
-        height: 450px; } }
+        height: 450px;
+        margin-bottom: 20px; } }
     @media (max-width: 500px) {
       .tiles-cols a.tile {
         height: 350px; } }
