@@ -61,7 +61,9 @@
                 </li>
 
                 <li class="" role="presentation">
-                    <a href="{{ url('page_manager.page_view_parking_booking_panels') }}">
+                {# https://www.aeroportdequebec.com/fr/planifier-son-vol/stationnements #}
+                    {# <a href="{{ url('page_manager.page_view_parking_booking_panels') }}"> #}
+                    <a href=" {{ path('entity.node.canonical', {'node': 1322876 }) }}">
                         <span class="icon icon-car-parking" data-grunticon-embed></span> {{ 'Stationnement'|t }}
                     </a>
                 </li>
@@ -70,4 +72,3 @@
 		</section>
 	</div>
 </div>
-
