@@ -1,0 +1,22 @@
+uuid: ea27ddc2-c8eb-4eae-826a-a809bf29260b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_push_ios_token
+  module:
+    - user
+_core:
+  default_config_hash: LviJIoRDsclDx5rrVDNbdrce6ROeXoeVzKRGLAEPRag
+id: user.user.field_push_ios_token
+field_name: field_push_ios_token
+entity_type: user
+bundle: user
+label: 'Push iOS token'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

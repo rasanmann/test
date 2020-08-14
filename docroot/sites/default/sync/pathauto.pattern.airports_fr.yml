@@ -1,0 +1,33 @@
+uuid: dbe3918c-510c-42b5-ae03-3da4432153c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: airports_fr
+label: 'Airports FR'
+type: 'canonical_entities:node'
+pattern: '/aeroports/[node:field_iata]'
+selection_criteria:
+  57d04a56-37ee-47a9-a200-df098e6ee611:
+    id: node_type
+    bundles:
+      airport: airport
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 57d04a56-37ee-47a9-a200-df098e6ee611
+  540306fb-a4cb-466a-a809-9c83c9ee7922:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 540306fb-a4cb-466a-a809-9c83c9ee7922
+selection_logic: and
+weight: -4
+relationships:
+  'node:langcode:language':
+    label: Language

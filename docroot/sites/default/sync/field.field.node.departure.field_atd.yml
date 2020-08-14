@@ -1,0 +1,21 @@
+uuid: 90dd039f-6178-40fc-933d-61a6deecf26a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_atd
+    - node.type.departure
+  module:
+    - datetime
+id: node.departure.field_atd
+field_name: field_atd
+entity_type: node
+bundle: departure
+label: ATD
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

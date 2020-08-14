@@ -1,0 +1,21 @@
+uuid: 7a861d13-46bb-4a80-b954-84679862bd84
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_gate
+field_name: field_gate
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

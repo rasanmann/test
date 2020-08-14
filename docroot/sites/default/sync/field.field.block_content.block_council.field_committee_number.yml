@@ -1,0 +1,19 @@
+uuid: 3f7b3296-1c7c-4b3a-870b-e0c5953ee247
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_council
+    - field.storage.block_content.field_committee_number
+id: block_content.block_council.field_committee_number
+field_name: field_committee_number
+entity_type: block_content
+bundle: block_council
+label: 'Committee number'
+description: 'Numéro de la liste des comités lié au membre du conseil (facultatif)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

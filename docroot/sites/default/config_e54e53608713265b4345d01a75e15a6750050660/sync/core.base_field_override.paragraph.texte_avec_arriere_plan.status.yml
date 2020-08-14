@@ -1,0 +1,22 @@
+uuid: bdab0654-a462-4ad3-ab47-60482fcad2b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.texte_avec_arriere_plan
+id: paragraph.texte_avec_arriere_plan.status
+field_name: status
+entity_type: paragraph
+bundle: texte_avec_arriere_plan
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

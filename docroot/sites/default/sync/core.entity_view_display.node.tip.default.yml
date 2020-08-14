@@ -1,0 +1,39 @@
+uuid: c628b973-4eda-4a6d-bf47-2a14b3a04dd7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.tip.body
+    - field.field.node.tip.field_zone
+    - node.type.tip
+  module:
+    - text
+    - user
+id: node.tip.default
+targetEntityType: node
+bundle: tip
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_zone:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  langcode: true

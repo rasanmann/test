@@ -1,0 +1,8 @@
+uuid: fb02e1e6-c659-4bf7-8c6f-32957b1b2831
+langcode: en
+status: true
+dependencies: {  }
+id: barre-laterale---bureau-en
+label: 'Barre latérale - Bureau des Contrôles d’Accès (EN)'
+description: ''
+locked: false

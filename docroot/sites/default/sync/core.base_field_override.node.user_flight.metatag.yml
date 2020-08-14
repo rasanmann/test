@@ -1,0 +1,18 @@
+uuid: 6d100acb-9d46-479b-8dab-ab6b84e26bdc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.user_flight
+id: node.user_flight.metatag
+field_name: metatag
+entity_type: node
+bundle: user_flight
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,20 @@
+uuid: b935e916-6349-453f-97a2-13331ba20866
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.parking_booking
+id: node.parking_booking.uid
+field_name: uid
+entity_type: node
+bundle: parking_booking
+label: 'Écrit par'
+description: 'Le nom d''utilisateur de l''auteur du contenu.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getCurrentUserId'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

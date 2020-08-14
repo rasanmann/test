@@ -1,0 +1,22 @@
+uuid: 1043dc3c-6b89-4229-8b4d-092d727ff923
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.media_mosaique
+id: paragraph.media_mosaique.status
+field_name: status
+entity_type: paragraph
+bundle: media_mosaique
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

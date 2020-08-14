@@ -1,0 +1,29 @@
+uuid: a28c72a8-0e10-4349-b6cf-abcf9f2df7d9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - contact.form.request
+    - field.field.contact_message.request.field_telephone
+id: contact_message.request.default
+targetEntityType: contact_message
+bundle: request
+mode: default
+content:
+  field_telephone:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  message:
+    type: string
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

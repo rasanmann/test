@@ -1,0 +1,18 @@
+uuid: f21bcbde-6ec2-473c-92d3-055298f6c42c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.zone
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.zone
+target_entity_type_id: node
+target_bundle: zone
+default_langcode: site_default
+language_alterable: false

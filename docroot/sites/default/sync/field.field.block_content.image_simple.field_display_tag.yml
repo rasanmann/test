@@ -1,0 +1,23 @@
+uuid: 59e40b18-517b-4817-afca-38b021adfdfc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.image_simple
+    - field.storage.block_content.field_display_tag
+id: block_content.image_simple.field_display_tag
+field_name: field_display_tag
+entity_type: block_content
+bundle: image_simple
+label: 'Display tag'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Show <img> tag'
+  off_label: 'Show <div> tag with background'
+field_type: boolean

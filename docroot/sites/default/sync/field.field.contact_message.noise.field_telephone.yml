@@ -1,0 +1,21 @@
+uuid: 396cc5ef-572d-4185-8e8f-efd945a41358
+langcode: fr
+status: true
+dependencies:
+  config:
+    - contact.form.noise
+    - field.storage.contact_message.field_telephone
+  module:
+    - telephone
+id: contact_message.noise.field_telephone
+field_name: field_telephone
+entity_type: contact_message
+bundle: noise
+label: Téléphone
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

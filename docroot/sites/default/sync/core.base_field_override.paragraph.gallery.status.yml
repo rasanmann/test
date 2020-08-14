@@ -1,0 +1,24 @@
+uuid: c7cea196-87f8-4fb5-8deb-058b9786b169
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.gallery
+_core:
+  default_config_hash: ENyeCozjCC2_-5xpn8TNUjvIWfJYMScmwuUoUxLQDwM
+id: paragraph.gallery.status
+field_name: status
+entity_type: paragraph
+bundle: gallery
+label: Publié
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

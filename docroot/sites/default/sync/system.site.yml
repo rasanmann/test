@@ -1,0 +1,15 @@
+uuid: 7b264c58-fd24-485b-8058-8825c371281a
+name: 'Aéroport international Jean-Lesage de Québec (YQB)'
+mail: no-reply@aeroportdequebec.com
+slogan: 'Le passager avant tout®'
+page:
+  403: ''
+  404: ''
+  front: /node/54693
+admin_compact_mode: false
+weight_select_max: 100
+langcode: fr
+default_langcode: fr
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+mail_notification: ''

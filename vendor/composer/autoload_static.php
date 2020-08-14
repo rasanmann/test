@@ -41,6 +41,10 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
         array (
             'paragraph1\\phpFCM\\' => 18,
         ),
+        'e' => 
+        array (
+            'enshrined\\svgSanitize\\' => 22,
+        ),
         'c' => 
         array (
             'cweagans\\Composer\\' => 18,
@@ -197,6 +201,10 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
         'paragraph1\\phpFCM\\' => 
         array (
             0 => __DIR__ . '/..' . '/paragraph1/php-fcm/src',
+        ),
+        'enshrined\\svgSanitize\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/enshrined/svg-sanitize/src',
         ),
         'cweagans\\Composer\\' => 
         array (
@@ -527,8 +535,8 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
         array (
             0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
             1 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
-            2 => __DIR__ . '/..' . '/doctrine/reflection/lib/Doctrine/Common',
-            3 => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Common',
+            2 => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Common',
+            3 => __DIR__ . '/..' . '/doctrine/reflection/lib/Doctrine/Common',
         ),
         'Consolidation\\SiteProcess\\' => 
         array (

@@ -1,0 +1,12 @@
+uuid: 8dcfd182-2f0b-4f75-9c0e-8fda979a8495
+langcode: fr
+status: true
+dependencies: {  }
+id: comment
+label: 'Commentaires sur nos services'
+recipients:
+  - commentaire@yqb.ca
+reply: 'Merci pour votre commentaire.'
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

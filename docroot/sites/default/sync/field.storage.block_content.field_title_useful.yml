@@ -1,0 +1,21 @@
+uuid: 0af068e3-68c4-43c3-897d-07806db41c8c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_title_useful
+field_name: field_title_useful
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

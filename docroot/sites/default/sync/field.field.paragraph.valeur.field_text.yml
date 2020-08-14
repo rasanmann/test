@@ -1,0 +1,21 @@
+uuid: a1c66c03-620d-4c6a-b27c-d8674ea9c437
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.valeur
+  module:
+    - text
+id: paragraph.valeur.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: valeur
+label: Contenu
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

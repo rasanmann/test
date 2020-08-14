@@ -1,0 +1,8 @@
+uuid: 04fb501d-5ca9-401f-8db9-6250ec9bad45
+langcode: en
+status: true
+dependencies: {  }
+id: barre-laterale---a-propos-e
+label: 'Barre latérale - À propos (english)'
+description: ''
+locked: false

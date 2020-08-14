@@ -1,0 +1,24 @@
+uuid: 9a4979e0-1238-4d2a-8436-6bbcc5f86ff3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.homepage_tiles
+_core:
+  default_config_hash: 6DVEYUDZyVNdCYeoUlofQNPtu1xunbcpI1FxVuhslyE
+id: node.homepage_tiles.promote
+field_name: promote
+entity_type: node
+bundle: homepage_tiles
+label: 'Promu en page d''accueil'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

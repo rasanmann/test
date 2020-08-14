@@ -1,0 +1,68 @@
+uuid: ce6ba4d5-a665-4271-9246-5f1d1a843e72
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.beacon.field_major
+    - field.field.node.beacon.field_minor
+    - field.field.node.beacon.field_serial_number
+    - field.field.node.beacon.field_uid
+    - field.field.node.beacon.field_zone
+    - node.type.beacon
+  module:
+    - user
+_core:
+  default_config_hash: '-GUN00K-PWiDqIkH_spwaaOijmssxpHc-HVeNZEwEUY'
+id: node.beacon.default
+targetEntityType: node
+bundle: beacon
+mode: default
+content:
+  field_major:
+    weight: 101
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_minor:
+    weight: 102
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_serial_number:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_uid:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_zone:
+    weight: 105
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  langcode: true

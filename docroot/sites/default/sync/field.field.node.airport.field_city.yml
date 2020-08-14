@@ -1,0 +1,19 @@
+uuid: f6805c3e-5d68-4308-8100-dcf0b01849fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city
+    - node.type.airport
+id: node.airport.field_city
+field_name: field_city
+entity_type: node
+bundle: airport
+label: City
+description: 'Main city served by airport. May be spelled differently from Name.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,5 @@
+data_exchange_layer:
+  auth_url: 'https://del.yqb.ca'
+  api_url: 'https://del.yqb.ca'
+  email: dev@cossette.com
+  api_key: 2329cd53c9154c8f8cc7c178fb2632fc

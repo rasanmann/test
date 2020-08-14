@@ -1,0 +1,20 @@
+uuid: eb958560-a837-48a8-820c-6a68256d1a7c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.gallery_image
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: tllq0yZVvy2A3HrENLCgbA1acpxuwQoQGqvppRqyjcE
+id: paragraph.gallery_image
+target_entity_type_id: paragraph
+target_bundle: gallery_image
+default_langcode: current_interface
+language_alterable: false

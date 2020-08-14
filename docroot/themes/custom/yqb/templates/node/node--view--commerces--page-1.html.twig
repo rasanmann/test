@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ */
+#}
+{%
+set classes = [
+node.bundle|clean_class,
+not node.isPublished() ? 'is-unpublished',
+view_mode ? view_mode|clean_class,
+'clearfix',
+'page-view'
+]
+%}
+
+<article{{ attributes.addClass(classes) }} id="{{node.id}}">
+        {% set logo = {
+            '#theme':      'image_style',
+            '#style_name': 'logo',
+            '#uri':        content.field_color_logo.0['#item'].entity.uri.value,
+            '#alt':        content.field_color_logo.0['#item'].alt,
+            '#width':      content.field_color_logo.0['#item'].alt.width,
+            '#height':     content.field_color_logo.0['#item'].alt.height,
+            } %}
+        <h2>{{label}}</h2>
+        {{ logo }}
+        <div class="info">
+            {{ content.body }}
+            {% if content.field_tile_link[0] is not empty %}
+                 <a href="{{content.field_tile_link[0]['#url_title']}}">{{content.field_tile_link[0]['#url_title']}}</a>
+            {% endif %}
+        </div>
+</article>

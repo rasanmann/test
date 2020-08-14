@@ -1,0 +1,9 @@
+uuid: afb1ec67-a09d-4abe-b0da-566233fa56ac
+langcode: fr
+status: true
+dependencies: {  }
+id: texte_avec_arriere_plan
+label: 'Texte avec arrière-plan'
+icon_uuid: null
+description: 'Texte au milieu avec arrière-plan ou pulse.'
+behavior_plugins: {  }

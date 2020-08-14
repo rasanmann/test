@@ -1,0 +1,23 @@
+uuid: 2d75b0dc-3f46-4ee3-95a0-6a20fa20a225
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_list
+    - field.field.block_content.block_list.field_list
+  module:
+    - text
+id: block_content.block_list.default
+targetEntityType: block_content
+bundle: block_list
+mode: default
+content:
+  field_list:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  langcode: true

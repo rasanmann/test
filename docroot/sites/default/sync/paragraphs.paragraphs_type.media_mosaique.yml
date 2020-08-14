@@ -1,0 +1,9 @@
+uuid: c6f62302-b1d5-4956-8d64-412f7fb1c110
+langcode: fr
+status: true
+dependencies: {  }
+id: media_mosaique
+label: 'Media mosaïque'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

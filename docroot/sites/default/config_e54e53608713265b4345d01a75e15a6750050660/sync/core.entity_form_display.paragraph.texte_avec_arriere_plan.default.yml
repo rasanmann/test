@@ -1,0 +1,30 @@
+uuid: 71230f92-04f7-4ce2-9074-9110d42fe129
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.texte_avec_arriere_plan.field_text
+    - paragraphs.paragraphs_type.texte_avec_arriere_plan
+  module:
+    - text
+id: paragraph.texte_avec_arriere_plan.default
+targetEntityType: paragraph
+bundle: texte_avec_arriere_plan
+mode: default
+content:
+  field_text:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

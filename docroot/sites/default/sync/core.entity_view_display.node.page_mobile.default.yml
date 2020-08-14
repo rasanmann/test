@@ -1,0 +1,43 @@
+uuid: c914ad10-3e67-45d9-93ed-b06020683bcf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.page_mobile.body
+    - field.field.node.page_mobile.field_image
+    - node.type.page_mobile
+  module:
+    - image
+    - text
+    - user
+_core:
+  default_config_hash: NAVYjqOB-DRlmZIONlwyPM0af1XcuGdtzirPMENT1Ao
+id: node.page_mobile.default
+targetEntityType: node
+bundle: page_mobile
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  links:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  addtoany: true
+  langcode: true

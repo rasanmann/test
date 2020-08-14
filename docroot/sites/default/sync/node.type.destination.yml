@@ -1,0 +1,17 @@
+uuid: 65f446f8-2667-434e-8325-375feb582533
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Destination
+type: destination
+description: 'Destinations desservies.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

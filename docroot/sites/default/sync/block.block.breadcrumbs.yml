@@ -1,0 +1,25 @@
+uuid: f2d0da2f-d38e-480e-a673-1682ce85aa4c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - yqb
+id: breadcrumbs
+theme: yqb
+region: header
+weight: -27
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n/planifier-son-vol/reserver-un-stationnement/*\r\n/plan-a-flight/parking-reservation/*"
+    negate: true
+    context_mapping: {  }

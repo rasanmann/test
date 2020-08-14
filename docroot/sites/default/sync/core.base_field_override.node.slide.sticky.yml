@@ -1,0 +1,22 @@
+uuid: 8d4c1c4e-e53e-48b1-9e02-22db945932d9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.slide
+id: node.slide.sticky
+field_name: sticky
+entity_type: node
+bundle: slide
+label: 'Epinglé en haut des listes'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

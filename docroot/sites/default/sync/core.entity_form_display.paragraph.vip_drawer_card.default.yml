@@ -1,0 +1,43 @@
+uuid: cc5d4f44-6eb6-444c-a208-ebed0586a752
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.vip_drawer_card.field_image
+    - field.field.paragraph.vip_drawer_card.field_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.vip_drawer_card
+  module:
+    - image
+_core:
+  default_config_hash: sJXOoJUyjXGuF_YtxgBRu-iWm5aoV4nzeCnDIYWC494
+id: paragraph.vip_drawer_card.default
+targetEntityType: paragraph
+bundle: vip_drawer_card
+mode: default
+content:
+  field_image:
+    weight: 1
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

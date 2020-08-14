@@ -1,0 +1,20 @@
+uuid: fa1a87c1-8c59-49b2-922a-67c6351e6f2f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.homepage_tiles
+_core:
+  default_config_hash: fx_PB906wnrn-z0ujprcObbLygsY_GUxLUS9m2EAFU8
+id: node.homepage_tiles.title
+field_name: title
+entity_type: node
+bundle: homepage_tiles
+label: Titre
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

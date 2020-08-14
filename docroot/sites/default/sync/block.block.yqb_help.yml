@@ -1,0 +1,22 @@
+uuid: 81c9d737-9fed-4541-a701-0118fa886bb8
+langcode: fr
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - yqb
+_core:
+  default_config_hash: MhtNdV__HKRTab0ZPjkPNfYL4Ng4UPBucDLoC7Rg5Eo
+id: yqb_help
+theme: yqb
+region: help
+weight: -8
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

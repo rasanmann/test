@@ -1,0 +1,25 @@
+uuid: a3e714af-5db8-4a90-a05c-6204c0c022e1
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_order
+    - node.type.slide
+id: node.slide.field_order
+field_name: field_order
+entity_type: node
+bundle: slide
+label: Order
+description: 'Slides are ordered using this number in an ascending way '
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

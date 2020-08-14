@@ -1,0 +1,21 @@
+uuid: cbbf2bb5-2139-4527-a7d8-38cfb2fa89f4
+langcode: fr
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_text_over_video
+field_name: field_text_over_video
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

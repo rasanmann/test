@@ -1,0 +1,27 @@
+uuid: 688348ec-d977-4e7e-9500-fc7bb23e684e
+langcode: fr
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - yqb
+_core:
+  default_config_hash: fNNLN48MSGSLiqwIFywCuxH2Dk_IxDbaP0kYhg_IPrg
+id: yqb_content
+theme: yqb
+region: content
+weight: -17
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: ''
+    negate: true
+    context_mapping: {  }

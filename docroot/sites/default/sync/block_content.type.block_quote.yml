@@ -1,0 +1,8 @@
+uuid: 7392e5d5-5518-402f-80f9-aa38d7d562ef
+langcode: fr
+status: true
+dependencies: {  }
+id: block_quote
+label: 'Block quote'
+revision: 0
+description: 'Bloc pour ajouter une citation et son auteur'

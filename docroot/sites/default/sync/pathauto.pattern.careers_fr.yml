@@ -1,0 +1,33 @@
+uuid: cc1531fe-ec81-453a-aec0-c7a280874806
+langcode: fr
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: careers_fr
+label: 'Careers FR'
+type: 'canonical_entities:node'
+pattern: '/a-propos/carrieres/[node:title]'
+selection_criteria:
+  a97de741-61ae-43a0-b8b5-46c7fd21d970:
+    id: node_type
+    bundles:
+      career: career
+    negate: false
+    context_mapping:
+      node: node
+    uuid: a97de741-61ae-43a0-b8b5-46c7fd21d970
+  cf71bd7e-d514-4f40-b81f-c010dba2ca01:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: cf71bd7e-d514-4f40-b81f-c010dba2ca01
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Langue

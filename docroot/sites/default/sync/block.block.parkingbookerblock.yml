@@ -1,0 +1,28 @@
+uuid: fe81aa87-f1a0-43cb-823f-f486339b7736
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+    - yqb_parking_booker
+  theme:
+    - yqb
+id: parkingbookerblock
+theme: yqb
+region: bottom_actions
+weight: -21
+provider: null
+plugin: parking_booker_block
+settings:
+  id: parking_booker_block
+  label: 'Réservez et payez votre stationnement en ligne'
+  provider: yqb_parking_booker
+  label_display: visible
+  coupon_input: 0
+  warning: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/a-propos/*\r\n/about/*\r\n/visiter-quebec\r\n/visit-quebec-city\r\n/questions-et-commentaires/*\r\n/questions-and-comments/*\r\n/nous-joindre\r\n/contact-us\r\n/planifier-son-vol/reserver-un-stationnement\r\n/planifier-son-vol/reserver-un-stationnement/*\r\n/planifier-son-vol/modifier-un-stationnement\r\n/planifier-son-vol/modifier-un-stationnement/*\r\n/plan-a-flight/parking-reservation\r\n/plan-a-flight/parking-reservation/*\r\n/plan-a-flight/parking-modification\r\n/plan-a-flight/parking-modification/*\r\n/vols-et-destinations/alerte-sms\r\n/vols-et-destinations/alerte-sms/*\r\n/flights-and-destinations/text-reminders\r\n/flights-and-destinations/text-reminders/*"
+    negate: true
+    context_mapping: {  }

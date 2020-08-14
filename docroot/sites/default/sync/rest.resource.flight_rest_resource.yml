@@ -1,0 +1,21 @@
+uuid: 80c741d2-03f9-4726-8ac9-5a79c4d2d680
+langcode: fr
+status: true
+dependencies:
+  module:
+    - serialization
+    - user
+    - yqb_api
+_core:
+  default_config_hash: cO3WHqmWPDeasfGkQHIBe364tN7lN2T73Ak3ObuWKtM
+id: flight_rest_resource
+plugin_id: flight_rest_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+  formats:
+    - json
+  authentication:
+    - cookie

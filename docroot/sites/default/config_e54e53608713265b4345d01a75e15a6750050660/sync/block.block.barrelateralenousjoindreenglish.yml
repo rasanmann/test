@@ -1,0 +1,38 @@
+uuid: acba677d-3949-4189-895b-7ddc155d1318
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.barre-laterale---nous-engli
+  module:
+    - language
+    - system
+  theme:
+    - yqb
+id: barrelateralenousjoindreenglish
+theme: yqb
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:barre-laterale---nous-engli'
+settings:
+  id: 'system_menu_block:barre-laterale---nous-engli'
+  label: 'Barre latérale - Nous joindre (english)'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/contact-us\r\n/contact-us/*"
+    negate: false
+    context_mapping: {  }
+  language:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'

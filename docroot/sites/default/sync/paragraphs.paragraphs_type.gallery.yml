@@ -1,0 +1,9 @@
+uuid: f2187cef-fc72-4783-80f8-ec778798232f
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: TRSvwoOfTvpP0dAh3SNumCojzCMOrPU0mrXMsAJqOhE
+id: gallery
+label: Gallery
+behavior_plugins: {  }

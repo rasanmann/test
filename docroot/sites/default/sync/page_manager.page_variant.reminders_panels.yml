@@ -1,0 +1,39 @@
+uuid: 2c406800-0922-498f-9368-55a32ca91d7f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - page_manager.page.reminders
+  module:
+    - panels
+    - yqb_reminders
+id: reminders_panels
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    cd71e1db-a7d3-410c-8813-a0ef2670376c:
+      id: reminders_block
+      label: 'Suivez le statut de votre vol par SMS'
+      provider: yqb_reminders
+      label_display: '0'
+      region: top.full
+      weight: 1
+      uuid: cd71e1db-a7d3-410c-8813-a0ef2670376c
+      full_width: 1
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 4d97d6e1-d04f-45f6-aa69-91e42e0b2c8d
+  label: null
+  weight: 0
+  layout: one-three-one
+  layout_settings: {  }
+  page_title: 'Alerte SMS'
+  storage_type: page_manager
+  storage_id: reminders_panels
+  builder: ipe
+page: reminders
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

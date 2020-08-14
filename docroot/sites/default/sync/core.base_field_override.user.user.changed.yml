@@ -1,0 +1,20 @@
+uuid: 13edf8d2-e07a-4d77-b72f-21d76dde331c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: adLxP10EPI9UdHQYulz2EHgUcd4yFXR55CFCwLd0l2Q
+id: user.user.changed
+field_name: changed
+entity_type: user
+bundle: user
+label: Modifié
+description: 'La date à laquelle l''utilisateur a été modifié pour la dernière fois.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,21 @@
+uuid: 37c534ee-b485-4893-8304-96988f144a6d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_schedule
+    - field_collection.field_collection.field_destination_schedule
+  module:
+    - datetime
+id: field_collection_item.field_destination_schedule.field_schedule
+field_name: field_schedule
+entity_type: field_collection_item
+bundle: field_destination_schedule
+label: Dates
+description: 'Cliquer sur les dates où ce vol sera opéré par la compagnie aérienne. Laisser vide si ce vol est opéré quotidiennement.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
