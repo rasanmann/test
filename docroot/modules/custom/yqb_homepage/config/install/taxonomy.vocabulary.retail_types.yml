@@ -1,7 +1,0 @@
-langcode: fr
-status: true
-dependencies: {  }
-name: 'Retail Types'
-vid: retail_types
-description: ''
-weight: 0

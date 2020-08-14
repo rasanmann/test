@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: homepage-tiles-en
-label: 'Homepage Tiles (english)'
-description: ''
-locked: false
