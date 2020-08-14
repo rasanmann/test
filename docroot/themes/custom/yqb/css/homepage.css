@@ -594,12 +594,12 @@
   .block-alert {
     position: static; } }
 
-ul.navbar-nav {
+#block-navigationprincipale-2 ul.navbar-nav {
   padding: 0 10px; }
   @media (max-width: 550px) {
-    ul.navbar-nav {
+    #block-navigationprincipale-2 ul.navbar-nav {
       padding: 0; } }
   @media (max-width: 550px) {
-    ul.navbar-nav > li {
+    #block-navigationprincipale-2 ul.navbar-nav > li {
       width: 20%;
       padding: 0 1px; } }

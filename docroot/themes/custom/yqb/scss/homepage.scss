@@ -801,15 +801,17 @@
     }
 }
 
-ul.navbar-nav{
-    padding: 0 10px;
-    @media (max-width: 550px) {
-        padding: 0;
-    }
-    >li{
+#block-navigationprincipale-2{
+    ul.navbar-nav{
+        padding: 0 10px;
         @media (max-width: 550px) {
-            width: 20%;
-            padding: 0 1px;
+            padding: 0;
+        }
+        >li{
+            @media (max-width: 550px) {
+                width: 20%;
+                padding: 0 1px;
+            }
         }
     }
 }
