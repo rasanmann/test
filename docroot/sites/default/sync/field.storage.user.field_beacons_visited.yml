@@ -1,0 +1,23 @@
+uuid: 35b32dcc-868a-4885-b1cc-d3f7c720cf24
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: AmKQAhmluqvocvY5OVCjIcGix8MjAO3uOTMyTqfWWRs
+id: user.field_beacons_visited
+field_name: field_beacons_visited
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 98c9d2e3-707c-473c-8d94-c7ac0be4469a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_text_over_video
+    - media.type.video
+id: media.video.field_text_over_video
+field_name: field_text_over_video
+entity_type: media
+bundle: video
+label: 'Text over video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

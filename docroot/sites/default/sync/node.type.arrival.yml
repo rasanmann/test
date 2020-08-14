@@ -1,0 +1,17 @@
+uuid: 1eda7727-3749-41a8-8117-2324dece5b91
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Arrivée
+type: arrival
+description: 'Vols arrivant à l''aéroport.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

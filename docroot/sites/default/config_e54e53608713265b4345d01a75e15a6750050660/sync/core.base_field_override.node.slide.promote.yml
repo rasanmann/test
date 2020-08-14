@@ -1,0 +1,22 @@
+uuid: b17812b3-f167-4732-9175-772bbc6ceaf3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.slide
+id: node.slide.promote
+field_name: promote
+entity_type: node
+bundle: slide
+label: 'Promu en page d''accueil'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

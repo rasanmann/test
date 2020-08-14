@@ -1,0 +1,23 @@
+uuid: c6a3931d-d6e1-470e-9831-5cfef216fee1
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_completed
+    - node.type.reminder
+id: node.reminder.field_completed
+field_name: field_completed
+entity_type: node
+bundle: reminder
+label: Complété
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Complété
+  off_label: 'Non complété'
+field_type: boolean

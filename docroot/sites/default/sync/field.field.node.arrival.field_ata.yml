@@ -1,0 +1,21 @@
+uuid: 8b4802fe-0015-4993-8201-1f15d67e94fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ata
+    - node.type.arrival
+  module:
+    - datetime
+id: node.arrival.field_ata
+field_name: field_ata
+entity_type: node
+bundle: arrival
+label: ATA
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

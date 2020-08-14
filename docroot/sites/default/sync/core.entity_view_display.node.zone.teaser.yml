@@ -1,0 +1,24 @@
+uuid: 85f11c02-73dd-40b1-a285-fc08e779a319
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.zone.field_uid
+    - node.type.zone
+  module:
+    - user
+id: node.zone.teaser
+targetEntityType: node
+bundle: zone
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_uid: true
+  langcode: true

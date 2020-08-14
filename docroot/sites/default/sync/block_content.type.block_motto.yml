@@ -1,0 +1,8 @@
+uuid: 0e0d2ebc-6110-487b-9903-8d05f4a96d7c
+langcode: fr
+status: true
+dependencies: {  }
+id: block_motto
+label: 'Block motto'
+revision: 0
+description: 'Bloc pour mettre de l''avant la devise de la compagnie. Titre de section + texte d''accroche + titre principal'

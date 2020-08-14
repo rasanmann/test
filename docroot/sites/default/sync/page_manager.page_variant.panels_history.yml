@@ -1,0 +1,28 @@
+uuid: 720a5d72-5347-4a4d-a78e-7ec15ec66447
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.history
+  module:
+    - panels
+id: panels_history
+label: 'Panels History'
+variant: panels_variant
+variant_settings:
+  blocks: {  }
+  id: panels_variant
+  uuid: 1914c3ff-eea3-4495-82d8-37fa5ca06c48
+  label: null
+  weight: 0
+  layout: history
+  layout_settings: {  }
+  page_title: 'Une trajectoire marquée par une expansion constante'
+  storage_type: page_manager
+  storage_id: panels_history
+  builder: ipe
+page: history
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

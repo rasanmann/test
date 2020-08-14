@@ -1,0 +1,15 @@
+uuid: faa6a77d-a820-4163-aa8d-083eb0b6218a
+langcode: fr
+status: true
+dependencies: {  }
+name: logo
+label: Logo
+effects:
+  eba6215a-ea66-4f12-bbb3-60c0e2555e11:
+    uuid: eba6215a-ea66-4f12-bbb3-60c0e2555e11
+    id: image_scale
+    weight: 1
+    data:
+      width: 125
+      height: 125
+      upscale: false

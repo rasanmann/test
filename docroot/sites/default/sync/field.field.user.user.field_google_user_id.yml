@@ -1,0 +1,22 @@
+uuid: 459b6ec6-01bd-4a43-9708-8259a3224e95
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_google_user_id
+  module:
+    - user
+_core:
+  default_config_hash: ARQX8YX7yVrRyUCo7TVH2WTO6o6rytxXfSjy00-OvJg
+id: user.user.field_google_user_id
+field_name: field_google_user_id
+entity_type: user
+bundle: user
+label: 'Google User ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

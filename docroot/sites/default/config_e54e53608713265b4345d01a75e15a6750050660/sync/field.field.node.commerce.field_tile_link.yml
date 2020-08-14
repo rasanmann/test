@@ -1,0 +1,23 @@
+uuid: 0a55379a-21ba-4122-b3d9-d45e9c0a1f82
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tile_link
+    - node.type.commerce
+  module:
+    - link
+id: node.commerce.field_tile_link
+field_name: field_tile_link
+entity_type: node
+bundle: commerce
+label: Lien
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

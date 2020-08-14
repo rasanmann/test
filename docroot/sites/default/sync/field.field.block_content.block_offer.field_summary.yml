@@ -1,0 +1,19 @@
+uuid: 70032e3c-3ccb-4681-ad7e-b4efbe2bb00e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_offer
+    - field.storage.block_content.field_summary
+id: block_content.block_offer.field_summary
+field_name: field_summary
+entity_type: block_content
+bundle: block_offer
+label: Summary
+description: 'Titre sommaire pour les offres énumérées'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,17 @@
+uuid: 2f8c5097-64cb-4102-851e-7157f47c1b37
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Réservation de stationnement'
+type: parking_booking
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,23 @@
+uuid: 788b5ab2-0c45-4958-8a77-21afc7e44162
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.nouvelle
+  module:
+    - text
+id: node.nouvelle.body
+field_name: body
+entity_type: node
+bundle: nouvelle
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

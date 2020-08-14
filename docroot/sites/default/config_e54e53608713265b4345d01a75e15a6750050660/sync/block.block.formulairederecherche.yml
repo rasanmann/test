@@ -1,6 +1,6 @@
 uuid: 3786954b-7a28-4bd8-9ab3-870e51061879
 langcode: fr
-status: false
+status: true
 dependencies:
   module:
     - search
@@ -17,4 +17,5 @@ settings:
   label: 'Formulaire de recherche'
   provider: search
   label_display: '0'
+  page_id: ''
 visibility: {  }

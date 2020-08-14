@@ -1,0 +1,23 @@
+uuid: 195bb10f-7913-4de6-bb00-b67178e918d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: destination_categories
+label: 'Destination Categories'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/destinations/[term:name]'
+selection_criteria:
+  775d35cd-b8ab-44bc-9309-9e64b8c21428:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      destination_categories: destination_categories
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 775d35cd-b8ab-44bc-9309-9e64b8c21428
+selection_logic: and
+weight: -3
+relationships: {  }

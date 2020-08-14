@@ -1,0 +1,20 @@
+uuid: fe57758e-24a2-4c19-844c-ded67a44a61d
+langcode: fr
+status: true
+dependencies:
+  module:
+    - contact
+    - taxonomy
+id: contact_message.field_contact_reason
+field_name: field_contact_reason
+entity_type: contact_message
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

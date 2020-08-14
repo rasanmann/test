@@ -11,7 +11,7 @@ _core:
 id: yqb_messages
 theme: yqb
 region: content
-weight: -25
+weight: -30
 provider: null
 plugin: system_messages_block
 settings:

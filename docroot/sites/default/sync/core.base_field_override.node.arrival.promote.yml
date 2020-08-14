@@ -1,0 +1,22 @@
+uuid: 3e0fe2f3-e58f-4096-a922-343c4ea9e3a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.arrival
+id: node.arrival.promote
+field_name: promote
+entity_type: node
+bundle: arrival
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

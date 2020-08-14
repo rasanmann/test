@@ -1,0 +1,20 @@
+uuid: 3e3f2645-3f6c-488e-a376-3d52391c73fc
+langcode: fr
+status: true
+dependencies:
+  module:
+    - datetime
+    - field_collection
+id: field_collection_item.field_schedule
+field_name: field_schedule
+entity_type: field_collection_item
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

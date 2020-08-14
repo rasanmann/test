@@ -1,0 +1,28 @@
+uuid: f66f8df2-e941-4a7e-9cb9-b94d3ed34cae
+langcode: fr
+status: true
+dependencies:
+  config:
+    - contact.form.contact_us
+    - field.storage.contact_message.field_contact_reason
+    - taxonomy.vocabulary.contact_reason
+id: contact_message.contact_us.field_contact_reason
+field_name: field_contact_reason
+entity_type: contact_message
+bundle: contact_us
+label: 'Nature de votre message'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact_reason: contact_reason
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

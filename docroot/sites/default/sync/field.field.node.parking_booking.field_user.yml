@@ -1,0 +1,28 @@
+uuid: ec00d8ee-d141-4e0f-9c8f-5fa122190668
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user
+    - node.type.parking_booking
+id: node.parking_booking.field_user
+field_name: field_user
+entity_type: node
+bundle: parking_booking
+label: User
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

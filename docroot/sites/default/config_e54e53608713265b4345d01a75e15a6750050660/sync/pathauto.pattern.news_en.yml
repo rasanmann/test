@@ -6,26 +6,26 @@ dependencies:
     - language
     - node
 id: news_en
-label: 'News EN'
+label: 'Communiqué de presse EN'
 type: 'canonical_entities:node'
 pattern: '/about/press-releases/[node:title]'
 selection_criteria:
-  f231473b-7968-4ff1-a463-0ee66670fc7f:
+  3008a471-acb0-476a-80d7-b4180fb4aa2d:
     id: node_type
     bundles:
       article: article
     negate: false
     context_mapping:
       node: node
-    uuid: f231473b-7968-4ff1-a463-0ee66670fc7f
-  b3744151-48f5-44c3-b89a-7be5ff11f4fb:
+    uuid: 3008a471-acb0-476a-80d7-b4180fb4aa2d
+  f85abf99-dec7-4b8b-a58e-d98fba801246:
     id: language
     langcodes:
       en: en
     negate: false
     context_mapping:
       language: 'node:langcode:language'
-    uuid: b3744151-48f5-44c3-b89a-7be5ff11f4fb
+    uuid: f85abf99-dec7-4b8b-a58e-d98fba801246
 selection_logic: and
 weight: -10
 relationships:

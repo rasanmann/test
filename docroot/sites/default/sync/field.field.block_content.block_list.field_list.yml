@@ -1,0 +1,21 @@
+uuid: 7d1c27cc-8834-45eb-9f64-95a03d43c921
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_list
+    - field.storage.block_content.field_list
+  module:
+    - text
+id: block_content.block_list.field_list
+field_name: field_list
+entity_type: block_content
+bundle: block_list
+label: List
+description: 'Contenu à ajouter dans la liste'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

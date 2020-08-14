@@ -1,0 +1,30 @@
+uuid: 8ddfec90-1973-4a3a-b81d-35fc45337d17
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.barre-laterale---bureau-des
+  module:
+    - system
+  theme:
+    - yqb
+id: barrelateralebureaudescontrolesdaccesfr
+theme: yqb
+region: sidebar_first
+weight: -17
+provider: null
+plugin: 'system_menu_block:barre-laterale---bureau-des'
+settings:
+  id: 'system_menu_block:barre-laterale---bureau-des'
+  label: 'Barre latérale - Bureau des Contrôles d’Accès (FR)'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/affaires/bureau-des-controles-acces\r\n/affaires/bureau-des-controles-acces/*"
+    negate: false
+    context_mapping: {  }

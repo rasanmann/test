@@ -1,0 +1,21 @@
+uuid: 1a861d7d-c320-48f6-ae90-e2bfd438f704
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title_gouvernance_texte
+    - paragraphs.paragraphs_type.gouvernance_texte
+  module:
+    - text
+id: paragraph.gouvernance_texte.field_title_gouvernance_texte
+field_name: field_title_gouvernance_texte
+entity_type: paragraph
+bundle: gouvernance_texte
+label: title_gouvernance_texte
+description: 'Titre pour bloc de texte'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

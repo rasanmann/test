@@ -1,0 +1,22 @@
+uuid: d4203457-e2f9-4940-8f09-9f787f8b99fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.airline
+id: node.airline.promote
+field_name: promote
+entity_type: node
+bundle: airline
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

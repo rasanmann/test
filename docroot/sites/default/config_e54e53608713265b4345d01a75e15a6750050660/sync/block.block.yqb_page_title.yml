@@ -11,7 +11,7 @@ _core:
 id: yqb_page_title
 theme: yqb
 region: content
-weight: -26
+weight: -31
 provider: null
 plugin: page_title_block
 settings:

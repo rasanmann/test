@@ -1,0 +1,21 @@
+uuid: 214a48ab-82a6-4793-85fd-e866cf00954a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_priorities
+    - field.storage.block_content.field_hook_text
+  module:
+    - text
+id: block_content.block_priorities.field_hook_text
+field_name: field_hook_text
+entity_type: block_content
+bundle: block_priorities
+label: 'Hook text'
+description: 'Texte d''accroche de la section'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

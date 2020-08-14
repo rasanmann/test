@@ -1,0 +1,21 @@
+uuid: f445498d-396b-4729-ab53-57e435a4f5c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_company_name
+    - node.type.career
+id: node.career.field_company_name
+field_name: field_company_name
+entity_type: node
+bundle: career
+label: Company
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 'Aéroport de Québec inc.'
+default_value_callback: ''
+settings: {  }
+field_type: string

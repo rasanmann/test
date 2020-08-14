@@ -1,0 +1,58 @@
+uuid: 6bb0ccd3-688b-4106-b066-ef1a88dd9d96
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.user_flight.field_airline
+    - field.field.node.user_flight.field_archived
+    - field.field.node.user_flight.field_carousel_name
+    - field.field.node.user_flight.field_completed_time
+    - field.field.node.user_flight.field_destination_airport
+    - field.field.node.user_flight.field_flight_airline
+    - field.field.node.user_flight.field_flight_date
+    - field.field.node.user_flight.field_flight_number
+    - field.field.node.user_flight.field_flight_time
+    - field.field.node.user_flight.field_flight_type
+    - field.field.node.user_flight.field_gate
+    - field.field.node.user_flight.field_notified_parking
+    - field.field.node.user_flight.field_origin_airport
+    - field.field.node.user_flight.field_state
+    - field.field.node.user_flight.field_status
+    - field.field.node.user_flight.field_user
+    - field.field.node.user_flight.field_user_flight
+    - node.type.user_flight
+  module:
+    - user
+_core:
+  default_config_hash: zf_G8_ZxAMt1CLPe1XBHYv1uRiANgfeJdf0jC8ImzHQ
+id: node.user_flight.teaser
+targetEntityType: node
+bundle: user_flight
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_airline: true
+  field_archived: true
+  field_carousel_name: true
+  field_completed_time: true
+  field_destination_airport: true
+  field_flight_airline: true
+  field_flight_date: true
+  field_flight_number: true
+  field_flight_time: true
+  field_flight_type: true
+  field_gate: true
+  field_notified_parking: true
+  field_origin_airport: true
+  field_state: true
+  field_status: true
+  field_user: true
+  field_user_flight: true
+  langcode: true

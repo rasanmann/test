@@ -1,0 +1,7 @@
+alternatives: "/services-aeroportuaires/paiement-de-facture\r\n/services-aeroportuaires/paiement-de-facture/*\r\n/airport-services/pay-bills\r\n/airport-services/pay-bills/*\r\n/fr/services-aeroportuaires/paiement-de-facture\r\n/fr/services-aeroportuaires/paiement-de-facture/*\r\n/en//airport-services/pay-bills\r\n/en/airport-services/pay-bills/*"
+exclusions: "/a-propos/travaux-de-construction\r\n/a-propos/carrieres\r\n/a-propos/carrieres/*\r\n/about/careers/*\r\n/about/careers\r\n/fr/a-propos/carrieres\r\n/fr/a-propos/carrieres/*\r\n/en/about/careers/*\r\n/en/about/careers\r\n/services-aeroportuaires/paiement-de-facture\r\n/airport-services/pay-bills\r\n/fr/services-aeroportuaires/paiement-de-facture\r\n/en/airport-services/pay-bills"
+lifetime:
+  alternatives: 0
+  301: 0
+  302: 0
+  404: 0

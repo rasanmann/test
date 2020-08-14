@@ -1,0 +1,21 @@
+uuid: 29bc3a28-c142-401f-999f-e88dfcd95ba3
+langcode: fr
+status: true
+dependencies:
+  module:
+    - contact
+id: contact_message.field_registration
+field_name: field_registration
+entity_type: contact_message
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,8 @@
+uuid: 12faaa94-0063-4dda-9a46-701045f66244
+langcode: fr
+status: true
+dependencies: {  }
+id: planifier-son-vol
+label: 'Barre latérale - Bien planifier son vol'
+description: ''
+locked: false

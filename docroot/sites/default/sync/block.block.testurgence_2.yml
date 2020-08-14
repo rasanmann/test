@@ -1,0 +1,25 @@
+uuid: 2a8b0df3-176d-445a-b752-068cee6c642c
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:block_alert:3cf36b33-d04c-4ed3-b182-7319b9c996de'
+  module:
+    - block_content
+  theme:
+    - yqb
+id: testurgence_2
+theme: yqb
+region: top
+weight: -31
+provider: null
+plugin: 'block_content:3cf36b33-d04c-4ed3-b182-7319b9c996de'
+settings:
+  id: 'block_content:3cf36b33-d04c-4ed3-b182-7319b9c996de'
+  label: 'Test Urgence'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

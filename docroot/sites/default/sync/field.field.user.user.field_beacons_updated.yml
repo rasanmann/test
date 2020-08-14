@@ -1,0 +1,22 @@
+uuid: eaf297a3-1523-4cf7-818b-6ce17d18b58d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_beacons_updated
+  module:
+    - user
+_core:
+  default_config_hash: qte-VubR4WyPa8TIJz6J7Wib4MeIISJiGGp8UDSouCM
+id: user.user.field_beacons_updated
+field_name: field_beacons_updated
+entity_type: user
+bundle: user
+label: 'Beacons updated'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,173 @@
+uuid: 754b8d15-5d56-4de8-aa80-14baa8cde4dd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - page_manager.page.mission_vision_and_values
+  content:
+    - 'block_content:basic:393665f3-89b0-45c4-9e13-d8c32c0534ea'
+    - 'block_content:basic:878d7e5e-ffbf-405c-9124-633b3ba58c26'
+    - 'block_content:basic:9a07b300-6956-466a-8b7c-eaa86c39a59d'
+    - 'block_content:basic:cb0208c3-d157-48cc-a6f0-2a4fad172662'
+    - 'block_content:block_motto:39336a9e-77d1-4d60-90dc-b2fb8dd98599'
+    - 'block_content:block_priorities:778e06c4-80fe-4dc4-86c7-2a7bf70117a0'
+    - 'block_content:block_priorities:7cc78fa8-2978-4001-8fcb-6cc4db79a489'
+    - 'block_content:block_priorities:f0e91865-236b-4d4a-80fc-f0e1b7eca405'
+    - 'block_content:block_quote:48633ad9-b960-4ab3-9538-ffb48aa173a2'
+    - 'block_content:image_simple:db431b5b-224f-4228-9c48-eb9401ab3eea'
+    - 'block_content:simple_title:9a87d56e-ab18-449b-b576-dd6e52a23181'
+  module:
+    - block_content
+    - panels
+id: panels_mission
+label: 'Panels mission'
+variant: panels_variant
+variant_settings:
+  blocks:
+    3652e82b-c749-4577-a12b-9f9106272513:
+      id: 'block_content:393665f3-89b0-45c4-9e13-d8c32c0534ea'
+      label: 'Mission intro'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: top.main
+      uuid: 3652e82b-c749-4577-a12b-9f9106272513
+      weight: 2
+    e46a4582-aa63-4c56-9159-a33a055913f9:
+      id: 'block_content:cb0208c3-d157-48cc-a6f0-2a4fad172662'
+      label: 'Mission body'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: top.main
+      uuid: e46a4582-aa63-4c56-9159-a33a055913f9
+      weight: 3
+    5960435a-21d8-4788-a2c3-1efe233c795f:
+      id: 'block_content:778e06c4-80fe-4dc4-86c7-2a7bf70117a0'
+      label: 'Nos valeurs'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: top.secondary.left
+      uuid: 5960435a-21d8-4788-a2c3-1efe233c795f
+      weight: 1
+    c5bcbdd3-f735-4eaf-b246-8ea4281f6b45:
+      id: 'block_content:db431b5b-224f-4228-9c48-eb9401ab3eea'
+      label: 'Mission image'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: top.secondary.right
+      uuid: c5bcbdd3-f735-4eaf-b246-8ea4281f6b45
+      weight: 1
+    8c354359-94c2-4a17-a04e-667cc80878ee:
+      id: 'block_content:48633ad9-b960-4ab3-9538-ffb48aa173a2'
+      label: 'Mission quote'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: middle.left
+      uuid: 8c354359-94c2-4a17-a04e-667cc80878ee
+      weight: 1
+    76e0abaf-f833-4bef-939b-b6e9a21920b6:
+      id: 'block_content:9a07b300-6956-466a-8b7c-eaa86c39a59d'
+      label: Respect
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: middle.right
+      uuid: 76e0abaf-f833-4bef-939b-b6e9a21920b6
+      weight: 1
+    40068a4a-d274-4235-bc7e-053ecfd04ec1:
+      id: 'block_content:878d7e5e-ffbf-405c-9124-633b3ba58c26'
+      label: 'Souci du détail'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: middle.center
+      uuid: 40068a4a-d274-4235-bc7e-053ecfd04ec1
+      weight: 1
+    1708686e-2edc-4c8a-a273-8a23ab12f6c9:
+      id: 'block_content:f0e91865-236b-4d4a-80fc-f0e1b7eca405'
+      label: 'Notre vision (intro)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: bottom.left
+      uuid: 1708686e-2edc-4c8a-a273-8a23ab12f6c9
+      weight: 1
+    69d9b4d0-f3f1-41df-88bd-2c0123e8f334:
+      id: 'block_content:7cc78fa8-2978-4001-8fcb-6cc4db79a489'
+      label: 'Notre vision (principal)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: bottom.right
+      uuid: 69d9b4d0-f3f1-41df-88bd-2c0123e8f334
+      weight: 1
+    b8893d57-80cb-456a-8b18-c5f2f0e8cb7d:
+      id: 'block_content:39336a9e-77d1-4d60-90dc-b2fb8dd98599'
+      label: 'Notre devise'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: top.secondary.main
+      uuid: b8893d57-80cb-456a-8b18-c5f2f0e8cb7d
+      weight: 1
+    fda114a8-22ed-4a6c-9745-e0bb9a445aff:
+      id: 'block_content:9a87d56e-ab18-449b-b576-dd6e52a23181'
+      label: 'Notre mission (titre haut page)'
+      provider: block_content
+      label_display: '0'
+      status: true
+      info: ''
+      view_mode: full
+      context_mapping: {  }
+      region: top.main
+      uuid: fda114a8-22ed-4a6c-9745-e0bb9a445aff
+      weight: 1
+  id: panels_variant
+  uuid: 5e160ddd-e673-4103-9e1b-e89b58c7e635
+  label: null
+  weight: 0
+  layout: threerow
+  layout_settings: {  }
+  page_title: 'Mission, vision et valeurs'
+  storage_type: page_manager
+  storage_id: panels_mission
+  builder: ipe
+page: mission_vision_and_values
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

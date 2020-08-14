@@ -1,0 +1,19 @@
+uuid: 4acafce5-1e81-4284-95c6-6fe8f9e8b79f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - contact.form.noise
+    - field.storage.contact_message.field_model
+id: contact_message.noise.field_model
+field_name: field_model
+entity_type: contact_message
+bundle: noise
+label: Modèle
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

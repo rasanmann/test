@@ -1,0 +1,11 @@
+uuid: 97e878b0-65e2-496b-9880-2699a538705b
+langcode: en
+status: true
+dependencies:
+  module:
+    - yqb_payments
+id: yqb_payment.yqb_payment
+target_entity_type_id: yqb_payment
+target_bundle: yqb_payment
+default_langcode: site_default
+language_alterable: false

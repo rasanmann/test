@@ -1,6 +1,6 @@
 uuid: ea1179a5-dab0-4b38-9100-c13774e11187
 langcode: fr
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,7 +10,7 @@ dependencies:
 id: flightstabsblock
 theme: yqb
 region: content
-weight: -23
+weight: -19
 provider: null
 plugin: flights-tabs-block
 settings:

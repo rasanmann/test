@@ -1,0 +1,18 @@
+uuid: 554814fb-16fd-46b3-a8a2-4e259ae17d6f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.nouvelle
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.nouvelle
+target_entity_type_id: node
+target_bundle: nouvelle
+default_langcode: site_default
+language_alterable: false

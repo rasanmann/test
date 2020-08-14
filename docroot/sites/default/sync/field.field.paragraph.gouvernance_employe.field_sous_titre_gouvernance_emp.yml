@@ -1,0 +1,19 @@
+uuid: ac5b8628-dc8d-4833-8687-c91783547690
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sous_titre_gouvernance_emp
+    - paragraphs.paragraphs_type.gouvernance_employe
+id: paragraph.gouvernance_employe.field_sous_titre_gouvernance_emp
+field_name: field_sous_titre_gouvernance_emp
+entity_type: paragraph
+bundle: gouvernance_employe
+label: sous_titre_gouvernance_employe
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

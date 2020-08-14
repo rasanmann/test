@@ -1,0 +1,8 @@
+uuid: ca0604bd-4d36-4353-8142-dd26588f6363
+langcode: fr
+status: true
+dependencies: {  }
+id: barre-laterale---question-e
+label: 'Barre latérale - Question et commentaires'
+description: ''
+locked: false

@@ -17,6 +17,7 @@ global-styling:
       css/preview_block.css: {}
       css/menu.css: {}
       css/mission-valeurs.css: {}
+      css/homepage.css: {}
       css/bureau_controle_access.css: {}
       'https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap': { type: external}
 

@@ -1,0 +1,8 @@
+uuid: 679665e0-0182-4e37-aa93-d9d13383afa2
+langcode: en
+status: true
+dependencies: {  }
+id: barre-laterale---flights-an
+label: 'Barre latérale - Flights and destination (english)'
+description: ''
+locked: false

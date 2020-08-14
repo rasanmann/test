@@ -1,0 +1,29 @@
+uuid: 48671b03-ac02-458a-a8a7-ba21dca74459
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mosaique.field_paragraph_media_mosaique
+    - paragraphs.paragraphs_type.mosaique
+  module:
+    - paragraphs
+id: paragraph.mosaique.default
+targetEntityType: paragraph
+bundle: mosaique
+mode: default
+content:
+  field_paragraph_media_mosaique:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,8 @@
+uuid: 2374c529-5cfb-40f3-8427-3112fe4768ff
+langcode: fr
+status: true
+dependencies: {  }
+id: block_council
+label: 'Block council'
+revision: 0
+description: 'Bloc contenant les diverses informations d''un membre du conseil. Nom + rôle (facultatif) + informations + biographie'

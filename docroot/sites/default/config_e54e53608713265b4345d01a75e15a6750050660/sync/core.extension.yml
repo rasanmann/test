@@ -19,12 +19,16 @@ module:
   datetime: 0
   datetime_multiselect: 0
   dblog: 0
+  devel: 0
+  devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
   editor_advanced_link: 0
   editor_file: 0
   email_registration: 0
   entity_reference_revisions: 0
+  features: 0
+  features_ui: 0
   field: 0
   field_collection: 0
   field_ui: 0
@@ -67,6 +71,7 @@ module:
   panels_ipe: 0
   paragraphs: 0
   path: 0
+  path_alias: 0
   pjax: 0
   quickedit: 0
   rdf: 0
@@ -80,6 +85,8 @@ module:
   search_autocomplete: 0
   serialization: 0
   shortcut: 0
+  sitemap: 0
+  svg_image: 0
   swiftmailer: 0
   syslog: 0
   system: 0

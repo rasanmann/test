@@ -1,0 +1,26 @@
+uuid: 375922d6-32a5-4f88-931b-279ebbcf61f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_destination_airport
+    - node.type.airport
+    - node.type.departure
+id: node.departure.field_destination_airport
+field_name: field_destination_airport
+entity_type: node
+bundle: departure
+label: 'Destination Airport'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      airport: airport
+    sort:
+      field: _none
+field_type: entity_reference

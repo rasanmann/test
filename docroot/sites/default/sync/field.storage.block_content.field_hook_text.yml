@@ -1,0 +1,19 @@
+uuid: db16800b-b01d-4980-9f6c-3dec69e19853
+langcode: fr
+status: true
+dependencies:
+  module:
+    - block_content
+    - text
+id: block_content.field_hook_text
+field_name: field_hook_text
+entity_type: block_content
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

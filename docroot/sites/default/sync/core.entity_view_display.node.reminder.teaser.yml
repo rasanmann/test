@@ -1,0 +1,36 @@
+uuid: 5c6bd65f-aef5-4a03-831e-e38bb0542597
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.reminder.field_completed
+    - field.field.node.reminder.field_flight
+    - field.field.node.reminder.field_flight_airline
+    - field.field.node.reminder.field_flight_date
+    - field.field.node.reminder.field_flight_type
+    - field.field.node.reminder.field_last_update
+    - field.field.node.reminder.field_phone_number
+    - node.type.reminder
+  module:
+    - user
+id: node.reminder.teaser
+targetEntityType: node
+bundle: reminder
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_completed: true
+  field_flight: true
+  field_flight_airline: true
+  field_flight_date: true
+  field_flight_type: true
+  field_last_update: true
+  field_phone_number: true
+  langcode: true

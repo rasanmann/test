@@ -1,0 +1,30 @@
+uuid: 9110cbd0-a8f0-4da7-a0f1-1361b5ebb473
+langcode: fr
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - paragraphs
+id: paragraph.field_minus_icon_gouvernance_emp
+field_name: field_minus_icon_gouvernance_emp
+entity_type: paragraph
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: 15f885a5-2e33-457a-a57d-aa14a6c43b55
+    alt: ''
+    title: ''
+    width: 500
+    height: 500
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,74 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ * @ingroup templates
+ */
+#}
+<div class="menu-tabs-links row-inner row-cols-gutter">
+		<div class="col-xs-12">
+		<section{{ attributes.addClass('block', 'clearfix') }}>
+		  <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="search-btn hidden-xs">
+                    <form data-drupal-form-fields="edit-submit,edit-keys" class="search-block-form" data-drupal-selector="search-block-form" action="{{ url('search.view_node_search') }}" method="get"  accept-charset="UTF-8">
+                        <div class="form-item js-form-item form-type-search js-form-type-search form-item-keys js-form-item-keys form-no-label form-group">
+                            <label for="edit-keys" class="control-label sr-only">{{ "Chercher un vol, un service..."|t }}</label>
+                            <div class="input-group">
+
+                                <input
+                                    autocomplete="off"
+                                    title=""
+                                    data-drupal-selector="edit-keys"
+                                    class="form-autocomplete form-search form-control ui-autocomplete-input input-lg"
+                                    data-key="search_block"
+                                    placeholder="{{ "Chercher un vol, un service..."|t }}"
+                                    name="keys"
+                                    value=""
+                                    size="15"
+                                    maxlength="128"
+                                    type="search"
+                                >
+
+                                <span class="input-group-btn">
+                                    <button data-drupal-selector="edit-submit" class="button js-form-submit form-submit btn icon-only" type="submit"  value="Search" name="search">
+                                    <span class="sr-only">{{ "Rechercher"|t }}</span>
+                                    <span class="icon icon-search" style="" aria-hidden="true" data-grunticon-embed></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+
+                <li role="presentation" class="hidden-xs">
+                    <a href="{{ path('view.departures.today') }}">
+                        <span class="icon icon-plane-departure" data-grunticon-embed></span> {{ '<span>Prochains </span>départs'|t }}
+                    </a>
+                </li>
+
+                <li role="presentation" class="hidden-xs">
+                    <a href="{{ path('view.arrivals.today') }}">
+                        <span class="icon icon-plane-arrival" data-grunticon-embed></span> {{ '<span>Prochaines </span>arrivées'|t }}
+                    </a>
+                </li>
+
+                <li class="hidden-lg hidden-md hidden-sm">
+                    <a href="{{ path('view.departures.today') }}">
+                        <span class="icon icon-plane-departure" data-grunticon-embed></span> {{ 'Prochains départs/arrivées'|t }}
+                    </a>
+                </li>
+
+                <li class="" role="presentation">
+                {# https://www.aeroportdequebec.com/fr/planifier-son-vol/stationnements #}
+                    {# <a href="{{ url('page_manager.page_view_parking_booking_panels') }}"> #}
+                    <a href=" {{ path('entity.node.canonical', {'node': 1322876 }) }}">
+                        <span class="icon icon-car-parking" data-grunticon-embed></span> {{ 'Stationnement'|t }}
+                    </a>
+                </li>
+            </ul>
+          </div>
+		</section>
+	</div>
+</div>

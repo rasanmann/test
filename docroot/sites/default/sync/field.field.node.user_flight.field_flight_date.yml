@@ -1,0 +1,23 @@
+uuid: 3e777301-4b20-4425-86bc-fbf748e19ecb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_flight_date
+    - node.type.user_flight
+  module:
+    - datetime
+_core:
+  default_config_hash: qG2HsLn8J8OsoZq2o-tzsSQw9n_s6x0PERgKNa1k9ds
+id: node.user_flight.field_flight_date
+field_name: field_flight_date
+entity_type: node
+bundle: user_flight
+label: 'Date du vol'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
