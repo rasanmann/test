@@ -817,11 +817,11 @@
 }
 
 .icon{
-    .icon-stationnement{
+    &.icon-stationnement{
         width: 70px;
         height: 60px;
     }
-    .icon-travaux{
+    &.icon-travaux{
         width: 50px;
         height: 60px;
     }
