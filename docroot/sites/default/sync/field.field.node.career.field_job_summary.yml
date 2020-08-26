@@ -1,0 +1,21 @@
+uuid: e7452005-f0c8-414f-9665-74d558c5e1f4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_summary
+    - node.type.career
+_core:
+  default_config_hash: taPg5bG6xRUCMJDRtf8FZgl_ZeNdX6oFV9qzVvnm32k
+id: node.career.field_job_summary
+field_name: field_job_summary
+entity_type: node
+bundle: career
+label: 'Résumé de l''offre'
+description: 'Résumé de l''offre en 1 paragraphe. Cela va être utilisé dans le gabarit Mailchimp.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

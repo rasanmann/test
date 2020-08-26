@@ -1,0 +1,11 @@
+uuid: 151c4c07-31c4-49a5-a003-5a66a71e73d1
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: TFhY-GcRNJp9ZQVlGHYbuxmLKOW3z7cpK5lQAm8yrCc
+id: months
+label: Months
+category: 'Date et heure'
+likert: false
+options: "January: January\nFebruary: February\nMarch: March\nApril: April\nMay: May\nJune: June\nJuly: July\nAugust: August\nSeptember: September\nOctober: October\nNovember: November\nDecember: December\n"

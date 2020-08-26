@@ -1,0 +1,22 @@
+uuid: 0bb5cf5e-70c0-4de4-b201-20db8456effd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.nouvelle
+id: node.nouvelle.status
+field_name: status
+entity_type: node
+bundle: nouvelle
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

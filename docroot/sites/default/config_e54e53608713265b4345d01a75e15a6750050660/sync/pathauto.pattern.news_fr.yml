@@ -6,26 +6,26 @@ dependencies:
     - language
     - node
 id: news_fr
-label: 'News FR'
+label: 'Communiqué de presse FR'
 type: 'canonical_entities:node'
 pattern: '/a-propos/communiques-de-presse/[node:title]'
 selection_criteria:
-  ec054105-9cde-409c-979f-af52720f5cb3:
+  040dd146-0578-48b2-a10d-c7205fe6b1d4:
     id: node_type
     bundles:
       article: article
     negate: false
     context_mapping:
       node: node
-    uuid: ec054105-9cde-409c-979f-af52720f5cb3
-  afafd35a-8dfb-46eb-aed1-9a78cdb9e526:
+    uuid: 040dd146-0578-48b2-a10d-c7205fe6b1d4
+  eac79fd1-1ff8-4518-876a-a4c34baae60e:
     id: language
     langcodes:
       fr: fr
     negate: false
     context_mapping:
       language: 'node:langcode:language'
-    uuid: afafd35a-8dfb-46eb-aed1-9a78cdb9e526
+    uuid: eac79fd1-1ff8-4518-876a-a4c34baae60e
 selection_logic: and
 weight: -10
 relationships:

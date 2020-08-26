@@ -1,0 +1,20 @@
+uuid: ccbc0bc4-0eb9-40b8-8fb3-a6faff41c7ec
+langcode: fr
+status: true
+dependencies:
+  module:
+    - block_content
+    - text
+id: block_content.field_offers_and_prices
+field_name: field_offers_and_prices
+entity_type: block_content
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

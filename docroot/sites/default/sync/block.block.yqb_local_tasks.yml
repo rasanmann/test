@@ -1,0 +1,29 @@
+uuid: bfba0955-acac-42ff-9808-8e62c798defc
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - yqb
+_core:
+  default_config_hash: qHdtze2DZ2mFfaJadxjZz6epm92_SN9SAFY4yJGl8Fo
+id: yqb_local_tasks
+theme: yqb
+region: content
+weight: -33
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

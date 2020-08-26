@@ -1,0 +1,23 @@
+uuid: 97463847-c46a-4a21-80af-d8c58f2d7d5f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_iata
+    - node.type.airport
+id: node.airport.field_show_iata
+field_name: field_show_iata
+entity_type: node
+bundle: airport
+label: 'Show IATA'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Code d''aéroport visible'
+  off_label: 'Code d''aéroport non visible'
+field_type: boolean

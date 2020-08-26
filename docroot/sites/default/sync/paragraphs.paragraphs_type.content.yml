@@ -1,0 +1,9 @@
+uuid: 349bc377-6053-4399-82e4-c22ac306e92c
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: yIgNPCOkT9APe4mPTrkNtKW1OyK06WGg7hWwy1SC0vY
+id: content
+label: Content
+behavior_plugins: {  }

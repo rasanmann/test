@@ -1,0 +1,30 @@
+uuid: 51ac1965-b81a-418c-b000-cad4ada50dc9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.offers
+  module:
+    - system
+  theme:
+    - yqb
+id: offers
+theme: yqb
+region: content
+weight: -25
+provider: null
+plugin: 'system_menu_block:offers'
+settings:
+  id: 'system_menu_block:offers'
+  label: Offers
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

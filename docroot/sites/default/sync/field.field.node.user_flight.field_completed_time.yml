@@ -1,0 +1,21 @@
+uuid: 168b8b7d-9ce2-432a-b651-f8636dc9140d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_completed_time
+    - node.type.user_flight
+_core:
+  default_config_hash: 4TKMVfEz2f9oBV_9UjznEZPwY7N4CA7EyCPeQwPBlXc
+id: node.user_flight.field_completed_time
+field_name: field_completed_time
+entity_type: node
+bundle: user_flight
+label: 'Heure complété'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

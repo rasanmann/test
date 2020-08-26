@@ -1,0 +1,24 @@
+display:
+  default:
+    display_options:
+      fields:
+        field_flight_number:
+          label: Flight
+        field_white_logo:
+          label: Airline
+        field_sta:
+          label: Scheduled
+        field_eta:
+          label: Revised
+        field_carousel_name:
+          label: Claim
+        field_status:
+          label: Status
+      title: Arrivals
+  page_1:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<p>Arrivals</p>\r\n"
+            format: full_html

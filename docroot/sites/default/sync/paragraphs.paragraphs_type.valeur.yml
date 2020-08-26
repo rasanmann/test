@@ -1,0 +1,9 @@
+uuid: b2cb9f59-fb90-456c-83ed-06b0466a44cf
+langcode: fr
+status: true
+dependencies: {  }
+id: valeur
+label: Valeur
+icon_uuid: null
+description: "Valeur pour le paragraphe Valeurs\t"
+behavior_plugins: {  }

@@ -1,0 +1,20 @@
+uuid: 7ba6805b-ea5d-4341-895d-1402285422a7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.user_flight
+_core:
+  default_config_hash: h3niZBsJwE1P8YruoEYvQRTWoqqVVut75EZlKajaHPY
+id: node.user_flight.changed
+field_name: changed
+entity_type: node
+bundle: user_flight
+label: Modifié
+description: 'Le moment auquel le nœud a été modifié pour la dernière fois.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

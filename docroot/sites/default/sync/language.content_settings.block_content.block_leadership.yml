@@ -1,0 +1,18 @@
+uuid: a5bcabf4-0c20-4e9b-b144-68d1d403441c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_leadership
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: block_content.block_leadership
+target_entity_type_id: block_content
+target_bundle: block_leadership
+default_langcode: current_interface
+language_alterable: false

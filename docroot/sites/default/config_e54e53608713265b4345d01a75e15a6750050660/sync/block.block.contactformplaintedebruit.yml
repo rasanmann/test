@@ -12,7 +12,7 @@ dependencies:
 id: contactformplaintedebruit
 theme: yqb
 region: content
-weight: -29
+weight: -34
 provider: null
 plugin: 'block_content:adfeeb82-1a4c-492c-a99d-644d4dabdb1d'
 settings:

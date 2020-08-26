@@ -1,0 +1,108 @@
+uuid: 02eabe78-9608-49f3-9204-4b357d783199
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.departure.field_airline
+    - field.field.node.departure.field_atd
+    - field.field.node.departure.field_destination_airport
+    - field.field.node.departure.field_etd
+    - field.field.node.departure.field_flight_number
+    - field.field.node.departure.field_gate
+    - field.field.node.departure.field_status
+    - field.field.node.departure.field_std
+    - field.field.node.departure.field_stops
+    - field.field.node.departure.field_unique_id
+    - node.type.departure
+  module:
+    - datetime
+    - user
+id: node.departure.default
+targetEntityType: node
+bundle: departure
+mode: default
+content:
+  field_airline:
+    weight: 114
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_atd:
+    weight: 109
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_destination_airport:
+    weight: 115
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_etd:
+    weight: 107
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_flight_number:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_gate:
+    weight: 106
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_status:
+    weight: 116
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_std:
+    weight: 108
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_unique_id:
+    weight: 117
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  addtoany: true
+  field_stops: true
+  langcode: true

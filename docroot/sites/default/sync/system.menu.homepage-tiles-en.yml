@@ -1,0 +1,8 @@
+uuid: 9bcc118b-c512-4886-b155-a72724529529
+langcode: en
+status: true
+dependencies: {  }
+id: homepage-tiles-en
+label: 'Homepage Tiles (english)'
+description: ''
+locked: false

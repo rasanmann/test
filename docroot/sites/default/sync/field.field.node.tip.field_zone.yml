@@ -1,0 +1,29 @@
+uuid: bfacea11-d831-4f8f-934b-0dc267442a78
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_zone
+    - node.type.tip
+    - node.type.zone
+id: node.tip.field_zone
+field_name: field_zone
+entity_type: node
+bundle: tip
+label: Zone
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      zone: zone
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

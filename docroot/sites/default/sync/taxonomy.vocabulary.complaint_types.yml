@@ -1,0 +1,8 @@
+uuid: fdc4a95c-a5e0-456e-b64e-be47efcf68e1
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Complaint Types'
+vid: complaint_types
+description: ''
+weight: 0

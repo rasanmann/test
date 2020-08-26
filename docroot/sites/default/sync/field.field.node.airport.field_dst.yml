@@ -1,0 +1,19 @@
+uuid: 71556f5c-c2c0-41aa-9600-ec2a07ae25b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dst
+    - node.type.airport
+id: node.airport.field_dst
+field_name: field_dst
+entity_type: node
+bundle: airport
+label: DST
+description: 'Daylight savings time. One of E (Europe), A (US/Canada), S (South America), O (Australia), Z (New Zealand), N (None) or U (Unknown). See also: Help: Time '
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

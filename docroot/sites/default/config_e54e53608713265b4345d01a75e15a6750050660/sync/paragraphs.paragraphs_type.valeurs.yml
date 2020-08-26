@@ -1,0 +1,9 @@
+uuid: d20ff696-60f1-435e-a54d-6be9b49e24c2
+langcode: fr
+status: true
+dependencies: {  }
+id: valeurs
+label: Valeurs
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

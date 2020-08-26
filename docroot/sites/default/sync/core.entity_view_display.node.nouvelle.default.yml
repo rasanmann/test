@@ -1,0 +1,43 @@
+uuid: 318261dc-84f4-4065-b4ad-3dfefcb30cea
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.nouvelle.body
+    - field.field.node.nouvelle.field_website
+    - node.type.nouvelle
+  module:
+    - link
+    - text
+    - user
+id: node.nouvelle.default
+targetEntityType: node
+bundle: nouvelle
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_website:
+    weight: 102
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

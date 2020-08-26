@@ -1,0 +1,18 @@
+uuid: 7115d3e1-8536-4361-b16f-bc7c9c247540
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.media_mosaique
+id: paragraph.media_mosaique.created
+field_name: created
+entity_type: paragraph
+bundle: media_mosaique
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

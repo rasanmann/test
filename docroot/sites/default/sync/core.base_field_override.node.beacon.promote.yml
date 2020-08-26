@@ -1,0 +1,24 @@
+uuid: d3005f06-470d-42db-9c40-a1e2f42de3be
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.beacon
+_core:
+  default_config_hash: BuwOqwzlJegi_dNZmZUOQQ5vKnc5VQ8PUMhpz2ZbYAw
+id: node.beacon.promote
+field_name: promote
+entity_type: node
+bundle: beacon
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

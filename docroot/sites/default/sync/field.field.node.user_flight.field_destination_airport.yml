@@ -1,0 +1,31 @@
+uuid: 5e94c897-0c8f-439d-8faf-0ae64f110a43
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_destination_airport
+    - node.type.airport
+    - node.type.user_flight
+_core:
+  default_config_hash: VhhfaARzBTi-_gjcJo4xXmBuTvtNVVRC56fLLubrMfY
+id: node.user_flight.field_destination_airport
+field_name: field_destination_airport
+entity_type: node
+bundle: user_flight
+label: Destination
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      airport: airport
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

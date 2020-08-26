@@ -1,0 +1,22 @@
+uuid: f51fdd26-8626-47a6-9e77-68d211a587c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.mosaique
+id: paragraph.mosaique.status
+field_name: status
+entity_type: paragraph
+bundle: mosaique
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

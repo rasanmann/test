@@ -1,0 +1,33 @@
+uuid: 9f7bcd11-90e7-4c44-97db-36cd46afaa8c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_logo
+field_name: field_logo
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: cellparq
+      label: 'Icon Cellparq'
+    -
+      value: electric-car
+      label: 'Icon Electric Car'
+    -
+      value: inparq
+      label: 'Icon Inparq'
+    -
+      value: proxiparq
+      label: 'Icon Proxiparq'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

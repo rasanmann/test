@@ -1,0 +1,29 @@
+uuid: 0e122a1f-5d56-4633-93e1-d203edd7eea1
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_retail_type
+    - node.type.commerce
+    - taxonomy.vocabulary.retail_types
+id: node.commerce.field_retail_type
+field_name: field_retail_type
+entity_type: node
+bundle: commerce
+label: Catégorie
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      retail_types: retail_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

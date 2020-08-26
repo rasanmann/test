@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ */
+#}
+{%
+set classes = [
+node.bundle|clean_class,
+not node.isPublished() ? 'is-unpublished',
+view_mode ? view_mode|clean_class,
+'clearfix',
+'homepage-view'
+]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+    <div class="wrapper">
+        <div class="bg-color"></div>
+        <div class="bg-image" style="background-image: url('{{ file_url(content.field_tile_background_image.0['#item'].entity.uri.value) }}')"></div>
+        {% set logo = {
+            '#theme':      'image_style',
+            '#style_name': 'logo',
+            '#uri':        content.field_color_logo.0['#item'].entity.uri.value,
+            '#alt':        content.field_color_logo.0['#item'].alt,
+            '#width':      content.field_color_logo.0['#item'].alt.width,
+            '#height':     content.field_color_logo.0['#item'].alt.height,
+            } %}
+            {{ logo }}
+
+        <div class="info">
+             <p>{{ content.body['#items'][0].summary }}</p>
+            {% if content.field_tile_link[0] is not empty %}
+                 <a href="{{content.field_tile_link[0]['#url_title']}}#{{node.id}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
+            {% else %}
+                 <a href="{{ path('entity.node.canonical', {'node': 1321156}) }}#{{node.id}}" class="btn btn-white">{{ 'En savoir plus'|t }}</a>
+            {% endif %}
+        </div>
+    </div>
+    {% if content.field_tile_link[0] is not empty %}
+        <a href="{{content.field_tile_link[0]['#url_title']}}#{{node.id}}" class="label-commerce">{{ label }}</a>
+    {% else %}
+        <a href="{{ path('entity.node.canonical', {'node': 1321156}) }}#{{node.id}}" class="label-commerce">{{ label }}</a>
+    {% endif %}
+</article>

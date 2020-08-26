@@ -1,0 +1,70 @@
+uuid: d0b75a87-eaaf-4974-890b-09e0ad5efea7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tirroirs
+    - paragraphs.paragraphs_type.accordeon
+    - paragraphs.paragraphs_type.tirroir
+  module:
+    - entity_reference_revisions
+id: paragraph.accordeon.field_tirroirs
+field_name: field_tirroirs
+entity_type: paragraph
+bundle: accordeon
+label: Tirroirs
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      tirroir: tirroir
+    target_bundles_drag_drop:
+      accordeon:
+        weight: 11
+        enabled: false
+      content:
+        weight: 12
+        enabled: false
+      gallery:
+        weight: 13
+        enabled: false
+      gallery_image:
+        weight: 14
+        enabled: false
+      gouvernance_employe:
+        weight: 15
+        enabled: false
+      gouvernance_texte:
+        weight: 16
+        enabled: false
+      tirroir:
+        enabled: true
+        weight: 17
+      vip_drawer:
+        weight: 18
+        enabled: false
+      vip_drawer_card:
+        weight: 19
+        enabled: false
+      vip_drawer_section:
+        weight: 20
+        enabled: false
+      image_mosaique:
+        weight: 21
+        enabled: false
+      media_mosaique:
+        weight: 22
+        enabled: false
+      mosaique:
+        weight: 23
+        enabled: false
+      primary_title_h2:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

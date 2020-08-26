@@ -1,0 +1,56 @@
+uuid: 2530a536-9e80-42e2-bc76-0a7a239eefff
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.vip_drawer_section.field_text
+    - field.field.paragraph.vip_drawer_section.field_title
+    - field.field.paragraph.vip_drawer_section.field_vip_drawer_cards
+    - paragraphs.paragraphs_type.vip_drawer_section
+  module:
+    - paragraphs
+    - text
+_core:
+  default_config_hash: eiKrbVCmSQdJ0K1XvImnL81f3VqfPB3Anf_K7pFrbXI
+id: paragraph.vip_drawer_section.default
+targetEntityType: paragraph
+bundle: vip_drawer_section
+mode: default
+content:
+  field_text:
+    weight: 1
+    settings:
+      rows: 8
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_vip_drawer_cards:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

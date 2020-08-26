@@ -1,0 +1,45 @@
+uuid: fc56f049-6b44-47bb-872a-035ae908beed
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_minus_icon_gouvernance_emp
+    - paragraphs.paragraphs_type.gouvernance_employe
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: paragraph.gouvernance_employe.field_minus_icon_gouvernance_emp
+field_name: field_minus_icon_gouvernance_emp
+entity_type: paragraph
+bundle: gouvernance_employe
+label: minus_icon_gouvernance_employe
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: b24c541b-8591-4855-b3b5-ebb2f0093e1d
+    alt: ''
+    title: ''
+    width: 132
+    height: 132
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

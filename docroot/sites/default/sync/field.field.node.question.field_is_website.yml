@@ -1,0 +1,25 @@
+uuid: b461e0a0-d875-4ac5-842e-6922b951adc3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_website
+    - node.type.question
+_core:
+  default_config_hash: wJVeDdLS8HYD6W6b7LE0K6OpbSoRKBqavOxAGBbGz-8
+id: node.question.field_is_website
+field_name: field_is_website
+entity_type: node
+bundle: question
+label: 'Is website'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Visible sur le site'
+  off_label: 'Non visible sur le site'
+field_type: boolean

@@ -242,7 +242,8 @@ var App = (function ($, Drupal, Bootstrap) {
             initializeDropdownMenu();
             initializeGallery();
             setMenuActiveClass();
-
+            initSliderHomePage();
+            initSliderTilesHomePage();
             Router.init();
         };
 
@@ -712,6 +713,124 @@ var App = (function ($, Drupal, Bootstrap) {
             });
         };
 
+        var initSliderHomePage = function() {
+            if($('.block-views-blockslider-homepage-block-1 .swiper-container').length){
+                var homepageSwiper = new Swiper ('.block-views-blockslider-homepage-block-1 .swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,
+                    effect: 'fade',
+                    speed: 5000,
+                    autoplay: {
+                        delay: 5000,
+                    },
+                    simulateTouch: false,
+                    paginationClickable: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                      },
+                  })
+              }
+        
+              if($('#block-views-block-commerces-block-boutique .swiper-container').length){
+                var boutiquesSwiper = new Swiper ('#block-views-block-commerces-block-boutique .swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,    
+                    slidesPerView: 4,
+                    navigation: {
+                      nextEl: '#block-views-block-commerces-block-boutique .swiper-button-next',
+                      prevEl: '#block-views-block-commerces-block-boutique .swiper-button-prev',
+                    },
+                    breakpoints: {
+                      320: {
+                          slidesPerView: 1,
+                          spaceBetween: 10
+                      },
+                      768: {
+                          slidesPerView: 2,
+                          spaceBetween: 20
+                      },
+                      1082: {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                      },
+                      1300: {
+                          slidesPerView: 4,
+                          spaceBetween: 30
+                      }
+                  }
+                  })
+              }
+        
+              if($('#block-views-block-commerces-block-restaurant .swiper-container').length){
+                var restaurantSwiper = new Swiper ('#block-views-block-commerces-block-restaurant .swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,
+                    slidesPerView: 4,
+                    navigation: {
+                        nextEl: '#block-views-block-commerces-block-restaurant .swiper-button-next',
+                        prevEl: '#block-views-block-commerces-block-restaurant .swiper-button-prev',
+                      },
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 10
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 20
+                        },
+                        1082: {
+                          slidesPerView: 3,
+                          spaceBetween: 20
+                        },
+                        1300: {
+                            slidesPerView: 4,
+                            spaceBetween: 30
+                        }
+                    }
+                  })
+              }
+        }
+
+       
+        var initSliderTilesHomePage = function () {
+            
+            if($('#block-homepagetilesblock-2 .swiper-container').length){
+
+                if( !$('#block-homepagetilesblock-2 .swiper-container').hasClass('swiper-container-initialized') 
+                    && $(window).width() < 585 ){ 
+
+                    var tilesSwiper = new Swiper ('#block-homepagetilesblock-2 .swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,
+                    slidesPerView: 1,
+                    on: {
+                        resize: function () {
+                            var swiper = this;
+                            if($(window).width() > 585 && swiper){
+                                // To prevent event attach on undefined after resize like updateSize
+                                setTimeout(function(){
+                                    swiper.destroy(true, true);
+                                    console.log('swiper tile destroyed');
+                                }, 100);
+                            }
+                        },
+                        init: function() {
+                            console.log('swiper tile initialized');
+                        }
+                      },
+                    navigation: {
+                        nextEl: '#block-homepagetilesblock-2 .swiper-button-next',
+                        prevEl: '#block-homepagetilesblock-2 .swiper-button-prev',
+                        },
+                    })
+
+                
+                }
+            } 
+        }
+
         var initializeReminders = function() {
             var $reminders = $('.block-reminders');
 
@@ -998,6 +1117,7 @@ var App = (function ($, Drupal, Bootstrap) {
 
         var onWindowResize = function(ev) {
             didResize = true;
+            initSliderTilesHomePage();
         };
 
         var onWindowDelayedResize = function(ev) {

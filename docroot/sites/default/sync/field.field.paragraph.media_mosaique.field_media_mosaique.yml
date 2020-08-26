@@ -1,0 +1,32 @@
+uuid: ac34b9f8-3d73-448d-a980-a102b43a08d2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_mosaique
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
+    - paragraphs.paragraphs_type.media_mosaique
+id: paragraph.media_mosaique.field_media_mosaique
+field_name: field_media_mosaique
+entity_type: paragraph
+bundle: media_mosaique
+label: 'Media mosaïque'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      remote_video: remote_video
+      video: video
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

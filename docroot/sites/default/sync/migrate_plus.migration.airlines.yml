@@ -1,0 +1,48 @@
+uuid: 98abb8f8-8772-42b1-850d-94db9bd63955
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: zH5VXlAACiXRZ19T9He-epOeIifdlqY0d7PrNgU7X2s
+id: airlines
+migration_tags:
+  - CSV
+migration_group: null
+label: 'Airlines file migration'
+source:
+  plugin: csv
+  path: 'public://csv/airlines.csv'
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    -
+      id: Identifier
+    -
+      title: Title
+    -
+      alias: Alias
+    -
+      iata: IATA
+    -
+      icao: ICAO
+    -
+      callsign: Callsign
+    -
+      country: Country
+    -
+      active: Active
+process:
+  type:
+    plugin: default_value
+    default_value: airline
+  title: title
+  field_airline_alias: alias
+  field_iata: iata
+  field_icao: icao
+  field_callsign: callsign
+  field_location: country
+  status: status
+destination:
+  plugin: 'entity:node'
+migration_dependencies: {  }

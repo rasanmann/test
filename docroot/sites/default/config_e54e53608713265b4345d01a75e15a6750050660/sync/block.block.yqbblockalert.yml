@@ -17,13 +17,13 @@ settings:
   label: 'Yqb Block Alert'
   provider: yqb_alert
   label_display: '0'
-  french_alert: test
-  english_alert: ''
+  french_alert: 'Simulation d’urgence en cours. Aucun danger ou répercussion sur les vols et les opérations.'
+  english_alert: 'An emergency response exercise is currently underway. No danger or impacts on flights or operations.'
   french_alert_full:
-    value: ''
+    value: "<h2><strong>Simulation d’urgence en cours</strong></h2>\r\n\r\n<p><strong>30 octobre 2019 – L’Aéroport international Jean-Lesage de Québec (YQB) effectue une simulation d’urgence dans l’aérogare.</strong></p>\r\n\r\n<p>Cet exercice permet à YQB et ses partenaires de tester les procédures d’urgence en place et d’apprendre de l’interaction entre les différents intervenants de sûreté et de sécurité qui participaient à l’exercice. En vertu de ses obligations auprès de Transports Canada, YQB a le devoir de mettre à l’essai son plan des mesures d’urgence (PMU) régulièrement.</p>\r\n\r\n<p>Aucun danger ou répercussion sur les vols et les opérations.</p>\r\n"
     format: full_html
   english_alert_full:
-    value: ''
+    value: "<h2>Emergency response exercise currently underway</h2>\r\n\r\n<p>October 30, 2019 – Québec City Jean Lesage International Airport is conducting an emergency exercise in the terminal.</p>\r\n\r\n<p>This exercise allows YQB and its partners to test the emergency procedures in place and learn from the interaction between the various safety and security responders involved in the exercise. As part of its obligations with Transport Canada, YQB has a duty to test its Emergency Response Plan (ERP) regularly.</p>\r\n\r\n<p>No danger or impacts on flights or operations.</p>\r\n"
     format: full_html
   alert_is_enable: 0
 visibility: {  }

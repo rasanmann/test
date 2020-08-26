@@ -1,0 +1,27 @@
+uuid: bf3327d1-83ab-4afd-b09d-9d4ff5e82038
+langcode: fr
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_icon_bottom
+field_name: field_icon_bottom
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: crossroad
+      label: 'Icon Crossroad'
+    -
+      value: thumb-up
+      label: 'Icon Thumb Up'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

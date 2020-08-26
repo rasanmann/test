@@ -1,0 +1,34 @@
+uuid: aa4352e9-1dc8-406a-9177-82b470e467fb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.valeurs.field_valeurs
+    - paragraphs.paragraphs_type.valeurs
+  module:
+    - paragraphs
+id: paragraph.valeurs.default
+targetEntityType: paragraph
+bundle: valeurs
+mode: default
+content:
+  field_valeurs:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

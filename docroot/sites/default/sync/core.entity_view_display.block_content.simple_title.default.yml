@@ -1,0 +1,23 @@
+uuid: 82a45002-8aa7-49ea-a1f0-228237b071fc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_title
+    - field.field.block_content.simple_title.field_title
+  module:
+    - text
+id: block_content.simple_title.default
+targetEntityType: block_content
+bundle: simple_title
+mode: default
+content:
+  field_title:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  langcode: true

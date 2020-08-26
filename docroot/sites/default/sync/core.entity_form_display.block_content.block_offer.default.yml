@@ -1,0 +1,52 @@
+uuid: 8a6a81ef-54c4-4508-926d-24914a563167
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.block_offer
+    - field.field.block_content.block_offer.field_offers
+    - field.field.block_content.block_offer.field_summary
+  module:
+    - text
+id: block_content.block_offer.default
+targetEntityType: block_content
+bundle: block_offer
+mode: default
+content:
+  field_offers:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_summary:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  langcode:
+    type: language_select
+    weight: 3
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+    region: content
+  translation:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

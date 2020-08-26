@@ -1,0 +1,23 @@
+uuid: 0dbed16a-497a-4983-9698-2953ae92db10
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: jp4xgaxflRd2rU0FH_hRF5sb4g5NXEac27SDOOHQkc0
+id: user.field_facebook_user_id
+field_name: field_facebook_user_id
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

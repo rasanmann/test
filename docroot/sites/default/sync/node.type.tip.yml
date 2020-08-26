@@ -1,0 +1,17 @@
+uuid: 66e09476-21b3-4aa0-8f09-18ebe3482c42
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Astuce
+type: tip
+description: 'Astuces affichées lorsqu''un usager arrive à certaines étapes du processus.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

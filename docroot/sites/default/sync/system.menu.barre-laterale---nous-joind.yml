@@ -1,0 +1,8 @@
+uuid: 63f58d21-6c0f-4bd1-b168-797641bb66aa
+langcode: fr
+status: true
+dependencies: {  }
+id: barre-laterale---nous-joind
+label: 'Barre latérale - Nous joindre'
+description: ''
+locked: false

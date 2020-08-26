@@ -1,0 +1,22 @@
+uuid: b2af343a-712d-4dc3-ab64-7803523bd4be
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_facebook_user_id
+  module:
+    - user
+_core:
+  default_config_hash: 1XxJdqmXkDd16kU3A5UgAsp742aHG0KS-QfTImk1ehU
+id: user.user.field_facebook_user_id
+field_name: field_facebook_user_id
+entity_type: user
+bundle: user
+label: 'Facebook User ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

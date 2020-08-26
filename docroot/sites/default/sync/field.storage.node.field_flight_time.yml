@@ -1,0 +1,23 @@
+uuid: b3d83e76-f8a5-4144-836b-8e1546b98935
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: yrH9YpNrIkuqa2ID4p5vl1mg08IpwbuygTo1HtLAbb0
+id: node.field_flight_time
+field_name: field_flight_time
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

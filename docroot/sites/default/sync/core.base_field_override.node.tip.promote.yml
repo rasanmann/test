@@ -1,0 +1,22 @@
+uuid: d81f6ee0-3ed9-41b4-920d-aa25e8c28200
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.tip
+id: node.tip.promote
+field_name: promote
+entity_type: node
+bundle: tip
+label: 'Promu en page d''accueil'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

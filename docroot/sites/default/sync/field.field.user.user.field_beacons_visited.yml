@@ -1,0 +1,22 @@
+uuid: d3f72d52-aa70-41b8-86db-561174161bbd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_beacons_visited
+  module:
+    - user
+_core:
+  default_config_hash: Czc2pZoD3Y1Lr6e16p_HhhoIYRY0oV325I7FCEwhie4
+id: user.user.field_beacons_visited
+field_name: field_beacons_visited
+entity_type: user
+bundle: user
+label: 'Beacons visited'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

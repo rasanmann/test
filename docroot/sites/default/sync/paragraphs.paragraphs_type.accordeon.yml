@@ -1,0 +1,9 @@
+uuid: 6e368abd-6551-4017-ba27-a6bb7791621c
+langcode: fr
+status: true
+dependencies: {  }
+id: accordeon
+label: Accordéon
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

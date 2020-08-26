@@ -1,0 +1,8 @@
+uuid: 7baa61c6-fd85-4012-930f-90517b028cff
+langcode: fr
+status: true
+dependencies: {  }
+id: barre-laterale---affaires
+label: 'Barre latérale - Affaires'
+description: ''
+locked: false

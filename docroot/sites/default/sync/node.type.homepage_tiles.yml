@@ -1,0 +1,20 @@
+uuid: d654ce91-8495-4a62-ab56-0f6713dfbebc
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - homepage-tiles-global
+    parent: 'homepage-tiles-global:'
+_core:
+  default_config_hash: Hwo6SMOB8QrN40dAjtt9Bugd8qIETes0IQHwDdUJ4qU
+name: 'Tuiles d''accueil'
+type: homepage_tiles
+description: 'Content type for Tiles found on the homepage'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

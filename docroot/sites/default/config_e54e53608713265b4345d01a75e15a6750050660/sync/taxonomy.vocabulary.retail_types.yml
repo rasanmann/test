@@ -1,0 +1,8 @@
+uuid: 9d8a28a8-8f4c-4fc1-90eb-8f702b3e2a47
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Retail Types'
+vid: retail_types
+description: ''
+weight: 0
