@@ -114,6 +114,7 @@ module:
   yqb_mailchimp: 0
   yqb_metatag: 0
   yqb_migrate: 0
+  yqb_newsletters: 0
   yqb_parking_booker: 0
   yqb_payments: 0
   yqb_reminders: 0

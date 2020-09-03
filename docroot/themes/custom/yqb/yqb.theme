@@ -288,6 +288,7 @@ function yqb_preprocess_container(array &$variables) {
 }
 
 function yqb_form_alter(&$form, &$form_state, $form_id) {
+
   switch ($form_id) {
     case 'contact_message_contact_us_form':
     case 'contact_message_comments_form':
@@ -373,6 +374,11 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       }
       break;
   }
+
+  if(strpos($form_id, 'webform_submission_newsletter_subscription') !== false){
+    $form['actions']['submit']['#value'] = t('S\'inscrire');
+  }
+
 }
 
 
@@ -729,4 +735,34 @@ function yqb_preprocess_node(&$variables){
     $variables['view_commerces_path'] = $view_page;
   }
 
+}
+
+/**
+ * HOOK_theme_suggestions_page_alter
+ * Add custom content type node to template suggestion for Landing page
+ *
+ * @param $variables
+ */
+function yqb_theme_suggestions_page_alter(&$suggestions, &$variables) {
+  if ( $node = \Drupal::routeMatch()->getParameter('node') ) {
+    $content_type = $node->bundle();
+    if($node->bundle() == 'landing_page'){
+      array_splice( $suggestions, count($suggestions) - 1, 0, 'page__'.$content_type );
+    }
+  }
+}
+
+/**
+ * HOOK_theme_suggestions_html_alter
+ * Add custom content type node to template suggestion for Landing html
+ *
+ * @param $variables
+ */
+function yqb_theme_suggestions_html_alter(&$suggestions, &$variables) {
+  if ( $node = \Drupal::routeMatch()->getParameter('node') ) {
+    $content_type = $node->bundle();
+    if($node->bundle() == 'landing_page'){
+      array_splice( $suggestions, count($suggestions) - 1, 0, 'html__node__'.$content_type );
+    }
+  }
 }

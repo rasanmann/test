@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Page Landing Template.
+ */
+#}
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+
+{# Main #}
+{% block main %}
+  <div role="main" class="main-container {{ container }} js-quickedit-main-content" id="layout-content">
+    <div class="page-wrapper">
+        <div class="content-wrapper content-no-sidebar">
+
+            {% set content_classes = [
+                'main-content'
+            ] %}
+
+            <section{{ content_attributes.addClass(content_classes) }}>
+                {% block content %}
+                <a id="main-content"></a>
+                {{ page.content }}
+                {% endblock %}
+            </section>
+        </div>
+    </div>
+  </div>
+{% endblock %}
