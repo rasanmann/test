@@ -396,6 +396,7 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
 
   if(strpos($form_id, 'webform_submission_newsletter_subscription') !== false){
     $form['actions']['submit']['#value'] = t('S\'inscrire');
+    $form['actions']['submit']['#attributes']['style'][] = 'color: #b2daf3; background-color: #012d8b;';
   }
 
 }

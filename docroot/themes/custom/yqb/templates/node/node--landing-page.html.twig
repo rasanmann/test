@@ -182,7 +182,6 @@ set classes = [
         <h3>{{ "Restez informé sur les offres et promotions de l'aéroport." }}</h3>
         <div class="container-form">
           {# Afficher seulement le webform #}
-          {# TODO add inline style on form button style="color: #b2daf3; background-color: #012d8b;" #}
           {{ content.field_webform }}
         </div>
       </div>
@@ -207,22 +206,22 @@ set classes = [
         <p class="title-conditions">{{ "*Conditions de l'offre d'Air Canada"|t }}</p>
         <ul>
           <li>
-            L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le 4 octobre 2020.
+            {{ "L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le 4 octobre 2020."|t }}
           </li>
           <li>
-            La réduction s'applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020.
+            {{ "La réduction s'applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020."|t }}
           </li>
           <li>
-            La réduction s'applique aux tarifs de base publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à aircanada.com et ne peut être combinée à aucune autre offre de réduction.
+            {{ "La réduction s'applique aux tarifs de base publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à aircanada.com et ne peut être combinée à aucune autre offre de réduction."|t }}
           </li>
           <li>
-            La disponibilité peut varier.
+            {{ "La disponibilité peut varier."|t }}
           </li>
           <li>
-            Certains vols peuvent être exploités par des transporteurs autres qu'Air Canada, comme indiqué lors de la réservation.
+            {{ "Certains vols peuvent être exploités par des transporteurs autres qu'Air Canada, comme indiqué lors de la réservation."|t }}
           </li>
           <li>
-            Certains vols à code multiple sont exclus de l'offre.
+            {{ "Certains vols à code multiple sont exclus de l'offre."|t }}
           </li>
         </ul>
       </div>
