@@ -43,13 +43,7 @@
     }
   }
   .transition-image {
-    &.upside-down {
-      img {
-        margin-top: -2px;
-      }
-    }
     img {
-      margin-bottom: -2px;
       width: 100%;
     }
   }
