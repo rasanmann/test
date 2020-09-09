@@ -27,10 +27,11 @@ class yqb_newsletters extends WebformHandlerBase {
     return [];
   }
 
-  // @TODO : YQB INFO
-  const MAILCHIMP_API_KEY = 'e0d6c34b06ec6bf95a979e95fc04cac7-us17'; // see https://mailchimp.com/help/about-api-keys
-  const LIST_ID = 'dfd7943760'; // see https://3by400.com/get-support/3by400-knowledgebase?view=kb&kbartid=6
-  const SERVER_LOCATION = 'us17'; // the string after the '-' in your MAILCHIMP_API_KEY f.e. us4
+  // @TODO : 
+  // Get Tags dynamically in form
+  const MAILCHIMP_API_KEY = 'f75ab6d01bdb8708fb2b15c269bc8328-us11'; // see https://mailchimp.com/help/about-api-keys
+  const LIST_ID = 'fbcc0156a1'; // see https://3by400.com/get-support/3by400-knowledgebase?view=kb&kbartid=6
+  const SERVER_LOCATION = 'us11'; // the string after the '-' in your MAILCHIMP_API_KEY f.e. us4
 
   /**
    * {@inheritdoc}
@@ -49,7 +50,8 @@ class yqb_newsletters extends WebformHandlerBase {
       "merge_fields" => array(
         "FNAME" => "$first_name",
         "LNAME" => "$last_name"
-      )
+      ),
+      "tags" => array('Air Canada')
     );
 
     // Setup cURL
