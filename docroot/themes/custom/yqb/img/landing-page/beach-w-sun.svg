@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1440px" height="421px" viewBox="0 0 1440 421" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1440px" height="420px" viewBox="0 0 1440 420" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>sun + palmier2 + palmier1 Mask</title>
     <defs>
-        <rect id="path-1" x="0" y="0" width="1440" height="421"></rect>
+        <rect id="path-1" x="0" y="0" width="1440" height="420"></rect>
         <linearGradient x1="51.5637242%" y1="44.4851422%" x2="48.5182956%" y2="-35.7487781%" id="linearGradient-3">
             <stop stop-color="#DD8F7C" offset="0%"></stop>
             <stop stop-color="#DFA89B" offset="36%"></stop>

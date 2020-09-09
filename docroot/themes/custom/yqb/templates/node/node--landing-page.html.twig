@@ -16,8 +16,8 @@ set classes = [
   {# Content contient tout les fields du node #}
   {# {{ content }} #}
   <div class="block-parent" style="background-image: linear-gradient(180deg, rgba(127,191,235,1) 30%, rgba(244,244,244,1) 100%);">
-    <div class="container-content">
-      <div class="block-half" style="color: #012d8b;">
+    <div class="block-child block-half" style="color: #012d8b;">
+      <div class="wrapper-block-half">
         <div class="container-half">
           <h2>{{ "Préparez-vous à décoller!"|t }}</h2>
           <p>
@@ -31,8 +31,10 @@ set classes = [
           <img src="/themes/custom/yqb/img/landing-page/airplane.svg" alt="">
         </div>
       </div>
+    </div>
 
-      <div class="block-half" style="color: #012d8b;">
+    <div class="block-child block-half" style="color: #012d8b;">
+      <div class="wrapper-block-half">
         <div class="container-half">
           <h3>{{ "15% de rabais*, 100% de plaisir."|t }}</h3>
           <img
@@ -71,17 +73,15 @@ set classes = [
   </div>
 
   <div class="block-parent" style="background: linear-gradient(0deg, rgba(221,143,124,1) 0%, rgba(249,175,157,1) 50%);">
-    <div class="container-content">
-      <div class="block-full text-center" style="color: #ffffff;">
-        <h3>{{ "Faites vos valises."|t }}</h3>
-        <p>{{ "<strong>Un vaste choix de destinations</strong> sont disponibles avec <strong>Air Canada.</strong>"|t }}</p>
-        <a class="button--primary"
-          href="#"
-          style="color: #dd8f7c; background-color: #ffffff;"
-        >
-          {{ "Découvrir toutes les destinations"|t }}
-        </a>
-      </div>
+    <div class="block-child block-full text-center" style="color: #ffffff;">
+      <h3>{{ "Faites vos valises."|t }}</h3>
+      <p>{{ "<strong>Un vaste choix de destinations</strong> sont disponibles avec <strong>Air Canada.</strong>"|t }}</p>
+      <a class="button--primary"
+        href="#"
+        style="color: #dd8f7c; background-color: #ffffff;"
+      >
+        {{ "Découvrir toutes les destinations"|t }}
+      </a>
     </div>
 
     <div class="divisor"></div>
@@ -95,8 +95,8 @@ set classes = [
   </div>
 
   <div class="block-parent" style="background: linear-gradient(180deg, rgba(137,214,207,1) 55%, rgba(50,185,190,1) 100%);">
-    <div class="container-content">
-      <div class="block-half" style="color: #014b4e;">
+    <div class="block-child block-half" style="color: #014b4e;">
+      <div class="wrapper-block-half">
         <div class="container-half">
           <h3>{{ "Volez sans tracas avec nos mesures renforcées de biosécurité."|t }}</h3>
         </div>
@@ -127,19 +127,19 @@ set classes = [
     "
   >
     <div class="divisor"></div>
-    <div class="container-content">
-      <div class="block-full text-center" style="color: #32b9be;">
-        <h3>{{ "Une expérience de voyage souple et sécuritaire avec Air Canada."|t }}</h3>
-        <p>{{ "Planifiez votre voyage l'esprit tranquille grâce aux options de réservation souples et élargies d'Air Canada incluant la possibilité de faire une <strong>modification sans frais.</strong> De plus, Air Canada <strong>SoinPropre+</strong>, un programme à l'avant-garde de l'industrie qui comporte maintenant de nouvelles mesures de <strong>biosécurité sans contact</strong>, vous offre une <strong>sécurité accrue</strong> à chaque étape de votre voyage."|t }}</p>
-        <a class="button--primary"
-            href="#"
-            style="color: #ffffff; background-color: #32b9be;"
-        >
-          {{ "En savoir plus"|t }}
-        </a>
-      </div>
+    <div class="block-child block-full text-center" style="color: #32b9be;">
+      <h3>{{ "Une expérience de voyage souple et sécuritaire avec Air Canada."|t }}</h3>
+      <p>{{ "Planifiez votre voyage l'esprit tranquille grâce aux options de réservation souples et élargies d'Air Canada incluant la possibilité de faire une <strong>modification sans frais.</strong> De plus, Air Canada <strong>SoinPropre+</strong>, un programme à l'avant-garde de l'industrie qui comporte maintenant de nouvelles mesures de <strong>biosécurité sans contact</strong>, vous offre une <strong>sécurité accrue</strong> à chaque étape de votre voyage."|t }}</p>
+      <a class="button--primary"
+          href="#"
+          style="color: #ffffff; background-color: #32b9be;"
+      >
+        {{ "En savoir plus"|t }}
+      </a>
+    </div>
 
-      <div class="block-icons text-center">
+    <div class="block-child block-icons text-center">
+      <div class="wrapper-block-icons">
         <a href="#" class="icon-item">
           <img
             src="/themes/custom/yqb/img/landing-page/ac-cleancare-fr.jpg"
@@ -155,53 +155,52 @@ set classes = [
           >
         </a>
       </div>
-
-      <div class="block-full text-center" style="color: #7fbfeb;">
-        <h3>{{ "Encore plus, pour vous."|t }}</h3>
-        <p>{{ "Prolongez votre escapade et partez la tête tranquille grâce à <strong>notre nouvelle tarification avantageuse sur le stationnement longue durée.</strong>"|t }}</p>
-        <a class="button--primary"
-          href="#"
-          style="color: #ffffff; background-color: #7fbfeb;"
-        >
-          {{ "En savoir plus"|t }}
-        </a>
-      </div>
     </div>
 
+    <div class="block-child block-full text-center" style="color: #7fbfeb;">
+      <h3>{{ "Encore plus, pour vous."|t }}</h3>
+      <p>{{ "Prolongez votre escapade et partez la tête tranquille grâce à <strong>notre nouvelle tarification avantageuse sur le stationnement longue durée.</strong>"|t }}</p>
+      <a class="button--primary"
+        href="#"
+        style="color: #ffffff; background-color: #7fbfeb;"
+      >
+        {{ "En savoir plus"|t }}
+      </a>
+    </div>
   </div>
 
-  <div class="block-parent" style="background: linear-gradient(180deg, rgba(187,229,255,1) 0%, rgba(127,191,235,1) 100%);">
+  <div class="block-parent" style="background: linear-gradient(180deg, rgba(187,229,255,1) 0%, rgba(127,191,235,1) 100%); color: #012d8b;">
     <div class="transition-image upside-down">
       <picture>
         <source  media="(min-width:768px)" srcset="/themes/custom/yqb/img/landing-page/upside-down-beach.svg">
         <img src="/themes/custom/yqb/img/landing-page/upside-down-beach-zoomed.svg" alt="">
       </picture>
     </div>
-    <div class="container-content">
-      <div class="block-form" style="color: #012d8b;">
-        <h3>{{ "Restez informé sur les offres et promotions de l'aéroport." }}</h3>
-        <div class="container-form">
-          {# Afficher seulement le webform #}
-          {{ content.field_webform }}
-        </div>
+    <div class="block-child block-form">
+      <h3>{{ "Restez informé sur les offres et promotions de l'aéroport." }}</h3>
+      <div class="container-form">
+        {# Afficher seulement le webform #}
+        {{ content.field_webform }}
       </div>
+    </div>
 
-      <div class="block-sponsor text-center" style="color: #012d8b;">
-        <h3>{{ "Une campagne de"|t }}</h3>
-        <div class="wrapper-sponsor">
-          <img class="sponsor-item"
-            src="/themes/custom/yqb/img/landing-page/yqb-logo.png"
-            alt="Y Q B"
-            style="max-width: 138px; min-width: 88px;"
-          >
-          <img class="sponsor-item"
-            src="/themes/custom/yqb/img/landing-page/air-canada-vector-logo.svg"
-            alt="Air Canada"
-            style="max-width: 452px; min-width: 272px;"
-          >
-        </div>
+    <div class="block-child block-sponsor text-center">
+      <h3>{{ "Une campagne de"|t }}</h3>
+      <div class="wrapper-sponsor">
+        <img class="sponsor-item"
+          src="/themes/custom/yqb/img/landing-page/yqb-logo.png"
+          alt="Y Q B"
+          style="max-width: 138px; min-width: 88px;"
+        >
+        <img class="sponsor-item"
+          src="/themes/custom/yqb/img/landing-page/air-canada-vector-logo.svg"
+          alt="Air Canada"
+          style="max-width: 452px; min-width: 272px;"
+        >
       </div>
+    </div>
 
+<<<<<<< HEAD
       <div class="block-full block-conditions" style="color: #012d8b;">
         <p class="title-conditions">{{ "*Conditions de l'offre d'Air Canada"|t }}</p>
         <ul>
@@ -225,6 +224,30 @@ set classes = [
           </li>
         </ul>
       </div>
+=======
+    <div class="block-child block-full block-conditions">
+      <p class="title-conditions">{{ "*Conditions de l'offre d'Air Canada"|t }}</p>
+      <ul>
+        <li>
+          L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le 4 octobre 2020.
+        </li>
+        <li>
+          La réduction s'applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020.
+        </li>
+        <li>
+          La réduction s'applique aux tarifs de base publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à aircanada.com et ne peut être combinée à aucune autre offre de réduction.
+        </li>
+        <li>
+          La disponibilité peut varier.
+        </li>
+        <li>
+          Certains vols peuvent être exploités par des transporteurs autres qu'Air Canada, comme indiqué lors de la réservation.
+        </li>
+        <li>
+          Certains vols à code multiple sont exclus de l'offre.
+        </li>
+      </ul>
+>>>>>>> feature/115216_landingpage_frontend
     </div>
   </div>
 </article>
