@@ -118,6 +118,9 @@
     }
     a {
       color: currentColor;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     small {
       font-size: 12px;
@@ -184,6 +187,9 @@
         width: 30%;
         margin: 0 30px;
       }
+      &:hover {
+        opacity: 0.8;
+      }
       img {
         width: 100%;
       }
@@ -233,6 +239,7 @@
     .form-group {
       display: flex;
       flex-wrap: wrap;
+      width: 100%;
     }
     .form-actions {
       justify-content: flex-end;
