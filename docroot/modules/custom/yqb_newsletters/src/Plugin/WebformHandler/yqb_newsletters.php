@@ -72,18 +72,18 @@ class yqb_newsletters extends WebformHandlerBase {
     $readable_response = json_decode($response);
     if(!$readable_response) {
       \Drupal::logger('Mailchimp_subscriber')->error($readable_response->title.': '.$readable_response->detail .'. Raw values:'.print_r($values));
-      \Drupal::messenger()->addError('Something went wrong. Please contact your webmaster.');
+      \Drupal::messenger()->addError(t('Un problème est survenu. Veuillez contacter votre webmaster.'));
     }
     if($readable_response->status == 403) {
       \Drupal::logger('Mailchimp_subscriber')->error($readable_response->title.': '.$readable_response->detail .'. Raw values:'.print_r($values));
-      \Drupal::messenger()->addError('Something went wrong. Please contact your webmaster.');
+      \Drupal::messenger()->addError(t('Un problème est survenu. Veuillez contacter votre webmaster.'));
     }
     if($readable_response->status == 'subscribed') {
-      \Drupal::messenger()->addStatus('You are now successfully subscribed.');
+      \Drupal::messenger()->addStatus(t('Vous êtes maintenant inscrit avec succès.'));
     }
     if($readable_response->status == 400) {
       if($readable_response->title == 'Member Exists') {
-        \Drupal::messenger()->addWarning('You are already subscribed to this mailing list.');
+        \Drupal::messenger()->addWarning(t('Vous êtes déjà inscrit à cette liste de diffusion.'));
       }
     }
 

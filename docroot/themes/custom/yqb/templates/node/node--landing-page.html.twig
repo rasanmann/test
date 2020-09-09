@@ -50,12 +50,12 @@ set classes = [
               Pour un temps limité, économisez sur les tarifs de base en classe économique, Économique Privilège et Signature Air Canada pour des vols au départ de Québec.
               <strong>Réservez d'ici 4 octobre</strong> pour des voyages effectués entre le <strong>14 septembre et le 18 décembre 2020.</strong><br/>
               <br/>
-              Utilisez le code promotionnel <strong>EWK2NBN1</strong> au moment de la réservation sur <a href='www.aircanada.com'><strong>aircanada.com</strong></a><br/>
+              Utilisez le code promotionnel <strong>EWK2NBN1</strong> au moment de la réservation sur <a href='https://www.aircanada.com'><strong>aircanada.com</strong></a><br/>
               <small>* Sur certains tarifs de base. <a href='#conditions-section'>Voir les conditions.</a></small>"|t
             }}
           <p>
           <a class="button--primary"
-            href="{{ "https://www.aircanada.com/fr-ca/vols-de-quebec"|t }}"
+            href="{{ 'https://www.aircanada.com/fr-ca/vols-de-quebec'|t }}"
             style="color: #b2daf3; background-color: #012d8b;"
             target="_blank"
           >
@@ -104,9 +104,8 @@ set classes = [
         <div class="container-half">
           <p>{{ "Que ce soit à l'enregistrement, à l'embarquement ou à bord, l'Aéroport international Jean-Lesage de Québec et ses partenaires <strong>ont repensé à leurs protocoles de santé et sécurité</strong> afin de vous <strong>assurer une expérience sécuritaire</strong> tout au long de votre voyage."|t }}</p>
           <a class="button--primary"
-            href="{{ "https://www.aeroportdequebec.com/fr/pages/conseils-aux-voyageurs-pour-votre-sante-et-celle-des-autres"|t }}"
+            href="https://www.aeroportdequebec.com/fr/pages/conseils-aux-voyageurs-pour-votre-sante-et-celle-des-autres"
             style="color: #72cfcb; background-color: #014b4e;"
-            target='_blank'
           >
             {{ "Voir les mesures en vigueur"|t }}
           </a>
@@ -129,45 +128,33 @@ set classes = [
     "
   >
     <div class="divisor"></div>
-    <div class="container-content">
-      <div class="block-full text-center" style="color: #32b9be;">
-        <h3>{{ "Une expérience de voyage souple et sécuritaire avec Air Canada."|t }}</h3>
-        <p>{{ "Planifiez votre voyage l'esprit tranquille grâce aux options de réservation souples et élargies d'Air Canada incluant la possibilité de faire une <strong>modification sans frais.</strong> De plus, Air Canada <strong>SoinPropre+</strong>, un programme à l'avant-garde de l'industrie qui comporte maintenant de nouvelles mesures de <strong>biosécurité sans contact</strong>, vous offre une <strong>sécurité accrue</strong> à chaque étape de votre voyage."|t }}</p>
-        <a class="button--primary"
-            href="{{ "https://www.aircanada.com/ca/fr/aco/home/book/travel-news-and-updates/2020/covid-19.html"|t }}"
-            style="color: #ffffff; background-color: #32b9be;"
-            target="_blank"
-        >
-          {{ "En savoir plus"|t }}
-        </a>
-      </div>
+    <div class="block-child block-full text-center" style="color: #32b9be;">
+      <h3>{{ "Une expérience de voyage souple et sécuritaire avec Air Canada."|t }}</h3>
+      <p>{{ "Planifiez votre voyage l'esprit tranquille grâce aux options de réservation souples et élargies d'Air Canada incluant la possibilité de faire une <strong>modification sans frais.</strong> De plus, Air Canada <strong>SoinPropre+</strong>, un programme à l'avant-garde de l'industrie qui comporte maintenant de nouvelles mesures de <strong>biosécurité sans contact</strong>, vous offre une <strong>sécurité accrue</strong> à chaque étape de votre voyage."|t }}</p>
+      <a class="button--primary"
+          href="{{ "https://www.aircanada.com/ca/fr/aco/home/book/travel-news-and-updates/2020/covid-19.html"|t}}"
+          style="color: #ffffff; background-color: #32b9be;"
+          target="_blank"
+      >
+        {{ "En savoir plus"|t }}
+      </a>
+    </div>
 
-      <div class="block-icons text-center">
-        <a href="https://www.aircanada.com" class="icon-item" target='_blank'>
+    <div class="block-child block-icons text-center">
+      <div class="wrapper-block-icons">
+        <a href="#" class="icon-item">
           <img
             src="/themes/custom/yqb/img/landing-page/ac-cleancare-fr.jpg"
             alt="Air Canada soin propre +"
             style="max-width: 200px; min-width: 170px;"
           >
         </a>
-        <a href="" class="icon-item" target='_blank'>
+        <a href="" class="icon-item">
           <img
             src="/themes/custom/yqb/img/landing-page/ac-flexible-booking-fr.jpg"
             alt="Air Canada réservation flexible"
             style="max-width: 350px; min-width: 250px;"
           >
-        </a>
-      </div>
-
-      <div class="block-full text-center" style="color: #7fbfeb;">
-        <h3>{{ "Encore plus, pour vous."|t }}</h3>
-        <p>{{ "Prolongez votre escapade et partez la tête tranquille grâce à <strong>notre nouvelle tarification avantageuse sur le stationnement longue durée.</strong>"|t }}</p>
-        <a class="button--primary"
-          href="{{ "https://www.aeroportdequebec.com/fr/planifier-son-vol/stationnements"|t }}"
-          style="color: #ffffff; background-color: #7fbfeb;"
-          target='_blank'
-        >
-          {{ "En savoir plus"|t }}
         </a>
       </div>
     </div>
@@ -176,7 +163,7 @@ set classes = [
       <h3>{{ "Encore plus, pour vous."|t }}</h3>
       <p>{{ "Prolongez votre escapade et partez la tête tranquille grâce à <strong>notre nouvelle tarification avantageuse sur le stationnement longue durée.</strong>"|t }}</p>
       <a class="button--primary"
-        href="#"
+        href="{{ "https://www.aeroportdequebec.com/fr/planifier-son-vol/stationnements"|t }}"
         style="color: #ffffff; background-color: #7fbfeb;"
       >
         {{ "En savoir plus"|t }}
@@ -225,7 +212,7 @@ set classes = [
           {{ "La réduction s'applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020."|t }}
         </li>
         <li>
-          {{ "La réduction s'applique aux tarifs de base publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à <a href='www.aircanada.com'>aircanada.com</a> et ne peut être combinée à aucune autre offre de réduction."|t }}
+          {{ "La réduction s'applique aux tarifs de base publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à <a href='https://www.aircanada.com'>aircanada.com</a> et ne peut être combinée à aucune autre offre de réduction."|t }}
         </li>
         <li>
           {{ "La disponibilité peut varier."|t }}
