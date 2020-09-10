@@ -10,7 +10,6 @@ msgid ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-
 msgid "We're ready for takeoff!"
 msgstr "Préparez-vous à décoller!"
 
