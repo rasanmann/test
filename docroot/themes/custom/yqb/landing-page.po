@@ -1,7 +1,7 @@
 # LANGUAGE translation of PROJECT
 #
-msgid ""
 msgstr ""
+msgid ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -11,119 +11,105 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 
-msgid "Préparez-vous à décoller!"
-msgstr "We're ready for takeoff!"
+msgid "We're ready for takeoff!"
+msgstr "Préparez-vous à décoller!"
 
-msgid "Que ce soit pour le plaisir, par affaires ou pour voir la famille, on s'ennuie tous de voyager!<br/>
-      <br/>
-      En collaboration avec <strong>Air Canada</strong>, l'Aéroport international Jean-Lesage de Québec met tout en place <strong>pour faciliter votre prochaine aventure!</strong>"
-msgstr "Whether it's for fun, business, or to see your family, we all miss traveling!
-      <br/>
-      In collaboration with <strong>Air Canada</strong>, Québec City Jean Lesage International Airport is doing everything to <strong>facilitate your next adventure!</strong>"
+msgid "Whether it's for fun, business, or to see your family, we all miss traveling!<br/>In collaboration with <strong>Air Canada</strong>, Québec City Jean Lesage International Airport is doing everything to <strong>facilitate your next adventure!</strong>"
+msgstr "Que ce soit pour le plaisir, par affaires ou pour voir la famille, on s'ennuie tous de voyager!<br/><br/>En collaboration avec <strong>Air Canada</strong>, l'Aéroport international Jean-Lesage de Québec met tout en place pour <strong>faciliter votre prochaine aventure!</strong>"
 
-msgid "15% de rabais*, 100% de plaisir."
-msgstr "15% off*, 100% fun."
+msgid "15% off*, 100% fun."
+msgstr "15% de rabais*, 100% de plaisir."
 
-msgid "<strong>Profitez de 15% de rabais* sur votre prochain vol au départ de Québec avec Air Canada!</strong><br/>
-      <br/>
-      Pour un temps limité, économisez sur les tarifs de base en classe économique, Économique Privilège et Signature Air Canada pour des vols au départ de Québec.
-      <strong>Réservez d'ici 4 octobre</strong> pour des voyages effectués entre le <strong>14 septembre et le 18 décembre 2020.</strong><br/>
-      <br/>
-      Utilisez le code promotionnel <strong>EWK2NBN1</strong> au moment de la réservation sur<a href='www.aircanada.com'><strong>aircanada.com</strong></a>
-      <br/>
-      <small>* Sur certains tarifs de base. <a href='#conditions-section'>Voir les conditions.</a></small>"
-msgstr "<strong>Get 15% off* your next flight departing from Quebec with Air Canada!</strong>
-        <br/>
-        For a limited time, save on Economy, Premium Economy and Air Canada Signature Class base fares for flights departing from Quebec City.
-        <strong>Book by October 4</strong>, for travel made between <strong>September 14 and December 18, 2020.</strong>
-        <br/>
-        Use the promo code <strong>EWK2NBN1</strong> at the time of booking on <a href='www.aircanada.com'><strong>aircanada.com</strong></a>
-        <br/>
-        <small>*On certain base rates. <a href="#conditions-section">See conditions.</a></small>"
+msgid "<strong>Get 15% off* your next flight departing from Quebec with Air Canada!</strong><br/>For a limited time, save on Economy, Premium Economy and Air Canada Signature Class base fares for flights departing from Quebec City.<strong>Book by October 4</strong>, for travel made between <strong>September 14 and December 18, 2020.</strong><br/>Use the promo code <strong>EWK2NBN1</strong> at the time of booking on <a href='www.aircanada.com'><strong>aircanada.com</strong></a><br/><small>*On certain base rates. <a href='#conditions-section'>See conditions.</a></small>"
+msgstr "<strong>Profitez de 15% de rabais* sur votre prochain vol au départ de Québec avec Air Canada!</strong><br/><br/>Pour un temps limité, économisez sur les tarifs de base en classe économique, Économique Privilège et Signature Air Canada pour des vols au départ de Québec.<strong>Réservez dici 4 octobre</strong> pour des voyages effectués entre le <strong>14 septembre et le 18 décembre 2020.</strong><br/><br/>Utilisez le code promotionnel <strong>EWK2NBN1</strong> au moment de la réservation sur <a href='https://www.aircanada.com'><strong>aircanada.com</strong></a><br/><small>* Sur certains tarifs de base. <a href='#conditions-section'>Voir les conditions.</a></small>"
 
-msgid "Réserver"
-msgstr "Book now"
+msgid "https://www.aircanada.com/en-ca/flights-from-quebec-city"
+msgstr "https://www.aircanada.com/fr-ca/vols-de-quebec"
 
-msgid "Faites vos valises."
-msgstr "Pack your bags."
+msgid "Book now"
+msgstr "Réserver"
 
-msgid "<strong>Un vaste choix de destinations</strong> sont disponibles avec <strong>Air Canada.</strong>"
-msgstr "<strong>A wide selection of destinations</strong> now available with <strong>Air Canada.</strong>"
+msgid "Pack your bags."
+msgstr "Faites vos valises."
 
-msgid "Découvrir toutes les destinations"
-msgstr "Discover all destinations"
+msgid "<strong>A wide selection of destinations</strong> now available with <strong>Air Canada.</strong>"
+msgstr "<strong>Un vaste choix de destinations</strong> sont disponibles avec <strong>Air Canada.</strong>"
 
-msgid "Volez sans tracas avec nos mesures renforcées de biosécurité."
-msgstr "Fly worry-free with our enhanced biosecurity measures."
+msgid "Discover all destinations"
+msgstr "Découvrir toutes les destinations"
 
-msgid "Que ce soit à l'enregistrement, à l'embarquement ou à bord, l'Aéroport international Jean-Lesage de Québec et ses partenaires <strong>ont repensé à leurs protocoles de santé et sécurité</strong> afin de vous <strong>assurer une expérience sécuritaire</strong> tout au long de votre voyage."
-msgstr "Whether it's at check-in, while boarding, or on board, the Québec City Jean Lesage International Airport and its partners <strong>have rethought their health and safety protocols to ensure you have a safe experience throughout your trip.</strong>"
+msgid "Fly worry-free with our enhanced biosecurity measures."
+msgstr "Volez sans tracas avec nos mesures renforcées de biosécurité."
 
-msgid "Voir les mesures en vigueur"
-msgstr "View the measures in effect"
+msgid "Whether it's at check-in, while boarding, or on board, the Québec City Jean Lesage International Airport and its partners <strong>have rethought their health and safety protocols to ensure you have a safe experience throughout your trip.</strong>"
+msgstr "Que ce soit à l'enregistrement, à l'embarquement ou à bord, l'Aéroport international Jean-Lesage de Québec et ses partenaires <strong>ont repensé à leurs protocoles de santé et sécurité</strong> afin de vous <strong>assurer une expérience sécuritaire</strong> tout au long de votre voyage."
 
-msgid "Une expérience de voyage souple et sécuritaire avec Air Canada."
-msgstr "Safe and Flexible travel with Air Canada."
+msgid "https://www.aeroportdequebec.com/en/pages/advice-travellers-protecting-yourself-and-others"
+msgstr "https://www.aeroportdequebec.com/fr/pages/conseils-aux-voyageurs-pour-votre-sante-et-celle-des-autres"
 
-msgid "Planifiez votre voyage l'esprit tranquille grâce aux options de réservation souples et élargies d'Air Canada incluant la possibilité de faire une <strong>modification sans frais.</strong> De plus, Air Canada <strong>SoinPropre+</strong>, un programme à l'avant-garde de l'industrie qui comporte maintenant de nouvelles mesures de <strong>biosécurité sans contact</strong>, vous offre une <strong>sécurité accrue</strong> à chaque étape de votre voyage."
-msgstr "Start planning with Air Canada's flexible, expanded booking options including <strong>no change fees</strong>, and the industryleading Air Canada <strong>CleanCare+</strong> program, now with new touchless biosafety measures for increased safety at every stage of your journey."
+msgid "View the measures in effect"
+msgstr "Voir les mesures en vigueur"
 
-msgid "En savoir plus"
-msgstr "Learn more"
 
-msgid "Encore plus, pour vous."
-msgstr "Even more, for you."
+msgid "Safe and Flexible travel with Air Canada."
+msgstr "Une expérience de voyage souple et sécuritaire avec Air Canada."
 
-msgid "Prolongez votre escapade et partez la tête tranquille grâce à <strong>notre nouvelle tarification avantageuse sur le stationnement longue durée.</strong>"
-msgstr "Extend your getaway and leave with peace of mind, thanks to our advantageous <strong>new pricing on long-term parking.</strong>"
+msgid "Start planning with Air Canada's flexible, expanded booking options including <strong>no change fees</strong>, and the industryleading Air Canada <strong>CleanCare+</strong> program, now with new touchless biosafety measures for increased safety at every stage of your journey."
+msgstr "Planifiez votre voyage l'esprit tranquille grâce aux options de réservation souples et élargies d'Air Canada incluant la possibilité de faire une <strong>modification sans frais.</strong> De plus, Air Canada <strong>SoinPropre+</strong>, un programme à l'avant-garde de l'industrie qui comporte maintenant de nouvelles mesures de <strong>biosécurité sans contact</strong>, vous offre une <strong>sécurité accrue</strong> à chaque étape de votre voyage."
 
-msgid "En savoir plus"
-msgstr "Learn more"
+msgid "https://www.aircanada.com/ca/en/aco/home/book/travel-news-and-updates/2020/covid-19.html"
+msgstr "https://www.aircanada.com/ca/fr/aco/home/book/travel-news-and-updates/2020/covid-19.html"
 
-msgid "Restez informé sur les offres et promotions de l'aéroport."
-msgstr "Stay informed about airport offers and promotions."
+msgid "Learn more"
+msgstr "En savoir plus"
 
-msgid "Une campagne de"
-msgstr "A campaign from"
+msgid "Even more, for you."
+msgstr "Encore plus, pour vous."
 
-msgid "*Conditions de l'offre d'Air Canada"
-msgstr "*Air Canada offer conditions"
+msgid "Extend your getaway and leave with peace of mind, thanks to our advantageous <strong>new pricing on long-term parking.</strong>"
+msgstr "Prolongez votre escapade et partez la tête tranquille grâce à <strong>notre nouvelle tarification avantageuse sur le stationnement longue durée.</strong>"
 
-msgid "L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le 4 octobre 2020."
-msgstr "This offer is available for new bookings only made by October 4, 2020."
+msgid "https://www.aeroportdequebec.com/en/plan-a-flight/parking"
+msgstr "https://www.aeroportdequebec.com/fr/planifier-son-vol/stationnements"
 
-msgid "La réduction s'applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020."
-msgstr "This discount is valid on flights from Quebec City (YQB) to all destinations offered by Air Canada for travel between September 14, and December 18, 2020."
+msgid "Learn more"
+msgstr "En savoir plus"
 
-msgid "La réduction s'applique aux tarifs de base publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à <a href='www.aircanada.com'>aircanada.com</a> et ne peut être combinée à aucune autre offre de réduction."
-msgstr "The discount applies on Air Canada-published Economy, Premium Economy and Air Canada Signature Class, base fares when booking on <a href="www.aircanada.com">aircanada.com</a> and cannot be combined with any other discount offer."
+msgid "Stay informed about airport offers and promotions."
+msgstr "Restez informé sur les offres et promotions de l'aéroport."
 
-msgid "La disponibilité peut varier."
-msgstr "Availability may vary."
+msgid "A campaign from"
+msgstr "Une campagne de"
 
-msgid "Certains vols peuvent être exploités par des transporteurs autres qu'Air Canada, comme indiqué lors de la réservation."
-msgstr "Some flights may be operated by carriers other than Air Canada, as shown at time of booking."
+msgid "*Air Canada offer conditions"
+msgstr "*Conditions de l'offre d'Air Canada"
 
-msgid "Certains vols à code multiple sont exclus de l'offre."
-msgstr "Valid on certain codeshare flights only."
+msgid "This offer is available for new bookings only made by October 4, 2020."
+msgstr "L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le 4 octobre 2020."
 
-msgid "https://www.aircanada.com/fr-ca/vols-de-quebec"
-msgstr "https://www.aircanada.com/en-ca/flights-from-quebec-city"
+msgid "This discount is valid on flights from Quebec City (YQB) to all destinations offered by Air Canada for travel between September 14, and December 18, 2020."
+msgstr "La réduction s'applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020."
 
-msgid "https://www.aeroportdequebec.com/fr/pages/conseils-aux-voyageurs-pour-votre-sante-et-celle-des-autres"
-msgstr "https://www.aeroportdequebec.com/en/pages/advice-travellers-protecting-yourself-and-others"
+msgid "The discount applies on Air Canada-published Economy, Premium Economy and Air Canada Signature Class, base fares when booking on <a href='https://www.aircanada.com'>aircanada.com</a> and cannot be combined with any other discount offer."
+msgstr "La réduction s'applique aux tarifs de base publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à <a href='https://www.aircanada.com'>aircanada.com</a> et ne peut être combinée à aucune autre offre de réduction."
 
-msgid "https://www.aircanada.com/ca/fr/aco/home/book/travel-news-and-updates/2020/covid-19.html"
-msgstr "https://www.aircanada.com/ca/en/aco/home/book/travel-news-and-updates/2020/covid-19.html"
+msgid "Availability may vary."
+msgstr "La disponibilité peut varier."
 
-msgid "https://www.aeroportdequebec.com/fr/planifier-son-vol/stationnements"
-msgstr "https://www.aeroportdequebec.com/en/plan-a-flight/parking"
+msgid "Some flights may be operated by carriers other than Air Canada, as shown at time of booking."
+msgstr "Certains vols peuvent être exploités par des transporteurs autres qu'Air Canada, comme indiqué lors de la réservation."
 
-msgid "Un problème est survenu. Veuillez contacter votre webmaster."
-msgstr "Something went wrong. Please contact your webmaster."
+msgid "Valid on certain codeshare flights only."
+msgstr "Certains vols à code multiple sont exclus de l'offre."
 
-msgid "Vous êtes maintenant inscrit avec succès."
-msgstr "You are now successfully registered."
+msgid "https://www.aeroportdequebec.com/en/pages/advice-travellers-protecting-yourself-and-others"
+msgstr "https://www.aeroportdequebec.com/fr/pages/conseils-aux-voyageurs-pour-votre-sante-et-celle-des-autres"
 
-msgid "Vous êtes déjà inscrit à cette liste de diffusion."
-msgstr "You are already subscribed to this mailing list."
+msgid "Something went wrong. Please contact your webmaster."
+msgstr "Un problème est survenu. Veuillez contacter votre webmaster."
+
+msgid "You are now successfully registered."
+msgstr "Vous êtes maintenant inscrit avec succès."
+
+msgid "You are already subscribed to this mailing list."
+msgstr "Vous êtes déjà inscrit à cette liste de diffusion."
