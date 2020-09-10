@@ -34,12 +34,12 @@
       $('.page-node-type-landing-page [data-analytics]').on('click', function() {
         var data = $(this).data();
         var text = $(this).text();
-        ga(data.category, data.action, data.label, data.value, text);
+        ga("send", "event", data.category, data.action, data.label, data.value);
         fbq('track', 'ViewContent');
       });
       // 03. Click event analytics
       $('.page-node-type-landing-page form').on('submit', function() {
-        ga("Landing Page", "Click", "Prospect", 1);
+        ga("send", "event", "Landing Page", "click", "Prospect", 1);
         fbq('track', 'Lead');
       });
     });
