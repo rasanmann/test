@@ -1,14 +1,14 @@
-uuid: c490af38-8032-434e-8299-a48ab618520b
+uuid: b6b5e847-fab1-433c-afb6-d1df103cb348
 langcode: fr
 status: true
 dependencies:
   config:
     - node.type.landing_page
-id: node.landing_page.promote
-field_name: promote
+id: node.landing_page.sticky
+field_name: sticky
 entity_type: node
 bundle: landing_page
-label: 'Promu en page d''accueil'
+label: 'Epinglé en haut des listes'
 description: ''
 required: false
 translatable: false
