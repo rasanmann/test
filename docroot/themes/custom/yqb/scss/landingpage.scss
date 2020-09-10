@@ -33,9 +33,10 @@
   }
   .block-child {
     max-width: (1280px + 2 * 40px);
-    margin: 100px auto;
+    margin: 60px auto;
     padding: 0 20px;
     @media (min-width: 1024px) {
+      margin: 100px 0;
       padding: 0 40px;
     }
     img {
@@ -73,7 +74,7 @@
     }
   }
   .divisor {
-    padding: 50px;
+    margin: 50px 0;
   }
   h2 {
     font-size: 46px;
@@ -116,8 +117,10 @@
     }
     a {
       color: currentColor;
+      text-decoration: underline;
+      transition: all ease-in 0.2s;
       &:hover {
-        text-decoration: underline;
+        filter: brightness(0.5);
       }
     }
     small {
@@ -161,7 +164,6 @@
     }
   }
   .wrapper-block-icons {
-    margin: -50px 0;
     @media (min-width: 1024px) {
       display: flex;
       flex-wrap: wrap;
@@ -278,6 +280,14 @@
           font-size: 28px;
           line-height: 32px;
           margin-bottom: 20px;
+        }
+        a {
+          color: currentColor;
+          text-decoration: underline;
+          transition: all ease-in 0.2s;
+          &:hover {
+            filter: brightness(0.5);
+          }
         }
       }
     }
