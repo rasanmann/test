@@ -25,4 +25,24 @@
         </div>
     </div>
   </div>
+  <script>
+  // 01. Wait for DOMContentLoaded so jQuery is defined
+  document.addEventListener("DOMContentLoaded", function(event) {
+    // 02. Init jquery as $
+    jQuery(document).ready(function($){
+      // 03. Click event analytics
+      $('.page-node-type-landing-page [data-analytics]').on('click', function() {
+        var data = $(this).data();
+        var text = $(this).text();
+        ga(data.category, data.action, data.label, data.value, text);
+        fbq('track', 'ViewContent');
+      });
+      // 03. Click event analytics
+      $('.page-node-type-landing-page form').on('submit', function() {
+        ga("Landing Page", "Click", "Prospect", 1);
+        fbq('track', 'Lead');
+      });
+    });
+  });
+  </script>
 {% endblock %}
