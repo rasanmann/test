@@ -26,6 +26,10 @@
   .region-content {
     padding: 0;
   }
+  a[target="_blank"]::after {
+    content: none;
+    display: none;
+  }
 
   // General
   .block-parent {
