@@ -62,14 +62,18 @@
     display: none; }
   .page-node-type-landing-page .region-content {
     padding: 0; }
+  .page-node-type-landing-page a[target="_blank"]::after {
+    content: none;
+    display: none; }
   .page-node-type-landing-page .block-parent {
     overflow: hidden; }
   .page-node-type-landing-page .block-child {
     max-width: 1360px;
-    margin: 100px auto;
+    margin: 60px auto;
     padding: 0 20px; }
     @media (min-width: 1024px) {
       .page-node-type-landing-page .block-child {
+        margin: 100px auto;
         padding: 0 40px; } }
     .page-node-type-landing-page .block-child img {
       max-width: 100%; }
@@ -99,7 +103,7 @@
         text-align: center;
         width: 100%; } }
   .page-node-type-landing-page .divisor {
-    padding: 50px; }
+    margin: 50px 0; }
   .page-node-type-landing-page h2 {
     font-size: 46px;
     line-height: 52px; }
@@ -138,9 +142,11 @@
         line-height: 32px;
         margin-bottom: 32px; } }
     .page-node-type-landing-page p a {
-      color: currentColor; }
+      color: currentColor;
+      text-decoration: underline;
+      transition: all ease-in 0.2s; }
       .page-node-type-landing-page p a:hover {
-        text-decoration: underline; }
+        filter: brightness(0.5); }
     .page-node-type-landing-page p small {
       font-size: 12px;
       line-height: 16px;
@@ -170,27 +176,24 @@
         width: 50%; } }
     .page-node-type-landing-page .container-half p:last-child {
       margin-bottom: 0; }
-  .page-node-type-landing-page .wrapper-block-icons {
-    margin: -50px 0; }
+  @media (min-width: 1024px) {
+    .page-node-type-landing-page .wrapper-block-icons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: 0 -100px; } }
+  .page-node-type-landing-page .wrapper-block-icons .icon-item {
+    margin: 50px 0;
+    display: block; }
     @media (min-width: 1024px) {
-      .page-node-type-landing-page .wrapper-block-icons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 0 -30px; } }
-    .page-node-type-landing-page .wrapper-block-icons .icon-item {
-      margin: 50px 0;
-      display: block; }
+      .page-node-type-landing-page .wrapper-block-icons .icon-item {
+        margin: 0 100px; } }
+    .page-node-type-landing-page .wrapper-block-icons .icon-item img {
+      max-width: 250px; }
       @media (min-width: 1024px) {
-        .page-node-type-landing-page .wrapper-block-icons .icon-item {
-          width: 30%;
-          margin: 0 30px; } }
-      .page-node-type-landing-page .wrapper-block-icons .icon-item:hover {
-        opacity: 0.8; }
-      .page-node-type-landing-page .wrapper-block-icons .icon-item::after {
-        display: none; }
-      .page-node-type-landing-page .wrapper-block-icons .icon-item img {
-        width: 100%; }
+        .page-node-type-landing-page .wrapper-block-icons .icon-item img {
+          max-width: 350px; } }
   .page-node-type-landing-page .block-form {
     max-width: 668px;
     margin: 30px auto; }
@@ -238,15 +241,19 @@
   .page-node-type-landing-page .wrapper-sponsor {
     margin: -30px 0;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    margin: -30px; }
+    margin: -15px -30px; }
     @media (min-width: 600px) {
       .page-node-type-landing-page .wrapper-sponsor {
         justify-content: center; } }
   .page-node-type-landing-page .sponsor-item {
-    width: 100%;
     margin: 30px 0;
-    margin: 30px; }
+    margin: 15px 30px;
+    max-width: 250px; }
+    @media (min-width: 1024px) {
+      .page-node-type-landing-page .sponsor-item {
+        max-width: 450px; } }
   .page-node-type-landing-page .block-conditions .title-conditions {
     font-size: 20px;
     line-height: 26px;
@@ -270,3 +277,9 @@
           font-size: 28px;
           line-height: 32px;
           margin-bottom: 20px; } }
+      .page-node-type-landing-page .block-conditions ul li a {
+        color: currentColor;
+        text-decoration: underline;
+        transition: all ease-in 0.2s; }
+        .page-node-type-landing-page .block-conditions ul li a:hover {
+          filter: brightness(0.5); }
