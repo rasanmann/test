@@ -1,16 +1,21 @@
 <?php
 
-namespace Drupal\panels\Tests;
+namespace Drupal\Tests\panels\Functional;
 
 use Drupal\page_manager\Entity\PageVariant;
-use Drupal\simpletest\WebTestBase;
+use Drupal\Tests\BrowserTestBase;
 
 /**
  * Tests integration between Page Manager and Panels Storage.
  *
  * @group panels
  */
-class PageManagerPanelsStorageIntegrationTest extends WebTestBase {
+class PageManagerPanelsStorageIntegrationTest extends BrowserTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
@@ -28,7 +33,7 @@ class PageManagerPanelsStorageIntegrationTest extends WebTestBase {
     $this->drupalPlaceBlock('system_branding_block');
     $this->drupalPlaceBlock('page_title_block');
 
-    \Drupal::service('theme_handler')->install(['bartik', 'classy']);
+    \Drupal::service('theme_installer')->install(['bartik', 'classy']);
     $this->config('system.theme')->set('admin', 'classy')->save();
 
     $this->drupalLogin($this->drupalCreateUser(['administer pages', 'access administration pages', 'view the administration theme']));
@@ -60,6 +65,13 @@ class PageManagerPanelsStorageIntegrationTest extends WebTestBase {
       'layout' => 'layout_twocol',
     ];
     $this->drupalPostForm(NULL, $edit, 'Next');
+
+    // In Drupal 8.8 and later, the layout may have settings of its own. If
+    // that's the case, submit the layout settings form without any changes.
+    $form = $this->getSession()->getPage()->find('css', '#panels-layout-settings-form');
+    if ($form) {
+      $form->pressButton('Next');
+    }
 
     // Finish without adding any blocks.
     $this->drupalPostForm(NULL, [], 'Finish');
