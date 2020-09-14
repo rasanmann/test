@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Page Landing Template.
+ */
+#}
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+
+{# Main #}
+{% block main %}
+  <div role="main" class="main-container {{ container }} landing-page js-quickedit-main-content" id="layout-content">
+    <div class="page-wrapper">
+        <div class="content-wrapper content-no-sidebar">
+
+            {% set content_classes = [
+                'main-content'
+            ] %}
+
+            <section{{ content_attributes.addClass(content_classes) }}>
+                {% block content %}
+                <a id="main-content"></a>
+                {{ page.content }}
+                {% endblock %}
+            </section>
+        </div>
+    </div>
+  </div>
+  <script>
+  // 01. Wait for DOMContentLoaded so jQuery is defined
+  document.addEventListener("DOMContentLoaded", function(event) {
+    // 02. Init jquery as $
+    jQuery(document).ready(function($){
+      // 03. Click event analytics
+      $('.page-node-type-landing-page [data-analytics]').on('click', function() {
+        var data = $(this).data();
+        var text = $(this).text();
+        ga("send", "event", data.category, data.action, data.label, data.value);
+        fbq('track', 'ViewContent');
+      });
+      // 03. Click event analytics
+      $('.page-node-type-landing-page form').on('submit', function() {
+        ga("send", "event", "Landing Page", "click", "Prospect", 1);
+        fbq('track', 'Lead');
+      });
+    });
+  });
+  </script>
+{% endblock %}

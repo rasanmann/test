@@ -56,9 +56,28 @@ function yqb_preprocess_html(array &$variables) {
     ($view) ? 'view-page-' . $viewName : '',
     ($variables['theme']['has_glyphicons']) ? 'has-glyphicons' : NULL,
   ]);
+
+  if ($node = \Drupal::request()->attributes->get('node')) {
+    $variables['attributes']['class'][] = 'node-id-' . $node->id();
+  }
 }
 
 function yqb_page_attachments_alter(array &$page) {
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface && $node->getType() == 'landing_page') {
+
+    // Remove Global styling for landing page and add specific libraries to it. (See yqb.libraries.yml)
+    if (in_array('yqb/global-styling', $page['#attached']['library'])) {
+      $index = array_search('yqb/global-styling', $page['#attached']['library']);
+      unset($page['#attached']['library'][$index]);
+      $page['#attached']['library'][] = 'yqb/landing-page-styling';
+    }
+    if (in_array('yqb/global-js', $page['#attached']['library'])) {
+      $index = array_search('yqb/global-js', $page['#attached']['library']);
+      unset($page['#attached']['library'][$index]);
+    }
+  }
   // Webview specific css sheet
   if (isset($_GET['webview'])) {
     $page['#attached']['library'][] = 'yqb/webview';
@@ -288,6 +307,7 @@ function yqb_preprocess_container(array &$variables) {
 }
 
 function yqb_form_alter(&$form, &$form_state, $form_id) {
+
   switch ($form_id) {
     case 'contact_message_contact_us_form':
     case 'contact_message_comments_form':
@@ -373,6 +393,12 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       }
       break;
   }
+
+  if(strpos($form_id, 'webform_submission_newsletter_subscription') !== false){
+    $form['actions']['submit']['#value'] = t('S\'inscrire');
+    $form['actions']['submit']['#attributes']['style'][] = 'color: #b2daf3; background-color: #012d8b;';
+  }
+
 }
 
 
@@ -729,4 +755,34 @@ function yqb_preprocess_node(&$variables){
     $variables['view_commerces_path'] = $view_page;
   }
 
+}
+
+/**
+ * HOOK_theme_suggestions_page_alter
+ * Add custom content type node to template suggestion for Landing page
+ *
+ * @param $variables
+ */
+function yqb_theme_suggestions_page_alter(&$suggestions, &$variables) {
+  if ( $node = \Drupal::routeMatch()->getParameter('node') ) {
+    $content_type = $node->bundle();
+    if($node->bundle() == 'landing_page'){
+      array_splice( $suggestions, count($suggestions) - 1, 0, 'page__'.$content_type );
+    }
+  }
+}
+
+/**
+ * HOOK_theme_suggestions_html_alter
+ * Add custom content type node to template suggestion for Landing html
+ *
+ * @param $variables
+ */
+function yqb_theme_suggestions_html_alter(&$suggestions, &$variables) {
+  if ( $node = \Drupal::routeMatch()->getParameter('node') ) {
+    $content_type = $node->bundle();
+    if($node->bundle() == 'landing_page'){
+      array_splice( $suggestions, count($suggestions) - 1, 0, 'html__node__'.$content_type );
+    }
+  }
 }
