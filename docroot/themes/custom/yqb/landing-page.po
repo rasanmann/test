@@ -19,7 +19,7 @@ msgstr "Que ce soit pour le plaisir, par affaires ou pour voir la famille, on s'
 msgid "15% off*, 100% fun."
 msgstr "15% de rabais*, 100% de plaisir."
 
-msgid "<strong>Get 15% off* your next flight departing from Quebec with Air Canada!</strong><br>For a limited time, save on Economy, Premium Economy and Air Canada Signature Class base fares for flights departing from Quebec City. <strong>Book by October 4</strong>, for travel made between <strong>September 14 and December 18, 2020.</strong><br>Use the promo code <strong>EWK2NBN1</strong> at the time of booking on <a href=\"https://www.aircanada.com/ca/en/aco/home.html#/\"><strong>aircanada.com</strong></a><br><small>*On certain base rates. <a href=\"#conditions-section\">See conditions.</a></small>"
+msgid "<strong>Get 15% off* your next flight departing from Québec City with Air Canada!</strong><br>For a limited time, save on Economy, Premium Economy and Air Canada Signature Class base fares for flights departing from Québec City. <strong>Book by October 4</strong>, for travel made between <strong>September 14 and December 18, 2020.</strong><br>Use the promo code <strong>EWK2NBN1</strong> at the time of booking on <a href=\"https://www.aircanada.com/ca/en/aco/home.html#/\"><strong>aircanada.com</strong></a><br><small>*On certain base rates. <a href=\"#conditions-section\">See conditions.</a></small>"
 msgstr "<strong>Profitez de 15% de rabais* sur votre prochain vol au départ de Québec avec Air Canada!</strong><br><br>Pour un temps limité, économisez sur les tarifs de base en classe économique, Économique Privilège et Signature Air Canada pour des vols au départ de Québec. <strong>Réservez d'ici 4 octobre</strong> pour des voyages effectués entre le <strong>14 septembre et le 18 décembre 2020.</strong><br><br>Utilisez le code promotionnel <strong>EWK2NBN1</strong> au moment de la réservation sur <a href=\"https://www.aircanada.com/ca/fr/aco/home.html#/\"><strong>aircanada.com</strong></a><br><small>* Sur certains tarifs de base. <a href=\"#conditions-section\">Voir les conditions.</a></small>"
 
 msgid "https://www.aircanada.com/en-ca/flights-from-quebec-city"
@@ -89,7 +89,7 @@ msgstr "*Conditions de l'offre d'Air Canada"
 msgid "This offer is available for new bookings only made by <strong>October 4, 2020</strong>."
 msgstr "L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le <strong>4 octobre 2020</strong>."
 
-msgid "This discount is valid on flights from Quebec City (YQB) to all destinations offered by Air Canada for travel between September 14, and December 18, 2020."
+msgid "This discount is valid on flights from Québec City (YQB) to all destinations offered by Air Canada for travel between September 14, and December 18, 2020."
 msgstr "La réduction s'applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020."
 
 msgid "The discount applies on Air Canada-published Economy, Premium Economy and Air Canada Signature Class, <strong>base fares</strong> when booking on <a href=\"https://www.aircanada.com/ca/en/aco/home.html#/\">aircanada.com</a> and cannot be combined with any other discount offer."
@@ -115,3 +115,15 @@ msgstr "Vous êtes maintenant inscrit avec succès."
 
 msgid "You are already subscribed to this mailing list."
 msgstr "Vous êtes déjà inscrit à cette liste de diffusion."
+
+msgid "/themes/custom/yqb/img/landing-page/ac-cleancare-en.jpg"
+msgstr "/themes/custom/yqb/img/landing-page/ac-cleancare-fr.jpg"
+
+msgid "Air Canada clean care+"
+msgstr "Air Canada soin propre+"
+
+msgid "/themes/custom/yqb/img/landing-page/ac-flexible-booking-en.jpg"
+msgstr "/themes/custom/yqb/img/landing-page/ac-flexible-booking-fr.jpg"
+
+msgid "Air Canada flexible booking options"
+msgstr "Air Canada réservation flexible"
