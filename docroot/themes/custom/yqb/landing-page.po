@@ -34,6 +34,9 @@ msgstr "Faites vos valises."
 msgid "<strong>A wide selection of destinations</strong> now available with <strong>Air Canada.</strong>"
 msgstr "<strong>Un vaste choix de destinations</strong> sont disponibles avec <strong>Air Canada.</strong>"
 
+msgid "https://www.aircanada.com/en-ca/flights-from-quebec-city"
+msgstr "https://www.aircanada.com/fr-ca/vols-de-quebec"
+
 msgid "Discover all destinations"
 msgstr "Découvrir toutes les destinations"
 
@@ -83,14 +86,14 @@ msgstr "Une campagne de"
 msgid "*Air Canada offer conditions"
 msgstr "*Conditions de l'offre d'Air Canada"
 
-msgid "This offer is available for new bookings only made by October 4, 2020."
-msgstr "L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le 4 octobre 2020."
+msgid "This offer is available for new bookings only made by <strong></strong>October 4, 2020."
+msgstr "L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le <strong>4 octobre 2020</strong>."
 
 msgid "This discount is valid on flights from Quebec City (YQB) to all destinations offered by Air Canada for travel between September 14, and December 18, 2020."
 msgstr "La réduction s'applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020."
 
-msgid "The discount applies on Air Canada-published Economy, Premium Economy and Air Canada Signature Class, base fares when booking on <a href=\"https://www.aircanada.com/ca/en/aco/home.html#/\">aircanada.com</a> and cannot be combined with any other discount offer."
-msgstr "La réduction s'applique aux tarifs de base publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à <a href=\"https://www.aircanada.com/ca/fr/aco/home.html#/\">aircanada.com</a> et ne peut être combinée à aucune autre offre de réduction."
+msgid "The discount applies on Air Canada-published Economy, Premium Economy and Air Canada Signature Class, <strong>base fares</strong> when booking on <a href=\"https://www.aircanada.com/ca/en/aco/home.html#/\">aircanada.com</a> and cannot be combined with any other discount offer."
+msgstr "La réduction s'applique aux <strong>tarifs de base</strong> publiés d'Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à <a href=\"https://www.aircanada.com/ca/fr/aco/home.html#/\">aircanada.com</a> et ne peut être combinée à aucune autre offre de réduction."
 
 msgid "Availability may vary."
 msgstr "La disponibilité peut varier."
