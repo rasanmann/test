@@ -14,7 +14,6 @@ global-styling:
       css/gouvernance-direction-generale.css: {}
       css/mosaique.css: {}
       css/accordion.css: {}
-      css/preview_block.css: {}
       css/menu.css: {}
       css/mission-valeurs.css: {}
       css/homepage.css: {}

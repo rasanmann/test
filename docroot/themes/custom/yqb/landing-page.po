@@ -127,3 +127,6 @@ msgstr "/themes/custom/yqb/img/landing-page/ac-flexible-booking-fr.jpg"
 
 msgid "Air Canada flexible booking options"
 msgstr "Air Canada réservation flexible"
+
+msgid "Subscribe"
+msgstr "S\'inscrire"
