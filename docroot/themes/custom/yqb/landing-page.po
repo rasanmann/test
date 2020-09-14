@@ -86,7 +86,7 @@ msgstr "Une campagne de"
 msgid "*Air Canada offer conditions"
 msgstr "*Conditions de l'offre d'Air Canada"
 
-msgid "This offer is available for new bookings only made by <strong></strong>October 4, 2020."
+msgid "This offer is available for new bookings only made by <strong>October 4, 2020</strong>."
 msgstr "L'offre est valable uniquement pour les nouvelles réservations effectuées d'ici le <strong>4 octobre 2020</strong>."
 
 msgid "This discount is valid on flights from Quebec City (YQB) to all destinations offered by Air Canada for travel between September 14, and December 18, 2020."
