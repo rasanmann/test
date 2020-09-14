@@ -37,9 +37,13 @@ module:
   help: 0
   history: 0
   homepage_tiles: 0
+  honeypot: 0
   image: 0
   image_url_formatter: 0
   insert_block: 0
+  jquery_ui: 0
+  jquery_ui_draggable: 0
+  jquery_ui_droppable: 0
   kint: 0
   language: 0
   layout_discovery: 0
@@ -114,6 +118,7 @@ module:
   yqb_mailchimp: 0
   yqb_metatag: 0
   yqb_migrate: 0
+  yqb_newsletters: 0
   yqb_parking_booker: 0
   yqb_payments: 0
   yqb_reminders: 0

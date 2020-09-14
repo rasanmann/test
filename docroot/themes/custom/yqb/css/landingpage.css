@@ -1,0 +1,285 @@
+@charset "UTF-8";
+/*-------------------------------------------------------------------
+	Landing page 2020
+-------------------------------------------------------------------*/
+@font-face {
+  font-family: "TT Common";
+  src: url("../fonts/tt-commons-regular-webfont.woff2") format("woff2"), url("../fonts/tt-commons-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: "TT Common";
+  src: url("../fonts/tt-commons-italic-webfont.woff2") format("woff2"), url("../fonts/tt-commons-italic-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: "TT Common";
+  src: url("../fonts/tt-commons-medium-webfont.woff2") format("woff2"), url("../fonts/tt-commons-medium-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "TT Common";
+  src: url("../fonts/tt-commons-medium-italic-webfont.woff2") format("woff2"), url("../fonts/tt-commons-medium-italic-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: italic; }
+
+@font-face {
+  font-family: "TT Common";
+  src: url("../fonts/tt-commons-demibold-webfont.woff2") format("woff2"), url("../fonts/tt-commons-demibold-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "TT Common";
+  src: url("../fonts/tt-commons-demibold-italic-webfont.woff2") format("woff2"), url("../fonts/tt-commons-demibold-italic-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: italic; }
+
+@font-face {
+  font-family: "TT Common";
+  src: url("../fonts/tt-commons-bold-webfont.woff2") format("woff2"), url("../fonts/tt-commons-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
+  font-family: "TT Common";
+  src: url("../fonts/tt-commons-bold-italic-webfont.woff2") format("woff2"), url("../fonts/tt-commons-bold-italic-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: italic; }
+
+.page-node-type-landing-page {
+  overflow-x: hidden;
+  font-family: "TT Common", Helvetica, Arial, sans-serif; }
+  .page-node-type-landing-page h1, .page-node-type-landing-page h2, .page-node-type-landing-page h3, .page-node-type-landing-page h4, .page-node-type-landing-page h5, .page-node-type-landing-page h6,
+  .page-node-type-landing-page .h1, .page-node-type-landing-page .h2, .page-node-type-landing-page .h3, .page-node-type-landing-page .h4, .page-node-type-landing-page .h5, .page-node-type-landing-page .h6 {
+    font-family: "TT Common", Helvetica, Arial, sans-serif; }
+  .page-node-type-landing-page .page-wrapper {
+    margin-bottom: 0; }
+  .page-node-type-landing-page h1.title-page {
+    display: none; }
+  .page-node-type-landing-page .region-content {
+    padding: 0; }
+  .page-node-type-landing-page a[target="_blank"]::after {
+    content: none;
+    display: none; }
+  .page-node-type-landing-page .block-parent {
+    overflow: hidden; }
+  .page-node-type-landing-page .block-child {
+    max-width: 1360px;
+    margin: 60px auto;
+    padding: 0 20px; }
+    @media (min-width: 1024px) {
+      .page-node-type-landing-page .block-child {
+        margin: 100px auto;
+        padding: 0 40px; } }
+    .page-node-type-landing-page .block-child img {
+      max-width: 100%; }
+  .page-node-type-landing-page .transition-image {
+    margin: -1px 0; }
+    .page-node-type-landing-page .transition-image img {
+      width: 100%; }
+  .page-node-type-landing-page .text-center {
+    text-align: center; }
+  .page-node-type-landing-page .button--primary {
+    display: inline-block;
+    background-color: currentColor;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 600;
+    padding: 20px 42px;
+    border-radius: 30px;
+    transition: all ease-in 0.2s; }
+    .page-node-type-landing-page .button--primary:hover {
+      opacity: 0.8; }
+    @media (max-width: 400px) {
+      .page-node-type-landing-page .button--primary {
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
+        width: 100%; } }
+  .page-node-type-landing-page .divisor {
+    margin: 50px 0; }
+  .page-node-type-landing-page h2 {
+    font-size: 46px;
+    line-height: 52px; }
+    @media (min-width: 1024px) {
+      .page-node-type-landing-page h2 {
+        font-size: 68px;
+        line-height: 76px; } }
+    @media (min-width: 1200px) {
+      .page-node-type-landing-page h2 {
+        font-size: 94px;
+        line-height: 106px; } }
+  .page-node-type-landing-page h3 {
+    font-size: 35px;
+    line-height: 39px;
+    font-weight: 600; }
+    @media (min-width: 1024px) {
+      .page-node-type-landing-page h3 {
+        font-size: 58px;
+        line-height: 66px; } }
+    @media (min-width: 1200px) {
+      .page-node-type-landing-page h3 {
+        font-size: 80px;
+        line-height: 89px; } }
+  .page-node-type-landing-page p {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 26px; }
+    @media (min-width: 1024px) {
+      .page-node-type-landing-page p {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 30px; } }
+    @media (min-width: 1200px) {
+      .page-node-type-landing-page p {
+        font-size: 28px;
+        line-height: 32px;
+        margin-bottom: 32px; } }
+    .page-node-type-landing-page p a {
+      color: currentColor;
+      text-decoration: underline;
+      transition: all ease-in 0.2s; }
+      .page-node-type-landing-page p a:hover {
+        filter: brightness(0.5); }
+    .page-node-type-landing-page p small {
+      font-size: 12px;
+      line-height: 16px;
+      opacity: 0.5;
+      margin-top: -26px; }
+      @media (min-width: 1024px) {
+        .page-node-type-landing-page p small {
+          margin-top: -30px;
+          font-size: 16px;
+          line-height: 20px; } }
+      @media (min-width: 1200px) {
+        .page-node-type-landing-page p small {
+          margin-top: -32px; } }
+  .page-node-type-landing-page .block-full {
+    max-width: 995px; }
+  @media (min-width: 768px) {
+    .page-node-type-landing-page .wrapper-block-half {
+      margin-left: -20px;
+      margin-right: -20px;
+      display: flex;
+      flex-wrap: wrap; } }
+  .page-node-type-landing-page .container-half {
+    padding: 16px 0; }
+    @media (min-width: 768px) {
+      .page-node-type-landing-page .container-half {
+        padding: 0 20px;
+        width: 50%; } }
+    .page-node-type-landing-page .container-half p:last-child {
+      margin-bottom: 0; }
+  @media (min-width: 1024px) {
+    .page-node-type-landing-page .wrapper-block-icons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: 0 -100px; } }
+  .page-node-type-landing-page .wrapper-block-icons .icon-item {
+    margin: 50px 0;
+    display: block; }
+    @media (min-width: 1024px) {
+      .page-node-type-landing-page .wrapper-block-icons .icon-item {
+        margin: 0 100px; } }
+    .page-node-type-landing-page .wrapper-block-icons .icon-item img {
+      max-width: 250px; }
+      @media (min-width: 1024px) {
+        .page-node-type-landing-page .wrapper-block-icons .icon-item img {
+          max-width: 350px; } }
+  .page-node-type-landing-page .block-form {
+    max-width: 668px;
+    margin: 30px auto; }
+    @media (min-width: 768px) {
+      .page-node-type-landing-page .block-form {
+        margin: -60px auto 30px; } }
+    @media (min-width: 1200px) {
+      .page-node-type-landing-page .block-form {
+        margin: -180px auto 40px; } }
+    .page-node-type-landing-page .block-form h3 {
+      font-size: 26px;
+      line-height: 28px; }
+      @media (min-width: 1024px) {
+        .page-node-type-landing-page .block-form h3 {
+          font-size: 40px;
+          line-height: 48px; } }
+      @media (min-width: 1200px) {
+        .page-node-type-landing-page .block-form h3 {
+          font-size: 60px;
+          line-height: 68px; } }
+  .page-node-type-landing-page .container-form label {
+    color: currentColor;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px; }
+    @media (min-width: 1200px) {
+      .page-node-type-landing-page .container-form label {
+        font-size: 20px;
+        line-height: 22px; } }
+  .page-node-type-landing-page .container-form input {
+    border-radius: 30px;
+    background-color: transparent;
+    border: 2px solid currentColor;
+    color: currentColor;
+    font-size: 18px; }
+  .page-node-type-landing-page .container-form .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; }
+  .page-node-type-landing-page .container-form .form-actions {
+    justify-content: flex-end; }
+  .page-node-type-landing-page .container-form .btn-primary {
+    background-color: currentColor; }
+  .page-node-type-landing-page .wrapper-sponsor {
+    margin: -30px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: -15px -30px; }
+    @media (min-width: 600px) {
+      .page-node-type-landing-page .wrapper-sponsor {
+        justify-content: center; } }
+  .page-node-type-landing-page .sponsor-item {
+    margin: 30px 0;
+    margin: 15px 30px;
+    max-width: 250px; }
+    @media (min-width: 1024px) {
+      .page-node-type-landing-page .sponsor-item {
+        max-width: 450px; } }
+  .page-node-type-landing-page .block-conditions .title-conditions {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600; }
+    @media (min-width: 1200px) {
+      .page-node-type-landing-page .block-conditions .title-conditions {
+        font-size: 28px;
+        line-height: 32px; } }
+  .page-node-type-landing-page .block-conditions ul {
+    padding-left: 0;
+    list-style-type: none; }
+    .page-node-type-landing-page .block-conditions ul li {
+      margin-bottom: 16px;
+      font-size: 20px;
+      line-height: 26px; }
+      .page-node-type-landing-page .block-conditions ul li::before {
+        content: "·";
+        display: inline-block; }
+      @media (min-width: 1200px) {
+        .page-node-type-landing-page .block-conditions ul li {
+          font-size: 28px;
+          line-height: 32px;
+          margin-bottom: 20px; } }
+      .page-node-type-landing-page .block-conditions ul li a {
+        color: currentColor;
+        text-decoration: underline;
+        transition: all ease-in 0.2s; }
+        .page-node-type-landing-page .block-conditions ul li a:hover {
+          filter: brightness(0.5); }
