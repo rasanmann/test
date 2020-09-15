@@ -56,7 +56,7 @@ msgstr "Voir les mesures en vigueur"
 msgid "Safe and Flexible travel with Air Canada."
 msgstr "Une expérience de voyage souple et sécuritaire avec Air Canada."
 
-msgid "Start planning with Air Canada's flexible, expanded booking options including <strong>no change fees</strong>, and the industryleading Air Canada <strong>CleanCare+</strong> program, now with new touchless biosafety measures for increased safety at every stage of your journey."
+msgid "Start planning with Air Canada's flexible, expanded booking options including <strong>no change fees</strong>, and the industry-leading Air Canada <strong>CleanCare+</strong> program, now with new touchless biosafety measures for increased safety at every stage of your journey."
 msgstr "Planifiez votre voyage l'esprit tranquille grâce aux options de réservation souples et élargies d'Air Canada incluant la possibilité de faire une <strong>modification sans frais.</strong> De plus, Air Canada <strong>SoinPropre+</strong>, un programme à l'avant-garde de l'industrie qui comporte maintenant de nouvelles mesures de <strong>biosécurité sans contact</strong>, vous offre une <strong>sécurité accrue</strong> à chaque étape de votre voyage."
 
 msgid "https://www.aircanada.com/ca/en/aco/home/book/travel-news-and-updates/2020/covid-19.html"
