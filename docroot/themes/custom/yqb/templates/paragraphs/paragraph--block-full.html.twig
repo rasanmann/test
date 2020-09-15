@@ -1,0 +1,18 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'block-child block-full'
+  ]
+%}
+
+{% set parent_block = paragraph.getParentEntity() %}
+{% set primary_color = parent_block.field_primary_color.value %}
+{% set secondary_color = parent_block.field_secondary_color.value %}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }} style="color: {{primary_color}}">
+          {{ content.field_text	 }}
+  </div>
+{% endblock paragraph %}

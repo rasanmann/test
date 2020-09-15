@@ -1,0 +1,28 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'block-parent'
+  ]
+%}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }} style="background-image: linear-gradient(180deg, {{content.field_color_1.0}} 30%, {{content.field_color_2.0}} 100%);">
+
+    {{ content.field_children_blocks }}
+
+    {% if content.field_divisor.0 %}
+        <div class="divisor"></div>
+    {% endif %}
+
+    {% if content.field_image.0 %}
+        <div class="transition-image">
+        <picture>
+            <source media="(min-width:768px)" srcset=" {{file_url(content.field_image.0['#item'].entity.uri.value)}}">
+            <img src="{{file_url(content.field_image_mobile.0['#item'].entity.uri.value)}}" alt="{{ content.field_image.0['#item'].alt }}">
+        </picture>
+        </div>
+    {% endif %}
+  </div>
+{% endblock paragraph %}
