@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\Tests\panels\Unit\panels_ipe;
-
+namespace Drupal\Tests\panels_ipe\Unit;
 
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\panels\Plugin\DisplayVariant\PanelsDisplayVariant;
 use Drupal\panels\Storage\PanelsStorageManagerInterface;
 use Drupal\Core\TempStore\SharedTempStore;
+use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_MockObject_MockObject;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Base tests for IPE request handler classes.
  */
-abstract class RequestHandlerTestBase extends \PHPUnit_Framework_TestCase {
+abstract class RequestHandlerTestBase extends TestCase {
 
   /**
    * @var  \Drupal\panels_ipe\Helpers\RequestHandlerInterface */

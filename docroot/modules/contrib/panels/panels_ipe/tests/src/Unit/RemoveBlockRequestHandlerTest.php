@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\panels\Unit\panels_ipe;
+namespace Drupal\Tests\panels_ipe\Unit;
 
 use Drupal\panels_ipe\Helpers\RemoveBlockRequestHandler;
 use Symfony\Component\HttpFoundation\JsonResponse;
