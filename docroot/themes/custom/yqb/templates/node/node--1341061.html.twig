@@ -3,8 +3,6 @@
  * @file
  * Theme override to display a landing_page node.
  */
-
- Temporaire
 #}
 {%
 set classes = [
@@ -23,7 +21,7 @@ set classes = [
         <div class="container-half">
           <h2>{{ "We're ready for takeoff!"|t }}</h2>
           <p>
-            {{ "Whether it's for fun, business, or to see your family, we all miss traveling!<br>In collaboration with <a href=\"https://www.aircanada.com/ca/en/aco/home.html#/\"><strong>Air Canada</strong></a>, Québec City Jean Lesage International Airport is doing everything to <strong>facilitate your next adventure!</strong>"|t
+            {{ "Whether it's for fun, business, or to see your family, we all miss traveling!<br>In collaboration with <a target=\"_blank\" href=\"https://www.aircanada.com/en-ca/flights-from-quebec-city\"><strong>Air Canada</strong></a>, Québec City Jean Lesage International Airport is doing everything to <strong>facilitate your next adventure!</strong>"|t
             }}
           </p>
         </div>
@@ -44,12 +42,12 @@ set classes = [
         </div>
         <div class="container-half">
           <p>
-            {{ "<strong>Get 15% off* your next flight departing from Québec City with Air Canada!</strong><br>For a limited time, save on Economy, Premium Economy and Air Canada Signature Class base fares for flights departing from Québec City. <strong>Book by October 4</strong>, for travel made between <strong>September 14 and December 18, 2020.</strong><br>Use the promo code <strong>EWK2NBN1</strong> at the time of booking on <a href=\"https://www.aircanada.com/ca/en/aco/home.html#/\"><strong>aircanada.com</strong></a><br><small>*On certain base rates. <a href=\"#conditions-section\">See conditions.</a></small>"|t }}
+            {{ "<strong>Get 15% off* your next flight departing from Québec City with Air Canada!</strong><br>For a limited time, save on Economy, Premium Economy and Air Canada Signature Class base fares for flights departing from Québec City. <strong>Book by October 4</strong>, for travel made between <strong>September 14 and December 18, 2020.</strong><br>Use the promo code <strong>EWK2NBN1</strong> at the time of booking on <a target=\"_blank\" href=\"https://www.aircanada.com/en-ca/flights-from-quebec-city\"><strong>aircanada.com</strong></a><br><small>*On certain base rates. <a href=\"#conditions-section\">See conditions.</a></small>"|t }}
           <p>
           <a class="button--primary"
             href="{{ 'https://www.aircanada.com/en-ca/flights-from-quebec-city'|t }}"
-            style="color: #b2daf3; background-color: #012d8b;"
             target="_blank"
+            style="color: #b2daf3; background-color: #012d8b;"
             data-analytics
             data-category="Landing Page"
             data-action="click"
@@ -76,6 +74,7 @@ set classes = [
       <p>{{ "<strong>A wide selection of destinations</strong> now available with <strong>Air Canada.</strong>"|t }}</p>
       <a class="button--primary"
         href="{{ "https://www.aircanada.com/en-ca/flights-from-quebec-city"|t }}"
+        target="_blank"
         style="color: #dd8f7c; background-color: #ffffff;"
         data-analytics
         data-category="Landing Page"
@@ -137,11 +136,11 @@ set classes = [
     <div class="divisor"></div>
     <div class="block-child block-full text-center" style="color: #32b9be;">
       <h3>{{ "Safe and Flexible travel with Air Canada."|t }}</h3>
-      <p>{{ "Start planning with Air Canada's flexible, expanded booking options including <strong>no change fees</strong>, and the industryleading Air Canada <strong>CleanCare+</strong> program, now with new touchless biosafety measures for increased safety at every stage of your journey."|t }}</p>
+      <p>{{ "Start planning with Air Canada's flexible, expanded booking options including <strong>no change fees</strong>, and the industry-leading Air Canada <strong>CleanCare+</strong> program, now with new touchless biosafety measures for increased safety at every stage of your journey."|t }}</p>
       <a class="button--primary"
           href="{{ "https://www.aircanada.com/ca/en/aco/home/book/travel-news-and-updates/2020/covid-19.html"|t}}"
-          style="color: #ffffff; background-color: #32b9be;"
           target="_blank"
+          style="color: #ffffff; background-color: #32b9be;"
           data-analytics
           data-category="Landing Page"
           data-action="click"
@@ -223,7 +222,7 @@ set classes = [
           {{ "This discount is valid on flights from Québec City (YQB) to all destinations offered by Air Canada for travel between September 14, and December 18, 2020."|t }}
         </li>
         <li>
-          {{ "The discount applies on Air Canada-published Economy, Premium Economy and Air Canada Signature Class, <strong>base fares</strong> when booking on <a href=\"https://www.aircanada.com/ca/en/aco/home.html#/\">aircanada.com</a> and cannot be combined with any other discount offer."|t }}
+          {{ "The discount applies on Air Canada-published Economy, Premium Economy and Air Canada Signature Class, <strong>base fares</strong> when booking on <a target=\"_blank\" href=\"https://www.aircanada.com/en-ca/flights-from-quebec-city\">aircanada.com</a> and cannot be combined with any other discount offer."|t }}
         </li>
         <li>
           {{ "Availability may vary."|t }}
