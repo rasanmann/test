@@ -6,8 +6,10 @@
     'block-child block-half'
   ]
 %}
+
+{# content.field_color_2.0 #}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }} style="color: #012d8b;">
+  <div{{ attributes.addClass(classes) }} style="color: {{content.field_color_1.0 ? content.field_color_1.0 : '#012d8b'}}">
       <div class="wrapper-block-half">
         <div class="container-half">
           {{ content.field_left_column }}

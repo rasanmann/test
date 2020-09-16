@@ -6,22 +6,41 @@
     'block-parent'
   ]
 %}
+{% set paragraph_parent = paragraph.getParentEntity() %}
+{% set conditions = paragraph_parent.body.0 %}
 
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }} style="background-image: linear-gradient(180deg, {{content.field_color_1.0}} 30%, {{content.field_color_2.0}} 100%);">
+
+  {% if content.field_background_image.0 %}
+      <div{{ attributes.addClass(classes) }} style="background-image:url({{file_url(content.field_background_image.0['#item'].entity.uri.value)}});background-size: cover;background-repeat: no-repeat;">
+  {% else %}
+     <div{{ attributes.addClass(classes) }} style="background-image: linear-gradient({{content.field_angle.0}}, {{content.field_color_1.0}} {{content.field_stop_position_1.0}}, {{content.field_color_2.0}} {{content.field_stop_position_2.0}});">
+  {% endif %}
+
+    {% if content.field_top_image.0 %}
+        <div class="transition-image">
+            <picture>
+                <source media="(min-width:768px)" srcset="{{file_url(content.field_top_image.0['#item'].entity.uri.value)}}">
+                <img src="{{file_url(content.field_top_image_mobile.0['#item'].entity.uri.value)}}" alt="{{ content.field_image.0['#item'].alt }}">
+            </picture>
+        </div>
+    {% endif %}
 
     {{ content.field_children_blocks }}
 
-    {% if content.field_divisor.0 %}
-        <div class="divisor"></div>
+    {# Si c'est le dernier paragraphe, afficher les conditions. #}
+    {% if paragraph.position == paragraph.total %}
+      <div id="conditions-section" class="block-child block-full block-conditions">
+        {{ conditions.value|raw }}
+      </div>
     {% endif %}
-
+    
     {% if content.field_image.0 %}
         <div class="transition-image">
-        <picture>
-            <source media="(min-width:768px)" srcset=" {{file_url(content.field_image.0['#item'].entity.uri.value)}}">
-            <img src="{{file_url(content.field_image_mobile.0['#item'].entity.uri.value)}}" alt="{{ content.field_image.0['#item'].alt }}">
-        </picture>
+            <picture>
+                <source media="(min-width:768px)" srcset="{{file_url(content.field_image.0['#item'].entity.uri.value)}}">
+                <img src="{{file_url(content.field_image_mobile.0['#item'].entity.uri.value)}}" alt="{{ content.field_image.0['#item'].alt }}">
+            </picture>
         </div>
     {% endif %}
   </div>

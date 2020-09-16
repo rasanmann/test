@@ -3,14 +3,16 @@
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    'block-child block-full'
+    'block-child block-form'
   ]
 %}
-
-
-{# content.field_color_2.0 #}
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }} style="color: {{content.field_color_1.0 ? content.field_color_1.0 : '#012d8b'}}">
-    {{ content.field_text }}
+  {% if content.field_title %}
+     <h3> {{ content.field_title }}</h3>
+  {% endif %}
+    <div class="container-form">
+      {{webform_newsletter}}
+    </div>
   </div>
 {% endblock paragraph %}
