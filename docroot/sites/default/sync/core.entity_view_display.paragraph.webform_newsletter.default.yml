@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.webform_newsletter.field_color_1
-    - field.field.paragraph.webform_newsletter.field_tag_campaign
     - field.field.paragraph.webform_newsletter.field_title
+    - field.field.paragraph.webform_newsletter.field_titre
     - paragraphs.paragraphs_type.webform_newsletter
 id: paragraph.webform_newsletter.default
 targetEntityType: paragraph
@@ -28,5 +28,12 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-hidden:
-  field_tag_campaign: true
+  field_titre:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

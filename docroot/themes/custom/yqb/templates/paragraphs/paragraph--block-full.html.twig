@@ -10,7 +10,7 @@
 
 {# content.field_color_2.0 #}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }} style="color: {{content.field_color_1.0 ? content.field_color_1.0 : '#012d8b'}}">
+  <div{{ attributes.addClass(classes) }} style="color: {{content.field_color_1.0 ? content.field_color_1.0 : '#012d8b'}}" data-secondary="{{content.field_color_2.0 ? content.field_color_2.0 : '#b2daf3'}}">
     {{ content.field_text }}
   </div>
 {% endblock paragraph %}

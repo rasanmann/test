@@ -1,7 +1,9 @@
 uuid: 6cd58f04-dc3a-471c-b6f1-6889d9fffe0a
 langcode: fr
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - yqb_newsletters
 open: null
 close: null
 weight: 0
@@ -12,7 +14,7 @@ id: newsletter_subscription
 title: 'Inscription à l''infolettre'
 description: ''
 category: ''
-elements: "first_name:\n  '#type': textfield\n  '#title': Prénom\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Nom\n  '#required': true\nemail:\n  '#type': email\n  '#title': Courriel\n  '#required': true"
+elements: "first_name:\n  '#type': textfield\n  '#title': Prénom\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Nom\n  '#required': true\nemail:\n  '#type': email\n  '#title': Courriel\n  '#required': true\ncampaign_tag:\n  '#type': hidden\n  '#title': 'Campaign tag'\n  '#default_value': 'Air Canada'"
 css: ''
 javascript: ''
 settings:

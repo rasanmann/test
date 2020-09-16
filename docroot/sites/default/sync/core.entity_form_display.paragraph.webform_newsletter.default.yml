@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.webform_newsletter.field_color_1
-    - field.field.paragraph.webform_newsletter.field_tag_campaign
     - field.field.paragraph.webform_newsletter.field_title
+    - field.field.paragraph.webform_newsletter.field_titre
     - paragraphs.paragraphs_type.webform_newsletter
   module:
     - jquery_minicolors
@@ -44,7 +44,14 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_titre:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
 hidden:
   created: true
-  field_tag_campaign: true
   status: true
