@@ -1,0 +1,50 @@
+uuid: 3c89ef0d-6589-41cf-8e43-af05a15af1e3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webform_newsletter.field_color_1
+    - field.field.paragraph.webform_newsletter.field_tag_campaign
+    - field.field.paragraph.webform_newsletter.field_title
+    - paragraphs.paragraphs_type.webform_newsletter
+  module:
+    - jquery_minicolors
+id: paragraph.webform_newsletter.default
+targetEntityType: paragraph
+bundle: webform_newsletter
+mode: default
+content:
+  field_color_1:
+    weight: 1
+    settings:
+      size: '15'
+      placeholder: ''
+      control: hue
+      format: hex
+      swatches: ''
+      position: 'bottom left'
+      theme: default
+      animation_speed: 50
+      animation_easing: swing
+      change_delay: 0
+      letter_case: lowercase
+      show_speed: 100
+      hide_speed: 100
+      keywords: ''
+      opacity: 0
+      inline: 0
+    third_party_settings: {  }
+    type: jquery_minicolors_widget
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  field_tag_campaign: true
+  status: true

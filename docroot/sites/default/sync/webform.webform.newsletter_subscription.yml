@@ -1,9 +1,7 @@
 uuid: 6cd58f04-dc3a-471c-b6f1-6889d9fffe0a
 langcode: fr
 status: open
-dependencies:
-  module:
-    - yqb_newsletters
+dependencies: {  }
 open: null
 close: null
 weight: 0
@@ -116,7 +114,7 @@ settings:
   draft_pending_multiple_message: ''
   confirmation_type: message
   confirmation_title: ''
-  confirmation_message: 'Inscription confirm&eacute;e (&Agrave; confirmer texte et comportement de la soumission.)'
+  confirmation_message: '[none]'
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true

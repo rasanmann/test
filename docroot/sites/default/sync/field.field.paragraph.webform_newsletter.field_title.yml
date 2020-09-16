@@ -1,0 +1,19 @@
+uuid: f7ef3ac0-51aa-462f-887e-4cf5ff60ce3e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.webform_newsletter
+id: paragraph.webform_newsletter.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: webform_newsletter
+label: Titre
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
