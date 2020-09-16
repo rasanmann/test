@@ -5,3 +5,7 @@ Multiple usages of FieldPluginBase::getEntity do not check for NULL, leading to 
 Source: https://www.drupal.org/files/issues/2019-11-12/3007424-57-8-7-x.patch
 
 
+Imported PO files have no public URL
+Source: patches/imported_po_files_2449895-72.patch
+
+

@@ -41,9 +41,7 @@ class TranslationsStream extends LocalStream {
   }
 
   /**
-   * Implements Drupal\Core\StreamWrapper\StreamWrapperInterface::getExternalUrl().
-   * @throws \LogicException
-   *   PO files URL should not be public.
+   * {@inheritdoc}
    */
   public function getExternalUrl() {
     throw new \LogicException('PO files URL should not be public.');

@@ -147,6 +147,9 @@ interface StreamWrapperInterface extends PhpStreamWrapperInterface {
    *
    * @return string
    *   Returns a string containing a web accessible URL for the resource.
+   *
+   * @throws \LogicException
+   *   Thrown if the stream wrapper does not support external URLs.
    */
   public function getExternalUrl();
 

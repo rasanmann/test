@@ -3115,7 +3115,9 @@
                     "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                 }
             },
-            "patches_applied": []
+            "patches_applied": {
+                "Imported PO files have no public URL": "patches/imported_po_files_2449895-72.patch"
+            }
         },
         "installation-source": "dist",
         "autoload": {

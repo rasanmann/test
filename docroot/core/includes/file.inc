@@ -254,12 +254,14 @@ function file_create_url($uri) {
   else {
     // Attempt to return an external URL using the appropriate wrapper.
     if ($wrapper = \Drupal::service('stream_wrapper_manager')->getViaUri($uri)) {
-      return $wrapper->getExternalUrl();
-    }
-    else {
-      return FALSE;
+      try {
+        return $wrapper->getExternalUrl();
+      }
+      catch (\LogicException $e) {
+      }
     }
   }
+  return FALSE;
 }
 
 /**

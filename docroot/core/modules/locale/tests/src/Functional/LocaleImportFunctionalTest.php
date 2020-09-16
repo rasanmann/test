@@ -387,12 +387,50 @@ class LocaleImportFunctionalTest extends BrowserTestBase {
   }
 
   /**
+   * Tests that imported PO files aren't break the UI provided by "views".
+   *
+   * @throws \Behat\Mink\Exception\ExpectationException
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   *
+   * @link https://www.drupal.org/project/drupal/issues/2449895
+   */
+  public function testPoFileImportAndAccessibilityOfFilesOverviewViewsPage() {
+    $this->container
+      ->get('module_installer')
+      ->install(['system', 'user', 'file', 'views']);
+
+    // Create and log in a user that's able to upload/import translations
+    // and has an access to the overview of files in a system.
+    $this->drupalLogin($this->drupalCreateUser([
+      'access administration pages',
+      'access files overview',
+      'administer languages',
+      'translate interface',
+    ]));
+
+    // Import a dummy PO file.
+    $filename = $this->importPoFile($this->getPoFile(), [
+      'langcode' => 'fr',
+    ]);
+
+    // The problem this test cover is exposed in an exception that is thrown
+    // by the "\Drupal\locale\StreamWrapper\TranslationsStream" when "views"
+    // module provides a page of files overview.
+    $this->drupalGet('admin/content/files');
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->pageTextContains($filename);
+  }
+
+  /**
    * Helper function: import a standalone .po file in a given language.
    *
    * @param string $contents
    *   Contents of the .po file to import.
    * @param array $options
    *   (optional) Additional options to pass to the translation import form.
+   *
+   * @return string
+   *   The name of the file uploaded.
    */
   public function importPoFile($contents, array $options = []) {
     $file_system = \Drupal::service('file_system');
@@ -401,6 +439,7 @@ class LocaleImportFunctionalTest extends BrowserTestBase {
     $options['files[file]'] = $name;
     $this->drupalPostForm('admin/config/regional/translate/import', $options, t('Import'));
     $file_system->unlink($name);
+    return str_replace('temporary://', '', $name);
   }
 
   /**
