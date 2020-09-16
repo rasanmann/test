@@ -1,16 +1,20 @@
 <?php
 
-namespace Drupal\panels\Tests;
+namespace Drupal\Tests\panels\Functional;
 
-use Drupal\KernelTests\KernelTestBase;
-use Drupal\simpletest\WebTestBase;
+use Drupal\Tests\BrowserTestBase;
 
 /**
  * Tests validating config in the Panels display manager.
  *
  * @group panels
  */
-class PanelsConfigSchemaTest extends WebTestBase {
+class PanelsConfigSchemaTest extends BrowserTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
