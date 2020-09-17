@@ -1,0 +1,239 @@
+{#
+/**
+ * @file
+ * Theme override to display a landing_page node.
+ */
+#}
+{%
+set classes = [
+    node.bundle|clean_class,
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  {# Content contient tout les fields du node #}
+  {# {{ content }} #}
+  <div class="block-parent" style="background-image: linear-gradient(180deg, rgba(127,191,235,1) 30%, rgba(244,244,244,1) 100%);">
+    <div class="block-child block-half" style="color: #012d8b;">
+      <div class="wrapper-block-half">
+        <div class="container-half">
+          <h2>{{ "We're ready for takeoff!"|t }}</h2>
+          <p>
+            {{ "Whether it's for fun, business, or to see your family, we all miss traveling!<br>In collaboration with <a target=\"_blank\" href=\"https://www.aircanada.com/en-ca/flights-from-quebec-city\"><strong>Air Canada</strong></a>, Québec City Jean Lesage International Airport is doing everything to <strong>facilitate your next adventure!</strong>"|t
+            }}
+          </p>
+        </div>
+        <div class="container-half">
+          <img src="/themes/custom/yqb/img/landing-page/airplane.svg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="block-child block-half" style="color: #012d8b;">
+      <div class="wrapper-block-half">
+        <div class="container-half">
+          <h3>{{ "15% off*, 100% fun."|t }}</h3>
+          <img
+            src="/themes/custom/yqb/img/landing-page/air-canada-vector-logo.svg"
+            alt="Air Canada"
+          >
+        </div>
+        <div class="container-half">
+          <p>
+            {{ "<strong>Get 15% off* your next flight departing from Québec City with Air Canada!</strong><br>For a limited time, save on Economy, Premium Economy and Air Canada Signature Class base fares for flights departing from Québec City. <strong>Book by October 4</strong>, for travel made between <strong>September 14 and December 18, 2020.</strong><br>Use the promo code <strong>EWK2NBN1</strong> at the time of booking on <a target=\"_blank\" href=\"https://www.aircanada.com/en-ca/flights-from-quebec-city\"><strong>aircanada.com</strong></a><br><small>*On certain base rates. <a href=\"#conditions-section\">See conditions.</a></small>"|t }}
+          <p>
+          <a class="button--primary"
+            href="{{ 'https://www.aircanada.com/en-ca/flights-from-quebec-city'|t }}"
+            target="_blank"
+            style="color: #b2daf3; background-color: #012d8b;"
+            data-analytics
+            data-category="Landing Page"
+            data-action="click"
+            data-label="Mesures"
+            data-value="1"
+          >
+            {{ "Book now"|t }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="transition-image">
+      <picture>
+        <source  media="(min-width:768px)" srcset="/themes/custom/yqb/img/landing-page/beach-w-sun.svg">
+        <img src="/themes/custom/yqb/img/landing-page/beach-w-sun-zoomed.svg" alt="">
+      </picture>
+    </div>
+  </div>
+
+  <div class="block-parent" style="background: linear-gradient(0deg, rgba(221,143,124,1) 0%, rgba(249,175,157,1) 50%);">
+    <div class="block-child block-full text-center" style="color: #ffffff;">
+      <h3>{{ "Pack your bags."|t }}</h3>
+      <p>{{ "<strong>A wide selection of destinations</strong> now available with <strong>Air Canada.</strong>"|t }}</p>
+      <a class="button--primary"
+        href="{{ "https://www.aircanada.com/en-ca/flights-from-quebec-city"|t }}"
+        target="_blank"
+        style="color: #dd8f7c; background-color: #ffffff;"
+        data-analytics
+        data-category="Landing Page"
+        data-action="click"
+        data-label="Destinations"
+        data-value="1"
+      >
+        {{ "Discover all destinations"|t }}
+      </a>
+    </div>
+
+    <div class="divisor"></div>
+
+    <div class="transition-image">
+      <picture>
+        <source  media="(min-width:768px)" srcset="/themes/custom/yqb/img/landing-page/waves.svg">
+        <img src="/themes/custom/yqb/img/landing-page/waves-zoomed.svg" alt="">
+      </picture>
+    </div>
+  </div>
+
+  <div class="block-parent" style="background: linear-gradient(180deg, rgba(137,214,207,1) 55%, rgba(50,185,190,1) 100%);">
+    <div class="block-child block-half" style="color: #014b4e;">
+      <div class="wrapper-block-half">
+        <div class="container-half">
+          <h3>{{ "Fly worry-free with our enhanced biosecurity measures."|t }}</h3>
+        </div>
+        <div class="container-half">
+          <p>{{ "Whether it's at check-in, while boarding, or on board, the Québec City Jean Lesage International Airport and its partners <strong>have rethought their health and safety protocols to ensure you have a safe experience throughout your trip.</strong>"|t }}</p>
+          <a class="button--primary"
+            href="{{ "https://www.aeroportdequebec.com/en/pages/advice-travellers-protecting-yourself-and-others"|t }}"
+            style="color: #72cfcb; background-color: #014b4e;"
+            data-analytics
+            data-category="Landing Page"
+            data-action="click"
+            data-label="Mesures"
+            data-value="1"
+          >
+            {{ "View the measures in effect"|t }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="transition-image">
+      <picture>
+        <source  media="(min-width:768px)" srcset="/themes/custom/yqb/img/landing-page/city.svg">
+        <img src="/themes/custom/yqb/img/landing-page/city-zoomed.svg" alt="">
+      </picture>
+    </div>
+  </div>
+
+  <div class="block-parent"
+    style="background-image: url('/themes/custom/yqb/img/landing-page/lines-background.svg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    "
+  >
+    <div class="divisor"></div>
+    <div class="block-child block-full text-center" style="color: #32b9be;">
+      <h3>{{ "Safe and Flexible travel with Air Canada."|t }}</h3>
+      <p>{{ "Start planning with Air Canada's flexible, expanded booking options including <strong>no change fees</strong>, and the industry-leading Air Canada <strong>CleanCare+</strong> program, now with new touchless biosafety measures for increased safety at every stage of your journey."|t }}</p>
+      <a class="button--primary"
+          href="{{ "https://www.aircanada.com/ca/en/aco/home/book/travel-news-and-updates/2020/covid-19.html"|t}}"
+          target="_blank"
+          style="color: #ffffff; background-color: #32b9be;"
+          data-analytics
+          data-category="Landing Page"
+          data-action="click"
+          data-label="Mesures"
+          data-value="1"
+      >
+        {{ "Learn more"|t }}
+      </a>
+    </div>
+
+    <div class="block-child block-icons text-center">
+      <div class="wrapper-block-icons">
+        <div class="icon-item">
+          <img
+            src="{{ "/themes/custom/yqb/img/landing-page/ac-cleancare-en.jpg"|t }}"
+            alt="{{ "Air Canada clean care+"|t }}"
+          >
+        </div>
+        <div class="icon-item">
+          <img
+            src="{{ "/themes/custom/yqb/img/landing-page/ac-flexible-booking-en.jpg"|t }}"
+            alt="{{ "Air Canada flexible booking options"|t }}"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="block-child block-full text-center" style="color: #7fbfeb;">
+      <h3>{{ "Even more, for you."|t }}</h3>
+      <p>{{ "Extend your getaway and leave with peace of mind, thanks to our advantageous <strong>new pricing on long-term parking.</strong>"|t }}</p>
+      <a class="button--primary"
+        href="{{ "https://www.aeroportdequebec.com/en/plan-a-flight/parking"|t }}"
+        style="color: #ffffff; background-color: #7fbfeb;"
+        data-analytics
+        data-category="Landing Page"
+        data-action="click"
+        data-label="Stationnement"
+        data-value="1"
+      >
+        {{ "Learn more"|t }}
+      </a>
+    </div>
+  </div>
+
+  <div class="block-parent" style="background: linear-gradient(180deg, rgba(187,229,255,1) 0%, rgba(127,191,235,1) 100%); color: #012d8b;">
+    <div class="transition-image upside-down">
+      <picture>
+        <source  media="(min-width:768px)" srcset="/themes/custom/yqb/img/landing-page/upside-down-beach.svg">
+        <img src="/themes/custom/yqb/img/landing-page/upside-down-beach-zoomed.svg" alt="">
+      </picture>
+    </div>
+    <div class="block-child block-form">
+      <h3>{{ "Stay informed about airport offers and promotions."|t }}</h3>
+      <div class="container-form">
+        {# Afficher seulement le webform #}
+        {{ content.field_webform }}
+      </div>
+    </div>
+
+    <div class="block-child block-sponsor text-center">
+      <h3>{{ "A campaign from"|t }}</h3>
+      <div class="wrapper-sponsor">
+        <div class="sponsor-item">
+          <img src="/themes/custom/yqb/img/landing-page/yqb-logo.svg" alt="YQB">
+        </div>
+        <div class="sponsor-item">
+          <img src="/themes/custom/yqb/img/landing-page/air-canada-sponsor.svg" alt="Air Canada">
+        </div>
+      </div>
+    </div>
+
+    <div id="conditions-section" class="block-child block-full block-conditions">
+      <p class="title-conditions">{{ "*Air Canada offer conditions"|t }}</p>
+      <ul>
+        <li>
+          {{ "This offer is available for new bookings only made by <strong>October 4, 2020</strong>."|t }}
+        </li>
+        <li>
+          {{ "This discount is valid on flights from Québec City (YQB) to all destinations offered by Air Canada for travel between September 14, and December 18, 2020."|t }}
+        </li>
+        <li>
+          {{ "The discount applies on Air Canada-published Economy, Premium Economy and Air Canada Signature Class, <strong>base fares</strong> when booking on <a target=\"_blank\" href=\"https://www.aircanada.com/en-ca/flights-from-quebec-city\">aircanada.com</a> and cannot be combined with any other discount offer."|t }}
+        </li>
+        <li>
+          {{ "Availability may vary."|t }}
+        </li>
+        <li>
+          {{ "Some flights may be operated by carriers other than Air Canada, as shown at time of booking."|t }}
+        </li>
+        <li>
+          {{ "Valid on certain codeshare flights only."|t }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</article>

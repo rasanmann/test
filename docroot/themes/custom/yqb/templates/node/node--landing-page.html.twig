@@ -13,23 +13,5 @@ set classes = [
 ]
 %}
 <article{{ attributes.addClass(classes) }}>
-  {# Content contient tout les fields du node #}
-  {# {{ content }} #}
-  
-  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-
-
-  {# Afficher seulement le webform #}
-  {{ content.field_webform }}
-
-  <p>* Conditions de l’offre d’Air Canada</p>
-
-  <ul>
-    <li>L’offre est valable uniquement pour les nouvelles réservations effectuées d’ici le 4 octobre 2020.</li>
-    <li>La réduction s’applique aux vols au départ de la ville de Québec (YQB) et à destination de toutes les destinations offertes par Air Canada pour des voyages effectués entre le 14 septembre et le 18 décembre 2020.</li>
-    <li>La réduction s’applique aux tarifs de base publiés d’Air Canada suivants : économique, Économique Privilège et Air Canada Signature. La réduction est valide pour toute réservation effectuée à aircanada.com et ne peut être combinée à aucune autre offre de réduction.</li>
-    <li>La disponibilité peut varier.</li>
-    <li> Certains vols peuvent être exploités par des transporteurs autres qu’Air Canada, comme indiqué lors de la réservation. Certains vols à code multiple
-  </ul>
-
+  {{ content }}
 </article>

@@ -27,10 +27,11 @@ class yqb_newsletters extends WebformHandlerBase {
     return [];
   }
 
-  // @TODO : YQB INFO
-  const MAILCHIMP_API_KEY = 'e0d6c34b06ec6bf95a979e95fc04cac7-us17'; // see https://mailchimp.com/help/about-api-keys
-  const LIST_ID = 'dfd7943760'; // see https://3by400.com/get-support/3by400-knowledgebase?view=kb&kbartid=6
-  const SERVER_LOCATION = 'us17'; // the string after the '-' in your MAILCHIMP_API_KEY f.e. us4
+  // @TODO : 
+  // Get Tags dynamically in form
+  const MAILCHIMP_API_KEY = 'f75ab6d01bdb8708fb2b15c269bc8328-us11'; // see https://mailchimp.com/help/about-api-keys
+  const LIST_ID = 'fbcc0156a1'; // see https://3by400.com/get-support/3by400-knowledgebase?view=kb&kbartid=6
+  const SERVER_LOCATION = 'us11'; // the string after the '-' in your MAILCHIMP_API_KEY f.e. us4
 
   /**
    * {@inheritdoc}
@@ -41,6 +42,7 @@ class yqb_newsletters extends WebformHandlerBase {
     $email = strtolower($values['email']);
     $first_name = $values['first_name'];
     $last_name = $values['last_name'];
+    $tags = $values['campaign_tag'];
 
     // The data to send to the API
     $postData = array(
@@ -49,7 +51,8 @@ class yqb_newsletters extends WebformHandlerBase {
       "merge_fields" => array(
         "FNAME" => "$first_name",
         "LNAME" => "$last_name"
-      )
+      ),
+      'tags' => array($tags)
     );
 
     // Setup cURL
@@ -70,18 +73,18 @@ class yqb_newsletters extends WebformHandlerBase {
     $readable_response = json_decode($response);
     if(!$readable_response) {
       \Drupal::logger('Mailchimp_subscriber')->error($readable_response->title.': '.$readable_response->detail .'. Raw values:'.print_r($values));
-      \Drupal::messenger()->addError('Something went wrong. Please contact your webmaster.');
+      \Drupal::messenger()->addError(t('Un problème est survenu. Veuillez contacter votre webmaster.'));
     }
     if($readable_response->status == 403) {
       \Drupal::logger('Mailchimp_subscriber')->error($readable_response->title.': '.$readable_response->detail .'. Raw values:'.print_r($values));
-      \Drupal::messenger()->addError('Something went wrong. Please contact your webmaster.');
+      \Drupal::messenger()->addError(t('Un problème est survenu. Veuillez contacter votre webmaster.'));
     }
     if($readable_response->status == 'subscribed') {
-      \Drupal::messenger()->addStatus('You are now successfully subscribed.');
+      \Drupal::messenger()->addStatus(t('Vous êtes maintenant inscrit avec succès.'));
     }
     if($readable_response->status == 400) {
       if($readable_response->title == 'Member Exists') {
-        \Drupal::messenger()->addWarning('You are already subscribed to this mailing list.');
+        \Drupal::messenger()->addWarning(t('Vous êtes déjà inscrit à cette liste de diffusion.'));
       }
     }
 

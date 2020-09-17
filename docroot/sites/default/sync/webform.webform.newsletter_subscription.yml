@@ -13,7 +13,7 @@ id: newsletter_subscription
 title: 'Inscription à l''infolettre'
 description: ''
 category: ''
-elements: "first_name:\n  '#type': textfield\n  '#title': Prénom\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Nom\n  '#required': true\nemail:\n  '#type': email\n  '#title': Courriel\n  '#required': true"
+elements: "first_name:\n  '#type': textfield\n  '#title': Prénom\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Nom\n  '#required': true\nemail:\n  '#type': email\n  '#title': Courriel\n  '#required': true\ncampaign_tag:\n  '#type': hidden\n  '#title': 'Campaign tag'\n  '#default_value': 'Air Canada'"
 css: ''
 javascript: ''
 settings:
@@ -31,10 +31,10 @@ settings:
   form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
-  form_previous_submissions: true
+  form_previous_submissions: false
   form_confidential: false
   form_confidential_message: ''
-  form_remote_addr: true
+  form_remote_addr: false
   form_convert_anonymous: false
   form_prepopulate: false
   form_prepopulate_source_entity: false
@@ -63,7 +63,9 @@ settings:
   submission_label: ''
   submission_log: false
   submission_views: {  }
-  submission_views_replace: {  }
+  submission_views_replace:
+    webform_routes: {  }
+    node_routes: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
   submission_access_denied: default
@@ -111,9 +113,9 @@ settings:
   draft_loaded_message: ''
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
-  confirmation_type: inline
+  confirmation_type: message
   confirmation_title: ''
-  confirmation_message: 'Inscription confirm&eacute;e (&Agrave; confirmer texte et comportement de la soumission.)'
+  confirmation_message: '[none]'
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -141,6 +143,7 @@ settings:
   results_customize: false
   token_view: false
   token_update: false
+  page_admin_theme: false
 access:
   create:
     roles:

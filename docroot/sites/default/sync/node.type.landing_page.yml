@@ -23,7 +23,7 @@ third_party_settings:
     unpublish_revision: false
 name: 'Landing page'
 type: landing_page
-description: 'Page d''atterrissage pour les campagnes. (Static)'
+description: 'Page d''atterrissage pour les campagnes.'
 help: ''
 new_revision: false
 preview_mode: 0

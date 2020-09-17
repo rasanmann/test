@@ -1,0 +1,21 @@
+uuid: bd755825-4e0b-4df3-9f7e-758e8ebcae0e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_color_2
+    - paragraphs.paragraphs_type.block_half
+id: paragraph.block_half.field_color_2
+field_name: field_color_2
+entity_type: paragraph
+bundle: block_half
+label: 'Couleur secondaire'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: '#b2daf3'
+default_value_callback: ''
+settings: {  }
+field_type: string

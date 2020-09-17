@@ -1,0 +1,39 @@
+uuid: ee7c156e-469d-46bd-b6a4-ac7618d0a070
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webform_newsletter.field_color_1
+    - field.field.paragraph.webform_newsletter.field_title
+    - field.field.paragraph.webform_newsletter.field_titre
+    - paragraphs.paragraphs_type.webform_newsletter
+id: paragraph.webform_newsletter.default
+targetEntityType: paragraph
+bundle: webform_newsletter
+mode: default
+content:
+  field_color_1:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_titre:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

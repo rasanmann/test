@@ -14,14 +14,39 @@ global-styling:
       css/gouvernance-direction-generale.css: {}
       css/mosaique.css: {}
       css/accordion.css: {}
-      css/preview_block.css: {}
       css/menu.css: {}
       css/mission-valeurs.css: {}
       css/homepage.css: {}
-      css/landingpage.css: {}
       css/bureau_controle_access.css: {}
       'https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap': { type: external}
-
+landing-page-styling:
+  css:
+    theme:
+      css/bootstrap.css: {}
+      css/libraries.css: {}
+      js/libraries/photoswipe/photoswipe.css: {}
+      js/libraries/photoswipe/default-skin/default-skin.css: {}
+      css/grid.css: {}
+      css/style.css: {}
+      css/views.css: {}
+      css/ie9.css: { browsers: { IE: 'lte IE 9', '!IE': false }, minified: true }
+      css/2019-03.css: {}
+      css/landingpage.css: {}
+  js:
+    js/app.js: {}
+    js/landingpage.js: {}
+  dependencies:
+    - yqb/modernizr
+    - core/classList
+    - core/jquery
+    - core/drupal.autocomplete
+    - core/drupal.states
+    - yqb/bootstrap
+    - yqb/helpers
+    - yqb/libraries
+    - yqb/controllers
+    - yqb/modules
+    - yqb/router
 # Global app js
 global-js:
   js:
