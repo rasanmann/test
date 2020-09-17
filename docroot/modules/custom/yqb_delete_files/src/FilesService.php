@@ -35,9 +35,11 @@ class FilesService {
           if ($file->isPermanent()) {
             $file->setTemporary();
             $file->save();
+            \Drupal::logger('yqb_delete_files')->notice("File set temporary : @file_name", ['@file_name' => $file->getFilename()]);
           }
           else {
             if (!file_exists($file->getFileUri())) {
+              \Drupal::logger('yqb_delete_files')->notice("File deleted : @file_name", ['@file_name' => $file->getFilename()]);
               $file->delete();
               $deleted_files_count++;
             }
