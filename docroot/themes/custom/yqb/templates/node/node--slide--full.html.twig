@@ -5,10 +5,10 @@
  */
 #}
 {%
-set classes = [
-node.bundle|clean_class,
-view_mode ? view_mode|clean_class,
-'clearfix',
+  set classes = [
+  node.bundle|clean_class,
+  view_mode ? view_mode|clean_class,
+  'clearfix',
 ]
 %}
 <article{{ attributes.addClass(classes) }}>
@@ -24,7 +24,11 @@ view_mode ? view_mode|clean_class,
     <p>{{content.field_tile_text[0]}}</p>
     {% if content.field_tile_link[0] is not empty %}
       <div class="btn-wrapper">
-        {{content.field_tile_link[0]}}
+        {% if content.field_open_new_window.0 %}
+          {{ link(content.field_tile_link[0]['#title'], content.field_tile_link[0]['#url'], { 'target': '_blank'}) }}
+        {% else %}
+          {{ link(content.field_tile_link[0]['#title'], content.field_tile_link[0]['#url'])}}
+        {% endif %}
       </div>
     {% endif %}
   </div>

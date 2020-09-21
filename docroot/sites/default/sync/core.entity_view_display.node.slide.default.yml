@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.slide.field_image
+    - field.field.node.slide.field_open_new_window
     - field.field.node.slide.field_order
     - field.field.node.slide.field_tile_background_color
     - field.field.node.slide.field_tile_link
@@ -28,6 +29,16 @@ content:
       url_type: ''
     third_party_settings: {  }
     type: image_url
+    region: content
+  field_open_new_window:
+    weight: 4
+    label: hidden
+    settings:
+      format: true-false
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_tile_background_color:
     weight: 3

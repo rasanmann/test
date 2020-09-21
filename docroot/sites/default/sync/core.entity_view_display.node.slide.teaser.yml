@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.slide.field_image
+    - field.field.node.slide.field_open_new_window
     - field.field.node.slide.field_order
     - field.field.node.slide.field_tile_background_color
     - field.field.node.slide.field_tile_link
@@ -24,6 +25,7 @@ content:
     region: content
 hidden:
   field_image: true
+  field_open_new_window: true
   field_order: true
   field_tile_background_color: true
   field_tile_link: true
