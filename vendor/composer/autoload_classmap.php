@@ -63,6 +63,7 @@ return array(
     'MonerisUnified\\vsPurcha' => $vendorDir . '/santerref/e-commerce-unified-api-php/mpgClasses.php',
     'MonerisUnified\\vsPurchl' => $vendorDir . '/santerref/e-commerce-unified-api-php/mpgClasses.php',
     'MonerisUnified\\vsTripLegInfo' => $vendorDir . '/santerref/e-commerce-unified-api-php/mpgClasses.php',
+    'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
     'PEAR_Exception' => $vendorDir . '/pear/pear_exception/PEAR/Exception.php',
     'ParseError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ParseError.php',
     'SessionUpdateTimestampHandlerInterface' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',

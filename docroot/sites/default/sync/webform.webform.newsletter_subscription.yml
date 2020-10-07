@@ -1,4 +1,3 @@
-uuid: 6cd58f04-dc3a-471c-b6f1-6889d9fffe0a
 langcode: fr
 status: open
 dependencies:
@@ -14,7 +13,7 @@ id: newsletter_subscription
 title: 'Inscription à l''infolettre'
 description: ''
 category: ''
-elements: "first_name:\n  '#type': textfield\n  '#title': Prénom\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Nom\n  '#required': true\nemail:\n  '#type': email\n  '#title': Courriel\n  '#required': true"
+elements: "first_name:\n  '#type': textfield\n  '#title': Prénom\n  '#required': true\nlast_name:\n  '#type': textfield\n  '#title': Nom\n  '#required': true\nemail:\n  '#type': email\n  '#title': Courriel\n  '#required': true\ncampaign_tag:\n  '#type': hidden\n  '#title': 'Campaign tag'\n  '#default_value': 'Air Canada'"
 css: ''
 javascript: ''
 settings:
@@ -116,7 +115,7 @@ settings:
   draft_pending_multiple_message: ''
   confirmation_type: message
   confirmation_title: ''
-  confirmation_message: 'Inscription confirm&eacute;e (&Agrave; confirmer texte et comportement de la soumission.)'
+  confirmation_message: '[none]'
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -202,3 +201,4 @@ handlers:
     weight: 0
     settings: {  }
 variants: {  }
+uuid: 6cd58f04-dc3a-471c-b6f1-6889d9fffe0a

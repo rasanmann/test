@@ -1,0 +1,28 @@
+uuid: 9a132e32-ebe5-463c-8429-1207ca554f2e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.block_icons.field_icons
+    - paragraphs.paragraphs_type.block_icons
+  module:
+    - svg_image
+id: paragraph.block_icons.default
+targetEntityType: paragraph
+bundle: block_icons
+mode: default
+content:
+  field_icons:
+    weight: 0
+    label: above
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden: {  }

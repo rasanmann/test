@@ -31,6 +31,7 @@ module:
   features_ui: 0
   field: 0
   field_collection: 0
+  field_group: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -41,6 +42,7 @@ module:
   image: 0
   image_url_formatter: 0
   insert_block: 0
+  jquery_minicolors: 0
   jquery_ui: 0
   jquery_ui_draggable: 0
   jquery_ui_droppable: 0

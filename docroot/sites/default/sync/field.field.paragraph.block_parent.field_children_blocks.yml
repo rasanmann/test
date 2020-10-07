@@ -1,0 +1,113 @@
+uuid: b61c4aad-da81-46d0-a6ba-9e6abff0f6d4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_children_blocks
+    - paragraphs.paragraphs_type.block_full
+    - paragraphs.paragraphs_type.block_half
+    - paragraphs.paragraphs_type.block_icons
+    - paragraphs.paragraphs_type.block_parent
+    - paragraphs.paragraphs_type.divisor
+    - paragraphs.paragraphs_type.sponsors
+    - paragraphs.paragraphs_type.webform_newsletter
+  module:
+    - entity_reference_revisions
+id: paragraph.block_parent.field_children_blocks
+field_name: field_children_blocks
+entity_type: paragraph
+bundle: block_parent
+label: 'Blocs enfants'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      divisor: divisor
+      block_icons: block_icons
+      webform_newsletter: webform_newsletter
+      sponsors: sponsors
+      block_full: block_full
+      block_half: block_half
+    target_bundles_drag_drop:
+      block_parent:
+        weight: 23
+        enabled: false
+      divisor:
+        enabled: true
+        weight: 23
+      accordeon:
+        weight: 24
+        enabled: false
+      block_icons:
+        enabled: true
+        weight: 24
+      webform_newsletter:
+        enabled: true
+        weight: 25
+      sponsors:
+        enabled: true
+        weight: 26
+      block_full:
+        enabled: true
+        weight: 26
+      block_half:
+        enabled: true
+        weight: 27
+      content:
+        weight: 28
+        enabled: false
+      gallery:
+        weight: 29
+        enabled: false
+      gallery_image:
+        weight: 30
+        enabled: false
+      gouvernance_employe:
+        weight: 31
+        enabled: false
+      gouvernance_texte:
+        weight: 32
+        enabled: false
+      image_mosaique:
+        weight: 33
+        enabled: false
+      media_mosaique:
+        weight: 34
+        enabled: false
+      mosaique:
+        weight: 35
+        enabled: false
+      primary_title_h2:
+        weight: 36
+        enabled: false
+      texte_avec_arriere_plan:
+        weight: 37
+        enabled: false
+      texte_et_image:
+        weight: 38
+        enabled: false
+      tirroir:
+        weight: 39
+        enabled: false
+      valeur:
+        weight: 40
+        enabled: false
+      valeurs:
+        weight: 41
+        enabled: false
+      vip_drawer:
+        weight: 42
+        enabled: false
+      vip_drawer_card:
+        weight: 43
+        enabled: false
+      vip_drawer_section:
+        weight: 44
+        enabled: false
+field_type: entity_reference_revisions

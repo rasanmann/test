@@ -1,0 +1,45 @@
+uuid: 55e691f9-39fa-4ba1-bf1f-ccea7dab5441
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icons
+    - paragraphs.paragraphs_type.sponsors
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      file: '0'
+      title: '0'
+id: paragraph.sponsors.field_icons
+field_name: field_icons
+entity_type: paragraph
+bundle: sponsors
+label: Sponsors
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg svg'
+  max_filesize: '2 MB'
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image
