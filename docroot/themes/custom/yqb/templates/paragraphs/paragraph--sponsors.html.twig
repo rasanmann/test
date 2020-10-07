@@ -1,0 +1,22 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'block-child block-sponsor text-center'
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    <h3>{{content.field_title}}</h3>
+    {% if content.field_icons[0] %}
+         <div class="wrapper-sponsor">
+            {% for key, icon in content.field_icons if key|first != '#' %}
+                <div class="sponsor-item">
+                    {{ icon }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+  </div>
+{% endblock paragraph %}

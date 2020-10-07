@@ -4,7 +4,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.landing_page.field_webform
+    - field.field.node.landing_page.body
+    - field.field.node.landing_page.field_paragraphs
     - node.type.landing_page
   module:
     - user
@@ -19,5 +20,6 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
-  field_webform: true
+  body: true
+  field_paragraphs: true
   langcode: true

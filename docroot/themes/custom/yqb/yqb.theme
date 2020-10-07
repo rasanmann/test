@@ -662,6 +662,37 @@ function yqb_preprocess_swiftmailer(&$variables) {
 }
 
 /**
+ * HOOK_preprocess_field
+ * To get last paragraph position
+ *
+ * @param $variables
+ */
+function yqb_preprocess_field(&$variables) {
+  if($variables['field_name'] == 'field_paragraphs'){
+    foreach($variables['items'] as $idx => $item) {
+      $variables['items'][$idx]['content']['#paragraph']->position = $idx + 1;
+      $variables['items'][$idx]['content']['#paragraph']->total = count($variables['items']);
+    }
+  }
+}
+
+/**
+ * HOOK_paragraph_webform_newsletter
+ * Load newsletter subscription webform in paragraph for landing page
+ *
+ * @param $variables
+ */
+function yqb_preprocess_paragraph__webform_newsletter(&$variables) { 
+
+  $webform_newsletter = \Drupal\webform\Entity\Webform::load('newsletter_subscription');
+
+  $output = \Drupal::entityTypeManager()
+      ->getViewBuilder('webform')
+      ->view($webform_newsletter);
+
+  $variables['webform_newsletter'] = $output;
+}
+/**
  * HOOK_paragraph_gallery
  * Rewrites child fields into parent for display purpose
  *
@@ -756,7 +787,6 @@ function yqb_preprocess_node(&$variables){
   }
 
 }
-
 /**
  * HOOK_theme_suggestions_page_alter
  * Add custom content type node to template suggestion for Landing page

@@ -1,0 +1,25 @@
+uuid: 048b3ca0-db16-4e48-a9e7-c067ce28a069
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_stop_position_2
+    - paragraphs.paragraphs_type.block_parent
+id: paragraph.block_parent.field_stop_position_2
+field_name: field_stop_position_2
+entity_type: paragraph
+bundle: block_parent
+label: 'Position d''arrêt finale'
+description: 'Position d''arrêt le long de l''axe du dégradé de la couleur finale.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 100
+default_value_callback: ''
+settings:
+  min: 0
+  max: 100
+  prefix: ''
+  suffix: '%'
+field_type: integer

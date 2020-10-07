@@ -3,23 +3,25 @@ langcode: fr
 status: true
 dependencies:
   config:
-    - field.field.node.landing_page.field_webform
+    - field.field.node.landing_page.body
+    - field.field.node.landing_page.field_paragraphs
     - node.type.landing_page
   module:
+    - entity_reference_revisions
     - user
-    - webform
 id: node.landing_page.default
 targetEntityType: node
 bundle: landing_page
 mode: default
 content:
-  field_webform:
+  field_paragraphs:
     weight: 1
     label: visually_hidden
     settings:
-      source_entity: true
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: webform_entity_reference_entity_view
+    type: entity_reference_revisions_entity_view
     region: content
   links:
     weight: 0
@@ -27,4 +29,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  body: true
   langcode: true

@@ -254,12 +254,14 @@ function file_create_url($uri) {
   else {
     // Attempt to return an external URL using the appropriate wrapper.
     if ($wrapper = \Drupal::service('stream_wrapper_manager')->getViaUri($uri)) {
-      return $wrapper->getExternalUrl();
-    }
-    else {
-      return FALSE;
+      try {
+        return $wrapper->getExternalUrl();
+      }
+      catch (\LogicException $e) {
+      }
     }
   }
+  return FALSE;
 }
 
 /**
@@ -683,7 +685,7 @@ function file_munge_filename($filename, $extensions, $alerts = TRUE) {
     // http://php.net/manual/security.filesystem.nullbytes.php
     $filename = str_replace(chr(0), '', $filename);
 
-    $whitelist = array_unique(explode(' ', strtolower(trim($extensions))));
+    $allowed_extensions = array_unique(explode(' ', strtolower(trim($extensions))));
 
     // Split the filename up by periods. The first part becomes the basename
     // the last part the final extension.
@@ -698,7 +700,7 @@ function file_munge_filename($filename, $extensions, $alerts = TRUE) {
     // of allowed extensions.
     foreach ($filename_parts as $filename_part) {
       $new_filename .= '.' . $filename_part;
-      if (!in_array(strtolower($filename_part), $whitelist) && preg_match("/^[a-zA-Z]{2,5}\d?$/", $filename_part)) {
+      if (!in_array(strtolower($filename_part), $allowed_extensions) && preg_match("/^[a-zA-Z]{2,5}\d?$/", $filename_part)) {
         $new_filename .= '_';
       }
     }

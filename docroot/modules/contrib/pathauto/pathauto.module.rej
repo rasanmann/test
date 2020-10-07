@@ -1,0 +1,19 @@
+***************
+*** 72,78 ****
+        return $output;
+  
+      case 'pathauto.bulk.update.form':
+-       $output = '<p>' . t('Bulk generation will only generate URL aliases for items that currently have no aliases. This is typically used when installing Pathauto on a site that has existing un-aliased content that needs to be aliased in bulk.') . '</p>';
+        return $output;
+    }
+  }
+--- 72,80 ----
+        return $output;
+  
+      case 'pathauto.bulk.update.form':
++       $output = '<p>' . t('Bulk generation can be used to generate URL aliases for items that currently have no aliases. This is typically used when installing Pathauto on a site that has existing un-aliased content that needs to be aliased in bulk.') . '<br>';
++       $output .= t('It can also be used to regenerate URL aliases for items that have an old alias and for which the Pathauto pattern has been changed.') . '</p>';
++       $output .= '<p>' . t('Note that this will only affect items which are configured to have their URL alias automatically set. Items whose URL alias is manually set are not affected.') . '</p>';
+        return $output;
+    }
+  }
