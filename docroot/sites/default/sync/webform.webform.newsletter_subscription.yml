@@ -1,3 +1,4 @@
+uuid: 6cd58f04-dc3a-471c-b6f1-6889d9fffe0a
 langcode: fr
 status: open
 dependencies:
@@ -201,4 +202,3 @@ handlers:
     weight: 0
     settings: {  }
 variants: {  }
-uuid: 6cd58f04-dc3a-471c-b6f1-6889d9fffe0a

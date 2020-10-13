@@ -12,7 +12,7 @@ field_name: field_top_image_mobile
 entity_type: paragraph
 bundle: block_parent
 label: 'Image du haut mobile'
-description: ''
+description: 'Taille recommandée : 320x240px'
 required: false
 translatable: false
 default_value: {  }

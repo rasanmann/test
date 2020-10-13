@@ -12,7 +12,7 @@ field_name: field_top_image
 entity_type: paragraph
 bundle: block_parent
 label: 'Image du haut'
-description: ''
+description: 'Taille recommandée : 1920x510px'
 required: false
 translatable: false
 default_value: {  }

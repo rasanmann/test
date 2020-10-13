@@ -28,11 +28,20 @@ settings:
       accordeon:
         weight: 19
         enabled: false
-      content:
-        weight: 20
-        enabled: false
       bloc_parent:
         weight: 21
+        enabled: false
+      block_full:
+        weight: 26
+        enabled: false
+      block_half:
+        weight: 27
+        enabled: false
+      block_parent:
+        enabled: true
+        weight: 23
+      content:
+        weight: 20
         enabled: false
       gallery:
         weight: 21
@@ -40,9 +49,6 @@ settings:
       gallery_image:
         weight: 22
         enabled: false
-      block_parent:
-        enabled: true
-        weight: 23
       gouvernance_employe:
         weight: 23
         enabled: false
@@ -54,12 +60,6 @@ settings:
         enabled: false
       media_mosaique:
         weight: 26
-        enabled: false
-      block_full:
-        weight: 26
-        enabled: false
-      block_half:
-        weight: 27
         enabled: false
       mosaique:
         weight: 27
