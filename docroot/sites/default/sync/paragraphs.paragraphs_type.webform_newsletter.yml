@@ -1,0 +1,10 @@
+uuid: 717fd97f-d747-4bca-bfc2-a613364def24
+langcode: fr
+status: true
+dependencies: {  }
+id: webform_newsletter
+label: 'Formulaire d''inscription à l''infolettre'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

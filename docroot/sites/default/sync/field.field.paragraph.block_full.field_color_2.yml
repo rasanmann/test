@@ -1,0 +1,21 @@
+uuid: d41b7c4f-4460-4a9d-acbf-8160a22d236f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_color_2
+    - paragraphs.paragraphs_type.block_full
+id: paragraph.block_full.field_color_2
+field_name: field_color_2
+entity_type: paragraph
+bundle: block_full
+label: 'Couleur secondaire'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: '#b2daf3'
+default_value_callback: ''
+settings: {  }
+field_type: string

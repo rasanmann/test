@@ -42,6 +42,7 @@ class yqb_newsletters extends WebformHandlerBase {
     $email = strtolower($values['email']);
     $first_name = $values['first_name'];
     $last_name = $values['last_name'];
+    $tags = $values['campaign_tag'];
 
     // The data to send to the API
     $postData = array(
@@ -51,7 +52,7 @@ class yqb_newsletters extends WebformHandlerBase {
         "FNAME" => "$first_name",
         "LNAME" => "$last_name"
       ),
-      "tags" => array('Air Canada')
+      'tags' => array($tags)
     );
 
     // Setup cURL

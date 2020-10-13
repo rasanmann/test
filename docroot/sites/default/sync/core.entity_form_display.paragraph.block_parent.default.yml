@@ -1,0 +1,261 @@
+uuid: 18dee75c-59c2-467b-ad03-2943f647459a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.block_parent.field_angle
+    - field.field.paragraph.block_parent.field_background_image
+    - field.field.paragraph.block_parent.field_children_blocks
+    - field.field.paragraph.block_parent.field_color_1
+    - field.field.paragraph.block_parent.field_color_2
+    - field.field.paragraph.block_parent.field_image
+    - field.field.paragraph.block_parent.field_image_mobile
+    - field.field.paragraph.block_parent.field_stop_position_1
+    - field.field.paragraph.block_parent.field_stop_position_2
+    - field.field.paragraph.block_parent.field_top_image
+    - field.field.paragraph.block_parent.field_top_image_mobile
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.block_parent
+  module:
+    - field_group
+    - jquery_minicolors
+    - paragraphs
+    - svg_image
+third_party_settings:
+  field_group:
+    group_contenu:
+      children:
+        - field_children_blocks
+      parent_name: ''
+      weight: 1
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Contenu
+    group_styles:
+      children:
+        - group_couleurs
+        - group_images
+      parent_name: ''
+      weight: 0
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Styles
+    group_couleurs:
+      children:
+        - field_background_image
+        - group_degrade
+      parent_name: group_styles
+      weight: 20
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: Arrière-plan
+    group_degrade:
+      children:
+        - field_angle
+        - field_color_1
+        - field_stop_position_1
+        - field_color_2
+        - field_stop_position_2
+      parent_name: group_couleurs
+      weight: 26
+      format_type: details
+      region: content
+      format_settings:
+        description: 'Pour composer un dégradé linéaire tel que: linear-gradient(180deg, rgba(127,191,235,1) 30%, rgba(244,244,244,1) 100%)'
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: Dégradé
+    group_images:
+      children:
+        - group_image_du_haut
+        - group_image_du_bas
+      parent_name: group_styles
+      weight: 21
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Images
+    group_image_du_haut:
+      children:
+        - field_top_image
+        - field_top_image_mobile
+      parent_name: group_images
+      weight: 20
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Image du haut'
+    group_image_du_bas:
+      children:
+        - field_image
+        - field_image_mobile
+      parent_name: group_images
+      weight: 22
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Image du bas'
+id: paragraph.block_parent.default
+targetEntityType: paragraph
+bundle: block_parent
+mode: default
+content:
+  field_angle:
+    weight: 25
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_background_image:
+    weight: 25
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_children_blocks:
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  field_color_1:
+    weight: 26
+    settings:
+      size: '15'
+      placeholder: ''
+      control: hue
+      format: rgb
+      opacity: 1
+      swatches: ''
+      position: 'bottom left'
+      theme: default
+      animation_speed: 50
+      animation_easing: swing
+      change_delay: 0
+      letter_case: lowercase
+      show_speed: 100
+      hide_speed: 100
+      keywords: ''
+      inline: 0
+    third_party_settings: {  }
+    type: jquery_minicolors_widget
+    region: content
+  field_color_2:
+    weight: 28
+    settings:
+      size: '15'
+      placeholder: ''
+      control: hue
+      format: rgb
+      opacity: 1
+      swatches: ''
+      position: 'bottom left'
+      theme: default
+      animation_speed: 50
+      animation_easing: swing
+      change_delay: 0
+      letter_case: lowercase
+      show_speed: 100
+      hide_speed: 100
+      keywords: ''
+      inline: 0
+    third_party_settings: {  }
+    type: jquery_minicolors_widget
+    region: content
+  field_image:
+    weight: 21
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_image_mobile:
+    weight: 23
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_stop_position_1:
+    weight: 27
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_stop_position_2:
+    weight: 29
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_top_image:
+    weight: 30
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_top_image_mobile:
+    weight: 31
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden:
+  created: true
+  status: true

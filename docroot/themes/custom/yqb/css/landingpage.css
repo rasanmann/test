@@ -75,7 +75,7 @@
       .page-node-type-landing-page .block-child {
         margin: 100px auto;
         padding: 0 40px; } }
-    .page-node-type-landing-page .block-child img {
+    .page-node-type-landing-page .block-child img, .page-node-type-landing-page .block-child svg {
       max-width: 100%; }
   .page-node-type-landing-page .transition-image {
     margin: -1px 0; }

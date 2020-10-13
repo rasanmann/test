@@ -1,0 +1,116 @@
+diff --git a/core/includes/file.inc b/core/includes/file.inc
+index 859ed8d0f0..7d55b1e67d 100644
+--- a/core/includes/file.inc
++++ b/core/includes/file.inc
+@@ -254,12 +254,14 @@ function file_create_url($uri) {
+   else {
+     // Attempt to return an external URL using the appropriate wrapper.
+     if ($wrapper = \Drupal::service('stream_wrapper_manager')->getViaUri($uri)) {
+-      return $wrapper->getExternalUrl();
+-    }
+-    else {
+-      return FALSE;
++      try {
++        return $wrapper->getExternalUrl();
++      }
++      catch (\LogicException $e) {
++      }
+     }
+   }
++  return FALSE;
+ }
+ 
+ /**
+diff --git a/core/lib/Drupal/Core/StreamWrapper/StreamWrapperInterface.php b/core/lib/Drupal/Core/StreamWrapper/StreamWrapperInterface.php
+index a354785aff..ab2139cba1 100644
+--- a/core/lib/Drupal/Core/StreamWrapper/StreamWrapperInterface.php
++++ b/core/lib/Drupal/Core/StreamWrapper/StreamWrapperInterface.php
+@@ -147,6 +147,9 @@ public function getUri();
+    *
+    * @return string
+    *   Returns a string containing a web accessible URL for the resource.
++   *
++   * @throws \LogicException
++   *   Thrown if the stream wrapper does not support external URLs.
+    */
+   public function getExternalUrl();
+ 
+diff --git a/core/modules/locale/src/StreamWrapper/TranslationsStream.php b/core/modules/locale/src/StreamWrapper/TranslationsStream.php
+index e7cb2788e7..1d5c7f386a 100644
+--- a/core/modules/locale/src/StreamWrapper/TranslationsStream.php
++++ b/core/modules/locale/src/StreamWrapper/TranslationsStream.php
+@@ -41,9 +41,7 @@ public function getDirectoryPath() {
+   }
+ 
+   /**
+-   * Implements Drupal\Core\StreamWrapper\StreamWrapperInterface::getExternalUrl().
+-   * @throws \LogicException
+-   *   PO files URL should not be public.
++   * {@inheritdoc}
+    */
+   public function getExternalUrl() {
+     throw new \LogicException('PO files URL should not be public.');
+diff --git a/core/modules/locale/tests/src/Functional/LocaleImportFunctionalTest.php b/core/modules/locale/tests/src/Functional/LocaleImportFunctionalTest.php
+index 9342c6ed84..847f54e664 100644
+--- a/core/modules/locale/tests/src/Functional/LocaleImportFunctionalTest.php
++++ b/core/modules/locale/tests/src/Functional/LocaleImportFunctionalTest.php
+@@ -373,6 +373,41 @@ public function testCreatedLanguageTranslation() {
+     $this->assertEqual($override->get('label'), 'Deutsch');
+   }
+ 
++  /**
++   * Tests that imported PO files aren't break the UI provided by "views".
++   *
++   * @throws \Behat\Mink\Exception\ExpectationException
++   * @throws \Drupal\Core\Entity\EntityStorageException
++   *
++   * @link https://www.drupal.org/project/drupal/issues/2449895
++   */
++  public function testPoFileImportAndAccessibilityOfFilesOverviewViewsPage() {
++    $this->container
++      ->get('module_installer')
++      ->install(['system', 'user', 'file', 'views']);
++
++    // Create and log in a user that's able to upload/import translations
++    // and has an access to the overview of files in a system.
++    $this->drupalLogin($this->drupalCreateUser([
++      'access administration pages',
++      'access files overview',
++      'administer languages',
++      'translate interface',
++    ]));
++
++    // Import a dummy PO file.
++    $filename = $this->importPoFile($this->getPoFile(), [
++      'langcode' => 'fr',
++    ]);
++
++    // The problem this test cover is exposed in an exception that is thrown
++    // by the "\Drupal\locale\StreamWrapper\TranslationsStream" when "views"
++    // module provides a page of files overview.
++    $this->drupalGet('admin/content/files');
++    $this->assertSession()->statusCodeEquals(200);
++    $this->assertSession()->pageTextContains($filename);
++  }
++
+   /**
+    * Helper function: import a standalone .po file in a given language.
+    *
+@@ -380,6 +415,9 @@ public function testCreatedLanguageTranslation() {
+    *   Contents of the .po file to import.
+    * @param array $options
+    *   (optional) Additional options to pass to the translation import form.
++   *
++   * @return string
++   *   The name of the file uploaded.
+    */
+   public function importPoFile($contents, array $options = []) {
+     $file_system = \Drupal::service('file_system');
+@@ -388,6 +426,7 @@ public function importPoFile($contents, array $options = []) {
+     $options['files[file]'] = $name;
+     $this->drupalPostForm('admin/config/regional/translate/import', $options, t('Import'));
+     $file_system->unlink($name);
++    return str_replace('temporary://', '', $name);
+   }
+ 
+   /**

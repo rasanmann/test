@@ -1,0 +1,94 @@
+uuid: b38f5b51-a4b9-4266-830c-9bda6563d725
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.block_parent
+  module:
+    - entity_reference_revisions
+id: node.landing_page.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: landing_page
+label: 'Contenu modulable'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      block_parent: block_parent
+    target_bundles_drag_drop:
+      accordeon:
+        weight: 19
+        enabled: false
+      content:
+        weight: 20
+        enabled: false
+      bloc_parent:
+        weight: 21
+        enabled: false
+      gallery:
+        weight: 21
+        enabled: false
+      gallery_image:
+        weight: 22
+        enabled: false
+      block_parent:
+        enabled: true
+        weight: 23
+      gouvernance_employe:
+        weight: 23
+        enabled: false
+      gouvernance_texte:
+        weight: 24
+        enabled: false
+      image_mosaique:
+        weight: 25
+        enabled: false
+      media_mosaique:
+        weight: 26
+        enabled: false
+      block_full:
+        weight: 26
+        enabled: false
+      block_half:
+        weight: 27
+        enabled: false
+      mosaique:
+        weight: 27
+        enabled: false
+      primary_title_h2:
+        weight: 28
+        enabled: false
+      texte_avec_arriere_plan:
+        weight: 29
+        enabled: false
+      texte_et_image:
+        weight: 30
+        enabled: false
+      tirroir:
+        weight: 31
+        enabled: false
+      valeur:
+        weight: 32
+        enabled: false
+      valeurs:
+        weight: 33
+        enabled: false
+      vip_drawer:
+        weight: 34
+        enabled: false
+      vip_drawer_card:
+        weight: 35
+        enabled: false
+      vip_drawer_section:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions
