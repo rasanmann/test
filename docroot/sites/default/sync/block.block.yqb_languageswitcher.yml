@@ -1,6 +1,6 @@
 uuid: 5d34a88a-a8ad-4a0c-b905-5aa46b1ff57c
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - language
@@ -9,7 +9,7 @@ dependencies:
 id: yqb_languageswitcher
 theme: yqb
 region: sub_navigation
-weight: -30
+weight: -33
 provider: null
 plugin: 'language_block:language_interface'
 settings:

@@ -9,7 +9,7 @@ dependencies:
 id: weatherblock
 theme: yqb
 region: sub_navigation
-weight: -34
+weight: -37
 provider: null
 plugin: weather-menu-block
 settings:
