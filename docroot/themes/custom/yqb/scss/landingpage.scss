@@ -25,10 +25,22 @@
   }
   .region-content {
     padding: 0;
+    > .tabs{
+      margin: 0;
+    }
   }
   a[target="_blank"]::after {
     content: none;
     display: none;
+  }
+
+  #layout-main{
+    max-width: none;
+    .navbar-main, .region-sub-navigation, #layout-footer{
+      max-width: 1680px;
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 
   // General
@@ -39,6 +51,12 @@
     max-width: (1280px + 2 * 40px);
     margin: 60px auto;
     padding: 0 20px;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      text-align: unset;
+    }
+
     @media (min-width: 1024px) {
       margin: 100px auto;
       padding: 0 40px;
@@ -176,15 +194,17 @@
       margin: 0 -100px;
     }
     .icon-item {
-      margin: 50px 0;
       display: block;
+      margin: 50px 0;
       @media (min-width: 1024px) {
         margin: 0 100px;
       }
       img {
+        margin: auto;
         max-width: 250px;
         @media (min-width: 1024px) {
           max-width: 350px;
+          margin: 0;
         }
       }
     }
@@ -236,7 +256,10 @@
       width: 100%;
     }
     .form-actions {
-      justify-content: flex-end;
+      justify-content: space-around;
+      @media (min-width: 768px) {
+        justify-content: flex-end;
+      }
     }
     .btn-primary {
       background-color: currentColor;
@@ -246,10 +269,10 @@
     margin: -30px 0;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     margin: -15px -30px;
     @media (min-width: 600px) {
       justify-content: center;
+      flex-wrap: wrap;
     }
   }
   .sponsor-item {
@@ -261,6 +284,7 @@
     }
   }
   .block-conditions {
+    text-align: left;
     .title-conditions {
       font-size: 20px;
       line-height: 26px;

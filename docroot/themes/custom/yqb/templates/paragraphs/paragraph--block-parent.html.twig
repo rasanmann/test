@@ -17,11 +17,6 @@
     <div{{ attributes.addClass(classes) }} style="background-image: linear-gradient({{content.field_angle.0}}, {{content.field_color_1.0}} {{content.field_stop_position_1.0}}, {{content.field_color_2.0}} {{content.field_stop_position_2.0}});">
   {% endif %}
 
-    {% if paragraph.position == 1 %}
-      {# INSERT HERE LOGO + LANGUAGE SWITCHER #}
-      {{paragraph.languages_switcher}}
-    {% endif %}
-
     {% if content.field_top_image.0 %}
         <div class="transition-image">
             <picture>

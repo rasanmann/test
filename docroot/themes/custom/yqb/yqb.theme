@@ -662,25 +662,6 @@ function yqb_preprocess_swiftmailer(&$variables) {
 }
 
 /**
- * Use full language code for the language switcher on landing_page
- *
- * @param $variables
- */
-function yqb_preprocess_links__language_block(&$variables) {
-  if ( $node = \Drupal::routeMatch()->getParameter('node') ) {
-    $content_type = $node->bundle();
-    if($node->bundle() == 'landing_page'){
-      foreach ($variables['links'] as $i => $link) {
-        /** @var \Drupal\language\Entity\ConfigurableLanguage $linkLanguage */
-        $linkLanguage = $link['link']['#options']['language'];
-        $variables['links'][$i]['link']['#title'] = $linkLanguage->get('label');
-      }
-    }
-  }
-}
-
-
-/**
  * HOOK_preprocess_field
  * To get paragraph position
  * Add language switcher to block_parent if first one
