@@ -12,7 +12,7 @@ dependencies:
 id: navigationsecondaireenglish
 theme: yqb
 region: sub_navigation
-weight: -35
+weight: -32
 provider: null
 plugin: 'system_menu_block:secondary-en'
 settings:

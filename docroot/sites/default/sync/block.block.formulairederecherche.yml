@@ -9,7 +9,7 @@ dependencies:
 id: formulairederecherche
 theme: yqb
 region: sub_navigation
-weight: -34
+weight: -31
 provider: null
 plugin: search_form_block
 settings:

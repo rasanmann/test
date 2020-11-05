@@ -13,7 +13,7 @@ _core:
 id: yqb_footer
 theme: yqb
 region: sub_navigation
-weight: -29
+weight: -26
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

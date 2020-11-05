@@ -9,7 +9,7 @@ _core:
 id: yqb_local_actions
 theme: yqb
 region: content
-weight: -24
+weight: -23
 provider: null
 plugin: local_actions_block
 settings:
