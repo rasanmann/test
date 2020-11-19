@@ -6,7 +6,14 @@ dependencies:
     - field.storage.paragraph.field_icons
     - paragraphs.paragraphs_type.block_icons
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      file: file
+      alt: '0'
+      title: '0'
 id: paragraph.block_icons.field_icons
 field_name: field_icons
 entity_type: paragraph
@@ -14,7 +21,7 @@ bundle: block_icons
 label: Icônes
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

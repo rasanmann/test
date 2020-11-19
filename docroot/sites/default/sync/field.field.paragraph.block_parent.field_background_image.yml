@@ -6,7 +6,14 @@ dependencies:
     - field.storage.paragraph.field_background_image
     - paragraphs.paragraphs_type.block_parent
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 id: paragraph.block_parent.field_background_image
 field_name: field_background_image
 entity_type: paragraph
@@ -14,7 +21,7 @@ bundle: block_parent
 label: 'Image de fond'
 description: 'L''image de fond à priorité sur le dégradé linéaire.<br>Taille recommandée : 1920x1570px'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

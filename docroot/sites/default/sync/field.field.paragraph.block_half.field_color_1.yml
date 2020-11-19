@@ -12,7 +12,7 @@ bundle: block_half
 label: 'Couleur primaire'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: '#012d8b'
