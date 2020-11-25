@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.landing_page.body
+    - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_paragraphs
     - node.type.landing_page
   module:
@@ -21,5 +22,6 @@ content:
     region: content
 hidden:
   body: true
+  field_metatags: true
   field_paragraphs: true
   langcode: true

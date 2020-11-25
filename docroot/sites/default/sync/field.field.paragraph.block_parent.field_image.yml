@@ -19,7 +19,7 @@ field_name: field_image
 entity_type: paragraph
 bundle: block_parent
 label: 'Image du bas'
-description: ''
+description: 'Taille recommandée : 1920x510px'
 required: false
 translatable: true
 default_value: {  }

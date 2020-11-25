@@ -2177,7 +2177,8 @@
         "keywords": [
             "reflection",
             "static"
-        ]
+        ],
+        "abandoned": "roave/better-reflection"
     },
     {
         "name": "drupal-composer/drupal-scaffold",
@@ -3682,6 +3683,60 @@
         "support": {
             "source": "https://git.drupalcode.org/project/field_group",
             "issues": "https://www.drupal.org/project/issues/field_group"
+        }
+    },
+    {
+        "name": "drupal/file_checker",
+        "version": "1.0.0-alpha2",
+        "version_normalized": "1.0.0.0-alpha2",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/file_checker.git",
+            "reference": "8.x-1.0-alpha2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/file_checker-8.x-1.0-alpha2.zip",
+            "reference": "8.x-1.0-alpha2",
+            "shasum": "9f208ee5c3e453ef87b665f1336213417479d254"
+        },
+        "require": {
+            "drupal/core": "^8"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-1.0-alpha2",
+                "datestamp": "1529878120",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Alpha releases are not covered by Drupal security advisories."
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "gnindl",
+                "homepage": "https://www.drupal.org/user/421442"
+            },
+            {
+                "name": "jonathanshaw",
+                "homepage": "https://www.drupal.org/user/3237629"
+            },
+            {
+                "name": "mdeltito",
+                "homepage": "https://www.drupal.org/user/332968"
+            }
+        ],
+        "description": "Verifies that files managed by Drupal actually exist at the location where Drupal believes they are.",
+        "homepage": "https://www.drupal.org/project/file_checker",
+        "support": {
+            "source": "https://git.drupalcode.org/project/file_checker"
         }
     },
     {

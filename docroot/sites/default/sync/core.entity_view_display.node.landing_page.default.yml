@@ -4,16 +4,25 @@ status: true
 dependencies:
   config:
     - field.field.node.landing_page.body
+    - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_paragraphs
     - node.type.landing_page
   module:
     - entity_reference_revisions
+    - metatag
     - user
 id: node.landing_page.default
 targetEntityType: node
 bundle: landing_page
 mode: default
 content:
+  field_metatags:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
   field_paragraphs:
     weight: 1
     label: visually_hidden

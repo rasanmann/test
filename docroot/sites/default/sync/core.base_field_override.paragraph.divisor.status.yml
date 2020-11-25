@@ -1,0 +1,22 @@
+uuid: 79df4d8a-0461-4c6b-bd5d-fd49d4165592
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.divisor
+id: paragraph.divisor.status
+field_name: status
+entity_type: paragraph
+bundle: divisor
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean
