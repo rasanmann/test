@@ -663,8 +663,8 @@ function yqb_preprocess_swiftmailer(&$variables) {
 
 /**
  * HOOK_preprocess_field
- * To get last paragraph position
- *
+ * To get paragraph position
+ * Add language switcher to block_parent if first one
  * @param $variables
  */
 function yqb_preprocess_field(&$variables) {
@@ -672,6 +672,13 @@ function yqb_preprocess_field(&$variables) {
     foreach($variables['items'] as $idx => $item) {
       $variables['items'][$idx]['content']['#paragraph']->position = $idx + 1;
       $variables['items'][$idx]['content']['#paragraph']->total = count($variables['items']);
+
+      if($variables['items'][$idx]['content']['#paragraph']->getType() == "block_parent" && $variables['items'][$idx]['content']['#paragraph']->position == 1){
+        $block = \Drupal\block\Entity\Block::load('yqb_languageswitcher');
+        $variables['items'][$idx]['content']['#paragraph']->languages_switcher = \Drupal::entityTypeManager()
+                    ->getViewBuilder('block')
+                    ->view($block);
+      }
     }
   }
 }
@@ -785,7 +792,6 @@ function yqb_preprocess_node(&$variables){
     $view_page = \Drupal\Core\Url::fromRoute('view.commerces.page_1')->toString();
     $variables['view_commerces_path'] = $view_page;
   }
-
 }
 /**
  * HOOK_theme_suggestions_page_alter

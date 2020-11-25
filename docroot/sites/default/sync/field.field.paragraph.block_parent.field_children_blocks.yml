@@ -20,7 +20,7 @@ bundle: block_parent
 label: 'Blocs enfants'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -35,33 +35,27 @@ settings:
       block_full: block_full
       block_half: block_half
     target_bundles_drag_drop:
-      block_parent:
-        weight: 23
-        enabled: false
-      divisor:
-        enabled: true
-        weight: 23
       accordeon:
         weight: 24
         enabled: false
-      block_icons:
-        enabled: true
-        weight: 24
-      webform_newsletter:
-        enabled: true
-        weight: 25
-      sponsors:
-        enabled: true
-        weight: 26
       block_full:
         enabled: true
         weight: 26
       block_half:
         enabled: true
         weight: 27
+      block_icons:
+        enabled: true
+        weight: 24
+      block_parent:
+        weight: 23
+        enabled: false
       content:
         weight: 28
         enabled: false
+      divisor:
+        enabled: true
+        weight: 23
       gallery:
         weight: 29
         enabled: false
@@ -86,6 +80,9 @@ settings:
       primary_title_h2:
         weight: 36
         enabled: false
+      sponsors:
+        enabled: true
+        weight: 26
       texte_avec_arriere_plan:
         weight: 37
         enabled: false
@@ -110,4 +107,7 @@ settings:
       vip_drawer_section:
         weight: 44
         enabled: false
+      webform_newsletter:
+        enabled: true
+        weight: 25
 field_type: entity_reference_revisions

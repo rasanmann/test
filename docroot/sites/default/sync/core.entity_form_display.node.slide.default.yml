@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.slide.field_image
-    - field.field.node.slide.field_open_new_window
     - field.field.node.slide.field_order
     - field.field.node.slide.field_tile_background_color
     - field.field.node.slide.field_tile_link
@@ -28,35 +27,28 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_image:
-    weight: 13
+    weight: 12
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
     region: content
-  field_open_new_window:
-    weight: 15
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_order:
-    weight: 17
+    weight: 15
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_tile_background_color:
-    weight: 14
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_tile_link:
-    weight: 16
+    weight: 14
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -101,7 +93,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 11
     region: content
     third_party_settings: {  }
   sticky:
@@ -118,11 +110,6 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  translation:
-    weight: 11
-    region: content
-    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

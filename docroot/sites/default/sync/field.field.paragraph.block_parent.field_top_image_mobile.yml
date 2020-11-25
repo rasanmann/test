@@ -6,15 +6,22 @@ dependencies:
     - field.storage.paragraph.field_top_image_mobile
     - paragraphs.paragraphs_type.block_parent
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 id: paragraph.block_parent.field_top_image_mobile
 field_name: field_top_image_mobile
 entity_type: paragraph
 bundle: block_parent
 label: 'Image du haut mobile'
-description: ''
+description: 'Taille recommandée : 320x240px'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

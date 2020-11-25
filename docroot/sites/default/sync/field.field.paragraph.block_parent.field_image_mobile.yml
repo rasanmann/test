@@ -11,15 +11,15 @@ dependencies:
 third_party_settings:
   content_translation:
     translation_sync:
+      alt: alt
       file: '0'
-      alt: '0'
       title: '0'
 id: paragraph.block_parent.field_image_mobile
 field_name: field_image_mobile
 entity_type: paragraph
 bundle: block_parent
 label: 'Image du bas mobile'
-description: ''
+description: 'Taille recommandée : 320x240px'
 required: false
 translatable: true
 default_value: {  }

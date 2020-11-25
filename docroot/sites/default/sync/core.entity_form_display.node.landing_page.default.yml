@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.landing_page.body
+    - field.field.node.landing_page.field_metatags
     - field.field.node.landing_page.field_paragraphs
     - node.type.landing_page
   module:
+    - metatag
     - paragraphs
     - path
     - scheduler
@@ -32,6 +34,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    weight: 28
+    settings:
+      sidebar: true
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
   field_paragraphs:
     weight: 26
     settings:
@@ -45,8 +54,8 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
       features:
-        duplicate: duplicate
         collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
     third_party_settings: {  }
     type: paragraphs
     region: content

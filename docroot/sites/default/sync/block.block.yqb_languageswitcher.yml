@@ -16,13 +16,13 @@ settings:
   id: 'language_block:language_interface'
   label: 'Language switcher'
   provider: language
-  label_display: ''
+  label_display: '0'
 visibility:
   language:
     id: language
     langcodes:
-      en: en
       fr: fr
+      en: en
     negate: false
     context_mapping:
       language: '@language.current_language_context:language_interface'

@@ -19,6 +19,7 @@ global-styling:
       css/homepage.css: {}
       css/bureau_controle_access.css: {}
       'https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap': { type: external}
+      css/cssfix.css: {}
 landing-page-styling:
   css:
     theme:
@@ -26,12 +27,22 @@ landing-page-styling:
       css/libraries.css: {}
       js/libraries/photoswipe/photoswipe.css: {}
       js/libraries/photoswipe/default-skin/default-skin.css: {}
+      css/base.css: {}
       css/grid.css: {}
       css/style.css: {}
       css/views.css: {}
       css/ie9.css: { browsers: { IE: 'lte IE 9', '!IE': false }, minified: true }
       css/2019-03.css: {}
+      css/gouvernance-direction-generale.css: {}
+      css/mosaique.css: {}
+      css/accordion.css: {}
+      css/menu.css: {}
+      css/mission-valeurs.css: {}
+      css/homepage.css: {}
+      css/bureau_controle_access.css: {}
+      'https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap': { type: external}
       css/landingpage.css: {}
+      css/cssfix.css: {}
   js:
     js/app.js: {}
     js/landingpage.js: {}
