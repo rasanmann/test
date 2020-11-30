@@ -9,7 +9,7 @@ dependencies:
 id: yqb_languageswitcher
 theme: yqb
 region: sub_navigation
-weight: -33
+weight: -30
 provider: null
 plugin: 'language_block:language_interface'
 settings:

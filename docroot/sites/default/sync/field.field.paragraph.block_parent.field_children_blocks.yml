@@ -20,7 +20,7 @@ bundle: block_parent
 label: 'Blocs enfants'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

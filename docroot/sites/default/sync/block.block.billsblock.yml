@@ -12,7 +12,7 @@ dependencies:
 id: billsblock
 theme: yqb
 region: content
-weight: -20
+weight: -19
 provider: null
 plugin: bills_block
 settings:

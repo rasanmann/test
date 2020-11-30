@@ -613,7 +613,7 @@ var App = (function ($, Drupal, Bootstrap) {
             if (window.google && window.google.maps) {
                 callback();
             } else {
-                $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBdJOIfM8Px1SLih8yJLSqo18GzF2lTVoY', function (data, textStatus, jqxhr) {
+                $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAcp2QT1Yb_U2XjCQiCf3seDhEdpM06-OA', function (data, textStatus, jqxhr) {
                     console.log('Google Maps loaded');
                     callback();
                 });
