@@ -9,3 +9,7 @@ Imported PO files have no public URL
 Source: patches/imported_po_files_2449895-72.patch
 
 
+$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted
+Source: patches/2810355-82.patch
+
+
