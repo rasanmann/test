@@ -93,7 +93,8 @@
       },
       "drupal/core": {
         "Multiple usages of FieldPluginBase::getEntity do not check for NULL, leading to WSOD": "https://www.drupal.org/files/issues/2019-11-12/3007424-57-8-7-x.patch",
-        "Imported PO files have no public URL" : "patches/imported_po_files_2449895-72.patch"
+        "Imported PO files have no public URL" : "patches/imported_po_files_2449895-72.patch",
+        "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted" : "patches/2810355-82.patch"
       },
       "drupal/pathauto":{
         "Bulk generate should be able to recreate aliases" : "https://www.drupal.org/files/issues/patch_2678558_2.diff"

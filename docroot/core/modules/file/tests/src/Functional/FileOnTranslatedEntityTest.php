@@ -206,4 +206,37 @@ class FileOnTranslatedEntityTest extends FileFieldTestBase {
     $this->assertTrue($file->isTemporary());
   }
 
+  /**
+   * Tests if file field tracks file usages correctly on translated nodes.
+   */
+  public function testFileUsage() {
+    /** @var \Drupal\file\FileUsage\FileUsageInterface $file_usage */
+    $file_usage = \Drupal::service('file.usage');
+
+    // Enable language selector on the basic page edit form.
+    $edit = [
+      'language_configuration[language_alterable]' => 1,
+    ];
+    $this->drupalPostForm('admin/structure/types/manage/page', $edit, t('Save content type'));
+
+    // Create a node and upload a file.
+    $node = $this->drupalCreateNode(['type' => 'page']);
+    $edit = [
+      'files[' . $this->fieldName . '_0]' => \Drupal::service('file_system')->realpath($this->drupalGetTestFiles('text')[0]->uri),
+    ];
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
+
+    // Check if the file usage is correct.
+    $file = \Drupal\file\Entity\File::load($this->getLastFileId());
+    $this->assertEqual($file_usage->listUsage($file), ['file' => ['node' => [$node->id() => '1']]]);
+
+    // Check if the file usage is tracked correctly when changing the original
+    // language of an entity.
+    $edit = [
+      'langcode[0][value]' => 'fr',
+    ];
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
+    $this->assertEqual($file_usage->listUsage($file), ['file' => ['node' => [$node->id() => '1']]]);
+  }
+
 }
