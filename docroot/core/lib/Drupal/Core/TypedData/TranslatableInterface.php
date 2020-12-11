@@ -31,6 +31,18 @@ interface TranslatableInterface {
   public function language();
 
   /**
+   * Overrides isDefaultTranslation() result.
+   *
+   * @param bool|null $is_default_translation
+   *   If boolean value is passed, the value will override the result of
+   *   isDefaultTranslation() method. If NULL is passed, the default logic will
+   *   be used for determining the result.
+   *
+   * @internal
+   */
+  public function setIsDefaultTranslation(bool $is_default_translation = NULL);
+
+  /**
    * Checks whether the translation is the default one.
    *
    * @return bool

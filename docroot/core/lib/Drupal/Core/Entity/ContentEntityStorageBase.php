@@ -887,7 +887,16 @@ abstract class ContentEntityStorageBase extends EntityStorageBase implements Con
     if ($method == 'postSave' && !empty($entity->original)) {
       $original_langcodes = array_keys($entity->original->getTranslationLanguages());
       foreach (array_diff($original_langcodes, $langcodes) as $removed_langcode) {
+        /** @var \Drupal\Core\Entity\ContentEntityInterface $translation */
         $translation = $entity->original->getTranslation($removed_langcode);
+
+        // Fields may rely on the isDefaultTranslation() method to determine
+        // what is going to be deleted - the whole entity or a particular
+        // translation.
+        if ($translation->isDefaultTranslation()) {
+          $translation->setIsDefaultTranslation(FALSE);
+        }
+
         $fields = $translation->getTranslatableFields();
         foreach ($fields as $name => $items) {
           $items->delete();

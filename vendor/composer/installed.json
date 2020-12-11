@@ -3118,7 +3118,8 @@
                 }
             },
             "patches_applied": {
-                "Imported PO files have no public URL": "patches/imported_po_files_2449895-72.patch"
+                "Imported PO files have no public URL": "patches/imported_po_files_2449895-72.patch",
+                "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted": "patches/2810355-82.patch"
             }
         },
         "installation-source": "dist",
