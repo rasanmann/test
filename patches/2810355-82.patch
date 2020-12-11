@@ -1,0 +1,141 @@
+diff --git a/core/lib/Drupal/Core/Entity/ContentEntityBase.php b/core/lib/Drupal/Core/Entity/ContentEntityBase.php
+index 35dca9a9c6..0c366cd479 100644
+--- a/core/lib/Drupal/Core/Entity/ContentEntityBase.php
++++ b/core/lib/Drupal/Core/Entity/ContentEntityBase.php
+@@ -86,6 +86,15 @@
+    */
+   protected $activeLangcode = LanguageInterface::LANGCODE_DEFAULT;
+ 
++  /**
++   * Can be used to override isDefaultTranslation() result.
++   *
++   * @var null|bool
++   *
++   * @internal
++   */
++  protected $isDefaultTranslation = NULL;
++
+   /**
+    * Local cache for the default language code.
+    *
+@@ -409,10 +418,21 @@ public function setRevisionTranslationAffectedEnforced($enforced) {
+     return $this;
+   }
+ 
++  /**
++   * {@inheritdoc}
++   */
++  public function setIsDefaultTranslation(bool $is_default_translation = NULL) {
++    $this->isDefaultTranslation = $is_default_translation;
++    return $this;
++  }
++
+   /**
+    * {@inheritdoc}
+    */
+   public function isDefaultTranslation() {
++    if ($this->isDefaultTranslation !== NULL) {
++      return $this->isDefaultTranslation;
++    }
+     return $this->activeLangcode === LanguageInterface::LANGCODE_DEFAULT;
+   }
+ 
+diff --git a/core/lib/Drupal/Core/Entity/ContentEntityStorageBase.php b/core/lib/Drupal/Core/Entity/ContentEntityStorageBase.php
+index c667ff2d4a..ddfc3177da 100644
+--- a/core/lib/Drupal/Core/Entity/ContentEntityStorageBase.php
++++ b/core/lib/Drupal/Core/Entity/ContentEntityStorageBase.php
+@@ -844,7 +844,16 @@ protected function invokeFieldMethod($method, ContentEntityInterface $entity) {
+     if ($method == 'postSave' && !empty($entity->original)) {
+       $original_langcodes = array_keys($entity->original->getTranslationLanguages());
+       foreach (array_diff($original_langcodes, $langcodes) as $removed_langcode) {
++        /** @var \Drupal\Core\Entity\ContentEntityInterface $translation */
+         $translation = $entity->original->getTranslation($removed_langcode);
++
++        // Fields may rely on the isDefaultTranslation() method to determine
++        // what is going to be deleted - the whole entity or a particular
++        // translation.
++        if ($translation->isDefaultTranslation()) {
++          $translation->setIsDefaultTranslation(FALSE);
++        }
++
+         $fields = $translation->getTranslatableFields();
+         foreach ($fields as $name => $items) {
+           $items->delete();
+diff --git a/core/lib/Drupal/Core/TypedData/TranslatableInterface.php b/core/lib/Drupal/Core/TypedData/TranslatableInterface.php
+index 0889ea3677..0a2c82b2cb 100644
+--- a/core/lib/Drupal/Core/TypedData/TranslatableInterface.php
++++ b/core/lib/Drupal/Core/TypedData/TranslatableInterface.php
+@@ -30,6 +30,18 @@
+    */
+   public function language();
+ 
++  /**
++   * Overrides isDefaultTranslation() result.
++   *
++   * @param bool|null $is_default_translation
++   *   If boolean value is passed, the value will override the result of
++   *   isDefaultTranslation() method. If NULL is passed, the default logic will
++   *   be used for determining the result.
++   *
++   * @internal
++   */
++  public function setIsDefaultTranslation(bool $is_default_translation = NULL);
++
+   /**
+    * Checks whether the translation is the default one.
+    *
+diff --git a/core/modules/file/tests/src/Functional/FileOnTranslatedEntityTest.php b/core/modules/file/tests/src/Functional/FileOnTranslatedEntityTest.php
+index b36fe78683..c8e0254b50 100644
+--- a/core/modules/file/tests/src/Functional/FileOnTranslatedEntityTest.php
++++ b/core/modules/file/tests/src/Functional/FileOnTranslatedEntityTest.php
+@@ -206,4 +206,37 @@ public function testSyncedFiles() {
+     $this->assertTrue($file->isTemporary());
+   }
+ 
++  /**
++   * Tests if file field tracks file usages correctly on translated nodes.
++   */
++  public function testFileUsage() {
++    /** @var \Drupal\file\FileUsage\FileUsageInterface $file_usage */
++    $file_usage = \Drupal::service('file.usage');
++
++    // Enable language selector on the basic page edit form.
++    $edit = [
++      'language_configuration[language_alterable]' => 1,
++    ];
++    $this->drupalPostForm('admin/structure/types/manage/page', $edit, t('Save content type'));
++
++    // Create a node and upload a file.
++    $node = $this->drupalCreateNode(['type' => 'page']);
++    $edit = [
++      'files[' . $this->fieldName . '_0]' => \Drupal::service('file_system')->realpath($this->drupalGetTestFiles('text')[0]->uri),
++    ];
++    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
++
++    // Check if the file usage is correct.
++    $file = \Drupal\file\Entity\File::load($this->getLastFileId());
++    $this->assertEqual($file_usage->listUsage($file), ['file' => ['node' => [$node->id() => '1']]]);
++
++    // Check if the file usage is tracked correctly when changing the original
++    // language of an entity.
++    $edit = [
++      'langcode[0][value]' => 'fr',
++    ];
++    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
++    $this->assertEqual($file_usage->listUsage($file), ['file' => ['node' => [$node->id() => '1']]]);
++  }
++
+ }
+diff --git a/core/tests/Drupal/KernelTests/Core/Entity/ContentEntityCloneTest.php b/core/tests/Drupal/KernelTests/Core/Entity/ContentEntityCloneTest.php
+index 2b53f0c71b..cd5e57e35b 100644
+--- a/core/tests/Drupal/KernelTests/Core/Entity/ContentEntityCloneTest.php
++++ b/core/tests/Drupal/KernelTests/Core/Entity/ContentEntityCloneTest.php
+@@ -297,7 +297,7 @@ public function testEntityPropertiesModifications() {
+     // Retrieve the entity properties.
+     $reflection = new \ReflectionClass($entity);
+     $properties = $reflection->getProperties(~\ReflectionProperty::IS_STATIC);
+-    $translation_unique_properties = ['activeLangcode', 'translationInitialize', 'fieldDefinitions', 'languages', 'langcodeKey', 'defaultLangcode', 'defaultLangcodeKey', 'revisionTranslationAffectedKey', 'validated', 'validationRequired', 'entityTypeId', 'typedData', 'cacheContexts', 'cacheTags', 'cacheMaxAge', '_serviceIds', '_entityStorages'];
++    $translation_unique_properties = ['activeLangcode', 'translationInitialize', 'fieldDefinitions', 'languages', 'langcodeKey', 'defaultLangcode', 'defaultLangcodeKey', 'revisionTranslationAffectedKey', 'validated', 'validationRequired', 'entityTypeId', 'typedData', 'cacheContexts', 'cacheTags', 'cacheMaxAge', '_serviceIds', '_entityStorages', 'isDefaultTranslation'];
+ 
+     foreach ($properties as $property) {
+       // Modify each entity property on the clone and assert that the change is
