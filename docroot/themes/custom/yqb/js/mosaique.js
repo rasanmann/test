@@ -101,29 +101,31 @@
 
       for (var i = 0; i < items.length; i++) {
         list += '<div class="siema-item-container">';
-
-
-        if (typeof (items[i].video) !== 'undefined' && items[i].video === true) {
-          list += '<p class="label-over-video-in-carousel">' + items[i].label + '</p>'
+        
+        if (typeof (items[i]) !== 'undefined'){
+          if (typeof (items[i].video) !== 'undefined' && items[i].video === true) {
+            list += '<p class="label-over-video-in-carousel">' + items[i].label + '</p>'
+          }
+          list +=
+            '<button class="close" name="close">' +
+            '<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 77.07 77.07" enable-background="new 0 0 77.07 77.07" xml:space="preserve"><g><g i:extraneous="self"><g><g><polygon points="0,7.071 7.071,0 77.07,69.998 69.999,77.07 0,7.071"></polygon></g><g><polygon points="0,69.998 69.999,0 77.07,7.071 7.071,77.07 0,69.998"></polygon></g></g></g></g></svg>' +
+            '</button>';
+  
+          if (typeof (items[i].video) !== 'undefined' && items[i].video === true) {
+            list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
+              '<video id="carousel-video-nb-' + videoId + '" controls="controls" height="100%">' +
+              '<source src="' + items[i].src + '" type="video/mp4">' +
+              '</video>';
+  
+            videoId++;
+          } else if (this.isIframe(items[i])) {
+            list += '<iframe src="' + items[i] + '" width=\"100%\" height=\"535\" style=\"margin-top:40px\" frameborder=0 ></iframe>';
+          } else {
+            list += '<img src="' + items[i] + '" style="margin-top:40px"' + '/>';
+          }
+          list += '</div>';
         }
-        list +=
-          '<button class="close" name="close">' +
-          '<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 77.07 77.07" enable-background="new 0 0 77.07 77.07" xml:space="preserve"><g><g i:extraneous="self"><g><g><polygon points="0,7.071 7.071,0 77.07,69.998 69.999,77.07 0,7.071"></polygon></g><g><polygon points="0,69.998 69.999,0 77.07,7.071 7.071,77.07 0,69.998"></polygon></g></g></g></g></svg>' +
-          '</button>';
-
-        if (typeof (items[i].video) !== 'undefined' && items[i].video === true) {
-          list += '<div class="video-full-screen" data-id="video-nb-' + videoId + '"></div>' +
-            '<video id="carousel-video-nb-' + videoId + '" controls="controls" height="100%">' +
-            '<source src="' + items[i].src + '" type="video/mp4">' +
-            '</video>';
-
-          videoId++;
-        } else if (this.isIframe(items[i])) {
-          list += '<iframe src="' + items[i] + '" width=\"100%\" height=\"535\" style=\"margin-top:40px\" frameborder=0 ></iframe>';
-        } else {
-          list += '<img src="' + items[i] + '" style="margin-top:40px"' + '/>';
-        }
-        list += '</div>';
+       
       }
       var controls = '<div class="controls">' +
         '<button class="prev"><span style="background-image: none;" class="icon icon-left-arrow-2"><svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" 295="126.9" height="68.1" viewBox="0 0 126.9 68.1"><style>.st0{fill:#05f}</style><path class="st0" d="M125.8 6.1l-59.9 61c-1.4 1.4-3.6 1.4-5 0L1 6.1C-.4 4.7-.4 2.4 1 1S4.6-.4 6 1l57.4 58.4L120.8 1c1.4-1.4 3.6-1.4 5 0 .7.7 1 1.6 1 2.5.1 1.1-.3 2-1 2.6z"></path></svg></span></button>' +
@@ -304,13 +306,14 @@
     allIframesVideos: function() {
       var iframes = document.querySelectorAll("iframe");
       var arrIframes = [];
-
+      
       Array.from(iframes).forEach(function (iframe) {
         arrIframes.push(iframe.contentWindow.location.href);
       });
       return arrIframes;
     }
   };
-
-  yqb_mosaique.callEverything();
+  if ($(".field--name-field-paragraph-media-mosaique").length > 0) {
+    yqb_mosaique.callEverything();
+  }
 }(window.jQuery, window.Drupal, window.Siema));
