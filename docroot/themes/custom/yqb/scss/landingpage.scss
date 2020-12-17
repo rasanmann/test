@@ -212,12 +212,14 @@
   .block-form {
     max-width: (588px + 2 * 40px);
     margin: 30px auto;
+
     @media (min-width: 768px) {
-      margin: -60px auto 30px;
+      margin: 30px auto;
     }
     @media (min-width: 1200px) {
-      margin: -180px auto 40px;
+      margin: 40px auto;
     }
+
     h3 {
       font-size: 26px;
       line-height: 28px;
@@ -319,6 +321,21 @@
           }
         }
       }
+    }
+  }
+}
+
+// Landing page static Air canada specific
+.node-id-1341061{
+  .block-form {
+    max-width: (588px + 2 * 40px);
+    margin: 30px auto;
+
+    @media (min-width: 768px) {
+      margin: -60px auto 30px;
+    }
+    @media (min-width: 1200px) {
+      margin: -180px auto 40px;
     }
   }
 }
