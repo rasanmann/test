@@ -72,6 +72,7 @@ class CheckoutForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $receipt = $this->customerManager->getReceipt();
 
+    \Drupal::logger('yqb_payments')->notice($this->customerManager->getReferenceNumber());
     if (!$receipt) {
       try {
         if (($monerisResult = $this->monerisGateway->purchase(

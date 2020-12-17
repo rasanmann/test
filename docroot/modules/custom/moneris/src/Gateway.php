@@ -52,6 +52,7 @@ class Gateway {
     $amount = number_format($amount, 2);
 
     $siteName = \Drupal::config('system.site')->get('name');
+    $this->logger->debug(print_r('ORDERID GATEWAY:'.strtoupper(substr($orderId, 0, 50))));
     $params = [
       'type' => 'res_purchase_cc',
       'data_key' => $token,
