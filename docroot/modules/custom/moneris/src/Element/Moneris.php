@@ -53,7 +53,7 @@ class Moneris extends FormElement
         ]
       ]
     ];
-    // $element['#attributes']['value'] = $config->get('moneris.api_key');
+    $element['#attributes']['value'] = $config->get('moneris.api_key');
 
     return $element;
   }
