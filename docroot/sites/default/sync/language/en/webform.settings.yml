@@ -6,8 +6,7 @@ settings:
   default_wizard_next_button_label: 'Next Page >'
   default_preview_next_button_label: Preview
   default_preview_label: Preview
-  default_previous_submission_message: 'You have already submitted this webform. <a href="#">View your previous submission</a>.'
-  default_previous_submissions_message: 'You have already submitted this webform. <a href="#">View your previous submissions</a>.'
+  default_confirmation_message: 'New submission added to [webform:title].'
 mail:
   default_subject: 'Form submission from: [webform-submission:source-entity]'
   default_body_text: "Submitted on [webform-submission:created]\nSubmitted by: [webform-submission:user]\n\nSubmitted values are:\n[webform-submission:values]\n"
