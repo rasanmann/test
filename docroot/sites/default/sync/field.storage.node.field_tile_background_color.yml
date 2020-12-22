@@ -28,6 +28,9 @@ settings:
     -
       value: tile-teal
       label: Turquoise
+    -
+      value: tile-gray
+      label: Gris
   allowed_values_function: ''
 module: options
 locked: false

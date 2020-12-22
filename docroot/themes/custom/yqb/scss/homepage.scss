@@ -58,7 +58,7 @@
                 background-position: center;
 
                 & + .bg-color{
-                    opacity: 0.8;
+                    opacity: 0.6;
                 }
             }
 
@@ -75,7 +75,10 @@
                 background-color: #0a0a0b;
             }
             .tile-purple {
-                 background-color: #2f1f94;
+                background-color: #2f1f94;
+            }
+            .tile-gray {
+                background-color: #7e7e7e;
             }
 
             h2{
