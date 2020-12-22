@@ -43,7 +43,7 @@
       background-repeat: no-repeat;
       background-position: center; }
       .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image + .bg-color {
-        opacity: 0.8; }
+        opacity: 0.6; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .tile-teal {
       background-color: #23b5c7; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .tile-blue {
@@ -54,6 +54,8 @@
       background-color: #0a0a0b; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .tile-purple {
       background-color: #2f1f94; }
+    .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .tile-gray {
+      background-color: #7e7e7e; }
     .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide h2 {
       font-size: 40px;
       margin: 0 0 5px;
