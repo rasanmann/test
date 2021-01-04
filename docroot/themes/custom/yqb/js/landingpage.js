@@ -12,6 +12,10 @@
                 if($(this).find('.button--primary').length){
                     $(this).find('.button--primary').css({'color' : $(this).find('.button--primary').css('color') , 'background-color' : $(this).find('.button--primary').attr('data-secondary')})
                 }
+                if($(this).find('iframe').length){ 
+                  var iframe = $(this).find('iframe');
+                  iframe.wrap( "<div class='embed-responsive embed-responsive-16by9'></div>");
+                }
             });
         }
     });
