@@ -213,10 +213,10 @@
     margin: 30px auto; }
     @media (min-width: 768px) {
       .page-node-type-landing-page .block-form {
-        margin: -60px auto 30px; } }
+        margin: 30px auto; } }
     @media (min-width: 1200px) {
       .page-node-type-landing-page .block-form {
-        margin: -180px auto 40px; } }
+        margin: 40px auto; } }
     .page-node-type-landing-page .block-form h3 {
       font-size: 26px;
       line-height: 28px; }
@@ -302,3 +302,13 @@
           transition: all ease-in 0.2s; }
           .page-node-type-landing-page .block-conditions ul li a:hover {
             filter: brightness(0.5); }
+
+.node-id-1341061 .block-form {
+  max-width: 668px;
+  margin: 30px auto; }
+  @media (min-width: 768px) {
+    .node-id-1341061 .block-form {
+      margin: -60px auto 30px; } }
+  @media (min-width: 1200px) {
+    .node-id-1341061 .block-form {
+      margin: -180px auto 40px; } }
