@@ -15,8 +15,6 @@ jQuery(document).ready(function($){
     var linkText = $('#block-yqbblockalert .form-group ~ .link').html();
 
     //add them to the block innerhtml
-    console.log(blockText);
-    console.log(linkText);
 
     block.html(blockText + " " + linkText);
     link.remove();

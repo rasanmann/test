@@ -35,6 +35,7 @@ framework:
     bootstrap/js/tab.js: {}
     bootstrap/js/transition.js: {}
     js/landingpage.js: {}
+    js/alerts.js: {}
   dependencies:
     - yqb/modernizr
     - core/classList
@@ -147,11 +148,3 @@ controllers:
 router:
   js:
     js/router.js: {}
-
-
-alerts:
-    version: 1.x
-    js:
-      js/alerts.js: {}
-    dependencies:
-      - core/jquery

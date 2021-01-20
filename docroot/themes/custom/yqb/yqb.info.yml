@@ -27,7 +27,6 @@ regions:
 
 libraries:
   - 'yqb/global-js'
-  - 'yqb/alerts'
 
 libraries-extend:
    bootstrap/framework:
