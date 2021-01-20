@@ -68,15 +68,15 @@ function yqb_page_attachments_alter(array &$page) {
   if ($node instanceof \Drupal\node\NodeInterface && $node->getType() == 'landing_page') {
 
     // Remove Global styling for landing page and add specific libraries to it. (See yqb.libraries.yml)
-    if (in_array('yqb/global-styling', $page['#attached']['library'])) {
-      $index = array_search('yqb/global-styling', $page['#attached']['library']);
-      unset($page['#attached']['library'][$index]);
-      $page['#attached']['library'][] = 'yqb/landing-page-styling';
-    }
-    if (in_array('yqb/global-js', $page['#attached']['library'])) {
-      $index = array_search('yqb/global-js', $page['#attached']['library']);
-      unset($page['#attached']['library'][$index]);
-    }
+    // if (in_array('yqb/global-styling', $page['#attached']['library'])) {
+    //   $index = array_search('yqb/global-styling', $page['#attached']['library']);
+    //   unset($page['#attached']['library'][$index]);
+    //   $page['#attached']['library'][] = 'yqb/landing-page-styling';
+    // }
+    // if (in_array('yqb/global-js', $page['#attached']['library'])) {
+    //   $index = array_search('yqb/global-js', $page['#attached']['library']);
+    //   unset($page['#attached']['library'][$index]);
+    // }
   }
   // Webview specific css sheet
   if (isset($_GET['webview'])) {

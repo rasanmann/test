@@ -141,7 +141,12 @@ var Payments = (function ($, Drupal, Bootstrap) {
 
     if (ev.originalEvent.data === 'recaptcha-setup') return;
 
-    var respData = JSON.parse(ev.originalEvent.data);
+    var respData = {};
+    try{
+      respData = JSON.parse(ev.originalEvent.data);
+    }catch(e){
+      return;
+    }
 
     if (respData.dataKey) {
       // Great success

@@ -26,10 +26,12 @@ regions:
   footer_overlay: 'Footer overlay'
 
 libraries:
-  - 'yqb/global-styling'
-  - 'yqb/bootstrap-scripts'
   - 'yqb/global-js'
   - 'yqb/alerts'
+
+libraries-extend:
+   bootstrap/framework:
+     - yqb/framework
 
 libraries-override:
   # Remove an entire library.
