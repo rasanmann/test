@@ -312,8 +312,10 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
           $node = \Drupal\node\Entity\Node::load($offer);
           $form['field_offre']['widget']['#default_value'] = $node->getTitle();
 
-          $form['field_departement']['#type'] = 'hidden';
-          $form['field_departement']['widget']['#default_value'] = current($node->field_department->getValue());
+          if($node->field_department){
+            $form['field_departement']['#type'] = 'hidden';
+            $form['field_departement']['widget']['#default_value'] = current($node->field_department->getValue());
+          }
         }
         else {
           $form['field_offre']['#type'] = 'hidden';
