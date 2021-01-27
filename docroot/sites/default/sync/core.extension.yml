@@ -115,7 +115,6 @@ module:
   yqb_api: 0
   yqb_bills: 0
   yqb_blocks: 0
-  yqb_delete_files: 0
   yqb_destinations: 0
   yqb_forms: 0
   yqb_helpdesk: 0

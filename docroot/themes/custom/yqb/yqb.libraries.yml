@@ -1,26 +1,4 @@
-global-styling:
-  css:
-    theme:
-      css/bootstrap.css: {}
-      css/libraries.css: {}
-      js/libraries/photoswipe/photoswipe.css: {}
-      js/libraries/photoswipe/default-skin/default-skin.css: {}
-      css/base.css: {}
-      css/grid.css: {}
-      css/style.css: {}
-      css/views.css: {}
-      css/ie9.css: { browsers: { IE: 'lte IE 9', '!IE': false }, minified: true }
-      css/2019-03.css: {}
-      css/gouvernance-direction-generale.css: {}
-      css/mosaique.css: {}
-      css/accordion.css: {}
-      css/menu.css: {}
-      css/mission-valeurs.css: {}
-      css/homepage.css: {}
-      css/bureau_controle_access.css: {}
-      'https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap': { type: external}
-      css/cssfix.css: {}
-landing-page-styling:
+framework:
   css:
     theme:
       css/bootstrap.css: {}
@@ -44,8 +22,20 @@ landing-page-styling:
       css/landingpage.css: {}
       css/cssfix.css: {}
   js:
-    js/app.js: {}
+    bootstrap/js/affix.js: {}
+    bootstrap/js/alert.js: {}
+    bootstrap/js/button.js: {}
+    bootstrap/js/carousel.js: {}
+    bootstrap/js/collapse.js: {}
+    bootstrap/js/dropdown.js: {}
+    bootstrap/js/modal.js: {}
+    bootstrap/js/tooltip.js: {}
+    bootstrap/js/popover.js: {}
+    bootstrap/js/scrollspy.js: {}
+    bootstrap/js/tab.js: {}
+    bootstrap/js/transition.js: {}
     js/landingpage.js: {}
+    js/alerts.js: {}
   dependencies:
     - yqb/modernizr
     - core/classList
@@ -58,6 +48,7 @@ landing-page-styling:
     - yqb/controllers
     - yqb/modules
     - yqb/router
+
 # Global app js
 global-js:
   js:
@@ -157,26 +148,3 @@ controllers:
 router:
   js:
     js/router.js: {}
-
-
-alerts:
-    version: 1.x
-    js:
-      js/alerts.js: {}
-    dependencies:
-      - core/jquery
-
-#bootstrap-scripts:
-#  js:
-#    bootstrap/js/affix.js: {}
-#    bootstrap/js/alert.js: {}
-#    bootstrap/js/button.js: {}
-#    bootstrap/js/carousel.js: {}
-#    bootstrap/js/collapse.js: {}
-#    bootstrap/js/dropdown.js: {}
-#    bootstrap/js/modal.js: {}
-#    bootstrap/js/tooltip.js: {}
-#    bootstrap/js/popover.js: {}
-#    bootstrap/js/scrollspy.js: {}
-#    bootstrap/js/tab.js: {}
-#    bootstrap/js/transition.js: {}
