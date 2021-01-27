@@ -1,3 +1,2 @@
 elements: "first_name:\n  '#title': 'First name'\nlast_name:\n  '#title': 'Last name'\nemail:\n  '#title': Email\n"
 title: 'Newsletter subscription'
-settings: {  }
