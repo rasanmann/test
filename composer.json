@@ -11,7 +11,7 @@
     "cweagans/composer-patches": "^1.6.0",
     "drupal-composer/drupal-scaffold": "^2.0.0",
     "drupal/addtoany": "~1.12",
-    "drupal/ape": "^1.4",
+    "drupal/ape": "^1.5",
     "drupal/bootstrap": "~3.5",
     "drupal/bootstrap_layouts": "^5.1",
     "drupal/composer_manager": "1.0-rc2",

@@ -384,9 +384,29 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       break;
   }
 
+  // Get custom btn color from paragraph webform in landing page
   if(strpos($form_id, 'webform_submission_newsletter_subscription') !== false){
+    // Default value
     $form['actions']['submit']['#value'] = t('S\'inscrire');
     $form['actions']['submit']['#attributes']['style'][] = 'color: #b2daf3; background-color: #012d8b;';
+
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $paragraphs = $node->field_paragraphs->getValue();
+
+    foreach ( $paragraphs as $element ) {
+      $p = \Drupal\paragraphs\Entity\Paragraph::load( $element['target_id'] );
+      $children_paragraphs = $p->field_children_blocks->getValue();
+
+      foreach ($children_paragraphs as $child_paragraph) {
+        $c = \Drupal\paragraphs\Entity\Paragraph::load( $child_paragraph['target_id'] );
+        if($c->getType() == 'webform_newsletter' && $c->field_btn_color_1 && $c->field_btn_color_2){
+          if($c->field_btn_color_1->getValue() && $c->field_btn_color_2->getValue()){
+            $form['actions']['submit']['#attributes']['style'][] = 'color: '.$c->field_btn_color_2->getValue()[0]['value'].'; background-color: '.$c->field_btn_color_1->getValue()[0]['value'].';';
+          }
+        }
+      }
+    }
+    
   }
 
 }

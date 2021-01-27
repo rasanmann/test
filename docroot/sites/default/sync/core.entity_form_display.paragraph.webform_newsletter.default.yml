@@ -3,6 +3,8 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webform_newsletter.field_btn_color_1
+    - field.field.paragraph.webform_newsletter.field_btn_color_2
     - field.field.paragraph.webform_newsletter.field_color_1
     - field.field.paragraph.webform_newsletter.field_title
     - field.field.paragraph.webform_newsletter.field_titre
@@ -14,6 +16,50 @@ targetEntityType: paragraph
 bundle: webform_newsletter
 mode: default
 content:
+  field_btn_color_1:
+    weight: 11
+    settings:
+      size: '60'
+      placeholder: ''
+      control: hue
+      format: hex
+      opacity: 0
+      swatches: ''
+      position: 'bottom left'
+      theme: default
+      animation_speed: 50
+      animation_easing: swing
+      change_delay: 0
+      letter_case: lowercase
+      show_speed: 100
+      hide_speed: 100
+      keywords: ''
+      inline: 0
+    third_party_settings: {  }
+    type: jquery_minicolors_widget
+    region: content
+  field_btn_color_2:
+    weight: 12
+    settings:
+      size: '60'
+      placeholder: ''
+      control: hue
+      format: hex
+      opacity: 0
+      swatches: ''
+      position: 'bottom left'
+      theme: default
+      animation_speed: 50
+      animation_easing: swing
+      change_delay: 0
+      letter_case: lowercase
+      show_speed: 100
+      hide_speed: 100
+      keywords: ''
+      inline: 0
+    third_party_settings: {  }
+    type: jquery_minicolors_widget
+    region: content
   field_color_1:
     weight: 1
     settings:
@@ -54,9 +100,9 @@ content:
     region: content
   translation:
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   created: true
   status: true

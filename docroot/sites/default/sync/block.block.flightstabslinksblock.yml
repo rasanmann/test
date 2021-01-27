@@ -1,23 +1,25 @@
-uuid: 17f27c1e-c379-41e1-b587-d3301d020395
+uuid: 25606287-316d-4fd6-b60a-54f72231e579
 langcode: fr
 status: true
 dependencies:
   module:
     - system
-    - yqb_blocks
   theme:
     - yqb
 id: flightstabslinksblock
 theme: yqb
 region: top
-weight: 0
+weight: -34
 provider: null
-plugin: flights-tabs-block
+plugin: 'block_content:3f75a17f-f1aa-4a74-83e2-51b2871fa4f0'
 settings:
-  id: flights-tabs-block
+  id: 'block_content:3f75a17f-f1aa-4a74-83e2-51b2871fa4f0'
   label: 'Flights tabs Links block'
-  provider: yqb_blocks
-  label_display: '0'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
 visibility:
   request_path:
     id: request_path

@@ -3,6 +3,8 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webform_newsletter.field_btn_color_1
+    - field.field.paragraph.webform_newsletter.field_btn_color_2
     - field.field.paragraph.webform_newsletter.field_color_1
     - field.field.paragraph.webform_newsletter.field_title
     - field.field.paragraph.webform_newsletter.field_titre
@@ -12,6 +14,22 @@ targetEntityType: paragraph
 bundle: webform_newsletter
 mode: default
 content:
+  field_btn_color_1:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_btn_color_2:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_color_1:
     weight: 1
     label: hidden
