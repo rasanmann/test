@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2e21ec6c9fdf49e63abb6ab735c2563",
+    "content-hash": "395715d47c949b742fe79fb5a041eadd",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2242,29 +2242,26 @@
         },
         {
             "name": "drupal/ape",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ape.git",
-                "reference": "8.x-1.4"
+                "reference": "8.x-1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ape-8.x-1.4.zip",
-                "reference": "8.x-1.4",
-                "shasum": "d716a6feb4702009aa4f7e12509fd131b92db2bb"
+                "url": "https://ftp.drupal.org/files/projects/ape-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "bbc2710d875920b065fa8d8a13f321f472136953"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-1.4",
-                    "datestamp": "1541465584",
+                    "version": "8.x-1.5",
+                    "datestamp": "1611337704",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2284,7 +2281,7 @@
             "description": "Allows finer control of the Cache Control header.",
             "homepage": "https://www.drupal.org/project/ape",
             "support": {
-                "source": "http://cgit.drupalcode.org/ape"
+                "source": "https://git.drupalcode.org/project/ape"
             }
         },
         {
