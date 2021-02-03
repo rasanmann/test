@@ -2,4 +2,4 @@ project_name: yqb
 env_path: env
 commands:
   - type: folder
-    path: env/command
+    path: env/commands
