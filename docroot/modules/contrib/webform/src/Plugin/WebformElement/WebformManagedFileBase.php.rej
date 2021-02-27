@@ -1,0 +1,52 @@
+***************
+*** 512,518 ****
+        return $value;
+      }
+  
+-     return $this->entityTypeManager->getStorage('file')->load($value);
+    }
+  
+    /**
+--- 512,518 ----
+        return $value;
+      }
+  
++     return $this->entityTypeManager->getStorage('file')->loadUnchanged($value);
+    }
+  
+    /**
+***************
+*** 532,538 ****
+      if (empty($value)) {
+        return [];
+      }
+-     return $this->entityTypeManager->getStorage('file')->loadMultiple((array) $value);
+    }
+  
+    /**
+--- 532,540 ----
+      if (empty($value)) {
+        return [];
+      }
++     $fids = (array) $value;
++     $this->entityTypeManager->getStorage('file')->resetCache($fids);
++     return $this->entityTypeManager->getStorage('file')->loadMultiple($fids);
+    }
+  
+    /**
+***************
+*** 1270,1275 ****
+          $file->setFileUri($destination_uri);
+          $file->setFileName($this->fileSystem->basename($destination_uri));
+          $file->save();
+        }
+  
+        // Update file usage table.
+--- 1272,1278 ----
+          $file->setFileUri($destination_uri);
+          $file->setFileName($this->fileSystem->basename($destination_uri));
+          $file->save();
++         $this->entityTypeManager->getStorage('file')->resetCache([$file->id()]);
+        }
+  
+        // Update file usage table.
