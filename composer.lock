@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a42a24918b2d31406107d9c031f69d7",
+    "content-hash": "4128f7cef29b6a05472273f5fe836efa",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5498,7 +5498,8 @@
                     "services": {
                         "drush.services.yml": "^9"
                     }
-                }
+                },
+                "patches_applied": []
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [

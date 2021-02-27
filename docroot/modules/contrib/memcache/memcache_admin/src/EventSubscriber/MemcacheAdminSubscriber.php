@@ -4,7 +4,6 @@ namespace Drupal\memcache_admin\EventSubscriber;
 
 use Drupal\Core\Render\Element\HtmlTag;
 use Drupal\Core\Render\Markup;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -15,8 +14,6 @@ use Drupal\Core\Render\HtmlResponse;
  * Memcache Admin Subscriber.
  */
 class MemcacheAdminSubscriber implements EventSubscriberInterface {
-
-  use StringTranslationTrait;
 
   /**
    * {@inheritdoc}
@@ -83,10 +80,10 @@ class MemcacheAdminSubscriber implements EventSubscriberInterface {
               $build = [
                 '#theme'  => 'table',
                 '#header' => [
-                  $this->t('operation'),
-                  $this->t('total ms'),
-                  $this->t('total hits'),
-                  $this->t('total misses'),
+                  t('operation'),
+                  t('total ms'),
+                  t('total hits'),
+                  t('total misses'),
                 ],
                 '#rows'   => $memcache_stats['ops'],
               ];
@@ -97,11 +94,11 @@ class MemcacheAdminSubscriber implements EventSubscriberInterface {
               $build = [
                 '#type'  => 'table',
                 '#header' => [
-                  $this->t('ms'),
-                  $this->t('operation'),
-                  $this->t('bin'),
-                  $this->t('key'),
-                  $this->t('status'),
+                  t('ms'),
+                  t('operation'),
+                  t('bin'),
+                  t('key'),
+                  t('status'),
                 ],
               ];
               foreach ($memcache_stats['all'] as $row => $stats) {
@@ -120,7 +117,7 @@ class MemcacheAdminSubscriber implements EventSubscriberInterface {
             }
 
             if (!empty($output)) {
-              $response->setContent($response->getContent() . '<div id="memcache-devel"><h2>' . $this->t('Memcache statistics') . '</h2>' . $output . '</div>');
+              $response->setContent($response->getContent() . '<div id="memcache-devel"><h2>' . t('Memcache statistics') . '</h2>' . $output . '</div>');
             }
           }
         }

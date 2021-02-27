@@ -15,7 +15,6 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Site\Settings;
-use Drupal\file\FileInterface;
 use Drupal\swiftmailer\TransportFactoryInterface;
 use Drupal\swiftmailer\Utility\Conversion;
 use Exception;
@@ -372,31 +371,15 @@ class SwiftMailer implements MailInterface, ContainerFactoryPluginInterface {
           continue;
         }
 
+        // Get file data from local file, stream, or remote (e.g. http(s)) uri.
         $content = file_get_contents($file->uri);
+
         $filename = $file->filename;
         $filemime = $file->filemime;
-      }
-      // Drupal file.
-      elseif ($file instanceof FileInterface) {
-        // Extract required properties.
-        $content = file_get_contents($file->getFileUri());
-        $filename = $file->getFilename();
-        $filemime = $file->getMimeType();
-      }
-      if (is_array($file)) {
-        $filename = $file['filename'] ?? '';
-        $filemime = $file['filemime'] ?? '';
-        $content = $file['filecontent'] ?? '';
-      }
 
-      // Validate required fields.
-      if (empty($content) || empty($filename) || empty($filemime)) {
-        continue;
+        // Attach file.
+        $m->attach(new Swift_Attachment($content, $filename, $filemime));
       }
-
-
-      // Attach file.
-      $m->attach(new Swift_Attachment($content, $filename, $filemime));
     }
 
   }
