@@ -4307,6 +4307,10 @@
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
                 }
+            },
+            "patches_applied": {
+                "Add member tag support when subscribing": "./patches/mailchimp_tags.patch",
+                "Add Audience Tag on Signup Form": "./patches/add_audience_tag_signupform-3195736-1.patch"
             }
         },
         "installation-source": "dist",
@@ -4349,12 +4353,24 @@
                 "homepage": "https://www.drupal.org/user/1604434"
             },
             {
+                "name": "kescoto-thinkshout",
+                "homepage": "https://www.drupal.org/user/3664824"
+            },
+            {
                 "name": "levelos",
                 "homepage": "https://www.drupal.org/user/54135"
             },
             {
+                "name": "mariacha1",
+                "homepage": "https://www.drupal.org/user/2210776"
+            },
+            {
                 "name": "mshaver",
                 "homepage": "https://www.drupal.org/user/39079"
+            },
+            {
+                "name": "spncr",
+                "homepage": "https://www.drupal.org/user/3664814"
             },
             {
                 "name": "tauno",
@@ -5909,6 +5925,90 @@
             "issues": "https://www.drupal.org/project/issues/webform?version=8.x",
             "docs": "https://www.drupal.org/docs/8/modules/webform",
             "forum": "https://drupal.stackexchange.com/questions/tagged/webform"
+        }
+    },
+    {
+        "name": "drupal/webform_mailchimp",
+        "version": "5.9.0",
+        "version_normalized": "5.9.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/webform_mailchimp.git",
+            "reference": "8.x-5.9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/webform_mailchimp-8.x-5.9.zip",
+            "reference": "8.x-5.9",
+            "shasum": "d39d231d6381306d7c92b3fa55c135e934740ea4"
+        },
+        "require": {
+            "drupal/core": "^8 || ^9",
+            "drupal/mailchimp": "*",
+            "drupal/webform": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-5.9",
+                "datestamp": "1579957681",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            },
+            "patches_applied": {
+                "Provide user selectable interest groups as Webform predefined options": "https://www.drupal.org/files/issues/2019-10-05/3036323-interest-groups-predefined-options-15.patch",
+                "Add member tag configuration to webform mailchimp handler": "./patches/webform_mailchimp_tags.patch"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Berdir",
+                "homepage": "https://www.drupal.org/user/214652"
+            },
+            {
+                "name": "Todd Zebert",
+                "homepage": "https://www.drupal.org/user/762250"
+            },
+            {
+                "name": "blackdog",
+                "homepage": "https://www.drupal.org/user/110169"
+            },
+            {
+                "name": "das-peter",
+                "homepage": "https://www.drupal.org/user/762870"
+            },
+            {
+                "name": "grisendo",
+                "homepage": "https://www.drupal.org/user/848238"
+            },
+            {
+                "name": "hanoii",
+                "homepage": "https://www.drupal.org/user/23157"
+            },
+            {
+                "name": "levelos",
+                "homepage": "https://www.drupal.org/user/54135"
+            },
+            {
+                "name": "mbovan",
+                "homepage": "https://www.drupal.org/user/3149657"
+            },
+            {
+                "name": "miro_dietiker",
+                "homepage": "https://www.drupal.org/user/227761"
+            }
+        ],
+        "description": "Allows to send Webform submissions to MailChimp lists.",
+        "homepage": "https://www.drupal.org/project/webform_mailchimp",
+        "support": {
+            "source": "https://git.drupalcode.org/project/webform_mailchimp"
         }
     },
     {

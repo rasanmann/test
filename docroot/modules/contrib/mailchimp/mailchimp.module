@@ -421,7 +421,7 @@ function mailchimp_is_subscribed($list_id, $email, $reset = FALSE) {
  *
  * @see Mailchimp_Lists::subscribe()
  */
-function mailchimp_subscribe($list_id, $email, $merge_vars = NULL, $interests = [], $double_optin = FALSE, $format = 'html', $language = NULL, $gdpr_consent = FALSE) {
+function mailchimp_subscribe($list_id, $email, $merge_vars = NULL, $interests = [], $double_optin = FALSE, $format = 'html', $language = NULL, $gdpr_consent = FALSE, $member_tags = []) {
   $config = \Drupal::config('mailchimp.settings');
 
   if (empty($language)) {
@@ -438,12 +438,13 @@ function mailchimp_subscribe($list_id, $email, $merge_vars = NULL, $interests = 
       'format' => $format,
       'language' => $language,
       'gdpr_consent' => $gdpr_consent,
+      'member_tags' => $member_tags,
     ];
 
     return mailchimp_addto_queue('mailchimp_subscribe_process', $args);
   }
 
-  return mailchimp_subscribe_process($list_id, $email, $merge_vars, $interests, $double_optin, $format, $language, $gdpr_consent);
+  return mailchimp_subscribe_process($list_id, $email, $merge_vars, $interests, $double_optin, $format, $language, $gdpr_consent, $member_tags);
 }
 
 /**
@@ -451,7 +452,7 @@ function mailchimp_subscribe($list_id, $email, $merge_vars = NULL, $interests = 
  *
  * @see Mailchimp_Lists::subscribe()
  */
-function mailchimp_subscribe_process($list_id, $email, $merge_vars = NULL, $interests = [], $double_optin = FALSE, $format = 'html', $language = NULL, $gdpr_consent = FALSE) {
+function mailchimp_subscribe_process($list_id, $email, $merge_vars = NULL, $interests = [], $double_optin = FALSE, $format = 'html', $language = NULL, $gdpr_consent = FALSE, $member_tags = []) {
   $config = \Drupal::config('mailchimp.settings');
   $result = FALSE;
 
@@ -558,6 +559,11 @@ function mailchimp_subscribe_process($list_id, $email, $merge_vars = NULL, $inte
             ]
                  );
         }
+      }
+
+      // Add or update member tags.
+      if ($member_tags) {
+        $mc_lists->addTagsMember($list_id, $member_tags, $email);
       }
     }
     else {

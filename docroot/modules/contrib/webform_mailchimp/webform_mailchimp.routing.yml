@@ -1,0 +1,7 @@
+webform_mailchimp.import_group_options:
+  path: '/admin/structure/webform/config/options/import-webform-mailchimp-options'
+  defaults:
+    _form: '\Drupal\webform_mailchimp\Form\WebformMailchimpImportGroupsOptionsForm'
+    _title: 'Import Mailchimp Groups Options'
+  requirements:
+    _permission: 'administer mailchimp'

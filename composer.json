@@ -54,6 +54,7 @@
     "drupal/token": "^1.9",
     "drupal/views_field_view": "1.0.0-beta3",
     "drupal/webform": "^5.23",
+    "drupal/webform_mailchimp": "^5.9",
     "drupal/yamlform": "1.0-beta29",
     "drush/drush": "^9.3",
     "league/csv": "^8.0",
@@ -93,15 +94,16 @@
         "Views field view PHP warnings": "patches/views_field_view.patch"
       },
       "drupal/core": {
-        "Multiple usages of FieldPluginBase::getEntity do not check for NULL, leading to WSOD": "https://www.drupal.org/files/issues/2019-11-12/3007424-57-8-7-x.patch",
         "Imported PO files have no public URL" : "patches/imported_po_files_2449895-72.patch",
         "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted" : "patches/2810355-82.patch"
       },
-      "drupal/webform": { 
-        "Email link to file includes sid rather than actual sid value" : "https://www.drupal.org/files/issues/2021-01-14/3175525-31.patch" 
+      "drupal/mailchimp": {
+        "Add member tag support when subscribing": "./patches/mailchimp_tags.patch",
+        "Add Audience Tag on Signup Form" : "./patches/add_audience_tag_signupform-3195736-1.patch"
       },
-      "drupal/pathauto":{
-        "Bulk generate should be able to recreate aliases" : "https://www.drupal.org/files/issues/patch_2678558_2.diff"
+      "drupal/webform_mailchimp": {
+        "Provide user selectable interest groups as Webform predefined options": "https://www.drupal.org/files/issues/2019-10-05/3036323-interest-groups-predefined-options-15.patch",
+        "Add member tag configuration to webform mailchimp handler": "./patches/webform_mailchimp_tags.patch"
       }
     },
     "merge-plugin": {
