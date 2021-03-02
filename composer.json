@@ -59,6 +59,7 @@
     "drush/drush": "^9.3",
     "league/csv": "^8.0",
     "santerref/e-commerce-unified-api-php": "dev-master",
+    "thinkshout/mailchimp-api-php": "dev-master as 2.0.0",
     "wikimedia/composer-merge-plugin": "^1.0"
   },
   "require-dev": {

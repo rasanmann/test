@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3eb71c2c9b281a2a9dff851d1869991c",
+    "content-hash": "c3a930d1860c94a8791535f41cd0b91d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4002,7 +4002,8 @@
                     }
                 },
                 "patches_applied": {
-                    "Add member tag support when subscribing": "./patches/mailchimp_tags.patch"
+                    "Add member tag support when subscribing": "./patches/mailchimp_tags.patch",
+                    "Add Audience Tag on Signup Form": "./patches/add_audience_tag_signupform-3195736-1.patch"
                 }
             },
             "autoload": {
@@ -10040,16 +10041,16 @@
         },
         {
             "name": "thinkshout/mailchimp-api-php",
-            "version": "2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thinkshout/mailchimp-api-php.git",
-                "reference": "ffa6cf96efe3a7e8e0de8309737a7dae40f51981"
+                "reference": "a8500d1239b760b64feda5b6f3e442b99c6624e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thinkshout/mailchimp-api-php/zipball/ffa6cf96efe3a7e8e0de8309737a7dae40f51981",
-                "reference": "ffa6cf96efe3a7e8e0de8309737a7dae40f51981",
+                "url": "https://api.github.com/repos/thinkshout/mailchimp-api-php/zipball/a8500d1239b760b64feda5b6f3e442b99c6624e5",
+                "reference": "a8500d1239b760b64feda5b6f3e442b99c6624e5",
                 "shasum": ""
             },
             "require": {
@@ -10073,7 +10074,7 @@
                 "mail",
                 "mailchimp"
             ],
-            "time": "2018-02-27T17:52:03+00:00"
+            "time": "2019-11-20T20:38:19+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -10680,7 +10681,14 @@
             }
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "2.0.0",
+            "alias_normalized": "2.0.0.0",
+            "version": "9999999-dev",
+            "package": "thinkshout/mailchimp-api-php"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/file_checker": 15,
@@ -10688,6 +10696,7 @@
         "drupal/layout_plugin": 15,
         "drupal/stage_file_proxy": 15,
         "santerref/e-commerce-unified-api-php": 20,
+        "thinkshout/mailchimp-api-php": 20,
         "drupal/config_devel": 20,
         "eo/passbook": 20
     },
