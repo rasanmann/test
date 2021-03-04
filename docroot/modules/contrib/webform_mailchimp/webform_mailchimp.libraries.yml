@@ -1,0 +1,7 @@
+webform_mailchimp.groups_options:
+  version: VERSION
+  js:
+    js/webform_mailchimp.groups_options.fetch.js: {}
+    js/webform_mailchimp.groups_options.import_button.js: {}
+  dependencies:
+    - core/drupal.ajax

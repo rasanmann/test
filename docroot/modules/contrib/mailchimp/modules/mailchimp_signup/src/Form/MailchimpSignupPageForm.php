@@ -309,6 +309,8 @@ class MailchimpSignupPageForm extends FormBase {
     // Filter out blank fields so we don't erase values on the Mailchimp side.
     $mergevars = array_filter($form_state->getValue('mergevars'));
 
+    $audiencetag = array($this->signup->settings['audiencetag']);
+
     $email = $mergevars['EMAIL'];
 
     $gdpr_consent = $form_state->getValue('gdpr_consent');
@@ -350,7 +352,7 @@ class MailchimpSignupPageForm extends FormBase {
           $interests[] = $current_interests;
         }
       }
-      $result = mailchimp_subscribe($list_id, $email, $mergevars, $interests, $this->signup->settings['doublein'], 'html', NULL, $gdpr_consent);
+      $result = mailchimp_subscribe($list_id, $email, $mergevars, $interests, $this->signup->settings['doublein'], 'html', NULL, $gdpr_consent, $audiencetag);
 
       if (empty($result)) {
         $this->messenger->addWarning($this->t('There was a problem with your newsletter signup to %list.', [
