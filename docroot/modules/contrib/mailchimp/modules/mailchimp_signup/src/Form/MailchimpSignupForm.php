@@ -214,6 +214,32 @@ class MailchimpSignupForm extends EntityForm {
           '#disabled' => $mergevar->required,
         ];
       }
+
+        // TODO : - Multi audience tags
+        //        - Get Audience tag from Mailchimp or create a custom one
+        
+        $form['mc_lists_config']['audiencetags'] = [
+          '#prefix' => '<div id="audiencetags-wrapper">',
+          '#suffix' => '</div>',
+        ];
+    
+        $form['mc_lists_config']['audiencetags'] = [
+          '#type' => 'fieldset',
+          '#title' => $this->t('Audience Tag'),
+          '#description' => $this->t('Associate this form with a custom audience tag.'),
+          '#id' => 'mergefields-wrapper',
+          '#tree' => TRUE,
+          '#weight' => 20,
+        ];
+  
+        $form['mc_lists_config']['audiencetags']['audiencetag'] = [
+          '#type' => 'textfield',
+          '#title' => 'Audience Tag',
+          '#default_value' => isset($signup->settings['audiencetag']) ? $signup->settings['audiencetag'] : NULL,
+          '#required' => FALSE,
+          '#disabled' => FALSE,
+        ];
+
     }
 
     $form['subscription_settings'] = [
@@ -443,6 +469,7 @@ class MailchimpSignupForm extends EntityForm {
     }
 
     $signup->settings['mergefields'] = $mergefields;
+    $signup->settings['audiencetag'] = $form_state->getValue('audiencetags')['audiencetag'];
     $signup->settings['description'] = $form_state->getValue('description');
     $signup->settings['doublein'] = $form_state->getValue('doublein');
     $signup->settings['include_interest_groups'] = $form_state->getValue('include_interest_groups');
