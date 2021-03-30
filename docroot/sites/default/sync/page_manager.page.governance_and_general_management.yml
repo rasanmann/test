@@ -1,6 +1,6 @@
 uuid: 3d05ae0a-b9f1-4a48-9871-b69934f8cbb5
 langcode: fr
-status: true
+status: false
 dependencies: {  }
 id: governance_and_general_management
 label: 'Gouvernance d’entreprise et direction générale'
