@@ -213,8 +213,8 @@ handlers:
       bcc_options: {  }
       from_mail: _default
       from_options: {  }
-      from_name: '[webform-submission:values:name:raw]'
-      subject: 'Candidature - [webform-submission:values:department:value][webform-submission:values:offer:value]'
+      from_name: '[webform_submission:values:name:raw]'
+      subject: 'Candidature - [webform_submission:values:department:value][webform_submission:values:offer:value]'
       body: _default
       excluded_elements:
         explication: explication
@@ -243,7 +243,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: '[webform-submission:values:email:raw]'
+      to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -252,7 +252,7 @@ handlers:
       from_mail: _default
       from_options: {  }
       from_name: _default
-      subject: 'Confirmation de candidature - [webform-submission:values:department:value][webform-submission:values:offer:value]'
+      subject: 'Confirmation de candidature - [webform_submission:values:department:value][webform_submission:values:offer:value]'
       body: "Bonjour,\n\nNous accusons réception de votre demande d’emploi au sein de notre organisation. \n\nVeuillez noter que nous conserverons votre curriculum vitae pour une période de 6 (six) mois. \n\nNous vous invitons à consulter régulièrement notre site Web dans la section « Carrières ».\n\nNous vous remercions de l’intérêt manifesté à l’égard de l’Aéroport de Québec inc. et vous prions d’agréer nos salutations distinguées. \n\n* Veuillez noter que lors d’une ouverture de poste, seuls les candidats retenus pour une entrevue seront contactés. \n\n---------------------------\n\nCe courriel a été envoyé de façon automatisé, veuillez ne pas répondre à ce message."
       excluded_elements: {  }
       ignore_access: false
