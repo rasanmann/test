@@ -1,5 +1,69 @@
 [
     {
+        "name": "acquia/cohesion",
+        "version": "6.1.0",
+        "version_normalized": "6.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/acquia/cohesion.git",
+            "reference": "e0fa2c30fb0f7b4a4ad481a7c1eeff18a4856b2b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/acquia/cohesion/zipball/e0fa2c30fb0f7b4a4ad481a7c1eeff18a4856b2b",
+            "reference": "e0fa2c30fb0f7b4a4ad481a7c1eeff18a4856b2b",
+            "shasum": ""
+        },
+        "require": {
+            "cweagans/composer-patches": "^1.6",
+            "drupal/entity_reference_revisions": "^1.7",
+            "drupal/imce": "^1.7",
+            "drupal/token": "^1.5",
+            "ext-json": "*"
+        },
+        "require-dev": {
+            "acquia/coding-standards": "^0.4.1",
+            "behat/mink": "^1.7",
+            "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+            "phpunit/phpunit": "^6.5",
+            "symfony/phpunit-bridge": "^4.3"
+        },
+        "suggest": {
+            "drupal/admin_toolbar": "Provides a better UX for the standard admin toolbar",
+            "drupal/context": "Provides a UI for contexts.",
+            "drupal/google_analytics": "Provides integration with Google Analytics",
+            "drupal/menu_item_extras": "Make the Menu Link Content entity fully fieldable.",
+            "drupal/menu_link_attributes": "This module allows you to add attributes to your menu links or their wrapping <li> elements.",
+            "drupal/request_data_conditions": "Defines a set of conditions via the Drupal 8 Conditions Plugin API for use with the context module",
+            "drupal/search_api": "Provides a framework for easily creating searches on any entity known to Drupal, using any kind of search engine.",
+            "drupal/views_infinite_scroll": "Provides infinite scroll functionality to Views",
+            "drupal/webform": "This module allows you to use webforms."
+        },
+        "time": "2020-05-20T08:42:24+00:00",
+        "type": "drupal-module",
+        "extra": {
+            "drush": {
+                "services": {
+                    "drush.services.yml": "^9"
+                }
+            },
+            "enable-patching": true
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Acquia Engineering",
+                "homepage": "https://www.acquia.com",
+                "role": "Maintainer"
+            }
+        ],
+        "description": "Acquia Cohesion"
+    },
+    {
         "name": "alchemy/zippy",
         "version": "0.4.9",
         "version_normalized": "0.4.9.0",
@@ -3860,6 +3924,56 @@
         "homepage": "https://www.drupal.org/project/image_url_formatter",
         "support": {
             "source": "https://git.drupalcode.org/project/image_url_formatter"
+        }
+    },
+    {
+        "name": "drupal/imce",
+        "version": "1.8.0",
+        "version_normalized": "1.8.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/imce.git",
+            "reference": "8.x-1.8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/imce-8.x-1.8.zip",
+            "reference": "8.x-1.8",
+            "shasum": "32496efa05983dcdc5e6115272021fcea774c9b0"
+        },
+        "require": {
+            "drupal/core": "^8 || ^9"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-1.8",
+                "datestamp": "1586638244",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "thalles",
+                "homepage": "https://www.drupal.org/user/3589086"
+            },
+            {
+                "name": "ufku",
+                "homepage": "https://www.drupal.org/user/9910"
+            }
+        ],
+        "description": "Provides a file manager supporting personal folders.",
+        "homepage": "https://drupal.org/project/imce",
+        "support": {
+            "source": "https://git.drupalcode.org/project/imce"
         }
     },
     {
