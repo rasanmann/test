@@ -1,0 +1,19 @@
+uuid: 3575cf94-5b5e-4e3c-9d89-d52632c86ca2
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Complet (Block_content, Icon only)'
+id: block_content_icon_only_full
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: icon_only
+view_mode: full
+master_template: ''

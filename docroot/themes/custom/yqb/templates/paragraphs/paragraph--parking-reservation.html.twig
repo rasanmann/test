@@ -1,0 +1,18 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'block-child block-form'
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }} style="color: {{content.field_color_1.0 ? content.field_color_1.0 : '#012d8b'}}" data-secondary="{{content.field_color_2.0 ? content.field_color_2.0 : '#b2daf3'}}">
+  {% if content.field_title %}
+     <h3> {{ content.field_title }}</h3>
+  {% endif %}
+    <div class="container-form">
+      {{parking_reservation_form}}
+    </div>
+  </div>
+{% endblock paragraph %}

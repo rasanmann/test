@@ -1,0 +1,19 @@
+uuid: 8c7615d4-393d-46fa-bd43-910ea6e10785
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Index de recherche (Node, Balise)'
+id: node_beacon_search_index
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: beacon
+view_mode: search_index
+master_template: ''

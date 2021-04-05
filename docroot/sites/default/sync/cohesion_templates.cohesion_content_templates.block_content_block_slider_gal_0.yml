@@ -1,0 +1,19 @@
+uuid: bcd00085-b7bf-48d2-a693-059ac5ff5b10
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Block_content, Block slider gallery)'
+id: block_content_block_slider_gal_0
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: block_slider_gallery
+view_mode: token
+master_template: ''

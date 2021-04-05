@@ -1,0 +1,19 @@
+uuid: 75927576-0c81-43ea-ac07-491d5996b944
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Preview (Paragraph, Sponsors)'
+id: paragraph_sponsors_preview
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: paragraph
+bundle: sponsors
+view_mode: preview
+master_template: ''

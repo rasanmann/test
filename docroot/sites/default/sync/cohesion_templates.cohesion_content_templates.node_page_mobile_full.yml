@@ -1,0 +1,19 @@
+uuid: 1c4bfd39-38fc-4b6b-81fe-11f32d550e92
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Full content (Node, Page mobile)'
+id: node_page_mobile_full
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: page_mobile
+view_mode: full
+master_template: ''

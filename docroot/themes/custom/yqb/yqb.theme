@@ -295,7 +295,6 @@ function yqb_preprocess_container(array &$variables) {
 }
 
 function yqb_form_alter(&$form, &$form_state, $form_id) {
-
   switch ($form_id) {
     case 'contact_message_contact_us_form':
     case 'contact_message_comments_form':
@@ -381,6 +380,11 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
         $response->send();
         exit;
       }
+      break;
+
+    case strpos($form_id, 'webform_submission_parking_reservation') !== false:
+      // $form['#method'] = 'get';
+
       break;
   }
 
@@ -709,6 +713,24 @@ function yqb_preprocess_paragraph__webform_newsletter(&$variables) {
 
   $variables['webform_newsletter'] = $output;
 }
+
+/**
+ * yqb_preprocess_paragraph__parking_reservation
+ * Load parking reservation form in paragraph for basic page
+ *
+ * @param $variables
+ */
+function yqb_preprocess_paragraph__parking_reservation(&$variables) { 
+
+  $parking_reservation_form = \Drupal\webform\Entity\Webform::load('parking_reservation_form');
+
+  $output = \Drupal::entityTypeManager()
+      ->getViewBuilder('webform')
+      ->view($parking_reservation_form);
+
+  $variables['parking_reservation_form'] = $output;
+}
+
 /**
  * HOOK_paragraph_gallery
  * Rewrites child fields into parent for display purpose
@@ -793,6 +815,17 @@ function yqb_preprocess_block__herosearchblock(&$variables) {
 function yqb_preprocess_block__yqb_alert(&$variables){
     $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $variables['language'] = $language;
+}
+
+function yqb_preprocess_block__parking_reservation_block(&$variables){
+
+  $parking_reservation_form = \Drupal\webform\Entity\Webform::load('parking_reservation_form');
+
+  $output = \Drupal::entityTypeManager()
+      ->getViewBuilder('webform')
+      ->view($parking_reservation_form);
+
+  $variables['parking_reservation_form'] = $output;
 }
 
 function yqb_preprocess_node(&$variables){

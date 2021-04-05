@@ -1,0 +1,19 @@
+uuid: 770055de-e4e3-4b2f-bf23-afe4f0b98511
+langcode: fr
+status: false
+dependencies: {  }
+label: 'RSS (Node, Article de blogue)'
+id: node_blog_post_rss
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: blog_post
+view_mode: rss
+master_template: ''

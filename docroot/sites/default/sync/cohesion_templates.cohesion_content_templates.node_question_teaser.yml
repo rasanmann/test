@@ -1,0 +1,19 @@
+uuid: bf98a449-688f-4a23-8c0c-ad97b5d542c8
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Accroche (Node, Question)'
+id: node_question_teaser
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: question
+view_mode: teaser
+master_template: ''

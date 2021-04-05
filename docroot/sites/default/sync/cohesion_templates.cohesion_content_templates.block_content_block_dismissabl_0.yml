@@ -1,0 +1,19 @@
+uuid: 88a650a8-6684-4f61-8506-c67c8c55ea94
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Block_content, Block dismissable)'
+id: block_content_block_dismissabl_0
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: block_dismissable
+view_mode: token
+master_template: ''
