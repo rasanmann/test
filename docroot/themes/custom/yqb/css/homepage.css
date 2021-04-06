@@ -642,11 +642,12 @@
   #block-parking-reservation-block .webform-submission-form .panel,
   #block-parking-reservation-block .webform-submission-form > .form-group:not(.form-actions) {
     flex-grow: 1; }
-    @media (max-width: 638px) {
+    @media (max-width: 768px) {
       #block-parking-reservation-block .webform-submission-form .panel,
       #block-parking-reservation-block .webform-submission-form > .form-group:not(.form-actions) {
         flex-direction: column;
-        align-items: stretch; } }
+        align-items: stretch;
+        width: 100%; } }
 
 #block-parking-reservation-block .panel-heading {
   background: none;

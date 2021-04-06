@@ -861,9 +861,10 @@
         .panel,
         > .form-group:not(.form-actions) {
           flex-grow: 1;
-          @media (max-width: 638px) {
+          @media (max-width: 768px) {
             flex-direction: column;
             align-items: stretch;
+            width: 100%;
           }
         }
     }
@@ -882,7 +883,6 @@
     .form-item {
       flex-grow: 1;
     }
-    /////////////////////////
     .form-control {
       width: 100%;
     }
