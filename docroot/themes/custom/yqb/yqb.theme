@@ -384,7 +384,8 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
 
     case strpos($form_id, 'webform_submission_parking_reservation') !== false:
       // Enleve le size par defaut d'un input
-      $form['elements']['promo_code']['#size'] = NULL;
+      // dd($form['elements']['code_fieldset']);
+      $form['elements']['code_fieldset']['promo_code']['#size'] = NULL;
 
       // $form['#method'] = 'get';
       break;
