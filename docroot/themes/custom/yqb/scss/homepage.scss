@@ -841,32 +841,47 @@
         padding: 16px;
       }
     }
-    .webform-submission-form {
+}
+.paragraph--type--parking-reservation {
+  margin: 40px 0;
+  .container-form {
+    margin-left: 40px;
+    @media (max-width: 768px) {
+       margin-left: 0;
+     }
+   }
+}
+.webform-submission-parking-reservation-form-form {
+  max-width: 1280px;
+  margin: 0 auto;
+  .form-inner {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+    max-width: 1280px;
+    > * {
+        padding: 4px 8px;
+    }
+    .panel-body,
+    > .form-group:not(.form-actions) {
         display: flex;
         align-items: flex-end;
-        flex-wrap: wrap;
-        margin: 0 -8px;
+        margin: -4px;
         > * {
-            padding: 4px 8px;
+            padding: 4px;
         }
-        .panel-body,
-        > .form-group:not(.form-actions) {
-            display: flex;
-            align-items: flex-end;
-            margin: -4px;
-            > * {
-                padding: 4px;
-            }
-        }
-        .panel,
-        > .form-group:not(.form-actions) {
-          flex-grow: 1;
-          @media (max-width: 768px) {
-            flex-direction: column;
-            align-items: stretch;
-            width: 100%;
-          }
-        }
+    }
+    .panel,
+    > .form-group:not(.form-actions) {
+      flex-basis: 50%;
+      flex-grow: 1;
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        flex-basis: 100%;
+      }
     }
     .panel-heading {
       background: none;
@@ -896,6 +911,7 @@
         bottom: 30px;
         transform: translateY(50%);
     }
+}
 }
 .ui-datepicker table,
 .ui-datepicker-calendar {
