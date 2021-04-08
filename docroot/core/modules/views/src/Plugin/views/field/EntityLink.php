@@ -26,8 +26,7 @@ class EntityLink extends LinkBase {
    */
   protected function renderLink(ResultRow $row) {
     if ($this->options['output_url_as_text']) {
-      $url_info = $this->getUrlInfo($row);
-      return $url_info ? $url_info->toString() : '';
+      return $this->getUrlInfo($row)->toString();
     }
     return parent::renderLink($row);
   }
