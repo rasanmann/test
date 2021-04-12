@@ -13,8 +13,12 @@
   {% endif %}
   {{ title_suffix }}
 
-   <div class="container-form">
+  <div class="container-form">
       {{parking_reservation_form}}
-    </div>
-</section>
+  </div>
 
+  <div class="container-form">
+     <a href="{{ path('entity.node.canonical', {'node': 1388766}) }}">{{ 'Termes et conditions'|t }}</a>
+  </div>
+
+</section>

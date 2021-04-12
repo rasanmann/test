@@ -10,12 +10,12 @@ dependencies:
 id: parking_reservation_block
 theme: yqb
 region: content
-weight: 0
+weight: -22
 provider: null
 plugin: 'block_content:d43fcff2-cb5f-4145-9706-c163db7560c0'
 settings:
   id: 'block_content:d43fcff2-cb5f-4145-9706-c163db7560c0'
-  label: 'Réservez en ligne votre stationnement &lt;strong&gt;Économisez jusqu''à 50%&lt;/strong&gt;'
+  label: 'Prépayez en ligne votre stationnement &lt;strong&gt;Économisez jusqu''à 50%&lt;/strong&gt'
   provider: core
   label_display: visible
   status: true
