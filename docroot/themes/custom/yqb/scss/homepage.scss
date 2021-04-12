@@ -828,6 +828,9 @@
       padding: 16px;
     }
   }
+  .container-cgu {
+    margin-top: 16px;
+  }
 }
 .paragraph--type--parking-reservation {
   margin: 40px 0;
@@ -837,20 +840,17 @@
       margin-left: 0;
     }
   }
-  h3 .field--item{
+  h3 .field--item {
     display: block;
     text-align: center;
   }
 }
 .webform-submission-parking-reservation-form-form {
-  max-width: 1280px;
-  margin: 0 auto;
   .form-inner {
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
     margin: 0 -8px;
-    max-width: 1280px;
     > * {
       padding: 4px 8px;
     }
@@ -865,7 +865,7 @@
     }
     .panel,
     > .form-group:not(.form-actions) {
-      flex-basis: 50%;
+      // flex-basis: 50%;
       flex-grow: 1;
       @media (max-width: 768px) {
         flex-direction: column;
@@ -891,6 +891,7 @@
     }
     .form-control {
       width: 100%;
+      padding: 6px 12px;
     }
     .select-wrapper .form-control {
       margin: -2px 0;
