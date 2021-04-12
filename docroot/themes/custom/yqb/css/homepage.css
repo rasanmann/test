@@ -619,6 +619,7 @@
   height: 60px; }
 
 #block-parking-reservation-block .block-title {
+  font-weight: 400;
   text-align: center; }
 
 #block-parking-reservation-block .container-form {
@@ -649,24 +650,23 @@
   margin: 0 -8px; }
   .webform-submission-parking-reservation-form-form .form-inner > * {
     padding: 4px 8px; }
-  .webform-submission-parking-reservation-form-form .form-inner .panel-body,
-  .webform-submission-parking-reservation-form-form .form-inner > .form-group:not(.form-actions) {
+  .webform-submission-parking-reservation-form-form .form-inner .panel-body {
     display: flex;
     align-items: flex-end;
     margin: -4px; }
-    .webform-submission-parking-reservation-form-form .form-inner .panel-body > *,
-    .webform-submission-parking-reservation-form-form .form-inner > .form-group:not(.form-actions) > * {
+    .webform-submission-parking-reservation-form-form .form-inner .panel-body > * {
       padding: 4px; }
-  .webform-submission-parking-reservation-form-form .form-inner .panel,
-  .webform-submission-parking-reservation-form-form .form-inner > .form-group:not(.form-actions) {
+  .webform-submission-parking-reservation-form-form .form-inner .panel {
     flex-grow: 1; }
     @media (max-width: 768px) {
-      .webform-submission-parking-reservation-form-form .form-inner .panel,
-      .webform-submission-parking-reservation-form-form .form-inner > .form-group:not(.form-actions) {
+      .webform-submission-parking-reservation-form-form .form-inner .panel {
         flex-direction: column;
         align-items: stretch;
         width: 100%;
         flex-basis: 100%; } }
+  .webform-submission-parking-reservation-form-form .form-inner .form-type-processed-text {
+    flex-basis: 100%;
+    padding-bottom: 16px; }
   .webform-submission-parking-reservation-form-form .form-inner .panel-heading {
     background: none;
     font-weight: 700; }

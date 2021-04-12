@@ -819,6 +819,7 @@
 
 #block-parking-reservation-block {
   .block-title {
+    font-weight: 400;
     text-align: center;
   }
   .container-form {
@@ -854,8 +855,7 @@
     > * {
       padding: 4px 8px;
     }
-    .panel-body,
-    > .form-group:not(.form-actions) {
+    .panel-body {
       display: flex;
       align-items: flex-end;
       margin: -4px;
@@ -863,9 +863,7 @@
         padding: 4px;
       }
     }
-    .panel,
-    > .form-group:not(.form-actions) {
-      // flex-basis: 50%;
+    .panel {
       flex-grow: 1;
       @media (max-width: 768px) {
         flex-direction: column;
@@ -873,6 +871,10 @@
         width: 100%;
         flex-basis: 100%;
       }
+    }
+    .form-type-processed-text {
+      flex-basis: 100%;
+      padding-bottom: 16px;
     }
     .panel-heading {
       background: none;
