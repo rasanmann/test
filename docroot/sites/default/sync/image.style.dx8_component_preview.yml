@@ -1,0 +1,17 @@
+uuid: 6cd30794-6a05-4859-a305-3598a69061bb
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: AGM2lxeuz9JL7QpqZHvlYwuXjxvFOh5pzkFobbR5qBM
+name: dx8_component_preview
+label: 'Component preview'
+effects:
+  93201fea-d82d-498b-9cba-55947fda91fd:
+    uuid: 93201fea-d82d-498b-9cba-55947fda91fd
+    id: image_scale
+    weight: 1
+    data:
+      width: 250
+      height: 250
+      upscale: true
