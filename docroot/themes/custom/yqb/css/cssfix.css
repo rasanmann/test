@@ -1,2 +1,8 @@
 #layout-header .dropdown.open .dropdown-menu {
   width: 100%; }
+
+body.toolbar-horizontal.toolbar-tray-open {
+  padding-top: 79px !important; }
+
+body.toolbar-horizontal {
+  padding-top: 40px !important; }
