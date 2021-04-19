@@ -111,6 +111,7 @@ class MailchimpCampaignController extends ControllerBase {
         $this->t('Subject'),
         $this->t('Status'),
         $this->t('Mailchimp Audience'),
+        $this->t('Mailchimp Audience Tag'),
         $this->t('Mailchimp Template'),
         $this->t('Created'),
         $this->t('Actions'),
@@ -180,6 +181,20 @@ class MailchimpCampaignController extends ControllerBase {
 
       $content['campaigns_table'][$campaign_id]['list'] = [
         '#markup' => Link::fromTextAndUrl($campaign->list->name, $list_url)->toString(),
+      ];
+
+      $list_segments = mailchimp_campaign_get_list_segments($campaign->list->id, null);
+      $list_segment_name = '';
+      if (isset($campaign->mc_data->recipients->segment_opts->saved_segment_id)) {
+        foreach ($list_segments as $list_segment) {
+          if ($list_segment->id == $campaign->mc_data->recipients->segment_opts->saved_segment_id) {
+            $list_segment_name = $list_segment->name;
+          }
+        }
+      }
+
+      $content['campaigns_table'][$campaign_id]['audience_tag'] = [
+        '#markup' => $list_segment_name ? $list_segment_name : '',
       ];
 
       if (empty($campaign->mc_data->settings->template_id)) {

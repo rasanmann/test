@@ -9,3 +9,7 @@ Add Audience Tag on Signup Form
 Source: ./patches/add_audience_tag_signupform-3195736-1.patch
 
 
+Add Audience Tag on View mailchimp campagn /services/mailchimp/campaigns
+Source: ./patches/audience-tag-view-table.patch
+
+
