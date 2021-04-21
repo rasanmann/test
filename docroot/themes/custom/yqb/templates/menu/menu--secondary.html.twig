@@ -37,19 +37,19 @@
 
         {% for item in items %}
             {% if menu_level == 0 and item.is_expanded %}
-            <li{{ item.attributes.addClass('expanded', 'dropdown') }}>
+            <li{{ item.attributes.addClass('expanded', 'dropdown', item.url.getOption('attributes').class) }}>
                 <a href="{{ item.url }}" class="dropdown-toggle" data-target="#">
                     <span class="icon icon-right-arrow" data-grunticon-embed></span>{{ item.title }}
                 </a>
             {% else %}
                 {% if menu_level == 1 and item.is_expanded %}
-                <li{{ item.attributes.addClass('expanded', 'dropdown') }}>
+                <li{{ item.attributes.addClass('expanded', 'dropdown', item.url.getOption('attributes').class) }}>
                     <a href="{{ item.url }}" class="dropdown-toggle" data-target="#">
                         <span class="icon icon-right-arrow" data-grunticon-embed></span>
                         {{ item.title }}
                     </a>
                 {% else %}
-                    <li{{ item.attributes }}>
+                    <li{{ item.attributes.addClass(item.url.getOption('attributes').class) }}>
                         <a href="{{ item.url }}" {{ (item.url.getOption('attributes').target|length > 0) ? "target=" ~ item.url.getOption('attributes').target : '' }}>
                             {{ item.title }}
 
