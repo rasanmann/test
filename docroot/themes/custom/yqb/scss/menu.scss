@@ -19,3 +19,9 @@ ul.dropdown-menu {
 .no-touchevents #layout-header .dropdown-menu > li > a:hover .icon-right-arrow path {
   fill: blue;
 }
+
+header#layout-header .nav-secondary-target{
+  .terms-and-conditions{
+    display: none;
+  }
+}
