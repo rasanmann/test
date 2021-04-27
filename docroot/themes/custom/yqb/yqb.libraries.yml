@@ -56,6 +56,7 @@ global-js:
     js/libraries/siema-1.5/dist/siema.min.js: {}
     js/mosaique.js: {async: true}
     js/buttonMaker.js: {}
+    js/parkingReservation.js: {}
   dependencies:
     - yqb/modernizr
     - core/classList

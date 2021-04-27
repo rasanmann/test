@@ -383,11 +383,15 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       break;
 
     case strpos($form_id, 'webform_submission_parking_reservation') !== false:
+      $host = 'https://quebec.chauntrylab2.com/QuebecBooking/Booking/SearchParking';
       // Enleve le size par defaut d'un input
-      // dd($form['elements']['code_fieldset']);
       $form['elements']['code_fieldset']['promo_code']['#size'] = NULL;
 
-      // $form['#method'] = 'get';
+      // $form['elements']['start_datetime_fieldset']['start_date']['#value'] = '10122021';
+      // $form['elements']['end_datetime_fieldset']['end_date']['#value'] = '20122021';
+
+      $form['#action'] = $host;
+      $form['#attributes']['target'] = '_blank';
       break;
   }
 
