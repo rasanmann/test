@@ -387,9 +387,6 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       // Enleve le size par defaut d'un input
       $form['elements']['code_fieldset']['promo_code']['#size'] = NULL;
 
-      // $form['elements']['start_datetime_fieldset']['start_date']['#value'] = '10122021';
-      // $form['elements']['end_datetime_fieldset']['end_date']['#value'] = '20122021';
-
       $form['#action'] = $host;
       $form['#attributes']['target'] = '_blank';
       break;
