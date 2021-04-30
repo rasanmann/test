@@ -383,7 +383,13 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
       break;
 
     case strpos($form_id, 'webform_submission_parking_reservation') !== false:
+      $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
       $host = 'https://quebec.chauntrylab2.com/QuebecBooking/Booking/SearchParking';
+      if ($language == 'en'){
+        $host .= '?lang=en-gb';
+      }else{
+        $host .= '?lang=fr-ca';
+      }
       // Enleve le size par defaut d'un input
       $form['elements']['code_fieldset']['promo_code']['#size'] = NULL;
 

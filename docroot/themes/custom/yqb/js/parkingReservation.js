@@ -22,7 +22,13 @@ jQuery(document).ready(function($){
                 $('input[name=end_date]').val( fulldate );
             }
         });
-    }
+        
+        $('.webform-submission-parking-reservation-form-form').submit(function (e) {
+            setTimeout(function(){ 
+                $('.webform-submission-parking-reservation-form-form').find('.webform-button--submit').removeClass('is-loading is-clicked');
+            }, 1000);
+        });
+    }   
 
     //add leading zero if month/day is 9 or less
     function addZero(number) {

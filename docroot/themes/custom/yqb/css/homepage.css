@@ -618,19 +618,20 @@
   width: 50px;
   height: 60px; }
 
-#block-parking-reservation-block .block-title {
-  font-weight: 400;
-  text-align: center; }
-
-#block-parking-reservation-block .container-form {
-  background-color: #f0f4f8;
-  padding: 16px 32px; }
-  @media (max-width: 768px) {
-    #block-parking-reservation-block .container-form {
-      padding: 16px; } }
-
-#block-parking-reservation-block .container-cgu {
-  margin-top: 16px; }
+#block-parking-reservation-block {
+  margin: 20px auto;
+  background-color: #f0f4f8; }
+  #block-parking-reservation-block .block-title {
+    font-weight: 400;
+    text-align: center;
+    margin: 20px auto; }
+  #block-parking-reservation-block .container-form {
+    padding: 16px 32px; }
+    @media (max-width: 768px) {
+      #block-parking-reservation-block .container-form {
+        padding: 16px; } }
+  #block-parking-reservation-block .container-cgu {
+    margin-top: 16px; }
 
 .paragraph--type--parking-reservation {
   margin: 40px 0; }
@@ -642,6 +643,8 @@
   .paragraph--type--parking-reservation h3 .field--item {
     display: block;
     text-align: center; }
+  .paragraph--type--parking-reservation .container-cgu {
+    margin-top: 16px; }
 
 .webform-submission-parking-reservation-form-form .form-inner {
   display: flex;
