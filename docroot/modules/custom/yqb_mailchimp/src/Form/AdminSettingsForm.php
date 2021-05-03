@@ -36,8 +36,10 @@ class AdminSettingsForm extends ConfigFormBase {
     }
    
     $list_segments = [];
+    $list_interests = [];
     if (isset($list_id)) {
       $list_segments = mailchimp_campaign_get_list_segments($list_id, NULL);
+      $list_interests = yqb_mailchimp_campaign_get_list_interests($list_id, NULL);
     }
 
     $form['audience_tag'] = [
@@ -48,6 +50,17 @@ class AdminSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('audience_tag') ?? -1,
     ];
 
+    if($list_interests){
+      dump($list_interests);
+      // $form['group'] = [
+      //   '#type' => 'select',
+      //   '#title' => t('Topics/Interests'),
+      //   '#options' => $this->buildOptionList($list_segments, '-- Entire list --'),
+      //   '#required' => FALSE,
+      //   '#default_value' => $config->get('audience_tag') ?? -1,
+      // ];
+    }
+    
     $form['template_id'] = [
       '#type' => 'select',
       '#title' => t('Template'),

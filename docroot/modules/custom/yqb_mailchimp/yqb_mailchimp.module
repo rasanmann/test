@@ -56,3 +56,50 @@ function yqb_mailchimp_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
     $form['#attached']['library'][] = 'yqb_mailchimp/yqb_mailchimp';
   }
 }
+
+/**
+ * Gets an array of list categories for a given list ID.
+ *
+ * @param int $list_id
+ *   The list ID.
+ * @param string $type
+ *   The segment type to get. "static" or "saved".
+ *
+ * @return array
+ *   Array of Mailchimp list categoties (Group, interests, topics, etc).
+ */
+function yqb_mailchimp_campaign_get_list_interests($list_id, $type) {
+  /* @var \Mailchimp\MailchimpLists $mcapi */
+  $mcapi = mailchimp_get_api_object('MailchimpLists');
+
+  $parameters = [
+    'type' => $type,
+    'count' => 500,
+  ];
+
+  $categories = [];
+  try {
+    $response = $mcapi->getInterestCategories($list_id, $parameters);
+
+    foreach ($response->categories as $cat) {
+      $resp = $mcapi->getInterests($list_id, $cat->id, $parameters);
+
+      $categories[] = array('title' => $cat->title,
+                            'list_id' => $cat->list_id,
+                            'type' => $cat->type,
+                            'category_id' => $resp->category_id,
+                            'interests' => $resp->interests);
+    }
+  }
+  catch (\Exception $e) {
+    \Drupal::messenger()->addError($e->getMessage());
+    \Drupal::logger('mailchimp_campaign')->error('An error occurred getting list segments for list ID {list_id}: {message} ', [
+      'list_id' => $list_id,
+      'message' => $e->getMessage(),
+    ]);
+
+    return NULL;
+  }
+
+  return $categories;
+}
