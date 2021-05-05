@@ -1,3 +1,12 @@
 #layout-header .dropdown.open .dropdown-menu {
     width: 100%;
 }
+
+// Bugfix: Le padding-top de la toolbar est mal calculé sur le premier chargement.
+body.toolbar-horizontal.toolbar-tray-open{
+    padding-top: 79px !important;
+}
+
+body.toolbar-horizontal{
+    padding-top: 40px !important;
+}
