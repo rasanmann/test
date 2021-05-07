@@ -54,23 +54,16 @@ class AdminSettingsForm extends ConfigFormBase {
     if($mc_list){
       $list_interests = mailchimp_interest_groups_form_elements($mc_list);
       $title = '';
+      $interests = [];
       foreach ($list_interests as $key => $group) {
-        // $title = str_replace(' ', '_', $group['#title']->render());
         $title = preg_replace("/[^A-Za-z0-9z]/", '', strtolower($group['#title']->render()));
-        //if($key == '4769bddb51'){ // Sujets | Topics (id from mailchimp)
-          // $list_interests[$key]['#default_value'] = $config->get($title);
-          // $interests[$title] = $list_interests[$key];
-
-          $list_interests[$key]['#default_value'] = $config->get('sujets_topics');
-          $interests['sujets_topics'] = $list_interests[$key];
-      //  }
+          $list_interests[$key]['#default_value'] = $config->get($title) ? $config->get($title) : [];
+          $interests[$title] = $list_interests[$key];
       }
-      // dump($interests);
       if($interests){
         $form['interest_groups'] = $interests;
         $form['interest_groups']['#disabled'] = TRUE;
       }
-
     }
     
     $form['template_id'] = [
@@ -109,11 +102,16 @@ class AdminSettingsForm extends ConfigFormBase {
       ->set('template_id', $form_state->getValue('template_id'))
       ->set('from_name', $form_state->getValue('from_name'))
       ->set('from_email', $form_state->getValue('from_email'))
-      ->set('sujets_topics', $form_state->getValue('sujets_topics'))
       ->save();
 
-    // dd($form_state);
-
+    $complete_form = $form_state->getCompleteForm();
+    if($complete_form['interest_groups']){
+      foreach ($complete_form['interest_groups'] as $key => $group) {
+        if(substr( $key, 0, 1 ) != '#'){
+          $config->set($key, $form_state->getValue($key))->save();
+        }
+      }
+    }
     parent::submitForm($form, $form_state);
   }
 
