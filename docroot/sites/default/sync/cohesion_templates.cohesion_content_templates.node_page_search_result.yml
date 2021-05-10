@@ -1,0 +1,19 @@
+uuid: 284ce2b0-aabb-4c81-b242-d5dfcf1c941d
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Effectuer une recherche en mettant en évidence les données saisies (Node, Page de base)'
+id: node_page_search_result
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: page
+view_mode: search_result
+master_template: ''

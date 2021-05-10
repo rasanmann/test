@@ -1,0 +1,19 @@
+uuid: b486fddd-e1e3-4729-a3d0-d748aa4d412a
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Accroche (Node, Alerte)'
+id: node_reminder_teaser
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: reminder
+view_mode: teaser
+master_template: ''

@@ -1,0 +1,19 @@
+uuid: 3b219a16-2344-405d-b89b-703272b5fc2c
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Block_content, Block offer)'
+id: block_content_block_offer_token
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: block_offer
+view_mode: token
+master_template: ''

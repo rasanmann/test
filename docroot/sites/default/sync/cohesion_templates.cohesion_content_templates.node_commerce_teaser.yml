@@ -1,0 +1,19 @@
+uuid: 124cf1ad-b42d-4cd8-a74f-2764d4dccd53
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Accroche (Node, Commerce)'
+id: node_commerce_teaser
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: commerce
+view_mode: teaser
+master_template: ''

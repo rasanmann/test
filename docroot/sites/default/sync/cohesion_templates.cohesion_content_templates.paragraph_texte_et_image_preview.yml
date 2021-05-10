@@ -1,0 +1,19 @@
+uuid: 926523d1-a57c-49ce-8d53-0880427c809c
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Preview (Paragraph, Texte et image)'
+id: paragraph_texte_et_image_preview
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: paragraph
+bundle: texte_et_image
+view_mode: preview
+master_template: ''

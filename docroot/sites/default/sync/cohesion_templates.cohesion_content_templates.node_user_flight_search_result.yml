@@ -1,0 +1,19 @@
+uuid: 17efe14d-ce79-45b0-a576-7184e58c21a3
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Effectuer une recherche en mettant en évidence les données saisies (Node, Vol associé)'
+id: node_user_flight_search_result
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: user_flight
+view_mode: search_result
+master_template: ''

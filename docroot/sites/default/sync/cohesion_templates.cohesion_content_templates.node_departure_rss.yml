@@ -1,0 +1,19 @@
+uuid: 65f50f79-a946-4263-9d63-5772de750caf
+langcode: fr
+status: false
+dependencies: {  }
+label: 'RSS (Node, Départs)'
+id: node_departure_rss
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: departure
+view_mode: rss
+master_template: ''

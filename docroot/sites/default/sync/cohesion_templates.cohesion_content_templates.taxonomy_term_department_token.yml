@@ -1,0 +1,19 @@
+uuid: d7ff3e1c-699c-4a78-9660-c8f3d6eebda7
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Taxonomy_term, Department)'
+id: taxonomy_term_department_token
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: taxonomy_term
+bundle: department
+view_mode: token
+master_template: ''

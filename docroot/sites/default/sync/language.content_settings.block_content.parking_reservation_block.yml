@@ -1,0 +1,11 @@
+uuid: 1d0ac4df-1c6b-4196-88a1-ca8f1c4592cf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.parking_reservation_block
+id: block_content.parking_reservation_block
+target_entity_type_id: block_content
+target_bundle: parking_reservation_block
+default_langcode: site_default
+language_alterable: false

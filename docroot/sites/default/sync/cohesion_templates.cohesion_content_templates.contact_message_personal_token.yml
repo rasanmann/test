@@ -1,0 +1,19 @@
+uuid: 1076bf84-aedd-48b5-a899-70f3a13d13cc
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Contact_message, Formulaire de contact personnel)'
+id: contact_message_personal_token
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: contact_message
+bundle: personal
+view_mode: token
+master_template: ''

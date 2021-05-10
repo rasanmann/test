@@ -1,0 +1,19 @@
+uuid: 236ed84a-68ef-4b45-8e85-cfe5347b5750
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Preview (Paragraph, Bloc parent)'
+id: paragraph_block_parent_preview
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: paragraph
+bundle: block_parent
+view_mode: preview
+master_template: ''

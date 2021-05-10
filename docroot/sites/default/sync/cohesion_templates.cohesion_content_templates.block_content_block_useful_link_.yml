@@ -1,0 +1,19 @@
+uuid: d9c3bec1-a10c-4484-aed7-945e9cfe8682
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Complet (Block_content, Block useful link)'
+id: block_content_block_useful_link_
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: block_useful_link
+view_mode: full
+master_template: ''

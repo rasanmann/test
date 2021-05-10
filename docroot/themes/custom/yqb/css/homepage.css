@@ -29,7 +29,8 @@
           text-align: left;
           padding: 0 20px 30px;
           margin: 30px auto; } }
-    .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-color, .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image {
+    .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-color,
+    .block-views-blockslider-homepage-block-1 .swiper-container .swiper-slide .bg-image {
       position: absolute;
       top: 0;
       bottom: 0;
@@ -176,7 +177,7 @@
               right: 0; } }
           @media (max-width: 992px) {
             #block-flightstabslinksblock .nav-tabs > li > a:after {
-              content: ''; } }
+              content: ""; } }
         #block-flightstabslinksblock .nav-tabs > li > a .icon {
           margin-right: 10px; }
           @media (max-width: 992px) {
@@ -397,7 +398,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    transition: all ease-in-out .2s;
+    transition: all ease-in-out 0.2s;
     background: rgba(229, 238, 255, 0.7); }
   .commerce.homepage-view img {
     position: relative;
@@ -423,11 +424,12 @@
       line-height: 16px;
       color: white;
       font-weight: bold;
-      transition: all ease-in-out .2ms; }
+      transition: all ease-in-out 0.2ms; }
       .commerce.homepage-view .info .btn:hover {
         background: white;
         color: #393939; }
-  .commerce.homepage-view h4, .commerce.homepage-view a.label-commerce {
+  .commerce.homepage-view h4,
+  .commerce.homepage-view a.label-commerce {
     text-align: center;
     color: #0054ff;
     text-transform: uppercase;
@@ -503,7 +505,7 @@
       #block-views-block-news-block-news .more-link > a:hover {
         color: #0054ff; }
       #block-views-block-news-block-news .more-link > a:after {
-        content: 'next';
+        content: "next";
         font-family: swiper-icons;
         font-variant: initial;
         font-size: 12px;
@@ -512,10 +514,12 @@
 #block-homepagetilesblock-2 .swiper-wrapper {
   width: auto; }
 
-#block-homepagetilesblock-2 .swiper-button-next, #block-homepagetilesblock-2 .swiper-button-prev {
+#block-homepagetilesblock-2 .swiper-button-next,
+#block-homepagetilesblock-2 .swiper-button-prev {
   display: none; }
   @media (max-width: 600px) {
-    #block-homepagetilesblock-2 .swiper-button-next, #block-homepagetilesblock-2 .swiper-button-prev {
+    #block-homepagetilesblock-2 .swiper-button-next,
+    #block-homepagetilesblock-2 .swiper-button-prev {
       display: flex; } }
 
 #block-homepagetilesblock-2 .swiper-button-next {
@@ -536,11 +540,11 @@
       flex-wrap: nowrap;
       padding: 45px 0; } }
   .tiles-cols > div {
-    width: calc( (100%/4) - 15px);
+    width: calc((100% / 4) - 15px);
     margin: auto; }
     @media (max-width: 1082px) {
       .tiles-cols > div {
-        width: calc( (100%/2) - 5px); } }
+        width: calc((100% / 2) - 5px); } }
     @media (max-width: 600px) {
       .tiles-cols > div {
         width: 100%;
@@ -613,3 +617,82 @@
 .icon.icon-travaux {
   width: 50px;
   height: 60px; }
+
+#block-parking-reservation-block {
+  margin: 20px auto;
+  background-color: #f0f4f8; }
+  #block-parking-reservation-block .block-title {
+    font-weight: 400;
+    text-align: center;
+    margin: 20px auto; }
+  #block-parking-reservation-block .container-form {
+    padding: 16px 32px; }
+    @media (max-width: 768px) {
+      #block-parking-reservation-block .container-form {
+        padding: 16px; } }
+  #block-parking-reservation-block .container-cgu {
+    margin-top: 16px; }
+
+.paragraph--type--parking-reservation {
+  margin: 40px 0; }
+  .paragraph--type--parking-reservation .container-form {
+    margin-left: 40px; }
+    @media (max-width: 768px) {
+      .paragraph--type--parking-reservation .container-form {
+        margin-left: 0; } }
+  .paragraph--type--parking-reservation h3 .field--item {
+    display: block;
+    text-align: center; }
+  .paragraph--type--parking-reservation .container-cgu {
+    margin-top: 16px; }
+
+.webform-submission-parking-reservation-form-form .form-inner {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin: 0 -8px; }
+  .webform-submission-parking-reservation-form-form .form-inner > * {
+    padding: 4px 8px; }
+  .webform-submission-parking-reservation-form-form .form-inner .panel-body {
+    display: flex;
+    align-items: flex-end;
+    margin: -4px; }
+    .webform-submission-parking-reservation-form-form .form-inner .panel-body > * {
+      padding: 4px; }
+  .webform-submission-parking-reservation-form-form .form-inner .panel {
+    flex-grow: 1; }
+    @media (max-width: 768px) {
+      .webform-submission-parking-reservation-form-form .form-inner .panel {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        flex-basis: 100%; } }
+  .webform-submission-parking-reservation-form-form .form-inner .form-type-processed-text {
+    flex-basis: 100%;
+    padding-bottom: 16px; }
+  .webform-submission-parking-reservation-form-form .form-inner .panel-heading {
+    background: none;
+    font-weight: 700; }
+  .webform-submission-parking-reservation-form-form .form-inner label {
+    font-weight: 400; }
+  .webform-submission-parking-reservation-form-form .form-inner .form-actions,
+  .webform-submission-parking-reservation-form-form .form-inner .form-item {
+    position: relative;
+    margin: 0; }
+  .webform-submission-parking-reservation-form-form .form-inner .form-item {
+    flex-grow: 1; }
+  .webform-submission-parking-reservation-form-form .form-inner .form-control {
+    width: 100%;
+    padding: 6px 12px; }
+  .webform-submission-parking-reservation-form-form .form-inner .select-wrapper .form-control {
+    margin: -2px 0;
+    width: 120%; }
+  .webform-submission-parking-reservation-form-form .form-inner .ui-datepicker-trigger {
+    position: absolute;
+    right: 12px;
+    bottom: 30px;
+    transform: translateY(50%); }
+
+.ui-datepicker table,
+.ui-datepicker-calendar {
+  background: none; }

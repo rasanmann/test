@@ -1,0 +1,19 @@
+uuid: b861e4d1-3807-405b-b41c-2581aa911c0f
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Page d''un terme de taxonomie (Taxonomy_term, Destination Categories)'
+id: taxonomy_term_destination_catego
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: taxonomy_term
+bundle: destination_categories
+view_mode: full
+master_template: ''

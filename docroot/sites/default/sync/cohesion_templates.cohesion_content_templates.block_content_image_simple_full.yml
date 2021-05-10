@@ -1,0 +1,19 @@
+uuid: ca7b26a6-945e-438e-b364-e7972f44032c
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Complet (Block_content, Image simple)'
+id: block_content_image_simple_full
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: image_simple
+view_mode: full
+master_template: ''

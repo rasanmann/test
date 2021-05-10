@@ -1,0 +1,19 @@
+uuid: dbd28815-0162-41ae-a360-d4e708b0ea3c
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Index de recherche (Node, Réservation de stationnement)'
+id: node_parking_booking_search_inde
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: parking_booking
+view_mode: search_index
+master_template: ''

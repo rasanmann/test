@@ -1,0 +1,19 @@
+uuid: 4145810b-eb20-4685-944a-9e0553956136
+langcode: fr
+status: false
+dependencies: {  }
+label: 'RSS (Node, Astuce)'
+id: node_tip_rss
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: tip
+view_mode: rss
+master_template: ''

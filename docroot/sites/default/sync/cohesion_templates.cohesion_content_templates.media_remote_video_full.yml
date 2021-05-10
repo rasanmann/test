@@ -1,0 +1,19 @@
+uuid: 571e05bb-8a74-44e6-a5ae-10ba235a3a72
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Full content (Media, Remote video)'
+id: media_remote_video_full
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: media
+bundle: remote_video
+view_mode: full
+master_template: ''

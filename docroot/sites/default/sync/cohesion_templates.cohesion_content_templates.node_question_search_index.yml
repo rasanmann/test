@@ -1,0 +1,19 @@
+uuid: ba22d11f-1f0a-4883-a77b-def651b74d88
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Index de recherche (Node, Question)'
+id: node_question_search_index
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: question
+view_mode: search_index
+master_template: ''

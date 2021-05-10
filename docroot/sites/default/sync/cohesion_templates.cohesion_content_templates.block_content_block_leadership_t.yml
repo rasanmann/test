@@ -1,0 +1,19 @@
+uuid: c11853cc-3f85-42ea-9e2e-69a78cbafc27
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Block_content, Block leadership)'
+id: block_content_block_leadership_t
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: block_leadership
+view_mode: token
+master_template: ''

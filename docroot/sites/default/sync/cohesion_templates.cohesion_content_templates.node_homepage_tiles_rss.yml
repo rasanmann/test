@@ -1,0 +1,19 @@
+uuid: bd7768ce-32c8-4a23-8a5d-19f47b08975e
+langcode: fr
+status: false
+dependencies: {  }
+label: 'RSS (Node, Tuiles d''accueil)'
+id: node_homepage_tiles_rss
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: homepage_tiles
+view_mode: rss
+master_template: ''

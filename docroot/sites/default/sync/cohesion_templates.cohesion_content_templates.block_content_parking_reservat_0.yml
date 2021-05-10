@@ -1,0 +1,19 @@
+uuid: 0d9f6cb9-241f-4e75-8289-ebb8485c8e26
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Block_content, Réservation de stationnement)'
+id: block_content_parking_reservat_0
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: parking_reservation_block
+view_mode: token
+master_template: ''

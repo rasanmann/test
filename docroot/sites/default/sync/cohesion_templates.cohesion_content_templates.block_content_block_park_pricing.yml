@@ -1,0 +1,19 @@
+uuid: 93ccda3a-1928-445c-87f4-72641e0b798f
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Complet (Block_content, Block park pricing)'
+id: block_content_block_park_pricing
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: block_park_pricing
+view_mode: full
+master_template: ''
