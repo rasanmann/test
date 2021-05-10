@@ -29,7 +29,6 @@ class AdminSettingsForm extends ConfigFormBase {
 
     if($config->get('list_id')){
       $list_id = $config->get('list_id');
-      $mc_list = mailchimp_get_list($list_id);
     }
 
     if (!empty($form_state->getValue('list_id'))) {
@@ -38,33 +37,18 @@ class AdminSettingsForm extends ConfigFormBase {
    
     $list_segments = [];
     if (isset($list_id)) {
-      $list_segments = mailchimp_campaign_get_list_segments($list_id, NULL);
-      // $list_interests = yqb_mailchimp_campaign_get_list_interests($list_id, NULL);
+      $list_segments = mailchimp_campaign_get_list_segments($list_id, "saved");
     }
-
+    
     $form['audience_tag'] = [
       '#type' => 'select',
-      '#title' => t('Audience Tag'),
+      '#title' => t('Custom segment'),
+      '#description' => "Un segment est un regroupement de condition. (Audience tag, group, interests, etc) Ajouter un segment dans mailchimp pour qu'il soit dans cette liste.",
       '#options' => $this->buildOptionList($list_segments, '-- Entire list --'),
       '#required' => FALSE,
       '#default_value' => $config->get('audience_tag') ?? -1,
     ];
     
-    $list_interests = [];
-    if($mc_list){
-      $list_interests = mailchimp_interest_groups_form_elements($mc_list);
-      $title = '';
-      $interests = [];
-      foreach ($list_interests as $key => $group) {
-        $title = preg_replace("/[^A-Za-z0-9z]/", '', strtolower($group['#title']->render()));
-          $list_interests[$key]['#default_value'] = $config->get($title) ? $config->get($title) : [];
-          $interests[$title] = $list_interests[$key];
-      }
-      if($interests){
-        $form['interest_groups'] = $interests;
-        $form['interest_groups']['#disabled'] = TRUE;
-      }
-    }
     
     $form['template_id'] = [
       '#type' => 'select',
@@ -104,14 +88,6 @@ class AdminSettingsForm extends ConfigFormBase {
       ->set('from_email', $form_state->getValue('from_email'))
       ->save();
 
-    $complete_form = $form_state->getCompleteForm();
-    if($complete_form['interest_groups']){
-      foreach ($complete_form['interest_groups'] as $key => $group) {
-        if(substr( $key, 0, 1 ) != '#'){
-          $config->set($key, $form_state->getValue($key))->save();
-        }
-      }
-    }
     parent::submitForm($form, $form_state);
   }
 
