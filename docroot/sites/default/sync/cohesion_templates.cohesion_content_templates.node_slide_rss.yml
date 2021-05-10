@@ -1,0 +1,19 @@
+uuid: 2f1fbbbe-3a43-4f70-9f93-ce3fd4e0e20e
+langcode: fr
+status: false
+dependencies: {  }
+label: 'RSS (Node, Slide)'
+id: node_slide_rss
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: slide
+view_mode: rss
+master_template: ''

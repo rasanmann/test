@@ -1,0 +1,19 @@
+uuid: 0f310a39-052c-4bd1-b4c0-aba4d5a7253c
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Accroche (Node, Nouvelle)'
+id: node_nouvelle_teaser
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: nouvelle
+view_mode: teaser
+master_template: ''

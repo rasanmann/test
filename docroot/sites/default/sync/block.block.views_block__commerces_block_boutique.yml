@@ -12,7 +12,7 @@ dependencies:
 id: views_block__commerces_block_boutique
 theme: yqb
 region: content
-weight: -27
+weight: -28
 provider: null
 plugin: 'views_block:commerces-block_boutique'
 settings:

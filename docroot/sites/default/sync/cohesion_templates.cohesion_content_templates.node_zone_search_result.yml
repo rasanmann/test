@@ -1,0 +1,19 @@
+uuid: cd17aced-e93f-4002-9095-5cae5bfa278a
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Effectuer une recherche en mettant en évidence les données saisies (Node, Zone)'
+id: node_zone_search_result
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: zone
+view_mode: search_result
+master_template: ''

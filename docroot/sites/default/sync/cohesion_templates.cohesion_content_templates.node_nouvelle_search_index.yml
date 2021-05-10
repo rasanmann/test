@@ -1,0 +1,19 @@
+uuid: 0c6248ed-6b5d-472c-b3a3-6d678b91f8ff
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Index de recherche (Node, Nouvelle)'
+id: node_nouvelle_search_index
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: nouvelle
+view_mode: search_index
+master_template: ''

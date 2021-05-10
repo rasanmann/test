@@ -1,0 +1,19 @@
+uuid: fba68042-4b41-4cc4-b9ac-45a1f6924530
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Effectuer une recherche en mettant en évidence les données saisies (Node, Arrivée)'
+id: node_arrival_search_result
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: arrival
+view_mode: search_result
+master_template: ''

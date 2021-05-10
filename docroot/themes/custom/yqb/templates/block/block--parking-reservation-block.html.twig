@@ -1,0 +1,21 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'clearfix',
+  ]
+%}
+<section{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes.addClass('block-title') }}>{{ label|raw }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  <div class="container-form">
+      {{parking_reservation_form}}
+      <div class="container-cgu text-center">
+         <a href="{{ path('entity.node.canonical', {'node': 1398436}) }}">{{ 'Termes et conditions'|t }}</a>
+      </div>
+  </div>
+</section>

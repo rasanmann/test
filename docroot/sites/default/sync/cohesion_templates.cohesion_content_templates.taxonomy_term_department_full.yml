@@ -1,0 +1,19 @@
+uuid: 6d1c7b8c-32cb-4bec-ac08-0ffdf8c02ac7
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Page d''un terme de taxonomie (Taxonomy_term, Department)'
+id: taxonomy_term_department_full
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: taxonomy_term
+bundle: department
+view_mode: full
+master_template: ''

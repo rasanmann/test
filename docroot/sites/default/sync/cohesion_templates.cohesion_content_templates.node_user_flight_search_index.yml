@@ -1,0 +1,19 @@
+uuid: 7aedbe54-fc70-4674-92de-4b11b10c869d
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Index de recherche (Node, Vol associé)'
+id: node_user_flight_search_index
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: user_flight
+view_mode: search_index
+master_template: ''

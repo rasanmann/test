@@ -1,0 +1,19 @@
+uuid: 7071afc4-7d66-48cc-9114-060a6875d110
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Preview (Paragraph, Valeur)'
+id: paragraph_valeur_preview
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: paragraph
+bundle: valeur
+view_mode: preview
+master_template: ''
