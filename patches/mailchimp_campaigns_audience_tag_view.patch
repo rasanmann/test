@@ -1,0 +1,46 @@
+diff --git a/modules/mailchimp_campaign/src/Controller/MailchimpCampaignController.php b/modules/mailchimp_campaign/src/Controller/MailchimpCampaignController.php
+index fcb17cb..b806847 100644
+--- a/modules/mailchimp_campaign/src/Controller/MailchimpCampaignController.php
++++ b/modules/mailchimp_campaign/src/Controller/MailchimpCampaignController.php
+@@ -111,6 +111,7 @@ class MailchimpCampaignController extends ControllerBase {
+         $this->t('Subject'),
+         $this->t('Status'),
+         $this->t('Mailchimp Audience'),
++        $this->t('Mailchimp Audience Tag'),
+         $this->t('Mailchimp Template'),
+         $this->t('Created'),
+         $this->t('Actions'),
+@@ -182,6 +183,20 @@ class MailchimpCampaignController extends ControllerBase {
+         '#markup' => Link::fromTextAndUrl($campaign->list->name, $list_url)->toString(),
+       ];
+ 
++      $list_segments = mailchimp_campaign_get_list_segments($campaign->list->id, null);
++      $list_segment_name = '';
++      if (isset($campaign->mc_data->recipients->segment_opts->saved_segment_id)) {
++        foreach ($list_segments as $list_segment) {
++          if ($list_segment->id == $campaign->mc_data->recipients->segment_opts->saved_segment_id) {
++            $list_segment_name = $list_segment->name;
++          }
++        }
++      }
++
++      $content['campaigns_table'][$campaign_id]['audience_tag'] = [
++        '#markup' => $list_segment_name ? $list_segment_name : '',
++      ];
++
+       if (empty($campaign->mc_data->settings->template_id)) {
+         $content['campaigns_table'][$campaign_id]['template'] = [
+           '#markup' => "-- none --",
+diff --git a/modules/mailchimp_campaign/src/Entity/MailchimpCampaignViewBuilder.php b/modules/mailchimp_campaign/src/Entity/MailchimpCampaignViewBuilder.php
+index 07cef9b..fbe2514 100644
+--- a/modules/mailchimp_campaign/src/Entity/MailchimpCampaignViewBuilder.php
++++ b/modules/mailchimp_campaign/src/Entity/MailchimpCampaignViewBuilder.php
+@@ -95,7 +95,7 @@ class MailchimpCampaignViewBuilder extends EntityViewBuilder {
+ 
+     $list_segment_name = 'N/A';
+ 
+-    $list_segments = mailchimp_campaign_get_list_segments($entity->list->id, 'saved');
++    $list_segments = mailchimp_campaign_get_list_segments($entity->list->id, null);
+     if (isset($entity->mc_data->recipients->segment_opts->saved_segment_id)) {
+       foreach ($list_segments as $list_segment) {
+         if ($list_segment->id == $entity->mc_data->recipients->segment_opts->saved_segment_id) {
