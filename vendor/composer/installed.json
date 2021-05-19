@@ -4425,7 +4425,8 @@
             },
             "patches_applied": {
                 "Add member tag support when subscribing": "./patches/mailchimp_tags.patch",
-                "Add Audience Tag on Signup Form": "./patches/add_audience_tag_signupform-3195736-1.patch"
+                "Add Audience Tag on Signup Form": "./patches/add_audience_tag_signupform-3195736-1.patch",
+                "Add Audience Tag on View mailchimp campagn /services/mailchimp/campaigns": "./patches/mailchimp_campaigns_audience_tag_view.patch"
             }
         },
         "installation-source": "dist",

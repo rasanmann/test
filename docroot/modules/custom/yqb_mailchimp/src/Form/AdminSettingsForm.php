@@ -27,6 +27,29 @@ class AdminSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('list_id') ?? -1,
     ];
 
+    if($config->get('list_id')){
+      $list_id = $config->get('list_id');
+    }
+
+    if (!empty($form_state->getValue('list_id'))) {
+      $list_id = $form_state->getValue('list_id');
+    }
+   
+    $list_segments = [];
+    if (isset($list_id)) {
+      $list_segments = mailchimp_campaign_get_list_segments($list_id, "saved");
+    }
+    
+    $form['audience_tag'] = [
+      '#type' => 'select',
+      '#title' => t('Custom segment'),
+      '#description' => "Un segment est un regroupement de condition. (Audience tag, group, interests, etc) Ajouter un segment dans mailchimp pour qu'il soit dans cette liste.",
+      '#options' => $this->buildOptionList($list_segments, '-- Entire list --'),
+      '#required' => FALSE,
+      '#default_value' => $config->get('audience_tag') ?? -1,
+    ];
+    
+    
     $form['template_id'] = [
       '#type' => 'select',
       '#title' => t('Template'),
@@ -59,6 +82,7 @@ class AdminSettingsForm extends ConfigFormBase {
     $config = $this->config('yqb_mailchimp.settings');
     $config
       ->set('list_id', $form_state->getValue('list_id'))
+      ->set('audience_tag', $form_state->getValue('audience_tag'))
       ->set('template_id', $form_state->getValue('template_id'))
       ->set('from_name', $form_state->getValue('from_name'))
       ->set('from_email', $form_state->getValue('from_email'))

@@ -102,7 +102,8 @@
       },
       "drupal/mailchimp": {
         "Add member tag support when subscribing": "./patches/mailchimp_tags.patch",
-        "Add Audience Tag on Signup Form" : "./patches/add_audience_tag_signupform-3195736-1.patch"
+        "Add Audience Tag on Signup Form" : "./patches/add_audience_tag_signupform-3195736-1.patch",
+        "Add Audience Tag on View mailchimp campagn /services/mailchimp/campaigns" : "./patches/mailchimp_campaigns_audience_tag_view.patch"
       },
       "drupal/webform_mailchimp": {
         "Provide user selectable interest groups as Webform predefined options": "https://www.drupal.org/files/issues/2019-10-05/3036323-interest-groups-predefined-options-15.patch",
