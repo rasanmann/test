@@ -1,0 +1,19 @@
+uuid: 2e144f6b-6342-45d5-ae32-26c4f7cb4fa9
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Accroche (Node, Page de base)'
+id: node_page_teaser
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: page
+view_mode: teaser
+master_template: ''

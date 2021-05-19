@@ -1,0 +1,27 @@
+uuid: 38f84d65-70ac-4cea-af73-ba739f7e4ef5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.parking_reservation_block
+id: block_content.parking_reservation_block.default
+targetEntityType: block_content
+bundle: parking_reservation_block
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

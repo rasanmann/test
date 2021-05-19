@@ -1,0 +1,19 @@
+uuid: 40b0077b-47e2-40a6-af92-f4fe1fc64a8b
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Preview (Paragraph, VIP Drawer Section)'
+id: paragraph_vip_drawer_section_pre
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: paragraph
+bundle: vip_drawer_section
+view_mode: preview
+master_template: ''

@@ -37,7 +37,7 @@
 > ATTENTION! acquia ssh server accept connection to port 22, Basically it means that if you already some configurations for your ssh to access Libeo's infrastructure which accept port 36220 , we strongly suggest that you add a configuration to connect to acquia easily without specifying the port on every connection
 > As an example i used to have this configuration for acquia. Simply copy and paste the next configuration in your config file `~/.ssh/config`
 > ```
-> Host * !github.com !svn-23659.prod.hosting.acquia.com 
+> Host * !github.com !svn-23659.prod.hosting.acquia.com
 >   Port 36220
 > ```
 
@@ -79,13 +79,13 @@ cd /app
 ```
 
 ## Deployment
-- As for deployment, for the `Production` environnement, simply create a tag and push it to acquia. Then you can connect to that instance and clear the cache using the backend 
-service of Drupal or by connecting by ssh and reach the __drush__ executable at this location `/var/www/html/yqb.prod` and simply run 
+- As for deployment, for the `Production` environnement, simply create a tag and push it to acquia. Then you can connect to that instance and clear the cache using the backend
+service of Drupal or by connecting by ssh and reach the __drush__ executable at this location `/var/www/html/yqb.prod` and simply run
 ```
 ./vendor/bin/drush cr
 ```
 
-- Then do not forget to clear the __varnish__ service on the instance by clicking on the instance name which will be `Dev` `Stage` or `Prod` 
+- Then do not forget to clear the __varnish__ service on the instance by clicking on the instance name which will be `Dev` `Stage` or `Prod`
 and click the right button `CLEAR VARNISH`
 
 ## Assets
@@ -111,3 +111,15 @@ and click the right button `CLEAR VARNISH`
 ## Deployment
 
 See [Acquia's website](https://cloud.acquia.com)
+
+## Front-end
+
+### Enable Twig debug
+Create a `service.yml` by duplicating the default config.
+`cp default.service.yml service.yml`
+Edit `twig.config` value as follow: `debug: true`, `auto_reload: true`, `cache: false`
+Empty caches with `kubeo run drush cr`
+
+### Compiling assets
+`cd docroot/themes/custom/yqb`
+`yarn start` will run the default gulp task

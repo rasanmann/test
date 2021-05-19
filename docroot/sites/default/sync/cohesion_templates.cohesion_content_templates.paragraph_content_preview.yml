@@ -1,0 +1,19 @@
+uuid: 0a8e8bd6-220b-4fe6-9994-8d0012fbc000
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Preview (Paragraph, Content)'
+id: paragraph_content_preview
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: paragraph
+bundle: content
+view_mode: preview
+master_template: ''

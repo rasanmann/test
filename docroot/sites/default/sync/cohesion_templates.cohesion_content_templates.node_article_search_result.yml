@@ -1,0 +1,19 @@
+uuid: 711e3de4-7477-43eb-bcc0-bc653ed1172a
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Effectuer une recherche en mettant en évidence les données saisies (Node, Communiqué de presse)'
+id: node_article_search_result
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: article
+view_mode: search_result
+master_template: ''

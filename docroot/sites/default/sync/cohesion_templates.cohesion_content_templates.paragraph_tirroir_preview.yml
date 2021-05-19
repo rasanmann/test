@@ -1,0 +1,19 @@
+uuid: deafeaab-979f-4b13-b43a-84f2fd9c2347
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Preview (Paragraph, Tirroir)'
+id: paragraph_tirroir_preview
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: paragraph
+bundle: tirroir
+view_mode: preview
+master_template: ''

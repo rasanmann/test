@@ -1,0 +1,19 @@
+uuid: e8e67d4c-c64c-4590-8042-c9c8e6ce71e9
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Taxonomy_term, Career Types)'
+id: taxonomy_term_career_types_token
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: taxonomy_term
+bundle: career_types
+view_mode: token
+master_template: ''

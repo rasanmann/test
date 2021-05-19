@@ -5,6 +5,9 @@ yqb_mailchimp.settings:
     list_id:
       type: string
       label: 'List ID to send alerts'
+    audience_id:
+      type: string
+      label: 'Audience tag to target in list (audience)'
     template_id:
       type: string
       label: 'Template to use for the alerts'

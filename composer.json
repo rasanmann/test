@@ -96,12 +96,14 @@
         "Views field view PHP warnings": "patches/views_field_view.patch"
       },
       "drupal/core": {
+        "BlockPluginTrait cannot call ::addContextAssignmentElement() itself" : "https://www.drupal.org/files/issues/2020-07-21/3160629-block-2.patch",
         "Imported PO files have no public URL" : "patches/imported_po_files_2449895-72.patch",
         "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted" : "patches/2810355-82.patch"
       },
       "drupal/mailchimp": {
         "Add member tag support when subscribing": "./patches/mailchimp_tags.patch",
-        "Add Audience Tag on Signup Form" : "./patches/add_audience_tag_signupform-3195736-1.patch"
+        "Add Audience Tag on Signup Form" : "./patches/add_audience_tag_signupform-3195736-1.patch",
+        "Add Audience Tag on View mailchimp campagn /services/mailchimp/campaigns" : "./patches/mailchimp_campaigns_audience_tag_view.patch"
       },
       "drupal/webform_mailchimp": {
         "Provide user selectable interest groups as Webform predefined options": "https://www.drupal.org/files/issues/2019-10-05/3036323-interest-groups-predefined-options-15.patch",

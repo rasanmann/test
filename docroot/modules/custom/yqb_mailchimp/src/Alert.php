@@ -97,6 +97,12 @@ class Alert {
       'list_id' => $this->config->get('list_id'),
     ];
 
+    if ( !empty($this->config->get('audience_tag')) ) {
+      $recipients->segment_opts = (object) [
+        'saved_segment_id' => (int) $this->config->get('audience_tag'),
+      ];
+    }
+
     $settings = (object) [
       'subject_line' => $this->node->getTitle(),
       'title' => $this->node->getTitle(),

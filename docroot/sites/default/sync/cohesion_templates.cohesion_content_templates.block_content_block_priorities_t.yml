@@ -1,0 +1,19 @@
+uuid: f1c0be7c-de89-4f3f-8897-0b41fd0b1ed0
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Token (Block_content, Block priorities)'
+id: block_content_block_priorities_t
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: block_content
+bundle: block_priorities
+view_mode: token
+master_template: ''

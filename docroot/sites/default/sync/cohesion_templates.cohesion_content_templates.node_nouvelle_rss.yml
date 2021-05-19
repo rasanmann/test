@@ -1,0 +1,19 @@
+uuid: e73b2f32-064e-42b0-a53e-4df545dbccdf
+langcode: fr
+status: false
+dependencies: {  }
+label: 'RSS (Node, Nouvelle)'
+id: node_nouvelle_rss
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: nouvelle
+view_mode: rss
+master_template: ''

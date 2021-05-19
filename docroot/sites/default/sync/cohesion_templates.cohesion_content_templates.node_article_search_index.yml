@@ -1,0 +1,19 @@
+uuid: 31cf6e3c-4b2e-4295-bbb4-cc39c2e6375b
+langcode: fr
+status: false
+dependencies: {  }
+label: 'Index de recherche (Node, Communiqué de presse)'
+id: node_article_search_index
+json_values: '{"canvas":[],"mapper":null,"model":[]}'
+json_mapper: '{}'
+last_entity_update: entityupdate_0027
+locked: false
+modified: false
+selectable: false
+custom: false
+twig_template: null
+default: false
+entity_type: node
+bundle: article
+view_mode: search_index
+master_template: ''
