@@ -54,5 +54,6 @@ function yqb_mailchimp_theme($existing, $type, $theme, $path) {
 function yqb_mailchimp_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   if (preg_match('/^mailchimp_signup_subscribe_page/i', $form_id)) {
     $form['#attached']['library'][] = 'yqb_mailchimp/yqb_mailchimp';
+    $form['mergevars']['EMAIL']['#title'] = t('Adresse courriel | Email Address');
   }
 }
