@@ -6,3 +6,12 @@ body.toolbar-horizontal.toolbar-tray-open {
 
 body.toolbar-horizontal {
   padding-top: 40px !important; }
+
+#nav-footer-socials .icon-infolettre {
+  background-image: none;
+  border: 5px solid white;
+  border-radius: 25px;
+  background: white; }
+
+#nav-footer-socials a .icon.icon-infolettre path {
+  fill: black !important; }
