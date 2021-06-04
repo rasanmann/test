@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b766c0ac1d63d6e470fa5454a51d76a6",
+    "content-hash": "42d4529f7cb8b938b6d29531ca2f2d4b",
     "packages": [
         {
             "name": "acquia/cohesion",
@@ -3044,8 +3044,10 @@
                     }
                 },
                 "patches_applied": {
+                    "BlockPluginTrait cannot call ::addContextAssignmentElement() itself": "https://www.drupal.org/files/issues/2020-07-21/3160629-block-2.patch",
                     "Imported PO files have no public URL": "patches/imported_po_files_2449895-72.patch",
-                    "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted": "patches/2810355-82.patch"
+                    "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted": "patches/2810355-82.patch",
+                    "Editor module fails to track usage of files embedded in non-core fields": "https://www.drupal.org/files/issues/2021-02-05/2857444-8.9.x-38_1.patch"
                 }
             },
             "autoload": {
@@ -4113,7 +4115,8 @@
                 },
                 "patches_applied": {
                     "Add member tag support when subscribing": "./patches/mailchimp_tags.patch",
-                    "Add Audience Tag on Signup Form": "./patches/add_audience_tag_signupform-3195736-1.patch"
+                    "Add Audience Tag on Signup Form": "./patches/add_audience_tag_signupform-3195736-1.patch",
+                    "Add Audience Tag on View mailchimp campagn /services/mailchimp/campaigns": "./patches/mailchimp_campaigns_audience_tag_view.patch"
                 }
             },
             "autoload": {
