@@ -98,7 +98,8 @@
       "drupal/core": {
         "BlockPluginTrait cannot call ::addContextAssignmentElement() itself" : "https://www.drupal.org/files/issues/2020-07-21/3160629-block-2.patch",
         "Imported PO files have no public URL" : "patches/imported_po_files_2449895-72.patch",
-        "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted" : "patches/2810355-82.patch"
+        "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted" : "patches/2810355-82.patch",
+        "Editor module fails to track usage of files embedded in non-core fields" : "https://www.drupal.org/files/issues/2021-02-05/2857444-8.9.x-38_1.patch"
       },
       "drupal/mailchimp": {
         "Add member tag support when subscribing": "./patches/mailchimp_tags.patch",
