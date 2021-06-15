@@ -21,3 +21,28 @@ body.toolbar-horizontal{
 #nav-footer-socials a .icon.icon-infolettre path{
     fill: black !important;
 }
+
+.field--name-body{
+    h2 {
+        font-size:2.4rem;
+        margin:40px;
+        font-weight: normal;
+    }
+
+    p {
+        font-size:16px;
+        margin:40px;
+    }
+}
+
+article {
+    .field--name-body{ 
+        h3, h4 {
+            margin: 40px;
+        }
+      
+        h5 {
+            margin: 20px 40px;
+        }
+    }
+  }
