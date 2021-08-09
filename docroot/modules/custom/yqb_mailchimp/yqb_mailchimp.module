@@ -55,5 +55,7 @@ function yqb_mailchimp_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
   if (preg_match('/^mailchimp_signup_subscribe_page/i', $form_id)) {
     $form['#attached']['library'][] = 'yqb_mailchimp/yqb_mailchimp';
     $form['mergevars']['EMAIL']['#title'] = t('Adresse courriel | Email Address');
+
+    honeypot_add_form_protection($form, $form_state, array('honeypot', 'time_restriction'));
   }
 }
