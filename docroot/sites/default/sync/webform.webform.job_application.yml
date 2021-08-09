@@ -217,10 +217,6 @@ handlers:
       subject: 'Candidature - [webform_submission:values:department:value][webform_submission:values:offer:value]'
       body: _default
       excluded_elements:
-        femme: femme
-        minorite_visible: minorite_visible
-        personne_handicapee: personne_handicapee
-        autochtone: autochtone
         explication: explication
       ignore_access: false
       exclude_empty: true
@@ -257,12 +253,8 @@ handlers:
       from_options: {  }
       from_name: _default
       subject: 'Confirmation de candidature - [webform_submission:values:department:value][webform_submission:values:offer:value]'
-      body: "Bonjour,\r\n\r\nNous accusons réception de votre demande d’emploi au sein de notre organisation. \r\n\r\nVeuillez noter que nous conserverons votre curriculum vitae pour une période de 6 (six) mois. \r\n\r\nNous vous invitons à consulter régulièrement notre site Web dans la section « Carrières ».\r\n\r\nNous vous remercions de l’intérêt manifesté à l’égard de l’Aéroport de Québec inc. et vous prions d’agréer nos salutations distinguées. \r\n\r\n* Veuillez noter que lors d’une ouverture de poste, seuls les candidats retenus pour une entrevue seront contactés. \r\n\r\n---------------------------\r\n\r\nCe courriel a été envoyé de façon automatisé, veuillez ne pas répondre à ce message."
-      excluded_elements:
-        femme: femme
-        minorite_visible: minorite_visible
-        personne_handicapee: personne_handicapee
-        autochtone: autochtone
+      body: "Bonjour,\n\nNous accusons réception de votre demande d’emploi au sein de notre organisation. \n\nVeuillez noter que nous conserverons votre curriculum vitae pour une période de 6 (six) mois. \n\nNous vous invitons à consulter régulièrement notre site Web dans la section « Carrières ».\n\nNous vous remercions de l’intérêt manifesté à l’égard de l’Aéroport de Québec inc. et vous prions d’agréer nos salutations distinguées. \n\n* Veuillez noter que lors d’une ouverture de poste, seuls les candidats retenus pour une entrevue seront contactés. \n\n---------------------------\n\nCe courriel a été envoyé de façon automatisé, veuillez ne pas répondre à ce message."
+      excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: false

@@ -1,6 +1,6 @@
 time: 4514.5289575289
-expectedWaitTime: !!float 150
-averageArrivalRate: 0.0014612761811982
-averageServiceRate: 0.0035377358490566
-numberOfPeopleInLine: 1
-queueUtilization: 0.4130540672187
+expectedWaitTime: !!float 0
+averageArrivalRate: !!float 0
+averageServiceRate: 0.0058479532163743
+numberOfPeopleInLine: 0
+queueUtilization: !!float 0

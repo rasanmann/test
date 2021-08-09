@@ -44,6 +44,7 @@
     "drupal/panels": "^4.0",
     "drupal/paragraphs": "~1.1",
     "drupal/pathauto": "~1.0",
+    "drupal/recaptcha_v3": "^1.4",
     "drupal/redirect": "~1.0",
     "drupal/restui": "^1.19",
     "drupal/scheduler": "^1.0",
