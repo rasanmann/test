@@ -95,6 +95,7 @@ module:
   pjax: 0
   quickedit: 0
   rdf: 0
+  recaptcha: 0
   recaptcha_v3: 0
   redirect: 0
   redirect_404: 0

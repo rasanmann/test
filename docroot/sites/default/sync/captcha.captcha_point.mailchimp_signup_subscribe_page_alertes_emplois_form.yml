@@ -1,0 +1,7 @@
+uuid: 672602ce-8522-4384-a897-67842d24cfc4
+langcode: fr
+status: true
+dependencies: {  }
+formId: mailchimp_signup_subscribe_page_alertes_emplois_form
+captchaType: recaptcha_v3/alert
+label: mailchimp-signup-subscribe-page-alertes-emplois-form

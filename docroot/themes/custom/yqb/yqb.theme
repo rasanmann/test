@@ -384,7 +384,7 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
 
     case strpos($form_id, 'webform_submission_parking_reservation') !== false:
       $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-      $host = 'https://quebec.chauntrylab2.com/QuebecBooking/Booking/SearchParking';
+      $host = 'https://services.aeroportdequebec.com/QuebecBooking/Booking/SearchParking';
       if ($language == 'en'){
         $host .= '?lang=en-gb';
       }else{
