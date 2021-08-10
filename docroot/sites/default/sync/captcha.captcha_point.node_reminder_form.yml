@@ -1,0 +1,7 @@
+uuid: cfd3941b-45ec-4c72-a300-1cb70996f1bb
+langcode: fr
+status: false
+dependencies: {  }
+formId: node_reminder_form
+captchaType: default
+label: null
