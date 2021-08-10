@@ -1,6 +1,6 @@
 uuid: 2460f821-6f5f-4544-ad03-52369c54900d
 langcode: fr
-status: true
+status: false
 dependencies:
   module:
     - cohesion
@@ -15,7 +15,7 @@ provider: null
 plugin: 'block_content:d43fcff2-cb5f-4145-9706-c163db7560c0'
 settings:
   id: 'block_content:d43fcff2-cb5f-4145-9706-c163db7560c0'
-  label: 'Prépayez en ligne votre stationnement. &lt;strong&gt;Économisez jusqu''à 50%&lt;/strong&gt;'
+  label: 'Prépayez votre stationnement'
   provider: core
   label_display: visible
   status: true
