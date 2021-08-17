@@ -619,13 +619,9 @@
   height: 60px; }
 
 #block-parking-reservation-block {
-  margin: 20px auto;
-  background-color: #f0f4f8; }
-  #block-parking-reservation-block .block-title {
-    font-weight: 400;
-    text-align: center;
-    margin: 20px auto; }
+  margin: 20px auto; }
   #block-parking-reservation-block .container-form {
+    background-color: #f0f4f8;
     padding: 16px 32px; }
     @media (max-width: 768px) {
       #block-parking-reservation-block .container-form {
