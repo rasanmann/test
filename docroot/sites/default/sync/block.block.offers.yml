@@ -11,7 +11,7 @@ dependencies:
 id: offers
 theme: yqb
 region: content
-weight: -26
+weight: -25
 provider: null
 plugin: 'system_menu_block:offers'
 settings:
