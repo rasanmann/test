@@ -33,3 +33,6 @@ article .field--name-body h5 {
 
 .table-responsive td p {
   margin: 20px; }
+
+.captcha.form-item .panel-heading {
+  display: none; }

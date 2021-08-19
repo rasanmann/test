@@ -50,3 +50,9 @@ article {
   .table-responsive td p{
       margin: 20px;
   }
+
+.captcha.form-item{
+    .panel-heading{
+        display: none;
+    }
+}
