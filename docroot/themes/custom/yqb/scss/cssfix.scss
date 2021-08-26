@@ -44,6 +44,14 @@ article {
         h5 {
             margin: 20px 40px;
         }
+
+        ul{
+            padding-left: 40px !important;
+        }
+
+        table{
+            margin: 20px 40px
+        }
     }
   }
 
@@ -54,5 +62,17 @@ article {
 .captcha.form-item{
     .panel-heading{
         display: none;
+    }
+}
+
+
+#services-aeroportuaires-vestiaires-consigne-et-service-demballage td:before, 
+#airport-services-coat-check-storage-and-secure-wrap-baggage-services td:before{
+    @media (max-width: 769px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 0;
+        font-size: 14px;
     }
 }
