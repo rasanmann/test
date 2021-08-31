@@ -13,9 +13,7 @@ Drupal.behaviors.changeLinkToButton = {
 
 
   vefiryIfUrl: function(context){
-
-      var langCode = drupalSettings.path.currentLanguage;
-
+      var langCode = drupalSettings ? drupalSettings.path.currentLanguage : document.documentElement.lang;
       if(langCode == 'fr'){
         this.HrefToButtonConverter('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'PRENDRE RENDEZ-VOUS','href-to-button-converter no-after')
         this.HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Commencer la formation'.toUpperCase(), 'no-after')
@@ -23,9 +21,6 @@ Drupal.behaviors.changeLinkToButton = {
         this.HrefToButtonConverter('https://outlook.office365.com/owa/calendar/BCA1@yqb.onmicrosoft.com/bookings/', 'MAKE AN APPOINTMENT','href-to-button-converter no-after')
         this.HrefToButtonConverter('https://www.gtaa.org/pearsonawareness/index2.html', 'Start training'.toUpperCase(), 'no-after')
       }
-
-
-     
   },
 
   HrefToButtonConverter: function(href, text, css_class){
