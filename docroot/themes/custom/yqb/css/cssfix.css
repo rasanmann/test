@@ -23,7 +23,12 @@ body.toolbar-horizontal {
 
 .field--name-body p {
   font-size: 16px;
+  font-size: 1.6rem;
   margin: 20px 40px; }
+
+.field--name-body ul li {
+  font-size: 16px;
+  font-size: 1.6rem; }
 
 article .field--name-body h3, article .field--name-body h4 {
   margin: 20px 40px; }
