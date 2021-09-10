@@ -17,11 +17,6 @@ class EntityFieldBlockTest extends BrowserTestBase {
   public static $modules = ['block', 'ctools_block', 'ctools_block_field_test'];
 
   /**
-   * {@inheritdoc}
-   */
-  protected $defaultTheme = 'stark';
-
-  /**
    * Tests using the node body field in a block.
    */
   public function testBodyField() {
@@ -49,22 +44,20 @@ class EntityFieldBlockTest extends BrowserTestBase {
    * Tests that empty image fields will still render their default value.
    */
   public function testEmptyImageField() {
-    $entityTypeManager = $this->container->get('entity_type.manager');
-    $source = $this->container->get('module_handler')->getModule('image')->getPath() . '/sample.png';
-
-    /** @var \Drupal\Core\File\FileSystemInterface $file_system */
-    $file_system = $this->container->get('file_system');
-    $file_system->copy($source, 'public://sample.png');
+    $source = \Drupal::moduleHandler()->getModule('image')->getPath() . '/sample.png';
+    file_unmanaged_copy($source, 'public://sample.png');
 
     /** @var \Drupal\file\FileInterface $file */
-    $file = $entityTypeManager->getStorage('file')
+    $file = \Drupal::entityTypeManager()
+      ->getStorage('file')
       ->create([
         'uri' => 'public://sample.png',
       ]);
     $file->save();
 
     /** @var \Drupal\field\FieldConfigInterface $field */
-    $field = $entityTypeManager->getStorage('field_config')
+    $field = \Drupal::entityTypeManager()
+      ->getStorage('field_config')
       ->load('node.ctools_block_field_test.field_image');
     $settings = $field->getSettings();
     $settings['default_image']['uuid'] = $file->uuid();

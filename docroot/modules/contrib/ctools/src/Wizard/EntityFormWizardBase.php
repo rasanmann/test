@@ -51,19 +51,16 @@ abstract class EntityFormWizardBase extends FormWizardBase implements EntityForm
    * {@inheritdoc}
    */
   public static function getParameters() {
-    $parameters = [
+    return [
       'tempstore' => \Drupal::service('tempstore.shared'),
       'builder' => \Drupal::service('form_builder'),
       'class_resolver' => \Drupal::service('class_resolver'),
       'event_dispatcher' => \Drupal::service('event_dispatcher'),
+      // Keep the deprecated entity manager service as a parameter as well for
+      // BC, so that subclasses still work.
+      'entity_manager' => \Drupal::service('entity.manager'),
       'entity_type_manager' => \Drupal::service('entity_type.manager'),
     ];
-    // Keep the deprecated entity manager service as a parameter as well for
-    // BC, so that subclasses still work.
-    if (\Drupal::hasService('entity.manager')) {
-      $parameters['entity_manager'] = \Drupal::service('entity.manager');
-    }
-    return $parameters;
   }
 
   /**
@@ -101,7 +98,7 @@ abstract class EntityFormWizardBase extends FormWizardBase implements EntityForm
     $status = $entity->save();
 
     $arguments = [
-      '@entity-type' => $entity->getEntityType()->getSingularLabel(),
+      '@entity-type' => $entity->getEntityType()->getLowercaseLabel(),
       '%label' => $entity->label(),
     ];
     if ($status === SAVED_UPDATED) {

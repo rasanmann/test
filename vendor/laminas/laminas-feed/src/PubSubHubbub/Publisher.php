@@ -256,7 +256,6 @@ class Publisher
         $this->errors = [];
         foreach ($hubs as $url) {
             $client->setUri($url);
-            $client->send();
             $response = $client->getResponse();
             if ($response->getStatusCode() !== 204) {
                 $this->errors[] = [

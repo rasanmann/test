@@ -206,21 +206,22 @@ class Rss extends AbstractFeed
                         DateTime::RSS,
                         DateTime::RFC822,
                         DateTime::RFC2822,
+                        null,
                     ];
                     foreach ($dateStandards as $standard) {
-                        $date = DateTime::createFromFormat(
-                            $standard,
-                            $dateModified
-                        );
-                        if ($date instanceof DateTime) {
+                        try {
+                            $date = DateTime::createFromFormat($standard, $dateModified);
                             break;
+                        } catch (\Exception $e) {
+                            if ($standard === null) {
+                                throw new Exception\RuntimeException(
+                                    'Could not load date due to unrecognised format'
+                                    . ' (should follow RFC 822 or 2822): ' . $e->getMessage(),
+                                    0,
+                                    $e
+                                );
+                            }
                         }
-                    }
-                    if (! $date) {
-                        throw new Exception\RuntimeException(
-                            'Could not load date due to unrecognised'
-                            . ' format (should follow RFC 822 or 2822).'
-                        );
                     }
                 }
             }
@@ -672,8 +673,6 @@ class Rss extends AbstractFeed
 
     /**
      * Read all entries to the internal entries array
-     *
-     * @return void
      */
     protected function indexEntries()
     {
@@ -690,8 +689,6 @@ class Rss extends AbstractFeed
 
     /**
      * Register the default namespaces for the current feed format
-     *
-     * @return void
      */
     protected function registerNamespaces()
     {

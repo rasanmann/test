@@ -24,8 +24,6 @@ class StandaloneExtensionManager implements ExtensionManagerInterface
         'GooglePlayPodcast\Feed'  => Extension\GooglePlayPodcast\Feed::class,
         'Podcast\Entry'           => Extension\Podcast\Entry::class,
         'Podcast\Feed'            => Extension\Podcast\Feed::class,
-        'PodcastIndex\Entry'      => Extension\PodcastIndex\Entry::class,
-        'PodcastIndex\Feed'       => Extension\PodcastIndex\Feed::class,
         'Slash\Entry'             => Extension\Slash\Entry::class,
         'Syndication\Feed'        => Extension\Syndication\Feed::class,
         'Thread\Entry'            => Extension\Thread\Entry::class,
@@ -60,7 +58,6 @@ class StandaloneExtensionManager implements ExtensionManagerInterface
      *
      * @param string $name
      * @param string $class
-     * @return void
      */
     public function add($name, $class)
     {
@@ -84,7 +81,6 @@ class StandaloneExtensionManager implements ExtensionManagerInterface
      * Remove an extension.
      *
      * @param string $name
-     * @return void
      */
     public function remove($name)
     {

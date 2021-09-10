@@ -34,9 +34,7 @@
   ],
   "support": {
     "issues": "https://www.drupal.org/project/issues/ctools",
-    "source": "https://git.drupalcode.org/project/ctools"
+    "source": "http://cgit.drupalcode.org/ctools"
   },
-  "require": {
-    "drupal/core": "^8.7.7 || ^9"
-  }
+  "require": {}
 }

@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+/**
+ * @see       https://github.com/laminas/laminas-stdlib for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-stdlib/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-stdlib/blob/master/LICENSE.md New BSD License
+ */
 
 namespace Laminas\Stdlib\StringWrapper;
 
 use Laminas\Stdlib\Exception;
 use Laminas\Stdlib\StringUtils;
-
-use function in_array;
-use function strlen;
-use function strpos;
-use function strtoupper;
-use function substr;
 
 class Native extends AbstractStringWrapper
 {
@@ -76,7 +74,7 @@ class Native extends AbstractStringWrapper
             );
         }
 
-        if (null !== $convertEncoding && $encodingUpper !== strtoupper($convertEncoding)) {
+        if ($encodingUpper !== strtoupper($convertEncoding)) {
             $this->convertEncoding = $encodingUpper;
         }
 

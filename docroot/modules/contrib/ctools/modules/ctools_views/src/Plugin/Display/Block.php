@@ -2,75 +2,15 @@
 
 namespace Drupal\ctools_views\Plugin\Display;
 
-use Drupal\Core\Block\BlockManagerInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\Block\ViewsBlock;
 use Drupal\views\Plugin\views\display\Block as CoreBlock;
-use Drupal\views\Plugin\ViewsHandlerManager;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Provides a Block display plugin.
- *
- * Allows for greater control over Views block settings.
+ * Provides a Block display plugin that allows for greater control over Views
+ * block settings.
  */
 class Block extends CoreBlock {
-
-  /**
-   * The views filter plugin manager.
-   *
-   * @var \Drupal\views\Plugin\ViewsHandlerManager
-   */
-  protected $filterManager;
-
-  /**
-   * The current request.
-   *
-   * @var \Symfony\Component\HttpFoundation\Request
-   */
-  protected $request;
-
-  /**
-   * Constructs a new Block instance.
-   *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin_id for the plugin instance.
-   * @param mixed $plugin_definition
-   *   The plugin implementation definition.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity manager.
-   * @param \Drupal\Core\Block\BlockManagerInterface $block_manager
-   *   The block manager.
-   * @param \Drupal\views\Plugin\ViewsHandlerManager $filter_manager
-   *   The views filter plugin manager.
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   The current request.
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, BlockManagerInterface $block_manager, ViewsHandlerManager $filter_manager, Request $request) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $block_manager);
-
-    $this->filterManager = $filter_manager;
-    $this->request = $request;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('entity_type.manager'),
-      $container->get('plugin.manager.block'),
-      $container->get('plugin.manager.views.filter'),
-      $container->get('request_stack')->getCurrentRequest()
-    );
-  }
 
   /**
    * {@inheritdoc}
@@ -85,15 +25,15 @@ class Block extends CoreBlock {
       'hide_fields' => $this->t('Hide fields'),
       'sort_fields' => $this->t('Reorder fields'),
       'disable_filters' => $this->t('Disable filters'),
-      'configure_sorts' => $this->t('Configure sorts'),
+      'configure_sorts' => $this->t('Configure sorts')
     ];
     $filter_intersect = array_intersect_key($filter_options, $filtered_allow);
 
-    $options['allow'] = [
+    $options['allow'] = array(
       'category' => 'block',
       'title' => $this->t('Allow settings'),
       'value' => empty($filtered_allow) ? $this->t('None') : implode(', ', $filter_intersect),
-    ];
+    );
   }
 
   /**
@@ -101,14 +41,15 @@ class Block extends CoreBlock {
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
-
-    $form['allow']['#options']['offset'] = $this->t('Pager offset');
-    $form['allow']['#options']['pager'] = $this->t('Pager type');
-    $form['allow']['#options']['hide_fields'] = $this->t('Hide fields');
-    $form['allow']['#options']['sort_fields'] = $this->t('Reorder fields');
-    $form['allow']['#options']['disable_filters'] = $this->t('Disable filters');
-    $form['allow']['#options']['configure_sorts'] = $this->t('Configure sorts');
-
+    $options = $form['allow']['#options'];
+    $options['offset'] = $this->t('Pager offset');
+    $options['pager'] = $this->t('Pager type');
+    $options['hide_fields'] = $this->t('Hide fields');
+    $options['sort_fields'] = $this->t('Reorder fields');
+    $options['disable_filters'] = $this->t('Disable filters');
+    $options['configure_sorts'] = $this->t('Configure sorts');
+    $form['allow']['#options'] = $options;
+    // Update the items_per_page if set.
     $defaults = [];
     if (!empty($form['allow']['#default_value'])) {
       $defaults = array_filter($form['allow']['#default_value']);
@@ -131,7 +72,7 @@ class Block extends CoreBlock {
 
     // Modify "Items per page" block settings form.
     if (!empty($allow_settings['items_per_page'])) {
-      // Items per page.
+      // Items per page
       $form['override']['items_per_page']['#type'] = 'number';
       unset($form['override']['items_per_page']['#options']);
     }
@@ -151,13 +92,13 @@ class Block extends CoreBlock {
       $pager_options = [
         'view' => $this->t('Inherit from view'),
         'some' => $this->t('Display a specified number of items'),
-        'none' => $this->t('Display all items'),
+        'none' => $this->t('Display all items')
       ];
       $form['override']['pager'] = [
         '#type' => 'radios',
         '#title' => $this->t('Pager'),
         '#options' => $pager_options,
-        '#default_value' => isset($block_configuration['pager']) ? $block_configuration['pager'] : 'view',
+        '#default_value' => isset($block_configuration['pager']) ? $block_configuration['pager'] : 'view'
       ];
     }
 
@@ -176,7 +117,7 @@ class Block extends CoreBlock {
       $form['override']['order_fields'] = [
         '#type' => 'table',
         '#header' => $header,
-        '#rows' => [],
+        '#rows' => array(),
       ];
       if (!empty($allow_settings['sort_fields'])) {
         $form['override']['order_fields']['#tabledrag'] = [
@@ -184,7 +125,7 @@ class Block extends CoreBlock {
             'action' => 'order',
             'relationship' => 'sibling',
             'group' => 'field-weight',
-          ],
+          ]
         ];
         $form['override']['order_fields']['#attributes'] = ['id' => 'order-fields'];
       }
@@ -215,7 +156,7 @@ class Block extends CoreBlock {
         if (!empty($plugin->options['label'])) {
           $field_label .= ' (' . $plugin->options['label'] . ')';
         }
-        if (!empty($allow_settings['sort_fields'])) {
+       if (!empty($allow_settings['sort_fields'])) {
           $form['override']['order_fields'][$field_name]['#attributes']['class'][] = 'draggable';
         }
         $form['override']['order_fields'][$field_name]['#weight'] = !empty($block_configuration['fields'][$field_name]['weight']) ? $block_configuration['fields'][$field_name]['weight'] : 0;
@@ -277,10 +218,10 @@ class Block extends CoreBlock {
     // Provide "Configure sorts" block settings form.
     if (!empty($allow_settings['configure_sorts'])) {
       $sorts = $this->getHandlers('sort');
-      $options = [
+      $options = array(
         'ASC' => $this->t('Sort ascending'),
         'DESC' => $this->t('Sort descending'),
-      ];
+      );
       foreach ($sorts as $sort_name => $plugin) {
         $form['override']['sort'][$sort_name] = [
           '#type' => 'details',
@@ -290,12 +231,12 @@ class Block extends CoreBlock {
           '#type' => 'value',
           '#value' => $plugin,
         ];
-        $form['override']['sort'][$sort_name]['order'] = [
+        $form['override']['sort'][$sort_name]['order'] = array(
           '#title' => $this->t('Order'),
           '#type' => 'radios',
           '#options' => $options,
-          '#default_value' => $plugin->options['order'],
-        ];
+          '#default_value' => $plugin->options['order']
+        );
 
         // Set default values for sorts for this block.
         if (!empty($block_configuration["sort"][$sort_name])) {
@@ -312,8 +253,8 @@ class Block extends CoreBlock {
    */
   public function blockSubmit(ViewsBlock $block, $form, FormStateInterface $form_state) {
     // Set default value for items_per_page if left blank.
-    if (empty($form_state->getValue(['override', 'items_per_page']))) {
-      $form_state->setValue(['override', 'items_per_page'], "none");
+    if (empty($form_state->getValue(array('override', 'items_per_page')))) {
+      $form_state->setValue(array('override', 'items_per_page'), "none");
     }
 
     parent::blockSubmit($block, $form, $form_state);
@@ -347,16 +288,12 @@ class Block extends CoreBlock {
       if ($filters = $form_state->getValue(['override', 'filters'])) {
         foreach ($filters as $filter_name => $filter) {
           /** @var \Drupal\views\Plugin\views\filter\FilterPluginBase $plugin */
-          $plugin = $form_state->getValue([
-            'override', 'filters', $filter_name, 'plugin',
-          ]);
+          $plugin = $form_state->getValue(['override', 'filters', $filter_name, 'plugin']);
           $configuration["filter"][$filter_name]['type'] = $plugin->getPluginId();
 
           // Check if we want to disable this filter.
           if (!empty($allow_settings['disable_filters'])) {
-            $disable = $form_state->getValue([
-              'override', 'filters', $filter_name, 'disable',
-            ]);
+            $disable = $form_state->getValue(['override', 'filters', $filter_name, 'disable']);
             // If marked disabled, we don't really care about other stuff.
             if ($disable) {
               $configuration["filter"][$filter_name]['disable'] = $disable;
@@ -372,7 +309,7 @@ class Block extends CoreBlock {
       $sorts = $form_state->getValue(['override', 'sort']);
       foreach ($sorts as $sort_name => $sort) {
         $plugin = $sort['plugin'];
-        // Check if we want to override the default sort order.
+        // Check if we want to override the default sort order
         if ($plugin->options['order'] != $sort['order']) {
           $configuration['sort'][$sort_name] = $sort['order'];
         }
@@ -448,11 +385,8 @@ class Block extends CoreBlock {
     }
   }
 
-  /**
-   * Filter options value.
-   */
   protected function getFilterOptionsValue(array $filter, array $config) {
-    $plugin_definition = $this->filterManager->getDefinition($config['type']);
+    $plugin_definition = \Drupal::service('plugin.manager.views.filter')->getDefinition($config['type']);
     if (is_subclass_of($plugin_definition['class'], '\Drupal\views\Plugin\views\filter\InOperator')) {
       return array_values($config['value']);
     }
@@ -464,7 +398,7 @@ class Block extends CoreBlock {
    */
   public function usesExposed() {
     $filters = $this->getHandlers('filter');
-    foreach ($filters as $filter) {
+    foreach ($filters as $filter_name => $filter) {
       if ($filter->isExposed() && !empty($filter->exposedInfo())) {
         return TRUE;
       }
@@ -473,8 +407,6 @@ class Block extends CoreBlock {
   }
 
   /**
-   * Exposed widgets.
-   *
    * Exposed widgets typically only work with ajax in Drupal core, however
    * #2605218 totally breaks the rest of the functionality in this display and
    * in Core's Block display as well, so we allow non-ajax block views to use
@@ -484,7 +416,7 @@ class Block extends CoreBlock {
     /** @var \Drupal\views\ViewExecutable $view */
     $view = $element['#view'];
     if (!empty($view->exposed_widgets['#action']) && !$view->ajaxEnabled()) {
-      $view->exposed_widgets['#action'] = $this->request->getRequestUri();
+      $view->exposed_widgets['#action'] = \Drupal::request()->getRequestUri();
     }
     return parent::elementPreRender($element);
   }
@@ -492,13 +424,9 @@ class Block extends CoreBlock {
   /**
    * Sort field config array by weight.
    *
-   * @param int $a
-   *   The field a.
-   * @param int $b
-   *   The field b.
-   *
+   * @param $a
+   * @param $b
    * @return int
-   *   Return the more weight
    */
   public static function sortFieldsByWeight($a, $b) {
     $a_weight = isset($a['weight']) ? $a['weight'] : 0;

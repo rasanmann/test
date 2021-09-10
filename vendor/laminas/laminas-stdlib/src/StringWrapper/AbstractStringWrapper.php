@@ -1,36 +1,26 @@
 <?php
 
-declare(strict_types=1);
+/**
+ * @see       https://github.com/laminas/laminas-stdlib for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-stdlib/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-stdlib/blob/master/LICENSE.md New BSD License
+ */
 
 namespace Laminas\Stdlib\StringWrapper;
 
 use Laminas\Stdlib\Exception;
 use Laminas\Stdlib\StringUtils;
 
-use function floor;
-use function in_array;
-use function sprintf;
-use function str_pad;
-use function str_repeat;
-use function strtoupper;
-use function wordwrap;
-
-use const STR_PAD_BOTH;
-use const STR_PAD_LEFT;
-use const STR_PAD_RIGHT;
-
 abstract class AbstractStringWrapper implements StringWrapperInterface
 {
     /**
      * The character encoding working on
-     *
      * @var string|null
      */
     protected $encoding = 'UTF-8';
 
     /**
      * An optionally character encoding to convert to
-     *
      * @var string|null
      */
     protected $convertEncoding;
@@ -96,8 +86,8 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
     /**
      * Get the defined character encoding to work with
      *
-     * @return null|string
-     * @throws Exception\LogicException If no encoding was defined.
+     * @return string
+     * @throws Exception\LogicException If no encoding was defined
      */
     public function getEncoding()
     {
@@ -108,7 +98,7 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
      * Get the defined character encoding to convert to
      *
      * @return string|null
-     */
+    */
     public function getConvertEncoding()
     {
         return $this->convertEncoding;
@@ -139,8 +129,8 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
         $to   = $reverse ? $encoding : $convertEncoding;
         throw new Exception\RuntimeException(sprintf(
             'Converting from "%s" to "%s" isn\'t supported by this string wrapper',
-            $from ?? '',
-            $to ?? ''
+            $from,
+            $to
         ));
     }
 
@@ -170,7 +160,7 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
             throw new Exception\InvalidArgumentException('Cannot force cut when width is zero');
         }
 
-        if (null === $this->getEncoding() || StringUtils::isSingleByteEncoding($this->getEncoding())) {
+        if (StringUtils::isSingleByteEncoding($this->getEncoding())) {
             return wordwrap($string, $width, $break, $cut);
         }
 
@@ -189,16 +179,16 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
             }
 
             if ($possibleBreak === $break) {
-                $result   .= $this->substr($string, $lastStart, $current - $lastStart + $breakWidth);
-                $current  += $breakWidth - 1;
-                $lastStart = $lastSpace = $current + 1;
+                $result    .= $this->substr($string, $lastStart, $current - $lastStart + $breakWidth);
+                $current   += $breakWidth - 1;
+                $lastStart  = $lastSpace = $current + 1;
                 continue;
             }
 
             if ($char === ' ') {
                 if ($current - $lastStart >= $width) {
-                    $result   .= $this->substr($string, $lastStart, $current - $lastStart) . $break;
-                    $lastStart = $current + 1;
+                    $result    .= $this->substr($string, $lastStart, $current - $lastStart) . $break;
+                    $lastStart  = $current + 1;
                 }
 
                 $lastSpace = $current;
@@ -206,14 +196,14 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
             }
 
             if ($current - $lastStart >= $width && $cut && $lastStart >= $lastSpace) {
-                $result   .= $this->substr($string, $lastStart, $current - $lastStart) . $break;
-                $lastStart = $lastSpace = $current;
+                $result    .= $this->substr($string, $lastStart, $current - $lastStart) . $break;
+                $lastStart  = $lastSpace = $current;
                 continue;
             }
 
             if ($current - $lastStart >= $width && $lastStart < $lastSpace) {
-                $result   .= $this->substr($string, $lastStart, $lastSpace - $lastStart) . $break;
-                $lastStart = $lastSpace += 1;
+                $result    .= $this->substr($string, $lastStart, $lastSpace - $lastStart) . $break;
+                $lastStart  = $lastSpace = $lastSpace + 1;
                 continue;
             }
         }
@@ -236,7 +226,7 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
      */
     public function strPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT)
     {
-        if (null === $this->getEncoding() || StringUtils::isSingleByteEncoding($this->getEncoding())) {
+        if (StringUtils::isSingleByteEncoding($this->getEncoding())) {
             return str_pad($input, $padLength, $padString, $padType);
         }
 
@@ -250,13 +240,13 @@ abstract class AbstractStringWrapper implements StringWrapperInterface
             return $input;
         }
 
-        $repeatCount = (int) floor($lengthOfPadding / $padStringLength);
+        $repeatCount = floor($lengthOfPadding / $padStringLength);
 
         if ($padType === STR_PAD_BOTH) {
-            $repeatCountLeft = $repeatCountRight = (int) ($repeatCount - $repeatCount % 2) / 2;
+            $repeatCountLeft = $repeatCountRight = ($repeatCount - $repeatCount % 2) / 2;
 
             $lastStringLength       = $lengthOfPadding - 2 * $repeatCountLeft * $padStringLength;
-            $lastStringLeftLength   = $lastStringRightLength = (int) floor($lastStringLength / 2);
+            $lastStringLeftLength   = $lastStringRightLength = floor($lastStringLength / 2);
             $lastStringRightLength += $lastStringLength % 2;
 
             $lastStringLeft  = $this->substr($padString, 0, $lastStringLeftLength);

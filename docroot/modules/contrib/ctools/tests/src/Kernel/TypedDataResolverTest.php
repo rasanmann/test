@@ -5,7 +5,6 @@ namespace Drupal\Tests\ctools\Kernel;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Plugin\Context\Context;
 use Drupal\Core\Plugin\Context\ContextDefinition;
-use Drupal\Core\Plugin\Context\EntityContextDefinition;
 use Drupal\entity_test\Entity\EntityTest;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\user\Entity\User;
@@ -87,13 +86,7 @@ class TypedDataResolverTest extends KernelTestBase {
    */
   protected function assertPropertyPath(ContentEntityInterface $entity, $property_path, $expected_data_type)  {
     $typed_data_entity = $entity->getTypedData();
-    if (strpos($typed_data_entity->getDataDefinition()->getDataType(), 'entity:') === 0) {
-      $context_definition = new EntityContextDefinition($typed_data_entity->getDataDefinition()->getDataType());
-    }
-    else {
-      $context_definition = new ContextDefinition($typed_data_entity->getDataDefinition()
-        ->getDataType());
-    }
+    $context_definition = new ContextDefinition($typed_data_entity->getDataDefinition()->getDataType());
     $context_with_value = new Context($context_definition, $typed_data_entity);
     $context_without_value = new Context($context_definition);
 

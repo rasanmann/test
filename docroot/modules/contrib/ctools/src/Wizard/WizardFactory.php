@@ -5,11 +5,8 @@ namespace Drupal\ctools\Wizard;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormState;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Render\Renderer;
 
-/**
- * The wizard factory.
- */
 class WizardFactory implements WizardFactoryInterface {
 
   /**
@@ -29,7 +26,7 @@ class WizardFactory implements WizardFactoryInterface {
   /**
    * The object renderer.
    *
-   * @var \Drupal\Core\Render\RendererInterface
+   * @var \Drupal\Core\Render\Renderer
    */
   protected $renderer;
 
@@ -40,10 +37,10 @@ class WizardFactory implements WizardFactoryInterface {
    *   The form builder.
    * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
    *   The event dispatcher.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
+   * @param \Drupal\Core\Render\Renderer $renderer
    *   The object renderer.
    */
-  public function __construct(FormBuilderInterface $form_builder, EventDispatcherInterface $event_dispatcher, RendererInterface $renderer) {
+  public function __construct(FormBuilderInterface $form_builder, EventDispatcherInterface $event_dispatcher, Renderer $renderer) {
     $this->builder = $form_builder;
     $this->dispatcher = $event_dispatcher;
     $this->renderer = $renderer;
@@ -71,15 +68,12 @@ class WizardFactory implements WizardFactoryInterface {
   }
 
   /**
-   * Create form wizard.
-   *
    * @param string $class
    *   A class name implementing FormWizardInterface.
    * @param array $parameters
    *   The array of parameters specific to this wizard.
    *
    * @return \Drupal\ctools\Wizard\FormWizardInterface
-   *   Return form Wizard.
    */
   public function createWizard($class, array $parameters) {
     $arguments = [];
@@ -106,10 +100,8 @@ class WizardFactory implements WizardFactoryInterface {
    * @param array $parameters
    *   The array of parameters specific to this wizard.
    * @param bool $ajax
-   *   Is ajax or not.
    *
    * @return \Drupal\Core\Form\FormState
-   *   Return the form state.
    */
   public function getFormState(FormWizardInterface $wizard, array $parameters, $ajax = FALSE) {
     $form_state = new FormState();

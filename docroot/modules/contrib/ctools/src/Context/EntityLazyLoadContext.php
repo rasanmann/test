@@ -7,7 +7,7 @@ use Drupal\Core\Plugin\Context\Context;
 use Drupal\Core\Plugin\Context\ContextDefinitionInterface;
 
 /**
- * Defines context that loads entity on demand.
+ * @todo.
  */
 class EntityLazyLoadContext extends Context {
 

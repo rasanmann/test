@@ -710,8 +710,7 @@ class Entry
     {
         foreach ($this->extensions as $extension) {
             try {
-                $callback = [$extension, $method];
-                return $callback(...$args);
+                return call_user_func_array([$extension, $method], $args);
             } catch (\BadMethodCallException $e) {
             }
         }

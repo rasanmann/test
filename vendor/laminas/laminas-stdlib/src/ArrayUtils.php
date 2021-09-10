@@ -1,29 +1,16 @@
-<?php // phpcs:disable WebimpressCodingStandard.NamingConventions.AbstractClass.Prefix
+<?php
 
-
-declare(strict_types=1);
+/**
+ * @see       https://github.com/laminas/laminas-stdlib for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-stdlib/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-stdlib/blob/master/LICENSE.md New BSD License
+ */
 
 namespace Laminas\Stdlib;
 
 use Laminas\Stdlib\ArrayUtils\MergeRemoveKey;
 use Laminas\Stdlib\ArrayUtils\MergeReplaceKeyInterface;
 use Traversable;
-
-use function array_filter;
-use function array_key_exists;
-use function array_keys;
-use function array_values;
-use function in_array;
-use function is_array;
-use function is_callable;
-use function is_float;
-use function is_int;
-use function is_object;
-use function is_scalar;
-use function is_string;
-use function iterator_to_array;
-use function method_exists;
-use function sprintf;
 
 /**
  * Utility class for testing and manipulation of PHP arrays.
@@ -35,12 +22,12 @@ abstract class ArrayUtils
     /**
      * Compatibility Flag for ArrayUtils::filter
      */
-    public const ARRAY_FILTER_USE_BOTH = 1;
+    const ARRAY_FILTER_USE_BOTH = 1;
 
     /**
      * Compatibility Flag for ArrayUtils::filter
      */
-    public const ARRAY_FILTER_USE_KEY = 2;
+    const ARRAY_FILTER_USE_KEY  = 2;
 
     /**
      * Test whether an array contains one or more string keys
@@ -59,7 +46,7 @@ abstract class ArrayUtils
             return $allowEmpty;
         }
 
-        return [] !== array_filter(array_keys($value), 'is_string');
+        return count(array_filter(array_keys($value), 'is_string')) > 0;
     }
 
     /**
@@ -79,7 +66,7 @@ abstract class ArrayUtils
             return $allowEmpty;
         }
 
-        return [] !== array_filter(array_keys($value), 'is_int');
+        return count(array_filter(array_keys($value), 'is_int')) > 0;
     }
 
     /**
@@ -106,7 +93,7 @@ abstract class ArrayUtils
             return $allowEmpty;
         }
 
-        return [] !== array_filter(array_keys($value), 'is_numeric');
+        return count(array_filter(array_keys($value), 'is_numeric')) > 0;
     }
 
     /**
@@ -139,7 +126,7 @@ abstract class ArrayUtils
             return $allowEmpty;
         }
 
-        return array_values($value) === $value;
+        return (array_values($value) === $value);
     }
 
     /**
@@ -181,7 +168,7 @@ abstract class ArrayUtils
             return $allowEmpty;
         }
 
-        return array_values($value) !== $value;
+        return (array_values($value) !== $value);
     }
 
     /**
@@ -211,8 +198,7 @@ abstract class ArrayUtils
                 }
             }
         }
-
-        return in_array($needle, $haystack, (bool) $strict);
+        return in_array($needle, $haystack, $strict);
     }
 
     /**
@@ -223,7 +209,7 @@ abstract class ArrayUtils
      *
      * @param  array|Traversable  $iterator     The array or Traversable object to convert
      * @param  bool               $recursive    Recursively check all nested structures
-     * @throws Exception\InvalidArgumentException If $iterator is not an array or a Traversable object.
+     * @throws Exception\InvalidArgumentException if $iterator is not an array or a Traversable object
      * @return array
      */
     public static function iteratorToArray($iterator, $recursive = true)
@@ -240,7 +226,7 @@ abstract class ArrayUtils
             return iterator_to_array($iterator);
         }
 
-        if (is_object($iterator) && method_exists($iterator, 'toArray')) {
+        if (method_exists($iterator, 'toArray')) {
             return $iterator->toArray();
         }
 
@@ -322,6 +308,6 @@ abstract class ArrayUtils
             ));
         }
 
-        return array_filter($data, $callback, $flag ?? 0);
+        return array_filter($data, $callback, $flag);
     }
 }

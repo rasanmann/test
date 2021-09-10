@@ -14,11 +14,6 @@ class DisplayTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'stark';
-
-  /**
-   * {@inheritdoc}
-   */
   public static $modules = [
     'block',
     'block_content',
@@ -88,7 +83,7 @@ class DisplayTest extends BrowserTestBase {
     $this->assertSame($link, $block->field_link->uri);
     $this->assertSame($image_uri, $block->field_image->entity->getFileUri());
 
-    $build = $this->container->get('entity_type.manager')
+    $build = \Drupal::entityTypeManager()
       ->getViewBuilder('fake_block_content')
       ->view($block);
 
@@ -98,7 +93,7 @@ class DisplayTest extends BrowserTestBase {
     $this->assertArrayHasKey('field_image', $build);
 
     // Render the block and check the output too, just to be sure.
-    $rendered = $this->container->get('renderer')->renderRoot($build);
+    $rendered = \Drupal::service('renderer')->renderRoot($build);
     $rendered = (string) $rendered;
 
     $this->assertContains($block->body->value, $rendered);

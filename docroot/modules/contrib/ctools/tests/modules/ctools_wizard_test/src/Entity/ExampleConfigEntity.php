@@ -33,12 +33,6 @@ use Drupal\ctools_wizard_test\ExampleConfigEntityInterface;
  *     "edit-form" = "/admin/structure/ctools_wizard_test_config_entity/{machine_name}/{step}",
  *     "delete-form" = "/admin/structure/ctools_wizard_test_config_entity/{ctools_wizard_test_config_entity}/delete",
  *     "collection" = "/admin/structure/ctools_wizard_test_config_entity"
- *   },
- *   config_export = {
- *     "id",
- *     "label",
- *     "one",
- *     "two",
  *   }
  * )
  */
