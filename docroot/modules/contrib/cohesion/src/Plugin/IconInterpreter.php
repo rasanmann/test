@@ -2,7 +2,6 @@
 
 namespace Drupal\cohesion\Plugin;
 
-use Drupal\cohesion\CohesionApiClient;
 use Drupal\Component\Serialization\Json;
 
 /**
@@ -20,7 +19,7 @@ class IconInterpreter {
   public function sendToApi($json = '') {
     $results = new \stdClass();
     $results->body = Json::decode($json);
-    return CohesionApiClient::resourceIcon($results);
+    return \Drupal::service('cohesion.api_client')->resourceIcon($results);
   }
 
 }

@@ -6,7 +6,7 @@ use Drupal\Component\Serialization\Json;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
- * Class CohesionEndpointHelper.
+ * Helper functions for cohesionapi/ endpoints
  *
  * @package Drupal\cohesion\Helper
  */
@@ -64,12 +64,16 @@ class CohesionEndpointHelper {
     $machine_name = str_replace(' ', '_', $machine_name);
 
     $entity_class = $storage->getEntityType()->getOriginalClass();
-    $prefix = $entity_class::entity_machine_name_prefix;
+    $prefix = $entity_class::ENTITY_MACHINE_NAME_PREFIX;
     $machine_name = $prefix . $machine_name;
+
+    if (strlen($machine_name) > 32) {
+      $machine_name = substr($machine_name, 0, 32);
+    }
 
     if ($storage->load($machine_name)) {
       $error = TRUE;
-      $message = $this->t('You cannot save a @type with the same name.', ['@type' => $type]);
+      $message = $this->t('Failed to save @type with an automatically generated machine name of @machine_name. Please use a different title.', ['@type' => $type, '@machine_name' => $machine_name]);
     }
     else {
       list($error, $message) = $this->createElement($entity_type_id, $values, $machine_name);

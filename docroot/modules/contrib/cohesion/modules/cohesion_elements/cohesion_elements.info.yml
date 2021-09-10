@@ -1,7 +1,7 @@
-name: Cohesion elements
+name: Site Studio elements
 type: module
-description: 'Defines the component and helper configuration entities for creating reusable layout configurations within Cohesion.'
-core_version_requirement: ^8.7.7 || ^9
-package: cohesion
+description: 'Defines the component and helper configuration entities for creating reusable layout configurations within Site Studio.'
+core_version_requirement: ^8.8.0 || ^9
+package: Site Studio
 dependencies:
   - cohesion

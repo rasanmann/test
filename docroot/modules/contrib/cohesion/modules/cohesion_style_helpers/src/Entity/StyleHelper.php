@@ -50,6 +50,17 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *     "duplicate-form" = "/admin/cohesion/styles/cohesion_style_helpers/{cohesion_style_helper}/duplicate",
  *     "enable-selection" = "/admin/cohesion/styles/cohesion_style_helpers/{cohesion_style_helper}/enable-selection",
  *     "disable-selection" = "/admin/cohesion/styles/cohesion_style_helpers/{cohesion_style_helper}/disable-selection",
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "custom_style_type"
  *   }
  * )
  */
@@ -57,7 +68,7 @@ class StyleHelper extends CohesionConfigEntityBase implements CohesionSettingsIn
 
   const ASSET_GROUP_ID = 'style_helpers';
 
-  const entity_machine_name_prefix = 'style_hlp_';
+  const ENTITY_MACHINE_NAME_PREFIX = 'style_hlp_';
 
   /**
    * The CustomStyleType.

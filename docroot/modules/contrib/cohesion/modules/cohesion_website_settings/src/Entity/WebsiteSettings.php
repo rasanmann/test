@@ -2,14 +2,14 @@
 
 namespace Drupal\cohesion_website_settings\Entity;
 
-use Drupal\cohesion\EntityHasResourceObjectTrait;
-use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Component\Serialization\Json;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\cohesion\Entity\CohesionSettingsInterface;
+use Drupal\cohesion\EntityHasResourceObjectTrait;
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
- * Defines the Cohesion website settings entity.
+ * Defines the Site Studio website settings entity.
  *
  * @ConfigEntityType(
  *   id = "cohesion_website_settings",
@@ -42,6 +42,16 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *     "edit-form" =
  *   "/admin/cohesion/cohesion_website_settings/{cohesion_website_settings}/edit",
  *     "collection" = "/admin/cohesion/cohesion_website_settings"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable"
  *   }
  * )
  */

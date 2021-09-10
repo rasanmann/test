@@ -2,12 +2,12 @@
 
 namespace Drupal\cohesion_website_settings\Entity;
 
+use Drupal\cohesion\Entity\CohesionSettingsInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\cohesion\Entity\CohesionSettingsInterface;
 
 /**
- * Defines the Cohesion website settings entity.
+ * Defines the Site Studio website settings entity.
  *
  * @ConfigEntityType(
  *   id = "cohesion_color",
@@ -35,6 +35,17 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *   links = {
  *     "in-use" = "/admin/cohesion/cohesion_color/{cohesion_color}/in_use",
  *     "collection" = "/admin/cohesion/cohesion_website_settings"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "weight"
  *   }
  * )
  */

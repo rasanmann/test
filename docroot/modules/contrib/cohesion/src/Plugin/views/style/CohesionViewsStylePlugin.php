@@ -2,11 +2,11 @@
 
 namespace Drupal\cohesion\Plugin\views\style;
 
-use Drupal\views\Plugin\views\style\StylePluginBase;
 use Drupal\core\Form\FormStateInterface;
+use Drupal\views\Plugin\views\style\StylePluginBase;
 
 /**
- * Acquia Cohesion layout style plugin to render views using Acquia Cohesion layouts.
+ * Site Studio layout style plugin to render views using Site Studio layouts.
  *
  * @ingroup views_style_plugins
  *
@@ -103,8 +103,9 @@ class CohesionViewsStylePlugin extends StylePluginBase {
     }
 
     // Master template selection.
-    $master_template_ids = \Drupal::service('entity.query')->get('cohesion_master_templates')->execute();
-    $master_template_storage = \Drupal::service('entity.manager')->getStorage('cohesion_master_templates');
+    $master_template_ids = \Drupal::service('entity_type.manager')->getStorage('cohesion_master_templates')->getQuery()
+      ->execute();
+    $master_template_storage = \Drupal::service('entity_type.manager')->getStorage('cohesion_master_templates');
     $master_templates = $master_template_storage->loadMultiple($master_template_ids);
 
     $form['master_template'] = [

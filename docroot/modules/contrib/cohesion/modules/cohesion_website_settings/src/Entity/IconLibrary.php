@@ -2,13 +2,13 @@
 
 namespace Drupal\cohesion_website_settings\Entity;
 
+use Drupal\cohesion\Entity\CohesionSettingsInterface;
 use Drupal\cohesion\EntityHasResourceObjectTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\cohesion\Entity\CohesionSettingsInterface;
 
 /**
- * Defines the Cohesion website settings entity.
+ * Defines the Site Studio website settings entity.
  *
  * @ConfigEntityType(
  *   id = "cohesion_icon_library",
@@ -36,6 +36,17 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *   links = {
  *     "in-use" = "/admin/cohesion/cohesion_icon_library/{cohesion_icon_library}/in_use",
  *     "collection" = "/admin/cohesion/cohesion_website_settings"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "source"
  *   }
  * )
  */
@@ -180,18 +191,18 @@ class IconLibrary extends WebsiteSettingsEntityBase implements CohesionSettingsI
       foreach ($json_value['fontFiles'] as $fontFile) {
         if (is_array($fontFile) && isset($fontFile['uri']) && file_exists($fontFile['uri'])) {
           $should_delete = TRUE;
-          // Only delete if file have not the same path
-          if($new_json_values && isset($new_json_values['fontFiles']) && is_array($new_json_values['fontFiles'])) {
+          // Only delete if file have not the same path.
+          if ($new_json_values && isset($new_json_values['fontFiles']) && is_array($new_json_values['fontFiles'])) {
             foreach ($new_json_values['fontFiles'] as $newFontFile) {
               $ll = $file_system->realpath($newFontFile['uri']);
               $ss = $file_system->realpath($fontFile['uri']);
-              if($file_system->realpath($newFontFile['uri']) == $file_system->realpath($fontFile['uri'])) {
+              if ($file_system->realpath($newFontFile['uri']) == $file_system->realpath($fontFile['uri'])) {
                 $should_delete = FALSE;
               }
             }
           }
 
-          if($should_delete) {
+          if ($should_delete) {
             \Drupal::service('cohesion.local_files_manager')->deleteFileByURI($fontFile['uri']);
           }
 
@@ -210,7 +221,7 @@ class IconLibrary extends WebsiteSettingsEntityBase implements CohesionSettingsI
     /** @var \Drupal\Core\File\FileSystemInterface $file_system */
     $file_system = \Drupal::service('file_system');
     if (isset($json_value['iconJSON']['json'])) {
-      if(!$new_json_values || !isset($new_json_values['iconJSON']['json']) || $file_system->realpath($json_value['iconJSON']['json']) != $file_system->realpath($json_value['iconJSON']['json'])) {
+      if (!$new_json_values || !isset($new_json_values['iconJSON']['json']) || $file_system->realpath($json_value['iconJSON']['json']) != $file_system->realpath($json_value['iconJSON']['json'])) {
         \Drupal::service('cohesion.local_files_manager')->deleteFileByURI($json_value['iconJSON']['json']);
       }
     }

@@ -2,11 +2,11 @@
 
 namespace Drupal\cohesion_website_settings\Entity;
 
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\cohesion\Entity\CohesionSettingsInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
- * Defines the Cohesion website settings entity.
+ * Defines the Site Studio website settings entity.
  *
  * @ConfigEntityType(
  *   id = "cohesion_scss_variable",
@@ -34,6 +34,17 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *   links = {
  *     "in-use" = "/admin/cohesion/cohesion_scss_variable/{cohesion_scss_variable}/in_use",
  *     "collection" = "/admin/cohesion/cohesion_website_settings"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "weight"
  *   }
  * )
  */

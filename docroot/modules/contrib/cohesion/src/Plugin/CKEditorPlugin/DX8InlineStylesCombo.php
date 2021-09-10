@@ -110,7 +110,7 @@ class DX8InlineStylesCombo extends CKEditorPluginBase implements ContainerFactor
 
         // Load the type data.
         $type_id = $custom_style->getCustomStyleType();
-        if ($custom_style->get('status') && $custom_style_type = \Drupal::service('entity.manager')->getStorage('custom_style_type')->load($type_id)) {
+        if ($custom_style->get('status') && $custom_style_type = \Drupal::service('entity_type.manager')->getStorage('custom_style_type')->load($type_id)) {
           if ($custom_style->get('available_in_wysiwyg')) {
 
             // Build the array.

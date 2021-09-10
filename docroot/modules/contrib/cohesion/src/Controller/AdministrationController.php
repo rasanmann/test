@@ -3,11 +3,10 @@
 namespace Drupal\cohesion\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Url;
 use Drupal\system\SystemManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Drupal\cohesion\CohesionApiClient;
-use Drupal\Core\Url;
 
 /**
  * Class AdministrationController.
@@ -55,7 +54,7 @@ class AdministrationController extends ControllerBase {
   }
 
   /**
-   * Import Acquia Cohesion assets for the API and create entities.
+   * Import Site Studio assets for the API and create entities.
    *
    * @param bool $cron
    *
@@ -66,7 +65,7 @@ class AdministrationController extends ControllerBase {
     \Drupal::service('cohesion.local_files_manager')->resetScratchDirectory();
 
     // Get config from API.
-    $content = CohesionApiClient::getAssetConfig();
+    $content = \Drupal::service('cohesion.api_client')->getAssetConfig();
     if ($content['code'] !== 200) {
       \Drupal::messenger()->addError($content['data']);
       if (!$cron) {

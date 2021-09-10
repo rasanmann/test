@@ -39,7 +39,7 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 
 $config['file.settings']['make_unused_managed_files_temporary'] = FALSE;
 // Enable verbose error on dev, stg env.
-if(strpos($_SERVER['HTTP_HOST'], '.prod.acquia-sites.com') !== false){
+if((isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], '.prod.acquia-sites.com') !== false)){
 	$config['system.logging']['error_level'] = 'verbose';
 }
 // On Acquia Cloud, this include file configures Drupal to use the correct

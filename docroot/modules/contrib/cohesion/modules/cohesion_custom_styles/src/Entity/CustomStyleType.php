@@ -27,7 +27,7 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *   config_export = {
  *     "id",
  *     "label",
- *     "element",
+ *     "element"
  *   }
  * )
  */

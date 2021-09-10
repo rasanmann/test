@@ -41,12 +41,19 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "delete-form" = "/admin/cohesion/sync/packages/{cohesion_sync_package}/delete",
  *     "duplicate-form" = "/admin/cohesion/sync/packages/{cohesion_sync_package}/duplicate",
  *     "collection" = "/admin/cohesion/sync/packages",
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "description",
+ *     "excluded_entity_types",
+ *     "settings"
  *   }
  * )
  */
 class Package extends ConfigEntityBase implements PackageSettingsInterface {
 
-  const entity_machine_name_prefix = 'pack_';
+  const ENTITY_MACHINE_NAME_PREFIX = 'pack_';
 
   /**
    * Package ID.
@@ -143,7 +150,7 @@ class Package extends ConfigEntityBase implements PackageSettingsInterface {
    * @return string
    */
   public function getEntityMachineNamePrefix() {
-    return $this::entity_machine_name_prefix;
+    return $this::ENTITY_MACHINE_NAME_PREFIX;
   }
 
 }

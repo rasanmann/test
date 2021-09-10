@@ -42,6 +42,17 @@ namespace Drupal\cohesion_elements\Entity;
  *     "delete-form" = "/admin/cohesion/helpers/categories/{cohesion_helper_category}/delete",
  *     "collection" = "/admin/cohesion/helpers/categories",
  *     "in-use" = "/admin/cohesion/helpers/categories/{cohesion_helper_category}/in_use"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "modified",
+ *     "selectable",
+ *     "class",
+ *     "weight"
  *   }
  * )
  */
@@ -49,11 +60,11 @@ class HelperCategory extends ElementCategoryBase {
 
   const ASSET_GROUP_ID = 'cohesion_helper_category';
 
-  const entity_machine_name_prefix = 'hlp_cat_';
+  const ENTITY_MACHINE_NAME_PREFIX = 'hlp_cat_';
 
   // Used when deleting categories that are in use.
-  const target_entity_type = 'cohesion_helper';
+  const TARGET_ENTITY_TYPE = 'cohesion_helper';
 
-  const default_category_id = 'hlp_cat_uncategorized';
+  const DEFAULT_CATEGORY_ID = 'hlp_cat_uncategorized';
 
 }

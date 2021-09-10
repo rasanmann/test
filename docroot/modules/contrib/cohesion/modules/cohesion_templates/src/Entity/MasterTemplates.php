@@ -56,6 +56,19 @@ use Drupal\Core\Entity\EntityStorageInterface;
  *     "disable-selection" = "/admin/cohesion/templates/master_templates/{cohesion_master_templates}/disable-selection",
  *     "set-default-form" = "/admin/cohesion/templates/master_templates/{cohesion_master_templates}/set_default",
  *     "in-use" = "/admin/cohesion/templates/master_templates/{cohesion_master_templates}/in-use",
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "custom",
+ *     "twig_template",
+ *     "default"
  *   }
  * )
  */
@@ -63,7 +76,7 @@ class MasterTemplates extends CohesionTemplateBase implements CohesionSettingsIn
 
   const ASSET_GROUP_ID = 'master_template';
 
-  const entity_machine_name_prefix = 'mstr_tpl_';
+  const ENTITY_MACHINE_NAME_PREFIX = 'mstr_tpl_';
 
   /**
    * Import a list of entities.
@@ -105,7 +118,8 @@ class MasterTemplates extends CohesionTemplateBase implements CohesionSettingsIn
     parent::postSave($storage);
 
     if ($this->get('default') === TRUE) {
-      $default_templates_ids = \Drupal::service('entity.query')->get('cohesion_master_templates')->condition('default', TRUE)->condition('id', $this->id(), '<>')->execute();
+      $default_templates_ids = \Drupal::service('entity_type.manager')->getStorage('cohesion_master_templates')->getQuery()
+        ->condition('default', TRUE)->condition('id', $this->id(), '<>')->execute();
 
       $default_templates = $this->loadMultiple($default_templates_ids);
       foreach ($default_templates as $default_template) {

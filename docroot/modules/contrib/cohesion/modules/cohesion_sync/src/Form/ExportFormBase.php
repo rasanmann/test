@@ -2,17 +2,17 @@
 
 namespace Drupal\cohesion_sync\Form;
 
-use Drupal\Core\Form\ConfigFormBase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Config\StorageInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\cohesion\UsagePluginManager;
 use Drupal\cohesion_sync\PackagerManager;
-use Drupal\Core\Entity\EntityRepository;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\StorageInterface;
+use Drupal\Core\Entity\EntityRepository;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\ConfigFormBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class ExportFormBase.
+ * Sync Export form base.
  *
  * @package Drupal\cohesion_sync\Form
  */
@@ -77,7 +77,7 @@ abstract class ExportFormBase extends ConfigFormBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static($container->get('config.factory'), $container->get('entity.manager'), $container->get('config.storage'), $container->get('cohesion_sync.packager'), $container->get('entity.repository'), $container->get('plugin.manager.usage.processor'));
+    return new static($container->get('config.factory'), $container->get('entity_type.manager'), $container->get('config.storage'), $container->get('cohesion_sync.packager'), $container->get('entity.repository'), $container->get('plugin.manager.usage.processor'));
   }
 
   /**

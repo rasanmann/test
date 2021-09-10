@@ -3,16 +3,16 @@
 namespace Drupal\cohesion_sync;
 
 use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\Entity\EntityRepository;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Entity\EntityRepository;
 
 /**
- * Class SyncPluginBase.
+ * Sync plugin base.
  *
  * @package Drupal\cohesion_sync
  */
@@ -122,10 +122,10 @@ abstract class SyncPluginBase extends PluginBase implements SyncPluginInterface,
   public function validatePackageEntryShouldApply($entry) {
     // Make sure the ID key is in the entry.
     if (!isset($entry[$this->id_key])) {
-      throw new \Exception(t('Missing ID key "@id_key" for this @entity_type import.', [
-        '@id_key' => $this->id_key,
-        '@entity_type' => $this->entityTypeDefinition->getLabel(),
-      ]));
+      throw new \Exception(sprintf('Missing ID key "%s" for this %s import.',
+        $this->id_key,
+        $this->entityTypeDefinition->getLabel()
+      ));
     }
   }
 

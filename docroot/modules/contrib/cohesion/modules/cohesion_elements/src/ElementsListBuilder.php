@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Class ElementsListBuilder.
  *
- * Provides a listing of Cohesion components and helpers.
+ * Provides a listing of Site Studio components and helpers.
  *
  * @package Drupal\cohesion_elements
  */
@@ -51,7 +51,7 @@ class ElementsListBuilder extends CohesionListBuilder implements FormInterface {
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-    return new static($entity_type, $container->get('entity.manager')->getStorage($entity_type->id()), $container->get('form_builder'), $container->get('entity_type.manager'));
+    return new static($entity_type, $container->get('entity_type.manager')->getStorage($entity_type->id()), $container->get('form_builder'), $container->get('entity_type.manager'));
   }
 
   /**

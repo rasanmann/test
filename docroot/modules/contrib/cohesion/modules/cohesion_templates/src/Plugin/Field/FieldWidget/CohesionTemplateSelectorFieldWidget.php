@@ -2,18 +2,18 @@
 
 namespace Drupal\cohesion_templates\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Entity\ContentEntityInterface;
 
 /**
  * Plugin implementation of the 'cohesion_template_selector_widget' widget.
  *
  * @FieldWidget(
  *   id = "cohesion_template_selector_widget",
- *   label = @Translation("Cohesion template selector widget"),
- *   description = @Translation("Cohesion template selector widget."),
+ *   label = @Translation("Site Studio template selector widget"),
+ *   description = @Translation("Site Studio template selector widget."),
  *   field_types = {
  *     "cohesion_template_selector"
  *   }
@@ -48,8 +48,7 @@ class CohesionTemplateSelectorFieldWidget extends WidgetBase {
     }
 
     // Get list of templates for this content type.
-    $template_ids = \Drupal::service('entity.query')
-      ->get('cohesion_content_templates')
+    $template_ids = \Drupal::service('entity_type.manager')->getStorage('cohesion_content_templates')->getQuery()
       ->condition('entity_type', $entity_type)
       ->condition('bundle', $bundle)
       ->condition('view_mode', 'full')

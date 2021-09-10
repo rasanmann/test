@@ -28,6 +28,18 @@ use Drupal\Core\Url;
  *     "theme" = "theme",
  *     "style_guide_uuid" = "style_guide_uuid",
  *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "theme",
+ *     "style_guide_uuid"
+ *   }
  * )
  */
 class StyleGuideManager extends CohesionConfigEntityBase implements CohesionSettingsInterface {
@@ -61,6 +73,9 @@ class StyleGuideManager extends CohesionConfigEntityBase implements CohesionSett
     return FALSE;
   }
 
+  /**
+   *
+   */
   public function getApiPluginInstance() {
     return FALSE;
   }

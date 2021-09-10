@@ -2,11 +2,10 @@
 
 namespace Drupal\cohesion\Controller;
 
-use GuzzleHttp\Exception\ClientException;
-use Drupal\Core\Controller\ControllerBase;
-use Symfony\Component\HttpFoundation\Request;
 use Drupal\cohesion\CohesionJsonResponse;
-use Drupal\cohesion\CohesionApiClient;
+use Drupal\Core\Controller\ControllerBase;
+use GuzzleHttp\Exception\ClientException;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ParseJsonEndpoint.
@@ -25,7 +24,7 @@ class ParseJsonEndpoint extends ControllerBase {
       $body = $request->getContent();
       $results = json_decode($body);
 
-      $response = CohesionApiClient::parseJson($request->attributes->get('command'), $results);
+      $response = \Drupal::service('cohesion.api_client')->parseJson($request->attributes->get('command'), $results);
 
       if ($response && $response['code'] == 200) {
         $status = $response['code'];

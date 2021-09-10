@@ -11,7 +11,7 @@ use Drupal\file\Entity\File;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class FileSync.
+ * File sync plugin.
  *
  * @package Drupal\cohesion_sync
  *
@@ -93,7 +93,10 @@ class FileSync extends SyncPluginBase {
       $struct['content'] = base64_encode(file_get_contents($entity->getFileUri()));
     }
     else {
-      throw new \Exception($this->t('File @uri does not exist on the local filesystem although the entity @label exists.', ['@uri' => $entity->getFileUri(), '@label' => $entity->label()]));
+      \Drupal::service('cohesion.utils')->errorHandler(
+        $this->t('File @uri does not exist on the local filesystem although the entity @label exists.', ['@uri' => $entity->getFileUri(), '@label' => $entity->label()]),
+        TRUE
+      );
     }
 
     return $struct;
@@ -114,15 +117,15 @@ class FileSync extends SyncPluginBase {
     parent::validatePackageEntryShouldApply($entry);
 
     if (!isset($entry['uuid'])) {
-      throw new \Exception($this->t('Import did not specify a file UUID.'));
+      throw new \Exception('Import did not specify a file UUID.');
     }
 
     if (!isset($entry['uri'])) {
-      throw new \Exception($this->t('Import did not specify a file URI.'));
+      throw new \Exception('Import did not specify a file URI.');
     }
 
     if (!isset($entry['content'])) {
-      throw new \Exception($this->t('Import did not specify file contents.'));
+      throw new \Exception('Import did not specify file contents.');
     }
 
     if (!base64_decode($entry['content'])) {
@@ -133,8 +136,8 @@ class FileSync extends SyncPluginBase {
 
     // File already exists (by UUID) - flag it.
     if ($entity = $this->entityRepository->loadEntityByUuid('file', $entry['uuid'])) {
-      if ($entity->get('uri')->getValue()[0]['value'] !== $entry['uri']) {
-        throw new \Exception($this->t('An entity with this UUID already exists but the URI does not match.'));
+      if ($entity->get('uri')->getValue()[0]['value'] !== $entry['uri'] && (strpos($entry['uri'], 'cohesion://') === FALSE || $entity->get('uri')->getValue()[0]['value'] !== str_replace('cohesion://', 'public://cohesion/', $entry['uri']))) {
+        throw new \Exception('An entity with this UUID ' . $entry['uuid'] . ' already exists but the URI ' . $entry['uri'] . ' does not match.');
       }
 
       // See if any of the entity data has changed.
@@ -142,8 +145,8 @@ class FileSync extends SyncPluginBase {
         if ($entity->hasField($key) && $key !== 'fid' && $key !== 'created' && $key !== 'changed') {
           $entity_val = $entity->get($key)->getValue()[0];
 
-          if($key == 'uri') {
-            if(strpos($value, 'cohesion://') !== FALSE) {
+          if ($key == 'uri') {
+            if (strpos($value, 'cohesion://') !== FALSE) {
               $value = str_replace('cohesion://', 'public://cohesion/', $value);
             }
           }
@@ -163,8 +166,9 @@ class FileSync extends SyncPluginBase {
           // Ask the user what to do.
           return ENTRY_EXISTING_ASK;
         }
-      } else {
-        throw new \Exception($this->t('File @uri does not exist on the local filesystem although the entity exists.', ['@uri' => $entry['uri']]));
+      }
+      else {
+        throw new \Exception("File {$entry['uri']} does not exist on the local filesystem although the entity exists.");
       }
 
       // Nothing changed, so ignore it.
@@ -191,8 +195,8 @@ class FileSync extends SyncPluginBase {
     }
 
     $uri = $entry['uri'];
-    // Patch old entities using the cohesion stream wrapper
-    if(strpos($uri, 'cohesion://') !== FALSE) {
+    // Patch old entities using the cohesion stream wrapper.
+    if (strpos($uri, 'cohesion://') !== FALSE) {
       $uri = str_replace('cohesion://', 'public://cohesion/', $uri);
     }
 
@@ -203,7 +207,7 @@ class FileSync extends SyncPluginBase {
     // Only attempt to save the file if it can be decoded, otherwise just create the entity.
     if ($content = base64_decode($entry['content'])) {
       if (!$this->fileSystem->saveData($content, $uri, FileSystemInterface::EXISTS_REPLACE)) {
-        throw new \Exception($this->t('Unable to save file %fileuri', ['%fileuri' => $uri]));
+        throw new \Exception("Unable to save file {$uri}");
       }
 
       // Create new entity.

@@ -3,11 +3,11 @@
 namespace Drupal\cohesion;
 
 use Drupal\Component\Serialization\Json;
-use GuzzleHttp\Exception\RequestException;
 use Drupal\Core\Site\Settings;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * Client to perform API calls to Cohesion API.
+ * Client to perform API calls to Site Studio API.
  *
  * Class CohesionApiClient.
  *
@@ -18,67 +18,74 @@ class CohesionApiClient {
   /**
    *
    */
-  public static function buildStyle($payload) {
-    return static::send('POST', '/build/style', $payload);
+  public function buildStyle($payload) {
+    return $this->send('POST', '/build/style', $payload);
   }
 
   /**
    *
    */
-  public static function buildDeleteStyle($payload) {
-    return static::send('DELETE', '/build/style', $payload);
+  public function buildDeleteStyle($payload) {
+    return $this->send('DELETE', '/build/style', $payload);
   }
 
   /**
    *
    */
-  public static function buildTemplate($payload) {
-    return static::send('POST', '/build/template', $payload);
+  public function buildTemplate($payload) {
+    return $this->send('POST', '/build/template', $payload);
   }
 
   /**
    *
    */
-  public static function buildElements($payload) {
-    return static::send('POST', '/build/elements', $payload);
+  public function buildElements($payload) {
+    return $this->send('POST', '/build/elements', $payload);
   }
 
   /**
    *
    */
-  public static function getAssetConfig() {
-    return static::send('GET', '/assets/config');
+  public function getAssetConfig() {
+    return $this->send('GET', '/assets/config');
   }
 
   /**
    *
    */
-  public static function resourceIcon($payload) {
-    return static::send('POST', '/resource/icon', $payload);
+  public function resourceIcon($payload) {
+    return $this->send('POST', '/resource/icon', $payload);
   }
 
   /**
    *
    */
-  public static function valiatePMC($payload) {
-    return static::send('POST', '/validate/pmc', $payload);
+  public function valiatePMC($payload) {
+    return $this->send('POST', '/validate/pmc', $payload);
+  }
+
+  /**
+   * Merge component data with layout canvas
+   */
+  public function layoutCanvasDataMerge($payload) {
+    return $this->send('POST', '/components/update', $payload, TRUE);
   }
 
   /**
    *
    */
-  public static function parseJson($command, $payload) {
-    return static::send('POST', '/parse/' . $command, $payload, TRUE);
+  public function parseJson($command, $payload) {
+    return $this->send('POST', '/parse/' . $command, $payload, TRUE);
   }
 
   /**
    * @return array
    */
-  public static function requestHeaders() {
+  public function requestHeaders() {
     $cohesion_configs = \Drupal::config('cohesion.settings');
 
     return [
-      'dx8-env' => Settings::get('dx8_env', 'production'),
+      'dx8-env' => !empty($_ENV['AH_PRODUCTION']) && $_ENV['AH_PRODUCTION'] === 1 ? 'production' : Settings::get('dx8_env', 'non-production'),
       'dx8-site-id' => \Drupal::config('system.site')->get('uuid'),
       'dx8-api-key' => $cohesion_configs->get('api_key'),
       'dx8-drupal-path' => \Drupal::request()->getRequestUri(),
@@ -93,10 +100,10 @@ class CohesionApiClient {
    *
    * @return \Psr\Http\Message\ResponseInterface
    */
-  public static function getAssetJson($form_uri) {
+  public function getAssetJson($form_uri) {
     // Add authentication headers.
     $options = [
-      'headers' => self::requestHeaders(),
+      'headers' => $this->requestHeaders(),
     ];
 
     return \Drupal::httpClient()->get(\Drupal::service('cohesion.api.utils')->getAPIServerURL() . $form_uri, $options);
@@ -116,20 +123,28 @@ class CohesionApiClient {
    *
    * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  protected static function send($method, $uri, $data = [], $json_as_object = FALSE, $retry = TRUE) {
+  protected function send($method, $uri, $data = [], $json_as_object = FALSE, $retry = TRUE) {
+
+    $body = Json::encode($data);
 
     // Build the headers for all requests.
     $options = [
       'headers' => array_merge([
         'Content-Type' => 'application/json; charset=utf-8',
-        'Content-Encoding' => 'gzip',
         'Accept-Encoding' => 'gzip',
-      ], self::requestHeaders()),
+      ], $this->requestHeaders()),
       // Decompress inbound content.
       'decode_content' => TRUE,
-      // The body.
-      'body' => gzencode(Json::encode($data)),
     ];
+
+    $compress = \Drupal::configFactory()->get('cohesion.settings')->get('compress_outbound_request');
+    if ($compress !== FALSE) {
+      $options['headers']['Content-Encoding'] = 'gzip';
+      // Compression level set to 1 to get the network performance without affecting the client site performance
+      $options['body'] = gzencode($body, 1);
+    } else {
+      $options['body'] = $body;
+    }
 
     $code = NULL;
     $response_data = NULL;
@@ -172,7 +187,7 @@ class CohesionApiClient {
           // Wait in case the API is rebooting.
           sleep(5);
           // The final FALSE means we only re-try once.
-          return self::send($method, $uri, $data, $json_as_object, FALSE);
+          return $this->send($method, $uri, $data, $json_as_object, FALSE);
         }
 
         $code = 503;

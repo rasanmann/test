@@ -3,10 +3,10 @@
 namespace Drupal\cohesion\Entity;
 
 use Drupal\cohesion\EntityJsonValuesTrait;
-use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Config\Entity\ConfigEntityBase;
-use Drupal\Component\Serialization\Json;
 use Drupal\cohesion\EntityUpdateInterface;
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Config\Entity\ConfigEntityBase;
+use Drupal\Core\Entity\EntityStorageInterface;
 
 /**
  * Defines a base configuration entity class.
@@ -20,31 +20,31 @@ abstract class CohesionConfigEntityBase extends ConfigEntityBase implements Cohe
   // When styles are saved for this entity, this is the message.
   const STYLES_UPDATED_SAVE_MESSAGE = 'Your styles have been updated.';
 
-  const entity_machine_name_prefix = '';
+  const ENTITY_MACHINE_NAME_PREFIX = '';
 
   /**
-   * The Cohesion website settings ID.
+   * The Site Studio website settings ID.
    *
    * @var string
    */
   protected $id;
 
   /**
-   * The Cohesion website settings label.
+   * The Site Studio website settings label.
    *
    * @var string
    */
   protected $label;
 
   /**
-   * The Cohesion website settings values.
+   * The Site Studio website settings values.
    *
    * @var string
    */
   protected $json_values = '{}';
 
   /**
-   * The Cohesion website settings mapper.
+   * The Site Studio website settings mapper.
    *
    * @var string
    */
@@ -294,12 +294,12 @@ abstract class CohesionConfigEntityBase extends ConfigEntityBase implements Cohe
    */
   public static function getAll($enabled = TRUE) {
     $entities = [];
-    $entity_defs = \Drupal::service('entity.manager')->getDefinitions();
+    $entity_defs = \Drupal::service('entity_type.manager')->getDefinitions();
     $config_entities = array_keys($entity_defs);
 
     foreach ($config_entities as $entity_id) {
       if (strpos($entity_id, 'cohesion_') !== FALSE) {
-        if ($storage = \Drupal::service('entity.manager')->getStorage($entity_id)) {
+        if ($storage = \Drupal::service('entity_type.manager')->getStorage($entity_id)) {
           if ($enabled) {
             $ids = $storage->getQuery()->condition('status', $enabled)->execute();
           }
@@ -422,7 +422,7 @@ abstract class CohesionConfigEntityBase extends ConfigEntityBase implements Cohe
   }
 
   /**
-   * @return \Drupal\cohesion\SendToApiBase|void
+   * @return \Drupal\cohesion\ApiPluginBase|void
    */
   public function process() {
   }
@@ -450,12 +450,12 @@ abstract class CohesionConfigEntityBase extends ConfigEntityBase implements Cohe
    */
   public function getEntityMachineNamePrefix() {
     // If the entity already exists and doesn't contain the prefix, don't use the prefix.
-    if ($this->id !== NULL && substr($this->id, 0, strlen($this::entity_machine_name_prefix)) !== $this::entity_machine_name_prefix) {
+    if ($this->id !== NULL && substr($this->id, 0, strlen($this::ENTITY_MACHINE_NAME_PREFIX)) !== $this::ENTITY_MACHINE_NAME_PREFIX) {
       return '';
     }
     // Otherwise use the prefix.
     else {
-      return $this::entity_machine_name_prefix;
+      return $this::ENTITY_MACHINE_NAME_PREFIX;
     }
   }
 

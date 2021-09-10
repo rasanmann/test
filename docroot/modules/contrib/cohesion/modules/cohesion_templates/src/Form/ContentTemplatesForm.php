@@ -2,12 +2,13 @@
 
 namespace Drupal\cohesion_templates\Form;
 
-use Drupal\Core\Language\LanguageInterface;
+use Drupal\cohesion\TemplateStorage\TemplateStorageBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Url;
 
 /**
- * Class ContentTemplatesForm.
+ * Content Templates Form.
  *
  * @package Drupal\cohesion_templates\Form
  */
@@ -127,7 +128,8 @@ class ContentTemplatesForm extends TemplateForm {
 
     // Show default & master template fields for full content templates.
     if ($view_mode == 'full') {
-      $master_template_ids = \Drupal::service('entity.query')->get('cohesion_master_templates')->condition('status', TRUE)->condition('selectable', TRUE)->execute();
+      $master_template_ids = \Drupal::service('entity_type.manager')->getStorage('cohesion_master_templates')->getQuery()
+        ->condition('status', TRUE)->condition('selectable', TRUE)->execute();
       $master_template_storage = $this->entityTypeManager->getStorage('cohesion_master_templates');
       $master_templates = $master_template_storage->loadMultiple($master_template_ids);
 
@@ -190,7 +192,7 @@ class ContentTemplatesForm extends TemplateForm {
     \Drupal::moduleHandler()->alter('cohesion_templates_' . $entity_type . '_base_hook', $base_hook);
 
     // Node_type specific templates use custom prefix and suggestion.
-    $filename = str_replace('_', '-', sprintf('%s--cohesion--%s', $base_hook, $this->entity->get('id')));
+    $filename = str_replace('_', '-', sprintf('%s' . TemplateStorageBase::TEMPLATE_PREFIX . '-%s', $base_hook, $this->entity->get('id')));
     $this->entity->set('twig_template', $filename);
 
     // Set as default template?

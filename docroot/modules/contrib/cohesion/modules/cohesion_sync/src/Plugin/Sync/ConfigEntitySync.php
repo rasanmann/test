@@ -2,28 +2,29 @@
 
 namespace Drupal\cohesion_sync\Plugin\Sync;
 
+use Drupal\cohesion\EntityUpdateManager;
+use Drupal\cohesion\UsageUpdateManager;
+use Drupal\cohesion_sync\SyncConfigImporter;
 use Drupal\cohesion_sync\SyncPluginBase;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Entity\EntityRepository;
-use Drupal\Core\Config\StorageInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\config\StorageReplaceDataWrapper;
-use Drupal\Core\Config\StorageComparer;
-use Drupal\Core\Config\ConfigManagerInterface;
 use Drupal\Core\Config\ConfigImporterException;
+use Drupal\Core\Config\ConfigManagerInterface;
+use Drupal\Core\Config\StorageComparer;
+use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\Config\TypedConfigManagerInterface;
+use Drupal\Core\Entity\EntityRepository;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ModuleInstallerInterface;
 use Drupal\Core\Extension\ThemeHandlerInterface;
 use Drupal\Core\Lock\LockBackendInterface;
 use Drupal\Core\StringTranslation\TranslationInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Drupal\cohesion_sync\SyncConfigImporter;
-use Drupal\cohesion\UsageUpdateManager;
-use Drupal\cohesion\EntityUpdateManager;
 
 /**
- * Class ConfigEntitySync.
+ * Config entity sync plugin.
  *
  * @package Drupal\cohesion_sync
  *
@@ -91,6 +92,11 @@ class ConfigEntitySync extends SyncPluginBase {
   protected $entityUpdateManager;
 
   /**
+   * @var \Drupal\Core\Extension\ModuleExtensionList
+   */
+  protected $extensionListModule;
+
+  /**
    * ConfigEntitySync constructor.
    *
    * @param array $configuration
@@ -98,6 +104,7 @@ class ConfigEntitySync extends SyncPluginBase {
    * @param $plugin_definition
    * @param \Drupal\Core\Entity\EntityRepository $entity_repository
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
    * @param \Drupal\Core\Config\StorageInterface $config_storage
    * @param \Drupal\Core\Config\ConfigManagerInterface $config_manager
    * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $event_dispatcher
@@ -106,11 +113,11 @@ class ConfigEntitySync extends SyncPluginBase {
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    * @param \Drupal\Core\Extension\ModuleInstallerInterface $module_installer
    * @param \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler
-   * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
    * @param \Drupal\cohesion\UsageUpdateManager $usage_update_manager
    * @param \Drupal\cohesion\EntityUpdateManager $entity_update_manager
+   * @param \Drupal\Core\Extension\ModuleExtensionList $extension_list_module
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityRepository $entity_repository, EntityTypeManagerInterface $entity_type_manager, TranslationInterface $string_translation, StorageInterface $config_storage, ConfigManagerInterface $config_manager, EventDispatcherInterface $event_dispatcher, LockBackendInterface $lock, TypedConfigManagerInterface $typed_config, ModuleHandlerInterface $module_handler, ModuleInstallerInterface $module_installer, ThemeHandlerInterface $theme_handler, UsageUpdateManager $usage_update_manager, EntityUpdateManager $entity_update_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityRepository $entity_repository, EntityTypeManagerInterface $entity_type_manager, TranslationInterface $string_translation, StorageInterface $config_storage, ConfigManagerInterface $config_manager, EventDispatcherInterface $event_dispatcher, LockBackendInterface $lock, TypedConfigManagerInterface $typed_config, ModuleHandlerInterface $module_handler, ModuleInstallerInterface $module_installer, ThemeHandlerInterface $theme_handler, UsageUpdateManager $usage_update_manager, EntityUpdateManager $entity_update_manager, ModuleExtensionList $extension_list_module) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_repository, $entity_type_manager, $string_translation);
     $this->configStorage = $config_storage;
     $this->configManager = $config_manager;
@@ -123,6 +130,7 @@ class ConfigEntitySync extends SyncPluginBase {
     $this->stringTranslation = $string_translation;
     $this->usageUpdateManager = $usage_update_manager;
     $this->entityUpdateManager = $entity_update_manager;
+    $this->extensionListModule = $extension_list_module;
   }
 
   /**
@@ -152,7 +160,8 @@ class ConfigEntitySync extends SyncPluginBase {
       $container->get('module_installer'),
       $container->get('theme_handler'),
       $container->get('cohesion_usage.update_manager'),
-      $container->get('cohesion.entity_update_manager')
+      $container->get('cohesion.entity_update_manager'),
+      $container->get('extension.list.module')
     );
   }
 
@@ -194,7 +203,7 @@ class ConfigEntitySync extends SyncPluginBase {
     if (isset($entry['last_entity_update'])) {
       // Has the imported entity run a higher entityupdate_xxxx script that is available on this site (is newer)?
       if (!$this->entityUpdateManager->pluginIdInRange($entry['last_entity_update'])) {
-        throw new ConfigImporterException('This package contains entities created with a later version of Cohesion. Upgrade this site to the latest version of Cohesion before attempting to import this package.');
+        throw new ConfigImporterException('This package contains entities created with a later version of Site Studio. Upgrade this site to the latest version of Site Studio before attempting to import this package.');
       }
     }
 
@@ -230,10 +239,12 @@ class ConfigEntitySync extends SyncPluginBase {
       $this->moduleHandler,
       $this->moduleInstaller,
       $this->themeHandler,
-      $this->stringTranslation
+      $this->stringTranslation,
+      $this->extensionListModule
     );
 
     // If it's a custom style, ask the user what they want to do.
+    // Special case as it needs to be loaded by class name
     if ($this->entityTypeStorage->getEntityTypeId() === 'cohesion_custom_style') {
       // Load any entities that contain the same class name.
       $custom_style_ids = \Drupal::entityQuery('cohesion_custom_style')
@@ -258,7 +269,8 @@ class ConfigEntitySync extends SyncPluginBase {
           // Make sure this will apply.
           try {
             $config_importer->validate();
-          } catch (ConfigImporterException $e) {
+          }
+          catch (ConfigImporterException $e) {
             throw new \Exception(strip_tags($e->getMessage()));
           }
 
@@ -285,7 +297,7 @@ class ConfigEntitySync extends SyncPluginBase {
 
       // No UUID specified.
       if (!isset($entry['uuid'])) {
-        throw new \Exception($this->t('An entity with this machine name already exists but the import did not specify a UUID.'));
+        throw new \Exception('An entity with this machine name already exists but the import did not specify a UUID.');
       }
 
       // Id exists, but UUID is different.
@@ -299,7 +311,8 @@ class ConfigEntitySync extends SyncPluginBase {
         // Make sure this will apply.
         try {
           $this->validate($entry, $config_importer);
-        } catch (ConfigImporterException $e) {
+        }
+        catch (ConfigImporterException $e) {
           throw new \Exception(strip_tags($e->getMessage()));
         }
 
@@ -315,19 +328,20 @@ class ConfigEntitySync extends SyncPluginBase {
     // UUID exists, but id is different.
     elseif (isset($entry['uuid']) && $source_entity_machine_name = $this->entityTypeStorage->loadByProperties(['uuid' => $entry['uuid']])) {
       $source_entity_machine_name = reset($source_entity_machine_name);
-      throw new \Exception($this->t('@entity_type_label with UUID @uuid already exists but the machine name "@source_entity_machine_name" of the existing entity does not match the machine name "@imported_entity_machine_name" of the entity being imported.', [
-        '@entity_type_label' => $this->entityTypeDefinition->getLabel(),
-        '@uuid' => $entry['uuid'],
-        '@source_entity_machine_name' => $source_entity_machine_name->id(),
-        '@imported_entity_machine_name' => $entry['id'],
-      ]));
+      throw new \Exception(sprintf('%s with UUID %s already exists but the machine name "%s" of the existing entity does not match the machine name "%s" of the entity being imported.',
+        $this->entityTypeDefinition->getLabel(),
+        $entry['uuid'],
+        $source_entity_machine_name->id(),
+        $entry['id']
+      ));
     }
     // Entity is new.
     else {
       // Make sure it will apply.
       try {
         $this->validate($entry, $config_importer);
-      } catch (ConfigImporterException $e) {
+      }
+      catch (ConfigImporterException $e) {
         throw new \Exception(strip_tags($e->getMessage()));
       }
 
@@ -355,7 +369,8 @@ class ConfigEntitySync extends SyncPluginBase {
             $existing_entity->delete();
           }
         }
-      } catch (\Throwable $e) {
+      }
+      catch (\Throwable $e) {
         return;
       }
     }
@@ -365,13 +380,21 @@ class ConfigEntitySync extends SyncPluginBase {
    * {@inheritdoc}
    */
   public function getActionData($entry, $action_state) {
-    return [
+    $action_data = [
       'entity_type_label' => $this->entityTypeDefinition->getLabel()
         ->__toString(),
-      'entity_label' => $entry['label'],
+      'entity_label' => $entry['label'] ?? $entry['name'] ?? $entry['id'],
       'entry_uuid' => $entry['uuid'],
       'entry_action_state' => $action_state,
     ];
+
+    $config_name = $this->entityTypeDefinition->getConfigPrefix() . '.' . $entry[$this->id_key];
+    $config = $this->configStorage->read($config_name);
+    if ($config && $config['uuid'] != $entry['uuid']) {
+      $action_data['replace_uuid'] = $config['uuid'];
+    }
+
+    return $action_data;
   }
 
 }

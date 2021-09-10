@@ -48,18 +48,19 @@ class _0023EntityUpdate extends PluginBase implements EntityUpdatePluginInterfac
   }
 
   /**
-   * @param $element Element
+   * @param Element $element
    * @param $json_values
    */
   private function updateResponsiveSettings($element, &$json_values) {
-    $model = $element->getModel();
+    if ($model = $element->getModel()) {
 
-    if ($element->getProperty('uid') === 'form-tab-container') {
-      $json_values->model->{$model->getUUID()}->settings->responsiveMode = TRUE;
-    }
+      if ($element->getProperty('uid') === 'form-tab-container') {
+        $json_values->model->{$model->getUUID()}->settings->responsiveMode = TRUE;
+      }
 
-    if (in_array($element->getProperty('uid'), ['form-section', 'form-tab-item'])) {
-      $json_values->model->{$model->getUUID()}->settings->breakpointIcon = "";
+      if (in_array($element->getProperty('uid'), ['form-section', 'form-tab-item'])) {
+        $json_values->model->{$model->getUUID()}->settings->breakpointIcon = "";
+      }
     }
   }
 

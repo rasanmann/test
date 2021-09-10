@@ -3,9 +3,9 @@
 namespace Drupal\cohesion_custom_styles\Entity;
 
 use Drupal\cohesion\Entity\CohesionConfigEntityBase;
+use Drupal\cohesion\Entity\CohesionSettingsInterface;
 use Drupal\cohesion\EntityHasResourceObjectTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\cohesion\Entity\CohesionSettingsInterface;
 
 /**
  * Defines the DX8 Custom Styles entity.
@@ -61,6 +61,21 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *     "enable-selection" = "/admin/cohesion/styles/cohesion_custom_styles/{cohesion_custom_style}/enable-selection",
  *     "disable-selection" = "/admin/cohesion/styles/cohesion_custom_styles/{cohesion_custom_style}/disable-selection",
  *     "in-use" = "/admin/cohesion/styles/cohesion_custom_styles/{cohesion_custom_style}/in_use",
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "class_name",
+ *     "custom_style_type",
+ *     "available_in_wysiwyg",
+ *     "parent",
+ *     "weight"
  *   }
  * )
  */
@@ -282,7 +297,7 @@ class CustomStyle extends CohesionConfigEntityBase implements CohesionSettingsIn
             $child->save();
           }
         }
-        // @todo - Set child entities' parent to this classname.
+        // @todo Set child entities' parent to this classname.
       }
     }
   }

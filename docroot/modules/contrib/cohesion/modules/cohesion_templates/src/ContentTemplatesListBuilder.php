@@ -4,15 +4,15 @@ namespace Drupal\cohesion_templates;
 
 use Drupal\cohesion\CohesionListBuilder;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Link;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class ContentTemplatesListBuilder.
  *
- * Provides a listing of Cohesion content templates entities.
+ * Provides a listing of Site Studio content templates entities.
  *
  * @package Drupal\cohesion_templates
  */
@@ -46,7 +46,8 @@ class ContentTemplatesListBuilder extends CohesionListBuilder {
    */
   public function load() {
     $entity_type = \Drupal::routeMatch()->getParameter('content_entity_type');
-    $candidate_template_ids = \Drupal::service('entity.query')->get('cohesion_content_templates')->condition('entity_type', $entity_type)->execute();
+    $candidate_template_ids = \Drupal::service('entity_type.manager')->getStorage('cohesion_content_templates')->getQuery()
+      ->condition('entity_type', $entity_type)->execute();
 
     if ($candidate_template_ids) {
       $candidate_templates = $this->storage->loadMultiple($candidate_template_ids);
@@ -62,7 +63,8 @@ class ContentTemplatesListBuilder extends CohesionListBuilder {
         $view_mode = $entity->get('view_mode');
         if ($view_mode == 'full') {
           $entity->weight = 1;
-        } else {
+        }
+        else {
           $entity->weight = 2;
         }
         $groups[$bundle][] = $entity;
@@ -76,7 +78,8 @@ class ContentTemplatesListBuilder extends CohesionListBuilder {
 
       ksort($groups);
       return $groups;
-    } else {
+    }
+    else {
       throw new NotFoundHttpException();
     }
   }
@@ -99,11 +102,13 @@ class ContentTemplatesListBuilder extends CohesionListBuilder {
       if (isset($bundles[$title]['label'])) {
         $bundle_title = $bundles[$title]['label'];
         $valid_entity_bundle = TRUE;
-      } else {
+      }
+      else {
         if ($title == '__any__') {
           $bundle_title = $this->t('Global');
           $valid_entity_bundle = TRUE;
-        } else {
+        }
+        else {
           $bundle_title = '<span class="entity-meta__last-saved">Missing bundle (Machine name: <span class="text-lowercase">' . $title . '</span>)</span>';
           $valid_entity_bundle = FALSE;
         }
@@ -178,10 +183,10 @@ class ContentTemplatesListBuilder extends CohesionListBuilder {
 
     foreach ($template_group as $entity) {
 
-      // Always show for full view modes, global templates and for existing templates created
+      // Always show for full view modes, global templates and for existing templates created.
       if ($entity->get('view_mode') !== 'full' && $entity->get('bundle') !== '__any__' && !$entity->isModified()) {
 
-        // Get active view modes for bundles
+        // Get active view modes for bundles.
         $active_view_modes = \Drupal::service('entity_display.repository')->getViewModeOptionsByBundle($entity->get('entity_type'), $entity->get('bundle'));
 
         $view_modes = [];
@@ -194,7 +199,8 @@ class ContentTemplatesListBuilder extends CohesionListBuilder {
             $table['table']['#rows'][$entity->id()] = $row;
           }
         }
-      } else {
+      }
+      else {
         if ($row = $this->buildRow($entity)) {
           $table['table']['#rows'][$entity->id()] = $row;
         }
@@ -242,30 +248,30 @@ class ContentTemplatesListBuilder extends CohesionListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-      $parent_row = parent::buildRow($entity);
+    $parent_row = parent::buildRow($entity);
 
-        $row['label'] = $parent_row['label'];
-        $row['view_mode'] = [
-          'data' => $entity->get('view_mode'),
-          'class' => [RESPONSIVE_PRIORITY_LOW],
-        ];
+    $row['label'] = $parent_row['label'];
+    $row['view_mode'] = [
+      'data' => $entity->get('view_mode'),
+      'class' => [RESPONSIVE_PRIORITY_LOW],
+    ];
 
-        $status = $parent_row['status'];
-        if ($entity->get('view_mode') === 'full' && $entity->get('bundle') != '__any__' && $entity->get('default') === TRUE) {
-          $status['data']['#markup'] .= ', ' . $this->t('default');
-        }
-        $row['status'] = $status;
+    $status = $parent_row['status'];
+    if ($entity->get('view_mode') === 'full' && $entity->get('bundle') != '__any__' && $entity->get('default') === TRUE) {
+      $status['data']['#markup'] .= ', ' . $this->t('default');
+    }
+    $row['status'] = $status;
 
-        $row['selectable'] = $parent_row['selectable'];
-        if ($entity->get('view_mode') !== 'full' || $entity->get('bundle') === '__any__') {
-          $row['selectable'] = '-';
-        }
+    $row['selectable'] = $parent_row['selectable'];
+    if ($entity->get('view_mode') !== 'full' || $entity->get('bundle') === '__any__') {
+      $row['selectable'] = '-';
+    }
 
-        $row['in_use'] = $parent_row['in_use'];
+    $row['in_use'] = $parent_row['in_use'];
 
-        $row['operations'] = $parent_row['operations'];
+    $row['operations'] = $parent_row['operations'];
 
-        return $row;
+    return $row;
 
   }
 

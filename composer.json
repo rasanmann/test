@@ -7,10 +7,11 @@
     "sort-packages": true
   },
   "require": {
-    "acquia/cohesion": "6.1.0",
+    "acquia/cohesion": "^6.6",
     "composer/installers": "^1.0.24",
     "cweagans/composer-patches": "^1.6.0",
     "drupal/addtoany": "~1.12",
+    "drupal/admin_toolbar": "^3.0",
     "drupal/ape": "^1.5",
     "drupal/bootstrap": "~3.5",
     "drupal/bootstrap_layouts": "^5.1",

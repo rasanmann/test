@@ -6,7 +6,7 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 
 /**
- * Defines the Cohesion helper entity.
+ * Defines the Site Studio helper entity.
  *
  * @ConfigEntityType(
  *   id = "cohesion_helper",
@@ -49,6 +49,21 @@ use Drupal\Core\Entity\EntityStorageInterface;
  *     "duplicate-form" = "/admin/cohesion/helpers/helpers/{cohesion_helper}/duplicate",
  *     "enable-selection" = "/admin/cohesion/helpers/helpers/{cohesion_helper}/enable-selection",
  *     "disable-selection" = "/admin/cohesion/helpers/helpers/{cohesion_helper}/disable-selection",
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "category",
+ *     "preview_image",
+ *     "entity_type_access",
+ *     "bundle_access",
+ *     "weight"
  *   }
  * )
  */
@@ -58,7 +73,7 @@ class Helper extends CohesionElementEntityBase implements CohesionSettingsInterf
 
   const CATEGORY_ENTITY_TYPE_ID = 'cohesion_helper_category';
 
-  const entity_machine_name_prefix = 'hlp_';
+  const ENTITY_MACHINE_NAME_PREFIX = 'hlp_';
 
   /**
    * {@inheritdoc}

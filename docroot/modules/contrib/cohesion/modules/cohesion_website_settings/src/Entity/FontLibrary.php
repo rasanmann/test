@@ -2,12 +2,12 @@
 
 namespace Drupal\cohesion_website_settings\Entity;
 
-use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Cache\Cache;
 use Drupal\cohesion\Entity\CohesionSettingsInterface;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\EntityStorageInterface;
 
 /**
- * Defines the Cohesion website settings entity.
+ * Defines the Site Studio website settings entity.
  *
  * @ConfigEntityType(
  *   id = "cohesion_font_library",
@@ -35,6 +35,17 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *   links = {
  *     "in-use" = "/admin/cohesion/cohesion_font_library/{cohesion_font_library}/in_use",
  *     "collection" = "/admin/cohesion/cohesion_website_settings"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "source"
  *   }
  * )
  */
@@ -159,16 +170,16 @@ class FontLibrary extends WebsiteSettingsEntityBase implements CohesionSettingsI
         if (is_array($fontFile) && isset($fontFile['uri']) && file_exists($fontFile['uri'])) {
 
           $should_delete = TRUE;
-          // Only delete if file have not the same path
-          if($new_json_values && isset($new_json_values['fontFiles']) && is_array($new_json_values['fontFiles'])) {
+          // Only delete if file have not the same path.
+          if ($new_json_values && isset($new_json_values['fontFiles']) && is_array($new_json_values['fontFiles'])) {
             foreach ($new_json_values['fontFiles'] as $newFontFile) {
-              if($file_system->realpath($newFontFile['uri']) == $file_system->realpath($fontFile['uri'])) {
+              if ($file_system->realpath($newFontFile['uri']) == $file_system->realpath($fontFile['uri'])) {
                 $should_delete = FALSE;
               }
             }
           }
 
-          if($should_delete) {
+          if ($should_delete) {
             \Drupal::service('cohesion.local_files_manager')->deleteFileByURI($fontFile['uri']);
           }
         }

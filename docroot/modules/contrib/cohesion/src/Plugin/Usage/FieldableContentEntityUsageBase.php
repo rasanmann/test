@@ -2,8 +2,8 @@
 
 namespace Drupal\cohesion\Plugin\Usage;
 
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\cohesion\UsagePluginBase;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\field\Entity\FieldConfig;
 
 /**
@@ -23,12 +23,12 @@ abstract class FieldableContentEntityUsageBase extends UsagePluginBase {
 
     if ($template != '__default__') {
       // Not a default template, so just make sure the template exists.
-      $template_result = \Drupal::service('entity.query')->get('cohesion_content_templates')->condition('id', $template)->execute();
+      $template_result = \Drupal::service('entity_type.manager')->getStorage('cohesion_content_templates')->getQuery()
+        ->condition('id', $template)->execute();
     }
     else {
       // Default, so query for the default of this entity type/bundle.
-      $template_result = \Drupal::service('entity.query')
-        ->get('cohesion_content_templates')
+      $template_result = \Drupal::service('entity_type.manager')->getStorage('cohesion_content_templates')->getQuery()
         ->condition('entity_type', $entity->getEntityTypeId())
         ->condition('bundle', $entity->bundle())
         ->condition('view_mode', 'full')
@@ -71,7 +71,8 @@ abstract class FieldableContentEntityUsageBase extends UsagePluginBase {
                   'decoded' => $cohesion_layout_entity->getDecodedJsonValues(),
                 ];
               }
-            } catch (\Exception $e) {
+            }
+            catch (\Exception $e) {
               break;
             }
           }

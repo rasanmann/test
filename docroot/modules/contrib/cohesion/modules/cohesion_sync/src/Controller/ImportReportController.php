@@ -2,14 +2,14 @@
 
 namespace Drupal\cohesion_sync\Controller;
 
+use Drupal\cohesion_sync\PackagerManager;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\cohesion_sync\PackagerManager;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class ImportReportController.
+ * Import report controller.
  *
  * @package Drupal\cohesion_sync\Controller
  */
@@ -50,7 +50,7 @@ class ImportReportController extends ControllerBase {
     $page = [];
 
     // Found session data, so build the report.
-    if ($this->action_data = \Drupal::service('user.private_tempstore')->get('sync_report')->get('report')) {
+    if ($this->action_data = \Drupal::service('tempstore.private')->get('sync_report')->get('report')) {
 
       $page['ENTRY_NEW_IMPORTED'] = $this->buildTable($this->t('New entities imported'), ENTRY_NEW_IMPORTED, 'entry-new-imported');
       $page['ENTRY_EXISTING_OVERWRITTEN'] = $this->buildTable($this->t('Existing entities - Overwritten'), ENTRY_EXISTING_OVERWRITTEN, 'entry-existing-overwritten');

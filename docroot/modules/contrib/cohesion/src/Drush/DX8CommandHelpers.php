@@ -2,11 +2,11 @@
 
 namespace Drupal\cohesion\Drush;
 
-use Drupal\cohesion_website_settings\Controller\WebsiteSettingsController;
 use Drupal\cohesion\Controller\AdministrationController;
+use Drupal\cohesion_website_settings\Controller\WebsiteSettingsController;
 
 /**
- * Class DX8CommandHelpers.
+ * Helper class for import/rebuild.
  *
  * @package Drupal\cohesion\Drush
  */
@@ -45,7 +45,7 @@ final class DX8CommandHelpers {
       }
     }
     else {
-      return ['error' => t('Your Cohesion API KEY has not been set.') . $config->get('site_id')];
+      return ['error' => t('Your Site Studio API KEY has not been set.') . $config->get('site_id')];
     }
 
     return FALSE;
@@ -53,16 +53,21 @@ final class DX8CommandHelpers {
   }
 
   /**
-   * Resave all Cohesion config entities.
+   * Resave all Site Studio config entities.
    *
-   * @return FALSE | array
+   * @param array $options
+   *
+   * @return mixed
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public static function rebuild() {
+  public static function rebuild(array $options = ['no-cache-clear' => FALSE]) {
     // Reset temporary template list.
-    $batch = WebsiteSettingsController::batch(TRUE);
+    $batch = WebsiteSettingsController::batch(TRUE, $options['verbose'], $options['no-cache-clear']);
     batch_set($batch);
-    drush_backend_batch_process();
-    return FALSE;
+    $batch['progressive'] = FALSE;
+    return drush_backend_batch_process();
   }
 
 }

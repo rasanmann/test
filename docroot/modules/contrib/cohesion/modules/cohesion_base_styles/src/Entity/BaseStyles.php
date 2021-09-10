@@ -3,12 +3,12 @@
 namespace Drupal\cohesion_base_styles\Entity;
 
 use Drupal\cohesion\Entity\CohesionConfigEntityBase;
+use Drupal\cohesion\Entity\CohesionSettingsInterface;
 use Drupal\cohesion\EntityHasResourceObjectTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\cohesion\Entity\CohesionSettingsInterface;
 
 /**
- * Defines the Cohesion base styles entity.
+ * Defines the Site Studio base styles entity.
  *
  * @ConfigEntityType(
  *   id = "cohesion_base_styles",
@@ -57,6 +57,17 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *   "/admin/cohesion/styles/cohesion_base_styles/{cohesion_base_styles}/disable",
  *     "enable" =
  *   "/admin/cohesion/styles/cohesion_base_styles/{cohesion_base_styles}/enable",
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "custom"
  *   }
  * )
  */
@@ -66,7 +77,7 @@ class BaseStyles extends CohesionConfigEntityBase implements CohesionSettingsInt
 
   const ASSET_GROUP_ID = 'base_styles';
 
-  const entity_machine_name_prefix = 'base_';
+  const ENTITY_MACHINE_NAME_PREFIX = 'base_';
 
   /**
    * @inheritDoc

@@ -2,20 +2,20 @@
 
 namespace Drupal\cohesion_templates\Controller;
 
-use Drupal\Component\Plugin\Exception\PluginNotFoundException;
-use Drupal\Core\Render\Markup;
+use Drupal\cohesion\CohesionJsonResponse;
 use Drupal\cohesion_templates\Entity\MasterTemplates;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\system\SystemManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\cohesion\CohesionJsonResponse;
-use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Class CohesionTemplateSettingsController.
  *
- * Controller routines for Cohesion admin index page.
+ * Controller routines for Site Studio admin index page.
  *
  * @package Drupal\cohesion_templates\Controller
  */
@@ -115,7 +115,7 @@ class CohesionTemplateSettingsController extends ControllerBase {
     try {
       $entity_ids = \Drupal::entityQuery('cohesion_menu_templates')->condition('status', TRUE)->condition('selectable', TRUE)->execute();
 
-      return \Drupal::service('entity.manager')->getStorage('cohesion_menu_templates')->loadMultiple($entity_ids);
+      return \Drupal::service('entity_type.manager')->getStorage('cohesion_menu_templates')->loadMultiple($entity_ids);
     }
     catch (PluginNotFoundException $ex) {
       watchdog_exception('cohesion', $ex);

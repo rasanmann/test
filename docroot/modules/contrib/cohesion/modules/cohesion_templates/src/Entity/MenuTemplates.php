@@ -5,7 +5,7 @@ namespace Drupal\cohesion_templates\Entity;
 use Drupal\cohesion\Entity\CohesionSettingsInterface;
 
 /**
- * Defines the Cohesion menu templates entity.
+ * Defines the Site Studio menu templates entity.
  *
  * @ConfigEntityType(
  *   id = "cohesion_menu_templates",
@@ -48,7 +48,18 @@ use Drupal\cohesion\Entity\CohesionSettingsInterface;
  *     "enable-selection" = "/admin/cohesion/templates/menu_templates/{cohesion_menu_templates}/enable-selection",
  *     "disable-selection" = "/admin/cohesion/templates/menu_templates/{cohesion_menu_templates}/disable-selection",
  *     "in-use" = "/admin/cohesion/templates/menu_templates/{cohesion_menu_templates}/in_use",
- *
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "json_values",
+ *     "json_mapper",
+ *     "last_entity_update",
+ *     "locked",
+ *     "modified",
+ *     "selectable",
+ *     "custom",
+ *     "twig_template"
  *   }
  * )
  */
@@ -56,7 +67,7 @@ class MenuTemplates extends CohesionTemplateBase implements CohesionSettingsInte
 
   const ASSET_GROUP_ID = 'menu_template';
 
-  const entity_machine_name_prefix = 'menu_tpl_';
+  const ENTITY_MACHINE_NAME_PREFIX = 'menu_tpl_';
 
   /**
    * {@inheritdoc}

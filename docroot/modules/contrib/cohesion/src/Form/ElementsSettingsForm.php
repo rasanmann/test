@@ -41,7 +41,7 @@ class ElementsSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static($container->get('entity.manager')->getStorage('user_role'));
+    return new static($container->get('entity_type.manager')->getStorage('user_role'));
   }
 
   /**

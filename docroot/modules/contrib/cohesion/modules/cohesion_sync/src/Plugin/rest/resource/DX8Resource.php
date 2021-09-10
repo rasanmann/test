@@ -2,22 +2,24 @@
 
 namespace Drupal\cohesion_sync\Plugin\rest\resource;
 
-use Drupal\rest\Plugin\ResourceBase;
-use Drupal\rest\ResourceResponse;
+use Drupal\cohesion_sync\PackagerManager;
 use Drupal\Core\Cache\CacheableMetadata;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Entity\EntityRepository;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\PageCache\ResponsePolicy\KillSwitch;
-use Drupal\Core\Entity\EntityRepository;
-use Drupal\cohesion_sync\PackagerManager;
+use Drupal\rest\Plugin\ResourceBase;
+use Drupal\rest\ResourceResponse;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
+ * Deprecated.
+ *
  * REST endpoint to GET packages from this site and POST, PATCH packages to this site.
  *
  * @RestResource(
  *   id = "dx8_resource",
- *   label = @Translation("Cohesion package resource"),
+ *   label = @Translation("Site Studio package resource"),
  *   uri_paths = {
  *     "canonical" = "/sync/package/{entity_type}"
  *   }
@@ -82,7 +84,7 @@ class DX8Resource extends ResourceBase {
       $plugin_definition,
       $container->getParameter('serializer.formats'),
       $container->get('logger.factory')->get('rest'),
-      $container->get('entity.manager'),
+      $container->get('entity_type.manager'),
       $container->get('page_cache_kill_switch'),
       $container->get('entity.repository'),
       $container->get('cohesion_sync.packager')
