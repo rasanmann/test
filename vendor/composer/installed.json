@@ -2260,53 +2260,6 @@
         "abandoned": "roave/better-reflection"
     },
     {
-        "name": "drupal-composer/drupal-scaffold",
-        "version": "2.6.1",
-        "version_normalized": "2.6.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/drupal-composer/drupal-scaffold.git",
-            "reference": "13c1ffc7dd4925cb03707759128b85c0cd6276f8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/drupal-composer/drupal-scaffold/zipball/13c1ffc7dd4925cb03707759128b85c0cd6276f8",
-            "reference": "13c1ffc7dd4925cb03707759128b85c0cd6276f8",
-            "shasum": ""
-        },
-        "require": {
-            "composer-plugin-api": "^1.0.0",
-            "composer/semver": "^1.4",
-            "php": "^5.5.9|>=7.0.8"
-        },
-        "require-dev": {
-            "composer/composer": "dev-master",
-            "g1a/composer-test-scenarios": "^2.1.0",
-            "phpunit/phpunit": "^6",
-            "squizlabs/php_codesniffer": "^2.8"
-        },
-        "time": "2019-03-30T10:41:38+00:00",
-        "type": "composer-plugin",
-        "extra": {
-            "class": "DrupalComposer\\DrupalScaffold\\Plugin",
-            "branch-alias": {
-                "dev-master": "2.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "DrupalComposer\\DrupalScaffold\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0-or-later"
-        ],
-        "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core",
-        "abandoned": "drupal/core-composer-scaffold"
-    },
-    {
         "name": "drupal/addtoany",
         "version": "1.12.0",
         "version_normalized": "1.12.0.0",
@@ -2322,13 +2275,10 @@
             "shasum": "f66b3cb0a95b500e4802e8ff9c29af04554327d8"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.12",
                 "datestamp": "1554702781",
@@ -2481,13 +2431,10 @@
             "shasum": "b304b1c9d0ea30646e6dff7aa32405a21a11d49f"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-5.x": "5.x-dev"
-            },
             "drupal": {
                 "version": "8.x-5.1",
                 "datestamp": "1516598286",
@@ -2519,7 +2466,7 @@
         "description": "This module is going to generate layouts with Bootstrap grid system.",
         "homepage": "https://www.drupal.org/project/bootstrap_layouts",
         "support": {
-            "source": "http://cgit.drupalcode.org/bootstrap_layouts"
+            "source": "https://git.drupalcode.org/project/bootstrap_layouts"
         }
     },
     {
@@ -2616,9 +2563,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.0-rc2",
                 "datestamp": "1464714999",
@@ -2648,6 +2592,10 @@
                 "homepage": "https://www.drupal.org/user/71291"
             },
             {
+                "name": "markcarver",
+                "homepage": "https://www.drupal.org/user/501638"
+            },
+            {
                 "name": "nhoag",
                 "homepage": "https://www.drupal.org/user/2423844"
             },
@@ -2663,7 +2611,7 @@
         "description": "Composer Manager is a bridge to best-in-breed, standards compliant PHP libraries that are managed by Composer and Packagist.",
         "homepage": "http://drupal.org/project/composer_manager",
         "support": {
-            "source": "http://cgit.drupalcode.org/composer_manager",
+            "source": "https://git.drupalcode.org/project/composer_manager",
             "issues": "http://drupal.org/project/issues/composer_manager"
         }
     },
@@ -2687,9 +2635,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.0-rc1",
                 "datestamp": "1487232784",
@@ -2737,7 +2682,7 @@
         "description": "Helps developers work with configuration.",
         "homepage": "https://www.drupal.org/project/config_devel",
         "support": {
-            "source": "http://cgit.drupalcode.org/config_devel"
+            "source": "https://git.drupalcode.org/project/config_devel"
         }
     },
     {
@@ -2756,13 +2701,10 @@
             "shasum": "04bbd0fc440017fd0129dceae240a8bba409a450"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.6",
                 "datestamp": "1545090480",
@@ -2790,7 +2732,7 @@
         "description": "Provides basic revert and update functionality for other modules",
         "homepage": "https://www.drupal.org/project/config_update",
         "support": {
-            "source": "http://cgit.drupalcode.org/config_update"
+            "source": "https://git.drupalcode.org/project/config_update"
         }
     },
     {
@@ -3298,6 +3240,55 @@
         "description": "Drupal is an open source content management platform powering millions of websites and applications."
     },
     {
+        "name": "drupal/core-composer-scaffold",
+        "version": "8.9.18",
+        "version_normalized": "8.9.18.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/drupal/core-composer-scaffold.git",
+            "reference": "c902d07cb49ef73777e2b33a39e54c2861a8c81d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/drupal/core-composer-scaffold/zipball/c902d07cb49ef73777e2b33a39e54c2861a8c81d",
+            "reference": "c902d07cb49ef73777e2b33a39e54c2861a8c81d",
+            "shasum": ""
+        },
+        "require": {
+            "composer-plugin-api": "^1 || ^2",
+            "php": ">=7.0.8"
+        },
+        "conflict": {
+            "drupal-composer/drupal-scaffold": "*"
+        },
+        "require-dev": {
+            "composer/composer": "^1.8@stable"
+        },
+        "time": "2020-08-07T22:30:30+00:00",
+        "type": "composer-plugin",
+        "extra": {
+            "class": "Drupal\\Composer\\Plugin\\Scaffold\\Plugin",
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Drupal\\Composer\\Plugin\\Scaffold\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "description": "A flexible Composer project scaffold builder.",
+        "homepage": "https://www.drupal.org/project/drupal",
+        "keywords": [
+            "drupal"
+        ]
+    },
+    {
         "name": "drupal/ctools",
         "version": "3.2.0",
         "version_normalized": "3.2.0.0",
@@ -3317,12 +3308,9 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-3.x": "3.x-dev"
-            },
             "drupal": {
                 "version": "8.x-3.2",
-                "datestamp": "1550728386",
+                "datestamp": "1620838181",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -3413,9 +3401,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-2.x": "2.x-dev"
-            },
             "drupal": {
                 "version": "8.x-2.1",
                 "datestamp": "1556799496",
@@ -3461,14 +3446,6 @@
             {
                 "name": "See contributors",
                 "homepage": "https://www.drupal.org/node/3236/committers"
-            },
-            {
-                "name": "salvis",
-                "homepage": "https://www.drupal.org/user/82964"
-            },
-            {
-                "name": "willzyx",
-                "homepage": "https://www.drupal.org/user/1043862"
             }
         ],
         "description": "Various blocks, pages, and functions for developers.",
@@ -3495,13 +3472,10 @@
             "shasum": "920f22fd7841bc1c77b56c6ae51436319b47636e"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.6",
                 "datestamp": "1577188383",
@@ -3544,13 +3518,10 @@
             "shasum": "9a03e0ac4f21cfa3fa4772fb30861d7e4a82a8c1"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.4",
                 "datestamp": "1554478985",
@@ -3593,16 +3564,13 @@
             "shasum": "a3ebc1e38539e7916f48e827d5bd7b1abeef0011"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.0-rc7",
-                "datestamp": "1557344281",
+                "datestamp": "1580243964",
                 "security-coverage": {
                     "status": "not-covered",
                     "message": "RC releases are not covered by Drupal security advisories."
@@ -3666,9 +3634,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.7",
                 "datestamp": "1570284187",
@@ -3723,13 +3688,10 @@
             "shasum": "4d529021cf113e3026b3fd88ac2571dc72e70e8d"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.0-alpha1",
                 "datestamp": "1460462939",
@@ -3762,6 +3724,10 @@
                 "homepage": "https://www.drupal.org/user/395439"
             },
             {
+                "name": "nedjo",
+                "homepage": "https://www.drupal.org/user/4481"
+            },
+            {
                 "name": "ram4nd",
                 "homepage": "https://www.drupal.org/user/601534"
             }
@@ -3769,7 +3735,7 @@
         "description": "Provides a field collection field, to which any number of fields can be attached.",
         "homepage": "https://www.drupal.org/project/field_collection",
         "support": {
-            "source": "http://cgit.drupalcode.org/field_collection"
+            "source": "https://git.drupalcode.org/project/field_collection"
         }
     },
     {
@@ -4062,9 +4028,8 @@
             "reference": "d489c9f6dc160d9a62fab8c6ab15f20029bd3905"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
-        "time": "2014-05-06T15:47:46+00:00",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -4097,7 +4062,7 @@
         "description": "Inserts the contents of a block into into the text using [block:block_entity_id] placeholder.",
         "homepage": "https://www.drupal.org/project/insert_block",
         "support": {
-            "source": "http://cgit.drupalcode.org/insert_block"
+            "source": "https://git.drupalcode.org/project/insert_block"
         }
     },
     {
@@ -4425,9 +4390,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.0-alpha23",
                 "datestamp": "1476269960",
@@ -4463,7 +4425,7 @@
             "php"
         ],
         "support": {
-            "source": "http://cgit.drupalcode.org/layout_plugin"
+            "source": "https://git.drupalcode.org/project/layout_plugin"
         }
     },
     {
@@ -4758,6 +4720,10 @@
         ],
         "authors": [
             {
+                "name": "jcnventura",
+                "homepage": "https://www.drupal.org/user/122464"
+            },
+            {
                 "name": "yannickoo",
                 "homepage": "https://www.drupal.org/user/531118"
             }
@@ -4802,7 +4768,7 @@
         "extra": {
             "drupal": {
                 "version": "8.x-1.15",
-                "datestamp": "1607188979",
+                "datestamp": "1611210662",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -4868,9 +4834,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-4.x": "4.x-dev"
-            },
             "drupal": {
                 "version": "8.x-4.2",
                 "datestamp": "1555683487",
@@ -4929,9 +4892,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-2.x": "2.x-dev"
-            },
             "drupal": {
                 "version": "8.x-2.2",
                 "datestamp": "1527712680",
@@ -4951,10 +4911,6 @@
                 "name": "Lucas Hedding",
                 "homepage": "https://www.drupal.org/u/heddn",
                 "role": "Maintainer"
-            },
-            {
-                "name": "mikeryan",
-                "homepage": "https://www.drupal.org/user/4420"
             }
         ],
         "description": "CSV source migration.",
@@ -4991,9 +4947,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-4.x": "4.x-dev"
-            },
             "drupal": {
                 "version": "8.x-4.5",
                 "datestamp": "1574693285",
@@ -5015,16 +4968,16 @@
         ],
         "authors": [
             {
+                "name": "drupalspoons",
+                "homepage": "https://www.drupal.org/user/3647684"
+            },
+            {
                 "name": "heddn",
                 "homepage": "https://www.drupal.org/user/1463982"
             },
             {
                 "name": "mikeryan",
                 "homepage": "https://www.drupal.org/user/4420"
-            },
-            {
-                "name": "moshe weitzman",
-                "homepage": "https://www.drupal.org/user/23"
             }
         ],
         "description": "Tools to assist in developing and running migrations.",
@@ -5317,8 +5270,7 @@
                 "services": {
                     "drush.services.yml": "^9 || ^10"
                 }
-            },
-            "patches_applied": []
+            }
         },
         "installation-source": "dist",
         "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5747,9 +5699,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.5",
                 "datestamp": "1541693881",
@@ -5814,9 +5763,6 @@
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.0",
                 "datestamp": "1580492032",
@@ -6187,7 +6133,7 @@
         "extra": {
             "drupal": {
                 "version": "8.x-5.24",
-                "datestamp": "1612453175",
+                "datestamp": "1614791857",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -6197,8 +6143,7 @@
                 "services": {
                     "drush.services.yml": "^9"
                 }
-            },
-            "patches_applied": []
+            }
         },
         "installation-source": "dist",
         "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6222,28 +6167,8 @@
                 "role": "Contributor"
             },
             {
-                "name": "fenstrat",
-                "homepage": "https://www.drupal.org/user/362649"
-            },
-            {
-                "name": "jrockowitz",
-                "homepage": "https://www.drupal.org/user/371407"
-            },
-            {
-                "name": "podarok",
-                "homepage": "https://www.drupal.org/user/116002"
-            },
-            {
                 "name": "quicksketch",
                 "homepage": "https://www.drupal.org/user/35821"
-            },
-            {
-                "name": "sanchiz",
-                "homepage": "https://www.drupal.org/user/1671246"
-            },
-            {
-                "name": "tedbow",
-                "homepage": "https://www.drupal.org/user/240860"
             },
             {
                 "name": "torotil",
@@ -6359,16 +6284,13 @@
             "shasum": "02f31780340028b370b22233e8d3e1e97f54b9c7"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8"
         },
         "require-dev": {
             "drupal/devel": "*"
         },
         "type": "drupal-module",
         "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
             "drupal": {
                 "version": "8.x-1.0-beta29",
                 "datestamp": "1482752282",

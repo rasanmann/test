@@ -173,8 +173,8 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
             'Drupal\\Console\\Core\\' => 20,
             'Drupal\\Console\\Composer\\Plugin\\' => 31,
             'Drupal\\Console\\' => 15,
+            'Drupal\\Composer\\Plugin\\Scaffold\\' => 32,
             'Drupal\\Component\\' => 17,
-            'DrupalComposer\\DrupalScaffold\\' => 30,
             'DrupalCodeGenerator\\' => 20,
             'Doctrine\\Persistence\\' => 21,
             'Doctrine\\Inflector\\' => 19,
@@ -506,13 +506,13 @@ class ComposerStaticInit57417f7d68d2cb017de3500439afcd74
         array (
             0 => __DIR__ . '/..' . '/drupal/console/src',
         ),
+        'Drupal\\Composer\\Plugin\\Scaffold\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/drupal/core-composer-scaffold',
+        ),
         'Drupal\\Component\\' => 
         array (
             0 => __DIR__ . '/../..' . '/docroot/core/lib/Drupal/Component',
-        ),
-        'DrupalComposer\\DrupalScaffold\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/drupal-composer/drupal-scaffold/src',
         ),
         'DrupalCodeGenerator\\' => 
         array (
