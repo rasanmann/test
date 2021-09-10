@@ -3,7 +3,7 @@
 assert_options(ASSERT_ACTIVE, TRUE);
 \Drupal\Component\Assertion\Handle::register();
 
-$config_directories = array();
+$settings['config_sync_directory'] = array();
 ini_set('memory_limit', '2000M');
 $settings['extension_discovery_scan_tests'] = TRUE;
 $settings['file_public_path'] = 'sites/default/files';
@@ -30,7 +30,7 @@ $databases['default']['default'] = array (
 
 $settings['hash_salt'] = 'muvxYCDkSL08VsMcpVLQIUZwRGJiUSdlby9YRq9ZFylRLeh1MUIhgd2neowII9uEqliR7SZWAw';
 $settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync';
+$settings['config_sync_directory'] = 'sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync';
 
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
