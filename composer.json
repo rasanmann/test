@@ -23,7 +23,7 @@
     "drupal/console": "~1.0",
     "drupal/core-composer-scaffold": "^8.9",
     "drupal/core-recommended": "^8.9",
-    "drupal/ctools": "3.2",
+    "drupal/ctools": "^3.7",
     "drupal/devel": "~2.1",
     "drupal/editor_advanced_link": "1.6",
     "drupal/editor_file": "1.4",
