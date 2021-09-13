@@ -18,15 +18,41 @@ body.toolbar-horizontal {
 
 .field--name-body h2 {
   font-size: 2.4rem;
-  margin: 40px;
+  margin: 20px 40px;
   font-weight: normal; }
 
 .field--name-body p {
   font-size: 16px;
-  margin: 40px; }
+  font-size: 1.6rem;
+  margin: 20px 40px; }
+
+.field--name-body ul li {
+  font-size: 16px;
+  font-size: 1.6rem; }
 
 article .field--name-body h3, article .field--name-body h4 {
-  margin: 40px; }
+  margin: 20px 40px; }
 
 article .field--name-body h5 {
   margin: 20px 40px; }
+
+article .field--name-body ul {
+  padding-left: 40px !important; }
+
+article .field--name-body table {
+  margin: 20px 40px; }
+
+.table-responsive td p {
+  margin: 20px; }
+
+.captcha.form-item .panel-heading {
+  display: none; }
+
+@media (max-width: 769px) {
+  #services-aeroportuaires-vestiaires-consigne-et-service-demballage td:before,
+  #airport-services-coat-check-storage-and-secure-wrap-baggage-services td:before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    font-size: 14px; } }
