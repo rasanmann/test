@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_media_mosaique
     - media.type.image
+    - media.type.remote_video
     - media.type.video
     - paragraphs.paragraphs_type.media_mosaique
 id: paragraph.media_mosaique.field_media_mosaique
@@ -22,6 +23,7 @@ settings:
   handler_settings:
     target_bundles:
       image: image
+      remote_video: remote_video
       video: video
     sort:
       field: _none

@@ -1,4 +1,4 @@
-uuid: 9e0df128-7158-4205-897d-50605f9f3a3d
+uuid: d3f82e86-4195-4405-a0f7-93aadf9ba9cd
 langcode: fr
 status: true
 dependencies:
@@ -12,7 +12,7 @@ bundle: slide
 label: 'Tile text'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

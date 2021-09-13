@@ -12,7 +12,7 @@ dependencies:
 id: barrelateralenousjoindreenglish
 theme: yqb
 region: sidebar_first
-weight: 0
+weight: -15
 provider: null
 plugin: 'system_menu_block:barre-laterale---nous-engli'
 settings:

@@ -1,0 +1,45 @@
+uuid: a14cf651-a7b6-45d7-bfad-2ea60a60e6da
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_top_image_mobile
+    - paragraphs.paragraphs_type.block_parent
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: paragraph.block_parent.field_top_image_mobile
+field_name: field_top_image_mobile
+entity_type: paragraph
+bundle: block_parent
+label: 'Image du haut mobile'
+description: 'Taille recommandée : 320x240px'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg svg'
+  max_filesize: '1 MB'
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

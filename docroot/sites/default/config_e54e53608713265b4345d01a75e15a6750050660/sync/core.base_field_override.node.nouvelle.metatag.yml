@@ -1,0 +1,18 @@
+uuid: 5fb86f67-88d4-4373-a06b-5d535b3043df
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.nouvelle
+id: node.nouvelle.metatag
+field_name: metatag
+entity_type: node
+bundle: nouvelle
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

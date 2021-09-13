@@ -1,4 +1,4 @@
-uuid: 8bfc739c-d491-46db-a3f1-3aba453c2463
+uuid: 6a747e99-4d52-4ad4-a6e5-206b9dbe1bf7
 langcode: fr
 status: true
 dependencies:
@@ -10,9 +10,9 @@ dependencies:
     - field.field.node.commerce.field_tile_link
     - node.type.commerce
   module:
-    - image
     - image_url_formatter
     - link
+    - svg_image
     - text
     - user
 id: node.commerce.default

@@ -12,7 +12,7 @@ bundle: airport
 label: City
 description: 'Main city served by airport. May be spelled differently from Name.'
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

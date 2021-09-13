@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.video.field_media_video_file
+    - field.field.media.video.field_text_over_video
     - media.type.video
   module:
     - file
@@ -27,6 +28,14 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    region: content
+  field_text_over_video:
+    weight: 101
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   langcode:
     type: language_select

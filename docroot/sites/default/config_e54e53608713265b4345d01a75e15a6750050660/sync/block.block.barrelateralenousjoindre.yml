@@ -12,7 +12,7 @@ dependencies:
 id: barrelateralenousjoindre
 theme: yqb
 region: sidebar_first
-weight: 0
+weight: -16
 provider: null
 plugin: 'system_menu_block:barre-laterale---nous-joind'
 settings:

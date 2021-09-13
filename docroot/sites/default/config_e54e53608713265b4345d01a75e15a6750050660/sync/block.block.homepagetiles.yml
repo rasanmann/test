@@ -12,7 +12,7 @@ dependencies:
 id: homepagetiles
 theme: yqb
 region: content
-weight: -15
+weight: -16
 provider: null
 plugin: 'system_menu_block:homepage-tiles'
 settings:

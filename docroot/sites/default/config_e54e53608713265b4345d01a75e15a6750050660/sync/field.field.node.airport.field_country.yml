@@ -12,7 +12,7 @@ bundle: airport
 label: Country
 description: 'Country or territory where airport is located.'
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

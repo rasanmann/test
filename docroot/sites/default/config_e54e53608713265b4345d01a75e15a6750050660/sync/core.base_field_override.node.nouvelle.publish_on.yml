@@ -1,0 +1,18 @@
+uuid: 3087031e-ac07-4429-aa32-28db8f563977
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.nouvelle
+id: node.nouvelle.publish_on
+field_name: publish_on
+entity_type: node
+bundle: nouvelle
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

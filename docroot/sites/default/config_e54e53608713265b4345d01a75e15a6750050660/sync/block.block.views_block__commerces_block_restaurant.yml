@@ -1,4 +1,4 @@
-uuid: 7c9fa06f-f7a7-4091-ab4e-231e0e606f51
+uuid: 2198bcdd-c055-4c2c-98c2-4ce2b7e5e09b
 langcode: fr
 status: true
 dependencies:
@@ -12,7 +12,7 @@ dependencies:
 id: views_block__commerces_block_restaurant
 theme: yqb
 region: content
-weight: -27
+weight: -28
 provider: null
 plugin: 'views_block:commerces-block_restaurant'
 settings:

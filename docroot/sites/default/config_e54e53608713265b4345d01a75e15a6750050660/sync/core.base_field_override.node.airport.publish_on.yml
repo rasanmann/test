@@ -1,0 +1,18 @@
+uuid: 8cd6b764-0b9a-40cf-af2f-ae43b54976b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.airport
+id: node.airport.publish_on
+field_name: publish_on
+entity_type: node
+bundle: airport
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

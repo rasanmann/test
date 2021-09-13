@@ -1,0 +1,24 @@
+uuid: 8112d7d2-44de-4631-a0f0-3c1940f0d939
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_para_title
+    - paragraphs.paragraphs_type.parking_reservation
+  module:
+    - text
+id: paragraph.parking_reservation.field_para_title
+field_name: field_para_title
+entity_type: paragraph
+bundle: parking_reservation
+label: Titre
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Réservez en ligne votre stationnement <strong>Économisez jusqu''à 50%</strong>'
+    format: restricted_html
+default_value_callback: ''
+settings: {  }
+field_type: text

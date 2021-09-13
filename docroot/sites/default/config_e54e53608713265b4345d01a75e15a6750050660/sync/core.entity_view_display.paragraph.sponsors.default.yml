@@ -1,0 +1,37 @@
+uuid: 2c6ad27b-199f-4138-ba29-c12efacf99d1
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sponsors.field_icons
+    - field.field.paragraph.sponsors.field_title
+    - paragraphs.paragraphs_type.sponsors
+  module:
+    - svg_image
+id: paragraph.sponsors.default
+targetEntityType: paragraph
+bundle: sponsors
+mode: default
+content:
+  field_icons:
+    weight: 1
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

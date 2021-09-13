@@ -12,7 +12,7 @@ dependencies:
 id: barrelateraleaproposenglish
 theme: yqb
 region: sidebar_first
-weight: -24
+weight: -31
 provider: null
 plugin: 'system_menu_block:barre-laterale---a-propos-e'
 settings:
@@ -26,7 +26,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/about\r\n/about/*\r\n/about/*/*\r\n/about/reserved-transport-request"
+    pages: "/about\r\n/about/*\r\n/about/*/*\r\n/about/reserved-transport-request\r\n/about/company/mission-vision-and-values\r\n/pages/advice-travellers-protecting-yourself-and-others\r\n/pages/frequently-asked-questions-covid-19"
     negate: false
     context_mapping: {  }
   language:

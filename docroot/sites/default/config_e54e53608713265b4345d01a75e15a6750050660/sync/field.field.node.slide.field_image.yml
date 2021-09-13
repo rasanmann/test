@@ -1,4 +1,4 @@
-uuid: 694652bf-64c9-4c22-90f9-315b1d3a6734
+uuid: caa9803d-dd54-406a-812f-669f3b10a56c
 langcode: fr
 status: true
 dependencies:
@@ -11,15 +11,15 @@ dependencies:
 third_party_settings:
   content_translation:
     translation_sync:
-      alt: alt
-      title: title
-      file: '0'
+      file: file
+      alt: '0'
+      title: '0'
 id: node.slide.field_image
 field_name: field_image
 entity_type: node
 bundle: slide
 label: Background
-description: ''
+description: 'Taille recommandée : 1600x900px'
 required: false
 translatable: true
 default_value: {  }

@@ -1,4 +1,4 @@
-uuid: b17812b3-f167-4732-9175-772bbc6ceaf3
+uuid: 7b159c7c-5db0-4164-8924-b5f8b8f18ebd
 langcode: fr
 status: true
 dependencies:
@@ -11,7 +11,7 @@ bundle: slide
 label: 'Promu en page d''accueil'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 0
