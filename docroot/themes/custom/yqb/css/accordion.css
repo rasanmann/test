@@ -26,6 +26,9 @@
   .field--type-text-with-summary ol {
     margin-left: 20px; } }
 
+article .field--type-text-with-summary h1 {
+  margin: 40px; }
+
 article .field--type-text-with-summary h2 {
   font-weight: 700;
   font-size: 2.7rem; }
