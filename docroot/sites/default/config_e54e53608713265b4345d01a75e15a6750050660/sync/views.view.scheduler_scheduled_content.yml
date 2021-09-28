@@ -2,8 +2,6 @@ uuid: ca25a690-cb88-463c-9e1e-7d90a394f87c
 langcode: fr
 status: true
 dependencies:
-  config:
-    - system.menu.admin
   module:
     - node
     - scheduler
@@ -746,9 +744,9 @@ display:
     display_options:
       path: admin/content/scheduled
       menu:
-        type: normal
+        type: tab
         title: Scheduled
-        description: 'Content scheduled for publishing and unpublishing'
+        description: ''
         parent: system.admin_content
         weight: -10
         context: '0'
