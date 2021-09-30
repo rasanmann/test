@@ -1,0 +1,31 @@
+uuid: d5bb4c8f-8812-4997-b909-d3815fff107e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.block_icons.field_icons
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.block_icons
+  module:
+    - svg_image
+id: paragraph.block_icons.default
+targetEntityType: paragraph
+bundle: block_icons
+mode: default
+content:
+  field_icons:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

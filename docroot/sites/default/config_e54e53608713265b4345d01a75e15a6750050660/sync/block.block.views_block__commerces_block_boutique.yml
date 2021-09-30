@@ -1,4 +1,4 @@
-uuid: ff3c22a2-94fd-4874-9203-08f6be915eff
+uuid: a810e2bd-a4af-4393-9f5d-5d440d74f23e
 langcode: fr
 status: true
 dependencies:
@@ -12,7 +12,7 @@ dependencies:
 id: views_block__commerces_block_boutique
 theme: yqb
 region: content
-weight: -26
+weight: -27
 provider: null
 plugin: 'views_block:commerces-block_boutique'
 settings:

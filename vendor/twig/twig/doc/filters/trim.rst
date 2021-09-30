@@ -2,11 +2,9 @@
 ========
 
 .. versionadded:: 1.32
-
     The ``side`` argument was added in Twig 1.32.
 
 .. versionadded:: 1.6.2
-
     The ``trim`` filter was added in Twig 1.6.2.
 
 The ``trim`` filter strips whitespace (or other characters) from the beginning

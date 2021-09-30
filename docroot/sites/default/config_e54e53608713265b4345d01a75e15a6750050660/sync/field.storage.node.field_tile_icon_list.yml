@@ -53,7 +53,10 @@ settings:
       value: icon-destinations-served
       label: 'Vol - Destinations desservies'
     -
-      value: icon-construction
+      value: icon-stationnement
+      label: 'Stationnement + Signe'
+    -
+      value: icon-travaux
       label: Travaux
   allowed_values_function: ''
 module: options

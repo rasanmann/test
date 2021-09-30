@@ -1,0 +1,21 @@
+uuid: 76918556-f7a2-4690-b167-a5874c6b3bc0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titre
+    - paragraphs.paragraphs_type.webform_newsletter
+id: paragraph.webform_newsletter.field_titre
+field_name: field_titre
+entity_type: paragraph
+bundle: webform_newsletter
+label: 'Campagne Tag'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'Air Canada'
+default_value_callback: ''
+settings: {  }
+field_type: string

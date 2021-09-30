@@ -4,7 +4,7 @@
 Loop over each item in a sequence. For example, to display a list of users
 provided in a variable called ``users``:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     <h1>Members</h1>
     <ul>
@@ -82,7 +82,6 @@ Variable              Description
     looping with a condition.
 
 .. versionadded:: 1.2
-
     The ``if`` modifier support has been added in Twig 1.2.
 
 Adding a condition
@@ -99,7 +98,7 @@ Unlike in PHP, it's not possible to ``break`` or ``continue`` in a loop. You
 can however filter the sequence during iteration which allows you to skip
 items. The following example skips all the users which are not active:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     <ul>
         {% for user in users if user.active %}
@@ -125,7 +124,7 @@ The `else` Clause
 If no iteration took place because the sequence was empty, you can render a
 replacement block by using ``else``:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     <ul>
         {% for user in users %}
@@ -141,7 +140,7 @@ Iterating over Keys
 By default, a loop iterates over the values of the sequence. You can iterate
 on keys by using the ``keys`` filter:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     <h1>Members</h1>
     <ul>
@@ -155,7 +154,7 @@ Iterating over Keys and Values
 
 You can also access both keys and values:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     <h1>Members</h1>
     <ul>
@@ -170,7 +169,7 @@ Iterating over a Subset
 You might want to iterate over a subset of values. This can be achieved using
 the :doc:`slice <../filters/slice>` filter:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     <h1>Top Ten Members</h1>
     <ul>

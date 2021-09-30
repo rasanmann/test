@@ -1,6 +1,6 @@
 uuid: a60c4eef-4524-4822-8931-44daa09876d2
 langcode: fr
-status: false
+status: true
 dependencies:
   config:
     - system.menu.barre-laterale---affaires-e
@@ -11,7 +11,7 @@ dependencies:
 id: barrelateraleaffairesenglish
 theme: yqb
 region: sidebar_first
-weight: 0
+weight: -14
 provider: null
 plugin: 'system_menu_block:barre-laterale---affaires-e'
 settings:

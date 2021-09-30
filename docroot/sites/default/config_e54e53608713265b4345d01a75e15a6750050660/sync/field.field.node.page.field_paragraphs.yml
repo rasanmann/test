@@ -11,6 +11,7 @@ dependencies:
     - paragraphs.paragraphs_type.gouvernance_employe
     - paragraphs.paragraphs_type.gouvernance_texte
     - paragraphs.paragraphs_type.mosaique
+    - paragraphs.paragraphs_type.parking_reservation
     - paragraphs.paragraphs_type.primary_title_h2
     - paragraphs.paragraphs_type.texte_avec_arriere_plan
     - paragraphs.paragraphs_type.texte_et_image
@@ -39,23 +40,81 @@ settings:
       gallery: gallery
       vip_drawer: vip_drawer
       gouvernance_employe: gouvernance_employe
-      gouvernance_texte: gouvernance_texte
       mosaique: mosaique
+      gouvernance_texte: gouvernance_texte
       accordeon: accordeon
       primary_title_h2: primary_title_h2
       texte_avec_arriere_plan: texte_avec_arriere_plan
       texte_et_image: texte_et_image
       valeurs: valeurs
+      parking_reservation: parking_reservation
     target_bundles_drag_drop:
+      accordeon:
+        enabled: true
+        weight: 14
+      block_full:
+        weight: 28
+        enabled: false
+      block_half:
+        weight: 29
+        enabled: false
+      block_icons:
+        weight: 30
+        enabled: false
+      block_parent:
+        weight: 31
+        enabled: false
       content:
         enabled: true
         weight: 7
+      divisor:
+        weight: 33
+        enabled: false
       gallery:
         enabled: true
         weight: 8
       gallery_image:
         weight: 9
         enabled: false
+      gouvernance_employe:
+        enabled: true
+        weight: 12
+      gouvernance_texte:
+        enabled: true
+        weight: 13
+      image_mosaique:
+        weight: 20
+        enabled: false
+      media_mosaique:
+        weight: 22
+        enabled: false
+      mosaique:
+        enabled: true
+        weight: 13
+      parking_reservation:
+        enabled: true
+        weight: 41
+      primary_title_h2:
+        enabled: true
+        weight: 24
+      sponsors:
+        weight: 43
+        enabled: false
+      texte_avec_arriere_plan:
+        enabled: true
+        weight: 29
+      texte_et_image:
+        enabled: true
+        weight: 30
+      tirroir:
+        weight: 21
+        enabled: false
+      valeur:
+        weight: 32
+        enabled: false
+      valeurs:
+        enabled: true
+        weight: 33
       vip_drawer:
         enabled: true
         weight: 10
@@ -65,40 +124,7 @@ settings:
       vip_drawer_section:
         weight: 12
         enabled: false
-      gouvernance_employe:
-        enabled: true
-        weight: 12
-      gouvernance_texte:
-        enabled: true
-        weight: 13
-      mosaique:
-        enabled: true
-        weight: 13
-      accordeon:
-        enabled: true
-        weight: 14
-      valeur:
-        weight: 19
+      webform_newsletter:
+        weight: 52
         enabled: false
-      image_mosaique:
-        weight: 20
-        enabled: false
-      tirroir:
-        weight: 21
-        enabled: false
-      media_mosaique:
-        weight: 22
-        enabled: false
-      primary_title_h2:
-        enabled: true
-        weight: 24
-      texte_avec_arriere_plan:
-        enabled: true
-        weight: 30
-      texte_et_image:
-        enabled: true
-        weight: 31
-      valeurs:
-        enabled: true
-        weight: 33
 field_type: entity_reference_revisions

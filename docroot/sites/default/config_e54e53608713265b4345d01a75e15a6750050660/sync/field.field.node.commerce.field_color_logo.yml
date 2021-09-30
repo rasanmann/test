@@ -1,4 +1,4 @@
-uuid: 90066b4d-1e83-41ab-9871-6c585f50047a
+uuid: 06263529-a875-4738-822f-1421f91ea6c7
 langcode: fr
 status: true
 dependencies:
@@ -19,7 +19,7 @@ field_name: field_color_logo
 entity_type: node
 bundle: commerce
 label: Logo
-description: ''
+description: 'Taille recommandée : 125x125 px'
 required: true
 translatable: true
 default_value: {  }

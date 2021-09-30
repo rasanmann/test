@@ -1,11 +1,12 @@
 module:
   addtoany: 0
-  advam: 0
+  admin_toolbar: 0
   ape: 0
   block: 0
   block_content: 0
   bootstrap_layouts: 0
   breakpoint: 0
+  captcha: 0
   ckeditor: 0
   color: 0
   comment: 0
@@ -31,15 +32,23 @@ module:
   features_ui: 0
   field: 0
   field_collection: 0
+  field_group: 0
   field_ui: 0
   file: 0
+  file_checker: 0
   filter: 0
   help: 0
   history: 0
   homepage_tiles: 0
+  honeypot: 0
   image: 0
   image_url_formatter: 0
+  imce: 0
   insert_block: 0
+  jquery_minicolors: 0
+  jquery_ui: 0
+  jquery_ui_draggable: 0
+  jquery_ui_droppable: 0
   kint: 0
   language: 0
   layout_discovery: 0
@@ -56,6 +65,7 @@ module:
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
+  metatag_page_manager: 0
   metatag_twitter_cards: 0
   migrate: 0
   migrate_plus: 0
@@ -75,6 +85,8 @@ module:
   pjax: 0
   quickedit: 0
   rdf: 0
+  recaptcha: 0
+  recaptcha_v3: 0
   redirect: 0
   redirect_404: 0
   responsive_image: 0
@@ -84,6 +96,7 @@ module:
   search: 0
   search_autocomplete: 0
   serialization: 0
+  settings_tray: 0
   shortcut: 0
   sitemap: 0
   svg_image: 0
@@ -98,6 +111,7 @@ module:
   tour: 0
   twilio: 0
   update: 0
+  upgrade_status: 0
   user: 0
   views_field_view: 0
   views_ui: 0
@@ -113,7 +127,7 @@ module:
   yqb_mailchimp: 0
   yqb_metatag: 0
   yqb_migrate: 0
-  yqb_parking_booker: 0
+  yqb_newsletters: 0
   yqb_payments: 0
   yqb_reminders: 0
   yqb_updates_vip: 0

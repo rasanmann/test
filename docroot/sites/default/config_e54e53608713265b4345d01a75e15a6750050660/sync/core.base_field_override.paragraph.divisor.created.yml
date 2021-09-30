@@ -1,0 +1,18 @@
+uuid: 51a0325a-f99e-4706-9a06-991dffe9e28c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.divisor
+id: paragraph.divisor.created
+field_name: created
+entity_type: paragraph
+bundle: divisor
+label: 'Écrit le'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

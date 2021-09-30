@@ -17,7 +17,7 @@ data. Just wrap the code in the special ``filter`` section:
 
 You can also chain filters and pass arguments to them:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     {% filter lower|escape('html') %}
         <strong>SOME TEXT</strong>

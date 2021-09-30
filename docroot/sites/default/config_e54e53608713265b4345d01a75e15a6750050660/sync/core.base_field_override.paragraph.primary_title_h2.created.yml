@@ -1,4 +1,4 @@
-uuid: 6e37ea51-eebd-454e-9a04-c3667a653275
+uuid: fe1c616d-9799-4443-83a1-7022a05f8257
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ bundle: primary_title_h2
 label: 'Authored on'
 description: 'The time that the Paragraph was created.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

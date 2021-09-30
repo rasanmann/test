@@ -11,7 +11,7 @@ dependencies:
 id: barrelateraleaffaires
 theme: yqb
 region: sidebar_first
-weight: 0
+weight: -19
 provider: null
 plugin: 'system_menu_block:barre-laterale---affaires'
 settings:

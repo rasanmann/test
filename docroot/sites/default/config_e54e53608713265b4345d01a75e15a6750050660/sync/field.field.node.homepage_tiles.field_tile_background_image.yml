@@ -21,7 +21,7 @@ field_name: field_tile_background_image
 entity_type: node
 bundle: homepage_tiles
 label: 'Image de fond'
-description: ''
+description: 'Taille recommandée : 16:9 - 304x171px'
 required: false
 translatable: true
 default_value: {  }

@@ -1,0 +1,18 @@
+uuid: 2acfea44-da59-4bfc-a9bb-23a1cb9e0782
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.retail_types
+id: taxonomy_term.retail_types.name
+field_name: name
+entity_type: taxonomy_term
+bundle: retail_types
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

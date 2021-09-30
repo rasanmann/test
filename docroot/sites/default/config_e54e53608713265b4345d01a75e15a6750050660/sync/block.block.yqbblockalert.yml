@@ -9,7 +9,7 @@ dependencies:
 id: yqbblockalert
 theme: yqb
 region: top
-weight: -31
+weight: -37
 provider: null
 plugin: yqb_alert_block
 settings:

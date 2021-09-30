@@ -1,0 +1,18 @@
+uuid: 12a46dbe-223f-4c25-bf4b-2b2f0ed720ac
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.retail_types
+id: taxonomy_term.retail_types.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: retail_types
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

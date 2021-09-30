@@ -1,4 +1,4 @@
-uuid: 23f14e16-1ffd-44e3-90bd-be198ddb3c3f
+uuid: 37cdb665-364e-47e8-b8a0-7f4f558d68ef
 langcode: fr
 status: true
 dependencies:
@@ -12,10 +12,14 @@ field_name: body
 entity_type: node
 bundle: commerce
 label: Description
-description: ''
-required: true
+description: "Le résumé du champ description sert au carousel du commerce.\r\nIl n'est pas nécessaire de remplir le champ description."
+required: false
 translatable: true
-default_value: {  }
+default_value:
+  -
+    summary: 'Fill this summary'
+    value: ''
+    format: full_html
 default_value_callback: ''
 settings:
   display_summary: true

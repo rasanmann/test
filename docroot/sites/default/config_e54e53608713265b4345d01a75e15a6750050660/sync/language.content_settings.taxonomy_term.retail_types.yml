@@ -1,9 +1,16 @@
-uuid: d12824ab-8e32-4bf3-87c0-7ad55e478d16
+uuid: e9ed68ea-26a0-4e0b-b21d-47df4a8fdc50
 langcode: fr
 status: true
 dependencies:
   config:
     - taxonomy.vocabulary.retail_types
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
 id: taxonomy_term.retail_types
 target_entity_type_id: taxonomy_term
 target_bundle: retail_types

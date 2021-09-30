@@ -11,7 +11,7 @@ dependencies:
 id: difficultestechniques
 theme: yqb
 region: top
-weight: -28
+weight: -32
 provider: null
 plugin: 'block_content:5ec304b0-fb86-4afb-b91a-7cf2cb8d9a13'
 settings:

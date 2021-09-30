@@ -12,7 +12,7 @@ entity_type: node
 bundle: arrival
 label: Status
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -24,4 +24,5 @@ settings:
     sort:
       field: _none
     auto_create: true
+    auto_create_bundle: ''
 field_type: entity_reference

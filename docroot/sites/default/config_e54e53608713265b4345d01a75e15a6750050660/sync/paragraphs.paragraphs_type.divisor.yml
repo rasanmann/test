@@ -1,0 +1,10 @@
+uuid: 10666132-cd07-4fc9-9344-bdaa161e31c9
+langcode: fr
+status: true
+dependencies: {  }
+id: divisor
+label: Diviseur
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

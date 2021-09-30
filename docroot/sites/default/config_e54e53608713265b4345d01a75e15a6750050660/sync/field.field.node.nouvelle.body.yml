@@ -1,4 +1,4 @@
-uuid: 788b5ab2-0c45-4958-8a77-21afc7e44162
+uuid: 31d0ce7c-e83a-43ee-9539-731852b46ed3
 langcode: fr
 status: true
 dependencies:
@@ -14,7 +14,7 @@ bundle: nouvelle
 label: Body
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

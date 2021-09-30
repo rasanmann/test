@@ -10,7 +10,7 @@ dependencies:
 id: paybills
 theme: yqb
 region: content
-weight: -20
+weight: -22
 provider: null
 plugin: yqb_payments_payment_block
 settings:

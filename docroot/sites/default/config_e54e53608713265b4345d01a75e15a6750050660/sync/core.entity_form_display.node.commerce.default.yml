@@ -1,4 +1,4 @@
-uuid: 125d4922-dc10-4a91-b55c-2deebcacf404
+uuid: 800f38d5-e47f-4147-abd6-4ab103a11d34
 langcode: fr
 status: true
 dependencies:
@@ -11,10 +11,10 @@ dependencies:
     - image.style.thumbnail
     - node.type.commerce
   module:
-    - image
     - link
     - path
     - scheduler
+    - svg_image
     - text
 id: node.commerce.default
 targetEntityType: node
@@ -24,10 +24,10 @@ content:
   body:
     weight: 121
     settings:
-      rows: 9
-      summary_rows: 3
+      rows: 5
       placeholder: ''
-      show_summary: false
+      summary_rows: 1
+      show_summary: true
     third_party_settings: {  }
     type: text_textarea_with_summary
     region: content
@@ -114,6 +114,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

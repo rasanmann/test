@@ -1,0 +1,18 @@
+uuid: a9f29b40-91ce-45be-befb-4789450428ad
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.webform_newsletter
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.webform_newsletter
+target_entity_type_id: paragraph
+target_bundle: webform_newsletter
+default_langcode: site_default
+language_alterable: true

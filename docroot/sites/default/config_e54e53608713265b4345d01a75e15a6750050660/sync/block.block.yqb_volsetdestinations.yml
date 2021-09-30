@@ -12,7 +12,7 @@ dependencies:
 id: yqb_volsetdestinations
 theme: yqb
 region: sidebar_first
-weight: -23
+weight: -30
 provider: null
 plugin: 'system_menu_block:vols-et-destinations'
 settings:

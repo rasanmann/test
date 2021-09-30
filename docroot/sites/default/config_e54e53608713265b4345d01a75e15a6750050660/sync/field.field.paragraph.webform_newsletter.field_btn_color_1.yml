@@ -1,0 +1,21 @@
+uuid: 21892879-25f2-4511-9981-7d6e68b03775
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_btn_color_1
+    - paragraphs.paragraphs_type.webform_newsletter
+id: paragraph.webform_newsletter.field_btn_color_1
+field_name: field_btn_color_1
+entity_type: paragraph
+bundle: webform_newsletter
+label: 'Couleur primaire du bouton'
+description: 'Couleur d''arrière-plan du bouton.'
+required: true
+translatable: false
+default_value:
+  -
+    value: '#012d8b'
+default_value_callback: ''
+settings: {  }
+field_type: string

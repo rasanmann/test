@@ -1,9 +1,9 @@
-uuid: afb1ec67-a09d-4abe-b0da-566233fa56ac
+uuid: 7f7ea497-7b2e-4fb7-ba8e-eb3fd550065b
 langcode: fr
 status: true
 dependencies: {  }
 id: texte_avec_arriere_plan
 label: 'Texte avec arrière-plan'
 icon_uuid: null
-description: 'Texte au milieu avec arrière-plan ou pulse.'
+description: 'Texte au milieu avec arrière-plan.'
 behavior_plugins: {  }

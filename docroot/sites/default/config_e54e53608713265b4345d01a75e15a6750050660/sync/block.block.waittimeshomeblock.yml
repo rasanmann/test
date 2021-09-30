@@ -10,7 +10,7 @@ dependencies:
 id: waittimeshomeblock
 theme: yqb
 region: top
-weight: -29
+weight: -36
 provider: null
 plugin: wait-times-home-block
 settings:

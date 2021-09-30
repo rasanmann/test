@@ -1,4 +1,4 @@
-uuid: 5a97fbaf-19d1-41d9-953c-f92ca4ce970a
+uuid: 8354d29c-56c8-4b4b-81eb-6f9f5f0d00cb
 langcode: fr
 status: true
 dependencies:
@@ -11,10 +11,10 @@ dependencies:
     - image.style.thumbnail
     - node.type.slide
   module:
-    - image
     - link
     - path
     - scheduler
+    - svg_image
 id: node.slide.default
 targetEntityType: node
 bundle: slide
@@ -111,6 +111,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 3

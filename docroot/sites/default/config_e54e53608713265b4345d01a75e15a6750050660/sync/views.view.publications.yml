@@ -10,8 +10,8 @@ dependencies:
     - node.type.publication
   module:
     - file
-    - image
     - node
+    - svg_image
     - taxonomy
     - user
 id: publications
@@ -317,7 +317,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<span class=\"icon glyphicon glyphicon-file text-primary\" aria-hidden=\"true\"></span>\n<a href=\"#\" data-target-id={{field_file__target_id}} class=\"link-rewrite\" data-target=\"#downloadModal\" data-toggle=\"modal\">Télécharger</a> \n"
+            text: "<span class=\"icon glyphicon glyphicon-file text-primary\" aria-hidden=\"true\"></span>\r\n<a href=\"{{field_file}}\" class=\"link-rewrite\" target=\"_blank\">Télécharger</a> \r\n"
             make_link: false
             path: ''
             absolute: false
@@ -355,7 +355,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: file_default
+          type: file_url_plain
           settings: {  }
           group_column: ''
           group_columns: {  }
