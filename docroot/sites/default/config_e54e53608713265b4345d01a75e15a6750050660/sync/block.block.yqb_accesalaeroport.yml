@@ -12,7 +12,7 @@ dependencies:
 id: yqb_accesalaeroport
 theme: yqb
 region: sidebar_first
-weight: -19
+weight: -26
 provider: null
 plugin: 'system_menu_block:acces-a-l-aeroport'
 settings:

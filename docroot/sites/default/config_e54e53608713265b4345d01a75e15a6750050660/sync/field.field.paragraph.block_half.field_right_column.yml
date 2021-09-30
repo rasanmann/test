@@ -1,0 +1,21 @@
+uuid: b10facb2-b34b-421c-9fcc-dadfeafabde8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_right_column
+    - paragraphs.paragraphs_type.block_half
+  module:
+    - text
+id: paragraph.block_half.field_right_column
+field_name: field_right_column
+entity_type: paragraph
+bundle: block_half
+label: 'Colonne droite'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

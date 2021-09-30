@@ -1,0 +1,20 @@
+uuid: c0fc7a18-33a1-49f0-8082-b9a8269e734a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.nouvelle
+  module:
+    - path
+id: node.nouvelle.path
+field_name: path
+entity_type: node
+bundle: nouvelle
+label: 'Alias d''URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

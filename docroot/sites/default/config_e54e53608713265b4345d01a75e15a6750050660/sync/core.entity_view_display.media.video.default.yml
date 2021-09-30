@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.video.field_media_video_file
+    - field.field.media.video.field_text_over_video
     - media.type.video
   module:
     - file
@@ -27,6 +28,14 @@ content:
       loop: false
       muted: false
     third_party_settings: {  }
+    region: content
+  field_text_over_video:
+    weight: 1
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
 hidden:
   created: true

@@ -1,6 +1,12 @@
 Extending Twig
 ==============
 
+.. caution::
+
+    This section describes how to extend Twig as of **Twig 1.12**. If you are
+    using an older version, read the :doc:`legacy<advanced_legacy>` chapter
+    instead.
+
 Twig can be extended in many ways; you can add extra tags, filters, tests,
 operators, global variables, and functions. You can even extend the parser
 itself with node visitors.
@@ -183,7 +189,7 @@ If you want to access the current environment instance in your filter, set the
 ``needs_environment`` option to ``true``; Twig will pass the current
 environment as the first argument to the filter call::
 
-    $filter = new \Twig\TwigFilter('rot13', function (\Twig\Environment $env, $string) {
+    $filter = new \Twig\TwigFilter('rot13', function (Twig_Environment $env, $string) {
         // get the current charset for instance
         $charset = $env->getCharset();
 
@@ -202,7 +208,7 @@ the first argument to the filter call (or the second one if
         // ...
     }, ['needs_context' => true]);
 
-    $filter = new \Twig\TwigFilter('rot13', function (\Twig\Environment $env, $context, $string) {
+    $filter = new \Twig\TwigFilter('rot13', function (Twig_Environment $env, $context, $string) {
         // ...
     }, ['needs_context' => true, 'needs_environment' => true]);
 
@@ -227,7 +233,6 @@ Variadic Filters
 ~~~~~~~~~~~~~~~~
 
 .. versionadded:: 1.19
-
     Support for variadic filters was added in Twig 1.19.
 
 When a filter should accept an arbitrary number of arguments, set the
@@ -272,8 +277,7 @@ Deprecated Filters
 ~~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 1.21
-
-    Support for ``deprecated`` filters was added in Twig 1.21.
+    Support for deprecated filters was added in Twig 1.21.
 
 You can mark a filter as being deprecated by setting the ``deprecated`` option
 to ``true``. You can also give an alternative filter that replaces the
@@ -335,27 +339,21 @@ When creating tests you can use the ``node_class`` option to provide custom test
 compilation. This is useful if your test can be compiled into PHP primitives.
 This is used by many of the tests built into Twig::
 
-    namespace App;
-    
-    use Twig\Environment;
-    use Twig\Node\Expression\TestExpression;
-    use Twig\TwigTest;
-    
-    $twig = new Environment($loader);
-    $test = new TwigTest(
+    $twig = new \Twig\Environment($loader);
+    $test = new \Twig\TwigTest(
         'odd',
         null,
-        ['node_class' => OddTestExpression::class]);
+        ['node_class' => '\Twig\Node\Expression\Test\OddTest']);
     $twig->addTest($test);
 
-    class OddTestExpression extends TestExpression
+    class Twig_Node_Expression_Test_Odd extends \Twig\Node\Expression\TestExpression
     {
         public function compile(\Twig\Compiler $compiler)
         {
             $compiler
                 ->raw('(')
                 ->subcompile($this->getNode('node'))
-                ->raw(' % 2 != 0')
+                ->raw(' % 2 == 1')
                 ->raw(')')
             ;
         }
@@ -374,7 +372,6 @@ tests also have access to the ``arguments`` node. This node will contain the
 various other arguments that have been provided to your test.
 
 .. versionadded:: 1.36
-
     Dynamic tests support was added in Twig 1.36.
 
 If you want to pass a variable number of positional or named arguments to the
@@ -955,5 +952,6 @@ Testing the node visitors can be complex, so extend your test cases from
 ``\Twig\Test\NodeTestCase``. Examples can be found in the Twig repository
 `tests/Twig/Node`_ directory.
 
+.. _`rot13`:                   https://secure.php.net/manual/en/function.str-rot13.php
 .. _`tests/Twig/Fixtures`:     https://github.com/twigphp/Twig/tree/1.x/tests/Fixtures
 .. _`tests/Twig/Node`:         https://github.com/twigphp/Twig/tree/1.x/tests/Node

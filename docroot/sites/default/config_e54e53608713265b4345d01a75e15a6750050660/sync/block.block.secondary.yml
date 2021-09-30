@@ -12,7 +12,7 @@ dependencies:
 id: secondary
 theme: yqb
 region: sub_navigation
-weight: -24
+weight: -33
 provider: null
 plugin: 'system_menu_block:secondary'
 settings:

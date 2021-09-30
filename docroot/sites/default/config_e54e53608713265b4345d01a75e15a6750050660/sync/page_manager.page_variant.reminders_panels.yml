@@ -16,7 +16,7 @@ variant_settings:
       id: reminders_block
       label: 'Suivez le statut de votre vol par SMS'
       provider: yqb_reminders
-      label_display: visible
+      label_display: '0'
       region: top.full
       weight: 1
       uuid: cd71e1db-a7d3-410c-8813-a0ef2670376c

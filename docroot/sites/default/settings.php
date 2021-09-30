@@ -3,7 +3,7 @@
 assert_options(ASSERT_ACTIVE, TRUE);
 \Drupal\Component\Assertion\Handle::register();
 
-$config_directories = array();
+$settings['config_sync_directory'] = array();
 ini_set('memory_limit', '2000M');
 $settings['extension_discovery_scan_tests'] = TRUE;
 $settings['file_public_path'] = 'sites/default/files';
@@ -30,7 +30,7 @@ $databases['default']['default'] = array (
 
 $settings['hash_salt'] = 'muvxYCDkSL08VsMcpVLQIUZwRGJiUSdlby9YRq9ZFylRLeh1MUIhgd2neowII9uEqliR7SZWAw';
 $settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync';
+$settings['config_sync_directory'] = 'sites/default/config_e54e53608713265b4345d01a75e15a6750050660/sync';
 
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
@@ -38,7 +38,10 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 }
 
 $config['file.settings']['make_unused_managed_files_temporary'] = FALSE;
-
+// Enable verbose error on dev, stg env.
+if((isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], '.prod.acquia-sites.com') !== false)){
+	$config['system.logging']['error_level'] = 'verbose';
+}
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod). To use this
 // settings.php for development on your local workstation, set $db_url

@@ -1,0 +1,45 @@
+uuid: a97ee389-a336-46c0-8d58-3f9f5cbc828c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background_image
+    - paragraphs.paragraphs_type.block_parent
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: paragraph.block_parent.field_background_image
+field_name: field_background_image
+entity_type: paragraph
+bundle: block_parent
+label: 'Image de fond'
+description: 'L''image de fond à priorité sur le dégradé linéaire.<br>Taille recommandée : 1920x1570px'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg svg'
+  max_filesize: '5 MB'
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

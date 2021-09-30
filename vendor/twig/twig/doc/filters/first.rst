@@ -2,7 +2,6 @@
 =========
 
 .. versionadded:: 1.12.2
-
     The ``first`` filter was added in Twig 1.12.2.
 
 The ``first`` filter returns the first "element" of a sequence, a mapping, or

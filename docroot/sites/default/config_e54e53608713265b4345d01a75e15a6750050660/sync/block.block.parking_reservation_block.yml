@@ -1,0 +1,28 @@
+uuid: 2460f821-6f5f-4544-ad03-52369c54900d
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - yqb
+id: parking_reservation_block
+theme: yqb
+region: content
+weight: -29
+provider: null
+plugin: 'block_content:d43fcff2-cb5f-4145-9706-c163db7560c0'
+settings:
+  id: 'block_content:d43fcff2-cb5f-4145-9706-c163db7560c0'
+  label: 'Prépayez votre stationnement'
+  provider: core
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "<front>\r\n"
+    negate: false
+    context_mapping: {  }

@@ -14,9 +14,9 @@ dependencies:
     - field.field.node.homepage_tiles.field_trigger_nav
     - node.type.homepage_tiles
   module:
-    - image
     - link
     - options
+    - svg_image
     - user
 _core:
   default_config_hash: j_cC0mOoUNyhaSHWYTf-vnuU1rMqFDltsVkkDweaHMU
@@ -25,13 +25,6 @@ targetEntityType: node
 bundle: homepage_tiles
 mode: default
 content:
-  field_format:
-    weight: 109
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
   field_tile_background_color:
     weight: 104
     label: above
@@ -94,21 +87,11 @@ content:
     third_party_settings: {  }
     type: link
     region: content
-  field_trigger_nav:
-    weight: 108
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
   links:
     weight: 100
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   addtoany: true
+  field_format: true
+  field_trigger_nav: true
   langcode: true

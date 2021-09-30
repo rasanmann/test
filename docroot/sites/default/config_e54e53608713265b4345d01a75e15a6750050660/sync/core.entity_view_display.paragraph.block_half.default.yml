@@ -1,0 +1,48 @@
+uuid: 6d35653f-c75b-40d3-90b9-ae9f6f386547
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.block_half.field_color_1
+    - field.field.paragraph.block_half.field_color_2
+    - field.field.paragraph.block_half.field_left_column
+    - field.field.paragraph.block_half.field_right_column
+    - paragraphs.paragraphs_type.block_half
+  module:
+    - text
+id: paragraph.block_half.default
+targetEntityType: paragraph
+bundle: block_half
+mode: default
+content:
+  field_color_1:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_color_2:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_left_column:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_right_column:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

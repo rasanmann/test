@@ -27,4 +27,4 @@ $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
 
 $config['dblog.settings']['row_limit'] = 1000;
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
-$config_directories['sync'] = 'sites/default/files/config/sync';
+$settings['config_sync_directory'] = 'sites/default/files/config/sync';

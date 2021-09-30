@@ -1,0 +1,10 @@
+uuid: ad757ffa-ed61-4441-9266-8b7ee1f35f12
+langcode: fr
+status: true
+dependencies: {  }
+id: sponsors
+label: Sponsors
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

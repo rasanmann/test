@@ -7,7 +7,6 @@
 
 use Drupal\Core\StreamWrapper\StreamWrapperInterface;
 use Drupal\editor\Entity\Editor;
-use Drupal\Component\Utility\Environment;
 
 /**
  * Subform constructor to configure the text editor's file upload settings.
@@ -25,7 +24,7 @@ function editor_file_upload_settings_form(Editor $editor) {
   $file_upload = $editor->getThirdPartySettings('editor_file');
   $file_upload += [
     'status' => TRUE,
-    'scheme' => \Drupal::config('system.file')->get('default_scheme'),
+    'scheme' => file_default_scheme(),
     'directory' => 'inline-files',
     'extensions' => 'txt',
     'max_size' => '',
@@ -87,7 +86,7 @@ function editor_file_upload_settings_form(Editor $editor) {
     '#states' => $show_if_file_uploads_enabled,
   ];
 
-  $default_max_size = format_size(Environment::getUploadMaxSize());
+  $default_max_size = format_size(file_upload_max_size());
   $form['max_size'] = [
     '#type' => 'textfield',
     '#default_value' => $file_upload['max_size'],

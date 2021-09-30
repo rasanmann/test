@@ -1,0 +1,10 @@
+uuid: ed12acc9-6cdd-4886-a2c1-55da3ccec5b3
+langcode: fr
+status: true
+dependencies: {  }
+id: parking_reservation
+label: 'Formulaire réservation de stationnement'
+icon_uuid: null
+icon_default: null
+description: "\r\n"
+behavior_plugins: {  }

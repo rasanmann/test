@@ -1,85 +1,57 @@
 ***************
-*** 5,11 ****
-   * Adds bindings for client-side "text editors" to text formats.
-   */
+*** 18,23 ****
+  use Drupal\Core\Entity\EntityInterface;
+  use Drupal\filter\FilterFormatInterface;
+  use Drupal\filter\Plugin\FilterInterface;
   
-  use Drupal\Component\Utility\Html;
-  use Drupal\editor\Entity\Editor;
-  use Drupal\Core\Entity\FieldableEntityInterface;
-  use Drupal\Core\Field\FieldDefinitionInterface;
---- 5,14 ----
-   * Adds bindings for client-side "text editors" to text formats.
-   */
+  /**
+   * Implements hook_help().
+--- 18,24 ----
+  use Drupal\Core\Entity\EntityInterface;
+  use Drupal\filter\FilterFormatInterface;
+  use Drupal\filter\Plugin\FilterInterface;
++ use Drupal\text\Plugin\Field\FieldType\TextItemBase;
   
-+ use Drupal\Component\Utility\DiffArray;
-  use Drupal\Component\Utility\Html;
-+ use Drupal\Core\Language\LanguageInterface;
-+ use Drupal\Core\TypedData\TranslatableInterface;
-  use Drupal\editor\Entity\Editor;
-  use Drupal\Core\Entity\FieldableEntityInterface;
-  use Drupal\Core\Field\FieldDefinitionInterface;
+  /**
+   * Implements hook_help().
 ***************
-*** 560,582 ****
+*** 587,592 ****
   /**
-   * Finds all files referenced (data-entity-uuid) by formatted text fields.
+   * Determines the formatted text fields on an entity.
    *
--  * @param EntityInterface $entity
+   * @param \Drupal\Core\Entity\FieldableEntityInterface $entity
    *   An entity whose fields to analyze.
    *
-   * @return array
-   *   An array of file entity UUIDs.
-   */
-- function _editor_get_file_uuids_by_field(EntityInterface $entity) {
-    $uuids = array();
-  
-    $formatted_text_fields = _editor_get_formatted_text_fields($entity);
-    foreach ($formatted_text_fields as $formatted_text_field) {
-      $text = '';
--     $field_items = $entity->get($formatted_text_field);
--     foreach ($field_items as $field_item) {
--       $text .= $field_item->value;
--       if ($field_item->getFieldDefinition()->getType() == 'text_with_summary') {
--         $text .= $field_item->summary;
-        }
-      }
-      $uuids[$formatted_text_field] = _editor_parse_file_uuids($text);
---- 563,601 ----
+--- 588,596 ----
   /**
-   * Finds all files referenced (data-entity-uuid) by formatted text fields.
+   * Determines the formatted text fields on an entity.
    *
-+  * @param \Drupal\Core\Entity\FieldableEntityInterface $entity
++  * A field type is considered to provide formatted text if its class is a
++  * subclass of Drupal\text\Plugin\Field\FieldType\TextItemBase.
++  *
+   * @param \Drupal\Core\Entity\FieldableEntityInterface $entity
    *   An entity whose fields to analyze.
    *
-   * @return array
-   *   An array of file entity UUIDs.
-   */
-+ function _editor_get_file_uuids_by_field(FieldableEntityInterface $entity) {
-    $uuids = array();
+***************
+*** 600,607 ****
+    }
   
-+   $field_definitions = $entity->getFieldDefinitions();
-    $formatted_text_fields = _editor_get_formatted_text_fields($entity);
-    foreach ($formatted_text_fields as $formatted_text_field) {
-+ 
-+     // In case of a translatable field, iterate over all its translations.
-+     if ($field_definitions[$formatted_text_field]->isTranslatable() && $entity instanceof TranslatableInterface) {
-+       $langcodes = array_keys($entity->getTranslationLanguages());
-+     }
-+     else {
-+       $langcodes = [LanguageInterface::LANGCODE_NOT_APPLICABLE];
-+     }
-+ 
-      $text = '';
-+     foreach ($langcodes as $langcode) {
-+       if ($langcode == LanguageInterface::LANGCODE_NOT_APPLICABLE) {
-+         $field_items = $entity->get($formatted_text_field);
-+       }
-+       else {
-+         $field_items = $entity->getTranslation($langcode)->get($formatted_text_field);
-+       }
-+       foreach ($field_items as $field_item) {
-+         if ($field_item->getFieldDefinition()->getType() == 'text_with_summary') {
-+           $text .= $field_item->summary;
-+         }
-        }
-      }
-      $uuids[$formatted_text_field] = _editor_parse_file_uuids($text);
+    // Only return formatted text fields.
+-   return array_keys(array_filter($field_definitions, function (FieldDefinitionInterface $definition) {
+-     return in_array($definition->getType(), ['text', 'text_long', 'text_with_summary'], TRUE);
+    }));
+  }
+  
+--- 604,615 ----
+    }
+  
+    // Only return formatted text fields.
++   // @todo: improve as part of https://www.drupal.org/node/2732429
++   $field_type_manager = \Drupal::service('plugin.manager.field.field_type');
++   return array_keys(array_filter($field_definitions, function (FieldDefinitionInterface $definition) use ($field_type_manager) {
++     $type = $definition->getType();
++     $plugin_class = $field_type_manager->getPluginClass($type);
++     return is_subclass_of($plugin_class, TextItemBase::class);
+    }));
+  }
+  

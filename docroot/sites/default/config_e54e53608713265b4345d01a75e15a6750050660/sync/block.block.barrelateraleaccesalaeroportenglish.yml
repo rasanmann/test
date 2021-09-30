@@ -12,7 +12,7 @@ dependencies:
 id: barrelateraleaccesalaeroportenglish
 theme: yqb
 region: sidebar_first
-weight: -18
+weight: -25
 provider: null
 plugin: 'system_menu_block:barre-laterale---acces-a-l-'
 settings:

@@ -1,0 +1,30 @@
+uuid: bdfdcb9d-3c86-42f6-863e-3c398480b265
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.barre-laterale---bureau-en
+  module:
+    - system
+  theme:
+    - yqb
+id: barrelateralebureaudescontrolesdaccesen
+theme: yqb
+region: sidebar_first
+weight: -18
+provider: null
+plugin: 'system_menu_block:barre-laterale---bureau-en'
+settings:
+  id: 'system_menu_block:barre-laterale---bureau-en'
+  label: 'Barre latérale - Bureau des Contrôles d’Accès (EN)'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/business/pass-control-office\r\n/business/pass-control-office/*"
+    negate: false
+    context_mapping: {  }

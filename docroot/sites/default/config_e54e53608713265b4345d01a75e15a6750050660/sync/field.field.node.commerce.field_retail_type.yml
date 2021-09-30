@@ -1,4 +1,4 @@
-uuid: 0e122a1f-5d56-4633-93e1-d203edd7eea1
+uuid: 89af1ef7-0ded-4f82-b04f-e4819cc42601
 langcode: fr
 status: true
 dependencies:
@@ -13,7 +13,7 @@ bundle: commerce
 label: Catégorie
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

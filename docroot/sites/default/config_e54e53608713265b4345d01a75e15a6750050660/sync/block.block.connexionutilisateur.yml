@@ -9,7 +9,7 @@ dependencies:
 id: connexionutilisateur
 theme: yqb
 region: sub_navigation
-weight: -26
+weight: -28
 provider: null
 plugin: user_login_block
 settings:

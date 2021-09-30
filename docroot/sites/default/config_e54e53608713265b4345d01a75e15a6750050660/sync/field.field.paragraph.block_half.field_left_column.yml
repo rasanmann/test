@@ -1,0 +1,21 @@
+uuid: 2cbbcad3-da40-410f-a91a-40dd743c70d6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_left_column
+    - paragraphs.paragraphs_type.block_half
+  module:
+    - text
+id: paragraph.block_half.field_left_column
+field_name: field_left_column
+entity_type: paragraph
+bundle: block_half
+label: 'Colonne gauche'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
