@@ -47,6 +47,7 @@ function yqb_migrate_theme() {
  * time the Drupal cron runs. We then decide what has to happen in response.
  */
 function yqb_migrate_cron() {
+  $mailManager = \Drupal::service('plugin.manager.mail');
   // For Drush
   echo "Starting migrations" . PHP_EOL;
 
@@ -96,8 +97,17 @@ function yqb_migrate_cron() {
 
         exec("{$drush} pm-uninstall config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Uninstalling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
+        die(); // FOR TEST ONLY
       }catch(Exception $exception){
         Drupal::logger('yqb_migrate')->error("Could not restart migrations");
+        $params['message'] = "Could not restart migrations ". $exception->getMessage();
+        $mailresult = $mailManager->mail('yqb_migrate', 'yqb_migrate_error', 'simon.bluteau@libeo.com', 'fr', $params, NULL, true);
+        if ($mailresult['result'] !== true) {
+          \Drupal::logger('yqb_migrate')->notice(t('There was a problem sending your message and it was not sent.'));
+        }
+        else {
+          \Drupal::logger('yqb_migrate')->notice(t('Your message has been sent.'));
+        }
       }
 
       return;
@@ -122,6 +132,14 @@ function yqb_migrate_cron() {
         $message = sprintf('Successfully completed "%s" migration.', $migration->id());
       } else {
         $message = sprintf('"%s" migration failed with error %d.', $migration->id(), $result);
+        $params['message'] = $message;
+        $mailresult = $mailManager->mail('yqb_migrate', 'yqb_migrate_error', 'simon.bluteau@libeo.com', 'fr', $params, NULL, true);
+        if ($mailresult['result'] !== true) {
+          \Drupal::logger('yqb_migrate')->notice(t('There was a problem sending your message and it was not sent.'));
+        }
+        else {
+          \Drupal::logger('yqb_migrate')->notice(t('Your message has been sent.'));
+        }
       }
 
       $cron_config->set('last_updated', time())->save();
@@ -157,3 +175,21 @@ function yqb_migrate_cron() {
     }
   }
 }
+
+/**
+* Implements hook_mail().
+*/
+function yqb_migrate_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => 'fr',
+  );
+ 
+  switch ($key) {
+    case 'yqb_migrate_error':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('An error occurred during migration: yqb_migrate : departure and arrival', array(), $options);
+      $message['body'][] = $params['message'];
+      break;
+  }
+ }
+ 
