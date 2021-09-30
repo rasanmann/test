@@ -410,17 +410,17 @@
     },
     {
         "name": "composer/ca-bundle",
-        "version": "1.2.10",
-        "version_normalized": "1.2.10.0",
+        "version": "1.2.11",
+        "version_normalized": "1.2.11.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/ca-bundle.git",
-            "reference": "9fdb22c2e97a614657716178093cd1da90a64aa8"
+            "reference": "0b072d51c5a9c6f3412f7ea3ab043d6603cb2582"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/ca-bundle/zipball/9fdb22c2e97a614657716178093cd1da90a64aa8",
-            "reference": "9fdb22c2e97a614657716178093cd1da90a64aa8",
+            "url": "https://api.github.com/repos/composer/ca-bundle/zipball/0b072d51c5a9c6f3412f7ea3ab043d6603cb2582",
+            "reference": "0b072d51c5a9c6f3412f7ea3ab043d6603cb2582",
             "shasum": ""
         },
         "require": {
@@ -432,9 +432,9 @@
             "phpstan/phpstan": "^0.12.55",
             "psr/log": "^1.0",
             "symfony/phpunit-bridge": "^4.2 || ^5",
-            "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0"
+            "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0"
         },
-        "time": "2021-06-07T13:58:28+00:00",
+        "time": "2021-09-25T20:32:43+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3235,17 +3235,17 @@
     },
     {
         "name": "drupal/core",
-        "version": "8.9.18",
-        "version_normalized": "8.9.18.0",
+        "version": "8.9.19",
+        "version_normalized": "8.9.19.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core.git",
-            "reference": "e536176c45d9d75ec57f7a12c0e3c0aead856841"
+            "reference": "96eb83b31d950f020cbc079ab960159c3735a033"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drupal/core/zipball/e536176c45d9d75ec57f7a12c0e3c0aead856841",
-            "reference": "e536176c45d9d75ec57f7a12c0e3c0aead856841",
+            "url": "https://api.github.com/repos/drupal/core/zipball/96eb83b31d950f020cbc079ab960159c3735a033",
+            "reference": "96eb83b31d950f020cbc079ab960159c3735a033",
             "shasum": ""
         },
         "require": {
@@ -3412,7 +3412,7 @@
             "drupal/workflows": "self.version",
             "drupal/workspaces": "self.version"
         },
-        "time": "2021-08-12T17:48:42+00:00",
+        "time": "2021-09-14T22:08:18+00:00",
         "type": "drupal-core",
         "extra": {
             "drupal-scaffold": {
@@ -3473,8 +3473,8 @@
     },
     {
         "name": "drupal/core-composer-scaffold",
-        "version": "8.9.18",
-        "version_normalized": "8.9.18.0",
+        "version": "8.9.19",
+        "version_normalized": "8.9.19.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -3522,8 +3522,8 @@
     },
     {
         "name": "drupal/core-dev",
-        "version": "8.9.18",
-        "version_normalized": "8.9.18.0",
+        "version": "8.9.19",
+        "version_normalized": "8.9.19.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-dev.git",
@@ -3569,17 +3569,17 @@
     },
     {
         "name": "drupal/core-recommended",
-        "version": "8.9.18",
-        "version_normalized": "8.9.18.0",
+        "version": "8.9.19",
+        "version_normalized": "8.9.19.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core-recommended.git",
-            "reference": "71839bb9799b70f449b76294b461877ba1e9ff2c"
+            "reference": "880335bafeeba6d29454053bd24f253a219c2cfc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drupal/core-recommended/zipball/71839bb9799b70f449b76294b461877ba1e9ff2c",
-            "reference": "71839bb9799b70f449b76294b461877ba1e9ff2c",
+            "url": "https://api.github.com/repos/drupal/core-recommended/zipball/880335bafeeba6d29454053bd24f253a219c2cfc",
+            "reference": "880335bafeeba6d29454053bd24f253a219c2cfc",
             "shasum": ""
         },
         "require": {
@@ -3591,7 +3591,7 @@
             "doctrine/common": "v2.7.3",
             "doctrine/inflector": "v1.2.0",
             "doctrine/lexer": "1.0.2",
-            "drupal/core": "8.9.18",
+            "drupal/core": "8.9.19",
             "easyrdf/easyrdf": "0.9.1",
             "egulias/email-validator": "2.1.17",
             "guzzlehttp/guzzle": "6.5.4",
@@ -3642,7 +3642,7 @@
         "conflict": {
             "webflo/drupal-core-strict": "*"
         },
-        "time": "2021-08-12T17:48:42+00:00",
+        "time": "2021-09-14T22:08:18+00:00",
         "type": "metapackage",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -8744,17 +8744,17 @@
     },
     {
         "name": "mikey179/vfsstream",
-        "version": "v1.6.9",
-        "version_normalized": "1.6.9.0",
+        "version": "v1.6.10",
+        "version_normalized": "1.6.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bovigo/vfsStream.git",
-            "reference": "2257e326dc3d0f50e55d0a90f71e37899f029718"
+            "reference": "250c0825537d501e327df879fb3d4cd751933b85"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/2257e326dc3d0f50e55d0a90f71e37899f029718",
-            "reference": "2257e326dc3d0f50e55d0a90f71e37899f029718",
+            "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/250c0825537d501e327df879fb3d4cd751933b85",
+            "reference": "250c0825537d501e327df879fb3d4cd751933b85",
             "shasum": ""
         },
         "require": {
@@ -8763,7 +8763,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.5|^5.0"
         },
-        "time": "2021-07-16T08:08:02+00:00",
+        "time": "2021-09-25T08:05:01+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -9598,17 +9598,17 @@
     },
     {
         "name": "phpdocumentor/type-resolver",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
+        "version": "1.5.0",
+        "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpDocumentor/TypeResolver.git",
-            "reference": "6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0"
+            "reference": "30f38bffc6f24293dadd1823936372dfa9e86e2f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0",
-            "reference": "6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0",
+            "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/30f38bffc6f24293dadd1823936372dfa9e86e2f",
+            "reference": "30f38bffc6f24293dadd1823936372dfa9e86e2f",
             "shasum": ""
         },
         "require": {
@@ -9616,9 +9616,10 @@
             "phpdocumentor/reflection-common": "^2.0"
         },
         "require-dev": {
-            "ext-tokenizer": "*"
+            "ext-tokenizer": "*",
+            "psalm/phar": "^4.8"
         },
-        "time": "2020-09-17T18:55:26+00:00",
+        "time": "2021-09-17T15:28:14+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
