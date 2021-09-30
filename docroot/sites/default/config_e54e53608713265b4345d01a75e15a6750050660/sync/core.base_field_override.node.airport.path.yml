@@ -1,0 +1,20 @@
+uuid: c9e707ab-61df-412c-8e53-dcb628ce1855
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.airport
+  module:
+    - path
+id: node.airport.path
+field_name: path
+entity_type: node
+bundle: airport
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,21 @@
+uuid: 4b1ea925-1131-443b-a406-fa7aa2ed1243
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_color_1
+    - paragraphs.paragraphs_type.block_full
+id: paragraph.block_full.field_color_1
+field_name: field_color_1
+entity_type: paragraph
+bundle: block_full
+label: 'Couleur primaire'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '#012d8b'
+default_value_callback: ''
+settings: {  }
+field_type: string

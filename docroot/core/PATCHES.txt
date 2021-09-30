@@ -13,3 +13,7 @@ $entity->isDefaultTranslation() behaves incorrectly when changing default transl
 Source: patches/2810355-82.patch
 
 
+Editor module fails to track usage of files embedded in non-core fields
+Source: https://www.drupal.org/files/issues/2021-02-05/2857444-8.9.x-38_1.patch
+
+

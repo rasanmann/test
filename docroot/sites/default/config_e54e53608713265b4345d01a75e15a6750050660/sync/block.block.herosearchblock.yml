@@ -10,7 +10,7 @@ dependencies:
 id: herosearchblock
 theme: yqb
 region: top
-weight: -30
+weight: -33
 provider: null
 plugin: hero-search-block
 settings:

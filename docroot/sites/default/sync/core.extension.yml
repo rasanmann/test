@@ -1,5 +1,6 @@
 module:
   addtoany: 0
+  admin_toolbar: 0
   ape: 0
   block: 0
   block_content: 0
@@ -7,16 +8,6 @@ module:
   breakpoint: 0
   captcha: 0
   ckeditor: 0
-  cohesion: 0
-  cohesion_base_styles: 0
-  cohesion_breakpoint_indicator: 0
-  cohesion_custom_styles: 0
-  cohesion_elements: 0
-  cohesion_style_guide: 0
-  cohesion_style_helpers: 0
-  cohesion_sync: 0
-  cohesion_templates: 0
-  cohesion_website_settings: 0
   color: 0
   comment: 0
   config: 0
@@ -37,7 +28,6 @@ module:
   editor_file: 0
   email_registration: 0
   entity_reference_revisions: 0
-  example_element: 0
   features: 0
   features_ui: 0
   field: 0

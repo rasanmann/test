@@ -1,6 +1,6 @@
 uuid: afac1c34-7796-46c3-992e-466c97004b16
 langcode: fr
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -17,8 +17,8 @@ settings:
   id: reminders_block
   label: 'Suivez le statut de votre vol par SMS'
   provider: yqb_reminders
-  label_display: visible
-  full_width: 0
+  label_display: '0'
+  full_width: 1
 visibility:
   request_path:
     id: request_path

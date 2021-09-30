@@ -2,7 +2,6 @@
 =======
 
 .. versionadded:: 1.15
-
     The ``max`` function was added in Twig 1.15.
 
 ``max`` returns the biggest value of a sequence or a set of values:

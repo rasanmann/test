@@ -1,4 +1,4 @@
-uuid: 6a3a1ed4-9f63-447d-862b-a17ac21e8021
+uuid: 6cd7a969-9221-4af0-af76-f65c24cc7f07
 langcode: fr
 status: true
 dependencies:
@@ -13,8 +13,8 @@ field_name: field_valeurs
 entity_type: paragraph
 bundle: valeurs
 label: Valeurs
-description: Valeurs
-required: true
+description: ''
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -25,48 +25,48 @@ settings:
     target_bundles:
       valeur: valeur
     target_bundles_drag_drop:
-      valeur:
-        enabled: true
-        weight: 19
       accordeon:
-        weight: 20
+        weight: 19
         enabled: false
       content:
-        weight: 21
+        weight: 20
         enabled: false
       gallery:
-        weight: 22
+        weight: 21
         enabled: false
       gallery_image:
-        weight: 23
+        weight: 22
         enabled: false
       gouvernance_employe:
-        weight: 24
+        weight: 23
         enabled: false
       gouvernance_texte:
-        weight: 25
+        weight: 24
         enabled: false
       image_mosaique:
-        weight: 26
+        weight: 25
         enabled: false
       media_mosaique:
-        weight: 27
+        weight: 26
         enabled: false
       mosaique:
-        weight: 28
+        weight: 27
         enabled: false
       primary_title_h2:
-        weight: 29
+        weight: 28
         enabled: false
       texte_avec_arriere_plan:
-        weight: 30
+        weight: 29
         enabled: false
       texte_et_image:
-        weight: 31
+        weight: 30
         enabled: false
       tirroir:
-        weight: 32
+        weight: 31
         enabled: false
+      valeur:
+        enabled: true
+        weight: 32
       valeurs:
         weight: 33
         enabled: false

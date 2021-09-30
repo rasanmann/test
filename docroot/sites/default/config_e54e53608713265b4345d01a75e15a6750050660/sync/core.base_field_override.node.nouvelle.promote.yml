@@ -1,4 +1,4 @@
-uuid: dc716ec3-0231-44b3-a6e7-d8a0b6e95f55
+uuid: dcc251c4-aed0-4451-ba33-a06882d93694
 langcode: fr
 status: true
 dependencies:
@@ -11,7 +11,7 @@ bundle: nouvelle
 label: 'Promu en page d''accueil'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 0

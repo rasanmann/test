@@ -26,7 +26,7 @@ Slim, Yii, Laravel, and Codeigniter — just to name a few.
 Prerequisites
 -------------
 
-Twig 1.x needs at least **PHP 7.2.5** to run.
+Twig needs at least **PHP 5.5.0** to run.
 
 Installation
 ------------
@@ -46,7 +46,9 @@ The recommended way to install Twig is via Composer:
 Basic API Usage
 ---------------
 
-This section gives you a brief introduction to the PHP API for Twig::
+This section gives you a brief introduction to the PHP API for Twig.
+
+.. code-block:: php
 
     require_once '/path/to/vendor/autoload.php';
 

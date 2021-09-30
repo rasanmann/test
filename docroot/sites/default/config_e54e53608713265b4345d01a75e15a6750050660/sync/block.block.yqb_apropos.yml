@@ -12,7 +12,7 @@ dependencies:
 id: yqb_apropos
 theme: yqb
 region: sidebar_first
-weight: -25
+weight: -32
 provider: null
 plugin: 'system_menu_block:a-propos'
 settings:
@@ -26,7 +26,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/a-propos\r\n/a-propos/*\r\n/a-propos/*/*\r\n/pages/travaux-de-construction\r\n/pages/demande-de-transport-réservé\r\n"
+    pages: "/a-propos\r\n/a-propos/*\r\n/a-propos/*/*\r\n/a-propos/entreprise/mission-vision-et-valeurs\r\n/pages/travaux-de-construction\r\n/pages/demande-de-transport-réservé\r\n/pages/conseils-aux-voyageurs-pour-votre-sante-et-celle-des-autres\r\n/pages/foire-aux-questions-covid-19\r\n\r\n"
     negate: false
     context_mapping: {  }
   language:

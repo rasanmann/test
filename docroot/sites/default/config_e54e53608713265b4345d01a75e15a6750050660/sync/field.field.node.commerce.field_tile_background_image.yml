@@ -1,4 +1,4 @@
-uuid: 6b1a6b97-92e4-45db-b1a7-af9b813d22ee
+uuid: c5de277e-c8c3-4478-9fea-8f77766b8d3d
 langcode: fr
 status: true
 dependencies:
@@ -6,22 +6,15 @@ dependencies:
     - field.storage.node.field_tile_background_image
     - node.type.commerce
   module:
-    - content_translation
     - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      file: '0'
-      alt: '0'
-      title: '0'
 id: node.commerce.field_tile_background_image
 field_name: field_tile_background_image
 entity_type: node
 bundle: commerce
 label: 'Image de fond'
-description: ''
+description: 'Taille recommandée : 300x300px'
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

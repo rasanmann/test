@@ -5,4 +5,4 @@ display:
       fields:
         field_file:
           alter:
-            text: "<span class=\"icon glyphicon glyphicon-file text-primary\" aria-hidden=\"true\"></span>\r\n<a href=\"#\" data-target-id={{field_file__target_id}} class=\"link-rewrite\" data-target=\"#downloadModal\" data-toggle=\"modal\">Download</a> \r\n\r\n"
+            text: "<span class=\"icon glyphicon glyphicon-file text-primary\" aria-hidden=\"true\"></span>\r\n<a href=\"{{field_file}}\" class=\"link-rewrite\" target=\"_blank\">Download</a> \r\n\r\n\r\n"

@@ -1,0 +1,18 @@
+uuid: cf7e9f4b-7ed5-4aa5-a558-86dea36f2760
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.nouvelle
+id: node.nouvelle.changed
+field_name: changed
+entity_type: node
+bundle: nouvelle
+label: Modifié
+description: 'Le moment auquel le nœud a été modifié pour la dernière fois.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

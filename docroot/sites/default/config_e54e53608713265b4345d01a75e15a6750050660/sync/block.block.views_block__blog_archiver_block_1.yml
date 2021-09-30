@@ -12,7 +12,7 @@ dependencies:
 id: views_block__blog_archiver_block_1
 theme: yqb
 region: sidebar_first
-weight: -26
+weight: -33
 provider: null
 plugin: 'views_block:blog_archiver-block_1'
 settings:

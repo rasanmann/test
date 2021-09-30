@@ -1,0 +1,18 @@
+uuid: 6778c4b8-7b5a-472b-9ed3-7d6d4777dec8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.retail_types
+id: taxonomy_term.retail_types.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: retail_types
+label: Modifié
+description: 'L''heure à laquelle le terme a été édité pour la dernière fois.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

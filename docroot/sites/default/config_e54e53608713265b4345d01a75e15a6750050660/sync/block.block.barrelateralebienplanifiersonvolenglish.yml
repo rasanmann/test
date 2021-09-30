@@ -12,7 +12,7 @@ dependencies:
 id: barrelateralebienplanifiersonvolenglish
 theme: yqb
 region: sidebar_first
-weight: -20
+weight: -27
 provider: null
 plugin: 'system_menu_block:barre-laterale---bien-plani'
 settings:

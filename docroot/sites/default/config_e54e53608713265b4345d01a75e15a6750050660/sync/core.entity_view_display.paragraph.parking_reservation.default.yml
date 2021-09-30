@@ -1,0 +1,22 @@
+uuid: 63584f6f-8892-4231-8eb7-f309798bad9e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.parking_reservation.field_para_title
+    - paragraphs.paragraphs_type.parking_reservation
+  module:
+    - text
+id: paragraph.parking_reservation.default
+targetEntityType: paragraph
+bundle: parking_reservation
+mode: default
+content:
+  field_para_title:
+    weight: 1
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

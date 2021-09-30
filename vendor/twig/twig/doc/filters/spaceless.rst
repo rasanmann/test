@@ -8,7 +8,7 @@
 Use the ``spaceless`` filter to remove whitespace *between HTML tags*, not
 whitespace within HTML tags or whitespace in plain text:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     {{
         "<div>
@@ -21,7 +21,7 @@ whitespace within HTML tags or whitespace in plain text:
 You can combine ``spaceless`` with the ``apply`` tag to apply the transformation
 on large amounts of HTML:
 
-.. code-block:: html+twig
+.. code-block:: twig
 
     {% apply spaceless %}
         <div>

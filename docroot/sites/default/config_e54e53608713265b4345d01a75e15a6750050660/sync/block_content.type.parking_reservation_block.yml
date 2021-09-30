@@ -1,0 +1,8 @@
+uuid: b6651d70-3e74-4298-a6f8-f67d75d3336e
+langcode: fr
+status: true
+dependencies: {  }
+id: parking_reservation_block
+label: 'Block Parking Reservation'
+revision: 0
+description: 'Bloc de Réservation de stationnement externe. (2021)'

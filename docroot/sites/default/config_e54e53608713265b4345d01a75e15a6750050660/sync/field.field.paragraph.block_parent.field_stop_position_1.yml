@@ -1,0 +1,25 @@
+uuid: ca954740-c216-40fc-a4da-82cf43d14d68
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_stop_position_1
+    - paragraphs.paragraphs_type.block_parent
+id: paragraph.block_parent.field_stop_position_1
+field_name: field_stop_position_1
+entity_type: paragraph
+bundle: block_parent
+label: 'Position d''arrêt initiale'
+description: 'Position d''arrêt le long de l''axe du dégradé de la couleur initiale.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 30
+default_value_callback: ''
+settings:
+  min: 0
+  max: 100
+  prefix: ''
+  suffix: '%'
+field_type: integer

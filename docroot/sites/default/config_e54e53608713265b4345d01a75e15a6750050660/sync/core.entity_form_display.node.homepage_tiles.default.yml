@@ -15,9 +15,9 @@ dependencies:
     - image.style.thumbnail
     - node.type.homepage_tiles
   module:
-    - image
     - link
     - scheduler
+    - svg_image
 _core:
   default_config_hash: Jv-eYHnI9xtmsYw5dt39jEgY_G832MPUA5sbZ52DwR4
 id: node.homepage_tiles.default
@@ -25,14 +25,8 @@ targetEntityType: node
 bundle: homepage_tiles
 mode: default
 content:
-  field_format:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_tile_background_color:
-    weight: 2
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -82,19 +76,11 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
-  field_trigger_nav:
-    weight: 5
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   langcode:
     type: language_select
-    weight: 10
+    weight: 1
     region: content
-    settings:
-      include_locked: true
+    settings: {  }
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
@@ -106,9 +92,9 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 121
-    third_party_settings: {  }
+    weight: 120
     region: content
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
@@ -118,7 +104,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 11
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -135,6 +121,8 @@ content:
     region: content
 hidden:
   created: true
+  field_format: true
+  field_trigger_nav: true
   path: true
   promote: true
   sticky: true

@@ -1,0 +1,25 @@
+uuid: 9962547a-0b20-4f32-ab7c-c1c015977104
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_angle
+    - paragraphs.paragraphs_type.block_parent
+id: paragraph.block_parent.field_angle
+field_name: field_angle
+entity_type: paragraph
+bundle: block_parent
+label: Angle
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 180
+default_value_callback: ''
+settings:
+  min: 0
+  max: 360
+  prefix: ''
+  suffix: deg
+field_type: integer

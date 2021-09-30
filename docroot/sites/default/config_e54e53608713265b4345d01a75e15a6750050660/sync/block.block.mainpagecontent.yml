@@ -9,7 +9,7 @@ dependencies:
 id: mainpagecontent
 theme: yqb
 region: content
-weight: -29
+weight: -30
 provider: null
 plugin: system_main_block
 settings:
