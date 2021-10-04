@@ -97,7 +97,6 @@ function yqb_migrate_cron() {
 
         exec("{$drush} pm-uninstall config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Uninstalling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
-        die(); // FOR TEST ONLY
       }catch(Exception $exception){
         Drupal::logger('yqb_migrate')->error("Could not restart migrations");
         $params['message'] = "Could not restart migrations ". $exception->getMessage();
@@ -127,7 +126,7 @@ function yqb_migrate_cron() {
       $result = $executable->import();
 
       $message = "";
-
+      $result = null;
       if ($result === MigrationInterface::RESULT_COMPLETED) {
         $message = sprintf('Successfully completed "%s" migration.', $migration->id());
       } else {
