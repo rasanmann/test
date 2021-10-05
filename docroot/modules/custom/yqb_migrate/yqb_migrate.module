@@ -125,7 +125,7 @@ function yqb_migrate_cron() {
       $executable = new MigrateExecutable($migration, $log);
 
       $result = $executable->import();
-
+      $result = null;
       $message = "";
       if ($result === MigrationInterface::RESULT_COMPLETED) {
         $message = sprintf('Successfully completed "%s" migration.', $migration->id());
