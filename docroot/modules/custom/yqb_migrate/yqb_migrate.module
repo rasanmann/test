@@ -49,7 +49,6 @@ function yqb_migrate_theme() {
 function yqb_migrate_cron() {
   $mailManager = \Drupal::service('plugin.manager.mail');
   $errorEmail = theme_get_setting('email_error') ? theme_get_setting('email_error') : 'itsupport@yqb.ca';
-  $errorEmail = 'simon.bluteau@libeo.com';
   // For Drush
   echo "Starting migrations" . PHP_EOL;
 
@@ -99,7 +98,6 @@ function yqb_migrate_cron() {
 
         exec("{$drush} pm-uninstall config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Uninstalling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
-        trigger_error("TEST ERROR", E_USER_ERROR);
       }catch(Exception $exception){
         Drupal::logger('yqb_migrate')->error("Could not restart migrations");
         $params['message'] = "Could not restart migrations". $exception->getMessage();
@@ -127,7 +125,6 @@ function yqb_migrate_cron() {
       $executable = new MigrateExecutable($migration, $log);
 
       $result = $executable->import();
-      $result = null;
       $message = "";
       if ($result === MigrationInterface::RESULT_COMPLETED) {
         $message = sprintf('Successfully completed "%s" migration.', $migration->id());
