@@ -49,6 +49,7 @@ function yqb_migrate_theme() {
 function yqb_migrate_cron() {
   $mailManager = \Drupal::service('plugin.manager.mail');
   $errorEmail = theme_get_setting('email_error') ? theme_get_setting('email_error') : 'itsupport@yqb.ca';
+  $errorEmail = 'simon.bluteau@libeo.com';
   // For Drush
   echo "Starting migrations" . PHP_EOL;
 
