@@ -58,6 +58,7 @@
     "drupal/svg_image": "^1.14",
     "drupal/swiftmailer": "^2.0",
     "drupal/token": "^1.9",
+    "drupal/twig_vardumper": "^2.2",
     "drupal/upgrade_status": "^3.10",
     "drupal/views_field_view": "1.0.0-beta3",
     "drupal/webform": "^5.23",
