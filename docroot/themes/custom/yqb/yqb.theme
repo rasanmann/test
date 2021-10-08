@@ -802,6 +802,19 @@ function yqb_preprocess_views_view_field(&$variables) {
   }
 }
 
+function yqb_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id = NULL) {
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['email_error'] = array(
+    '#type'          => 'email',
+    '#title'         => t('Email'),
+    '#default_value' => theme_get_setting('email_error') ? theme_get_setting('email_error') : 'itsupport@yqb.ca',
+    '#description'   => t("Error messages for custom module like yqb_migrate will be sent to this address."),
+  );
+}
+
 function yqb_preprocess_block__herosearchblock(&$variables) {
     $config = Drupal::service('config.factory')->getEditable('yqb_video_accueil.settings');
 
