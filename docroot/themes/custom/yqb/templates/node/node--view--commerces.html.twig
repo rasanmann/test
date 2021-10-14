@@ -17,7 +17,7 @@ view_mode ? view_mode|clean_class,
 <article{{ attributes.addClass(classes) }}>
     <div class="wrapper">
         <div class="bg-color"></div>
-        <div class="bg-image" style="background-image: url('{{ file_url(content.field_tile_background_image.0['#item'].entity.uri.value) }}')"></div>
+        <div class="bg-image" style="background-image: url('{{ file_url(content.field_tile_background_image['#items'].entity.uri.value) }}')"></div>
         {% set logo = {
             '#theme':      'image_style',
             '#style_name': 'logo',
