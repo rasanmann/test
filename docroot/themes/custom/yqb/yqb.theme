@@ -405,7 +405,7 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#attributes']['style'][] = 'color: #b2daf3; background-color: #012d8b;';
 
     $node = \Drupal::routeMatch()->getParameter('node');
-    $paragraphs = $node->field_paragraphs->getValue();
+    $paragraphs = $node->field_paragraphs ? $node->field_paragraphs->getValue() : null;
 
     foreach ( $paragraphs as $element ) {
       $p = \Drupal\paragraphs\Entity\Paragraph::load( $element['target_id'] );
