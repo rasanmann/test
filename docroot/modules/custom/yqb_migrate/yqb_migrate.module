@@ -62,7 +62,7 @@ function yqb_migrate_cron() {
   // minute) so keep a time for the next run in a variable.
   $next_execution = $cron_config->get('next_execution');
   $next_execution = !empty($next_execution) ? $next_execution : 0;
-  if (REQUEST_TIME >= $next_execution) {
+  if ( \Drupal::time()->getRequestTime() >= $next_execution) {
     // Migrations we want to run during cron
     $migrations = [];
 
@@ -76,17 +76,16 @@ function yqb_migrate_cron() {
 
     foreach ($plugins as $id => $migration) {
       Drupal::logger('yqb_migrate')->notice( sprintf('Found "%s".', $id));
-      if (in_array(Unicode::strtolower($id), $migration_ids)) {
+      if (in_array(mb_strtolower($id), $migration_ids)) {
         $migrations[] = $migration;
       }
     }
-
     // PROBLEM WITH MIGRATIONS, RE ENABLE THEM
     if(empty($migrations)){
       Drupal::logger('yqb_migrate')->emergency("Migrations were not found.");
       try{
-        $php = '/usr/local/php7.1/bin/php';
-        $drush = '/usr/local/drush8/drush';
+        $php = '/usr/local/php7.4/bin/php';
+        $drush = '/usr/local/drush9/drush';
         exec("{$drush} pm-enable config_devel -y", $output, $return);
         Drupal::logger('yqb_migrate')->notice("Enabling Config Devel : @message", ['@message' => json_encode($output, JSON_PRETTY_PRINT)]);
 
@@ -103,10 +102,10 @@ function yqb_migrate_cron() {
         $params['message'] = "Could not restart migrations". $exception->getMessage();
         $mailresult = $mailManager->mail('yqb_migrate', 'yqb_migrate_error', $errorEmail, 'fr', $params, NULL, true);
         if ($mailresult['result'] !== true) {
-          \Drupal::logger('yqb_migrate')->notice(t('There was a problem sending your message and it was not sent.'));
+          \Drupal::logger('yqb_migrate')->notice(t('Could not restart migrations. There was a problem sending your notice email and it was not sent.'));
         }
         else {
-          \Drupal::logger('yqb_migrate')->notice(t('Your message has been sent.'));
+          \Drupal::logger('yqb_migrate')->notice(t('Could not restart migrations. Your notice email has been sent.'));
         }
       }
 
@@ -153,7 +152,9 @@ function yqb_migrate_cron() {
     }
 
     // Prepare next execution
-    $cron_config->set('next_execution', REQUEST_TIME + $interval)->save();
+    $cron_config->set('next_execution', \Drupal::time()->getRequestTime() + $interval)->save();
+  }else{
+    \Drupal::logger('yqb_migrate')->notice('Le migrate cron n\'a pas été éxécuté puisque il s\'est éxécuté il y a moins de 2 minutes. Details: REQUEST_TIME >= $next_execution. (next_execution: ' . $next_execution . ' REQUEST_TIME: '. \Drupal::time()->getRequestTime() . ')');
   }
 
   // Delete older nodes
