@@ -1,5 +1,5 @@
-expectedWaitTime: 136.71428571429
-averageArrivalRate: 0.041450777202073
-averageServiceRate: 0.033018867924528
-numberOfPeopleInLine: 8
-queueUtilization: 1.2553663952628
+expectedWaitTime: !!float 89
+averageArrivalRate: 0.013745704467354
+averageServiceRate: 0.0045731707317073
+numberOfPeopleInLine: 2
+queueUtilization: 3.0057273768614
