@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% for row in rows %}
+  {% set row_classes = [ default_row_class ? 'views-row', ] %}
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab"
+         id="heading-{{ title|striptags|clean_id }}">
+      <h3 class="panel-title panel-title-region">
+        <a class="collapsed" role="button" data-toggle="collapse"
+           href="#collapse-{{ title|striptags|clean_id }}"
+           aria-expanded="false"
+           aria-controls="collapse-{{ title|striptags|clean_id }}">
+          <div class="panel-title-content">
+            {% if title %}
+              <h2>{{ title }}</h2>
+            {% endif %}
+          </div>
+          <span class="icon icon-down-arrow-2" data-grunticon-embed></span>
+        </a>
+      </h3>
+    </div>
+
+    <div id="collapse-{{ title|striptags|clean_id }}"
+         class="panel-collapse collapse" role="tabpanel"
+         aria-labelledby="heading-{{ title|striptags|clean_id }}">
+      <div class="panel-body">
+        <div class="content">
+          {{ row.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}

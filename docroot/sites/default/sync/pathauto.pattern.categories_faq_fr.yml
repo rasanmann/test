@@ -1,0 +1,34 @@
+uuid: 21a3f1d0-6d5a-42f5-a5e2-50ba2689023e
+langcode: fr
+status: true
+dependencies:
+  module:
+    - ctools
+    - language
+    - taxonomy
+id: categories_faq_fr
+label: 'Catégories FAQ - FR'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/foire-aux-questions/[term:parent:name]/[term:name]'
+selection_criteria:
+  da3cdb85-273f-43b4-b881-0a2a66dcaec7:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      categories_faq: categories_faq
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: da3cdb85-273f-43b4-b881-0a2a66dcaec7
+  620a1b29-b283-4432-a882-d7d40185c704:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: 620a1b29-b283-4432-a882-d7d40185c704
+selection_logic: and
+weight: -10
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language

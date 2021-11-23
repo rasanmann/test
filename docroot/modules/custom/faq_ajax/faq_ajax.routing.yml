@@ -1,0 +1,6 @@
+faq_ajax.ajax:
+  path: '/faq_ajax/category/get/{lang}/{tid}'
+  defaults:
+    _controller: '\Drupal\faq_ajax\Controller\FaqAjaxController::getFaqByCategory'
+  requirements:
+    _access: 'TRUE'

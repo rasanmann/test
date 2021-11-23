@@ -1,0 +1,48 @@
+uuid: 5cc0d3ba-6eb9-41d3-ab26-1b4159252547
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.categories_faq.field_color
+    - field.field.taxonomy_term.categories_faq.field_icon
+    - taxonomy.vocabulary.categories_faq
+  module:
+    - color_field
+    - svg_image
+    - text
+id: taxonomy_term.categories_faq.default
+targetEntityType: taxonomy_term
+bundle: categories_faq
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_color:
+    weight: 2
+    label: above
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    type: color_field_formatter_text
+    region: content
+  field_icon:
+    weight: 1
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  langcode: true

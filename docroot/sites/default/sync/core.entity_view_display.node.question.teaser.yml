@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.question.body
+    - field.field.node.question.field_category_faq
     - field.field.node.question.field_is_app
     - field.field.node.question.field_is_website
     - node.type.question
@@ -31,6 +32,7 @@ content:
     third_party_settings: {  }
 hidden:
   addtoany: true
+  field_category_faq: true
   field_is_app: true
   field_is_website: true
   langcode: true

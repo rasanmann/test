@@ -1,0 +1,7 @@
+<?php
+/*
+* hOOK_preprocess_page
+*/
+function faq_ajax_preprocess_page(&$variables){
+  $variables['#attached']['library'][] = 'faq_ajax/global-js';
+}

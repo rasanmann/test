@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.question.body
+    - field.field.node.question.field_category_faq
     - field.field.node.question.field_is_app
     - field.field.node.question.field_is_website
     - node.type.question
@@ -18,7 +19,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 31
+    weight: 1
     settings:
       rows: 9
       summary_rows: 3
@@ -28,20 +29,26 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_category_faq:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   langcode:
     type: language_select
-    weight: 2
+    weight: 3
     settings:
       include_locked: true
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 30
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -49,12 +56,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 15
+    weight: 7
     third_party_settings: {  }
     region: content
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -62,32 +69,32 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 121
+    weight: 13
     third_party_settings: {  }
     region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 8
     third_party_settings: {  }
     region: content
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     region: content
   translation:
-    weight: 10
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -97,15 +104,15 @@ content:
     region: content
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 12
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_is_app: true
   field_is_website: true
