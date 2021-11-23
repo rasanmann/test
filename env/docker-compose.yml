@@ -3,7 +3,7 @@ services:
   nginx:
     container_name: ${COMPOSE_PROJECT_NAME}_nginx
     privileged: true
-    image: docker.gitlab.libeo.com/docker/nginx:1.15-fpm
+    image: docker.gitlab.libeo.com/docker/nginx:stable
     environment:
       CURRENT_UID: ${CURRENT_UID}
       SERVER_ROOT: /app/docroot/
@@ -41,24 +41,21 @@ services:
 
   mysql:
     container_name: ${COMPOSE_PROJECT_NAME}_mysql
-    image: mysql:5.6
-    command:
-    - --innodb-flush-log-at-trx-commit=0
+    image: mariadb:10.4
+    command: ["--innodb-flush-log-at-trx-commit=0"]
     environment:
-      MYSQL_ROOT_PASSWORD: yqb
-      MYSQL_USER: yqb
-      MYSQL_PASSWORD: yqb
-      MYSQL_DATABASE: yqb
+      MYSQL_ROOT_PASSWORD: ${COMPOSE_PROJECT_NAME}
+      MYSQL_USER: ${COMPOSE_PROJECT_NAME}
+      MYSQL_PASSWORD: ${COMPOSE_PROJECT_NAME}
+      MYSQL_DATABASE: ${COMPOSE_PROJECT_NAME}
     volumes:
-    - yqb-mysql-data:/var/lib/mysql
+    - mysql-data:/var/lib/mysql
     networks:
-      backend:
-        aliases:
-        - mysql
+    - backend
 
   maildev:
     container_name: ${COMPOSE_PROJECT_NAME}_maildev
-    image: djfarrelly/maildev
+    image: maildev/maildev:1.1.0
     labels:
     - "traefik.docker.network=traefik_default"
     - "traefik.frontend.rule=Host:mail.${COMPOSE_PROJECT_NAME}.local.vici.io"
@@ -82,7 +79,7 @@ services:
 
 
 volumes:
-  yqb-mysql-data:
+  mysql-data:
 
 networks:
   backend:
