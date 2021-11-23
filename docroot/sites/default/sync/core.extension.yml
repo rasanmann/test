@@ -96,6 +96,7 @@ module:
   scheduler: 0
   search: 0
   search_autocomplete: 0
+  search_exclude: 0
   serialization: 0
   settings_tray: 0
   shortcut: 0
