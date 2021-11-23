@@ -1,0 +1,13 @@
+uuid: f95d48f3-068a-4302-9d18-1ad19c2f867b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: search_faq
+label: FAQ
+path: faq
+weight: 0
+plugin: node_search
+configuration:
+  rankings: {  }

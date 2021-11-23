@@ -1,0 +1,8 @@
+display:
+  default:
+    display_options:
+      empty:
+        area:
+          content:
+            value: "<pre data-placeholder=\"Traduction\" dir=\"ltr\" id=\"tw-target-text\">\r\nNo result</pre>\r\n"
+            format: full_html

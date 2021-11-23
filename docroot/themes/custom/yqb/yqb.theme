@@ -868,16 +868,12 @@ function yqb_preprocess_node(&$variables){
 function yqb_theme_suggestions_page_alter(&$suggestions, &$variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
   $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
-  $view_id = \Drupal::routeMatch()->getParameter('view_id');
   if ($node) {
     $content_type = $node->bundle();
     $suggestions[] = 'page__' . $content_type;
   }
   elseif ($term && ($term->bundle() === "categories_faq")) {
     $suggestions[] = 'page__taxonomy__'.$term->bundle();
-  }
-  elseif ($view_id === 'accueil_blogue' || $view_id === 'blog_search' ) {
-    $suggestions[] = 'page__'.$view_id;
   }
 }
 
@@ -920,7 +916,17 @@ function yqb_preprocess_taxonomy_term(&$variables) {
       $variables['parentTid'] = $targetTermId;
 
     }
-    $children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, $targetTermId, 1, true);
+
+    $language =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, $targetTermId, 1, true);
+    $children = [];
+    foreach ($terms as $term) {
+      if ($term->hasTranslation($language)) {
+        $tid = $term->id();
+        $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term, $language);
+        $children[] = $translated_term;
+      }
+    }
     $hasChildren = count($children) ? true : false;
     $variables['subCattegories'] = $children;
     $variables['hasChildren'] = $hasChildren;

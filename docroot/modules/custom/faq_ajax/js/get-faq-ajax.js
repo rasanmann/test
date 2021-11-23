@@ -1,6 +1,5 @@
 // career
 (function ($) {
-console.log('ok')
   $(document).on("ajaxSuccess", function() {
     $('.ajax-progress-fullscreen').remove();
   });
@@ -22,7 +21,10 @@ console.log('ok')
         $loadingIcon = '<div class="ajax-progress ajax-progress-fullscreen"><span class="throbber"></span></div>';
         $('body').append($loadingIcon);
         let tid = $(this).data('tid');
-        if (!tid) return;
+        if (!tid) {
+          $('.ajax-progress-fullscreen').remove();
+          return false;
+        }
         href = hostFaqCat + tid;
         $("#subCategoryFaqContent").load(href);
       })
