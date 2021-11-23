@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
 function composer {
-    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )/../../"
+    IMAGE="docker.gitlab.libeo.com/docker/php:7.4-fpm"
 
-    IMAGE=docker.gitlab.libeo.com/docker/php:7.3-composer
+    COMPOSER_CACHE_DIR="/.composer"
+    COMPOSER_CACHE_VOLUME="${KUBEO_PROJECT_NAME}_composer_cache"
 
-    docker pull ${IMAGE} &> /dev/null
-    docker run --rm -u $(id -u):$(id -g) \
-        -v "${DIR}"/.composer:/.composer \
-        -v "${DIR}":/public \
-        -it ${IMAGE} --working-dir=/public "$@" --ignore-platform-reqs
+    docker volume create $COMPOSER_CACHE_VOLUME &> /dev/null || true
+    docker pull "$IMAGE" &> /dev/null
+    docker run --rm \
+        -e CURRENT_UID=$(id -u) \
+        -e COMPOSER_CACHE_DIR=${COMPOSER_CACHE_DIR} \
+        -v "${COMPOSER_CACHE_VOLUME}:${COMPOSER_CACHE_DIR}" \
+        -v "$PWD":/src \
+        -w /src \
+        -it "$IMAGE" composer "$@"
 }

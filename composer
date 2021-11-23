@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
-docker run --rm -u $(id -u ${USER}):$(id -g ${USER}) \
-    -v ${DIR}/.composer:/.composer \
-    -v ${DIR}:/public \
-    -it docker.gitlab.libeo.com/libeo/php:7.3-composer --working-dir=/public "$@"
