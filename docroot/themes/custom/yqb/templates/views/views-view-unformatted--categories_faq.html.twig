@@ -7,7 +7,7 @@
 <div class="categoriesFaq__wrapper">
 
   {% if view.total_rows %}
-    <ul calss="categoriesFaq__grid">
+    <ul class="categoriesFaq__grid">
 
       {% for row in rows %}
         {%
@@ -19,8 +19,8 @@
         {%
           set style = row.content['#row']._entity.field_color.value ? "background-color:" ~ row.content['#row']._entity.field_color.value.0.color
         %}
-        <li {{ row.attributes.addClass(row_classes).setAttribute('style', style) }}>
-          <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': row.content['#row'].tid}) }}">
+        <li class="categoriesFaq__grid-item" {{ row.attributes.addClass(row_classes).setAttribute('style', style) }}>
+          <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': row.content['#row'].tid}) }}" class="categoriesFaq__grid-item-link">
             {{ row.content }}
           </a>
         </li>
