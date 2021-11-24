@@ -1,4 +1,3 @@
-// career
 (function ($) {
   $(document).on("ajaxSuccess", function() {
     $('.ajax-progress-fullscreen').remove();

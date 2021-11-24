@@ -909,12 +909,12 @@ function yqb_preprocess_taxonomy_term(&$variables) {
     $variables['language'] = $language;
     $vid = 'categories_faq';
     $targetTermId = $term->id();
+    $isSubCat = false;
+    //Has parent?
     $parent = $term->parent[0];
-    //Has parent
     if ($parent->target_id != 0) {
       $targetTermId = $parent->target_id;
-      $variables['parentTid'] = $targetTermId;
-
+      $isSubCat = true;
     }
 
     $language =  \Drupal::languageManager()->getCurrentLanguage()->getId();
@@ -930,5 +930,30 @@ function yqb_preprocess_taxonomy_term(&$variables) {
     $hasChildren = count($children) ? true : false;
     $variables['subCattegories'] = $children;
     $variables['hasChildren'] = $hasChildren;
+    $variables['isSubCat'] = $isSubCat;
   }
 }
+
+/**
+ * Implements hook_preprocess_breadcrumb_HOOK().
+ */
+function yqb_preprocess_breadcrumb(&$variables) {
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($term && ($term->bundle() === "categories_faq")) {
+    //Ajouter l'item "Frequently asked questions"
+    $faqLinkTitle = t('Frequently asked questions');
+    $faqLink = \Drupal\Core\Link::createFromRoute($faqLinkTitle, 'view.categories_faq.page_parent_categories_faq');
+    $faqLink = [
+      'url'=> $faqLink->getUrl(),
+      'text'=> $faqLink->getText(),
+    ];
+    $linksOrig = $variables['breadcrumb'];
+    $links = array_merge(
+      array_slice($linksOrig, 0, 1),
+      [$faqLink],
+      array_slice($linksOrig, 1)
+    );
+    $variables['breadcrumb'] = $links;
+  }
+}
+
