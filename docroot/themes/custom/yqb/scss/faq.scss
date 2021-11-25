@@ -1,3 +1,4 @@
+//Home FAQ
 .view-page-categories_faq {
   .region-content {
     padding-top: 30px;
@@ -37,7 +38,10 @@
       font-size: 4rem;
     }
   }
-  .view-categories-faq {
+}
+
+//Bloc search FAQ
+.search-block-form-faq {
     width: 100%;
     @media (min-width: 768px) {
       width: 270px;
@@ -70,8 +74,8 @@
     svg {
       fill: #0054FF;
     }
-  }
 }
+
 .categoriesFaq__wrapper {
   max-width: 915px;
   margin: 0 auto;
@@ -123,5 +127,70 @@
         transform: scale(1.3, 1.3);
       }
     }
+  }
+}
+
+
+.main-container-faq {
+  .search-block-form-faq {
+    width: 100%;
+    margin: 0 auto;
+    @media (min-width: 768px) {
+      width: 330px;
+      margin-bottom: 38px;
+    }
+  }
+  .page-wrapper {
+    background-color: #F1F5F8;
+  }
+  .title-page {
+    font-size: 3rem;
+    font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 0;
+    @media (min-width: 768px) {
+      margin: 0;
+      font-size: 4rem;
+    }
+  }
+  .categoriesFaq__wrapper-menu {
+    .nav {
+      display: flex;
+      justify-content: center;
+      li {
+        a {
+          margin: 0 20px;
+          padding: 0;
+          position: relative;
+          &::before {
+            content: "";
+            height: 2px;
+            position: absolute;
+            right: 0;
+            bottom: 1px;
+            left: 0;
+            background-color: #0054ff;
+            opacity: 0;
+            transition: opacity 250ms ease-in-out;
+          }
+          &:hover {
+            background-color: transparent;
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  .subCategoriesFaq__menu {
+    display: flex;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    flex-direction: row;
+    justify-content: center;
   }
 }
