@@ -27,9 +27,13 @@
 #}
 <div{{ attributes }}>
   {% include '@yqb/block/block-search-faq.html.twig' %}
+  {%
+    set subCatId = isSubCat ? term.id : subCattegories.0.tid.value
+  %}
   <ul class="subCategoriesFaq__menu nav tabs" id="subCategoriesFaqMenu" role="navigation" aria-label="Tabs">
     {% for cat in subCattegories %}
-      <li class="subCategoryFaq__menu-item" >
+      {% set is_active = subCatId == cat.id ? 'active' %}
+      <li class="subCategoryFaq__menu-item {{ is_active }}" >
         <a class="subCategoriesFaq__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': cat.id}) }}" data-tid={{cat.id}}>
           <span class="subCategoryFaq__icon">
             {% if cat.field_icon.value.0.target_id %}
@@ -44,9 +48,6 @@
     {% endfor %}
   </ul>
   <div class="subCategoryFaq__content" id="subCategoryFaqContent" >
-    {%
-      set subCatId = isSubCat ? term.id : subCattegories.0.tid.value
-    %}
     {{ drupal_view('faq', 'questions_by_faq_category', subCatId, language) }}
   </div>
 {#   Mettre le bloc static ici #}
