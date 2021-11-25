@@ -45,9 +45,9 @@
   </ul>
   <div class="subCategoryFaq__content" id="subCategoryFaqContent" >
     {%
-      set subCatId = hasChildren ? subCattegories.0.tid.value : parentTid
+      set subCatId = isSubCat ? term.id : subCattegories.0.tid.value
     %}
     {{ drupal_view('faq', 'questions_by_faq_category', subCatId, language) }}
   </div>
-
+{#   Mettre le bloc static ici #}
 </div>

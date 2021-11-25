@@ -1,7 +1,8 @@
 <?php
 /*
-* hOOK_preprocess_page
+* HOOK_page_attachments
 */
-function faq_ajax_preprocess_page(&$variables){
-  $variables['#attached']['library'][] = 'faq_ajax/global-js';
+function faq_ajax_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'faq_ajax/global-js';
 }
+
