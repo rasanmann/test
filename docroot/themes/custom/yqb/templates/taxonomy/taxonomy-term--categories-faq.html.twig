@@ -35,11 +35,6 @@
       {% set is_active = subCatId == cat.id ? 'active' %}
       <li class="subCategoryFaq__menu-item {{ is_active }}" >
         <a class="subCategoriesFaq__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': cat.id}) }}" data-tid={{cat.id}}>
-          <span class="subCategoryFaq__icon">
-            {% if cat.field_icon.value.0.target_id %}
-              {{ drupal_image(cat.field_icon.value.0.target_id, 'thumbnail') }}
-            {% endif %}
-          </span>
           <span class="faq-subcategory__name">
             {{ cat.name.value }}
           </span>
