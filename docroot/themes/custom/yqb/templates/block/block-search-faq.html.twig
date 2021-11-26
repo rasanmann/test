@@ -27,7 +27,7 @@ set classes = [
           data-drupal-selector="edit-keys"
           class="form-autocomplete form-search form-control ui-autocomplete-input input-lg"
           data-key="search_block_faq"
-          placeholder="{{ "Chercher une question ..."|t }}"
+          placeholder="{{ "Recherchez une question à ce sujet..."|t }}"
           name="keys"
           value=""
           size="15"
@@ -35,15 +35,10 @@ set classes = [
           type="search"
         >
         <span class="input-group-btn">
-            <button data-drupal-selector="edit-submit" class="button js-form-submit form-submit btn-default btn-lg btn icon-only" type="submit"  value="Search" name="search">
+            <button data-drupal-selector="edit-submit" class="button js-form-submit form-submit" type="submit"  value="Search" name="search">
               <span class="sr-only">{{ "Rechercher"|t }}</span>
-              <span class="icon icon-search" aria-hidden="true" data-grunticon-embed></span>
+              <span class="icon-search-blue" aria-hidden="true" data-grunticon-embed></span>
             </button>
-        </span>
-        <span class="input-group-btn">
-          <a href="#" class="btn-default btn-close">
-            <span class="icon icon-close" data-grunticon-embed></span>
-          </a>
         </span>
       </div>
     </div>
