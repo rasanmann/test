@@ -141,8 +141,20 @@
             </span>
           </h1>
           <div class="categoriesFaq__wrapper-menu">
-            {{ drupal_menu('categories-faq') }}
+            <ul class="categoriesFaq__menu menu nav" id="categoriesFaqMenu">
+              {% for cat in faqCategories %}
+                {% set is_active = currentCategoryId == cat.id ? 'active' %}
+                <li class="categoryFaq__menu-item {{ is_active }}" >
+                  <a class="categoryFaq__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': cat.id}) }}">
+                    <span>
+                      {{ cat.name.value }}
+                    </span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
           </div>
+
           {{ page.content }}
         {% endblock %}
       </section>

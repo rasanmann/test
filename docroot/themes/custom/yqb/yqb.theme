@@ -901,6 +901,30 @@ function yqb_theme_suggestions_views_view_alter(array &$suggestions, array $vari
   }
 }
 
+/**
+ * HOOK_theme_suggestions_page_alter
+ * Add custom content type node to template suggestion for Landing page
+ *
+ * @param $variables
+ */
+function yqb_preprocess_page(&$variables) {
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($term && ($term->bundle() === "categories_faq")) {
+    $vid = 'categories_faq';
+    $faqCategories = [];
+    $variables['currentCategoryId'] = $term->id();
+    $language =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0, 1,true);
+    foreach ($terms as $t) {
+      if ($t->hasTranslation($language)) {
+        $faqCategories[] = \Drupal::service('entity.repository')->getTranslationFromContext($t, $language);;
+      }
+    }
+    $variables['faqCategories'] = $faqCategories;
+    #$variables['cache']['max-age'] = 0;
+  }
+}
+
 /* Hook preprocess_taxonomy_term */
 function yqb_preprocess_taxonomy_term(&$variables) {
   $term = $variables['term'];
@@ -922,7 +946,7 @@ function yqb_preprocess_taxonomy_term(&$variables) {
     $children = [];
     foreach ($terms as $term) {
       if ($term->hasTranslation($language)) {
-        $tid = $term->id();
+        #$tid = $term->id();
         $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term, $language);
         $children[] = $translated_term;
       }
@@ -957,19 +981,3 @@ function yqb_preprocess_breadcrumb(&$variables) {
   }
 }
 
-/**
-* Implements hook_preprocess_menu() for menu.html.twig.
-*/
-function yqb_preprocess_menu(&$variables, $hook)
-{
-  $menu_name = $variables['menu_name'] ?? false;
-  if ($menu_name == 'categories-faq') {
-    $variables['#cache']['max-age'] = 0;
-    foreach ($variables['items'] as &$item) {
-      if ($item['in_active_trail']) {
-        $item['attributes']->addClass('active');
-      }
-    }
-
-  }
-}
