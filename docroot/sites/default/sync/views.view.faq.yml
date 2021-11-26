@@ -241,7 +241,20 @@ display:
           granularity: second
       title: 'Questions par catégorie FAQ'
       header: {  }
-      footer: {  }
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: "<div class=\"subCategoriesFaq__contact-us\">\r\n    <span class=\"icon\">i</span>\r\n    <p>Nous ne sommes pas parvenus à répondre à votre question? N’hésitez pas à <a href=\"/fr/nous-joindre/nous-contacter\">nous joindre.</a></p>\r\n  </div>"
+            format: full_html
+          plugin_id: text
       empty:
         area:
           id: area
