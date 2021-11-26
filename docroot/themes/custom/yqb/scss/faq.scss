@@ -111,8 +111,8 @@
     flex-grow: 0;
     overflow: hidden;
     img {
+      max-width: 64px;
       height: auto;
-      max-height: 100px;
       flex-grow: 0;
       transition: transform 250ms ease-in-out;
     }
@@ -385,4 +385,43 @@
       color: #fff;
     }
   }
+}
+
+.ajax-progress-fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  &::before {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    opacity: .8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .throbber {
+    width: 54px;
+    height: 54px;
+    display: block;
+    background: url('../img/faq/faq-throbber.svg') center no-repeat;
+    animation:spin 1s linear infinite;
+    position: relative;
+    z-index: 2;
+  }
+  @keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
 }
