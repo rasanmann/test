@@ -109,8 +109,10 @@
     height: 100%;
     padding: 20px 20px 43px;
     flex-grow: 0;
+    overflow: hidden;
     img {
       height: auto;
+      max-height: 100px;
       flex-grow: 0;
       transition: transform 250ms ease-in-out;
     }
