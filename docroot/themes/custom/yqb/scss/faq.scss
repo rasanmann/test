@@ -132,153 +132,154 @@
   }
 }
 
-
-.main-container-faq {
-  .main-content {
-    border: 0;
-  }
-  .page-wrapper {
-    margin-bottom: 0;
-  }
-  .search-block-form-faq {
-    width: 100%;
-    margin-bottom: 30px;
-    @media (min-width: 768px) {
-      width: 330px;
-      margin: 0 auto 38px;
+.page-cetegorie-faq {
+  .main-container {
+    .main-content {
+      border: 0;
     }
-  }
-  .page-wrapper {
-    padding: 56px 0 100px;
-    background-color: #F1F5F8;
-  }
-  .title-page {
-    margin: 0 0 35px;
-    padding: 0;
-    font-size: 3rem;
-    font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    text-align: center;
-    border-bottom: 0;
-    @media (min-width: 768px) {
-      margin: 0 0 35px;
-      font-size: 4rem;
+    .page-wrapper {
+      margin-bottom: 0;
     }
-  }
-  .categoriesFaq__wrapper-menu {
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      li {
-        a {
-          margin: 0 20px 10px;
-          padding: 0;
-          position: relative;
-          &::before {
-            content: "";
-            height: 2px;
-            position: absolute;
-            right: 0;
-            bottom: 1px;
-            left: 0;
-            background-color: #0054ff;
-            opacity: 0;
-            transition: opacity 250ms ease-in-out;
-          }
-          &:hover {
-            background-color: transparent;
-            &::before {
-              opacity: 1;
-            }
-          }
-        }
-        &.active {
-          a {
-            &::before {
-              opacity: 1;
-            }
-          }
-        }
-      }
-    }
-  }
-  .subCategoriesFaq__menu {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 800px;
-    margin: 0 auto 40px;
-    padding: 0;
-    list-style-type: none;
-    flex-direction: row;
-    justify-content: flex-start;
-    border-style: solid;
-    border-color: #1F1F1F;
-    border-width: 0 1px 1px 1px;
-    &:empty {
-      border-width: 0;
-    }
-    @media (min-width: 475px) {
-      border-width: 0 1px 1px 0;
-    }
-    @media (min-width: 768px) {
-      border-width: 1px 0 0 1px;
-    }
-    @media (min-width: 1024px) {
-      border-width: 0 0 0 1px;
-    }
-    .subCategoryFaq__menu-item {
+    .search-block-form-faq {
       width: 100%;
-      @media (min-width: 475px) {
-        width: 50%;
-      }
+      margin-bottom: 30px;
       @media (min-width: 768px) {
-        width: 33.33%;
+        width: 330px;
+        margin: 0 auto 38px;
       }
-      @media (min-width: 1024px) {
-        width: auto;
-        &:nth-child(n+5) {
-          .subCategoriesFaq__link {
-            border-width: 0 1px 1px 0;
-          }
-        }
+    }
+    .page-wrapper {
+      padding: 56px 0 100px;
+      background-color: #F1F5F8;
+    }
+    .title-page {
+      margin: 0 0 35px;
+      padding: 0;
+      font-size: 3rem;
+      font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      text-align: center;
+      border-bottom: 0;
+      @media (min-width: 768px) {
+        margin: 0 0 35px;
+        font-size: 4rem;
       }
-      .subCategoriesFaq__link {
+    }
+    .categoriesFaq__wrapper-menu {
+      .nav {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        height: 43px;
-        padding: 0 10px;
-        border-width: 1px 0 0 0;
-        border-style: solid;
-        border-color: #1F1F1F;
-        background-color: #fff;
-        text-align: center;
-        line-height: 1;
-        font-size: 13px;
-        font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
-        font-weight: 700;
-        @media (min-width: 475px) {
-          border-width: 1px 0 0 1px;
-        }
-        @media (min-width: 768px) {
-          border-width: 0 1px 1px 0;
-        }
-        @media (min-width: 1024px) {
-          width: 199px;
-          border-width: 1px 1px 1px 0;
-        }
-        &:hover {
-          transition: all 250ms ease-in-out;
-          background-color: #0054FF;
-          color: #fff;
+        li {
+          a {
+            margin: 0 20px 10px;
+            padding: 0;
+            position: relative;
+            &::before {
+              content: "";
+              height: 2px;
+              position: absolute;
+              right: 0;
+              bottom: 1px;
+              left: 0;
+              background-color: #0054ff;
+              opacity: 0;
+              transition: opacity 250ms ease-in-out;
+            }
+            &:hover {
+              background-color: transparent;
+              &::before {
+                opacity: 1;
+              }
+            }
+          }
+          &.active {
+            a {
+              &::before {
+                opacity: 1;
+              }
+            }
+          }
         }
       }
-      &.active {
+    }
+    .subCategoriesFaq__menu {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      padding: 0;
+      list-style-type: none;
+      flex-direction: row;
+      justify-content: flex-start;
+      border-style: solid;
+      border-color: #1F1F1F;
+      border-width: 0 1px 1px 1px;
+      &:empty {
+        border-width: 0;
+      }
+      @media (min-width: 475px) {
+        border-width: 0 1px 1px 0;
+      }
+      @media (min-width: 768px) {
+        border-width: 1px 0 0 1px;
+      }
+      @media (min-width: 1024px) {
+        border-width: 0 0 0 1px;
+      }
+      .subCategoryFaq__menu-item {
+        width: 100%;
+        @media (min-width: 475px) {
+          width: 50%;
+        }
+        @media (min-width: 768px) {
+          width: 33.33%;
+        }
+        @media (min-width: 1024px) {
+          width: auto;
+          &:nth-child(n+5) {
+            .subCategoriesFaq__link {
+              border-width: 0 1px 1px 0;
+            }
+          }
+        }
         .subCategoriesFaq__link {
-          background-color: #0054FF;
-          color: #fff;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          height: 43px;
+          padding: 0 10px;
+          border-width: 1px 0 0 0;
+          border-style: solid;
+          border-color: #1F1F1F;
+          background-color: #fff;
+          text-align: center;
+          line-height: 1;
+          font-size: 13px;
+          font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+          font-weight: 700;
+          @media (min-width: 475px) {
+            border-width: 1px 0 0 1px;
+          }
+          @media (min-width: 768px) {
+            border-width: 0 1px 1px 0;
+          }
+          @media (min-width: 1024px) {
+            width: 199px;
+            border-width: 1px 1px 1px 0;
+          }
+          &:hover {
+            transition: all 250ms ease-in-out;
+            background-color: #0054FF;
+            color: #fff;
+          }
+        }
+        &.active {
+          .subCategoriesFaq__link {
+            background-color: #0054FF;
+            color: #fff;
+          }
         }
       }
     }

@@ -60,6 +60,11 @@ function yqb_preprocess_html(array &$variables) {
   if ($node = \Drupal::request()->attributes->get('node')) {
     $variables['attributes']['class'][] = 'node-id-' . $node->id();
   }
+
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($term && ($term->bundle() === "categories_faq")) {
+    $variables['attributes']['class'][] = 'page-cetegorie-faq';
+  }
 }
 
 function yqb_page_attachments_alter(array &$page) {
@@ -921,7 +926,6 @@ function yqb_preprocess_page(&$variables) {
       }
     }
     $variables['faqCategories'] = $faqCategories;
-    #$variables['cache']['max-age'] = 0;
   }
 }
 

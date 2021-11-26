@@ -115,25 +115,25 @@
     .categoriesFaq__wrapper .categoriesFaq__grid-item-link:hover img {
       transform: scale(1.3, 1.3); }
 
-.main-container-faq .main-content {
+.page-cetegorie-faq .main-container .main-content {
   border: 0; }
 
-.main-container-faq .page-wrapper {
+.page-cetegorie-faq .main-container .page-wrapper {
   margin-bottom: 0; }
 
-.main-container-faq .search-block-form-faq {
+.page-cetegorie-faq .main-container .search-block-form-faq {
   width: 100%;
   margin-bottom: 30px; }
   @media (min-width: 768px) {
-    .main-container-faq .search-block-form-faq {
+    .page-cetegorie-faq .main-container .search-block-form-faq {
       width: 330px;
       margin: 0 auto 38px; } }
 
-.main-container-faq .page-wrapper {
+.page-cetegorie-faq .main-container .page-wrapper {
   padding: 56px 0 100px;
   background-color: #F1F5F8; }
 
-.main-container-faq .title-page {
+.page-cetegorie-faq .main-container .title-page {
   margin: 0 0 35px;
   padding: 0;
   font-size: 3rem;
@@ -142,19 +142,19 @@
   text-align: center;
   border-bottom: 0; }
   @media (min-width: 768px) {
-    .main-container-faq .title-page {
+    .page-cetegorie-faq .main-container .title-page {
       margin: 0 0 35px;
       font-size: 4rem; } }
 
-.main-container-faq .categoriesFaq__wrapper-menu .nav {
+.page-cetegorie-faq .main-container .categoriesFaq__wrapper-menu .nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
-  .main-container-faq .categoriesFaq__wrapper-menu .nav li a {
+  .page-cetegorie-faq .main-container .categoriesFaq__wrapper-menu .nav li a {
     margin: 0 20px 10px;
     padding: 0;
     position: relative; }
-    .main-container-faq .categoriesFaq__wrapper-menu .nav li a::before {
+    .page-cetegorie-faq .main-container .categoriesFaq__wrapper-menu .nav li a::before {
       content: "";
       height: 2px;
       position: absolute;
@@ -164,14 +164,14 @@
       background-color: #0054ff;
       opacity: 0;
       transition: opacity 250ms ease-in-out; }
-    .main-container-faq .categoriesFaq__wrapper-menu .nav li a:hover {
+    .page-cetegorie-faq .main-container .categoriesFaq__wrapper-menu .nav li a:hover {
       background-color: transparent; }
-      .main-container-faq .categoriesFaq__wrapper-menu .nav li a:hover::before {
+      .page-cetegorie-faq .main-container .categoriesFaq__wrapper-menu .nav li a:hover::before {
         opacity: 1; }
-  .main-container-faq .categoriesFaq__wrapper-menu .nav li.active a::before {
+  .page-cetegorie-faq .main-container .categoriesFaq__wrapper-menu .nav li.active a::before {
     opacity: 1; }
 
-.main-container-faq .subCategoriesFaq__menu {
+.page-cetegorie-faq .main-container .subCategoriesFaq__menu {
   display: flex;
   flex-wrap: wrap;
   max-width: 800px;
@@ -183,31 +183,31 @@
   border-style: solid;
   border-color: #1F1F1F;
   border-width: 0 1px 1px 1px; }
-  .main-container-faq .subCategoriesFaq__menu:empty {
+  .page-cetegorie-faq .main-container .subCategoriesFaq__menu:empty {
     border-width: 0; }
   @media (min-width: 475px) {
-    .main-container-faq .subCategoriesFaq__menu {
+    .page-cetegorie-faq .main-container .subCategoriesFaq__menu {
       border-width: 0 1px 1px 0; } }
   @media (min-width: 768px) {
-    .main-container-faq .subCategoriesFaq__menu {
+    .page-cetegorie-faq .main-container .subCategoriesFaq__menu {
       border-width: 1px 0 0 1px; } }
   @media (min-width: 1024px) {
-    .main-container-faq .subCategoriesFaq__menu {
+    .page-cetegorie-faq .main-container .subCategoriesFaq__menu {
       border-width: 0 0 0 1px; } }
-  .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item {
+  .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item {
     width: 100%; }
     @media (min-width: 475px) {
-      .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item {
+      .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item {
         width: 50%; } }
     @media (min-width: 768px) {
-      .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item {
+      .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item {
         width: 33.33%; } }
     @media (min-width: 1024px) {
-      .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item {
+      .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item {
         width: auto; }
-        .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item:nth-child(n+5) .subCategoriesFaq__link {
+        .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item:nth-child(n+5) .subCategoriesFaq__link {
           border-width: 0 1px 1px 0; } }
-    .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link {
+    .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -224,20 +224,20 @@
       font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
       font-weight: 700; }
       @media (min-width: 475px) {
-        .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link {
+        .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link {
           border-width: 1px 0 0 1px; } }
       @media (min-width: 768px) {
-        .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link {
+        .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link {
           border-width: 0 1px 1px 0; } }
       @media (min-width: 1024px) {
-        .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link {
+        .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link {
           width: 199px;
           border-width: 1px 1px 1px 0; } }
-      .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link:hover {
+      .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item .subCategoriesFaq__link:hover {
         transition: all 250ms ease-in-out;
         background-color: #0054FF;
         color: #fff; }
-    .main-container-faq .subCategoriesFaq__menu .subCategoryFaq__menu-item.active .subCategoriesFaq__link {
+    .page-cetegorie-faq .main-container .subCategoriesFaq__menu .subCategoryFaq__menu-item.active .subCategoriesFaq__link {
       background-color: #0054FF;
       color: #fff; }
 
