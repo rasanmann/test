@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76e43b4ed9bc5aa7c566d5cbed99c824",
+    "content-hash": "897ebcc9bffd7847b79a27a97b0e79f2",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5357,82 +5357,6 @@
             "homepage": "https://www.drupal.org/project/swiftmailer",
             "support": {
                 "source": "https://git.drupalcode.org/project/swiftmailer"
-            }
-        },
-        {
-            "name": "drupal/taxonomy_menu",
-            "version": "3.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/taxonomy_menu.git",
-                "reference": "8.x-3.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/taxonomy_menu-8.x-3.5.zip",
-                "reference": "8.x-3.5",
-                "shasum": "249f11392ee222067732718fe73f951afc5a881f"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-3.5",
-                    "datestamp": "1631710782",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "DamienMcKenna",
-                    "homepage": "https://www.drupal.org/user/108450"
-                },
-                {
-                    "name": "NickDickinsonWilde",
-                    "homepage": "https://www.drupal.org/user/3094661"
-                },
-                {
-                    "name": "andrey.troeglazov",
-                    "homepage": "https://www.drupal.org/user/3145389"
-                },
-                {
-                    "name": "ashrafabed",
-                    "homepage": "https://www.drupal.org/user/1875528"
-                },
-                {
-                    "name": "bmack",
-                    "homepage": "https://www.drupal.org/user/3594520"
-                },
-                {
-                    "name": "dstol",
-                    "homepage": "https://www.drupal.org/user/329570"
-                },
-                {
-                    "name": "nerdstein",
-                    "homepage": "https://www.drupal.org/user/1557710"
-                },
-                {
-                    "name": "rwanth",
-                    "homepage": "https://www.drupal.org/user/3564319"
-                }
-            ],
-            "description": "Creates menu items based on associations to taxonomy vocabularies",
-            "homepage": "http://drupal.org/project/taxonomy_menu",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "source": "http://cgit.drupalcode.org/taxonomy_menu",
-                "issues": "http://drupal.org/project/taxonomy_menu"
             }
         },
         {
@@ -13786,5 +13710,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.4"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
