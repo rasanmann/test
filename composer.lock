@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3052a49fb597dc0f11bcba66f07ceb9",
+    "content-hash": "d78dd125d669b31625edba90712b92b8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2652,7 +2652,8 @@
                 "patches_applied": {
                     "BlockPluginTrait cannot call ::addContextAssignmentElement() itself": "https://www.drupal.org/files/issues/2020-07-21/3160629-block-2.patch",
                     "Imported PO files have no public URL": "patches/imported_po_files_2449895-72.patch",
-                    "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted": "patches/2810355-82.patch"
+                    "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted": "patches/2810355-82.patch",
+                    "Views TranslationLanguageRenderer fails on ghost nodes": "https://www.drupal.org/files/issues/views-translation-language-renderer-2869347-2-D8.patch"
                 }
             },
             "autoload": {
@@ -8538,6 +8539,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": "symfony/mailer",
             "time": "2021-03-09T12:30:35+00:00"
         },
         {
@@ -11247,6 +11249,7 @@
                 }
             ],
             "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+            "abandoned": "symfony/filesystem",
             "time": "2015-12-17T08:42:14+00:00"
         },
         {

@@ -3445,7 +3445,8 @@
             "patches_applied": {
                 "BlockPluginTrait cannot call ::addContextAssignmentElement() itself": "https://www.drupal.org/files/issues/2020-07-21/3160629-block-2.patch",
                 "Imported PO files have no public URL": "patches/imported_po_files_2449895-72.patch",
-                "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted": "patches/2810355-82.patch"
+                "$entity->isDefaultTranslation() behaves incorrectly when changing default translation, causing file/image field usage to be set to zero, causing files to be deleted": "patches/2810355-82.patch",
+                "Views TranslationLanguageRenderer fails on ghost nodes": "https://www.drupal.org/files/issues/views-translation-language-renderer-2869347-2-D8.patch"
             }
         },
         "installation-source": "dist",
@@ -11559,7 +11560,8 @@
                 "url": "https://tidelift.com/funding/github/packagist/swiftmailer/swiftmailer",
                 "type": "tidelift"
             }
-        ]
+        ],
+        "abandoned": "symfony/mailer"
     },
     {
         "name": "symfony-cmf/routing",
@@ -14613,7 +14615,8 @@
                 "email": "bschussek@gmail.com"
             }
         ],
-        "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths."
+        "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+        "abandoned": "symfony/filesystem"
     },
     {
         "name": "wikimedia/composer-merge-plugin",
