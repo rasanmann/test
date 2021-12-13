@@ -17,3 +17,7 @@ Editor module fails to track usage of files embedded in non-core fields
 Source: https://www.drupal.org/files/issues/2021-02-05/2857444-8.9.x-38_1.patch
 
 
+Views TranslationLanguageRenderer fails on ghost nodes
+Source: https://www.drupal.org/files/issues/views-translation-language-renderer-2869347-2-D8.patch
+
+
