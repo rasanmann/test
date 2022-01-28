@@ -1,0 +1,8 @@
+uuid: ceba8d11-d84a-41aa-b05b-acaed3965491
+langcode: fr
+status: true
+dependencies: {  }
+id: categories-faq
+label: 'Catégories FAQ'
+description: ''
+locked: false

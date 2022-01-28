@@ -4,3 +4,9 @@ faq_ajax.ajax:
     _controller: '\Drupal\faq_ajax\Controller\FaqAjaxController::getFaqByCategory'
   requirements:
     _access: 'TRUE'
+faq_ajax.counter:
+  path: '/faq_ajax/question/click-counter/{lang}/{nid}'
+  defaults:
+    _controller: '\Drupal\faq_ajax\Controller\FaqAjaxController::questionClickCounter'
+  requirements:
+    _access: 'TRUE'

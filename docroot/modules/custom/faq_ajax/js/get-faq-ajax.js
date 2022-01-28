@@ -10,8 +10,8 @@
     },
 
     addEvents: function () {
+      let basUrl = location.protocol + "//" + location.host +"/";
       let lang = $('html').attr('lang');
-      let hostFaqCat = location.protocol + "//" + location.host +"/"+lang+"/faq_ajax/category/get/"+lang+"/";
 
       $(document).on('click touchend', '#subCategoriesFaqMenu .subCategoriesFaq__link', function (e) {
         e.preventDefault();
@@ -27,8 +27,23 @@
         parentLi.addClass('active');
         $('body').append($loadingIcon);
 
-        href = hostFaqCat + tid;
+        let href = basUrl+lang+"/faq_ajax/category/get/"+lang+"/"+ tid;
         $("#subCategoryFaqContent").load(href);
+      })
+
+      //Click on question
+      $(document).on('click touchend', '#subCategoryFaqContent .faq__click-counter', function (e) {
+        let _this = $(this);
+        let nid = _this.data('nid')
+
+        if (!nid || _this.hasClass('click-counted')) {
+          return;
+        }
+        let url = basUrl+"/faq_ajax/question/click-counter/"+lang+"/"+ nid;
+        _this.addClass('click-counted');
+        $.ajax({
+          url: url
+        });
       })
     },
   }

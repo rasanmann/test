@@ -14,10 +14,11 @@
     <div class="panel-heading" role="tab"
          id="heading-{{ title|striptags|clean_id }}">
       <h3 class="panel-title panel-title-region">
-        <a class="collapsed" role="button" data-toggle="collapse"
+        <a class="collapsed faq__click-counter" role="button" data-toggle="collapse"
            href="#collapse-{{ title|striptags|clean_id }}"
            aria-expanded="false"
-           aria-controls="collapse-{{ title|striptags|clean_id }}">
+           aria-controls="collapse-{{ title|striptags|clean_id }}"
+           data-nid={{row.content['#row'].nid}}>
           <div class="panel-title-content">
             {% if title %}
               <h2>{{ title }}</h2>
