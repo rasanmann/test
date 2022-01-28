@@ -13,7 +13,7 @@ class FaqAjaxController extends ControllerBase {
   /**
    *
   */
-  public function getFaqByCategory (string $lang, int $tid) {
+  public function getFaqByCategory ($lang, int $tid) {
     //Add tag name
     $request = \Drupal::request();
     $is_ajax = $request->isXmlHttpRequest();
@@ -29,7 +29,7 @@ class FaqAjaxController extends ControllerBase {
   /**
    * {@inheritdoc}
   */
-  public function questionClickCounter (string $lang, int $nid) {
+  public function questionClickCounter ($lang, int $nid) {
     $lang  = Html::escape($lang);
     $request = \Drupal::request();
     $is_ajax = $request->isXmlHttpRequest();
@@ -37,7 +37,7 @@ class FaqAjaxController extends ControllerBase {
       throw new NotFoundHttpException();
     }
     $question = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-    if ($question->hasTranslation($language)) {
+    if ($question->hasTranslation($lang)) {
       $question = $question->getTranslation($lang);
     }
     $counter = $question->get('field_click_counter')->value ?? 0;
