@@ -1,5 +1,4 @@
 global-js:
-  version: VERSION
   js:
     js/get-faq-ajax.js: {}
   dependencies:
