@@ -1,19 +1,19 @@
-uuid: 538990df-60ea-4c90-88ce-1d3d57b7c3b0
+uuid: 01c472d0-b082-43d9-9f77-6c83d589b565
 langcode: fr
 status: true
 dependencies:
   module:
     - node
-    - taxonomy
-id: node.field_category_faq
-field_name: field_category_faq
+id: node.field_click_counter
+field_name: field_click_counter
 entity_type: node
-type: entity_reference
+type: integer
 settings:
-  target_type: taxonomy_term
+  unsigned: false
+  size: normal
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false
