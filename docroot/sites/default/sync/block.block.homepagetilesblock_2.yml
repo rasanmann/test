@@ -23,13 +23,13 @@ settings:
       tile: '208531'
       weight: '-10'
     -9:
-      tile: '208521'
+      tile: '215616'
       weight: '-9'
     -8:
-      tile: '215616'
+      tile: '1491756'
       weight: '-8'
     -7:
-      tile: '208526'
+      tile: '208521'
       weight: '-7'
   row_keys:
     - '-10'

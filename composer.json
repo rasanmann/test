@@ -123,6 +123,9 @@
       "drupal/webform_mailchimp": {
         "Provide user selectable interest groups as Webform predefined options": "https://www.drupal.org/files/issues/2019-10-05/3036323-interest-groups-predefined-options-15.patch",
         "Add member tag configuration to webform mailchimp handler": "./patches/webform_mailchimp_tags.patch"
+      },
+      "drupal/field_collection": {
+        "Fix Warning: count(): Parameter must be an array or an object that implements Countable in FieldCollectionEmbedWidget::validate() (line 199 of modules/contrib/field_collection/src/Plugin/Field/FieldWidget/FieldCollectionEmbedWidget.php).": "./patches/field_collection-php-7.2-compatibility.patch"
       }
     },
     "merge-plugin": {
@@ -132,6 +135,7 @@
       ],
       "recurse": true
     }
+
   },
   "scripts": {
     "drupal-scaffold": [
