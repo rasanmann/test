@@ -196,7 +196,7 @@ class FieldCollectionEmbedWidget extends WidgetBase {
         // Copied from \Drupal\Core\Form\FormValidator::doValidateForm().
         // #1676206: Modified to support options widget.
         if (isset($elements['#needs_validation'])) {
-          $is_empty_multiple = (!count($elements['#value']));
+          $is_empty_multiple = (!is_scalar($elements['#value']) && !count($elements['#value']));
           $is_empty_string = (is_string($elements['#value']) && Unicode::strlen(trim($elements['#value'])) == 0);
           $is_empty_value = ($elements['#value'] === 0);
           $is_empty_option = (isset($elements['#options']['_none']) && $elements['#value'] == '_none');
