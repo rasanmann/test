@@ -32,7 +32,7 @@ class Synchronize {
 
   public function sync() {
     $updatedDestinations = $this->getUpdatedDestinations(
-      $this->getDirectDepartures('+180 days')
+      $this->getDirectDepartures('+365 days')
     );
 
     foreach ($updatedDestinations as $destinationId => $airlines) {
