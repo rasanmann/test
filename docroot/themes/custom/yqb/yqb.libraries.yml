@@ -37,6 +37,7 @@ framework:
     bootstrap/js/transition.js: {}
     js/landingpage.js: {}
     js/alerts.js: {}
+    js/faq.js: {}
   dependencies:
     - yqb/modernizr
     - core/classList

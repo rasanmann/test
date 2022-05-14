@@ -1,12 +1,10 @@
 //Home FAQ
 .view-page-categories_faq {
   .region-content {
-    padding-top: 30px;
-    padding-bottom: 50px;
-    background-color: #F1F5F8;
+    padding: 0 0 40px;
+    background-color: #f1f5f8;
     @media (min-width: 1024px) {
-      padding-top: 60px;
-      padding-bottom: 100px;
+      padding: 0 0 100px;
     }
   }
   .main-content {
@@ -17,38 +15,43 @@
   }
 }
 .categoriesFaq__header {
+  min-height: 150px;
   display: flex;
   flex-direction: column;
-  max-width: 915px;
-  margin: 0 auto 30px;
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 auto 56px;
-  }
+  align-items: center;
+  justify-content: center;
+  padding: 55px 0 0;
+  background-color: #f1f5f8;
   .title-page {
-    margin: 0 0 30px;
+    margin: 0;
     padding: 0;
     border: 0;
     font-size: 3rem;
     font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
     font-weight: 700;
     @media (min-width: 768px) {
-      margin: 0;
       font-size: 4rem;
     }
   }
+  .block-search-faq {
+    width: 100%;
+    max-width: 500px;
+    transform: translateY(50%);
+  }
+}
+
+.view-content {
+  padding: 64px 0 0;
+  background-color: #fff;
 }
 
 //Bloc search FAQ
 .search-block-form-faq {
-    @media (min-width: 768px) {
-      width: 270px;
-    }
     .input-group {
       border: 1px solid #C4C4C4;
       height: 40px;
       background-color: #fff;
+      border-radius: 5px;
     }
     .form-search,
     .form-autocomplete {
@@ -133,12 +136,14 @@
 }
 
 .page-cetegorie-faq {
+  .region-content {
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+  }
   .main-container {
     .main-content {
       border: 0;
-    }
-    .page-wrapper {
-      margin-bottom: 0;
     }
     .search-block-form-faq {
       width: 100%;
@@ -149,11 +154,14 @@
       }
     }
     .page-wrapper {
-      padding: 56px 0 100px;
-      background-color: #F1F5F8;
+      padding: 0 0 100px;
+      background-color: #f1f5f8;
     }
     .title-page {
-      margin: 0 0 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 150px;
       padding: 0;
       font-size: 3rem;
       font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
@@ -161,30 +169,109 @@
       text-align: center;
       border-bottom: 0;
       @media (min-width: 768px) {
-        margin: 0 0 35px;
         font-size: 4rem;
       }
+      color: #fff;
+      background-color: #ff526c;
     }
     .categoriesFaq__wrapper-menu {
+      background-color: #fff;
+      box-shadow: 0 2px 20px 0 rgba(0, 55, 35, 0.15);
+      position: relative;
+      z-index: 2;
+      @media (min-width: 768px) {
+        padding: 20px 0;
+      }
+      .categoriesFaqTrigger__menu {
+        width: 100%;
+        padding: 20px 24px 20px 0;
+        background-color: #fff;
+        border-width: 0 0 6px 0;
+        border-style: solid;
+        border-color: #0054ff;
+        text-align: right;
+        font-size: 1.6rem;
+        font-weight: 700;
+        box-shadow: 0 2px 20px 0 rgba(0, 55, 35, 0.15);
+        @media (min-width: 768px) {
+          display: none;
+        }
+        .icon-faq-arrow {
+          margin-left: 16px;
+          img {
+            transition: transform 250ms ease-in-out;
+            transform: rotate(0deg);
+          }
+        }
+        &[aria-hidden="false"] {
+          .icon-faq-arrow {
+            img {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
       .nav {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+
+        padding: 40px 24px 0;
+        position: absolute;
+        top: 69px;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        z-index: 3;
+        opacity: 0;
+        max-height: 0;
+        visibility: hidden;
+        box-shadow: 0 2px 20px 0 rgba(0, 55, 35, 0.15);
+        @media (min-width: 768px) {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 40px;
+          padding: 0;
+          box-shadow: unset;
+          visibility: visible;
+          opacity: 1;
+          max-height: unset;
+          position: unset;
+          top: unset;
+          left: unset;
+          right: unset;
+        }
+        &.opened {
+          overflow: hidden;
+          opacity: 1;
+          transition: visibility 0s ease, max-height 250ms ease, transform 250ms ease, opacity 250ms ease;
+          max-height: 100em; // magic number for max-height = enough height
+          visibility: visible;
+        }
         li {
+          margin-bottom: 40px;
+          @media (min-width: 768px) {
+            margin-bottom: unset;
+          }
           a {
-            margin: 0 20px 10px;
-            padding: 0;
+            padding: 0 4px;
             position: relative;
-            &::before {
-              content: "";
-              height: 2px;
-              position: absolute;
-              right: 0;
-              bottom: 1px;
-              left: 0;
-              background-color: #0054ff;
-              opacity: 0;
-              transition: opacity 250ms ease-in-out;
+            color: #000;
+            font-weight: 400;
+            font-size: 1.8rem;
+            @media (min-width: 768px) {
+              font-size: 1.6rem;
+              &::before {
+                content: "";
+                height: 6px;
+                position: absolute;
+                right: 0;
+                bottom: -20px;
+                left: 0;
+                background-color: #0054ff;
+                opacity: 0;
+                transition: opacity 250ms ease-in-out;
+              }
             }
             &:hover {
               background-color: transparent;
@@ -195,6 +282,7 @@
           }
           &.active {
             a {
+              font-weight: 700;
               &::before {
                 opacity: 1;
               }
@@ -291,7 +379,9 @@
   .panel-group-default {
     .panel-default {
       margin-bottom: 16px;
-      border: 1px solid #1F1F1F;
+      border: 1px solid #c4c4c4;
+      border-radius: 4px;
+      overflow: hidden;
       &.panel {
         background-color: #fff;
         &:nth-child(odd) {
@@ -314,7 +404,9 @@
           }
           &.collapsed {
             .icon-faq-arrow {
-              transform: rotate(0deg);
+              img {
+                transform: rotate(0deg);
+              }
             }
           }
           .icon-faq-arrow {
@@ -322,8 +414,10 @@
             height: 12px;
             display: block;
             margin-right: 24px;
-            transform: rotate(180deg);
-            transition: transform 250ms ease-in-out;
+            img {
+              transform: rotate(180deg);
+              transition: transform 250ms ease-in-out;
+            }
             svg {
               width: 24px;
               height: 12px;
