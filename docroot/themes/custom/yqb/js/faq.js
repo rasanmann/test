@@ -15,21 +15,23 @@
                     'aria-hidden': false
                 });
             } else {
-                $('.categoriesFaqTrigger__menu').attr({
-                    'aria-expanded': false,
-                    'aria-selected': false
-                });
-                $('.categoriesFaqTrigger__menu').attr({
-                    'aria-hidden': true
-                });
+              $('.categoriesFaqTrigger__menu').attr({
+                'aria-expanded': false,
+                'aria-selected': false,
+                'aria-hidden': true
+              });
             }
             e.preventDefault();
         });
         $(document).mouseup(function(e) {
             var container = $('.categoriesFaq__wrapper-menu');
             if (!container.is(e.target) && container.has(e.target).length === 0) {
-              console.log(e.target)
               faqMenu.removeClass('opened');
+              $('.categoriesFaqTrigger__menu').attr({
+                'aria-expanded': false,
+                'aria-selected': false,
+                'aria-hidden': true
+              });
             }
         });
     }
