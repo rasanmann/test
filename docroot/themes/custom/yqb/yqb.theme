@@ -918,6 +918,9 @@ function yqb_preprocess_page(&$variables) {
     $vid = 'categories_faq';
     $faqCategories = [];
     $variables['currentCategoryId'] = $term->id();
+    $variables['currentCategoryTitle'] = $term->get('name')->value;
+    $variables['currentCategoryColour'] = $term->get('field_color')->getValue()[0] ? $term->get('field_color')->getValue()[0]['color'] : '#ff526c;';
+    $variables['currentCategoryIcon'] = $term->get('field_icon')->entity ? $term->get('field_icon')->entity->url() : '/themes/custom/yqb/svg/down-arrow-faq.svg';
     $language =  \Drupal::languageManager()->getCurrentLanguage()->getId();
     $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0, 1,true);
     foreach ($terms as $t) {

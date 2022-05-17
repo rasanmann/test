@@ -135,17 +135,17 @@
         {# Content #}
         {% block content %}
           <a id="main-content"></a>
-          <h1{{ title_attributes.addClass('title-page centred') }} style="--background-color:  #ff526c;">
-            <a href="#" class="btn-back"><img src="/themes/custom/yqb/svg/back-arrow.svg">Retour <span>aux catégories</span></a>
-            <img src="/sites/default/files/2021-11/avion.svg" class="header-image">
+          <h1{{ title_attributes.addClass('title-page centred') }} style="--background-color:{{ currentCategoryColour }}">
+            <a href="{{ path('view.categories_faq.page_parent_categories_faq') }}" class="btn-back"><img src="/themes/custom/yqb/svg/back-arrow.svg">{{ 'Back to categories'|t }}</a>
+              <img src="{{ currentCategoryIcon }}" alt="{{ currentCategoryTitle }}" class="header-image">
             <span>
-              {{ 'Frequently asked questions'| trans }}
+              {{ 'Frequently asked questions'|t }} {{ currentCategoryTitle ? ' - ' ~ currentCategoryTitle }}
             </span>
           </h1>
-          <div class="categoriesFaq__wrapper-menu" style="--background-color:  #ff526c;">
-            <button class="categoriesFaqTrigger__menu" role="button" aria-expanded="false" aria-selected="false" aria-controls="faqmenu">Toutes les sous-catégories
+          <div class="categoriesFaq__wrapper-menu" style="--background-color:{{ currentCategoryColour }}">
+            <button class="categoriesFaqTrigger__menu" role="button" aria-expanded="false" aria-selected="false" aria-controls="faqmenu">{{ 'All subcategories'|t}}
                 <span class="icon-faq-arrow">
-                <img src="/themes/custom/yqb/svg/down-arrow-faq.svg">
+                <img src="{{ currentCategoryIcon }}" alt="{{ currentCategoryTitle }}">
               </span>
             </button>
             <ul class="categoriesFaq__menu menu nav" id="categoriesFaqMenu" aria-hidden="true" aria-labelledby="faqmenu">
