@@ -6,4 +6,3 @@ connected_paths: null
 cron: false
 batch_limit: 100
 webhook_hash: ''
-langcode: fr
