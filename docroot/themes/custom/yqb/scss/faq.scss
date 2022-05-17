@@ -174,12 +174,36 @@
       }
       color: #fff;
       background-color: var(--background-color);
+      .btn-back {
+        color: #fff;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        @media (min-width: 1024px) {
+          top: 50%;
+          left: 40px;
+          transform: translateY(-50%);
+        }
+        span {
+          display: none;
+          @media (min-width: 1024px) {
+            display: inline;
+          }
+        }
+        img {
+          margin-right: 10px;
+        }
+      }
       .header-image {
         width: 235px;
         position: absolute;
         top: 0;
         left: 60%;
         opacity: .3;
+        z-index: 1;
       }
     }
     .categoriesFaq__wrapper-menu {
