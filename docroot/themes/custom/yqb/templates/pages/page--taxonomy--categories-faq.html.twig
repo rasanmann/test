@@ -135,12 +135,12 @@
         {# Content #}
         {% block content %}
           <a id="main-content"></a>
-          <h1{{ title_attributes.addClass('title-page centred') }}>
+          <h1{{ title_attributes.addClass('title-page centred') }} style="--background-color:  #ff526c;">
             <span>
               {{ 'Frequently asked questions'| trans }}
             </span>
           </h1>
-          <div class="categoriesFaq__wrapper-menu">
+          <div class="categoriesFaq__wrapper-menu" style="--background-color:  #ff526c;">
             <button class="categoriesFaqTrigger__menu" role="button" aria-expanded="false" aria-selected="false" aria-controls="faqmenu">Toutes les sous-catégories
                 <span class="icon-faq-arrow">
                 <img src="/themes/custom/yqb/svg/down-arrow-faq.svg">
@@ -149,7 +149,7 @@
             <ul class="categoriesFaq__menu menu nav" id="categoriesFaqMenu" aria-hidden="true" aria-labelledby="faqmenu">
               {% for cat in faqCategories %}
                 {% set is_active = currentCategoryId == cat.id ? 'active' %}
-                <li class="categoryFaq__menu-item {{ is_active }}" >
+                <li class="categoryFaq__menu-item {{ is_active }}">
                   <a class="categoryFaq__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': cat.id}) }}">
                     <span>
                       {{ cat.name.value }}
