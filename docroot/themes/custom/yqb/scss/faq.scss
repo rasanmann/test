@@ -168,11 +168,19 @@
       font-weight: 700;
       text-align: center;
       border-bottom: 0;
+      position: relative;
       @media (min-width: 768px) {
         font-size: 4rem;
       }
       color: #fff;
       background-color: var(--background-color);
+      .header-image {
+        width: 235px;
+        position: absolute;
+        top: 0;
+        left: 60%;
+        opacity: .3;
+      }
     }
     .categoriesFaq__wrapper-menu {
       background-color: #fff;

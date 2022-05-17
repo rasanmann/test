@@ -146,11 +146,18 @@
   font-weight: 700;
   text-align: center;
   border-bottom: 0;
+  position: relative;
   color: #fff;
   background-color: var(--background-color); }
   @media (min-width: 768px) {
     .page-cetegorie-faq .main-container .title-page {
       font-size: 4rem; } }
+  .page-cetegorie-faq .main-container .title-page .header-image {
+    width: 235px;
+    position: absolute;
+    top: 0;
+    left: 60%;
+    opacity: .3; }
 
 .page-cetegorie-faq .main-container .categoriesFaq__wrapper-menu {
   background-color: #fff;
