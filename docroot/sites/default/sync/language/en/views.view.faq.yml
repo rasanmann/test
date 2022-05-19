@@ -9,5 +9,5 @@ display:
       footer:
         area:
           content:
-            value: "<div class=\"subCategoriesFaq__contact-us\">\r\n<p>We couldn't answer your question? Please don't hesitate to join us.<a href=\"/en/contact-us\">join us.</a></p>\r\n</div>\r\n"
+            value: "<div class=\"subCategoriesFaq__contact-us\">\r\n<p>You did not found the answer to your question? Do not hesitate to <a href=\"/en/contact-us\">join us.</a></p>\r\n</div>\r\n"
             format: full_html

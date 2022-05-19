@@ -913,6 +913,7 @@ function yqb_theme_suggestions_views_view_alter(array &$suggestions, array $vari
  * @param $variables
  */
 function yqb_preprocess_page(&$variables) {
+  
   $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
   if ($term && ($term->bundle() === "categories_faq")) {
     $vid = 'categories_faq';
@@ -929,6 +930,33 @@ function yqb_preprocess_page(&$variables) {
       }
     }
     $variables['faqCategories'] = $faqCategories;
+
+    $targetTermId = $term->id();
+    $isSubCat = false;
+    //Has parent?
+    $parent = $term->parent[0];
+    if ($parent->target_id != 0) {
+      $targetTermId = $parent->target_id;
+      $isSubCat = true;
+      $parent_term = \Drupal\taxonomy\Entity\Term::load($targetTermId);
+      $variables['currentCategoryTitle'] = $parent_term->get('name')->value;
+      $variables['currentCategoryColour'] = $parent_term->get('field_color')->getValue()[0] ? $parent_term->get('field_color')->getValue()[0]['color'] : '#ff526c;';
+      $variables['currentCategoryIcon'] = $parent_term->get('field_icon')->entity ? $parent_term->get('field_icon')->entity->url() : '/themes/custom/yqb/svg/down-arrow-faq.svg';
+    }
+
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, $targetTermId, 1, true);
+    $children = [];
+    foreach ($terms as $term) {
+      if ($term->hasTranslation($language)) {
+        $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term, $language);
+        $children[] = $translated_term;
+      }
+    }
+
+    $hasChildren = count($children) ? true : false;
+    $variables['subCattegories'] = $children;
+    $variables['hasChildren'] = $hasChildren;
+    $variables['isSubCat'] = $isSubCat;
   }
 }
 
@@ -948,7 +976,6 @@ function yqb_preprocess_taxonomy_term(&$variables) {
       $isSubCat = true;
     }
 
-    $language =  \Drupal::languageManager()->getCurrentLanguage()->getId();
     $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, $targetTermId, 1, true);
     $children = [];
     foreach ($terms as $term) {

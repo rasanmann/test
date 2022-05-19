@@ -252,7 +252,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: "<div class=\"subCategoriesFaq__contact-us\">\r\n   <p>Nous ne sommes pas parvenus à répondre à votre question? N’hésitez pas à <a href=\"/fr/nous-joindre/nous-contacter\">nous joindre.</a></p>\r\n  </div>"
+            value: "<div class=\"subCategoriesFaq__contact-us\">\r\n    <p>Vous n’avez pas trouvé réponse à votre question ? N’hésitez pas à <a href=\"/fr/nous-joindre/nous-contacter\">nous joindre.</a></p>\r\n  </div>"
             format: full_html
           plugin_id: text
       empty:

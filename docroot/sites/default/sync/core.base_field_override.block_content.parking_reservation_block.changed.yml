@@ -1,0 +1,18 @@
+uuid: 96bc845a-e406-4ab3-b03f-8fbfbaeba3b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.parking_reservation_block
+id: block_content.parking_reservation_block.changed
+field_name: changed
+entity_type: block_content
+bundle: parking_reservation_block
+label: Changed
+description: 'The time that the custom block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

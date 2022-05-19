@@ -139,7 +139,7 @@
             <a href="{{ path('view.categories_faq.page_parent_categories_faq') }}" class="btn-back"><img src="/themes/custom/yqb/svg/back-arrow.svg">{{ 'Back to categories'|t }}</a>
               <img src="{{ currentCategoryIcon }}" alt="{{ currentCategoryTitle }}" class="header-image">
             <span>
-              {{ 'Frequently asked questions'|t }} {{ currentCategoryTitle ? ' - ' ~ currentCategoryTitle }}
+              {{ currentCategoryTitle ? currentCategoryTitle : 'Frequently asked questions'|t }}
             </span>
           </h1>
           <div class="categoriesFaq__wrapper-menu" style="--background-color:{{ currentCategoryColour }}">
@@ -148,12 +148,14 @@
                 <img src="{{ currentCategoryIcon }}" alt="{{ currentCategoryTitle }}">
               </span>
             </button>
-            <ul class="categoriesFaq__menu menu nav" id="categoriesFaqMenu" aria-hidden="true" aria-labelledby="faqmenu">
-              {% for cat in faqCategories %}
-                {% set is_active = currentCategoryId == cat.id ? 'active' %}
-                <li class="categoryFaq__menu-item {{ is_active }}">
-                  <a class="categoryFaq__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': cat.id}) }}">
-                    <span>
+            
+            {% set subCatId = isSubCat ? currentCategoryId : subCattegories.0.tid.value %}
+            <ul class="categoriesFaq__menu nav" id="subCategoriesFaqMenu" role="navigation" aria-label="Tabs" aria-hidden="true" aria-labelledby="faqmenu">
+              {% for cat in subCattegories %}
+                {% set is_active = subCatId == cat.id ? 'active' %}
+                <li class="categoryFaq__menu-item {{ is_active }}" >
+                  <a class="categoryFaq__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': cat.id}) }}" data-tid={{cat.id}}>
+                    <span class="faq-subcategory__name">
                       {{ cat.name.value }}
                     </span>
                   </a>

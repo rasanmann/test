@@ -30,18 +30,7 @@
   {%
     set subCatId = isSubCat ? term.id : subCattegories.0.tid.value
   %}
-  <ul class="subCategoriesFaq__menu tabs" id="subCategoriesFaqMenu" role="navigation" aria-label="Tabs">
-    {% for cat in subCattegories %}
-      {% set is_active = subCatId == cat.id ? 'active' %}
-      <li class="subCategoryFaq__menu-item {{ is_active }}" >
-        <a class="subCategoriesFaq__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': cat.id}) }}" data-tid={{cat.id}}>
-          <span class="faq-subcategory__name">
-            {{ cat.name.value }}
-          </span>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+
   <div class="subCategoryFaq__content" id="subCategoryFaqContent" >
     {{ drupal_view('faq', 'questions_by_faq_category', subCatId, language) }}
   </div>

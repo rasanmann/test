@@ -12,8 +12,8 @@ entity_type: node
 bundle: question
 label: 'Catégorie faq'
 description: ''
-required: false
-translatable: true
+required: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
