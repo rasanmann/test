@@ -144,11 +144,11 @@
           </h1>
           <div class="categoriesFaq__wrapper-menu" style="--background-color:{{ currentCategoryColour }}">
             <button class="categoriesFaqTrigger__menu" role="button" aria-expanded="false" aria-selected="false" aria-controls="faqmenu">{{ 'All subcategories'|t}}
-                <span class="icon-faq-arrow">
-                <img src="{{ currentCategoryIcon }}" alt="{{ currentCategoryTitle }}">
+              <span class="icon-faq-arrow">
+                <img src="/themes/custom/yqb/svg/down-arrow-faq.svg">
               </span>
             </button>
-            
+
             {% set subCatId = isSubCat ? currentCategoryId : subCattegories.0.tid.value %}
             <ul class="categoriesFaq__menu nav" id="subCategoriesFaqMenu" role="navigation" aria-label="Tabs" aria-hidden="true" aria-labelledby="faqmenu">
               {% for cat in subCattegories %}

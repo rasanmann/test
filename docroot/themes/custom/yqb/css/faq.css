@@ -37,6 +37,8 @@
 .view-content {
   padding: 64px 0 0;
   background-color: #fff; }
+  .page-cetegorie-faq .view-content {
+    padding-top: 0; }
 
 .search-block-form-faq .input-group {
   border: 1px solid #C4C4C4;
@@ -175,10 +177,11 @@
   .page-cetegorie-faq .main-container .title-page .header-image {
     width: 235px;
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 60%;
     opacity: .3;
-    z-index: 1; }
+    z-index: 1;
+    transform: translateY(-50%); }
 
 .page-cetegorie-faq .main-container .categoriesFaq__wrapper-menu {
   background-color: #fff;

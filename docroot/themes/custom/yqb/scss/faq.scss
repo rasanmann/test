@@ -43,6 +43,9 @@
 .view-content {
   padding: 64px 0 0;
   background-color: #fff;
+  .page-cetegorie-faq & {
+    padding-top: 0;
+  }
 }
 
 //Bloc search FAQ
@@ -200,10 +203,11 @@
       .header-image {
         width: 235px;
         position: absolute;
-        top: 0;
+        top: 50%;
         left: 60%;
         opacity: .3;
         z-index: 1;
+        transform: translateY(-50%);
       }
     }
     .categoriesFaq__wrapper-menu {
