@@ -45,6 +45,41 @@
           url: url
         });
       })
+
+        $(document).on('click', '.categoriesFaqTrigger__menu', function (e) {
+          if( !$('.categoriesFaq__menu').length ) return;
+          let faqMenu = $('.categoriesFaq__menu');
+          faqMenu.toggleClass('opened');
+            if(faqMenu.hasClass('opened')){
+                $('.categoriesFaqTrigger__menu').attr({
+                    'aria-expanded': true,
+                    'aria-selected': true
+                });
+                $('.categoriesFaqTrigger__menu').attr({
+                    'aria-hidden': false
+                });
+            } else {
+              $('.categoriesFaqTrigger__menu').attr({
+                'aria-expanded': false,
+                'aria-selected': false,
+                'aria-hidden': true
+              });
+            }
+            e.preventDefault();
+        });
+        $(document).mouseup(function(e) {
+            if( !$('.categoriesFaq__wrapper-menu').length && !$('.categoriesFaq__menu').length ) return;
+            let container = $('.categoriesFaq__wrapper-menu');
+            let faqMenu = $('.categoriesFaq__menu');
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+              faqMenu.removeClass('opened');
+              $('.categoriesFaqTrigger__menu').attr({
+                'aria-expanded': false,
+                'aria-selected': false,
+                'aria-hidden': true
+              });
+            }
+        });
     },
   }
 })(jQuery);
