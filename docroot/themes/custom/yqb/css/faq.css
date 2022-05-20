@@ -1,9 +1,6 @@
 .view-page-categories_faq .region-content {
-  padding: 0 0 40px;
+  padding: 0;
   background-color: #f1f5f8; }
-  @media (min-width: 1024px) {
-    .view-page-categories_faq .region-content {
-      padding: 0 0 100px; } }
 
 .view-page-categories_faq .main-content {
   border-bottom: 0; }
@@ -17,8 +14,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 55px 0 0;
+  padding: 55px 20px 0;
   background-color: #f1f5f8; }
+  @media (min-width: 1024px) {
+    .categoriesFaq__header {
+      padding: 55px 0 0; } }
   .categoriesFaq__header .title-page {
     margin: 0;
     padding: 0;
@@ -35,10 +35,13 @@
     transform: translateY(50%); }
 
 .view-content {
-  padding: 64px 0 0;
+  padding: 64px 20px 0;
   background-color: #fff; }
+  @media (min-width: 1024px) {
+    .view-content {
+      padding: 64px 0 0; } }
   .page-cetegorie-faq .view-content {
-    padding-top: 0; }
+    padding: 0; }
 
 .search-block-form-faq .input-group {
   border: 1px solid #C4C4C4;
@@ -72,7 +75,11 @@
 
 .categoriesFaq__wrapper {
   max-width: 915px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-bottom: 40px; }
+  @media (min-width: 1024px) {
+    .categoriesFaq__wrapper {
+      padding-bottom: 100px; } }
   .categoriesFaq__wrapper .categoriesFaq__grid {
     margin: 0 -4px;
     padding: 0;
