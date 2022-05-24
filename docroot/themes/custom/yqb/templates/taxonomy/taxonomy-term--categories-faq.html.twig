@@ -26,13 +26,11 @@
  */
 #}
 <div{{ attributes }}>
-  {% include '@yqb/block/block-search-faq.html.twig' %}
   {%
     set subCatId = isSubCat ? term.id : subCattegories.0.tid.value
   %}
-
-  <div class="subCategoryFaq__content" id="subCategoryFaqContent" >
-    <h2 class="subCategoryFaq__content-title">Titre de la catégorie ici</h2>
+  <div class="subCategoryFaq__content" id="subCategoryFaqContent">
+    <h2 class="subCategoryFaq__content-title"> {{ not isSubCat ? subCattegories.0.name.value : name }} </h2>
     {{ drupal_view('faq', 'questions_by_faq_category', subCatId, language) }}
   </div>
 </div>
