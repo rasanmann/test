@@ -22,6 +22,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/vols-et-destinations/horaire-des-vols/*\r\n/vols-et-destinations/destinations-desservies\r\n/vols-et-destinations/transporteurs\r\n\r\n/a-propos/entreprise/mission-vision-et-valeurs\r\n/about/company/mission-vision-values\r\n/visiter-quebec\r\n/visit-quebec-city\r\n/planifier-son-vol/reserver-un-stationnement\r\n/plan-a-flight/parking-reservation\r\n/planifier-son-vol/reserver-un-stationnement/*\r\n/plan-a-flight/parking-reservation/*\r\n/planifier-son-vol/modifier-un-stationnement/*\r\n/plan-a-flight/parking-modification/*\r\n/a-propos/entreprise/histoire\r\n/about/company/history\r\n\r\n/foire-aux-questions*\r\n/frequently-asked-questions*"
+    pages: "/vols-et-destinations/horaire-des-vols/*\r\n/vols-et-destinations/destinations-desservies\r\n/vols-et-destinations/transporteurs\r\n\r\n/a-propos/entreprise/mission-vision-et-valeurs\r\n/about/company/mission-vision-values\r\n/visiter-quebec\r\n/visit-quebec-city\r\n/planifier-son-vol/reserver-un-stationnement\r\n/plan-a-flight/parking-reservation\r\n/planifier-son-vol/reserver-un-stationnement/*\r\n/plan-a-flight/parking-reservation/*\r\n/planifier-son-vol/modifier-un-stationnement/*\r\n/plan-a-flight/parking-modification/*\r\n/a-propos/entreprise/histoire\r\n/about/company/history\r\n\r\n/foire-aux-questions*\r\n/frequently-asked-questions*\r\n/faq*"
     negate: true
     context_mapping: {  }
