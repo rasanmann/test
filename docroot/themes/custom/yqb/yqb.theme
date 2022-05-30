@@ -60,12 +60,17 @@ function yqb_preprocess_html(array &$variables) {
   if ($node = \Drupal::request()->attributes->get('node')) {
     $variables['attributes']['class'][] = 'node-id-' . $node->id();
   }
+
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($term && ($term->bundle() === "categories_faq")) {
+    $variables['attributes']['class'][] = 'page-cetegorie-faq';
+  }
 }
 
 function yqb_page_attachments_alter(array &$page) {
 
   $node = \Drupal::routeMatch()->getParameter('node');
-  
+
   // Webview specific css sheet
   if (isset($_GET['webview'])) {
     $page['#attached']['library'][] = 'yqb/webview';
@@ -420,7 +425,7 @@ function yqb_form_alter(&$form, &$form_state, $form_id) {
         }
       }
     }
-    
+
   }
 
 }
@@ -713,7 +718,7 @@ function yqb_preprocess_field(&$variables) {
  *
  * @param $variables
  */
-function yqb_preprocess_paragraph__webform_newsletter(&$variables) { 
+function yqb_preprocess_paragraph__webform_newsletter(&$variables) {
 
   $webform_newsletter = \Drupal\webform\Entity\Webform::load('newsletter_subscription');
 
@@ -730,7 +735,7 @@ function yqb_preprocess_paragraph__webform_newsletter(&$variables) {
  *
  * @param $variables
  */
-function yqb_preprocess_paragraph__parking_reservation(&$variables) { 
+function yqb_preprocess_paragraph__parking_reservation(&$variables) {
 
   $parking_reservation_form = \Drupal\webform\Entity\Webform::load('parking_reservation_form');
 
@@ -853,7 +858,7 @@ function yqb_preprocess_block__parking_reservation_block(&$variables){
 
 function yqb_preprocess_node(&$variables){
   $node = $variables['node'];
-  
+
   if($node->getType() == 'commerce'){
     $view_page = \Drupal\Core\Url::fromRoute('view.commerces.page_1')->toString();
     $variables['view_commerces_path'] = $view_page;
@@ -866,11 +871,14 @@ function yqb_preprocess_node(&$variables){
  * @param $variables
  */
 function yqb_theme_suggestions_page_alter(&$suggestions, &$variables) {
-  if ( $node = \Drupal::routeMatch()->getParameter('node') ) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($node) {
     $content_type = $node->bundle();
-    if($node->bundle() == 'landing_page'){
-      array_splice( $suggestions, count($suggestions) - 1, 0, 'page__'.$content_type );
-    }
+    $suggestions[] = 'page__' . $content_type;
+  }
+  elseif ($term && ($term->bundle() === "categories_faq")) {
+    $suggestions[] = 'page__taxonomy__'.$term->bundle();
   }
 }
 
@@ -888,3 +896,122 @@ function yqb_theme_suggestions_html_alter(&$suggestions, &$variables) {
     }
   }
 }
+
+/* Suggestions_views_view hook*/
+function yqb_theme_suggestions_views_view_alter(array &$suggestions, array $variables)
+{
+  $ids = ['page_parent_categories_faq', 'questions_by_faq_category'];
+  if (in_array($variables['view']->current_display, $ids)) {
+    $suggestions[] = sprintf('views_view__%s', $variables['view']->current_display);
+  }
+}
+
+/**
+ * HOOK_theme_suggestions_page_alter
+ * Add custom content type node to template suggestion for Landing page
+ *
+ * @param $variables
+ */
+function yqb_preprocess_page(&$variables) {
+  
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($term && ($term->bundle() === "categories_faq")) {
+    $vid = 'categories_faq';
+    $faqCategories = [];
+    $variables['currentCategoryId'] = $term->id();
+    $variables['currentCategoryTitle'] = $term->get('name')->value;
+    $variables['currentCategoryColour'] = $term->get('field_color')->getValue()[0] ? $term->get('field_color')->getValue()[0]['color'] : '#ff526c;';
+    $variables['currentCategoryIcon'] = $term->get('field_icon')->entity ? $term->get('field_icon')->entity->url() : '/themes/custom/yqb/svg/down-arrow-faq.svg';
+    $language =  \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0, 1,true);
+    foreach ($terms as $t) {
+      if ($t->hasTranslation($language)) {
+        $faqCategories[] = \Drupal::service('entity.repository')->getTranslationFromContext($t, $language);;
+      }
+    }
+    $variables['faqCategories'] = $faqCategories;
+
+    $targetTermId = $term->id();
+    $isSubCat = false;
+    //Has parent?
+    $parent = $term->parent[0];
+    if ($parent->target_id != 0) {
+      $targetTermId = $parent->target_id;
+      $isSubCat = true;
+      $parent_term = \Drupal\taxonomy\Entity\Term::load($targetTermId);
+      $variables['currentCategoryTitle'] = $parent_term->get('name')->value;
+      $variables['currentCategoryColour'] = $parent_term->get('field_color')->getValue()[0] ? $parent_term->get('field_color')->getValue()[0]['color'] : '#ff526c;';
+      $variables['currentCategoryIcon'] = $parent_term->get('field_icon')->entity ? $parent_term->get('field_icon')->entity->url() : '/themes/custom/yqb/svg/down-arrow-faq.svg';
+    }
+
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, $targetTermId, 1, true);
+    $children = [];
+    foreach ($terms as $term) {
+      if ($term->hasTranslation($language)) {
+        $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term, $language);
+        $children[] = $translated_term;
+      }
+    }
+
+    $hasChildren = count($children) ? true : false;
+    $variables['subCattegories'] = $children;
+    $variables['hasChildren'] = $hasChildren;
+    $variables['isSubCat'] = $isSubCat;
+  }
+}
+
+/* Hook preprocess_taxonomy_term */
+function yqb_preprocess_taxonomy_term(&$variables) {
+  $term = $variables['term'];
+  if ($term->bundle() == 'categories_faq') {
+    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $variables['language'] = $language;
+    $vid = 'categories_faq';
+    $targetTermId = $term->id();
+    $isSubCat = false;
+    //Has parent?
+    $parent = $term->parent[0];
+    if ($parent->target_id != 0) {
+      $targetTermId = $parent->target_id;
+      $isSubCat = true;
+    }
+
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, $targetTermId, 1, true);
+    $children = [];
+    foreach ($terms as $term) {
+      if ($term->hasTranslation($language)) {
+        #$tid = $term->id();
+        $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term, $language);
+        $children[] = $translated_term;
+      }
+    }
+    $hasChildren = count($children) ? true : false;
+    $variables['subCattegories'] = $children;
+    $variables['hasChildren'] = $hasChildren;
+    $variables['isSubCat'] = $isSubCat;
+  }
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb_HOOK().
+ */
+function yqb_preprocess_breadcrumb(&$variables) {
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($term && ($term->bundle() === "categories_faq")) {
+    //Ajouter l'item "Frequently asked questions"
+    $faqLinkTitle = t('Frequently asked questions');
+    $faqLink = \Drupal\Core\Link::createFromRoute($faqLinkTitle, 'view.categories_faq.page_parent_categories_faq');
+    $faqLink = [
+      'url'=> $faqLink->getUrl(),
+      'text'=> $faqLink->getText(),
+    ];
+    $linksOrig = $variables['breadcrumb'];
+    $links = array_merge(
+      array_slice($linksOrig, 0, 1),
+      [$faqLink],
+      array_slice($linksOrig, 1)
+    );
+    $variables['breadcrumb'] = $links;
+  }
+}
+

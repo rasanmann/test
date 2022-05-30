@@ -1,15 +1,15 @@
-.paragraph--type--texte-et-image { 
+.paragraph--type--texte-et-image {
 
     background-color: #e5eeff;
 
     &.paragraph--dual{
         display: flex;
         flex-wrap: wrap;
-       
+
         > div{
-            
+
             min-height: 410px;
-            
+
 
             width: 100%;
             @media (min-width: 768px) {
@@ -25,7 +25,7 @@
 
     .field--name-field-text{
         padding: 80px 60px 72px 40px;
-      
+
         max-width: 450px;
 
         @media (min-width: 768px) {
@@ -42,7 +42,7 @@
             margin-bottom: 50px;
         }
 
-        
+
         p{
             font-size: 2.1rem;
             line-height: 2.4rem;
@@ -52,7 +52,7 @@
 
     .field--name-field-image{
         display: block;
-        
+
     }
 }
 
@@ -101,8 +101,8 @@
             display: flex;
             flex-wrap: wrap;
             > .field--item{
-                
-                
+
+
                 width: 100%;
 
                 @media (min-width: 768px) {
@@ -120,7 +120,7 @@
                     padding: 35px 40px 50px;
                     height: 100%;
                 }
-                
+
 
                 &:nth-child(4n+1){
                     background-color: #23b5c7;
@@ -141,13 +141,13 @@
                     background-color: #393939;
                     color: white;
                 }
-                
+
                 .field--type-image{
                     padding: 5px;
                     height: 80px;
                     display: flex;
                     align-items: center;
-                    
+
                     img{
                         max-height: 73px;
                         width: auto;
@@ -173,7 +173,7 @@
             }
         }
 
-        
+
 
     .field--name-field-image{
         display: block;
@@ -185,7 +185,7 @@
 .paragraph--type--texte-et-image{
 
     .field--label, h2{
-        
+
         text-transform: uppercase;
         font-size: 2.4rem;
         font-weight: bold;

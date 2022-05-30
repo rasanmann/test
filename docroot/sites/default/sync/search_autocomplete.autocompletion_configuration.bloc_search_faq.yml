@@ -1,0 +1,21 @@
+uuid: 28bfe265-e6e9-43de-b8f8-c7a6bef78a5c
+langcode: en
+status: true
+dependencies: {  }
+id: bloc_search_faq
+label: 'Bloc search FAQ'
+selector: '#searchBlockFaq'
+minChar: 3
+autoSubmit: true
+autoRedirect: true
+maxSuggestions: 10
+noResultLabel: 'No results found for [search-phrase]. Click to perform full search.'
+noResultValue: '[search-phrase]'
+noResultLink: ''
+moreResultsLabel: 'View all results for [search-phrase].'
+moreResultsValue: '[search-phrase]'
+moreResultsLink: ''
+source: 'autocompletion_callbacks_nodes::autocompletion_callback_faq'
+theme: basic-blue.css
+editable: true
+deletable: true

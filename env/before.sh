@@ -1,12 +1,10 @@
 #!/bin/bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
+if kubeo yesno '[composer] Voulez-vous installer les dépendances PHP? (les dépendances sont committés au projet)'; then
+    kubeo exec kubeo run composer install
+fi
 
-echo -ne "├─ [composer install] Installation des dépendances PHP"
-$DIR/../composer install &> /dev/null
-kubeo status $?
-
-if [ ! -f $DIR/../docroot/sites/default/settings.local.php ]; then
-    echo -ne "├─ Fichier de configuration"
-    cp $DIR/../docroot/sites/default/settings.local.sample $DIR/../docroot/sites/default/settings.local.php
+if [ ! -f docroot/sites/default/settings.local.php ]; then
+    echo -ne "[config] Fichier de configuration"
+    cp docroot/sites/default/settings.local.sample docroot/sites/default/settings.local.php
 fi

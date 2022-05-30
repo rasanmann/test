@@ -1,0 +1,223 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single page.
+ */
+#}
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+
+<header id="layout-header">
+  <div class="dropdown menu trigger-menu-parent">
+    <a href="#" id="trigger-menu-mobile" class="dropdown-toggle">
+      <span></span>
+      <span class="middle"></span>
+      <span></span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-0">
+      <a href="#" class="dropdown-close">
+        <span class="icon icon-close" data-grunticon-embed></span>
+      </a>
+      {# Sub Navbar #}
+      {% if page.sub_navigation %}
+        {% block sub_navbar %}
+
+          {% set sub_navbar_classes = [
+          'navbar',
+          'navbar-no-spacing',
+          'navbar-secondary',
+          theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
+          ] %}
+
+          <div{{ navbar_attributes.removeAttribute('class').addClass(sub_navbar_classes) }} id="navbar-metas" role="banner">
+            <div class="navbar-collapse">
+              {{ page.sub_navigation }}
+            </div>
+          </div>
+        {% endblock %}
+      {% endif %}
+    </div>
+  </div>
+
+  {# Navbar #}
+  {% if page.navigation %}
+    {% block navbar %}
+
+      {% set navbar_classes = [
+      'navbar',
+      'navbar-main',
+      theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
+      theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
+      ] %}
+
+      <div{{ navbar_attributes.removeAttribute('class').addClass(navbar_classes) }} id="navbar-primary" role="banner">
+        <div class="navbar-header">
+          {{ page.navigation }}
+        </div>
+
+        {# Navigation (collapsible) #}
+        {% if page.navigation_collapsible %}
+          <div class="navbar-collapse collapse">
+            {{ page.navigation_collapsible }}
+          </div>
+        {% endif %}
+      </div>
+    {% endblock %}
+  {% endif %}
+</header>
+
+{# Main #}
+{% block main %}
+  <div role="main" class="main-container {{ container }} js-quickedit-main-content main-container-faq" id="layout-content">
+    {# Top #}
+    {% if page.top %}
+        {{ page.top }}
+    {% endif %}
+
+    {# Header (Top bar) #}
+    {% if page.header %}
+        {% block header %}
+          <div role="heading" class="heading">
+            {{ page.header }}
+          </div>
+        {% endblock %}
+    {% endif %}
+
+    <div class="page-wrapper">
+      {% if page.sidebar_first %}
+        <div class="content-wrapper content-have-sidebar">
+      {% else %}
+        <div class="content-wrapper content-no-sidebar">
+      {% endif %}
+
+      {# Sidebar First (Primary) #}
+      {% if page.sidebar_first %}
+        {% block sidebar_first %}
+          <aside class="sidebar-content" role="complementary">
+            {{ page.sidebar_first }}
+          </aside>
+        {% endblock %}
+      {% endif %}
+
+      {# Content #}
+      {% set content_classes = [
+        'main-content'
+      ] %}
+
+      <section{{ content_attributes.addClass(content_classes) }}>
+        {# Highlighted #}
+        {% if page.highlighted %}
+          {% block highlighted %}
+            <div class="highlighted">{{ page.highlighted }}</div>
+          {% endblock %}
+        {% endif %}
+
+        {# Breadcrumbs #}
+        {% if breadcrumb %}
+          {% block breadcrumb %}
+            {{ breadcrumb }}
+          {% endblock %}
+        {% endif %}
+
+        {# Action Links #}
+        {% if action_links %}
+          {% block action_links %}
+            <ul class="action-links">{{ action_links }}</ul>
+          {% endblock %}
+        {% endif %}
+
+        {# Help #}
+        {% if page.help %}
+          {% block help %}
+            {{ page.help }}
+          {% endblock %}
+        {% endif %}
+
+        {# Content #}
+        {% block content %}
+          <a id="main-content"></a>
+          <h1{{ title_attributes.addClass('title-page centred') }} style="--background-color:{{ currentCategoryColour }}">
+            <a href="{{ path('view.categories_faq.page_parent_categories_faq') }}" class="btn-back"><img src="/themes/custom/yqb/svg/back-arrow.svg">{{ 'Back to categories'|t }}</a>
+              <img src="{{ currentCategoryIcon }}" alt="{{ currentCategoryTitle }}" class="header-image">
+            <span>
+              {{ currentCategoryTitle ? currentCategoryTitle : 'Frequently asked questions'|t }}
+            </span>
+          </h1>
+          <div class="categoriesFaq__wrapper-menu" style="--background-color:{{ currentCategoryColour }}">
+            <button class="categoriesFaqTrigger__menu" role="button" aria-expanded="false" aria-selected="false" aria-controls="faqmenu">{{ 'All subcategories'|t}}
+              <span class="icon-faq-arrow">
+                <img src="/themes/custom/yqb/svg/down-arrow-faq.svg">
+              </span>
+            </button>
+
+            {% set subCatId = isSubCat ? currentCategoryId : subCattegories.0.tid.value %}
+            <ul class="categoriesFaq__menu nav" id="subCategoriesFaqMenu" role="navigation" aria-label="Tabs" aria-hidden="true" aria-labelledby="faqmenu">
+              {% for cat in subCattegories %}
+                {% set is_active = subCatId == cat.id ? 'active' %}
+                <li class="categoryFaq__menu-item {{ is_active }}" >
+                  <a class="categoryFaq__link" href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': cat.id}) }}" data-tid={{cat.id}}>
+                    <span class="faq-subcategory__name">
+                      {{ cat.name.value }}
+                    </span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          {{ page.content }}
+        {% endblock %}
+      </section>
+
+      {# Sidebar Second #}
+      {% if page.sidebar_second %}
+        {% block sidebar_second %}
+          <aside class="sidebar-content" role="complementary">
+            {{ page.sidebar_second }}
+          </aside>
+        {% endblock %}
+      {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{# Bottom #}
+{% if page.bottom %}
+    {{ page.bottom }}
+{% endif %}
+
+{# Bottom Actions #}
+{% if page.bottom_actions %}
+    {{ page.bottom_actions }}
+{% endif %}
+
+{# Footer #}
+{% if page.footer %}
+  <footer id="layout-footer" class="clearfix">
+    <div class="{{ container }}">
+      <div class="logo-wrapper">
+        <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
+        	 <span class="logo">
+        		<img src="/themes/custom/yqb/img/logo/logo-text-{{ 'fr'|t }}-white.png" alt="{{ 'Aéroport international Jean-Lesage de Québec'|t }}">
+			</span>
+        </a>
+      </div>
+
+      <div class="nav-wrapper">
+          {% block footer_navbar %}
+            <div class="nav-footer-primary-wrapper clearfix">
+              {{ page.footer }}
+            </div>
+          {% endblock %}
+
+        {# Sub Navbar #}
+        {% if page.sub_footer %}
+          {% block sub_footer_navbar %}
+            {{ page.sub_footer }}
+          {% endblock %}
+        {% endif %}
+      </div>
+    </div>
+  </footer>
+{% endif %}

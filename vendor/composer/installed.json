@@ -465,20 +465,6 @@
             "certificate",
             "ssl",
             "tls"
-        ],
-        "funding": [
-            {
-                "url": "https://packagist.com",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/composer",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -561,20 +547,6 @@
             "autoload",
             "dependency",
             "package"
-        ],
-        "funding": [
-            {
-                "url": "https://packagist.com",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/composer",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -709,20 +681,6 @@
             "yawik",
             "zend",
             "zikula"
-        ],
-        "funding": [
-            {
-                "url": "https://packagist.com",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/composer",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -848,20 +806,6 @@
             "license",
             "spdx",
             "validator"
-        ],
-        "funding": [
-            {
-                "url": "https://packagist.com",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/composer",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -909,20 +853,6 @@
         "keywords": [
             "Xdebug",
             "performance"
-        ],
-        "funding": [
-            {
-                "url": "https://packagist.com",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/composer",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -2352,20 +2282,6 @@
         "keywords": [
             "constructor",
             "instantiate"
-        ],
-        "funding": [
-            {
-                "url": "https://www.doctrine-project.org/sponsorship.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.patreon.com/phpdoctrine",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finstantiator",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -2843,6 +2759,67 @@
         ]
     },
     {
+        "name": "drupal/color_field",
+        "version": "2.5.0",
+        "version_normalized": "2.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/color_field.git",
+            "reference": "8.x-2.5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/color_field-8.x-2.5.zip",
+            "reference": "8.x-2.5",
+            "shasum": "9b0d299cb24d3cb21c7fb6a6a08d32ae5aed8652"
+        },
+        "require": {
+            "drupal/core": "^8 || ^9"
+        },
+        "require-dev": {
+            "drupal/core-recommended": "*",
+            "drupal/token": "~1.3"
+        },
+        "suggest": {
+            "bower-asset/jquery-simple-color": "^v1.2.2: Provides JavaScript library necessary for the Color Grid widget",
+            "bower-asset/spectrum": "^1.8: Provides JavaScript library necessary for Spectrum widget."
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-2.5",
+                "datestamp": "1632938098",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "targoo",
+                "homepage": "https://www.drupal.org/user/431910",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Nick Wilde",
+                "homepage": "https://www.drupal.org/user/nickwilde",
+                "role": "Maintainer"
+            }
+        ],
+        "description": "Provides a color field type to store the color value and opacity",
+        "homepage": "https://www.drupal.org/project/color_field",
+        "support": {
+            "source": "https://git.drupalcode.org/project/color_field",
+            "issues": "https://www.drupal.org/project/issues/color_field?version=8.x"
+        }
+    },
+    {
         "name": "drupal/config_devel",
         "version": "1.0.0-rc1",
         "version_normalized": "1.0.0.0-RC1",
@@ -3041,12 +3018,6 @@
             "development",
             "drupal",
             "symfony"
-        ],
-        "funding": [
-            {
-                "url": "https://opencollective.com/drupalconsole",
-                "type": "open_collective"
-            }
         ]
     },
     {
@@ -5913,27 +5884,27 @@
     },
     {
         "name": "drupal/search_autocomplete",
-        "version": "1.3.0",
-        "version_normalized": "1.3.0.0",
+        "version": "2.0.1",
+        "version_normalized": "2.0.1.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/search_autocomplete.git",
-            "reference": "8.x-1.3"
+            "reference": "2.0.1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/search_autocomplete-8.x-1.3.zip",
-            "reference": "8.x-1.3",
-            "shasum": "1e166bf8af0959fb4ea49e065632066bd4b4473d"
+            "url": "https://ftp.drupal.org/files/projects/search_autocomplete-2.0.1.zip",
+            "reference": "2.0.1",
+            "shasum": "d7386e17f7bc8a2c52b516c0f23d3699b263c41d"
         },
         "require": {
-            "drupal/core": "^8"
+            "drupal/core": "^8.8 || ^9"
         },
         "type": "drupal-module",
         "extra": {
             "drupal": {
-                "version": "8.x-1.3",
-                "datestamp": "1591039059",
+                "version": "2.0.1",
+                "datestamp": "1591039197",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -5959,6 +5930,60 @@
         "homepage": "https://www.drupal.org/project/search_autocomplete",
         "support": {
             "source": "https://git.drupalcode.org/project/search_autocomplete"
+        }
+    },
+    {
+        "name": "drupal/search_exclude",
+        "version": "2.0.0-beta2",
+        "version_normalized": "2.0.0.0-beta2",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/search_exclude.git",
+            "reference": "2.0.0-beta2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/search_exclude-2.0.0-beta2.zip",
+            "reference": "2.0.0-beta2",
+            "shasum": "71fe6cdb630430697c0ac8e4e712412770c58b77"
+        },
+        "require": {
+            "drupal/core": "^8 || ^9"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "2.0.0-beta2",
+                "datestamp": "1615458507",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Beta releases are not covered by Drupal security advisories."
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "DanielVeza",
+                "homepage": "https://www.drupal.org/user/3362504"
+            },
+            {
+                "name": "arshadcn",
+                "homepage": "https://www.drupal.org/user/571032"
+            },
+            {
+                "name": "baikho",
+                "homepage": "https://www.drupal.org/user/2727459"
+            }
+        ],
+        "description": "Exclude content types from node search.",
+        "homepage": "https://www.drupal.org/project/search_exclude",
+        "support": {
+            "source": "https://git.drupalcode.org/project/search_exclude"
         }
     },
     {
@@ -6298,6 +6323,61 @@
         "homepage": "https://www.drupal.org/project/token",
         "support": {
             "source": "https://git.drupalcode.org/project/token"
+        }
+    },
+    {
+        "name": "drupal/twig_tweak",
+        "version": "2.9.0",
+        "version_normalized": "2.9.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/twig_tweak.git",
+            "reference": "8.x-2.9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/twig_tweak-8.x-2.9.zip",
+            "reference": "8.x-2.9",
+            "shasum": "c45ba1a41e323a432d1ff36d0a72344b88595a39"
+        },
+        "require": {
+            "drupal/core": "^8.7 || ^9.0",
+            "twig/twig": "^1.41 || ^2.12"
+        },
+        "suggest": {
+            "symfony/var-dumper": "Better dump() function for debugging Twig variables"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-2.9",
+                "datestamp": "1608093728",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Chi",
+                "homepage": "https://www.drupal.org/user/556138"
+            }
+        ],
+        "description": "A Twig extension with some useful functions and filters for Drupal development.",
+        "homepage": "https://www.drupal.org/project/twig_tweak",
+        "keywords": [
+            "Drupal",
+            "Twig"
+        ],
+        "support": {
+            "source": "https://git.drupalcode.org/project/twig_tweak",
+            "issues": "https://www.drupal.org/project/issues/twig_tweak"
         }
     },
     {
@@ -6883,13 +6963,7 @@
             }
         ],
         "description": "Drush is a command line shell and scripting interface for Drupal, a veritable Swiss Army knife designed to make life easier for those of us who spend some of our working hours hacking away at the command prompt.",
-        "homepage": "http://www.drush.org",
-        "funding": [
-            {
-                "url": "https://github.com/weitzman",
-                "type": "github"
-            }
-        ]
+        "homepage": "http://www.drush.org"
     },
     {
         "name": "duccio/apns-php",
@@ -8274,12 +8348,6 @@
             "laminas",
             "service-manager",
             "servicemanager"
-        ],
-        "funding": [
-            {
-                "url": "https://funding.communitybridge.org/projects/laminas-project",
-                "type": "community_bridge"
-            }
         ]
     },
     {
@@ -8380,12 +8448,6 @@
         "keywords": [
             "laminas",
             "text"
-        ],
-        "funding": [
-            {
-                "url": "https://funding.communitybridge.org/projects/laminas-project",
-                "type": "community_bridge"
-            }
         ]
     },
     {
@@ -8440,12 +8502,6 @@
             "autoloading",
             "laminas",
             "zf"
-        ],
-        "funding": [
-            {
-                "url": "https://funding.communitybridge.org/projects/laminas-project",
-                "type": "community_bridge"
-            }
         ]
     },
     {
@@ -8515,12 +8571,6 @@
             "league",
             "provider",
             "service"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/philipobenito",
-                "type": "github"
-            }
         ]
     },
     {
@@ -8781,21 +8831,7 @@
                 "email": "nmd.matt@gmail.com"
             }
         ],
-        "description": "Drupal extension and rules for PHPStan",
-        "funding": [
-            {
-                "url": "https://github.com/mglaman",
-                "type": "github"
-            },
-            {
-                "url": "https://opencollective.com/phpstan-drupal",
-                "type": "open_collective"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/mglaman/phpstan-drupal",
-                "type": "tidelift"
-            }
-        ]
+        "description": "Drupal extension and rules for PHPStan"
     },
     {
         "name": "mikey179/vfsstream",
@@ -8893,12 +8929,6 @@
             "duplicate",
             "object",
             "object graph"
-        ],
-        "funding": [
-            {
-                "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -9276,16 +9306,6 @@
         "keywords": [
             "archive",
             "tar"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/mrook",
-                "type": "github"
-            },
-            {
-                "url": "https://www.patreon.com/michielrook",
-                "type": "patreon"
-            }
         ]
     },
     {
@@ -9806,25 +9826,7 @@
         "license": [
             "MIT"
         ],
-        "description": "PHPStan - PHP Static Analysis Tool",
-        "funding": [
-            {
-                "url": "https://github.com/ondrejmirtes",
-                "type": "github"
-            },
-            {
-                "url": "https://github.com/phpstan",
-                "type": "github"
-            },
-            {
-                "url": "https://www.patreon.com/phpstan",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
-                "type": "tidelift"
-            }
-        ]
+        "description": "PHPStan - PHP Static Analysis Tool"
     },
     {
         "name": "phpstan/phpstan-deprecation-rules",
@@ -9990,12 +9992,6 @@
         "keywords": [
             "filesystem",
             "iterator"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -10090,12 +10086,6 @@
         "homepage": "https://github.com/sebastianbergmann/php-timer/",
         "keywords": [
             "timer"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -10147,12 +10137,6 @@
         "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
         "keywords": [
             "tokenizer"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ],
         "abandoned": true
     },
@@ -10584,13 +10568,7 @@
             }
         ],
         "description": "Looks up which function or method a line of code belongs to",
-        "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/"
     },
     {
         "name": "sebastian/comparator",
@@ -10656,12 +10634,6 @@
             "comparator",
             "compare",
             "equality"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -10720,12 +10692,6 @@
             "udiff",
             "unidiff",
             "unified diff"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -10781,12 +10747,6 @@
             "Xdebug",
             "environment",
             "hhvm"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -10856,12 +10816,6 @@
         "keywords": [
             "export",
             "exporter"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -10964,13 +10918,7 @@
             }
         ],
         "description": "Traverses array structures and object graphs to enumerate all referenced objects",
-        "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/object-enumerator/"
     },
     {
         "name": "sebastian/object-reflector",
@@ -11017,13 +10965,7 @@
             }
         ],
         "description": "Allows reflection of object attributes, including inherited and non-public ones",
-        "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/object-reflector/"
     },
     {
         "name": "sebastian/recursion-context",
@@ -11078,13 +11020,7 @@
             }
         ],
         "description": "Provides functionality to recursively process PHP variables",
-        "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "http://www.github.com/sebastianbergmann/recursion-context"
     },
     {
         "name": "sebastian/resource-operations",
@@ -11128,13 +11064,7 @@
             }
         ],
         "description": "Provides a list of PHP built-in functions that operate on resources",
-        "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://www.github.com/sebastianbergmann/resource-operations"
     },
     {
         "name": "sebastian/version",
@@ -11230,16 +11160,6 @@
             "linter",
             "parser",
             "validator"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/Seldaek",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/seld/jsonlint",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -11676,21 +11596,7 @@
             }
         ],
         "description": "Symfony BrowserKit Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/class-loader",
@@ -11748,21 +11654,7 @@
             }
         ],
         "description": "Symfony ClassLoader Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/config",
@@ -11825,21 +11717,7 @@
             }
         ],
         "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/console",
@@ -11913,21 +11791,7 @@
             }
         ],
         "description": "Symfony Console Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/css-selector",
@@ -11977,21 +11841,7 @@
             }
         ],
         "description": "Symfony CssSelector Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/debug",
@@ -12049,21 +11899,7 @@
             }
         ],
         "description": "Symfony Debug Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/dependency-injection",
@@ -12136,21 +11972,7 @@
             }
         ],
         "description": "Symfony DependencyInjection Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/dom-crawler",
@@ -12204,21 +12026,7 @@
             }
         ],
         "description": "Symfony DomCrawler Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/event-dispatcher",
@@ -12283,21 +12091,7 @@
             }
         ],
         "description": "Symfony EventDispatcher Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/filesystem",
@@ -12344,21 +12138,7 @@
             }
         ],
         "description": "Symfony Filesystem Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/finder",
@@ -12404,21 +12184,7 @@
             }
         ],
         "description": "Symfony Finder Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/http-foundation",
@@ -12474,21 +12240,7 @@
             }
         ],
         "description": "Symfony HttpFoundation Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/http-kernel",
@@ -12580,21 +12332,7 @@
             }
         ],
         "description": "Symfony HttpKernel Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/lock",
@@ -12653,20 +12391,6 @@
             "mutex",
             "redlock",
             "semaphore"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -12731,21 +12455,7 @@
             }
         ],
         "description": "Symfony PHPUnit Bridge",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/polyfill-ctype",
@@ -12805,20 +12515,6 @@
             "ctype",
             "polyfill",
             "portable"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -12880,20 +12576,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -12958,20 +12640,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13033,20 +12701,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13105,20 +12759,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13180,20 +12820,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13251,20 +12877,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13333,20 +12945,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13411,20 +13009,6 @@
             "polyfill",
             "portable",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13479,20 +13063,6 @@
             "compatibility",
             "polyfill",
             "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13544,21 +13114,7 @@
             }
         ],
         "description": "Symfony Process Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/psr-http-message-bridge",
@@ -13701,20 +13257,6 @@
             "routing",
             "uri",
             "url"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -13796,21 +13338,7 @@
             }
         ],
         "description": "Symfony Serializer Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/translation",
@@ -13882,21 +13410,7 @@
             }
         ],
         "description": "Symfony Translation Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/validator",
@@ -13984,21 +13498,7 @@
             }
         ],
         "description": "Symfony Validator Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/var-dumper",
@@ -14072,20 +13572,6 @@
         "keywords": [
             "debug",
             "dump"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -14147,21 +13633,7 @@
             }
         ],
         "description": "Symfony Yaml Component",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
+        "homepage": "https://symfony.com"
     },
     {
         "name": "theseer/tokenizer",
@@ -14203,13 +13675,7 @@
                 "role": "Developer"
             }
         ],
-        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-        "funding": [
-            {
-                "url": "https://github.com/theseer",
-                "type": "github"
-            }
-        ]
+        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats"
     },
     {
         "name": "thinkshout/mailchimp-api-php",
