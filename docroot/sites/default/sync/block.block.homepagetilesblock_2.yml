@@ -34,7 +34,6 @@ settings:
   row_keys:
     - '-10'
     - '-9'
-    - '-8'
     - '-7'
 visibility:
   request_path:

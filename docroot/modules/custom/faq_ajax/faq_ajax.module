@@ -1,0 +1,8 @@
+<?php
+/*
+* HOOK_page_attachments
+*/
+function faq_ajax_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'faq_ajax/global-js';
+}
+

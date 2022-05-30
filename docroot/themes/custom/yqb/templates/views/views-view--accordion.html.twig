@@ -16,12 +16,11 @@
     'view-display-id-' ~ display_id,
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
-  
 
 %}
 
-{%  if id|clean_class == 'news' %} 
-  {% set classes = classes|merge(['view-archive']) %} 
+{%  if id|clean_class == 'news' %}
+  {% set classes = classes|merge(['view-archive']) %}
 {%  endif %}
 
 <div{{ attributes.addClass(classes) }}>

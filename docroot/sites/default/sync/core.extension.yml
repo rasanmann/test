@@ -9,6 +9,7 @@ module:
   captcha: 0
   ckeditor: 0
   color: 0
+  color_field: 0
   comment: 0
   config: 0
   config_translation: 0
@@ -28,6 +29,7 @@ module:
   editor_file: 0
   email_registration: 0
   entity_reference_revisions: 0
+  faq_ajax: 0
   features: 0
   features_ui: 0
   field: 0
@@ -94,6 +96,7 @@ module:
   scheduler: 0
   search: 0
   search_autocomplete: 0
+  search_exclude: 0
   serialization: 0
   settings_tray: 0
   shortcut: 0
@@ -108,6 +111,7 @@ module:
   token: 0
   toolbar: 0
   tour: 0
+  twig_tweak: 0
   twig_vardumper: 0
   twilio: 0
   update: 0

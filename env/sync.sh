@@ -1,38 +1,35 @@
-#!/bin/bash
-echo "├─ Valeurs possibles: "
-echo "├─ aeroportdequebec.com"
-echo "├─ yqbdev.ssh.prod.acquia-sites.com"
-echo -ne "├─ À partir de quelle serveur ? [aeroportdequebec.com] "
+#!/usr/bin/env bash
+
+echo "[sync] Valeurs possibles: "
+echo "[sync] aeroportdequebec.com"
+echo "[sync] yqbdev.ssh.prod.acquia-sites.com"
+echo -ne "[sync] À partir de quelle serveur ? [aeroportdequebec.com] "
 read server
 
-if [ "$server" == "" ]; then
+if [ "$server" = "" ]; then
     server="aeroportdequebec.com"
 fi
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
+if [ "$server" = "aeroportdequebec.com" ]; then
+    SOURCE_FOLDER="/var/www/html/yqb.prod/docroot/sites/default/files/"
+    DRUSH_COMMAND="/var/www/html/yqb.prod/vendor/drush/drush/drush"
+    SERVER="yqb.prod@yqb.ssh.prod.acquia-sites.com"
+elif [ "$server" = "yqbdev.ssh.prod.acquia-sites.com" ]; then
+    SOURCE_FOLDER="/var/www/html/yqb.dev/docroot/sites/default/files/"
+    DRUSH_COMMAND="/var/www/html/yqb.dev/vendor/drush/drush/drush"
+    SERVER="yqb.dev@yqbdev.ssh.prod.acquia-sites.com"
+fi
 
-if [ "$server" == "aeroportdequebec.com" ]; then
-    ssh yqb.prod@yqb.ssh.prod.acquia-sites.com -p 22 "/var/www/html/yqb.prod/vendor/drush/drush/drush sql-dump" | docker exec -i yqb_mysql mysql -u yqb -pyqb yqb &> /dev/null
+echo -ne "[sync:db] Synchronisation de la base de données"
+ssh $SERVER -p22 "$DRUSH_COMMAND sql-dump" | docker exec -i ${KUBEO_PROJECT_NAME}_mysql mysql -u ${KUBEO_PROJECT_NAME} -p${KUBEO_PROJECT_NAME} ${KUBEO_PROJECT_NAME} &> /dev/null
+kubeo status $?
 
-    echo -ne "├─ Voulez-vous copier les uploads? [o/N] "
-    read copy_uploads
-
-    if [ "$copy_uploads" == "o" -o "$copy_uploads" == "O" ]; then
-        if [ ! -f $DIR/../docroot/sites/default/files ]; then
-            mkdir $DIR/../docroot/sites/default/files &> /dev/null
-        fi
-        rsync -rauve "ssh -p 22" yqb.prod@yqb.ssh.prod.acquia-sites.com:/var/www/html/yqb.prod/docroot/sites/default/files/* $DIR/../docroot/sites/default/files/. &> /dev/null
+if kubeo yesno '[sync] Voulez-vous copier les uploads?'; then
+    if [ ! -d docroot/sites/default/files ]; then
+        mkdir docroot/sites/default/files &> /dev/null
     fi
-elif [ "$server" == "yqbdev.ssh.prod.acquia-sites.com" ]; then
-    ssh yqb.dev@yqbdev.ssh.prod.acquia-sites.com -p 22 "/var/www/html/yqb.dev/vendor/drush/drush/drush sql-dump" | docker exec -i yqb_mysql mysql -u yqb -pyqb yqb &> /dev/null
 
-    echo -ne "├─ Voulez-vous copier les uploads? [o/N] "
-    read copy_uploads
-
-    if [ "$copy_uploads" == "o" -o "$copy_uploads" == "O" ]; then
-        if [ ! -f $DIR/../docroot/sites/default/files ]; then
-            mkdir $DIR/../docroot/sites/default/files &> /dev/null
-        fi
-        rsync -rauve "ssh -p 22" yqb.dev@yqbdev.ssh.prod.acquia-sites.com:/var/www/html/yqb.dev/docroot/sites/default/files/* $DIR/../docroot/sites/default/files/. &> /dev/null
-    fi
+    echo -ne "[sync:file] Synchronisation des fichiers"
+    rsync -rauve "ssh -p22" $SERVER:$SOURCE_FOLDER docroot/sites/default/files/ &> /dev/null
+    kubeo status $?
 fi
