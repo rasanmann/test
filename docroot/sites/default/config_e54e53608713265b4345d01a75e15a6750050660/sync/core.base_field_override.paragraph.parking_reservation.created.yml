@@ -1,0 +1,18 @@
+uuid: 603279a1-3886-493f-934d-de422f838187
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.parking_reservation
+id: paragraph.parking_reservation.created
+field_name: created
+entity_type: paragraph
+bundle: parking_reservation
+label: 'Écrit le'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

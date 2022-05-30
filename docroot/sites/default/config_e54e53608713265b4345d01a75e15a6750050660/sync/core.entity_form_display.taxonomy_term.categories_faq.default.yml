@@ -1,0 +1,70 @@
+uuid: 96c98b62-32bf-4181-b748-d8925ae1c0eb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.categories_faq.field_color
+    - field.field.taxonomy_term.categories_faq.field_icon
+    - image.style.medium
+    - taxonomy.vocabulary.categories_faq
+  module:
+    - color_field
+    - imce
+    - path
+    - svg_image
+id: taxonomy_term.categories_faq.default
+targetEntityType: taxonomy_term
+bundle: categories_faq
+mode: default
+content:
+  field_color:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: color_field_widget_html5
+    region: content
+  field_icon:
+    weight: 3
+    settings:
+      preview_image_style: medium
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: false
+    type: image_image
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true

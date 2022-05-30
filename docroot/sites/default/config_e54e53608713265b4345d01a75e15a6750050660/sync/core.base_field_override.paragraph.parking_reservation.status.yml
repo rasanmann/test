@@ -1,0 +1,22 @@
+uuid: b65cc88f-f849-42c3-a94b-63ae0964d088
+langcode: fr
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.parking_reservation
+id: paragraph.parking_reservation.status
+field_name: status
+entity_type: paragraph
+bundle: parking_reservation
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

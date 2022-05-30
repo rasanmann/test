@@ -7,16 +7,16 @@ dependencies:
 id: questions
 label: Questions
 type: 'canonical_entities:node'
-pattern: 'questions-et-commentaires/faq/[node:title]'
+pattern: '/faq/[node:field_category_faq:entity:parents]/[node:field_category_faq:entity:name]/[node:title]/'
 selection_criteria:
-  e746e456-d15a-49c2-a26e-800ea9e2463c:
+  ca5a0691-ca96-44b2-b77e-157bc4159843:
     id: node_type
     bundles:
       question: question
     negate: false
     context_mapping:
       node: node
-    uuid: e746e456-d15a-49c2-a26e-800ea9e2463c
+    uuid: ca5a0691-ca96-44b2-b77e-157bc4159843
 selection_logic: and
 weight: -5
 relationships: {  }

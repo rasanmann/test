@@ -25,6 +25,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/affaires\r\n/affaires/immobilier-et-services-commerciaux\r\n/affaires/services-aériens\r\n/affaires/paiement-de-facture\r\n/affaires/frais-dameliorations-aeroportuaires-faa\r\n/affaires/fournisseurs\r\n\r\n"
+    pages: "/affaires\r\n/affaires/immobilier-et-services-commerciaux\r\n/affaires/services-aériens\r\n/affaires/paiement-de-facture\r\n/affaires/frais-dameliorations-aeroportuaires-faa\r\n/affaires/fournisseurs\r\n/affaires/vaccination-obligatoire\r\n\r\n"
     negate: false
     context_mapping: {  }
