@@ -1,9 +1,9 @@
-uuid: 1d0ac4df-1c6b-4196-88a1-ca8f1c4592cf
+uuid: 527c41b4-a38f-4de1-bda6-6f1504a9fd29
 langcode: fr
 status: true
 dependencies:
   config:
-    - block_content.type.parking_reservation_block
+    - paragraphs.paragraphs_type.parking_reservation
   module:
     - content_translation
 third_party_settings:
@@ -11,8 +11,8 @@ third_party_settings:
     enabled: false
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: block_content.parking_reservation_block
-target_entity_type_id: block_content
-target_bundle: parking_reservation_block
+id: paragraph.parking_reservation
+target_entity_type_id: paragraph
+target_bundle: parking_reservation
 default_langcode: site_default
 language_alterable: false

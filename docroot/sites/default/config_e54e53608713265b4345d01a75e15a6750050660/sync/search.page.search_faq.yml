@@ -1,0 +1,37 @@
+uuid: f2a46ee5-4501-43b5-a311-cb3d6288a841
+langcode: en
+status: true
+dependencies:
+  module:
+    - search_exclude
+id: search_faq
+label: FAQ
+path: faq
+weight: 0
+plugin: search_exclude_node_search
+configuration:
+  rankings: {  }
+  excluded_bundles:
+    airline: airline
+    airport: airport
+    arrival: arrival
+    article: article
+    beacon: beacon
+    blog_post: blog_post
+    career: career
+    commerce: commerce
+    departure: departure
+    destination: destination
+    homepage_tiles: homepage_tiles
+    landing_page: landing_page
+    nouvelle: nouvelle
+    page: page
+    page_mobile: page_mobile
+    parking_booking: parking_booking
+    publication: publication
+    region: region
+    reminder: reminder
+    slide: slide
+    tip: tip
+    user_flight: user_flight
+    zone: zone

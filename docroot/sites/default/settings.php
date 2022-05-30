@@ -30,8 +30,6 @@ $databases['default']['default'] = array (
 
 $settings['hash_salt'] = 'muvxYCDkSL08VsMcpVLQIUZwRGJiUSdlby9YRq9ZFylRLeh1MUIhgd2neowII9uEqliR7SZWAw';
 $settings['install_profile'] = 'standard';
-$settings['config_sync_directory'] = 'sites/default/sync';
-
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
    include $app_root . '/' . $site_path . '/settings.local.php';
