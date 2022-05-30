@@ -1,0 +1,18 @@
+uuid: 94fb65dd-0440-4273-a835-4713dbad926f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.parking_reservation_block
+id: block_content.parking_reservation_block.info
+field_name: info
+entity_type: block_content
+bundle: parking_reservation_block
+label: 'Description du bloc'
+description: 'Une brève description de votre bloc.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

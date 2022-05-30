@@ -1,0 +1,25 @@
+uuid: b65a25bb-902b-4a4c-b630-cbb57aecc1be
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_click_counter
+    - node.type.question
+id: node.question.field_click_counter
+field_name: field_click_counter
+entity_type: node
+bundle: question
+label: 'Nombre de clique'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
