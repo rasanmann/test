@@ -23,18 +23,14 @@ settings:
       tile: '208531'
       weight: '-10'
     -9:
-      tile: '208521'
-      weight: '-9'
-    -8:
       tile: '215616'
-      weight: '-8'
+      weight: '-9'
     -7:
-      tile: '208526'
+      tile: '208521'
       weight: '-7'
   row_keys:
     - '-10'
     - '-9'
-    - '-8'
     - '-7'
 visibility:
   request_path:

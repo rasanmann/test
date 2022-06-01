@@ -1,0 +1,5 @@
+global-js:
+  js:
+    js/get-faq-ajax.js: {}
+  dependencies:
+    - core/jquery

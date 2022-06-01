@@ -1,0 +1,6 @@
+name: FAQ nav by ajax
+type: module
+description: 'FAQ nav by ajax'
+core: 8.x
+package: Custom
+

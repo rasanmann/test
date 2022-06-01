@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a search block.
+ */
+#}
+{%
+set classes = [
+'block',
+'block-search-faq',
+'block-' ~ configuration.provider|clean_class
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <div class="hidden">
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+  </div>
+  <form data-drupal-form-fields="edit-keys" action="{{ url('search.view_search_faq') }}" method="get" class="search-block-form search-block-form-faq" accept-charset="UTF-8">
+    <div class="form-item js-form-item form-type-search js-form-type-search form-item-keys js-form-item-keys form-no-label form-group">
+      <label for="edit-keys" class="control-label sr-only">{{ "Recherche"|t }}</label>
+      <div class="input-group">
+        <input
+          autocomplete="off"
+          title=""
+          data-drupal-selector="edit-keys"
+          class="form-autocomplete form-search form-control ui-autocomplete-input input-lg"
+          data-key="search_block_faq"
+          placeholder="{{ "Recherchez une question..."|t }}"
+          name="keys"
+          value=""
+          size="15"
+          maxlength="128"
+          type="search"
+          id="searchBlockFaq"
+        >
+        <span class="input-group-btn">
+            <button data-drupal-selector="edit-submit" class="button js-form-submit form-submit" type="submit"  value="Search" name="search">
+              <span class="sr-only">{{ "Rechercher"|t }}</span>
+              <span class="icon-search-blue" aria-hidden="true" data-grunticon-embed></span>
+            </button>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+uuid: 3823146e-b704-4a0c-9d33-67a2851a633d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.parking_reservation_block
+id: block_content.parking_reservation_block.status
+field_name: status
+entity_type: block_content
+bundle: parking_reservation_block
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

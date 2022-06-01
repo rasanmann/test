@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.question.body
+    - field.field.node.question.field_category_faq
+    - field.field.node.question.field_click_counter
     - field.field.node.question.field_is_app
     - field.field.node.question.field_is_website
     - node.type.question
@@ -18,17 +20,26 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_category_faq:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   addtoany: true
+  field_click_counter: true
   field_is_app: true
   field_is_website: true
   langcode: true

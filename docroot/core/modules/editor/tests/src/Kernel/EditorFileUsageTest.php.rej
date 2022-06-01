@@ -1,131 +1,85 @@
-***************
-*** 7,12 ****
-  use Drupal\node\Entity\Node;
-  use Drupal\node\Entity\NodeType;
-  use Drupal\file\Entity\File;
-  use Drupal\field\Entity\FieldStorageConfig;
-  use Drupal\Core\Field\FieldStorageDefinitionInterface;
-  use Drupal\filter\Entity\FilterFormat;
---- 7,13 ----
-  use Drupal\node\Entity\Node;
-  use Drupal\node\Entity\NodeType;
-  use Drupal\file\Entity\File;
-+ use Drupal\field\Entity\FieldConfig;
-  use Drupal\field\Entity\FieldStorageConfig;
-  use Drupal\Core\Field\FieldStorageDefinitionInterface;
-  use Drupal\filter\Entity\FilterFormat;
-***************
-*** 57,62 ****
-      $type = NodeType::create(['type' => 'page', 'name' => 'page']);
-      $type->save();
-      node_add_body_field($type);
-    }
-  
-    /**
---- 58,75 ----
-      $type = NodeType::create(['type' => 'page', 'name' => 'page']);
-      $type->save();
-      node_add_body_field($type);
-+     FieldStorageConfig::create([
-+       'field_name' => 'description',
-+       'entity_type' => 'node',
-+       'type' => 'editor_test_text_long',
-+       'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
-+     ])->save();
-+     FieldConfig::create([
-+       'field_name' => 'description',
-+       'entity_type' => 'node',
-+       'bundle' => 'page',
-+       'label' => 'Description',
-+     ])->save();
-    }
-  
-    /**
-***************
-*** 122,127 ****
-      }
-  
-      $body = [];
-      foreach ($image_entities as $key => $image_entity) {
-        // Don't be rude, say hello.
-        $body_value = '<p>Hello, world!</p>';
---- 135,141 ----
-      }
-  
-      $body = [];
-+     $description = [];
-      foreach ($image_entities as $key => $image_entity) {
-        // Don't be rude, say hello.
-        $body_value = '<p>Hello, world!</p>';
-***************
-*** 138,143 ****
-          'value' => $body_value,
-          'format' => 'filtered_html',
-        ];
-      }
-  
-      // Test editor_entity_insert(): increment.
---- 152,161 ----
-          'value' => $body_value,
-          'format' => 'filtered_html',
-        ];
-+       $description[] = [
-+         'value' => 'something',
-+         'format' => 'filtered_html',
-+       ];
-      }
-  
-      // Test editor_entity_insert(): increment.
-***************
-*** 146,151 ****
-        'type' => 'page',
-        'title' => 'test',
-        'body' => $body,
-        'uid' => 1,
-      ]);
-      $node->save();
---- 164,170 ----
-        'type' => 'page',
-        'title' => 'test',
-        'body' => $body,
-+       'description' => $description,
-        'uid' => 1,
-      ]);
-      $node->save();
-***************
-*** 238,243 ****
-        $this->assertIdentical(['editor' => ['node' => [1 => '2']]], $file_usage->listUsage($image_entity), 'The image ' . $image_paths[$key] . ' has 2 usages.');
-      }
-  
-      // Test editor_entity_delete().
-      $node->delete();
-      foreach ($image_entities as $key => $image_entity) {
---- 257,284 ----
-        $this->assertIdentical(['editor' => ['node' => [1 => '2']]], $file_usage->listUsage($image_entity), 'The image ' . $image_paths[$key] . ' has 2 usages.');
-      }
-  
-+     // Empty out the body and summary. The number of usages should decrease by
-+     // one.
-+     foreach ($original_values as $key => $original_value) {
-+       $node->body[$key]->value = '';
-+       $node->body[$key]->summary = '';
-+     }
-+     $node->save();
-+     foreach ($image_entities as $key => $image_entity) {
-+       $this->assertSame(['editor' => ['node' => [1 => '1']]], $file_usage->listUsage($image_entity), 'The image ' . $image_paths[$key] . ' has 1 usage.');
-+     }
-+ 
-+     // Set the field of a custom field type that is a subclass of
-+     // Drupal\text\Plugin\Field\FieldType\TextItemBase. The number of usages
-+     // should increase by one.
-+     foreach ($original_values as $key => $original_value) {
-+       $node->description[$key]->value = $original_value;
-+     }
-+     $node->save();
-+     foreach ($image_entities as $key => $image_entity) {
-+       $this->assertSame(['editor' => ['node' => [1 => '2']]], $file_usage->listUsage($image_entity), 'The image ' . $image_paths[$key] . ' has 2 usages.');
-+     }
-+ 
-      // Test editor_entity_delete().
-      $node->delete();
-      foreach ($image_entities as $key => $image_entity) {
+--- modules/editor/tests/src/Kernel/EditorFileUsageTest.php
++++ modules/editor/tests/src/Kernel/EditorFileUsageTest.php
+@@ -7,6 +7,7 @@
+ use Drupal\node\Entity\Node;
+ use Drupal\node\Entity\NodeType;
+ use Drupal\file\Entity\File;
++use Drupal\field\Entity\FieldConfig;
+ use Drupal\field\Entity\FieldStorageConfig;
+ use Drupal\Core\Field\FieldStorageDefinitionInterface;
+ use Drupal\filter\Entity\FilterFormat;
+@@ -57,6 +58,18 @@ protected function setUp() {
+     $type = NodeType::create(['type' => 'page', 'name' => 'page']);
+     $type->save();
+     node_add_body_field($type);
++    FieldStorageConfig::create([
++      'field_name' => 'description',
++      'entity_type' => 'node',
++      'type' => 'editor_test_text_long',
++      'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
++    ])->save();
++    FieldConfig::create([
++      'field_name' => 'description',
++      'entity_type' => 'node',
++      'bundle' => 'page',
++      'label' => 'Description',
++    ])->save();
+   }
+ 
+   /**
+@@ -122,6 +135,7 @@ public function testEditorEntityHooks() {
+     }
+ 
+     $body = [];
++    $description = [];
+     foreach ($image_entities as $key => $image_entity) {
+       // Don't be rude, say hello.
+       $body_value = '<p>Hello, world!</p>';
+@@ -138,6 +152,10 @@ public function testEditorEntityHooks() {
+         'value' => $body_value,
+         'format' => 'filtered_html',
+       ];
++      $description[] = [
++        'value' => 'something',
++        'format' => 'filtered_html',
++      ];
+     }
+ 
+     // Test editor_entity_insert(): increment.
+@@ -146,6 +164,7 @@ public function testEditorEntityHooks() {
+       'type' => 'page',
+       'title' => 'test',
+       'body' => $body,
++      'description' => $description,
+       'uid' => 1,
+     ]);
+     $node->save();
+@@ -238,6 +257,28 @@ public function testEditorEntityHooks() {
+       $this->assertIdentical(['editor' => ['node' => [1 => '2']]], $file_usage->listUsage($image_entity), 'The image ' . $image_paths[$key] . ' has 2 usages.');
+     }
+ 
++    // Empty out the body and summary. The number of usages should decrease by
++    // one.
++    foreach ($original_values as $key => $original_value) {
++      $node->body[$key]->value = '';
++      $node->body[$key]->summary = '';
++    }
++    $node->save();
++    foreach ($image_entities as $key => $image_entity) {
++      $this->assertSame(['editor' => ['node' => [1 => '1']]], $file_usage->listUsage($image_entity), 'The image ' . $image_paths[$key] . ' has 1 usage.');
++    }
++
++    // Set the field of a custom field type that is a subclass of
++    // Drupal\text\Plugin\Field\FieldType\TextItemBase. The number of usages
++    // should increase by one.
++    foreach ($original_values as $key => $original_value) {
++      $node->description[$key]->value = $original_value;
++    }
++    $node->save();
++    foreach ($image_entities as $key => $image_entity) {
++      $this->assertSame(['editor' => ['node' => [1 => '2']]], $file_usage->listUsage($image_entity), 'The image ' . $image_paths[$key] . ' has 2 usages.');
++    }
++
+     // Test editor_entity_delete().
+     $node->delete();
+     foreach ($image_entities as $key => $image_entity) {

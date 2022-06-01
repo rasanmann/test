@@ -1,0 +1,13 @@
+display:
+  default:
+    display_options:
+      empty:
+        area:
+          content:
+            value: "<pre data-placeholder=\"Traduction\" dir=\"ltr\" id=\"tw-target-text\">\r\nNo result</pre>\r\n"
+            format: full_html
+      footer:
+        area:
+          content:
+            value: "<div class=\"subCategoriesFaq__contact-us\">\r\n<p>You did not found the answer to your question? Do not hesitate to <a href=\"/en/contact-us\">join us.</a></p>\r\n</div>\r\n"
+            format: full_html

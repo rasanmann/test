@@ -21,6 +21,7 @@ framework:
       'https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap': { type: external}
       css/landingpage.css: {}
       css/cssfix.css: {}
+      css/faq.css: {}
   js:
     bootstrap/js/affix.js: {}
     bootstrap/js/alert.js: {}

@@ -1,0 +1,18 @@
+uuid: 3e412b82-477f-473e-a04c-745220e6c81e
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.parking_reservation
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.parking_reservation
+target_entity_type_id: paragraph
+target_bundle: parking_reservation
+default_langcode: site_default
+language_alterable: false
