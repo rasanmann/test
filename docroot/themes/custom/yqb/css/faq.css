@@ -34,13 +34,13 @@
     max-width: 500px;
     transform: translateY(50%); }
 
-.view-content {
+.view-categories-faq .view-content {
   padding: 64px 20px 0;
   background-color: #fff; }
   @media (min-width: 1024px) {
-    .view-content {
+    .view-categories-faq .view-content {
       padding: 64px 0 0; } }
-  .page-cetegorie-faq .view-content {
+  .page-cetegorie-faq .view-categories-faq .view-content {
     padding: 0; }
 
 .search-block-form-faq .input-group {
@@ -57,6 +57,18 @@
   font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
   font-size: 1.2rem;
   line-height: 2.2; }
+  .search-block-form-faq .form-search:-ms-input-placeholder,
+  .search-block-form-faq .form-autocomplete:-ms-input-placeholder {
+    color: #787878;
+    font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+    font-size: 1.2rem;
+    line-height: 2.2; }
+  .search-block-form-faq .form-search::-ms-input-placeholder,
+  .search-block-form-faq .form-autocomplete::-ms-input-placeholder {
+    color: #787878;
+    font-family: "nimbus-sans", Helvetica, Arial, sans-serif;
+    font-size: 1.2rem;
+    line-height: 2.2; }
   .search-block-form-faq .form-search::placeholder,
   .search-block-form-faq .form-autocomplete::placeholder {
     color: #787878;
