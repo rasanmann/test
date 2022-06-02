@@ -1,5 +1,5 @@
-uuid: 512faf32-f5a1-462a-8184-fdaeffeb26f3
-langcode: en
+uuid: b65cc88f-f849-42c3-a94b-63ae0964d088
+langcode: fr
 status: true
 dependencies:
   config:
@@ -17,6 +17,6 @@ default_value:
     value: 1
 default_value_callback: ''
 settings:
-  on_label: 'On'
-  off_label: 'Off'
+  on_label: Activé
+  off_label: Désactivé
 field_type: boolean

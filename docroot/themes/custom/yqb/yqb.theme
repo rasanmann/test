@@ -999,7 +999,7 @@ function yqb_preprocess_breadcrumb(&$variables) {
   $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
   if ($term && ($term->bundle() === "categories_faq")) {
     //Ajouter l'item "Frequently asked questions"
-    $faqLinkTitle = t('Frequently asked questions');
+    $faqLinkTitle = t('Foire aux questions');
     $faqLink = \Drupal\Core\Link::createFromRoute($faqLinkTitle, 'view.categories_faq.page_parent_categories_faq');
     $faqLink = [
       'url'=> $faqLink->getUrl(),

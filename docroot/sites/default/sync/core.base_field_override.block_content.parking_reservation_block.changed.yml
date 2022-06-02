@@ -1,5 +1,5 @@
-uuid: 96bc845a-e406-4ab3-b03f-8fbfbaeba3b6
-langcode: en
+uuid: ef6124ba-b5d0-47b2-9884-625bb8bdb6cf
+langcode: fr
 status: true
 dependencies:
   config:
@@ -8,8 +8,8 @@ id: block_content.parking_reservation_block.changed
 field_name: changed
 entity_type: block_content
 bundle: parking_reservation_block
-label: Changed
-description: 'The time that the custom block was last edited.'
+label: Modifié
+description: 'L''heure à laquelle le bloc personnalisé a été modifié pour la dernière fois.'
 required: false
 translatable: false
 default_value: {  }

@@ -25,9 +25,6 @@ settings:
     -9:
       tile: '215616'
       weight: '-9'
-    -8:
-      tile: '1491756'
-      weight: '-8'
     -7:
       tile: '208521'
       weight: '-7'

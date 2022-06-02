@@ -136,14 +136,14 @@
         {% block content %}
           <a id="main-content"></a>
           <h1{{ title_attributes.addClass('title-page centred') }} style="--background-color:{{ currentCategoryColour }}">
-            <a href="{{ path('view.categories_faq.page_parent_categories_faq') }}" class="btn-back"><img src="/themes/custom/yqb/svg/back-arrow.svg">{{ 'Back to categories'|t }}</a>
+            <a href="{{ path('view.categories_faq.page_parent_categories_faq') }}" class="btn-back"><img src="/themes/custom/yqb/svg/back-arrow.svg">{{ 'Retour aux catégories'|t }}</a>
               <img src="{{ currentCategoryIcon }}" alt="{{ currentCategoryTitle }}" class="header-image">
             <span>
-              {{ currentCategoryTitle ? currentCategoryTitle : 'Frequently asked questions'|t }}
+              {{ currentCategoryTitle ? currentCategoryTitle : 'Foire aux questions'|t }}
             </span>
           </h1>
           <div class="categoriesFaq__wrapper-menu" style="--background-color:{{ currentCategoryColour }}">
-            <button class="categoriesFaqTrigger__menu" role="button" aria-expanded="false" aria-selected="false" aria-controls="faqmenu">{{ 'All subcategories'|t}}
+            <button class="categoriesFaqTrigger__menu" role="button" aria-expanded="false" aria-selected="false" aria-controls="faqmenu">{{ 'Tous les sous-catégories'|t}}
               <span class="icon-faq-arrow">
                 <img src="/themes/custom/yqb/svg/down-arrow-faq.svg">
               </span>
@@ -197,7 +197,7 @@
   <footer id="layout-footer" class="clearfix">
     <div class="{{ container }}">
       <div class="logo-wrapper">
-        <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
+        <a href="{{ path('<front>') }}" title="{{ 'Accueil'|t }}" rel="home">
         	 <span class="logo">
         		<img src="/themes/custom/yqb/img/logo/logo-text-{{ 'fr'|t }}-white.png" alt="{{ 'Aéroport international Jean-Lesage de Québec'|t }}">
 			</span>

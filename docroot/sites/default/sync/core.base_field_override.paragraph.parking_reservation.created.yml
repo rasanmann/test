@@ -1,5 +1,5 @@
-uuid: 262a1ef6-f624-4fa6-b3f3-b4ca3a65035a
-langcode: en
+uuid: 603279a1-3886-493f-934d-de422f838187
+langcode: fr
 status: true
 dependencies:
   config:
@@ -8,7 +8,7 @@ id: paragraph.parking_reservation.created
 field_name: created
 entity_type: paragraph
 bundle: parking_reservation
-label: 'Authored on'
+label: 'Écrit le'
 description: 'The time that the Paragraph was created.'
 required: false
 translatable: false

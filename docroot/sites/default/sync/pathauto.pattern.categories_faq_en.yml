@@ -9,24 +9,24 @@ dependencies:
 id: categories_faq_en
 label: 'Catégories FAQ - EN'
 type: 'canonical_entities:taxonomy_term'
-pattern: '/frequently-asked-questions/[term:parent:name]/[term:name]'
+pattern: '/faq/[term:parent:name]/[term:name]'
 selection_criteria:
-  a285288a-09b2-4ed4-8ad5-608a6cea5c72:
+  2e52f2d4-9e30-4d06-b26c-031850cb34d3:
     id: 'entity_bundle:taxonomy_term'
     bundles:
       categories_faq: categories_faq
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: a285288a-09b2-4ed4-8ad5-608a6cea5c72
-  673d8476-978e-4f0a-9d99-b92050ce99b8:
+    uuid: 2e52f2d4-9e30-4d06-b26c-031850cb34d3
+  19ffd6a0-9d15-4bee-90b5-4ec285cb7032:
     id: language
     langcodes:
       en: en
     negate: false
     context_mapping:
       language: 'taxonomy_term:langcode:language'
-    uuid: 673d8476-978e-4f0a-9d99-b92050ce99b8
+    uuid: 19ffd6a0-9d15-4bee-90b5-4ec285cb7032
 selection_logic: and
 weight: -10
 relationships:

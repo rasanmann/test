@@ -9,24 +9,24 @@ dependencies:
 id: categories_faq_fr
 label: 'Catégories FAQ - FR'
 type: 'canonical_entities:taxonomy_term'
-pattern: '/foire-aux-questions/[term:parent:name]/[term:name]'
+pattern: '/faq/[term:parent:name]/[term:name]'
 selection_criteria:
-  da3cdb85-273f-43b4-b881-0a2a66dcaec7:
+  5e879582-3c2e-4d93-80ce-30361eb3ebe1:
     id: 'entity_bundle:taxonomy_term'
     bundles:
       categories_faq: categories_faq
     negate: false
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: da3cdb85-273f-43b4-b881-0a2a66dcaec7
-  620a1b29-b283-4432-a882-d7d40185c704:
+    uuid: 5e879582-3c2e-4d93-80ce-30361eb3ebe1
+  6874252a-97e4-4f48-b9a4-35d49c51f3af:
     id: language
     langcodes:
       fr: fr
     negate: false
     context_mapping:
       language: 'taxonomy_term:langcode:language'
-    uuid: 620a1b29-b283-4432-a882-d7d40185c704
+    uuid: 6874252a-97e4-4f48-b9a4-35d49c51f3af
 selection_logic: and
 weight: -10
 relationships:
