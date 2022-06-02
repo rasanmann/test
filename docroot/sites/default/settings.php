@@ -13,8 +13,6 @@ $settings['file_chmod_directory'] = 0775;
 $settings['file_chmod_file'] = 0664;
 $settings['update_free_access'] = false;
 
-$settings['config_sync_directory'] = 'sites/default/sync';
-
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 $databases['default']['default'] = array (
@@ -69,6 +67,6 @@ if (file_exists('/var/www/site-php')) {
 	// Memcache settings.
   $settings['cache']['default'] = 'cache.backend.memcache';
   $settings['memcache']['stampede_protection'] = TRUE;
-
+  $settings['config_sync_directory'] = 'sites/default/sync';
 
 }
